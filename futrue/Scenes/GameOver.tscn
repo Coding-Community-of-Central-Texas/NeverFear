@@ -1,0 +1,75 @@
+[gd_scene load_steps=4 format=3 uid="uid://8o5ihpf0h8ej"]
+
+[ext_resource type="Script" path="res://Scripts/GameOver.gd" id="1_r0wvx"]
+[ext_resource type="AudioStream" uid="uid://bpcayivn7waop" path="res://assets/FutrueSFX/DavidKBD - Eternity Pack - 05 - Evil soul inside - loop.ogg" id="2_ypdy7"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_u1hko"]
+size = Vector2(90, 40)
+
+[node name="GameOver" type="Node2D"]
+position = Vector2(221.996, -197.005)
+script = ExtResource("1_r0wvx")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchors_preset = -1
+anchor_left = -0.1875
+anchor_top = -0.862654
+anchor_right = 0.61648
+anchor_bottom = 0.0743647
+offset_left = -430.996
+offset_top = -224.995
+offset_right = 57.8188
+offset_bottom = 330.816
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.78797, 0.741051)
+color = Color(0, 0, 0, 0.505882)
+metadata/_edit_use_anchors_ = true
+
+[node name="Label" type="Label" parent="ColorRect"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 50
+text = "Game Over"
+
+[node name="Restart" type="TouchScreenButton" parent="ColorRect"]
+modulate = Color(0.982505, 0.413341, 0.370475, 1)
+self_modulate = Color(0, 0, 0, 1)
+position = Vector2(155.703, 351.165)
+shape = SubResource("RectangleShape2D_u1hko")
+
+[node name="Label" type="Label" parent="ColorRect/Restart"]
+texture_filter = 6
+offset_left = -44.3054
+offset_top = -19.1539
+offset_right = -4.30541
+offset_bottom = 3.84614
+scale = Vector2(0.205558, 0.281794)
+theme_override_font_sizes/font_size = 100
+text = "Restart"
+autowrap_mode = 2
+
+[node name="Back to Main Menu" type="TouchScreenButton" parent="ColorRect"]
+position = Vector2(339.844, 353.009)
+shape = SubResource("RectangleShape2D_u1hko")
+
+[node name="GameOverCamera" type="Camera2D" parent="."]
+position = Vector2(5.004, 0.00500488)
+zoom = Vector2(2, 2)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_ypdy7")
+volume_db = 2.332
+autoplay = true
+
+[connection signal="pressed" from="ColorRect/Restart" to="." method="_on_restart_pressed"]

@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://bbrlntnsykxxd"]
+
+[ext_resource type="PackedScene" uid="uid://bdh1ta442ljwu" path="res://Scenes/TouchScreenButtons.tscn" id="1_l7rv2"]
+
+[node name="CanvasLayer" type="CanvasLayer"]
+
+[node name="TouchScreenButtons" parent="." instance=ExtResource("1_l7rv2")]
