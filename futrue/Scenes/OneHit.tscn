@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://dyimxg6mdgoab" path="res://Scenes/Byte.tscn" id="3_1ilro"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_cnpoq"]
-radius = 13.0
+radius = 18.0
 
 [node name="OneHit" type="CharacterBody2D" groups=["enemy"]]
 collision_layer = 4

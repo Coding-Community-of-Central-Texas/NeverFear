@@ -1,8 +1,8 @@
 extends CharacterBody2D
 
 var health = 10.0
-var knockback_strength = 500.0
-var knockback_duration = 0.7
+var knockback_strength = 320.0
+var knockback_duration = 0.1
 var knockback_timer = 0.0  # Keeps track of the knockback time
 var knockback_velocity = Vector2.ZERO  # Stores knockback velocity
 
@@ -17,7 +17,9 @@ func _physics_process(_delta):
 	if knockback_timer > 0:
 		velocity = knockback_velocity
 		knockback_timer -= _delta # decrease knockback time 
+		collision_shape_2d.disabled = true
 	else:
+		collision_shape_2d.disabled = false
 		var direction = (player.global_position - global_position).normalized()
 		global_position.direction_to(player.global_position)
 		velocity = direction * 200.0
@@ -40,6 +42,7 @@ func take_damage():
 		_die()
 
 func _die():
+	
 	const BOOM = preload("res://Scenes/Boom.tscn")
 	var new_Boom = BOOM.instantiate()
 	new_Boom.global_position = global_position
@@ -49,4 +52,5 @@ func _die():
 	var new_Cash = CASH.instantiate()
 	new_Cash.global_position = global_position
 	get_parent().add_child(new_Cash)
-	queue_free()
+	call_deferred("queue_free")
+	

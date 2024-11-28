@@ -19,11 +19,13 @@ func _ready():
 	# Connect the signal for body_entered to the appropriate function
 	trigger_area.connect("body_entered", Callable(self, "_on_player_entered"))
 
+@onready var audio_stream_player_2d: AudioStreamPlayer2D = $AudioStreamPlayer2D
 
 
 
 func _on_area_2d_body_entered(body: CharacterBody2D) -> void:
 	if body.is_in_group("player"):
+		audio_stream_player_2d.play
 		if animated_sprite.animation != "open":
 			animated_sprite.play("open")
 			$StaticBody2D/CollisionShape2D.call_deferred("set_disabled", true)

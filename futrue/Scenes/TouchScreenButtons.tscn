@@ -1,8 +1,7 @@
-[gd_scene load_steps=16 format=3 uid="uid://bdh1ta442ljwu"]
+[gd_scene load_steps=11 format=3 uid="uid://bdh1ta442ljwu"]
 
 [ext_resource type="Script" path="res://Scripts/TouchScreenButtons.gd" id="1_bb2x5"]
 [ext_resource type="Texture2D" uid="uid://dfw562n0cgm3w" path="res://assets/buttonsprites/arrowbutton.png" id="1_lpaks"]
-[ext_resource type="Texture2D" uid="uid://dq5dremwhip46" path="res://assets/buttonsprites/jumpbutton.png" id="2_a1mew"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uolew"]
 size = Vector2(30, 30)
@@ -54,33 +53,10 @@ animations = [{
 "speed": 25.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ndicd"]
-size = Vector2(30, 30)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_og5vo"]
-atlas = ExtResource("2_a1mew")
-region = Rect2(0, 0, 320, 320)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_htn3s"]
-atlas = ExtResource("2_a1mew")
-region = Rect2(0, 320, 320, 320)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_rubr5"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_og5vo")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_htn3s")
-}],
-"loop": false,
-"name": &"jump",
-"speed": 25.0
-}]
-
 [node name="TouchScreenButtons" type="Node2D"]
-modulate = Color(1, 1, 1, 0.635294)
+modulate = Color(1, 1, 1, 0.392157)
+position = Vector2(216, 0)
+scale = Vector2(2, 2)
 script = ExtResource("1_bb2x5")
 
 [node name="Right" type="TouchScreenButton" parent="."]
@@ -111,18 +87,3 @@ rotation = 3.14159
 scale = Vector2(0.10524, 0.0948117)
 sprite_frames = SubResource("SpriteFrames_ifedf")
 animation = &"left"
-
-[node name="Jump" type="TouchScreenButton" parent="."]
-position = Vector2(605, -41)
-scale = Vector2(2, 2)
-shape = SubResource("RectangleShape2D_ndicd")
-action = "jump"
-visibility_mode = 1
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Jump"]
-position = Vector2(0, -1)
-scale = Vector2(0.105, 0.095)
-sprite_frames = SubResource("SpriteFrames_rubr5")
-animation = &"jump"
-frame = 1
-frame_progress = 1.0

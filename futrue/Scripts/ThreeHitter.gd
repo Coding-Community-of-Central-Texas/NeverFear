@@ -55,6 +55,7 @@ func take_damage():
 		_die()
 
 func _die():
+	
 	const BOOM = preload("res://Scenes/RobbieBoom.tscn")
 	var new_Boom = BOOM.instantiate()
 	new_Boom.global_position = global_position
@@ -64,6 +65,7 @@ func _die():
 	var new_Cash = CASH.instantiate()
 	new_Cash.global_position = global_position 
 	get_parent().add_child(new_Cash)
+	
 	queue_free()
 
 func back_and_forth_movement():

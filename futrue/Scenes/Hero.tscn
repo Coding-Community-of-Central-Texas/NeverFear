@@ -1,4 +1,4 @@
-[gd_scene load_steps=45 format=3 uid="uid://csqktr6ixyato"]
+[gd_scene load_steps=44 format=3 uid="uid://csqktr6ixyato"]
 
 [ext_resource type="Script" path="res://Scripts/Hero.gd" id="1_43ipw"]
 [ext_resource type="Texture2D" uid="uid://huv5y4v78n8o" path="res://assets/3 Cyborg/Cyborg_doublejump.png" id="2_a50ia"]
@@ -9,8 +9,11 @@
 [ext_resource type="Texture2D" uid="uid://xqornd2ewtdu" path="res://assets/3 Cyborg/Cyborg_hurt.png" id="7_ef541"]
 [ext_resource type="AudioStream" uid="uid://ce5s2ggmqf78e" path="res://assets/FutrueSFX/Jump2.wav" id="9_weta3"]
 [ext_resource type="PackedScene" uid="uid://daeuuspwxjeag" path="res://Scenes/Gun.tscn" id="10_0uu0a"]
-[ext_resource type="PackedScene" uid="uid://bdh1ta442ljwu" path="res://Scenes/TouchScreenButtons.tscn" id="10_kjudd"]
 [ext_resource type="AudioStream" uid="uid://dnjr7q6plu8wi" path="res://assets/FutrueSFX/PlayerDie.wav" id="10_qhkyu"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_na2mc"]
+atlas = ExtResource("3_k6dpk")
+region = Rect2(192, 0, 48, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_pl8or"]
 atlas = ExtResource("2_a50ia")
@@ -40,6 +43,10 @@ region = Rect2(240, 0, 48, 48)
 atlas = ExtResource("3_k6dpk")
 region = Rect2(0, 0, 48, 48)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_tak48"]
+atlas = ExtResource("2_vptny")
+region = Rect2(0, 0, 48, 48)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_etg6c"]
 atlas = ExtResource("3_k6dpk")
 region = Rect2(48, 0, 48, 48)
@@ -52,17 +59,9 @@ region = Rect2(96, 0, 48, 48)
 atlas = ExtResource("3_k6dpk")
 region = Rect2(144, 0, 48, 48)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_na2mc"]
-atlas = ExtResource("3_k6dpk")
-region = Rect2(192, 0, 48, 48)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_ksu05"]
 atlas = ExtResource("3_k6dpk")
 region = Rect2(240, 0, 48, 48)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_tak48"]
-atlas = ExtResource("2_vptny")
-region = Rect2(0, 0, 48, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ffoj2"]
 atlas = ExtResource("2_vptny")
@@ -128,6 +127,9 @@ region = Rect2(48, 0, 48, 48)
 animations = [{
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_na2mc")
+}, {
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_pl8or")
 }, {
 "duration": 1.0,
@@ -144,6 +146,12 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_i6tkn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rnbaa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tak48")
 }],
 "loop": false,
 "name": &"doublejump",
@@ -242,19 +250,24 @@ animations = [{
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_d1tvn"]
-radius = 8.0
-height = 36.0
+radius = 7.99
+height = 34.7
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_x6iwv"]
 radius = 13.0384
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5m7kp"]
 bg_color = Color(0.2, 0.2, 0.2, 0.627451)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8ukkr"]
-bg_color = Color(0.0945556, 0.72516, 0.0993681, 1)
+bg_color = Color(0.0767, 0.59, 0.0767, 1)
 
 [node name="Hero" type="CharacterBody2D" groups=["player"]]
+scale = Vector2(1.2, 1.2)
 collision_layer = 41
 collision_mask = 41
 script = ExtResource("1_43ipw")
@@ -262,10 +275,12 @@ script = ExtResource("1_43ipw")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(10, -5)
 sprite_frames = SubResource("SpriteFrames_100ny")
-animation = &"hurt"
+animation = &"doublejump"
+frame = 8
+frame_progress = 1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(1, 1)
+position = Vector2(1, 2)
 shape = SubResource("CapsuleShape2D_d1tvn")
 
 [node name="Camera2D" type="Camera2D" parent="."]
@@ -276,10 +291,6 @@ limit_smoothed = true
 [node name="Gun" parent="." instance=ExtResource("10_0uu0a")]
 show_behind_parent = true
 position = Vector2(8, -1)
-
-[node name="TouchScreenButtons" parent="." instance=ExtResource("10_kjudd")]
-visible = false
-position = Vector2(-287, 110)
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("9_weta3")
@@ -294,6 +305,8 @@ wait_time = 0.651
 
 [node name="HurtBox" type="Area2D" parent="."]
 unique_name_in_owner = true
+collision_layer = 0
+collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
 position = Vector2(1, 6)

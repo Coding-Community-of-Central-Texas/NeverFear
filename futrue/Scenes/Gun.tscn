@@ -11,7 +11,7 @@ radius = 214.002
 collision_layer = 0
 collision_mask = 4
 script = ExtResource("1_5s5d3")
-rate_of_fire = 0.1
+rate_of_fire = 0.2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_tnu2p")
@@ -32,7 +32,7 @@ wait_time = 0.116
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_b7egm")
-volume_db = 7.928
+volume_db = -9.328
 playback_type = 1
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

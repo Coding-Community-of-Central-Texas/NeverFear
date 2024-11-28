@@ -29,11 +29,12 @@ func _ready() -> void:
 func take_damage():
 	health -= 25.0
 	print("health -25")
+	%ProgressBar.value = health
 	if health == 0.0: 
 		_die()
 
 func _die():
-	collision_shape_2d.queue_free()
+	animated_sprite_2d.play("hurt")
 	timer.start()
 	Engine.time_scale = 0.5
 	audio_stream_player_2d_2.play()
@@ -46,7 +47,7 @@ func _physics_process(delta: float) -> void:
 	handle_animation()
 	move_and_slide()
 	
-	const DAMAGE_RATE = 5.0
+	const DAMAGE_RATE = 15.0
 	var overlapping_mobs = %HurtBox.get_overlapping_bodies()
 	if overlapping_mobs.size() > 0:
 		health -= DAMAGE_RATE * overlapping_mobs.size() * delta
