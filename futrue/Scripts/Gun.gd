@@ -1,6 +1,6 @@
 extends Area2D
 
-@export var rate_of_fire: float = 0.15  # Rate of fire: 0.15 seconds between shots (5 shots per second)
+@export var rate_of_fire: float = 0.10  # Rate of fire: 0.15 seconds between shots (5 shots per second)
 @onready var shootingpoint: Node2D = %shootingpoint
 @onready var timer: Timer = $Timer
 @onready var audio_stream_player: AudioStreamPlayer = $AudioStreamPlayer

@@ -164,7 +164,7 @@ size = Vector2(30, 19)
 size = Vector2(60, 38)
 
 [node name="DropPlat" type="AnimatableBody2D"]
-scale = Vector2(1.5, 1.5)
+scale = Vector2(2.14, 1.5)
 script = ExtResource("1_v1cc0")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]

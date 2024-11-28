@@ -4,7 +4,7 @@ extends CharacterBody2D
 var health = 100.0
 const SPEED = 400.0
 const JUMP_VELOCITY = -550.0
-const DOUBLE_JUMP_VELOCITY = -600.0
+const DOUBLE_JUMP_VELOCITY = -650.0
 const GRAVITY = 2000.0  # Custom gravity value
 const COYOTE_TIME = 0.2  # Time to allow jumping after falling
 const MAX_FALL_SPEED = 1000.0  # Limit the maximum fall speed
@@ -27,17 +27,20 @@ func _ready() -> void:
 	Global.player = self  # Assign the player reference
 
 func take_damage():
-	health -= 25.0
-	print("health -25")
+	health -= 15.0
+	print("health -15")
 	%ProgressBar.value = health
+	if not animated_sprite_2d.is_playing():
+		animated_sprite_2d.play("hurt")
 	if health == 0.0: 
 		_die()
 
 func _die():
-	animated_sprite_2d.play("hurt")
 	timer.start()
+	collision_shape_2d.disabled = true
 	Engine.time_scale = 0.5
-	audio_stream_player_2d_2.play()
+	if not audio_stream_player_2d_2.is_playing():
+		audio_stream_player_2d_2.play()
 
 
 func _physics_process(delta: float) -> void:
