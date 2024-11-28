@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://bykdf5tjggur6"]
+
+[ext_resource type="PackedScene" uid="uid://dr3tcip76rdmv" path="res://Scenes/Robo.tscn" id="1_ck7ha"]
+
+[node name="Boss" type="CharacterBody2D"]
+
+[node name="BossRobo" parent="." instance=ExtResource("1_ck7ha")]
