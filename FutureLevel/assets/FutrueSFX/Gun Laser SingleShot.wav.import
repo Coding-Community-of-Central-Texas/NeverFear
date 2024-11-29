@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://cm6khs2aq378r"
+path="res://.godot/imported/Gun Laser SingleShot.wav-b98aab845ccd11f6b0d803ea80e4bad8.sample"
+
+[deps]
+
+source_file="res://assets/FutrueSFX/Gun Laser SingleShot.wav"
+dest_files=["res://.godot/imported/Gun Laser SingleShot.wav-b98aab845ccd11f6b0d803ea80e4bad8.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

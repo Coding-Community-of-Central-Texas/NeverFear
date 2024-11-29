@@ -1,0 +1,39 @@
+[gd_scene load_steps=5 format=3 uid="uid://ck5iyeqefbgyc"]
+
+[ext_resource type="Script" path="res://Scripts/EnemyGun.gd" id="1_tq7np"]
+[ext_resource type="Texture2D" uid="uid://dganlwkd4d2te" path="res://assets/Guns&Bullets/RobbieGun.png" id="2_t8l87"]
+[ext_resource type="AudioStream" uid="uid://gauoua60vry" path="res://assets/FutrueSFX/Missile Launcher.wav" id="3_fjluh"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_wrg8w"]
+radius = 330.055
+
+[node name="EnemyGun" type="Area2D"]
+collision_layer = 0
+collision_mask = 8
+script = ExtResource("1_tq7np")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 1)
+shape = SubResource("CircleShape2D_wrg8w")
+
+[node name="Timer" type="Timer" parent="."]
+
+[node name="GunPiviot" type="Marker2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="GunPiviot"]
+modulate = Color(0.868152, 0.868182, 0.876796, 1)
+position = Vector2(21, -3.1665e-08)
+rotation = -0.00740651
+scale = Vector2(1.5, 1.122)
+texture = ExtResource("2_t8l87")
+
+[node name="shootingpoint" type="Marker2D" parent="GunPiviot/Sprite2D"]
+unique_name_in_owner = true
+position = Vector2(9.38652, -0.00854222)
+rotation = 1.5708
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_fjluh")
+volume_db = 1.438
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

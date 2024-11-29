@@ -1,0 +1,38 @@
+[gd_scene load_steps=5 format=3 uid="uid://daeuuspwxjeag"]
+
+[ext_resource type="Script" path="res://Scripts/Gun.gd" id="1_5s5d3"]
+[ext_resource type="Texture2D" uid="uid://c8mqnh8i65mot" path="res://assets/Guns&Bullets/4_1.png" id="1_i4qsf"]
+[ext_resource type="AudioStream" uid="uid://cm6khs2aq378r" path="res://assets/FutrueSFX/Gun Laser SingleShot.wav" id="3_b7egm"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_tnu2p"]
+radius = 214.002
+
+[node name="Gun" type="Area2D"]
+collision_layer = 0
+collision_mask = 4
+script = ExtResource("1_5s5d3")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_tnu2p")
+
+[node name="gunpivot" type="Marker2D" parent="."]
+
+[node name="Rifle" type="Sprite2D" parent="gunpivot"]
+position = Vector2(7, 1)
+scale = Vector2(0.810345, 0.681818)
+texture = ExtResource("1_i4qsf")
+
+[node name="shootingpoint" type="Marker2D" parent="gunpivot/Rifle"]
+unique_name_in_owner = true
+position = Vector2(13, -3)
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.116
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_b7egm")
+volume_db = -9.328
+playback_type = 1
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

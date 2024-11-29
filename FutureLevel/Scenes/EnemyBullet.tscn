@@ -1,0 +1,92 @@
+[gd_scene load_steps=13 format=3 uid="uid://bcuaf3fm014qf"]
+
+[ext_resource type="Texture2D" uid="uid://cf1o7yknimjyd" path="res://assets/Guns&Bullets/enemybullet.png" id="1_j6ltc"]
+[ext_resource type="Script" path="res://Scripts/EnemyBullet.gd" id="1_yti00"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4hj3s"]
+atlas = ExtResource("1_j6ltc")
+region = Rect2(512, 160, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_khjrd"]
+atlas = ExtResource("1_j6ltc")
+region = Rect2(544, 160, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bwd7f"]
+atlas = ExtResource("1_j6ltc")
+region = Rect2(576, 160, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0nx4v"]
+atlas = ExtResource("1_j6ltc")
+region = Rect2(608, 160, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qnghl"]
+atlas = ExtResource("1_j6ltc")
+region = Rect2(352, 288, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vo35j"]
+atlas = ExtResource("1_j6ltc")
+region = Rect2(384, 288, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8jp5m"]
+atlas = ExtResource("1_j6ltc")
+region = Rect2(416, 288, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qtmsn"]
+atlas = ExtResource("1_j6ltc")
+region = Rect2(448, 288, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_e5rb3"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4hj3s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_khjrd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bwd7f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0nx4v")
+}],
+"loop": false,
+"name": &"impact",
+"speed": 15.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qnghl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vo35j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8jp5m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qtmsn")
+}],
+"loop": true,
+"name": &"shoot",
+"speed": 15.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_x6wp8"]
+radius = 7.0
+
+[node name="enemybullet" type="Area2D"]
+collision_layer = 8
+collision_mask = 8
+script = ExtResource("1_yti00")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.5, 0.5)
+sprite_frames = SubResource("SpriteFrames_e5rb3")
+animation = &"shoot"
+autoplay = "shoot"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_x6wp8")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
