@@ -174,7 +174,7 @@ _data = {
 }
 
 [node name="Jump" type="TouchScreenButton"]
-modulate = Color(1, 1, 1, 0.392157)
+modulate = Color(1, 0.71, 0.71, 0.376471)
 position = Vector2(-63, -56)
 scale = Vector2(3.50548, 3.5)
 shape = SubResource("RectangleShape2D_ndicd")

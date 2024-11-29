@@ -60,3 +60,7 @@ func _die():
 	get_parent().add_child(new_Cash)
 	call_deferred("queue_free")
 	
+
+
+func _on_timer_timeout() -> void:
+	pass # Replace with function body.

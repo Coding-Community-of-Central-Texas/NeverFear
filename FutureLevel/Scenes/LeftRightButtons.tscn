@@ -1,0 +1,89 @@
+[gd_scene load_steps=11 format=3 uid="uid://bdh1ta442ljwu"]
+
+[ext_resource type="Script" path="res://Scripts/TouchScreenButtons.gd" id="1_bb2x5"]
+[ext_resource type="Texture2D" uid="uid://dfw562n0cgm3w" path="res://assets/buttonsprites/arrowbutton.png" id="1_lpaks"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uolew"]
+size = Vector2(30, 30)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_13ats"]
+atlas = ExtResource("1_lpaks")
+region = Rect2(0, 0, 320, 320)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6pcs1"]
+atlas = ExtResource("1_lpaks")
+region = Rect2(0, 320, 320, 320)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_d72lj"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_13ats")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6pcs1")
+}],
+"loop": false,
+"name": &"right",
+"speed": 25.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_f77ci"]
+size = Vector2(30, 30)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1dlxp"]
+atlas = ExtResource("1_lpaks")
+region = Rect2(0, 0, 320, 320)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tqql4"]
+atlas = ExtResource("1_lpaks")
+region = Rect2(0, 320, 320, 320)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ifedf"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1dlxp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tqql4")
+}],
+"loop": false,
+"name": &"left",
+"speed": 25.0
+}]
+
+[node name="LeftRightButtons" type="Node2D"]
+modulate = Color(1, 0.71, 0.71, 0.341176)
+position = Vector2(216, 0)
+scale = Vector2(2, 2)
+script = ExtResource("1_bb2x5")
+
+[node name="Right" type="TouchScreenButton" parent="."]
+position = Vector2(50, -40)
+scale = Vector2(2, 2)
+shape = SubResource("RectangleShape2D_uolew")
+passby_press = true
+action = "move_right"
+visibility_mode = 1
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Right"]
+position = Vector2(0, 0.5)
+scale = Vector2(0.105, 0.095)
+sprite_frames = SubResource("SpriteFrames_d72lj")
+animation = &"right"
+
+[node name="Left" type="TouchScreenButton" parent="."]
+position = Vector2(-64, -40)
+scale = Vector2(2, 2)
+shape = SubResource("RectangleShape2D_f77ci")
+passby_press = true
+action = "move_left"
+visibility_mode = 1
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Left"]
+position = Vector2(1.00001, 0.5)
+rotation = 3.14159
+scale = Vector2(0.10524, 0.0948117)
+sprite_frames = SubResource("SpriteFrames_ifedf")
+animation = &"left"

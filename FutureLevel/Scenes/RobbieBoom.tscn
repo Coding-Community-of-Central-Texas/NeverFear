@@ -93,7 +93,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"RobbieBoom",
-"speed": 15.0
+"speed": 20.0
 }]
 
 [node name="RobbieBoom" type="Node2D"]

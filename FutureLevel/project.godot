@@ -11,6 +11,7 @@ config_version=5
 [application]
 
 config/name="NeverFear"
+config/description="NeverFear is an extremly fun and addictive game deployed by the Open-Source Coding Community of Central Texas. "
 run/main_scene="res://Scenes/Game.tscn"
 config/features=PackedStringArray("4.3", "Mobile")
 config/icon="res://icon.svg"
@@ -62,3 +63,4 @@ pointing/emulate_touch_from_mouse=true
 [rendering]
 
 renderer/rendering_method="mobile"
+textures/vram_compression/import_etc2_astc=true

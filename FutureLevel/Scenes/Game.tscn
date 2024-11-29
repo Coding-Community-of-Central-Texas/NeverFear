@@ -96,7 +96,7 @@
 [ext_resource type="PackedScene" uid="uid://bnog7ctirydt7" path="res://Scenes/Doorv1.tscn" id="94_nkmw8"]
 [ext_resource type="PackedScene" uid="uid://cg6wfnetht0f" path="res://Scenes/OneHit.tscn" id="95_8vwiy"]
 [ext_resource type="PackedScene" uid="uid://bq8ujsbmayllg" path="res://Scenes/ThreeHitter.tscn" id="95_lsh0g"]
-[ext_resource type="PackedScene" uid="uid://bdh1ta442ljwu" path="res://Scenes/TouchScreenButtons.tscn" id="96_701r7"]
+[ext_resource type="PackedScene" uid="uid://bdh1ta442ljwu" path="res://Scenes/LeftRightButtons.tscn" id="96_701r7"]
 [ext_resource type="AudioStream" uid="uid://dd18n226docax" path="res://assets/FutrueSFX/DavidKBD - Eternity Pack - 06 - God of darkness - loop.ogg" id="96_jc42q"]
 [ext_resource type="PackedScene" uid="uid://d2y4fvw54o8rg" path="res://Scenes/JumpButton.tscn" id="97_rynxq"]
 [ext_resource type="Texture2D" uid="uid://cjvpadkii8oj7" path="res://assets/2 Background/Overlay.png" id="98_wa8hk"]
@@ -1396,17 +1396,25 @@ position = Vector2(4150, 232.912)
 scale = Vector2(1.36003, 1.48)
 texture = ExtResource("87_faajx")
 
+[node name="Sun" type="Sprite2D" parent="TileMap"]
+modulate = Color(1, 0.563845, 0.181005, 1)
+position = Vector2(940, -532)
+scale = Vector2(5.80686, 5.58565)
+texture = ExtResource("7_ic18i")
+
 [node name="cars" type="Sprite2D" parent="."]
 position = Vector2(2683, -613)
 texture = ExtResource("5_8365n")
 
 [node name="cars2" type="Sprite2D" parent="cars"]
-position = Vector2(3356.99, 295.871)
+modulate = Color(1, 1, 1, 0.627451)
+position = Vector2(4151, 433.855)
 texture = ExtResource("5_8365n")
 
 [node name="cars3" type="Sprite2D" parent="cars"]
+modulate = Color(1, 1, 1, 0.603922)
 show_behind_parent = true
-position = Vector2(-2182.71, 43.2858)
+position = Vector2(-1417, 367.973)
 rotation = -0.000806846
 scale = Vector2(0.756542, 0.711948)
 texture = ExtResource("5_8365n")
@@ -1532,7 +1540,7 @@ offset_top = -40.0
 offset_right = 40.0
 grow_vertical = 0
 
-[node name="TouchScreenButtons" parent="CanvasLayer/HBoxContainer" instance=ExtResource("96_701r7")]
+[node name="LeftRightButtons" parent="CanvasLayer/HBoxContainer" instance=ExtResource("96_701r7")]
 modulate = Color(1, 1, 1, 0.47451)
 
 [node name="Jump" type="HBoxContainer" parent="CanvasLayer"]
@@ -1547,6 +1555,8 @@ grow_horizontal = 0
 grow_vertical = 0
 
 [node name="Jump" parent="CanvasLayer/Jump" instance=ExtResource("97_rynxq")]
+position = Vector2(-70, -75)
+scale = Vector2(4.14548, 3.98)
 
 [node name="Overlay" type="Sprite2D" parent="."]
 show_behind_parent = true
@@ -1573,9 +1583,3 @@ rotation = 2.12854e-05
 [node name="DropPlat3" parent="Platforms" instance=ExtResource("100_pkyp2")]
 position = Vector2(6870, -265)
 rotation = 2.12854e-05
-
-[node name="Sun" type="Sprite2D" parent="."]
-modulate = Color(1, 0.563845, 0.181005, 1)
-position = Vector2(940, -532)
-scale = Vector2(5.80686, 5.58565)
-texture = ExtResource("7_ic18i")
