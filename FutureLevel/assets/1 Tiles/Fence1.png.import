@@ -2,12 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://vw7i6crk0wf"
-valid=false
+uid="uid://cu0yrtlk87m0n"
+path="res://.godot/imported/Fence1.png-cd493f39aa2074f183ab518fe6e5a730.ctex"
+metadata={
+"vram_texture": false
+}
 
 [deps]
 
-source_file="res://assets/etc/sheetmetal.png"
+source_file="res://assets/1 Tiles/Fence1.png"
+dest_files=["res://.godot/imported/Fence1.png-cd493f39aa2074f183ab518fe6e5a730.ctex"]
 
 [params]
 
@@ -17,7 +21,7 @@ compress/lossy_quality=0.7
 compress/hdr_compression=1
 compress/normal_map=0
 compress/channel_pack=0
-mipmaps/generate=true
+mipmaps/generate=false
 mipmaps/limit=-1
 roughness/mode=0
 roughness/src_normal=""

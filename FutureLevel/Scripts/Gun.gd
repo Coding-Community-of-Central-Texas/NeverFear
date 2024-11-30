@@ -1,6 +1,6 @@
 extends Area2D
 
-@export var rate_of_fire: float = 0.10  # Rate of fire: 0.15 seconds between shots (5 shots per second)
+@export var rate_of_fire: float = 0.20  # Rate of fire: 0.15 seconds between shots (5 shots per second)
 @onready var shootingpoint: Node2D = %shootingpoint
 @onready var timer: Timer = $Timer
 @onready var audio_stream_player: AudioStreamPlayer = $AudioStreamPlayer
@@ -33,7 +33,7 @@ func _physics_process(_delta):
 
 # Function to handle shooting
 func shoot():
-	const BULLET = preload("res://Scenes/Bulletv2.tscn")
+	const BULLET = preload("res://Scenes/Bullet.tscn")
 	
 	var new_bullet = BULLET.instantiate()
 	new_bullet.global_position = shootingpoint.global_position

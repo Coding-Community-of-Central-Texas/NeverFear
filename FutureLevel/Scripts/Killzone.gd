@@ -10,8 +10,6 @@ func _on_body_entered(body):
 	timer.start()
 	print("you Died")
 
-	
-	
-	
+
 func _on_timer_timeout():
 	Engine.time_scale = 1.0

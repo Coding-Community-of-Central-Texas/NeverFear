@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://2e2ccqhb4ij6"]
+
+[ext_resource type="Script" path="res://Scripts/CheckPoint.gd" id="1_nag81"]
+[ext_resource type="Texture2D" uid="uid://d3210eyw0vswt" path="res://assets/etc/CheckFlag.png" id="3_1nvpp"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_clkbr"]
+size = Vector2(33, 84)
+
+[node name="CheckFlag" type="Area2D"]
+position = Vector2(0, -37)
+script = ExtResource("1_nag81")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.5, -6)
+shape = SubResource("RectangleShape2D_clkbr")
+
+[node name="Checked" type="Sprite2D" parent="."]
+position = Vector2(0, 6)
+texture = ExtResource("3_1nvpp")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

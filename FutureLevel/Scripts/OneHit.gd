@@ -57,8 +57,8 @@ func _die():
 	const CASH = preload("res://Scenes/Cash.tscn")
 	var new_Cash = CASH.instantiate()
 	new_Cash.global_position = global_position
-	get_parent().add_child(new_Cash)
-	call_deferred("queue_free")
+	get_tree().current_scene.call_deferred("add_child", new_Cash)
+	queue_free()
 	
 
 

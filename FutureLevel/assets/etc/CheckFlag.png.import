@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cab68wbh83adq"
-path="res://.godot/imported/Byte2.1.png-ac441d025c5ffb440246610ccb824211.ctex"
+uid="uid://d3210eyw0vswt"
+path="res://.godot/imported/CheckFlag.png-cfea875a3c7a9a5f26f44be9a1075bb1.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Enemies/Byte2.1.png"
-dest_files=["res://.godot/imported/Byte2.1.png-ac441d025c5ffb440246610ccb824211.ctex"]
+source_file="res://assets/etc/CheckFlag.png"
+dest_files=["res://.godot/imported/CheckFlag.png-cfea875a3c7a9a5f26f44be9a1075bb1.ctex"]
 
 [params]
 

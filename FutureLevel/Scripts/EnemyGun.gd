@@ -1,6 +1,6 @@
 extends Area2D
 
-@export var rate_of_fire: float = 1.0  # Rate of fire: 0.15 seconds between shots (5 shots per second)
+@export var rate_of_fire: float = .90  # Rate of fire: 0.15 seconds between shots (5 shots per second)
 @onready var timer: Timer = $Timer
 @onready var shootingpoint: Marker2D = %shootingpoint
 @onready var audio_stream_player_2d: AudioStreamPlayer2D = $AudioStreamPlayer2D
@@ -43,6 +43,5 @@ func shoot():
 	
 		new_bullet.set_direction(direction)
 	
-	get_tree().root.get_node("Game").add_child(new_bullet)
+	get_tree().current_scene.add_child(new_bullet)
 	audio_stream_player_2d.play()
-	print("shooting")

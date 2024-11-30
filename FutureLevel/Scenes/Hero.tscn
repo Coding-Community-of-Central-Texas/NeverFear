@@ -1,6 +1,7 @@
-[gd_scene load_steps=44 format=3 uid="uid://csqktr6ixyato"]
+[gd_scene load_steps=51 format=3 uid="uid://csqktr6ixyato"]
 
 [ext_resource type="Script" path="res://Scripts/Hero.gd" id="1_43ipw"]
+[ext_resource type="Texture2D" uid="uid://050tdjf5b57n" path="res://assets/3 Cyborg/Cyborg_death.png" id="2_2ior6"]
 [ext_resource type="Texture2D" uid="uid://huv5y4v78n8o" path="res://assets/3 Cyborg/Cyborg_doublejump.png" id="2_a50ia"]
 [ext_resource type="Texture2D" uid="uid://b8he4ug50vnxx" path="res://assets/Guns&Bullets/Idle1.png" id="2_vptny"]
 [ext_resource type="Texture2D" uid="uid://debisd6mjmfga" path="res://assets/Guns&Bullets/Jump1.png" id="3_ieg1k"]
@@ -10,6 +11,30 @@
 [ext_resource type="AudioStream" uid="uid://ce5s2ggmqf78e" path="res://assets/FutrueSFX/Jump2.wav" id="9_weta3"]
 [ext_resource type="PackedScene" uid="uid://daeuuspwxjeag" path="res://Scenes/Gun.tscn" id="10_0uu0a"]
 [ext_resource type="AudioStream" uid="uid://dnjr7q6plu8wi" path="res://assets/FutrueSFX/PlayerDie.wav" id="10_qhkyu"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_strd3"]
+atlas = ExtResource("2_2ior6")
+region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wkfk8"]
+atlas = ExtResource("2_2ior6")
+region = Rect2(48, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6wi1j"]
+atlas = ExtResource("2_2ior6")
+region = Rect2(96, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ism3l"]
+atlas = ExtResource("2_2ior6")
+region = Rect2(144, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jynsj"]
+atlas = ExtResource("2_2ior6")
+region = Rect2(192, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xefeu"]
+atlas = ExtResource("2_2ior6")
+region = Rect2(240, 0, 48, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_na2mc"]
 atlas = ExtResource("3_k6dpk")
@@ -125,6 +150,29 @@ region = Rect2(48, 0, 48, 48)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_100ny"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_strd3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wkfk8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6wi1j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ism3l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jynsj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xefeu")
+}],
+"loop": false,
+"name": &"death",
+"speed": 8.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_na2mc")
@@ -276,8 +324,6 @@ script = ExtResource("1_43ipw")
 position = Vector2(10, -5)
 sprite_frames = SubResource("SpriteFrames_100ny")
 animation = &"doublejump"
-frame = 8
-frame_progress = 1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(1, 2)
@@ -303,7 +349,8 @@ volume_db = -3.657
 pitch_scale = 0.56
 
 [node name="Timer" type="Timer" parent="."]
-wait_time = 0.212
+wait_time = 0.898
+one_shot = true
 
 [node name="HurtBox" type="Area2D" parent="."]
 unique_name_in_owner = true

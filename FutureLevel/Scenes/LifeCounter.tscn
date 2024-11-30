@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://cyik2prp6rqk4"]
+
+[ext_resource type="Script" path="res://Scripts/CheckpointCounter.gd" id="1_5wshh"]
+
+[node name="LifeCounter" type="Label"]
+offset_top = 8.0
+offset_right = 37.0
+offset_bottom = 31.0
+text = "Life: "
+script = ExtResource("1_5wshh")
