@@ -8,6 +8,8 @@ extends Area2D
 
 var shooting = false  # Whether shooting is active or not
 
+func on_ready():
+	Global.gun = self
 # This function is called when the timer times out (i.e., it's time to shoot)
 func _on_timer_timeout():
 	if shooting:  # Only shoot if we are still actively shooting

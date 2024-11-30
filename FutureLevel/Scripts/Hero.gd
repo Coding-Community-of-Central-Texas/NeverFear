@@ -3,7 +3,7 @@ extends CharacterBody2D
 
 var health = 100.0
 const MAX_HEALTH = 100.0
-const SPEED = 400.0
+var SPEED = 400.0
 const JUMP_VELOCITY = -550.0
 const DOUBLE_JUMP_VELOCITY = -666.0
 const GRAVITY = 2000.0  # Custom gravity value
@@ -16,8 +16,9 @@ const MAX_FALL_SPEED = 1000.0  # Limit the maximum fall speed
 @onready var audio_stream_player_2d_2: AudioStreamPlayer2D = $AudioStreamPlayer2D2
 @onready var audio_stream_player_2d: AudioStreamPlayer2D = $AudioStreamPlayer2D
 @onready var timer: Timer = $Timer
-
-
+@onready var gun: Area2D = $Gun
+@onready var health_bar: ProgressBar = $HealthBar
+@export var rate_of_fire: float = 0.2
 
 
 var can_double_jump = false
@@ -27,6 +28,7 @@ var is_dead = false
 
 func _ready() -> void:
 	Global.player = self  # Assign the player reference
+	health_bar.init_health(health)
 	if Global.lives < 3:
 		position = Global.checkpoint_position
 	else: 
@@ -37,9 +39,10 @@ func take_damage():
 	if is_dead:
 		return
 	health -= 15.0
-	%ProgressBar.value = health
+	health_bar.health = health
 	if not animated_sprite_2d.is_playing():
 		animated_sprite_2d.play("hurt")
+		return
 	if health <= 0.0:
 		_die()
 
@@ -71,7 +74,7 @@ func _physics_process(delta: float) -> void:
 	var overlapping_mobs = %HurtBox.get_overlapping_bodies()
 	if overlapping_mobs.size() > 0:
 		health -= DAMAGE_RATE * overlapping_mobs.size() * delta
-		%ProgressBar.value = health
+		health_bar.value = health
 		if health <= 0.0:
 			take_damage()
 
@@ -139,7 +142,7 @@ func handle_animation() -> void:
 func _respawn():
 	# Reset the player's position, health, and state
 	health = MAX_HEALTH
-	%ProgressBar.value = health
+	health_bar.value = health
 	is_dead = false
 	Engine.time_scale = 1.0
 	position = Global.checkpoint_position
@@ -150,7 +153,7 @@ func _on_timer_timeout() -> void:
 		_on_game_over()
 	else:
 		_respawn()
-	
+
 
 func _on_game_over():
 	get_tree().change_scene_to_file.call_deferred("res://Scenes/GameOver.tscn")

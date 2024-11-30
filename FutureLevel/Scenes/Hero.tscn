@@ -1,4 +1,4 @@
-[gd_scene load_steps=51 format=3 uid="uid://csqktr6ixyato"]
+[gd_scene load_steps=50 format=3 uid="uid://csqktr6ixyato"]
 
 [ext_resource type="Script" path="res://Scripts/Hero.gd" id="1_43ipw"]
 [ext_resource type="Texture2D" uid="uid://050tdjf5b57n" path="res://assets/3 Cyborg/Cyborg_death.png" id="2_2ior6"]
@@ -11,6 +11,7 @@
 [ext_resource type="AudioStream" uid="uid://ce5s2ggmqf78e" path="res://assets/FutrueSFX/Jump2.wav" id="9_weta3"]
 [ext_resource type="PackedScene" uid="uid://daeuuspwxjeag" path="res://Scenes/Gun.tscn" id="10_0uu0a"]
 [ext_resource type="AudioStream" uid="uid://dnjr7q6plu8wi" path="res://assets/FutrueSFX/PlayerDie.wav" id="10_qhkyu"]
+[ext_resource type="PackedScene" uid="uid://v1wqgbnfesbp" path="res://Scenes/HealthBar.tscn" id="12_i3t22"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_strd3"]
 atlas = ExtResource("2_2ior6")
@@ -304,16 +305,6 @@ height = 34.7
 [sub_resource type="CircleShape2D" id="CircleShape2D_x6iwv"]
 radius = 13.0384
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5m7kp"]
-bg_color = Color(0.2, 0.2, 0.2, 0.627451)
-corner_radius_top_left = 2
-corner_radius_top_right = 2
-corner_radius_bottom_right = 2
-corner_radius_bottom_left = 2
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8ukkr"]
-bg_color = Color(0.0767, 0.59, 0.0767, 1)
-
 [node name="Hero" type="CharacterBody2D" groups=["player"]]
 scale = Vector2(1.2, 1.2)
 collision_layer = 41
@@ -362,17 +353,11 @@ position = Vector2(1, 6)
 shape = SubResource("CircleShape2D_x6iwv")
 debug_color = Color(0.845147, 0.373597, 0.157764, 0.42)
 
-[node name="ProgressBar" type="ProgressBar" parent="."]
-unique_name_in_owner = true
-offset_left = -21.0
-offset_top = -20.0
-offset_right = 134.0
-offset_bottom = 7.0
-scale = Vector2(0.280001, 0.0800002)
-theme_override_styles/background = SubResource("StyleBoxFlat_5m7kp")
-theme_override_styles/fill = SubResource("StyleBoxFlat_8ukkr")
-value = 100.0
-show_percentage = false
+[node name="HealthBar" parent="." instance=ExtResource("12_i3t22")]
+offset_left = -24.0
+offset_top = -29.0
+offset_right = 24.0
+offset_bottom = -26.0
 
 [connection signal="finished" from="AudioStreamPlayer2D2" to="." method="_on_audio_stream_player_2d_2_finished"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

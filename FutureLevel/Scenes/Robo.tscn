@@ -292,6 +292,7 @@ script = ExtResource("1_n30qb")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 self_modulate = Color(1, 0.254902, 0.129412, 1)
+position = Vector2(13, -2)
 scale = Vector2(0.24, 0.24)
 sprite_frames = SubResource("SpriteFrames_ggnj3")
 animation = &"walk"

@@ -1,5 +1,6 @@
 extends CharacterBody2D
 
+
 var health = 10.0
 var knockback_strength = 320.0
 var knockback_duration = 0.1
@@ -10,6 +11,7 @@ var knockback_velocity = Vector2.ZERO  # Stores knockback velocity
 @onready var collision_shape_2d: CollisionShape2D = $CollisionShape2D
 @onready var player: CharacterBody2D = $"../../Hero"
 @onready var timer: Timer = $Timer
+
 
 
 func _ready():
@@ -56,10 +58,10 @@ func _die():
 	
 	const CASH = preload("res://Scenes/Cash.tscn")
 	var new_Cash = CASH.instantiate()
+	new_Cash.randomize_power_up()
 	new_Cash.global_position = global_position
 	get_tree().current_scene.call_deferred("add_child", new_Cash)
 	queue_free()
-	
 
 
 func _on_timer_timeout() -> void:

@@ -3,8 +3,10 @@
 [ext_resource type="Script" path="res://Scripts/CheckpointCounter.gd" id="1_5wshh"]
 
 [node name="LifeCounter" type="Label"]
+modulate = Color(1, 0, 0, 1)
 offset_top = 8.0
 offset_right = 37.0
 offset_bottom = 31.0
-text = "Life: "
+scale = Vector2(2.76, 1.48)
+size_flags_horizontal = 0
 script = ExtResource("1_5wshh")

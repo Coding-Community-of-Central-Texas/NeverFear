@@ -5,3 +5,4 @@
 [node name="Boss" type="CharacterBody2D"]
 
 [node name="BossRobo" parent="." instance=ExtResource("1_ck7ha")]
+position = Vector2(0, -1)

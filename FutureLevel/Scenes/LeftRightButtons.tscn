@@ -1,6 +1,6 @@
 [gd_scene load_steps=11 format=3 uid="uid://bdh1ta442ljwu"]
 
-[ext_resource type="Script" path="res://Scripts/TouchScreenButtons.gd" id="1_bb2x5"]
+[ext_resource type="Script" path="res://Scripts/LeftRightButtons.gd" id="1_bb2x5"]
 [ext_resource type="Texture2D" uid="uid://dfw562n0cgm3w" path="res://assets/buttonsprites/arrowbutton.png" id="1_lpaks"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uolew"]
@@ -60,12 +60,11 @@ scale = Vector2(2, 2)
 script = ExtResource("1_bb2x5")
 
 [node name="Right" type="TouchScreenButton" parent="."]
-position = Vector2(50, -40)
+position = Vector2(96, -40)
 scale = Vector2(2, 2)
 shape = SubResource("RectangleShape2D_uolew")
 passby_press = true
 action = "move_right"
-visibility_mode = 1
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Right"]
 position = Vector2(0, 0.5)
@@ -79,7 +78,6 @@ scale = Vector2(2, 2)
 shape = SubResource("RectangleShape2D_f77ci")
 passby_press = true
 action = "move_left"
-visibility_mode = 1
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Left"]
 position = Vector2(1.00001, 0.5)

@@ -6,6 +6,9 @@ extends AnimatableBody2D
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	%AnimationPlayer.play("RESET")
+	if Global.player and Global.player._respawn():
+		collision_shape_2d.disabled = false
+		%AnimationPlayer.play("RESET")
 
 func _on_area_2d_body_entered(body) -> void:
 	if body.is_in_group("player"):

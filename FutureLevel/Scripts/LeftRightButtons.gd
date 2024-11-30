@@ -21,6 +21,8 @@ func _on_right_button_pressed():
 
 func _on_left_button_released():
 	leftsprite.stop()
+	leftsprite.frame = 0
 
 func _on_right_button_released():
 	rightsprite.stop()
+	rightsprite.frame = 0 
