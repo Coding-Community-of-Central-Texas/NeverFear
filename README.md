@@ -29,7 +29,7 @@ Download the game (link coming soon) or run it locally:
 Clone the repository:
 bash
 Copy code
-git clone https://github.com/OSCCCT/2D-Platformer.git
+git clone https://github.com/Coding-Community-of-Central-Texas/NeverFear.git
 Open it in your game engine or IDE of choice.
 Build and run the project for your desired platform.
 📜 License
