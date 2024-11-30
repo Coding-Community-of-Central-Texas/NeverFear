@@ -72,6 +72,8 @@ func _physics_process(delta: float) -> void:
 	
 	const DAMAGE_RATE = 25.0
 	var overlapping_mobs = %HurtBox.get_overlapping_bodies()
+	health_bar.value = health
+	
 	if overlapping_mobs.size() > 0:
 		health -= DAMAGE_RATE * overlapping_mobs.size() * delta
 		health_bar.value = health

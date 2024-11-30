@@ -354,10 +354,11 @@ shape = SubResource("CircleShape2D_x6iwv")
 debug_color = Color(0.845147, 0.373597, 0.157764, 0.42)
 
 [node name="HealthBar" parent="." instance=ExtResource("12_i3t22")]
-offset_left = -24.0
-offset_top = -29.0
-offset_right = 24.0
-offset_bottom = -26.0
+show_behind_parent = true
+offset_left = -16.6667
+offset_top = -25.0
+offset_right = 18.3333
+offset_bottom = -22.0
 
 [connection signal="finished" from="AudioStreamPlayer2D2" to="." method="_on_audio_stream_player_2d_2_finished"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

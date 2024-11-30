@@ -8,6 +8,7 @@ size = Vector2(90, 40)
 
 [node name="GameOver" type="Node2D"]
 position = Vector2(221.996, -197.005)
+scale = Vector2(2, 2)
 script = ExtResource("1_r0wvx")
 
 [node name="ColorRect" type="ColorRect" parent="."]
@@ -63,9 +64,19 @@ autowrap_mode = 2
 position = Vector2(339.844, 353.009)
 shape = SubResource("RectangleShape2D_u1hko")
 
+[node name="Label" type="Label" parent="ColorRect/Back to Main Menu"]
+offset_left = -45.0
+offset_top = -19.0
+offset_right = 2.0
+offset_bottom = 4.0
+scale = Vector2(2.21926, 1.72869)
+theme_override_colors/font_color = Color(0.235343, 7.68167e-05, 0.819804, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0.366595, 0.366595, 0.366595, 1)
+text = "Home"
+
 [node name="GameOverCamera" type="Camera2D" parent="."]
 position = Vector2(5.004, 0.00500488)
-zoom = Vector2(2, 2)
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("2_ypdy7")
@@ -73,3 +84,4 @@ volume_db = 2.332
 autoplay = true
 
 [connection signal="pressed" from="ColorRect/Restart" to="." method="_on_restart_pressed"]
+[connection signal="pressed" from="ColorRect/Back to Main Menu" to="." method="_on_back_to_main_menu_pressed"]

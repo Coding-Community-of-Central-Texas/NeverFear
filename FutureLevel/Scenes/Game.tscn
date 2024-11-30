@@ -1,5 +1,6 @@
-[gd_scene load_steps=200 format=3 uid="uid://vmdnus7gyna4"]
+[gd_scene load_steps=201 format=3 uid="uid://vmdnus7gyna4"]
 
+[ext_resource type="Script" path="res://Scripts/Game.gd" id="1_p524l"]
 [ext_resource type="Texture2D" uid="uid://knkdhrpitjcv" path="res://assets/1 Tiles/Tileset.png" id="2_n46nu"]
 [ext_resource type="Texture2D" uid="uid://c72vebtk3dx07" path="res://assets/1 Tiles/IndustrialTile_09.png" id="3_a8d4p"]
 [ext_resource type="Texture2D" uid="uid://dsonqdwulsrtx" path="res://assets/city 2/8.png" id="3_m70pm"]
@@ -99,7 +100,7 @@
 [ext_resource type="PackedScene" uid="uid://bdh1ta442ljwu" path="res://Scenes/LeftRightButtons.tscn" id="96_701r7"]
 [ext_resource type="AudioStream" uid="uid://dd18n226docax" path="res://assets/FutrueSFX/DavidKBD - Eternity Pack - 06 - God of darkness - loop.ogg" id="96_jc42q"]
 [ext_resource type="PackedScene" uid="uid://d2y4fvw54o8rg" path="res://Scenes/JumpButton.tscn" id="97_rynxq"]
-[ext_resource type="Texture2D" uid="uid://cjvpadkii8oj7" path="res://assets/2 Background/Overlay.png" id="98_wa8hk"]
+[ext_resource type="Texture2D" uid="uid://cjvpadkii8oj7" path="res://assets/Background/Overlay.png" id="98_wa8hk"]
 [ext_resource type="PackedScene" uid="uid://binimxk4d06r5" path="res://Scenes/RmPlt.tscn" id="99_v6yax"]
 [ext_resource type="PackedScene" uid="uid://bjy4p1k6qgxm8" path="res://Scenes/DropPlat.tscn" id="100_pkyp2"]
 [ext_resource type="PackedScene" uid="uid://dr5l1ix6ofil2" path="res://Scenes/Platform.tscn" id="103_uc8w5"]
@@ -1299,6 +1300,7 @@ size = Vector2(0.714157, 23.1)
 
 [node name="Game" type="Node2D"]
 rotation = 2.12854e-05
+script = ExtResource("1_p524l")
 
 [node name="TileMap" type="TileMap" parent="."]
 position = Vector2(0, -2.38419e-07)
@@ -1498,7 +1500,7 @@ position = Vector2(4227, -216.09)
 [node name="Bytes" type="Node" parent="."]
 
 [node name="OneHit" parent="Bytes" instance=ExtResource("95_8vwiy")]
-position = Vector2(1071, -194)
+position = Vector2(1071, -396)
 rotation = 2.12854e-05
 
 [node name="OneHit2" parent="Bytes" instance=ExtResource("95_8vwiy")]
@@ -1506,7 +1508,7 @@ position = Vector2(1321, -900)
 rotation = 2.12854e-05
 
 [node name="OneHit3" parent="Bytes" instance=ExtResource("95_8vwiy")]
-position = Vector2(1892, -310)
+position = Vector2(1867, -548)
 rotation = 2.12854e-05
 
 [node name="OneHit4" parent="Bytes" instance=ExtResource("95_8vwiy")]
@@ -1518,7 +1520,7 @@ position = Vector2(1231, -1203)
 rotation = 2.12854e-05
 
 [node name="OneHit6" parent="Bytes" instance=ExtResource("95_8vwiy")]
-position = Vector2(1477, -201)
+position = Vector2(1458, -417)
 rotation = 2.12854e-05
 
 [node name="OneHit7" parent="Bytes" instance=ExtResource("95_8vwiy")]
@@ -1526,22 +1528,22 @@ position = Vector2(2514, -592)
 rotation = 2.12854e-05
 
 [node name="OneHit8" parent="Bytes" instance=ExtResource("95_8vwiy")]
-position = Vector2(2771, -377)
+position = Vector2(2790, -494)
 
 [node name="OneHit9" parent="Bytes" instance=ExtResource("95_8vwiy")]
-position = Vector2(3478, -432)
+position = Vector2(3434, -648)
 
 [node name="OneHit10" parent="Bytes" instance=ExtResource("95_8vwiy")]
-position = Vector2(4157, -493)
+position = Vector2(4157, -718)
 
 [node name="Hero" parent="." instance=ExtResource("11_ofwgf")]
-position = Vector2(220.996, -193.005)
+position = Vector2(308.993, -352.007)
 collision_layer = 9
 
 [node name="Robbies" type="Node" parent="."]
 
 [node name="ThreeHitter" parent="Robbies" instance=ExtResource("95_lsh0g")]
-position = Vector2(3341, -380)
+position = Vector2(3265, -561)
 rotation = 2.12854e-05
 
 [node name="ThreeHitter2" parent="Robbies" instance=ExtResource("95_lsh0g")]
@@ -1681,5 +1683,8 @@ rotation = 2.12854e-05
 
 [node name="CheckFlag3" parent="CheckPoint" instance=ExtResource("105_h2jhe")]
 position = Vector2(11910, -53)
+
+[node name="Timer" type="Timer" parent="."]
+autostart = true
 
 [connection signal="body_entered" from="Platforms/Platform/Area2D" to="Platforms/Platform" method="_on_area_2d_body_entered"]

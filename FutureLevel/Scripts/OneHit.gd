@@ -10,13 +10,11 @@ var knockback_velocity = Vector2.ZERO  # Stores knockback velocity
 @onready var byte: Node2D = %Byte
 @onready var collision_shape_2d: CollisionShape2D = $CollisionShape2D
 @onready var player: CharacterBody2D = $"../../Hero"
-@onready var timer: Timer = $Timer
 
 
 
 func _ready():
 	%Byte.play_walk()
-	timer.connect("timeout", Callable (self, "_on_knockback_timeout"))
 
 func _physics_process(delta):
 	if knockback_timer > 0:
@@ -41,12 +39,7 @@ func take_damage():
 	knockback_timer = knockback_duration
 	
 	if health == 0.0:
-		queue_free()
-		print("Kill confirmed")
 		_die()
-		await timer.timeout
-
-
 
 
 func _die():
@@ -62,7 +55,3 @@ func _die():
 	new_Cash.global_position = global_position
 	get_tree().current_scene.call_deferred("add_child", new_Cash)
 	queue_free()
-
-
-func _on_timer_timeout() -> void:
-	pass # Replace with function body.

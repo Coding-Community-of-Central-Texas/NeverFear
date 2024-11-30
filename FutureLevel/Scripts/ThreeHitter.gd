@@ -51,7 +51,6 @@ func take_damage():
 	knockback_timer = knockback_duration
 	
 	if health == 0.0:
-		print("Kill")
 		_die()
 
 func _die():
@@ -63,9 +62,9 @@ func _die():
 	
 	const CASH = preload("res://Scenes/Cash.tscn")
 	var new_Cash = CASH.instantiate()
+	new_Cash.randomize_power_up()
 	new_Cash.global_position = global_position 
 	get_tree().current_scene.call_deferred("add_child", new_Cash)
-	
 	queue_free()
 
 func back_and_forth_movement():

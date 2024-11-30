@@ -36,11 +36,11 @@ func randomize_power_up():
 	# Randomize power-up value based on type
 	match power_up_type:
 		PowerUpType.SPEED:
-			power_up_value = randi_range(5, 15)  # Random speed boost
+			power_up_value = randi_range(30, 60)  # Random speed boost
 		PowerUpType.HEALTH:
 			power_up_value = randi_range(10, 25)  # Random health boost
 		PowerUpType.FIRE_RATE:
-			power_up_value = randi_range(1.0, 5.0) / 100.0  # Random fire rate reduction
+			power_up_value = randi_range(1, 5) / 100.0  # Random fire rate reduction
 	print("Randomized power-up type:", power_up_type)
 	print("Power-up value:", power_up_value)
 
