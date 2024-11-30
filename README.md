@@ -1,3 +1,6 @@
+NeverFear
+Welcome to the Open-Source Coding Community of Central Texas' (OSCCCT) mobile 2D platformer/survial game! 🎮✨
+
 🌌 Overview
 This project is a mobile-friendly 2D platformer set in a vibrant cyberpunk universe. It features:
 
