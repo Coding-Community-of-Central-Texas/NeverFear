@@ -18,7 +18,7 @@ const MAX_FALL_SPEED = 1000.0  # Limit the maximum fall speed
 @onready var timer: Timer = $Timer
 @onready var gun: Area2D = $Gun
 @onready var health_bar: ProgressBar = $HealthBar
-@export var rate_of_fire: float = 0.2
+@export var rate_of_fire: float = 0.15
 
 
 var can_double_jump = false
@@ -32,7 +32,7 @@ func _ready() -> void:
 	if Global.lives < 3:
 		position = Global.checkpoint_position
 	else: 
-		position = Vector2(220.996, -193.005)
+		position = Vector2(353.993, -306.008)
 	
 
 func take_damage():

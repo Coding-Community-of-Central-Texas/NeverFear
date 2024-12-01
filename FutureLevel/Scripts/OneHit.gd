@@ -9,7 +9,6 @@ var knockback_velocity = Vector2.ZERO  # Stores knockback velocity
 
 @onready var byte: Node2D = %Byte
 @onready var collision_shape_2d: CollisionShape2D = $CollisionShape2D
-@onready var player: CharacterBody2D = $"../../Hero"
 
 
 
@@ -21,8 +20,8 @@ func _physics_process(delta):
 		velocity = knockback_velocity
 		knockback_timer -= delta # decrease knockback time 
 	else:
-		var direction = (player.global_position - global_position).normalized()
-		global_position.direction_to(player.global_position)
+		var direction = (Global.player.global_position - global_position).normalized()
+		global_position.direction_to(Global.player.global_position)
 		velocity = direction * 200.0
 		move_and_slide()
 	
@@ -33,7 +32,7 @@ func take_damage():
 	health -= 5.0
 	%Byte.play_hurt()
 	
-	var knockback_direction = (global_position - player.global_position).normalized()
+	var knockback_direction = (global_position - Global.player.global_position).normalized()
 	knockback_velocity = knockback_direction * knockback_strength
 	
 	knockback_timer = knockback_duration
@@ -47,7 +46,7 @@ func _die():
 	const BOOM = preload("res://Scenes/Boom.tscn")
 	var new_Boom = BOOM.instantiate()
 	new_Boom.global_position = global_position
-	get_parent().add_child(new_Boom)
+	get_tree().current_scene.call_deferred("add_child", new_Boom)
 	
 	const CASH = preload("res://Scenes/Cash.tscn")
 	var new_Cash = CASH.instantiate()

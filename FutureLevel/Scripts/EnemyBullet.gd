@@ -23,4 +23,4 @@ func _on_body_entered(body: CharacterBody2D) -> void:
 	queue_free()
 
 func set_direction(direction: Vector2):
-	velocity = direction.normalized() * 160
+	velocity = direction.normalized() * 170

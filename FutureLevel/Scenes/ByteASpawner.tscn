@@ -1,0 +1,35 @@
+[gd_scene load_steps=4 format=3 uid="uid://dghcuiiuawq2p"]
+
+[ext_resource type="Script" path="res://Scripts/Spawner.gd" id="1_p0ixj"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_gassc"]
+radius = 1233.0
+
+[sub_resource type="Curve2D" id="Curve2D_0jxci"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, -1349, -159, 0, 0, 0, 0, -670, -933, 0, 0, 0, 0, -492, -197, 0, 0, 0, 0, 149, -902, 0, 0, 0, 0, 625, -210, 0, 0, 0, 0, 1087.97, -901.22, 0, 0, 0, 0, 1330, -241, 0, 0, 0, 0, -1349, -159)
+}
+point_count = 8
+
+[node name="ByteSpawnerA" type="Area2D"]
+script = ExtResource("1_p0ixj")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 1.03
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_gassc")
+
+[node name="Path2D" type="Path2D" parent="."]
+position = Vector2(105.745, -3.90314)
+scale = Vector2(1.07839, 0.975452)
+curve = SubResource("Curve2D_0jxci")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
+unique_name_in_owner = true
+position = Vector2(-1349, -159)
+rotation = -0.850687
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

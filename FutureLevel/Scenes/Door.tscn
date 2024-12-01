@@ -60,17 +60,19 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uxnbw"]
-size = Vector2(31, 41.9991)
+size = Vector2(31, 39.5358)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_r2r2i"]
 size = Vector2(23, 41.5)
 
-[node name="Node2D" type="Node2D"]
+[node name="Door" type="Node2D"]
+scale = Vector2(1.37333, 1.72)
 script = ExtResource("1_hgaju")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 unique_name_in_owner = true
-scale = Vector2(1, 0.773438)
+position = Vector2(2.55825, 2.08616e-07)
+scale = Vector2(1.15989, 0.672239)
 sprite_frames = SubResource("SpriteFrames_303xg")
 animation = &"open"
 frame = 4
@@ -81,6 +83,7 @@ frame_progress = 1.0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
 position = Vector2(-0.5, 0)
 rotation = 0.000919335
+scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_uxnbw")
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
@@ -95,7 +98,8 @@ collision_layer = 0
 collision_mask = 8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(2.5, 154.75)
+position = Vector2(2.5, 113.861)
+scale = Vector2(1, 0.822222)
 shape = SubResource("RectangleShape2D_r2r2i")
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

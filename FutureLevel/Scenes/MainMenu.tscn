@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://b8aq7pak842g0"]
+[gd_scene load_steps=6 format=3 uid="uid://b8aq7pak842g0"]
 
 [ext_resource type="Script" path="res://Scenes/MainMenu.gd" id="1_ole10"]
 [ext_resource type="Texture2D" uid="uid://bcypd57pmrt63" path="res://assets/Background/Hero.svg" id="2_fschk"]
 [ext_resource type="Texture2D" uid="uid://b3vqpr3ruc5p3" path="res://assets/Background/Finalmenu.png" id="3_syyym"]
+[ext_resource type="FontFile" uid="uid://ckid4fla6wirc" path="res://assets/etc/Starzoom-Shavian.ttf" id="4_5gcgg"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_b5rdu"]
 
@@ -24,52 +25,132 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("2_fschk")
+stretch_mode = 6
 
-[node name="MenuBox" type="TextureRect" parent="CanvasLayer/TextureRect"]
+[node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -712.0
-offset_top = -712.0
-offset_right = 712.0
-offset_bottom = 712.0
+anchors_preset = -1
+anchor_left = 0.354
+anchor_top = -0.09
+anchor_right = 0.62
+anchor_bottom = 1.0
+offset_left = -131.808
+offset_top = 0.320004
+offset_right = 161.76
+offset_bottom = 121.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/TextureRect/MenuBox"]
+[node name="MenuBox" type="TextureRect" parent="MarginContainer"]
+layout_mode = 2
+texture = ExtResource("3_syyym")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/MenuBox"]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
+anchors_preset = -1
+anchor_left = 0.3
+anchor_top = 0.322
+anchor_right = 0.704
+anchor_bottom = 0.4
+offset_left = -0.770203
+offset_top = -0.190247
+offset_right = -0.820801
+offset_bottom = -0.230103
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
 metadata/_edit_use_anchors_ = true
 
-[node name="LegacyProtocol" type="TouchScreenButton" parent="CanvasLayer/TextureRect/MenuBox/HBoxContainer"]
+[node name="LegacyProtocol" type="TouchScreenButton" parent="MarginContainer/MenuBox/HBoxContainer"]
 z_index = 1
-position = Vector2(4, -1)
-scale = Vector2(-6.68674, 1.29055)
+position = Vector2(369.008, 88.0747)
+scale = Vector2(-37.6183, 7.97885)
 shape = SubResource("RectangleShape2D_b5rdu")
 shape_centered = false
 
-[node name="Finalmenu" type="Sprite2D" parent="CanvasLayer/TextureRect/MenuBox"]
-position = Vector2(716, 758)
-scale = Vector2(0.233629, 0.240169)
-texture = ExtResource("3_syyym")
-
-[node name="Label" type="Label" parent="CanvasLayer/TextureRect/MenuBox"]
+[node name="Label" type="Label" parent="MarginContainer/MenuBox"]
 z_index = 1
-offset_left = 656.0
-offset_top = 699.0
-offset_right = 778.0
-offset_bottom = 722.0
-text = "Legacy Protocol"
-metadata/_edit_use_anchors_ = true
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.276
+anchor_top = 0.328
+anchor_right = 0.727
+anchor_bottom = 0.401
+offset_left = -0.628632
+offset_top = -0.808655
+offset_right = -181.123
+offset_bottom = -83.3332
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.28834, 2.27671)
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(0.75, 0, 0.0124998, 1)
+theme_override_colors/font_shadow_color = Color(0.0279, 0.133145, 0.93, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/line_spacing = 0
+theme_override_constants/shadow_offset_x = 5
+theme_override_constants/shadow_offset_y = 5
+theme_override_constants/outline_size = 4
+theme_override_constants/shadow_outline_size = 5
+theme_override_fonts/font = ExtResource("4_5gcgg")
+theme_override_font_sizes/font_size = 69
+text = "LEGACY PROTOCOL"
+horizontal_alignment = 1
 
-[connection signal="pressed" from="CanvasLayer/TextureRect/MenuBox/HBoxContainer/LegacyProtocol" to="." method="_on_touch_screen_button_pressed"]
+[node name="Label2" type="Label" parent="MarginContainer/MenuBox"]
+z_index = 1
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.299
+anchor_top = 0.328
+anchor_right = 0.703
+anchor_bottom = 0.401
+offset_left = -70.931
+offset_top = 267.191
+offset_right = -134.982
+offset_bottom = 170.667
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.28834, 2.27671)
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(0.75, 0, 0.0124998, 1)
+theme_override_colors/font_shadow_color = Color(0.0279, 0.133145, 0.93, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/line_spacing = 0
+theme_override_constants/shadow_offset_x = 5
+theme_override_constants/shadow_offset_y = 5
+theme_override_constants/outline_size = 4
+theme_override_constants/shadow_outline_size = 5
+theme_override_fonts/font = ExtResource("4_5gcgg")
+theme_override_font_sizes/font_size = 69
+text = "HYPERCORE GAUNTLET"
+
+[node name="Label3" type="Label" parent="MarginContainer/MenuBox"]
+z_index = 1
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.299
+anchor_top = 0.328
+anchor_right = 0.703
+anchor_bottom = 0.401
+offset_left = 4.07678
+offset_top = 505.266
+offset_right = -171.974
+offset_bottom = 422.742
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.28834, 2.27671)
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(0.75, 0, 0.0124998, 1)
+theme_override_colors/font_shadow_color = Color(0.0279, 0.133145, 0.93, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/line_spacing = 0
+theme_override_constants/shadow_offset_x = 5
+theme_override_constants/shadow_offset_y = 5
+theme_override_constants/outline_size = 4
+theme_override_constants/shadow_outline_size = 5
+theme_override_fonts/font = ExtResource("4_5gcgg")
+theme_override_font_sizes/font_size = 69
+text = "PERFORMANCE INDEX"
+
+[connection signal="pressed" from="MarginContainer/MenuBox/HBoxContainer/LegacyProtocol" to="." method="_on_touch_screen_button_pressed"]

@@ -5,7 +5,7 @@
 [ext_resource type="AudioStream" uid="uid://gauoua60vry" path="res://assets/FutrueSFX/Missile Launcher.wav" id="3_fjluh"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_wrg8w"]
-radius = 330.055
+radius = 314.002
 
 [node name="EnemyGun" type="Area2D"]
 collision_layer = 0

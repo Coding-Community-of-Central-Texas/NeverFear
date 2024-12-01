@@ -3,7 +3,7 @@ extends Control
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	DisplayServer.set_window_orientation(DisplayServer.ScreenOrientation.SCREEN_PORTRAIT)
+	get_viewport().screen_set_orientation(DisplayServer.SCREEN_PORTRAIT)
 
 
 
