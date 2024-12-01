@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://b8aq7pak842g0"]
+[gd_scene load_steps=7 format=3 uid="uid://b8aq7pak842g0"]
 
 [ext_resource type="Script" path="res://Scenes/MainMenu.gd" id="1_ole10"]
 [ext_resource type="Texture2D" uid="uid://bcypd57pmrt63" path="res://assets/Background/Hero.svg" id="2_fschk"]
@@ -6,6 +6,8 @@
 [ext_resource type="FontFile" uid="uid://ckid4fla6wirc" path="res://assets/etc/Starzoom-Shavian.ttf" id="4_5gcgg"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_b5rdu"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qpki2"]
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -95,15 +97,15 @@ horizontal_alignment = 1
 [node name="Label2" type="Label" parent="CanvasLayer/VBoxContainer/MenuBox"]
 z_index = 1
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -381.0
-offset_top = -75.0
-offset_right = 250.0
-offset_bottom = -22.0
+anchors_preset = -1
+anchor_left = 0.232
+anchor_top = 0.447
+anchor_right = 0.803
+anchor_bottom = 0.532
+offset_left = 0.631989
+offset_top = 0.471985
+offset_right = -181.472
+offset_bottom = -67.568
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(1.28834, 2.27671)
@@ -119,6 +121,11 @@ theme_override_constants/shadow_outline_size = 5
 theme_override_fonts/font = ExtResource("4_5gcgg")
 theme_override_font_sizes/font_size = 52
 text = "HYPERCORE GAUNTLET"
+
+[node name="HypercoreGauntlet" type="TouchScreenButton" parent="CanvasLayer/VBoxContainer/MenuBox/Label2"]
+position = Vector2(296.506, 25.9146)
+scale = Vector2(-30.5104, -2.57211)
+shape = SubResource("RectangleShape2D_qpki2")
 
 [node name="Label3" type="Label" parent="CanvasLayer/VBoxContainer/MenuBox"]
 z_index = 1
@@ -147,4 +154,6 @@ theme_override_fonts/font = ExtResource("4_5gcgg")
 theme_override_font_sizes/font_size = 52
 text = "PERFORMANCE INDEX"
 
+[connection signal="pressed" from="CanvasLayer/VBoxContainer/MenuBox/HBoxContainer/LegacyProtocol" to="." method="_on_legacy_protocol_pressed"]
 [connection signal="pressed" from="CanvasLayer/VBoxContainer/MenuBox/HBoxContainer/LegacyProtocol" to="." method="_on_touch_screen_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/VBoxContainer/MenuBox/Label2/HypercoreGauntlet" to="." method="_on_hypercore_gauntlet_pressed"]

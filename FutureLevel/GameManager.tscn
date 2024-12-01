@@ -4,3 +4,5 @@
 
 [node name="GameManager" type="Node"]
 script = ExtResource("1_t61qt")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]

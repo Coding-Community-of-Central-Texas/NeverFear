@@ -45,3 +45,9 @@ func load_data_android() -> Dictionary:
 			else:
 				print("Failed to parse JSON: ", parsed.error_string)
 	return {"total_kills": 0, "quickest_time": null}
+
+enum music {
+	AGONY,
+	EVIL,
+	DARKNESS,
+}
