@@ -25,27 +25,22 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("2_fschk")
-stretch_mode = 6
 
-[node name="MarginContainer" type="MarginContainer" parent="."]
-layout_mode = 1
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer"]
 anchors_preset = -1
-anchor_left = 0.354
-anchor_top = -0.09
-anchor_right = 0.62
-anchor_bottom = 1.0
-offset_left = -131.808
-offset_top = 0.320004
-offset_right = 161.76
-offset_bottom = 121.0
-grow_horizontal = 2
-grow_vertical = 2
+anchor_top = 0.14
+anchor_right = 1.0
+anchor_bottom = 0.878
+offset_top = -90.72
+offset_right = 272.0
+offset_bottom = 855.056
 
-[node name="MenuBox" type="TextureRect" parent="MarginContainer"]
+[node name="MenuBox" type="TextureRect" parent="CanvasLayer/VBoxContainer"]
 layout_mode = 2
+size_flags_horizontal = 4
 texture = ExtResource("3_syyym")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/MenuBox"]
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/VBoxContainer/MenuBox"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.3
@@ -61,25 +56,25 @@ grow_vertical = 2
 size_flags_horizontal = 4
 metadata/_edit_use_anchors_ = true
 
-[node name="LegacyProtocol" type="TouchScreenButton" parent="MarginContainer/MenuBox/HBoxContainer"]
+[node name="LegacyProtocol" type="TouchScreenButton" parent="CanvasLayer/VBoxContainer/MenuBox/HBoxContainer"]
 z_index = 1
-position = Vector2(369.008, 88.0747)
-scale = Vector2(-37.6183, 7.97885)
+position = Vector2(309.57, 68.6623)
+scale = Vector2(-36.7783, 7.97885)
 shape = SubResource("RectangleShape2D_b5rdu")
 shape_centered = false
 
-[node name="Label" type="Label" parent="MarginContainer/MenuBox"]
+[node name="Label" type="Label" parent="CanvasLayer/VBoxContainer/MenuBox"]
 z_index = 1
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.276
 anchor_top = 0.328
-anchor_right = 0.727
-anchor_bottom = 0.401
-offset_left = -0.628632
-offset_top = -0.808655
-offset_right = -181.123
-offset_bottom = -83.3332
+anchor_right = 0.726
+anchor_bottom = 0.437
+offset_left = 0.976013
+offset_top = 10.928
+offset_right = -119.824
+offset_bottom = -76.288
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(1.28834, 2.27671)
@@ -93,22 +88,22 @@ theme_override_constants/shadow_offset_y = 5
 theme_override_constants/outline_size = 4
 theme_override_constants/shadow_outline_size = 5
 theme_override_fonts/font = ExtResource("4_5gcgg")
-theme_override_font_sizes/font_size = 69
+theme_override_font_sizes/font_size = 52
 text = "LEGACY PROTOCOL"
 horizontal_alignment = 1
 
-[node name="Label2" type="Label" parent="MarginContainer/MenuBox"]
+[node name="Label2" type="Label" parent="CanvasLayer/VBoxContainer/MenuBox"]
 z_index = 1
 layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.299
-anchor_top = 0.328
-anchor_right = 0.703
-anchor_bottom = 0.401
-offset_left = -70.931
-offset_top = 267.191
-offset_right = -134.982
-offset_bottom = 170.667
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -381.0
+offset_top = -75.0
+offset_right = 250.0
+offset_bottom = -22.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(1.28834, 2.27671)
@@ -122,21 +117,20 @@ theme_override_constants/shadow_offset_y = 5
 theme_override_constants/outline_size = 4
 theme_override_constants/shadow_outline_size = 5
 theme_override_fonts/font = ExtResource("4_5gcgg")
-theme_override_font_sizes/font_size = 69
+theme_override_font_sizes/font_size = 52
 text = "HYPERCORE GAUNTLET"
 
-[node name="Label3" type="Label" parent="MarginContainer/MenuBox"]
+[node name="Label3" type="Label" parent="CanvasLayer/VBoxContainer/MenuBox"]
 z_index = 1
 layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.299
-anchor_top = 0.328
-anchor_right = 0.703
-anchor_bottom = 0.401
-offset_left = 4.07678
-offset_top = 505.266
-offset_right = -171.974
-offset_bottom = 422.742
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -380.0
+offset_top = 798.0
+offset_right = 238.0
+offset_bottom = 798.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(1.28834, 2.27671)
@@ -150,7 +144,7 @@ theme_override_constants/shadow_offset_y = 5
 theme_override_constants/outline_size = 4
 theme_override_constants/shadow_outline_size = 5
 theme_override_fonts/font = ExtResource("4_5gcgg")
-theme_override_font_sizes/font_size = 69
+theme_override_font_sizes/font_size = 52
 text = "PERFORMANCE INDEX"
 
-[connection signal="pressed" from="MarginContainer/MenuBox/HBoxContainer/LegacyProtocol" to="." method="_on_touch_screen_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/VBoxContainer/MenuBox/HBoxContainer/LegacyProtocol" to="." method="_on_touch_screen_button_pressed"]

@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://b3ebqxxcgi3x1"
+path="res://.godot/imported/DavidKBD - Eternity Pack - 02 - Agony Space-deep - oneshoot.ogg-df5ba3b7bc727f5316339f7bfa7f8a57.oggvorbisstr"
+
+[deps]
+
+source_file="res://assets/FutrueSFX/DavidKBD - Eternity Pack - 02 - Agony Space-deep - oneshoot.ogg"
+dest_files=["res://.godot/imported/DavidKBD - Eternity Pack - 02 - Agony Space-deep - oneshoot.ogg-df5ba3b7bc727f5316339f7bfa7f8a57.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

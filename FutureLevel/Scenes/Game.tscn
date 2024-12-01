@@ -1,4 +1,4 @@
-[gd_scene load_steps=189 format=3 uid="uid://vmdnus7gyna4"]
+[gd_scene load_steps=190 format=3 uid="uid://vmdnus7gyna4"]
 
 [ext_resource type="Script" path="res://Scripts/Game.gd" id="1_p524l"]
 [ext_resource type="Texture2D" uid="uid://knkdhrpitjcv" path="res://assets/1 Tiles/Tileset.png" id="2_n46nu"]
@@ -103,6 +103,7 @@
 [ext_resource type="PackedScene" uid="uid://by0k2g2udxfts" path="res://Scenes/Screen.tscn" id="103_ctq1o"]
 [ext_resource type="PackedScene" uid="uid://bq8ujsbmayllg" path="res://Scenes/ThreeHitter.tscn" id="104_hhql7"]
 [ext_resource type="PackedScene" uid="uid://2e2ccqhb4ij6" path="res://Scenes/CheckFlag.tscn" id="105_h2jhe"]
+[ext_resource type="PackedScene" uid="uid://dr5l1ix6ofil2" path="res://Scenes/Platform.tscn" id="105_j05l8"]
 [ext_resource type="PackedScene" uid="uid://cyik2prp6rqk4" path="res://Scenes/LifeCounter.tscn" id="106_qtfr3"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_s7fvl"]
@@ -1546,3 +1547,40 @@ position = Vector2(12913, -63)
 [node name="ByteASpawner" parent="Spawner" instance=ExtResource("102_0vqt1")]
 position = Vector2(1674, -673)
 collision_layer = 0
+
+[node name="ByteSpawnerA" parent="Spawner" instance=ExtResource("102_0vqt1")]
+position = Vector2(9240, -894)
+rotation = 2.12854e-05
+
+[node name="ByteSpawnerA2" parent="Spawner" instance=ExtResource("102_0vqt1")]
+position = Vector2(13400, -1029)
+
+[node name="MiniBoss" type="Node" parent="."]
+
+[node name="Platform" parent="MiniBoss" instance=ExtResource("105_j05l8")]
+position = Vector2(15129, -110)
+rotation = 2.12854e-05
+
+[node name="Platform2" parent="MiniBoss" instance=ExtResource("105_j05l8")]
+position = Vector2(15137, -239)
+rotation = 2.12854e-05
+
+[node name="Platform3" parent="MiniBoss" instance=ExtResource("105_j05l8")]
+position = Vector2(15700, -170)
+rotation = 2.12854e-05
+
+[node name="Platform4" parent="MiniBoss" instance=ExtResource("105_j05l8")]
+position = Vector2(15696, -311)
+rotation = 2.12854e-05
+
+[node name="Platform5" parent="MiniBoss" instance=ExtResource("105_j05l8")]
+position = Vector2(16240, -104)
+rotation = 2.12854e-05
+
+[node name="Platform6" parent="MiniBoss" instance=ExtResource("105_j05l8")]
+position = Vector2(16240, -225)
+rotation = 2.12854e-05
+
+[node name="Platform7" parent="MiniBoss" instance=ExtResource("105_j05l8")]
+position = Vector2(15694, -409)
+rotation = 2.12854e-05

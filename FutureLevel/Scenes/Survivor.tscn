@@ -1,0 +1,113 @@
+[gd_scene load_steps=16 format=3 uid="uid://bsltfx5uw5yvq"]
+
+[ext_resource type="Script" path="res://Scripts/HeroSurvival.gd" id="1_73rgd"]
+[ext_resource type="Texture2D" uid="uid://mw6jnqwrtdvx" path="res://assets/3 Cyborg/Cyborg_idle.png" id="2_tdahw"]
+[ext_resource type="Texture2D" uid="uid://bo7sscl6biwig" path="res://assets/Guns&Bullets/Run1.png" id="3_iuu8g"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8f2ea"]
+atlas = ExtResource("2_tdahw")
+region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j0lai"]
+atlas = ExtResource("2_tdahw")
+region = Rect2(48, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_moh0r"]
+atlas = ExtResource("2_tdahw")
+region = Rect2(96, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yswwk"]
+atlas = ExtResource("2_tdahw")
+region = Rect2(144, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gt422"]
+atlas = ExtResource("3_iuu8g")
+region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xcpco"]
+atlas = ExtResource("3_iuu8g")
+region = Rect2(48, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wbnxv"]
+atlas = ExtResource("3_iuu8g")
+region = Rect2(96, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5ufb8"]
+atlas = ExtResource("3_iuu8g")
+region = Rect2(144, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5q43x"]
+atlas = ExtResource("3_iuu8g")
+region = Rect2(192, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ud6or"]
+atlas = ExtResource("3_iuu8g")
+region = Rect2(240, 0, 48, 48)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_38a1o"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8f2ea")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j0lai")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_moh0r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yswwk")
+}],
+"loop": false,
+"name": &"idle",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gt422")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xcpco")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wbnxv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5ufb8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5q43x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ud6or")
+}],
+"loop": true,
+"name": &"run",
+"speed": 10.0
+}]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_l21ft"]
+
+[node name="Survivor" type="CharacterBody2D"]
+script = ExtResource("1_73rgd")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_38a1o")
+animation = &"run"
+
+[node name="ColorRect" type="ColorRect" parent="AnimatedSprite2D"]
+modulate = Color(1, 1, 1, 0.701961)
+self_modulate = Color(0.43134, 0.43134, 0.43134, 1)
+show_behind_parent = true
+material = SubResource("ShaderMaterial_l21ft")
+anchors_preset = -1
+anchor_left = 0.187
+anchor_top = 0.958
+anchor_right = 0.542
+anchor_bottom = 1.021
+offset_left = -23.976
+offset_top = -23.984
+offset_right = -24.016
+offset_bottom = -24.008
+color = Color(0.470075, 0.470076, 0.470076, 1)
