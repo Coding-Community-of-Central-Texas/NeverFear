@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://d2u5kjqvm0jcd"]
+
+[ext_resource type="Script" path="res://BigSpawn.gd" id="1_gdgou"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_qi6tf"]
+radius = 324.002
+
+[node name="BigSpawn" type="Area2D"]
+script = ExtResource("1_gdgou")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_qi6tf")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

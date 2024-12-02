@@ -1,0 +1,32 @@
+[gd_scene load_steps=4 format=3 uid="uid://d0sfba78inyln"]
+
+[ext_resource type="Script" path="res://TankLegacy.gd" id="1_qq3r5"]
+[ext_resource type="PackedScene" uid="uid://7rfkwwydbnmb" path="res://Scenes/Tank.tscn" id="2_8kpeu"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_aqnnt"]
+size = Vector2(25, 33)
+
+[node name="TankLegacy" type="CharacterBody2D"]
+script = ExtResource("1_qq3r5")
+
+[node name="Tank" parent="." instance=ExtResource("2_8kpeu")]
+unique_name_in_owner = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-6.5, 7)
+shape = SubResource("RectangleShape2D_aqnnt")
+
+[node name="GroundRayRight" type="RayCast2D" parent="."]
+position = Vector2(2, 7)
+target_position = Vector2(27, 23)
+
+[node name="GroundRayLeft" type="RayCast2D" parent="."]
+position = Vector2(-14, 8)
+target_position = Vector2(-32, 21)
+
+[node name="RightWallRay" type="RayCast2D" parent="."]
+target_position = Vector2(42, 0)
+
+[node name="LeftWallRay" type="RayCast2D" parent="."]
+position = Vector2(-13, 1)
+target_position = Vector2(-44, 1)

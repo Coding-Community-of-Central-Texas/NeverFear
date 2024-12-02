@@ -1,0 +1,253 @@
+[gd_scene load_steps=23 format=3 uid="uid://bw58uocrpgcba"]
+
+[ext_resource type="Script" path="res://Scripts/Driod.gd" id="1_pj42b"]
+[ext_resource type="Texture2D" uid="uid://denomo505yka2" path="res://assets/Enemies/Droid/Death.png" id="2_u85qw"]
+[ext_resource type="Texture2D" uid="uid://bgx3m8nd1m3d6" path="res://assets/Enemies/Droid/Walk_scan.png" id="3_wbr55"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rhlq2"]
+atlas = ExtResource("2_u85qw")
+region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1q3ax"]
+atlas = ExtResource("2_u85qw")
+region = Rect2(48, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ek8eq"]
+atlas = ExtResource("2_u85qw")
+region = Rect2(96, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xrdut"]
+atlas = ExtResource("2_u85qw")
+region = Rect2(144, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bn4i4"]
+atlas = ExtResource("2_u85qw")
+region = Rect2(192, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uiue6"]
+atlas = ExtResource("2_u85qw")
+region = Rect2(240, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_75old"]
+atlas = ExtResource("3_wbr55")
+region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yvw5q"]
+atlas = ExtResource("3_wbr55")
+region = Rect2(48, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_klcut"]
+atlas = ExtResource("3_wbr55")
+region = Rect2(96, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oq8ju"]
+atlas = ExtResource("3_wbr55")
+region = Rect2(144, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lxrrr"]
+atlas = ExtResource("3_wbr55")
+region = Rect2(192, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ymesp"]
+atlas = ExtResource("3_wbr55")
+region = Rect2(240, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wkjmy"]
+atlas = ExtResource("3_wbr55")
+region = Rect2(288, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hljwy"]
+atlas = ExtResource("3_wbr55")
+region = Rect2(336, 0, 48, 48)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_miqik"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rhlq2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1q3ax")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ek8eq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xrdut")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bn4i4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uiue6")
+}],
+"loop": false,
+"name": &"death",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_75old")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yvw5q")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_klcut")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oq8ju")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lxrrr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ymesp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wkjmy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hljwy")
+}],
+"loop": false,
+"name": &"move",
+"speed": 10.0
+}]
+
+[sub_resource type="Animation" id="Animation_xxion"]
+resource_name = "move"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:sprite_frames")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [SubResource("SpriteFrames_miqik"), SubResource("SpriteFrames_miqik")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:animation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"move"]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.133333, 0.266667, 0.4, 0.533333, 0.666667, 0.8, 0.933333),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7]
+}
+
+[sub_resource type="Animation" id="Animation_lg4xf"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:sprite_frames")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [SubResource("SpriteFrames_miqik")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:animation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"move"]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_iwrov"]
+resource_name = "death"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:sprite_frames")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [SubResource("SpriteFrames_miqik"), SubResource("SpriteFrames_miqik")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:animation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"death"]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.0666667, 0.133333, 0.2, 0.266667, 0.333333),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_jmn6r"]
+_data = {
+"RESET": SubResource("Animation_lg4xf"),
+"death": SubResource("Animation_iwrov"),
+"move": SubResource("Animation_xxion")
+}
+
+[node name="Driod" type="Node2D"]
+script = ExtResource("1_pj42b")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_miqik")
+animation = &"move"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="AnimatedSprite2D"]
+libraries = {
+"": SubResource("AnimationLibrary_jmn6r")
+}

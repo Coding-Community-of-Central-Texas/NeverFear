@@ -1,0 +1,227 @@
+[gd_scene load_steps=24 format=3 uid="uid://7rfkwwydbnmb"]
+
+[ext_resource type="Texture2D" uid="uid://dnw7akb1ljmh2" path="res://assets/Enemies/GolfBot/Attack.png" id="1_s1u1l"]
+[ext_resource type="Texture2D" uid="uid://b8t8vbshlmotb" path="res://assets/Enemies/GolfBot/Death.png" id="2_j5xe8"]
+[ext_resource type="Texture2D" uid="uid://jggg7oeuaspo" path="res://assets/Enemies/GolfBot/Hurt.png" id="3_bqlyk"]
+[ext_resource type="Texture2D" uid="uid://dxl2oauxmr4ak" path="res://assets/Enemies/GolfBot/Walk.png" id="4_3qwlk"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qalvl"]
+atlas = ExtResource("1_s1u1l")
+region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pybpt"]
+atlas = ExtResource("1_s1u1l")
+region = Rect2(48, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tin1j"]
+atlas = ExtResource("1_s1u1l")
+region = Rect2(96, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mekg7"]
+atlas = ExtResource("1_s1u1l")
+region = Rect2(144, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jngdi"]
+atlas = ExtResource("2_j5xe8")
+region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r3nw5"]
+atlas = ExtResource("2_j5xe8")
+region = Rect2(48, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mfdqk"]
+atlas = ExtResource("2_j5xe8")
+region = Rect2(96, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bjw3h"]
+atlas = ExtResource("2_j5xe8")
+region = Rect2(144, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2nybi"]
+atlas = ExtResource("3_bqlyk")
+region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0eo4f"]
+atlas = ExtResource("3_bqlyk")
+region = Rect2(48, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qkuoq"]
+atlas = ExtResource("4_3qwlk")
+region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ekf6a"]
+atlas = ExtResource("4_3qwlk")
+region = Rect2(48, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t2w3v"]
+atlas = ExtResource("4_3qwlk")
+region = Rect2(96, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0r3yr"]
+atlas = ExtResource("4_3qwlk")
+region = Rect2(144, 0, 48, 48)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_otiv8"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qalvl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pybpt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tin1j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mekg7")
+}],
+"loop": false,
+"name": &"attack",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jngdi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r3nw5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mfdqk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bjw3h")
+}],
+"loop": false,
+"name": &"death",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2nybi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0eo4f")
+}],
+"loop": false,
+"name": &"hurt",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qkuoq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ekf6a")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t2w3v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0r3yr")
+}],
+"loop": false,
+"name": &"move",
+"speed": 8.0
+}]
+
+[sub_resource type="Animation" id="Animation_ik6n3"]
+resource_name = "move"
+
+[sub_resource type="Animation" id="Animation_2jm6l"]
+resource_name = "hurt"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:sprite_frames")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [SubResource("SpriteFrames_otiv8"), SubResource("SpriteFrames_otiv8")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:animation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"hurt"]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 1]
+}
+
+[sub_resource type="Animation" id="Animation_0u3on"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:sprite_frames")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [SubResource("SpriteFrames_otiv8")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:animation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"hurt"]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_j5120"]
+_data = {
+"RESET": SubResource("Animation_0u3on"),
+"hurt": SubResource("Animation_2jm6l"),
+"move": SubResource("Animation_ik6n3")
+}
+
+[node name="Tank" type="Node2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_otiv8")
+animation = &"hurt"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="AnimatedSprite2D"]
+libraries = {
+"": SubResource("AnimationLibrary_j5120")
+}

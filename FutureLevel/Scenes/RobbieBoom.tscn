@@ -93,14 +93,15 @@ animations = [{
 }],
 "loop": false,
 "name": &"RobbieBoom",
-"speed": 20.0
+"speed": 11.0
 }]
 
 [node name="RobbieBoom" type="Node2D"]
 script = ExtResource("1_hd2ls")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(0, -46)
+position = Vector2(0, -67)
+scale = Vector2(1.125, 1.39844)
 sprite_frames = SubResource("SpriteFrames_dm27n")
 animation = &"RobbieBoom"
 autoplay = "RobbieBoom"
@@ -109,6 +110,7 @@ frame_progress = 1.0
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("3_xnipk")
-volume_db = 7.71
+volume_db = 4.015
+autoplay = true
 
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
