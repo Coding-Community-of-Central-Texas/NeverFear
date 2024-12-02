@@ -25,7 +25,8 @@ GameManager="*res://GameManager.gd"
 [display]
 
 window/stretch/mode="viewport"
-window/stretch/aspect="expand"
+window/stretch/aspect="ignore"
+window/handheld/orientation=6
 
 [editor_plugins]
 

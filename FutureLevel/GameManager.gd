@@ -2,7 +2,7 @@ extends Node
 
 # Stats
 var total_kills: int = 0
-var quickest_time: int = INF  
+var quickest_time: int = 99999999
 var longest_survival: int = 0
 var total_cash: int = 0
 
@@ -66,3 +66,6 @@ func print_stats():
 	print("Quickest Time:", quickest_time)
 	print("Longest Survival:", longest_survival)
 	print("Total Cash:", total_cash)
+
+func format_time(ms: int) -> String:
+	return str(ms / 1000.0) + "s"

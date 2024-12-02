@@ -60,14 +60,14 @@ scale = Vector2(2, 2)
 script = ExtResource("1_bb2x5")
 
 [node name="Right" type="TouchScreenButton" parent="."]
-position = Vector2(96, -40)
+position = Vector2(89.5, -40)
 scale = Vector2(2, 2)
 shape = SubResource("RectangleShape2D_uolew")
 passby_press = true
 action = "move_right"
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Right"]
-position = Vector2(0, 0.5)
+position = Vector2(-11.25, 0.5)
 scale = Vector2(0.105, 0.095)
 sprite_frames = SubResource("SpriteFrames_d72lj")
 animation = &"right"

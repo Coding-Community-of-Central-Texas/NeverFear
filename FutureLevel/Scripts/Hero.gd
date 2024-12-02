@@ -9,6 +9,7 @@ const DOUBLE_JUMP_VELOCITY = -666.0
 const GRAVITY = 2000.0  # Custom gravity value
 const COYOTE_TIME = 0.2  # Time to allow jumping after falling
 const MAX_FALL_SPEED = 1000.0  # Limit the maximum fall speed
+var direction : Vector2 = Vector2(0,0)
 
 
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
@@ -68,6 +69,11 @@ func _physics_process(delta: float) -> void:
 	handle_jumping(delta)
 	handle_movement(delta)
 	handle_animation()
+	
+	if direction:
+		velocity.x = direction.x * SPEED
+	else:
+		velocity.x = move_toward(velocity.x, 0, SPEED)
 	move_and_slide()
 	
 	const DAMAGE_RATE = 25.0
@@ -159,3 +165,7 @@ func _on_timer_timeout() -> void:
 
 func _on_game_over():
 	get_tree().change_scene_to_file.call_deferred("res://Scenes/GameOver.tscn")
+
+
+func _on_joystick_joystick_input(strength, dir, delta) -> void:
+		direction = dir

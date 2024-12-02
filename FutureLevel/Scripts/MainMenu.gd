@@ -1,9 +1,9 @@
 extends Control
 
-@onready var legacy_protocol: TouchScreenButton = $CanvasLayer/MenuBox/Story/LegacyProtocol
-@onready var hypercore_gauntlet: TouchScreenButton = $CanvasLayer/MenuBox/Survival/HypercoreGauntlet
-@onready var performance: TouchScreenButton = $CanvasLayer/MenuBox/PerformanceSettings/Performance
-
+@onready var legacy_protocol: TouchScreenButton = $MenuBox/Story/LegacyProtocol
+@onready var hypercore_gauntlet: TouchScreenButton = $MenuBox/Survival/HypercoreGauntlet
+@onready var performance: TouchScreenButton = $MenuBox/PerformanceSettings/Performance
+@onready var credits: TouchScreenButton = $MenuBox/Credits/Credits
 
 
 
@@ -15,10 +15,6 @@ func _ready() -> void:
 		return
 
 
-
-
-
-
 func _on_legacy_protocol_pressed() -> void:
 	Global.reset_game_state()
 	get_tree().change_scene_to_file("res://Scenes/LegacyProtocol.tscn")
@@ -27,3 +23,7 @@ func _on_legacy_protocol_pressed() -> void:
 func _on_hypercore_gauntlet_pressed() -> void:
 	get_tree().change_scene_to_file("res://Scenes/HypercoreGauntlet.tscn")
 	Global.reset_game_state()
+
+
+func _on_credits_pressed() -> void:
+	get_tree().change_scene_to_file("res://Scenes/Credits.tscn")

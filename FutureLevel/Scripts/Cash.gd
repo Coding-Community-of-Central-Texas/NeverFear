@@ -1,7 +1,7 @@
 extends Area2D
 
-const GRAVITY = 200
-const MAX_FALL_SPEED = 300.0# Maximum falling speed
+const GRAVITY = 180
+const MAX_FALL_SPEED = 250.0# Maximum falling speed
 
 
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
@@ -32,7 +32,7 @@ func _on_ready():
 func randomize_power_up():
 	#var power_up_count = PowerUpType.FIRE_RATE + 1
 	
-	power_up_type = randi() % PowerUpType.FIRE_RATE + 1
+	power_up_type = randi()
 	# Randomize power-up value based on type
 	match power_up_type:
 		PowerUpType.SPEED:

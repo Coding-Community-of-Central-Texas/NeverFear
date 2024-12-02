@@ -92,8 +92,8 @@
 [ext_resource type="Texture2D" uid="uid://dl0yj84ej8kih" path="res://assets/city 1/7.png" id="89_53gkr"]
 [ext_resource type="PackedScene" uid="uid://bjwjnne7i3x33" path="res://Scenes/Killzone.tscn" id="90_nnmq4"]
 [ext_resource type="PackedScene" uid="uid://csqktr6ixyato" path="res://Scenes/Hero.tscn" id="91_munkx"]
-[ext_resource type="PackedScene" uid="uid://bdh1ta442ljwu" path="res://Scenes/LeftRightButtons.tscn" id="92_optyi"]
 [ext_resource type="PackedScene" uid="uid://d2y4fvw54o8rg" path="res://Scenes/JumpButton.tscn" id="93_hmujq"]
+[ext_resource type="PackedScene" uid="uid://dyissvogocr44" path="res://addons/joystick/joystick.tscn" id="93_u6o03"]
 [ext_resource type="PackedScene" uid="uid://cyik2prp6rqk4" path="res://Scenes/LifeCounter.tscn" id="94_7l5pt"]
 [ext_resource type="PackedScene" uid="uid://bjy4p1k6qgxm8" path="res://Scenes/DropPlat.tscn" id="95_ljrgr"]
 [ext_resource type="Texture2D" uid="uid://cjvpadkii8oj7" path="res://assets/Background/Overlay.png" id="96_wwgqa"]
@@ -1471,15 +1471,16 @@ collision_layer = 9
 [node name="Buttons" type="CanvasLayer" parent="."]
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Buttons"]
-anchors_preset = 2
-anchor_top = 1.0
+anchors_preset = -1
+anchor_top = 0.574
+anchor_right = 0.402
 anchor_bottom = 1.0
-offset_top = -40.0
-offset_right = 40.0
+offset_top = 0.0480042
+offset_right = -0.104004
 grow_vertical = 0
 
-[node name="LeftRightButtons" parent="Buttons/HBoxContainer" instance=ExtResource("92_optyi")]
-modulate = Color(1, 1, 1, 0.47451)
+[node name="Joystick" parent="Buttons/HBoxContainer" instance=ExtResource("93_u6o03")]
+position = Vector2(135, 116)
 
 [node name="Jump" type="HBoxContainer" parent="Buttons"]
 anchors_preset = 3
@@ -1648,3 +1649,5 @@ position = Vector2(15694, -409)
 rotation = 2.12854e-05
 
 [node name="GameManager" parent="." instance=ExtResource("106_jtjrs")]
+
+[connection signal="joystick_input" from="Buttons/HBoxContainer/Joystick" to="Hero" method="_on_joystick_joystick_input"]

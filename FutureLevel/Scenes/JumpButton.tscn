@@ -30,8 +30,8 @@ animations = [{
 
 [node name="Jump" type="TouchScreenButton"]
 modulate = Color(1, 0.71, 0.71, 0.376471)
-position = Vector2(-98, -83)
-scale = Vector2(4.74548, 4.54)
+position = Vector2(-166, -151)
+scale = Vector2(8.02548, 7.54)
 shape = SubResource("RectangleShape2D_ndicd")
 passby_press = true
 action = "jump"

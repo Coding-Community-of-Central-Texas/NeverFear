@@ -1,39 +1,48 @@
-[gd_scene load_steps=8 format=3 uid="uid://b8aq7pak842g0"]
+[gd_scene load_steps=9 format=3 uid="uid://b8aq7pak842g0"]
 
 [ext_resource type="Script" path="res://Scripts/MainMenu.gd" id="1_ole10"]
 [ext_resource type="Texture2D" uid="uid://bcypd57pmrt63" path="res://assets/Background/Hero.svg" id="2_fschk"]
 [ext_resource type="Texture2D" uid="uid://dhit27os2eis3" path="res://assets/Background/FinalMenu1.svg" id="3_v1tbm"]
 [ext_resource type="FontFile" uid="uid://ckid4fla6wirc" path="res://assets/etc/Starzoom-Shavian.ttf" id="4_5gcgg"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_b5rdu"]
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_b2lpd"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nmumq"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_o5ej8"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_b5rdu"]
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_bottom = 186.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_ole10")
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer"]
+[node name="TextureRect" type="TextureRect" parent="."]
 z_index = -1
+layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 2.0
+offset_top = -187.0
+offset_right = 2.0
+offset_bottom = 189.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("2_fschk")
-expand_mode = 2
 
-[node name="MenuBox" type="TextureRect" parent="CanvasLayer"]
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(576, 366)
+scale = Vector2(0.4, 1)
+zoom = Vector2(2, 1)
+
+[node name="MenuBox" type="TextureRect" parent="."]
+layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.272
 anchor_top = 0.215
@@ -45,57 +54,19 @@ offset_right = -66.0482
 offset_bottom = 1.85596
 grow_horizontal = 2
 grow_vertical = 2
-size_flags_vertical = 4
 texture = ExtResource("3_v1tbm")
-expand_mode = 1
+expand_mode = 4
 
-[node name="Story" type="Label" parent="CanvasLayer/MenuBox"]
+[node name="Survival" type="Label" parent="MenuBox"]
 z_index = 1
 layout_mode = 1
-anchors_preset = -1
-anchor_top = 0.278
+anchors_preset = 15
 anchor_right = 1.0
-anchor_bottom = 0.444
-offset_left = 103.0
-offset_top = 20.456
-offset_right = 3.00012
-offset_bottom = -13.912
-grow_horizontal = 2
-grow_vertical = 2
-scale = Vector2(0.679998, 1)
-size_flags_horizontal = 4
-theme_override_colors/font_color = Color(0.75, 0, 0.0124998, 1)
-theme_override_colors/font_shadow_color = Color(0.0279, 0.133145, 0.93, 1)
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/line_spacing = 0
-theme_override_constants/shadow_offset_x = 2
-theme_override_constants/shadow_offset_y = 2
-theme_override_constants/outline_size = 2
-theme_override_constants/shadow_outline_size = 3
-theme_override_fonts/font = ExtResource("4_5gcgg")
-theme_override_font_sizes/font_size = 30
-text = "LEGACY PROTOCOL"
-horizontal_alignment = 1
-
-[node name="LegacyProtocol" type="TouchScreenButton" parent="CanvasLayer/MenuBox/Story"]
-z_index = 1
-position = Vector2(158.248, 15.05)
-rotation = 3.14159
-scale = Vector2(-13.2542, -1.73885)
-shape = SubResource("RectangleShape2D_b5rdu")
-shape_centered = false
-
-[node name="Survival" type="Label" parent="CanvasLayer/MenuBox"]
-z_index = 1
-layout_mode = 1
-anchors_preset = -1
-anchor_top = 0.411
-anchor_right = 1.0
-anchor_bottom = 0.561
-offset_left = 71.0
-offset_top = 16.872
-offset_right = 71.0001
-offset_bottom = -19.328
+anchor_bottom = 1.0
+offset_left = -12.0
+offset_top = 189.0
+offset_right = 218.0
+offset_bottom = -208.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(0.688342, 1.17733)
@@ -109,28 +80,28 @@ theme_override_constants/shadow_offset_y = 2
 theme_override_constants/outline_size = 2
 theme_override_constants/shadow_outline_size = 3
 theme_override_fonts/font = ExtResource("4_5gcgg")
-theme_override_font_sizes/font_size = 30
+theme_override_font_sizes/font_size = 28
 text = "HYPERCORE GAUNTLET"
 horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="HypercoreGauntlet" type="TouchScreenButton" parent="CanvasLayer/MenuBox/Survival"]
-position = Vector2(206.306, 14.316)
+[node name="HypercoreGauntlet" type="TouchScreenButton" parent="MenuBox/Survival"]
+position = Vector2(322.514, 23.7826)
 scale = Vector2(19.3653, 1.31549)
 shape = SubResource("RectangleShape2D_b2lpd")
 
-[node name="PerformanceSettings" type="Label" parent="CanvasLayer/MenuBox"]
+[node name="PerformanceSettings" type="Label" parent="MenuBox"]
 z_index = 1
 layout_mode = 1
-anchors_preset = -1
-anchor_top = 0.545
+anchors_preset = 15
 anchor_right = 1.0
-anchor_bottom = 0.681
-offset_left = 116.0
-offset_top = 13.84
-offset_right = 72.0001
-offset_bottom = -16.088
+anchor_bottom = 1.0
+offset_left = 112.0
+offset_top = 248.0
+offset_right = 70.0003
+offset_bottom = -140.0
 grow_horizontal = 2
-grow_vertical = 0
+grow_vertical = 2
 scale = Vector2(0.48834, 0.796713)
 size_flags_horizontal = 4
 theme_override_colors/font_color = Color(0.75, 0, 0.0124998, 1)
@@ -144,13 +115,78 @@ theme_override_constants/shadow_outline_size = 3
 theme_override_fonts/font = ExtResource("4_5gcgg")
 theme_override_font_sizes/font_size = 30
 text = "PERFORMANCE INDEX"
-metadata/_edit_use_anchors_ = true
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
 
-[node name="Performance" type="TouchScreenButton" parent="CanvasLayer/MenuBox/PerformanceSettings"]
-position = Vector2(178.155, 15.0619)
+[node name="Performance" type="TouchScreenButton" parent="MenuBox/PerformanceSettings"]
+position = Vector2(184.298, 28.8686)
 scale = Vector2(16.8087, 2.00413)
 shape = SubResource("RectangleShape2D_nmumq")
 
-[connection signal="pressed" from="CanvasLayer/MenuBox/Story/LegacyProtocol" to="." method="_on_legacy_protocol_pressed"]
-[connection signal="pressed" from="CanvasLayer/MenuBox/Story/LegacyProtocol" to="." method="_on_touch_screen_button_pressed"]
-[connection signal="pressed" from="CanvasLayer/MenuBox/Survival/HypercoreGauntlet" to="." method="_on_hypercore_gauntlet_pressed"]
+[node name="Credits" type="Label" parent="MenuBox"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 80.0
+offset_top = 348.0
+offset_right = -234.0
+offset_bottom = -56.9999
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.92, 0.6)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("4_5gcgg")
+theme_override_font_sizes/font_size = 20
+text = "Credits"
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="Credits" type="TouchScreenButton" parent="MenuBox/Credits"]
+position = Vector2(44.2308, 13.3333)
+rotation = 1.56002
+scale = Vector2(1.99963, 4.53794)
+skew = 0.00268269
+shape = SubResource("CapsuleShape2D_o5ej8")
+
+[node name="Story" type="Label" parent="MenuBox"]
+z_index = 1
+layout_mode = 2
+offset_left = 81.0
+offset_top = 147.0
+offset_right = 331.0
+offset_bottom = 178.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(0.75, 0, 0.0124998, 1)
+theme_override_colors/font_shadow_color = Color(0.0279, 0.133145, 0.93, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/line_spacing = 0
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 2
+theme_override_constants/shadow_outline_size = 3
+theme_override_fonts/font = ExtResource("4_5gcgg")
+theme_override_font_sizes/font_size = 25
+text = "LEGACY PROTOCOL"
+horizontal_alignment = 1
+vertical_alignment = 1
+justification_flags = 35
+
+[node name="LegacyProtocol" type="TouchScreenButton" parent="MenuBox/Story"]
+z_index = 1
+position = Vector2(121, 15)
+rotation = 3.14159
+scale = Vector2(-13.2542, -1.73885)
+shape = SubResource("RectangleShape2D_b5rdu")
+shape_centered = false
+
+[connection signal="pressed" from="MenuBox/Survival/HypercoreGauntlet" to="." method="_on_hypercore_gauntlet_pressed"]
+[connection signal="pressed" from="MenuBox/Credits/Credits" to="." method="_on_credits_pressed"]
+[connection signal="pressed" from="MenuBox/Story/LegacyProtocol" to="." method="_on_legacy_protocol_pressed"]
+[connection signal="pressed" from="MenuBox/Story/LegacyProtocol" to="." method="_on_touch_screen_button_pressed"]

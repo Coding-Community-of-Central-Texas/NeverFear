@@ -55,7 +55,7 @@ animations = [{
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_w81d5"]
-radius = 7.0
+radius = 11.1803
 
 [node name="Cash" type="Area2D"]
 collision_layer = 32
@@ -63,6 +63,7 @@ collision_mask = 33
 script = ExtResource("1_wjjbo")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(1.5, 1.41667)
 sprite_frames = SubResource("SpriteFrames_73xw1")
 animation = &"spin"
 autoplay = "spin"
