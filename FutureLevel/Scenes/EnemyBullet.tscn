@@ -67,7 +67,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_qtmsn")
 }],
-"loop": true,
+"loop": false,
 "name": &"shoot",
 "speed": 15.0
 }]
@@ -82,9 +82,10 @@ collision_mask = 8
 script = ExtResource("1_yti00")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+unique_name_in_owner = true
 scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_e5rb3")
-animation = &"shoot"
+animation = &"impact"
 autoplay = "shoot"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

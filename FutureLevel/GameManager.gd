@@ -1,53 +1,68 @@
 extends Node
 
-var total_kills: int = 0 
-var quickest_time: int = 0
-var finish: int = 0
-
-func _on_kill() -> void:
-	total_kills += 1 
-
-func _level_complete():
-	if finish > quickest_time:
-		finish = quickest_time
-	else:
-		return
+# Stats
+var total_kills: int = 0
+var quickest_time: int = INF  
+var longest_survival: int = 0
+var total_cash: int = 0
 
 
-func ready():
-	var data = load_data_android()
-	total_kills = data.total_kills
-	quickest_time = data.quickest_time if data.quickest_time != null else INF
-	print("Total kills:", total_kills, "Quickest time:", quickest_time)
-var save_path = "user://save_data.json"
+# File path for save data
+const SAVE_PATH = "user://save_data.json"
 
-func save_data_android(total_kills: int, quickest_time: int):
-	var save_file = FileAccess.open(save_path, FileAccess.WRITE)
+func _ready():
+	load_data()
+
+
+
+# Function to add kills
+func add_kill():
+	total_kills += 1
+
+# Function to update the quickest time for Legacy Protocol
+func update_quickest_time(time: int):
+	if time < quickest_time:
+		quickest_time = time
+
+# Function to update the longest survival time for Hypercore Override
+func update_longest_survival(time: int):
+	if time > longest_survival:
+		longest_survival = time
+
+# Function to add cash
+func add_cash(amount: int):
+	total_cash += amount
+
+# Save game data
+func save_data():
+	var save_file = FileAccess.open(SAVE_PATH, FileAccess.WRITE)
 	if save_file:
-		var json = JSON.new()
 		var data = {
 			"total_kills": total_kills,
-			"quickest_time": quickest_time 
-			}
+			"quickest_time": quickest_time,
+			"longest_survival": longest_survival,
+			"total_cash": total_cash
+		}
 		save_file.store_string(JSON.stringify(data))
 		save_file.close()
 
-func load_data_android() -> Dictionary:
-	if FileAccess.file_exists("user://save_data.json"):
-		var save_file = FileAccess.open("user://save_data.json", FileAccess.READ)
+# Load game data
+func load_data():
+	if FileAccess.file_exists(SAVE_PATH):
+		var save_file = FileAccess.open(SAVE_PATH, FileAccess.READ)
 		if save_file:
-			var json = JSON.new()
-			var parsed = json.parse(save_file.get_as_text())
+			var data = JSON.parse_string(save_file.get_as_text())
 			save_file.close()
-			
-			if parsed.error == OK:
-				return parsed.result
-			else:
-				print("Failed to parse JSON: ", parsed.error_string)
-	return {"total_kills": 0, "quickest_time": null}
+			if data.error == OK:
+				var parsed_data = data.result
+				total_kills = parsed_data.get("total_kills", 0)
+				quickest_time = parsed_data.get("quickest_time", INF)
+				longest_survival = parsed_data.get("longest_survival", 0)
+				total_cash = parsed_data.get("total_cash", 0)
 
-enum music {
-	AGONY,
-	EVIL,
-	DARKNESS,
-}
+# Debug print for stats
+func print_stats():
+	print("Total Kills:", total_kills)
+	print("Quickest Time:", quickest_time)
+	print("Longest Survival:", longest_survival)
+	print("Total Cash:", total_cash)

@@ -93,5 +93,4 @@ func pursue_player():
 	if Global.player:
 		var direction_to_player = (Global.player.global_position - global_position).normalized()
 		velocity = direction_to_player * move_speed
-		look_at(Global.player.global_position)  # Rotate to face the player
-		print("inpursuit")
+		look_at(Global.player.global_position) 

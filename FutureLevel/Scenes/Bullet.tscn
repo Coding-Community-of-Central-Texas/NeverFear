@@ -4,9 +4,9 @@
 [ext_resource type="Texture2D" uid="uid://1imxhw66404d" path="res://assets/Guns&Bullets/01.png" id="2_qpgtf"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_c5l0h"]
-radius = 4.12311
+radius = 6.0
 
-[node name="bulletv2" type="Area2D"]
+[node name="Bullet" type="Area2D"]
 top_level = true
 rotation = -0.00635648
 collision_layer = 0
@@ -18,5 +18,5 @@ shape = SubResource("CircleShape2D_c5l0h")
 
 [node name="plasma" type="Sprite2D" parent="."]
 position = Vector2(-0.99998, -0.00635644)
-scale = Vector2(0.454439, 0.4319)
+scale = Vector2(0.605062, 0.535031)
 texture = ExtResource("2_qpgtf")

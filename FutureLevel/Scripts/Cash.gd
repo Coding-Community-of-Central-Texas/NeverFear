@@ -30,9 +30,9 @@ func _on_ready():
 	randomize_power_up()
 
 func randomize_power_up():
-	var power_up_count = PowerUpType.FIRE_RATE + 1
+	#var power_up_count = PowerUpType.FIRE_RATE + 1
 	
-	power_up_type = randi() % power_up_count
+	power_up_type = randi() % PowerUpType.FIRE_RATE + 1
 	# Randomize power-up value based on type
 	match power_up_type:
 		PowerUpType.SPEED:

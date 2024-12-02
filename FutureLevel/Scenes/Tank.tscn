@@ -1,7 +1,7 @@
 [gd_scene load_steps=25 format=3 uid="uid://7rfkwwydbnmb"]
 
 [ext_resource type="Texture2D" uid="uid://dnw7akb1ljmh2" path="res://assets/Enemies/GolfBot/Attack.png" id="1_s1u1l"]
-[ext_resource type="Script" path="res://Scenes/Tank.gd" id="1_xawmx"]
+[ext_resource type="Script" path="res://Scripts/Tank.gd" id="1_xawmx"]
 [ext_resource type="Texture2D" uid="uid://b8t8vbshlmotb" path="res://assets/Enemies/GolfBot/Death.png" id="2_j5xe8"]
 [ext_resource type="Texture2D" uid="uid://jggg7oeuaspo" path="res://assets/Enemies/GolfBot/Hurt.png" id="3_bqlyk"]
 [ext_resource type="Texture2D" uid="uid://dxl2oauxmr4ak" path="res://assets/Enemies/GolfBot/Walk.png" id="4_3qwlk"]

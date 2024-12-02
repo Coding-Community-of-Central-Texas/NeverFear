@@ -1,5 +1,6 @@
-[gd_scene load_steps=174 format=3 uid="uid://c8sbp2d4k2aou"]
+[gd_scene load_steps=176 format=3 uid="uid://c8sbp2d4k2aou"]
 
+[ext_resource type="Script" path="res://Scripts/HypercoreGauntlet.gd" id="1_dl73x"]
 [ext_resource type="Script" path="res://addons/gaea/renderers/2D/tilemap_gaea_renderer.gd" id="2_bqeif"]
 [ext_resource type="Script" path="res://addons/gaea/generators/2D/noise_generator/noise_generator.gd" id="3_iryc7"]
 [ext_resource type="Script" path="res://addons/gaea/modifiers/2D/modifier_2d.gd" id="4_8em6s"]
@@ -85,6 +86,7 @@
 [ext_resource type="Texture2D" uid="uid://du0amabk2v8a8" path="res://assets/1 Tiles/IndustrialTile_06.png" id="83_cdau2"]
 [ext_resource type="PackedScene" uid="uid://bsltfx5uw5yvq" path="res://Scenes/Survivor.tscn" id="84_7tc6j"]
 [ext_resource type="Script" path="res://addons/gaea/others/chunk_loader_2d.gd" id="85_07p6e"]
+[ext_resource type="PackedScene" uid="uid://cijayc3peexw" path="res://GameManager.tscn" id="87_esuwa"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_w27gi"]
 noise_type = 4
@@ -639,6 +641,8 @@ sources/75 = SubResource("TileSetAtlasSource_llo5o")
 sources/76 = SubResource("TileSetAtlasSource_g3xb1")
 
 [node name="HypercoreGauntlet" type="Node2D"]
+script = ExtResource("1_dl73x")
+game_manager = NodePath("GameManager")
 
 [node name="TilemapGaeaRenderer" type="Node" parent="." node_paths=PackedStringArray("tile_map", "generator")]
 script = ExtResource("2_bqeif")
@@ -668,3 +672,5 @@ script = ExtResource("85_07p6e")
 generator = NodePath("../NoiseGenerator")
 actor = NodePath("../Survivor")
 loading_radius = Vector2i(3, 3)
+
+[node name="GameManager" parent="." instance=ExtResource("87_esuwa")]

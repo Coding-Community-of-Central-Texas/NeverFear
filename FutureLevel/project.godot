@@ -11,16 +11,16 @@ config_version=5
 [application]
 
 config/name="NeverFear"
-config/description="NeverFear is an extremly fun and addictive game deployed by the Open-Source Coding Community of Central Texas. "
-run/main_scene="res://Scenes/Game.tscn"
+config/description="NeverFear is an extremly fun and addictive game deployed and devloped by the Open-Source Coding Community of Central Texas. With the main contributer being Stephen Hairston the founder and Director of the organization. "
+run/main_scene="res://Scenes/LegacyProtocol.tscn"
 config/features=PackedStringArray("4.3", "Mobile")
 config/icon="res://assets/Background/NeverFearIcon.svg"
 
 [autoload]
 
 Global="*res://Global.gd"
-GameManager="*res://GameManager.gd"
 Spawning="*res://addons/BulletUpHell/Spawning.tscn"
+GameManager="*res://GameManager.gd"
 
 [display]
 

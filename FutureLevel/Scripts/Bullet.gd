@@ -9,7 +9,7 @@ func _ready():
 
 func _physics_process(delta):
 	const SPEED = 2000.0
-	const RANGE = 578.0
+	const RANGE = 300.0
 	
 	var direction = Vector2.RIGHT.rotated(rotation)
 	position += direction * SPEED * delta

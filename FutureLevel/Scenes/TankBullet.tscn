@@ -40,7 +40,7 @@ animations = [{
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_x6wp8"]
-radius = 7.0
+radius = 7.60117
 
 [node name="TankBullet" type="Area2D"]
 scale = Vector2(1.5, 1.5)
