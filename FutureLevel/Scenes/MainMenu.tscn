@@ -1,9 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://b8aq7pak842g0"]
+[gd_scene load_steps=10 format=3 uid="uid://b8aq7pak842g0"]
 
 [ext_resource type="Script" path="res://Scripts/MainMenu.gd" id="1_ole10"]
 [ext_resource type="Texture2D" uid="uid://bcypd57pmrt63" path="res://assets/Background/Hero.svg" id="2_fschk"]
 [ext_resource type="Texture2D" uid="uid://dhit27os2eis3" path="res://assets/Background/FinalMenu1.svg" id="3_v1tbm"]
 [ext_resource type="FontFile" uid="uid://ckid4fla6wirc" path="res://assets/etc/Starzoom-Shavian.ttf" id="4_5gcgg"]
+[ext_resource type="PackedScene" uid="uid://cijayc3peexw" path="res://GameManager.tscn" id="5_8jy63"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_b2lpd"]
 
@@ -186,7 +187,10 @@ scale = Vector2(-13.2542, -1.73885)
 shape = SubResource("RectangleShape2D_b5rdu")
 shape_centered = false
 
+[node name="GameManager" parent="." instance=ExtResource("5_8jy63")]
+
 [connection signal="pressed" from="MenuBox/Survival/HypercoreGauntlet" to="." method="_on_hypercore_gauntlet_pressed"]
+[connection signal="pressed" from="MenuBox/PerformanceSettings/Performance" to="." method="_on_performance_pressed"]
 [connection signal="pressed" from="MenuBox/Credits/Credits" to="." method="_on_credits_pressed"]
 [connection signal="pressed" from="MenuBox/Story/LegacyProtocol" to="." method="_on_legacy_protocol_pressed"]
 [connection signal="pressed" from="MenuBox/Story/LegacyProtocol" to="." method="_on_touch_screen_button_pressed"]

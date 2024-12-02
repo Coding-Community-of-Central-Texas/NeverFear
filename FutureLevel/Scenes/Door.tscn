@@ -83,14 +83,13 @@ frame_progress = 1.0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
 position = Vector2(-0.5, 0)
 rotation = 0.000919335
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_uxnbw")
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 position = Vector2(1, 1)
 stream = ExtResource("3_h71nb")
 volume_db = 1.497
-pitch_scale = 0.82
+pitch_scale = 1.52
 
 [node name="Area2D" type="Area2D" parent="."]
 position = Vector2(-2, 3)

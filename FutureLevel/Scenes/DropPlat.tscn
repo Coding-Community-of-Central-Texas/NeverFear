@@ -1,6 +1,5 @@
-[gd_scene load_steps=17 format=3 uid="uid://bjy4p1k6qgxm8"]
+[gd_scene load_steps=18 format=3 uid="uid://bjy4p1k6qgxm8"]
 
-[ext_resource type="Script" path="res://Scripts/DropPlat.gd" id="1_v1cc0"]
 [ext_resource type="Texture2D" uid="uid://dpnldt7qfxni8" path="res://assets/etc/Platform.png" id="2_q2ta0"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_uo4r8"]
@@ -35,6 +34,10 @@ region = Rect2(224, 0, 32, 32)
 atlas = ExtResource("2_q2ta0")
 region = Rect2(0, 0, 32, 32)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_aamvr"]
+atlas = ExtResource("2_q2ta0")
+region = Rect2(0, 0, 32, 32)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_ywbrd"]
 animations = [{
 "frames": [{
@@ -66,6 +69,9 @@ animations = [{
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_kc6pj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aamvr")
 }],
 "loop": false,
 "name": &"start",
@@ -151,10 +157,50 @@ tracks/2/keys = {
 "values": [0, 1, 2, 3, 4]
 }
 
+[sub_resource type="Animation" id="Animation_omrlh"]
+resource_name = "start"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:sprite_frames")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [SubResource("SpriteFrames_ywbrd"), SubResource("SpriteFrames_ywbrd")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:animation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"start"]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 1]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_i43n8"]
 _data = {
 "RESET": SubResource("Animation_uxxk0"),
-"end": SubResource("Animation_v7m23")
+"end": SubResource("Animation_v7m23"),
+"start": SubResource("Animation_omrlh")
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_q3aqr"]
@@ -165,11 +211,11 @@ size = Vector2(60, 38)
 
 [node name="DropPlat" type="AnimatableBody2D"]
 scale = Vector2(2.14, 1.5)
-script = ExtResource("1_v1cc0")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_ywbrd")
 animation = &"end"
+autoplay = "start"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="AnimatedSprite2D"]
 unique_name_in_owner = true
@@ -178,6 +224,7 @@ libraries = {
 }
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+unique_name_in_owner = true
 position = Vector2(1, -6)
 shape = SubResource("RectangleShape2D_q3aqr")
 

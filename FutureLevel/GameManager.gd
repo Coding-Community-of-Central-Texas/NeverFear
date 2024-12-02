@@ -1,5 +1,8 @@
 extends Node
 
+signal kill
+signal add_cash
+
 # Stats
 var total_kills: int = 0
 var quickest_time: int = 99999999
@@ -16,8 +19,9 @@ func _ready():
 
 
 # Function to add kills
-func add_kill():
+func _on_kill():
 	total_kills += 1
+	print("Kill +1")
 
 # Function to update the quickest time for Legacy Protocol
 func update_quickest_time(time: int):
@@ -30,8 +34,7 @@ func update_longest_survival(time: int):
 		longest_survival = time
 
 # Function to add cash
-func add_cash(amount: int):
-	total_cash += amount
+
 
 # Save game data
 func save_data():
@@ -69,3 +72,8 @@ func print_stats():
 
 func format_time(ms: int) -> String:
 	return str(ms / 1000.0) + "s"
+
+
+func _on_add_cash(amount: int) -> void:
+	total_cash += amount
+	print(+10,000)

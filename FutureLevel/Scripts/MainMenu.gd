@@ -27,3 +27,7 @@ func _on_hypercore_gauntlet_pressed() -> void:
 
 func _on_credits_pressed() -> void:
 	get_tree().change_scene_to_file("res://Scenes/Credits.tscn")
+
+
+func _on_performance_pressed() -> void:
+	get_tree().change_scene_to_file("res://Scenes/PerformanceIndex.tscn")

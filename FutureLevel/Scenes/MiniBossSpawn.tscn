@@ -1,6 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://dghcuiiuawq2p"]
+[gd_scene load_steps=4 format=3 uid="uid://cp0mkjt4kb621"]
 
-[ext_resource type="Script" path="res://Scripts/Spawner.gd" id="1_p0ixj"]
+[ext_resource type="Script" path="res://Scripts/MiniSpawner.gd" id="1_gqxth"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_gassc"]
 radius = 1233.0
@@ -11,12 +11,13 @@ _data = {
 }
 point_count = 8
 
-[node name="ByteSpawnerA" type="Area2D"]
+[node name="MiniBoss" type="Area2D"]
 collision_layer = 0
-script = ExtResource("1_p0ixj")
+script = ExtResource("1_gqxth")
 
 [node name="Timer" type="Timer" parent="."]
-wait_time = 1.615
+wait_time = 1.03
+one_shot = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_gassc")

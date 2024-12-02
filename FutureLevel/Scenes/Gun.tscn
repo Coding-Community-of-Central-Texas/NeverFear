@@ -27,11 +27,12 @@ unique_name_in_owner = true
 position = Vector2(13, -3)
 
 [node name="Timer" type="Timer" parent="."]
-wait_time = 0.116
+wait_time = 0.15
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_b7egm")
-volume_db = -9.328
+volume_db = 1.943
+pitch_scale = 1.51
 playback_type = 1
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

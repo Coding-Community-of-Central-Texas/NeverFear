@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://6dtajja38exg"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_tovin"]
+radius = 323.89
+
+[node name="LevelEnd" type="Area2D"]
+position = Vector2(-27704, 60.5897)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_tovin")

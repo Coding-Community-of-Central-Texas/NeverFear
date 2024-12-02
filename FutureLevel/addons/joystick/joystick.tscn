@@ -9,14 +9,13 @@ radius = 90.0
 
 [node name="Joystick" type="TouchScreenButton"]
 self_modulate = Color(1, 1, 1, 0.5)
-position = Vector2(63, 407)
+scale = Vector2(1.2, 1.2)
 texture_normal = ExtResource("1_tytwk")
 shape = SubResource("CircleShape2D_rm106")
 script = ExtResource("2_eofdc")
 
 [node name="inner" type="Sprite2D" parent="."]
 modulate = Color(1, 1, 1, 0.9)
-self_modulate = Color(0, 0, 0, 1)
-position = Vector2(33, 33)
+self_modulate = Color(0.695503, 0.695503, 0.695503, 1)
 texture = ExtResource("3_14en0")
 metadata/_edit_lock_ = true

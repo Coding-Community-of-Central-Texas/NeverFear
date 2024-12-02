@@ -1,4 +1,4 @@
-[gd_scene load_steps=192 format=3 uid="uid://vmdnus7gyna4"]
+[gd_scene load_steps=201 format=3 uid="uid://vmdnus7gyna4"]
 
 [ext_resource type="Script" path="res://Scripts/LegacyProtocol.gd" id="1_aq02g"]
 [ext_resource type="Texture2D" uid="uid://knkdhrpitjcv" path="res://assets/1 Tiles/Tileset.png" id="2_6w7k1"]
@@ -96,6 +96,7 @@
 [ext_resource type="PackedScene" uid="uid://dyissvogocr44" path="res://addons/joystick/joystick.tscn" id="93_u6o03"]
 [ext_resource type="PackedScene" uid="uid://cyik2prp6rqk4" path="res://Scenes/LifeCounter.tscn" id="94_7l5pt"]
 [ext_resource type="PackedScene" uid="uid://bjy4p1k6qgxm8" path="res://Scenes/DropPlat.tscn" id="95_ljrgr"]
+[ext_resource type="Script" path="res://Scenes/ElapsedTime.gd" id="96_32w4i"]
 [ext_resource type="Texture2D" uid="uid://cjvpadkii8oj7" path="res://assets/Background/Overlay.png" id="96_wwgqa"]
 [ext_resource type="Texture2D" uid="uid://bfbm4a8dphl2i" path="res://assets/city 1/city 2/1.png" id="97_elx5l"]
 [ext_resource type="Texture2D" uid="uid://bu5cxqxscn6be" path="res://assets/city 1/city 2/2.png" id="98_i340m"]
@@ -106,7 +107,11 @@
 [ext_resource type="PackedScene" uid="uid://dghcuiiuawq2p" path="res://Scenes/ByteASpawner.tscn" id="103_0k21k"]
 [ext_resource type="PackedScene" uid="uid://dr5l1ix6ofil2" path="res://Scenes/Platform.tscn" id="104_25ut1"]
 [ext_resource type="PackedScene" uid="uid://d2u5kjqvm0jcd" path="res://Scenes/BigSpawn.tscn" id="105_1jfro"]
+[ext_resource type="PackedScene" uid="uid://cp0mkjt4kb621" path="res://Scenes/MiniBossSpawn.tscn" id="106_614e6"]
 [ext_resource type="PackedScene" uid="uid://cijayc3peexw" path="res://GameManager.tscn" id="106_jtjrs"]
+[ext_resource type="Script" path="res://Scenes/Platform.gd" id="108_051rt"]
+[ext_resource type="PackedScene" uid="uid://bykdf5tjggur6" path="res://Scenes/Boss.tscn" id="111_nlqx5"]
+[ext_resource type="PackedScene" uid="uid://bp7nqo4n6tglk" path="res://Scenes/End.tscn" id="112_gj76c"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_s7fvl"]
 texture = ExtResource("2_6w7k1")
@@ -1221,6 +1226,47 @@ sources/82 = SubResource("TileSetAtlasSource_w0onk")
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_nq6s1"]
 distance = -15.8755
 
+[sub_resource type="Animation" id="Animation_36lx7"]
+resource_name = "move"
+length = 30.0
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 19.8667, 30),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(18275, -2.38899), Vector2(27358, -2.58233), Vector2(27358, -2.58233)]
+}
+
+[sub_resource type="Animation" id="Animation_60q04"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(18275, -2.38899)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_wcxm6"]
+_data = {
+"RESET": SubResource("Animation_60q04"),
+"move": SubResource("Animation_36lx7")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pqwp7"]
+size = Vector2(16.983, 30.2007)
+
 [node name="LegacyProtocol" type="Node2D"]
 rotation = 2.12854e-05
 script = ExtResource("1_aq02g")
@@ -1423,9 +1469,9 @@ texture = ExtResource("87_0e3ta")
 
 [node name="ForgrbuildTwo" type="Sprite2D" parent="TileMap/Forgrd"]
 modulate = Color(0.59, 0.59, 0.59, 1)
-position = Vector2(2636.24, -456.4)
+position = Vector2(2633, -352)
 rotation = 2.12854e-05
-scale = Vector2(2.76944, 3.20095)
+scale = Vector2(2.76944, 3.96095)
 texture = ExtResource("87_0e3ta")
 
 [node name="Smog" type="Sprite2D" parent="TileMap/Forgrd"]
@@ -1465,7 +1511,7 @@ position = Vector2(-1.00009, -3.99998)
 shape = SubResource("WorldBoundaryShape2D_nq6s1")
 
 [node name="Hero" parent="." instance=ExtResource("91_munkx")]
-position = Vector2(353.993, -306.008)
+position = Vector2(357.993, -312.008)
 collision_layer = 9
 
 [node name="Buttons" type="CanvasLayer" parent="."]
@@ -1473,31 +1519,44 @@ collision_layer = 9
 [node name="HBoxContainer" type="HBoxContainer" parent="Buttons"]
 anchors_preset = -1
 anchor_top = 0.574
-anchor_right = 0.402
+anchor_right = 0.316
 anchor_bottom = 1.0
 offset_top = 0.0480042
-offset_right = -0.104004
+offset_right = -0.0320129
 grow_vertical = 0
 
 [node name="Joystick" parent="Buttons/HBoxContainer" instance=ExtResource("93_u6o03")]
-position = Vector2(135, 116)
+position = Vector2(109, 111)
 
 [node name="Jump" type="HBoxContainer" parent="Buttons"]
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
+anchors_preset = -1
+anchor_left = 0.782
+anchor_top = 0.673
+anchor_right = 0.987
 anchor_bottom = 1.0
-offset_left = -40.0
-offset_top = -40.0
+offset_left = 0.135925
+offset_top = -0.104034
+offset_right = -0.0240479
 grow_horizontal = 0
 grow_vertical = 0
 
 [node name="Jump" parent="Buttons/Jump" instance=ExtResource("93_hmujq")]
-position = Vector2(-70, -75)
-scale = Vector2(4.14548, 3.98)
+position = Vector2(108, 109)
+scale = Vector2(6.26548, 4.58)
 
 [node name="LifeCounter" parent="Buttons" instance=ExtResource("94_7l5pt")]
+offset_right = 123.0
+offset_bottom = 47.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0.54, 0.0054, 0.0054, 1)
+theme_override_constants/outline_size = 2
+
+[node name="Time" type="Label" parent="Buttons"]
+offset_left = 613.0
+offset_right = 653.0
+offset_bottom = 23.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+script = ExtResource("96_32w4i")
 
 [node name="Platforms" type="Node" parent="."]
 
@@ -1530,9 +1589,9 @@ texture = ExtResource("96_wwgqa")
 [node name="Sky" type="Sprite2D" parent="BackDrop"]
 modulate = Color(0.25, 0.7625, 1, 0.658824)
 z_index = -3
-position = Vector2(7211.35, -272.969)
+position = Vector2(8497.12, -335.969)
 rotation = 2.12854e-05
-scale = Vector2(25.7902, 4.86605)
+scale = Vector2(30.8635, 4.86605)
 texture = ExtResource("97_elx5l")
 
 [node name="Sun" type="Sprite2D" parent="BackDrop"]
@@ -1556,6 +1615,10 @@ rotation = 2.12854e-05
 [node name="CheckFlag3" parent="CheckPoint" instance=ExtResource("99_vjxur")]
 position = Vector2(17907, -62)
 
+[node name="CheckFlag4" parent="CheckPoint" instance=ExtResource("99_vjxur")]
+position = Vector2(27704, -60)
+rotation = 2.12854e-05
+
 [node name="Door" parent="." instance=ExtResource("100_6fp3d")]
 position = Vector2(6328.99, -323.135)
 
@@ -1566,19 +1629,6 @@ position = Vector2(6333, -122)
 rotation = 2.12854e-05
 
 [node name="ThreeHitter" type="Node" parent="."]
-
-[node name="ThreeHitter2" parent="ThreeHitter" instance=ExtResource("102_wbskb")]
-position = Vector2(4992, -563)
-rotation = 2.12854e-05
-
-[node name="ThreeHitter" parent="ThreeHitter" instance=ExtResource("102_wbskb")]
-position = Vector2(5739, -327)
-
-[node name="ThreeHitter3" parent="ThreeHitter" instance=ExtResource("102_wbskb")]
-position = Vector2(6093, -93)
-
-[node name="ThreeHitter4" parent="ThreeHitter" instance=ExtResource("102_wbskb")]
-position = Vector2(7957, -330)
 
 [node name="ThreeHitter5" parent="ThreeHitter" instance=ExtResource("102_wbskb")]
 position = Vector2(6794, -333)
@@ -1595,27 +1645,54 @@ position = Vector2(11844, -620)
 [node name="ThreeHitter9" parent="ThreeHitter" instance=ExtResource("102_wbskb")]
 position = Vector2(12285, -567)
 
-[node name="ThreeHitter10" parent="ThreeHitter" instance=ExtResource("102_wbskb")]
-position = Vector2(12913, -63)
-
 [node name="Spawner" type="Node" parent="."]
 
 [node name="ByteASpawner" parent="Spawner" instance=ExtResource("103_0k21k")]
-position = Vector2(1777, -399)
+position = Vector2(1992, -769)
 
 [node name="ByteSpawnerA" parent="Spawner" instance=ExtResource("103_0k21k")]
 position = Vector2(9240, -894)
 rotation = 2.12854e-05
 
 [node name="ByteSpawnerA2" parent="Spawner" instance=ExtResource("103_0k21k")]
-position = Vector2(13400, -1029)
+position = Vector2(13048, -1133)
 
 [node name="ByteSpawnerA3" parent="Spawner" instance=ExtResource("103_0k21k")]
-position = Vector2(19055, -185)
+position = Vector2(19146, -420)
 rotation = 2.12854e-05
 
 [node name="BigSpawn" parent="Spawner" instance=ExtResource("105_1jfro")]
 position = Vector2(3126, -533)
+rotation = 2.12854e-05
+
+[node name="BigSpawn2" parent="Spawner" instance=ExtResource("105_1jfro")]
+position = Vector2(4927, -619)
+
+[node name="BigSpawn3" parent="Spawner" instance=ExtResource("105_1jfro")]
+position = Vector2(5446, -345)
+
+[node name="BigSpawn4" parent="Spawner" instance=ExtResource("105_1jfro")]
+position = Vector2(5650, -165)
+
+[node name="BigSpawn5" parent="Spawner" instance=ExtResource("105_1jfro")]
+position = Vector2(11621, -473)
+
+[node name="BigSpawn6" parent="Spawner" instance=ExtResource("105_1jfro")]
+position = Vector2(7572, -401)
+
+[node name="MiniBoss" parent="Spawner" instance=ExtResource("106_614e6")]
+position = Vector2(15552, -684)
+
+[node name="BigSpawn7" parent="Spawner" instance=ExtResource("105_1jfro")]
+position = Vector2(13492, -160)
+rotation = 2.12854e-05
+
+[node name="ByteSpawnerA4" parent="Spawner" instance=ExtResource("103_0k21k")]
+position = Vector2(23029, -489)
+rotation = 2.12854e-05
+
+[node name="ByteSpawnerA5" parent="Spawner" instance=ExtResource("103_0k21k")]
+position = Vector2(26052, -863)
 rotation = 2.12854e-05
 
 [node name="MiniBoss" type="Node" parent="."]
@@ -1650,4 +1727,32 @@ rotation = 2.12854e-05
 
 [node name="GameManager" parent="." instance=ExtResource("106_jtjrs")]
 
+[node name="Platform" parent="." instance=ExtResource("104_25ut1")]
+position = Vector2(18275, -2.38899)
+script = ExtResource("108_051rt")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Platform"]
+unique_name_in_owner = true
+libraries = {
+"": SubResource("AnimationLibrary_wcxm6")
+}
+
+[node name="Area2D" type="Area2D" parent="Platform"]
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Platform/Area2D"]
+position = Vector2(-7.16553, -12.8991)
+shape = SubResource("RectangleShape2D_pqwp7")
+
+[node name="DropPlat" parent="." instance=ExtResource("95_ljrgr")]
+position = Vector2(1445, -219.031)
+
+[node name="Timer" type="Timer" parent="."]
+
+[node name="Boss" parent="." instance=ExtResource("111_nlqx5")]
+position = Vector2(29298, -124.624)
+
+[node name="End" parent="." instance=ExtResource("112_gj76c")]
+position = Vector2(29662, -66.6314)
+
 [connection signal="joystick_input" from="Buttons/HBoxContainer/Joystick" to="Hero" method="_on_joystick_joystick_input"]
+[connection signal="body_entered" from="Platform/Area2D" to="Platform" method="_on_area_2d_body_entered"]

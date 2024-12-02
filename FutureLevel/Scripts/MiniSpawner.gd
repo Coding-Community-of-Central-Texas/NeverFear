@@ -5,23 +5,32 @@ extends Node2D
 func _on_body_entered(body):
 	if body.is_in_group("player"):
 		timer.start()
-		print("spawning")
 
 func _on_body_exited(body):
 	if body.is_in_group("player"):
 		timer.stop()
-		print("stopted spawning")
 
-
-
-func _on_timer_timeout() -> void:
+func spawn_bosses():
 	const DROID  = preload("res://Scenes/DriodLegacy.tscn")
 	const BYTE = preload("res://Scenes/OneHit.tscn")
 	var new_byte = BYTE.instantiate()
 	var new_droid = DROID.instantiate()
 	%PathFollow2D.progress_ratio = randf()
 	new_droid.position = %PathFollow2D.position
-	pass
 	new_byte.position = %PathFollow2D.position
-	add_child(new_byte) 
+	add_child(new_byte)
 	add_child(new_droid)
+
+
+func _on_timer_timeout() -> void:
+	spawn_bosses()
+	spawn_bosses()
+	spawn_bosses()
+	spawn_bosses()
+	spawn_bosses()
+	spawn_bosses()
+	spawn_bosses()
+	spawn_bosses()
+	spawn_bosses()
+	spawn_bosses()
+	spawn_bosses()

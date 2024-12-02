@@ -1,5 +1,7 @@
 extends CharacterBody2D
 
+signal kill
+
 var health = 70.0
 var knockback_strength = 500.0
 var knockback_duration = 0.7
@@ -51,6 +53,7 @@ func take_damage():
 	knockback_timer = knockback_duration
 	
 	if health == 0.0:
+		emit_signal("kill")
 		_die()
 
 func _die():
@@ -94,3 +97,7 @@ func pursue_player():
 		var direction_to_player = (Global.player.global_position - global_position).normalized()
 		velocity = direction_to_player * move_speed
 		look_at(Global.player.global_position) 
+
+
+func _on_kill() -> void:
+	GameManager._on_kill()

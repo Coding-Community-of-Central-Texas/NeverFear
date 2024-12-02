@@ -1,4 +1,4 @@
-[gd_scene load_steps=180 format=3 uid="uid://c8sbp2d4k2aou"]
+[gd_scene load_steps=181 format=3 uid="uid://c8sbp2d4k2aou"]
 
 [ext_resource type="Script" path="res://Scripts/HypercoreGauntlet.gd" id="1_dl73x"]
 [ext_resource type="Script" path="res://addons/gaea/renderers/2D/tilemap_gaea_renderer.gd" id="2_bqeif"]
@@ -87,6 +87,7 @@
 [ext_resource type="PackedScene" uid="uid://bsltfx5uw5yvq" path="res://Scenes/Survivor.tscn" id="84_7tc6j"]
 [ext_resource type="Script" path="res://addons/gaea/others/chunk_loader_2d.gd" id="85_07p6e"]
 [ext_resource type="PackedScene" uid="uid://cijayc3peexw" path="res://GameManager.tscn" id="87_esuwa"]
+[ext_resource type="PackedScene" uid="uid://dyissvogocr44" path="res://addons/joystick/joystick.tscn" id="88_705ml"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_w27gi"]
 noise_type = 4
@@ -702,7 +703,7 @@ layer_0/tile_data = PackedInt32Array(0, 6, 0, 65536, 6, 0, 131072, 6, 0, 196608,
 position = Vector2(484, 408)
 
 [node name="Camera2D" type="Camera2D" parent="Survivor"]
-zoom = Vector2(2, 2)
+zoom = Vector2(1.5, 1.5)
 
 [node name="ChunkLoader2D" type="Node2D" parent="." node_paths=PackedStringArray("generator", "actor")]
 script = ExtResource("85_07p6e")
@@ -711,3 +712,12 @@ actor = NodePath("../Survivor")
 loading_radius = Vector2i(3, 3)
 
 [node name="GameManager" parent="." instance=ExtResource("87_esuwa")]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Joystick" parent="CanvasLayer" instance=ExtResource("88_705ml")]
+position = Vector2(453, 497)
+scale = Vector2(0.757576, 0.80303)
+
+[connection signal="joystick_input" from="CanvasLayer/Joystick" to="Survivor" method="_on_joystick_joystick_input"]
+[connection signal="joystick_released" from="CanvasLayer/Joystick" to="Survivor" method="_on_joystick_joystick_released"]

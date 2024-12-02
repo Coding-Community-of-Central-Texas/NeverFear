@@ -1,5 +1,7 @@
 extends CharacterBody2D
 
+signal kill
+
 var health = 15.0
 var knockback_strength = 320.0
 var knockback_duration = 0.1
@@ -53,3 +55,7 @@ func _die():
 	new_Cash.global_position = global_position
 	get_tree().current_scene.call_deferred("add_child", new_Cash)
 	queue_free()
+
+
+func _on_kill() -> void:
+	GameManager._on_kill()

@@ -1,10 +1,11 @@
-[gd_scene load_steps=31 format=3 uid="uid://bsltfx5uw5yvq"]
+[gd_scene load_steps=32 format=3 uid="uid://bsltfx5uw5yvq"]
 
-[ext_resource type="Script" path="res://Scripts/HeroSurvival.gd" id="1_73rgd"]
+[ext_resource type="Script" path="res://Scripts/SurvivorScript.gd" id="1_dqedt"]
 [ext_resource type="Texture2D" uid="uid://050tdjf5b57n" path="res://assets/3 Cyborg/Cyborg_death.png" id="2_cknjt"]
 [ext_resource type="Texture2D" uid="uid://mw6jnqwrtdvx" path="res://assets/3 Cyborg/Cyborg_idle.png" id="2_tdahw"]
 [ext_resource type="Texture2D" uid="uid://xqornd2ewtdu" path="res://assets/3 Cyborg/Cyborg_hurt.png" id="3_6b4fo"]
 [ext_resource type="Texture2D" uid="uid://bo7sscl6biwig" path="res://assets/Guns&Bullets/Run1.png" id="3_iuu8g"]
+[ext_resource type="PackedScene" uid="uid://v1wqgbnfesbp" path="res://Scenes/HealthBar.tscn" id="6_pjeyg"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_k5wwv"]
 atlas = ExtResource("2_cknjt")
@@ -157,6 +158,45 @@ animations = [{
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_l21ft"]
 
+[sub_resource type="Animation" id="Animation_i8mf6"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:sprite_frames")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [SubResource("SpriteFrames_38a1o")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:animation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"idle"]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
 [sub_resource type="Animation" id="Animation_234nm"]
 resource_name = "idle"
 loop_mode = 1
@@ -195,45 +235,6 @@ tracks/2/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
 "values": [0, 1, 2, 3]
-}
-
-[sub_resource type="Animation" id="Animation_i8mf6"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:sprite_frames")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [SubResource("SpriteFrames_38a1o")]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:animation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [&"idle"]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath(".:frame")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [0]
 }
 
 [sub_resource type="Animation" id="Animation_pqmon"]
@@ -284,10 +285,11 @@ _data = {
 }
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_xqfdh"]
-radius = 13.3417
+radius = 15.0333
 
 [node name="Survivor" type="CharacterBody2D"]
-script = ExtResource("1_73rgd")
+scale = Vector2(1.5, 1.5)
+script = ExtResource("1_dqedt")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_38a1o")
@@ -318,3 +320,9 @@ libraries = {
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-5, 9)
 shape = SubResource("CircleShape2D_xqfdh")
+
+[node name="HealthBar" parent="." instance=ExtResource("6_pjeyg")]
+offset_left = -27.3333
+offset_top = -17.3333
+offset_right = 17.6667
+offset_bottom = -13.3333

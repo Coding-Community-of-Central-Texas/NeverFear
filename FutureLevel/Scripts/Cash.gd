@@ -1,5 +1,7 @@
 extends Area2D
 
+signal add_cash
+
 const GRAVITY = 180
 const MAX_FALL_SPEED = 250.0# Maximum falling speed
 
@@ -30,17 +32,17 @@ func _on_ready():
 	randomize_power_up()
 
 func randomize_power_up():
-	#var power_up_count = PowerUpType.FIRE_RATE + 1
+	var power_up_count = PowerUpType.FIRE_RATE + 1
 	
-	power_up_type = randi()
+	power_up_type = randi() % power_up_count
 	# Randomize power-up value based on type
 	match power_up_type:
 		PowerUpType.SPEED:
-			power_up_value = randi_range(30, 60)  # Random speed boost
+			power_up_value = randi_range(15, 19)  # Random speed boost
 		PowerUpType.HEALTH:
-			power_up_value = randi_range(10, 25)  # Random health boost
+			power_up_value = randi_range(5, 10)  # Random health boost
 		PowerUpType.FIRE_RATE:
-			power_up_value = randi_range(1, 5) / 100.0  # Random fire rate reduction
+			power_up_value = randi_range(1, 2) / 100.0  # Random fire rate reduction
 	print("Randomized power-up type:", power_up_type)
 	print("Power-up value:", power_up_value)
 
@@ -59,6 +61,7 @@ func _on_body_entered(body):
 		if audio_stream_player_2d.stream != null:
 			audio_stream_player_2d.play()
 		visible = false
+		emit_signal("add_cash")
 		apply_power_up()
 
 func apply_power_up():
@@ -86,3 +89,8 @@ func check_if_stats_boosted(original_speed, original_health, original_fire_rate)
 
 func _on_audio_stream_player_2d_finished() -> void:
 	queue_free()
+
+
+func _on_add_cash() -> void:
+	GameManager._on_add_cash(10000)
+	

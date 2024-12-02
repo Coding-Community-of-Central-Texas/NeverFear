@@ -41,9 +41,7 @@ func take_damage():
 		return
 	health -= 15.0
 	health_bar.health = health
-	if not animated_sprite_2d.is_playing():
-		animated_sprite_2d.play("hurt")
-		return
+	%AnimationPlayer.play("hurt")
 	if health <= 0.0:
 		_die()
 
@@ -115,10 +113,8 @@ func handle_jumping(delta: float) -> void:
 		velocity.y *= 0.5
 
 func handle_movement(_delta: float) -> void:
-	var direction := Input.get_axis("move_left", "move_right")
-	
-	if direction:
-		velocity.x = direction * SPEED
+	if direction.x != 0:  # Use joystick's input direction
+		velocity.x = direction.x * SPEED
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 
@@ -167,5 +163,5 @@ func _on_game_over():
 	get_tree().change_scene_to_file.call_deferred("res://Scenes/GameOver.tscn")
 
 
-func _on_joystick_joystick_input(strength, dir, delta) -> void:
+func _on_joystick_joystick_input(_strength, dir, _delta) -> void:
 		direction = dir

@@ -44,3 +44,5 @@ collide_with_areas = true
 target_position = Vector2(40, 0)
 collision_mask = 5
 collide_with_areas = true
+
+[connection signal="kill" from="." to="." method="_on_kill"]

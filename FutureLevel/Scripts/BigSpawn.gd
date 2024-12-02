@@ -27,3 +27,8 @@ func _on_body_entered(body):
 		
 		 # Position the character at the Area2D's location (or adjust as needed)
 		character_instance.position = position
+
+
+func _on_body_exited(body) -> void:
+	if body.is_in_group("player"):
+		queue_free()

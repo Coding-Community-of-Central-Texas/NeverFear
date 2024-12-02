@@ -2,14 +2,16 @@
 
 [ext_resource type="Script" path="res://Scripts/BigSpawn.gd" id="1_gdgou"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_qi6tf"]
-radius = 324.002
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_20hbk"]
+a = Vector2(-1295, -608)
+b = Vector2(-1314, 804)
 
 [node name="BigSpawn" type="Area2D"]
 collision_layer = 0
 script = ExtResource("1_gdgou")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CircleShape2D_qi6tf")
+shape = SubResource("SegmentShape2D_20hbk")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]
