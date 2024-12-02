@@ -29,7 +29,7 @@ window/stretch/aspect="expand"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/BulletUpHell/plugin.cfg", "res://addons/gaea/plugin.cfg")
+enabled=PackedStringArray("res://addons/BulletUpHell/plugin.cfg", "res://addons/gaea/plugin.cfg", "res://addons/joystick/plugin.cfg")
 
 [global_group]
 

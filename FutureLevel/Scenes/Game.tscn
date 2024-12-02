@@ -1,6 +1,5 @@
 [gd_scene load_steps=190 format=3 uid="uid://vmdnus7gyna4"]
 
-[ext_resource type="Script" path="res://Scripts/Game.gd" id="1_p524l"]
 [ext_resource type="Texture2D" uid="uid://knkdhrpitjcv" path="res://assets/1 Tiles/Tileset.png" id="2_n46nu"]
 [ext_resource type="Texture2D" uid="uid://c72vebtk3dx07" path="res://assets/1 Tiles/IndustrialTile_09.png" id="3_a8d4p"]
 [ext_resource type="Texture2D" uid="uid://dsonqdwulsrtx" path="res://assets/city 2/8.png" id="3_m70pm"]
@@ -104,6 +103,7 @@
 [ext_resource type="PackedScene" uid="uid://bq8ujsbmayllg" path="res://Scenes/ThreeHitter.tscn" id="104_hhql7"]
 [ext_resource type="PackedScene" uid="uid://2e2ccqhb4ij6" path="res://Scenes/CheckFlag.tscn" id="105_h2jhe"]
 [ext_resource type="PackedScene" uid="uid://dr5l1ix6ofil2" path="res://Scenes/Platform.tscn" id="105_j05l8"]
+[ext_resource type="PackedScene" uid="uid://d2u5kjqvm0jcd" path="res://Scenes/BigSpawn.tscn" id="106_cggh8"]
 [ext_resource type="PackedScene" uid="uid://cyik2prp6rqk4" path="res://Scenes/LifeCounter.tscn" id="106_qtfr3"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_s7fvl"]
@@ -1221,7 +1221,6 @@ distance = -15.8755
 
 [node name="Game" type="Node2D"]
 rotation = 2.12854e-05
-script = ExtResource("1_p524l")
 
 [node name="TileMap" type="TileMap" parent="."]
 position = Vector2(0, -2.38419e-07)
@@ -1408,7 +1407,6 @@ collision_layer = 9
 [node name="Music" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("96_jc42q")
 volume_db = -12.126
-autoplay = true
 
 [node name="Buttons" type="CanvasLayer" parent="."]
 
@@ -1498,7 +1496,6 @@ rotation = 2.12854e-05
 position = Vector2(17907, -62)
 
 [node name="Timer" type="Timer" parent="."]
-autostart = true
 
 [node name="Door" parent="." instance=ExtResource("102_k7r2y")]
 position = Vector2(6328.99, -323.135)
@@ -1546,7 +1543,6 @@ position = Vector2(12913, -63)
 
 [node name="ByteASpawner" parent="Spawner" instance=ExtResource("102_0vqt1")]
 position = Vector2(1674, -673)
-collision_layer = 0
 
 [node name="ByteSpawnerA" parent="Spawner" instance=ExtResource("102_0vqt1")]
 position = Vector2(9240, -894)
@@ -1584,3 +1580,9 @@ rotation = 2.12854e-05
 [node name="Platform7" parent="MiniBoss" instance=ExtResource("105_j05l8")]
 position = Vector2(15694, -409)
 rotation = 2.12854e-05
+
+[node name="BigSpawn" parent="." instance=ExtResource("106_cggh8")]
+position = Vector2(3022.99, -515.064)
+
+[node name="ByteSpawnerA" parent="." instance=ExtResource("102_0vqt1")]
+position = Vector2(19055, -185.406)

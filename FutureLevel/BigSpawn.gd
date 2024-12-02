@@ -13,7 +13,7 @@ enum Big {
 }
 
 
-func _on_body_entered(body: Node2D) -> void:
+func _on_body_entered(body):
 	if body.is_in_group("player"):  # Ensure the body is part of the player group
 		var character_to_spawn: PackedScene
 		if randi() % 2 == 0:  # Randomly select between ROBBIE and TANK
@@ -27,3 +27,4 @@ func _on_body_entered(body: Node2D) -> void:
 				
 		 # Position the character at the Area2D's location (or adjust as needed)
 		character_instance.position = position
+		

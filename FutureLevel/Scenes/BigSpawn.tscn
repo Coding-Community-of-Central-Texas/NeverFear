@@ -6,6 +6,7 @@
 radius = 324.002
 
 [node name="BigSpawn" type="Area2D"]
+collision_layer = 0
 script = ExtResource("1_gdgou")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

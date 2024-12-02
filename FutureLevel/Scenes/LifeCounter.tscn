@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://cyik2prp6rqk4"]
+[gd_scene load_steps=3 format=3 uid="uid://cyik2prp6rqk4"]
 
 [ext_resource type="Script" path="res://Scripts/CheckpointCounter.gd" id="1_5wshh"]
+[ext_resource type="FontFile" uid="uid://ckid4fla6wirc" path="res://assets/etc/Starzoom-Shavian.ttf" id="1_7r4q6"]
 
 [node name="LifeCounter" type="Label"]
 modulate = Color(1, 0, 0, 1)
@@ -9,4 +10,5 @@ offset_right = 37.0
 offset_bottom = 31.0
 scale = Vector2(2.76, 1.48)
 size_flags_horizontal = 0
+theme_override_fonts/font = ExtResource("1_7r4q6")
 script = ExtResource("1_5wshh")
