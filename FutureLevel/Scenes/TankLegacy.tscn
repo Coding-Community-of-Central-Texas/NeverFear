@@ -8,6 +8,8 @@
 size = Vector2(38, 53.5)
 
 [node name="TankLegacy" type="CharacterBody2D" groups=["enemy"]]
+collision_layer = 4
+collision_mask = 5
 script = ExtResource("1_qq3r5")
 
 [node name="Tank" parent="." instance=ExtResource("2_8kpeu")]

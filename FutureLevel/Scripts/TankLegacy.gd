@@ -27,6 +27,10 @@ var starting_position = Vector2.ZERO
 func _ready():
 	%Tank.play_move()
 	starting_position = global_position
+	if velocity.x > 0:
+		%Tank.flip_h = false
+	elif velocity.x < 0: 
+		%Tank.flip_h = true
 
 func _physics_process(_delta):
 	if not is_on_floor():

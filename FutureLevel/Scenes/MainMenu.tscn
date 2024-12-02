@@ -1,13 +1,15 @@
-[gd_scene load_steps=7 format=3 uid="uid://b8aq7pak842g0"]
+[gd_scene load_steps=8 format=3 uid="uid://b8aq7pak842g0"]
 
 [ext_resource type="Script" path="res://Scenes/MainMenu.gd" id="1_ole10"]
 [ext_resource type="Texture2D" uid="uid://bcypd57pmrt63" path="res://assets/Background/Hero.svg" id="2_fschk"]
-[ext_resource type="Texture2D" uid="uid://b3vqpr3ruc5p3" path="res://assets/Background/Finalmenu.png" id="3_syyym"]
+[ext_resource type="Texture2D" uid="uid://dhit27os2eis3" path="res://assets/Background/FinalMenu1.svg" id="3_v1tbm"]
 [ext_resource type="FontFile" uid="uid://ckid4fla6wirc" path="res://assets/etc/Starzoom-Shavian.ttf" id="4_5gcgg"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_b5rdu"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_qpki2"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_b2lpd"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nmumq"]
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -22,139 +24,136 @@ script = ExtResource("1_ole10")
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="TextureRect" type="TextureRect" parent="CanvasLayer"]
+z_index = -1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("2_fschk")
+expand_mode = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer"]
+[node name="MenuBox" type="TextureRect" parent="CanvasLayer"]
 anchors_preset = -1
-anchor_top = 0.14
-anchor_right = 1.0
-anchor_bottom = 0.878
-offset_top = -90.72
-offset_right = 272.0
-offset_bottom = 855.056
-
-[node name="MenuBox" type="TextureRect" parent="CanvasLayer/VBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 4
-texture = ExtResource("3_syyym")
-
-[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/VBoxContainer/MenuBox"]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.3
-anchor_top = 0.322
-anchor_right = 0.704
-anchor_bottom = 0.4
-offset_left = -0.770203
-offset_top = -0.190247
-offset_right = -0.820801
-offset_bottom = -0.230103
+anchor_left = 0.359
+anchor_top = 0.34
+anchor_right = 0.621
+anchor_bottom = 0.775
+offset_left = -52.568
+offset_top = -83.32
+offset_right = 51.6079
+offset_bottom = 82.8
 grow_horizontal = 2
 grow_vertical = 2
-size_flags_horizontal = 4
-metadata/_edit_use_anchors_ = true
+size_flags_vertical = 4
+texture = ExtResource("3_v1tbm")
+expand_mode = 1
 
-[node name="LegacyProtocol" type="TouchScreenButton" parent="CanvasLayer/VBoxContainer/MenuBox/HBoxContainer"]
-z_index = 1
-position = Vector2(309.57, 68.6623)
-scale = Vector2(-36.7783, 7.97885)
-shape = SubResource("RectangleShape2D_b5rdu")
-shape_centered = false
-
-[node name="Label" type="Label" parent="CanvasLayer/VBoxContainer/MenuBox"]
+[node name="Story" type="Label" parent="CanvasLayer/MenuBox"]
 z_index = 1
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.276
-anchor_top = 0.328
-anchor_right = 0.726
-anchor_bottom = 0.437
-offset_left = 0.976013
-offset_top = 10.928
-offset_right = -119.824
-offset_bottom = -76.288
+anchor_left = 0.238
+anchor_top = 0.325
+anchor_right = 0.768
+anchor_bottom = 0.401
+offset_left = 0.372009
+offset_top = -0.600006
+offset_right = 100.312
+offset_bottom = 4.96799
 grow_horizontal = 2
 grow_vertical = 2
-scale = Vector2(1.28834, 2.27671)
+scale = Vector2(0.679998, 1)
 size_flags_horizontal = 4
 theme_override_colors/font_color = Color(0.75, 0, 0.0124998, 1)
 theme_override_colors/font_shadow_color = Color(0.0279, 0.133145, 0.93, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/line_spacing = 0
-theme_override_constants/shadow_offset_x = 5
-theme_override_constants/shadow_offset_y = 5
-theme_override_constants/outline_size = 4
-theme_override_constants/shadow_outline_size = 5
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 2
+theme_override_constants/shadow_outline_size = 3
 theme_override_fonts/font = ExtResource("4_5gcgg")
-theme_override_font_sizes/font_size = 52
+theme_override_font_sizes/font_size = 30
 text = "LEGACY PROTOCOL"
 horizontal_alignment = 1
 
-[node name="Label2" type="Label" parent="CanvasLayer/VBoxContainer/MenuBox"]
+[node name="LegacyProtocol" type="TouchScreenButton" parent="CanvasLayer/MenuBox/Story"]
+z_index = 1
+position = Vector2(158.248, 15.05)
+rotation = 3.14159
+scale = Vector2(-13.2542, -1.73885)
+shape = SubResource("RectangleShape2D_b5rdu")
+shape_centered = false
+
+[node name="Survival" type="Label" parent="CanvasLayer/MenuBox"]
 z_index = 1
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.232
-anchor_top = 0.447
-anchor_right = 0.803
-anchor_bottom = 0.532
-offset_left = 0.631989
-offset_top = 0.471985
-offset_right = -181.472
-offset_bottom = -67.568
+anchor_top = 0.444
+anchor_right = 0.76
+anchor_bottom = 0.531
+offset_left = 0.807999
+offset_top = 4.08798
+offset_right = 192.44
+offset_bottom = -3.888
 grow_horizontal = 2
 grow_vertical = 2
-scale = Vector2(1.28834, 2.27671)
+scale = Vector2(0.528342, 0.857337)
 size_flags_horizontal = 4
 theme_override_colors/font_color = Color(0.75, 0, 0.0124998, 1)
 theme_override_colors/font_shadow_color = Color(0.0279, 0.133145, 0.93, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/line_spacing = 0
-theme_override_constants/shadow_offset_x = 5
-theme_override_constants/shadow_offset_y = 5
-theme_override_constants/outline_size = 4
-theme_override_constants/shadow_outline_size = 5
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 2
+theme_override_constants/shadow_outline_size = 3
 theme_override_fonts/font = ExtResource("4_5gcgg")
-theme_override_font_sizes/font_size = 52
+theme_override_font_sizes/font_size = 30
 text = "HYPERCORE GAUNTLET"
+horizontal_alignment = 1
 
-[node name="HypercoreGauntlet" type="TouchScreenButton" parent="CanvasLayer/VBoxContainer/MenuBox/Label2"]
-position = Vector2(296.506, 25.9146)
-scale = Vector2(-30.5104, -2.57211)
-shape = SubResource("RectangleShape2D_qpki2")
+[node name="HypercoreGauntlet" type="TouchScreenButton" parent="CanvasLayer/MenuBox/Survival"]
+position = Vector2(206.306, 14.316)
+scale = Vector2(19.3653, 1.31549)
+shape = SubResource("RectangleShape2D_b2lpd")
 
-[node name="Label3" type="Label" parent="CanvasLayer/VBoxContainer/MenuBox"]
+[node name="PerformanceSettings" type="Label" parent="CanvasLayer/MenuBox"]
 z_index = 1
 layout_mode = 1
-anchors_preset = 13
+anchors_preset = 7
 anchor_left = 0.5
+anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -380.0
-offset_top = 798.0
-offset_right = 238.0
-offset_bottom = 798.0
+offset_left = -87.0
+offset_top = -190.0
+offset_right = 275.0
+offset_bottom = -159.0
 grow_horizontal = 2
-grow_vertical = 2
-scale = Vector2(1.28834, 2.27671)
+grow_vertical = 0
+scale = Vector2(0.48834, 0.796713)
 size_flags_horizontal = 4
 theme_override_colors/font_color = Color(0.75, 0, 0.0124998, 1)
 theme_override_colors/font_shadow_color = Color(0.0279, 0.133145, 0.93, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/line_spacing = 0
-theme_override_constants/shadow_offset_x = 5
-theme_override_constants/shadow_offset_y = 5
-theme_override_constants/outline_size = 4
-theme_override_constants/shadow_outline_size = 5
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 2
+theme_override_constants/shadow_outline_size = 3
 theme_override_fonts/font = ExtResource("4_5gcgg")
-theme_override_font_sizes/font_size = 52
+theme_override_font_sizes/font_size = 30
 text = "PERFORMANCE INDEX"
+metadata/_edit_use_anchors_ = true
 
-[connection signal="pressed" from="CanvasLayer/VBoxContainer/MenuBox/HBoxContainer/LegacyProtocol" to="." method="_on_touch_screen_button_pressed"]
-[connection signal="pressed" from="CanvasLayer/VBoxContainer/MenuBox/HBoxContainer/LegacyProtocol" to="." method="_on_legacy_protocol_pressed"]
-[connection signal="pressed" from="CanvasLayer/VBoxContainer/MenuBox/Label2/HypercoreGauntlet" to="." method="_on_hypercore_gauntlet_pressed"]
+[node name="Performance" type="TouchScreenButton" parent="CanvasLayer/MenuBox/PerformanceSettings"]
+position = Vector2(178.155, 15.0619)
+scale = Vector2(16.8087, 2.00413)
+shape = SubResource("RectangleShape2D_nmumq")
+
+[connection signal="pressed" from="CanvasLayer/MenuBox/Story/LegacyProtocol" to="." method="_on_touch_screen_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/MenuBox/Story/LegacyProtocol" to="." method="_on_legacy_protocol_pressed"]
+[connection signal="pressed" from="CanvasLayer/MenuBox/Survival/HypercoreGauntlet" to="." method="_on_hypercore_gauntlet_pressed"]
