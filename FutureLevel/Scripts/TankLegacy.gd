@@ -25,7 +25,7 @@ var starting_position = Vector2.ZERO
 
 
 func _ready():
-	%Tank.play_walk()
+	%Tank.play_move()
 	starting_position = global_position
 
 func _physics_process(_delta):
@@ -72,6 +72,12 @@ func back_and_forth_movement():
 		direction = -direction  # Reverse direction to avoid falling off the platform
 	elif is_near_wall():
 		direction = -direction
+
+func handle_flip():
+	if velocity.x > 0:
+		%Tank.flip_h = false
+	elif velocity.x < 0: 
+		%Tank.flip_h = true
 
 func is_near_wall() -> bool:
 	if direction == 1:

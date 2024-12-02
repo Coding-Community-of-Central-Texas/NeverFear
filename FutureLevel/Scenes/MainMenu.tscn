@@ -14,6 +14,7 @@ layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_bottom = 186.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_ole10")
@@ -154,6 +155,6 @@ theme_override_fonts/font = ExtResource("4_5gcgg")
 theme_override_font_sizes/font_size = 52
 text = "PERFORMANCE INDEX"
 
-[connection signal="pressed" from="CanvasLayer/VBoxContainer/MenuBox/HBoxContainer/LegacyProtocol" to="." method="_on_legacy_protocol_pressed"]
 [connection signal="pressed" from="CanvasLayer/VBoxContainer/MenuBox/HBoxContainer/LegacyProtocol" to="." method="_on_touch_screen_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/VBoxContainer/MenuBox/HBoxContainer/LegacyProtocol" to="." method="_on_legacy_protocol_pressed"]
 [connection signal="pressed" from="CanvasLayer/VBoxContainer/MenuBox/Label2/HypercoreGauntlet" to="." method="_on_hypercore_gauntlet_pressed"]

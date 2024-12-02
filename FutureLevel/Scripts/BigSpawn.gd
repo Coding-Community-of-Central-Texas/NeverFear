@@ -23,8 +23,7 @@ func _on_body_entered(body):
 				
 		# Instance the selected character and add it to the scene
 		var character_instance = character_to_spawn.instantiate()
-		add_child(character_instance)
-				
+		get_tree().current_scene.call_deferred("add_child", character_instance)
+		
 		 # Position the character at the Area2D's location (or adjust as needed)
 		character_instance.position = position
-		
