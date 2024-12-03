@@ -4,11 +4,15 @@ extends CharacterBody2D
 # Player properties
 var health: float = 100.0
 const MAX_HEALTH: float = 100.0
-var SPEED: float = 600.0
 var direction: Vector2 = Vector2.ZERO
 const VELOCITY = 1000
+@export var SPEED: float = 400.0
+@export var acceleration: float = 800.0
+@export var deceleration: float = 600.0
+
 
 # Animation setup
+@onready var animation_player: AnimationPlayer = %AnimationPlayer
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 @onready var health_bar: ProgressBar = %HealthBar
 @onready var timer_2: Timer = $Timer2
@@ -48,10 +52,27 @@ func _on_game_over():
 	get_tree().change_scene_to_file.call_deferred("res://Scenes/GameOver.tscn")
 
 func _physics_process(delta: float) -> void:
-	handle_movement(delta)
 	handle_player_animation()
-	move_and_slide()
+	var target_velocity = Vector2.ZERO
 
+	if Input.is_action_pressed("move_up"):
+		target_velocity.y -= 1
+	if Input.is_action_pressed("move_down"):
+		target_velocity.y += 1
+	if Input.is_action_pressed("move_left"):
+		target_velocity.x -= 1
+	if Input.is_action_pressed("move_right"):
+		target_velocity.x += 1
+
+	if target_velocity.length() > 0:
+		target_velocity = target_velocity.normalized() * SPEED
+
+	# Smoothly accelerate or decelerate
+	velocity = velocity.move_toward(target_velocity, acceleration * delta)
+	move_and_slide()
+	
+	#flip_sprite()
+	
 	const DAMAGE_RATE = 10.0
 	var overlapping_mobs = %HurtBox.get_overlapping_bodies()
 	health_bar.value = health
@@ -63,36 +84,29 @@ func _physics_process(delta: float) -> void:
 		_die()
 		
 
-# Handle movement based on joystick input
-func handle_movement(delta: float) -> void:
-	velocity = direction * SPEED
 
-# Handle animations based on movement direction
+
+# Function to handle the player animation based on movement
 func handle_player_animation() -> void:
-	if direction == Vector2.ZERO:
-		animated_sprite_2d.play("idle")
+	# If the player is moving, play the "run" animation
+	if velocity.length() > 0:
+		if !animation_player.is_playing() or animation_player.current_animation != "walk":
+			animation_player.play("walk")
+	# If the player is not moving, play the "idle" animation
 	else:
-		if abs(direction.x) > abs(direction.y):  # Horizontal movement
-			if direction.x > 0:
-				animated_sprite_2d.play("run")
-			else:
-				animated_sprite_2d.play("run")
-		else:  # Vertical movement
-			
-			if direction.y > 0:
-				animated_sprite_2d.play("run")
-			else:
-				animated_sprite_2d.play("run")
+		if !animation_player.is_playing() or animation_player.current_animation != "idle":
+			animation_player.play("idle")
+
+#Function to flip the sprite depending on the direction
+func flip_sprite() -> void:
+	if velocity.x < 0:
+		# Flip the sprite when moving left (negative X velocity)
+		#animated_sprite_2d.scale.x = -1
+	#elif velocity.x > 0:
+		# Unflip the sprite when moving right (positive X velocity)
+		#animated_sprite_2d.scale.x = 1
 
 
-func _on_joystick_joystick_input(strength, dir, delta) -> void:
-	direction = dir * strength
-	
-
-
-
-func _on_joystick_joystick_released() -> void:
-	direction = Vector2.ZERO
 
 @onready var timer: Timer = $Timer
 

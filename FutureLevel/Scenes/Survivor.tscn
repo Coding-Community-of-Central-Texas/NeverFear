@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://bsltfx5uw5yvq"]
+[gd_scene load_steps=35 format=3 uid="uid://bsltfx5uw5yvq"]
 
 [ext_resource type="Script" path="res://Scripts/SurvivorScript.gd" id="1_dqedt"]
 [ext_resource type="Texture2D" uid="uid://050tdjf5b57n" path="res://assets/3 Cyborg/Cyborg_death.png" id="2_cknjt"]
@@ -153,12 +153,10 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_ud6or")
 }],
-"loop": true,
+"loop": false,
 "name": &"run",
 "speed": 10.0
 }]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_l21ft"]
 
 [sub_resource type="Animation" id="Animation_i8mf6"]
 length = 0.001
@@ -201,7 +199,6 @@ tracks/2/keys = {
 
 [sub_resource type="Animation" id="Animation_234nm"]
 resource_name = "idle"
-loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -307,28 +304,12 @@ script = ExtResource("1_dqedt")
 sprite_frames = SubResource("SpriteFrames_38a1o")
 animation = &"idle"
 
-[node name="ColorRect" type="ColorRect" parent="AnimatedSprite2D"]
-modulate = Color(1, 1, 1, 0.701961)
-self_modulate = Color(0.43134, 0.43134, 0.43134, 1)
-show_behind_parent = true
-material = SubResource("ShaderMaterial_l21ft")
-anchors_preset = -1
-anchor_left = 0.187
-anchor_top = 0.958
-anchor_right = 0.542
-anchor_bottom = 1.021
-offset_left = -23.976
-offset_top = -23.984
-offset_right = -24.016
-offset_bottom = -24.008
-color = Color(0.470075, 0.470076, 0.470076, 1)
-metadata/_edit_use_anchors_ = true
-
 [node name="AnimationPlayer" type="AnimationPlayer" parent="AnimatedSprite2D"]
 unique_name_in_owner = true
 libraries = {
 "": SubResource("AnimationLibrary_2oiib")
 }
+autoplay = "idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-5, 9)

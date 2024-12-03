@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://inuql1xkjab1"]
+
+[ext_resource type="PackedScene" uid="uid://bwdutfim7oah3" path="res://Scenes/Control.tscn" id="1_adoib"]
+
+[node name="Joypad" type="Node2D"]
+
+[node name="Node2D" parent="." instance=ExtResource("1_adoib")]

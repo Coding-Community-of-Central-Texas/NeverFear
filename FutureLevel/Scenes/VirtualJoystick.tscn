@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://xdwuqxesth0y"]
+
+[ext_resource type="Script" path="res://addons/virtual_joystick/scripts/virtual_joystick.gd" id="1_virsx"]
+
+[node name="VirtualJoystick" type="Node2D"]
+script = ExtResource("1_virsx")
