@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://cr16l7y5x5fys"]
+[gd_scene load_steps=7 format=3 uid="uid://cr16l7y5x5fys"]
 
 [ext_resource type="Texture2D" uid="uid://bcypd57pmrt63" path="res://assets/Background/Hero.svg" id="1_ykjtl"]
-[ext_resource type="Script" path="res://Scenes/WinScreen.gd" id="2_1sl55"]
+[ext_resource type="Script" path="res://Scripts/WinScreen.gd" id="2_1sl55"]
 [ext_resource type="FontFile" uid="uid://ckid4fla6wirc" path="res://assets/etc/Starzoom-Shavian.ttf" id="3_c5ymd"]
+[ext_resource type="Texture2D" uid="uid://c0yymphvu7cv3" path="res://assets/Background/NeverFearIcon.svg" id="4_a6ix8"]
 [ext_resource type="PackedScene" uid="uid://cijayc3peexw" path="res://GameManager.tscn" id="4_gd2gp"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_2oy4v"]
@@ -35,18 +36,52 @@ text = "YOU WIN!!"
 
 [node name="RunTime" type="Label" parent="."]
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 23.0
+offset_left = 269.0
+offset_top = 393.0
+offset_right = 309.0
+offset_bottom = 444.0
+scale = Vector2(15.397, 1.63822)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 3
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("3_c5ymd")
+theme_override_font_sizes/font_size = 50
 
-[node name="TouchScreenButton" type="TouchScreenButton" parent="."]
-modulate = Color(0.0925002, 0.00999999, 1, 1)
-self_modulate = Color(0, 0.0166669, 1, 1)
+[node name="StatsLink" type="TouchScreenButton" parent="."]
 z_index = 2
-position = Vector2(549, 655)
-scale = Vector2(19.2674, -6.5027)
+position = Vector2(808, 559)
+rotation = -3.14812
+scale = Vector2(0.467397, -0.222699)
+texture_normal = ExtResource("4_a6ix8")
 shape = SubResource("CircleShape2D_2oy4v")
+
+[node name="Label" type="Label" parent="StatsLink"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 999.408
+offset_top = 76.1128
+offset_right = 781.408
+offset_bottom = -734.887
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(-1.22498, 4.04752)
+theme_override_colors/font_color = Color(0.170785, 0.3185, 1, 1)
+theme_override_colors/font_shadow_color = Color(0.893368, 0, 0.0997127, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 3
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("3_c5ymd")
+theme_override_font_sizes/font_size = 50
+text = "TAP TO VIEW ALL YOUR STATS
+
+
+PLEASE LEAVE A REVIEW!"
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(568, 497)
 
 [node name="GameManager" parent="." instance=ExtResource("4_gd2gp")]
+
+[connection signal="pressed" from="StatsLink" to="." method="_on_stats_link_pressed"]

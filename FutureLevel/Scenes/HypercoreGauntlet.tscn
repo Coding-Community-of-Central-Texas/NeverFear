@@ -706,10 +706,6 @@ layer_0/tile_data = PackedInt32Array(0, 6, 0, 65536, 6, 0, 131072, 6, 0, 196608,
 [node name="Survivor" parent="." instance=ExtResource("84_7tc6j")]
 position = Vector2(484, 408)
 
-[node name="Camera2D" type="Camera2D" parent="Survivor"]
-zoom = Vector2(3.2, 1)
-limit_smoothed = true
-
 [node name="ChunkLoader2D" type="Node2D" parent="." node_paths=PackedStringArray("generator", "actor")]
 script = ExtResource("85_07p6e")
 generator = NodePath("../NoiseGenerator")
@@ -720,31 +716,28 @@ loading_radius = Vector2i(3, 3)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="Joystick" parent="CanvasLayer" instance=ExtResource("88_705ml")]
-self_modulate = Color(1, 1, 1, 0.97)
-position = Vector2(476, 423)
-rotation = 0.652521
-scale = Vector2(2.35555, 3.68324)
-inner_opacity = 0.783
-outer_opacity = 0.97
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer"]
+offset_right = 40.0
+offset_bottom = 40.0
 
-[node name="TouchScreenButton" type="TouchScreenButton" parent="CanvasLayer"]
+[node name="Pause" type="TouchScreenButton" parent="CanvasLayer/HBoxContainer"]
+process_mode = 3
 self_modulate = Color(0.1608, 0.355993, 0.67, 1)
-position = Vector2(304, 84)
+position = Vector2(6, 4)
 scale = Vector2(0.959993, 0.960001)
 texture_normal = ExtResource("44_lc7im")
 shape = SubResource("CircleShape2D_2wyy2")
 
-[node name="Label" type="Label" parent="CanvasLayer/TouchScreenButton"]
+[node name="pausebutton" type="Label" parent="CanvasLayer/HBoxContainer/Pause"]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -10.7917
-offset_top = -10.7368
-offset_right = 17.2083
-offset_bottom = 7.26315
+offset_left = -10.7916
+offset_top = -11.8333
+offset_right = 17.2084
+offset_bottom = 6.16666
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(0.80198, 1.40811)
@@ -754,7 +747,26 @@ theme_override_constants/outline_size = 3
 theme_override_fonts/font = ExtResource("89_0wxma")
 theme_override_font_sizes/font_size = 17
 text = "I I"
-metadata/_edit_use_anchors_ = true
 
-[connection signal="joystick_input" from="CanvasLayer/Joystick" to="Survivor" method="_on_joystick_joystick_input"]
-[connection signal="joystick_released" from="CanvasLayer/Joystick" to="Survivor" method="_on_joystick_joystick_released"]
+[node name="PanelContainer" type="PanelContainer" parent="CanvasLayer"]
+anchors_preset = -1
+anchor_right = 0.806
+anchor_bottom = 1.299
+offset_left = 100.0
+offset_top = 263.0
+offset_right = -60.5121
+offset_bottom = -82.752
+
+[node name="Joystick" parent="CanvasLayer/PanelContainer" instance=ExtResource("88_705ml")]
+unique_name_in_owner = true
+modulate = Color(1, 1, 1, 0.129412)
+self_modulate = Color(1, 1, 1, 0.97)
+position = Vector2(198.597, 111.08)
+rotation = -0.003139
+scale = Vector2(5.00509, 4.38794)
+inner_opacity = 0.783
+outer_opacity = 0.97
+
+[connection signal="pressed" from="CanvasLayer/HBoxContainer/Pause" to="." method="_on_pause_pressed"]
+[connection signal="joystick_input" from="CanvasLayer/PanelContainer/Joystick" to="Survivor" method="_on_joystick_joystick_input"]
+[connection signal="joystick_released" from="CanvasLayer/PanelContainer/Joystick" to="Survivor" method="_on_joystick_joystick_released"]

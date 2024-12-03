@@ -1,10 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://d1ly636rhenqx"]
+[gd_scene load_steps=8 format=3 uid="uid://d1ly636rhenqx"]
 
 [ext_resource type="Script" path="res://Scripts/Credits.gd" id="1_8kx13"]
 [ext_resource type="FontFile" uid="uid://ckid4fla6wirc" path="res://assets/etc/Starzoom-Shavian.ttf" id="2_ca8ye"]
 [ext_resource type="Texture2D" uid="uid://bv7fu6os82paq" path="res://assets/buttonsprites/UIbutton.png" id="3_4j024"]
 [ext_resource type="Texture2D" uid="uid://c37oonhsihxgf" path="res://assets/buttonsprites/UIButton2.png" id="4_o2d0a"]
 [ext_resource type="Texture2D" uid="uid://dcmt4rtiisn55" path="res://assets/Background/1.png" id="5_31scm"]
+[ext_resource type="PackedScene" uid="uid://cijayc3peexw" path="res://GameManager.tscn" id="6_kygu5"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_31v2l"]
 size = Vector2(600, 300)
@@ -88,5 +89,7 @@ SoundSFX:  Luis Zuno
 Licences: MIT and Creative Commons Zero
 "
 autowrap_mode = 3
+
+[node name="GameManager" parent="." instance=ExtResource("6_kygu5")]
 
 [connection signal="pressed" from="CanvasLayer/Home/HomeButton" to="." method="_on_home_button_pressed"]

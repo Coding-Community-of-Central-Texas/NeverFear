@@ -2,14 +2,15 @@
 
 [ext_resource type="Script" path="res://Scripts/MiniSpawner.gd" id="1_gqxth"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_gassc"]
-radius = 1233.0
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_w3xj1"]
+a = Vector2(-987, -713)
+b = Vector2(-970, 668)
 
 [sub_resource type="Curve2D" id="Curve2D_0jxci"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, -1349, -159, 0, 0, 0, 0, -798.176, -422.468, 0, 0, 0, 0, -492, -197, 0, 0, 0, 0, -32.2193, -431.694, 0, 0, 0, 0, 625, -210, 0, 0, 0, 0, 1039.75, -431.694, 0, 0, 0, 0, 1330, -241, 0, 0, 0, 0, -1349, -159)
+"points": PackedVector2Array(0, 0, 0, 0, 344.268, -639.803, 0, 0, 0, 0, -487.528, -631.601, 0, 0, 0, 0, -556.148, 610.899, 0, 0, 0, 0, 339.631, 602.698, 0, 0, 0, 0, 339.631, -584.444, 0, 0, 0, 0, -629.406, -693.111)
 }
-point_count = 8
+point_count = 6
 
 [node name="MiniBoss" type="Area2D"]
 collision_layer = 0
@@ -20,7 +21,7 @@ wait_time = 1.03
 one_shot = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CircleShape2D_gassc")
+shape = SubResource("SegmentShape2D_w3xj1")
 
 [node name="Path2D" type="Path2D" parent="."]
 position = Vector2(105.745, -3.90314)
@@ -29,8 +30,8 @@ curve = SubResource("Curve2D_0jxci")
 
 [node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
 unique_name_in_owner = true
-position = Vector2(-1349, -159)
-rotation = -0.446151
+position = Vector2(344.268, -639.803)
+rotation = 3.13173
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_body_exited"]

@@ -7,9 +7,9 @@ radius = 1233.0
 
 [sub_resource type="Curve2D" id="Curve2D_0jxci"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, -1349, -159, 0, 0, 0, 0, -798.176, -422.468, 0, 0, 0, 0, -492, -197, 0, 0, 0, 0, -32.2193, -431.694, 0, 0, 0, 0, 625, -210, 0, 0, 0, 0, 1039.75, -431.694, 0, 0, 0, 0, 1330, -241, 0, 0, 0, 0, -1349, -159)
+"points": PackedVector2Array(0, 0, 0, 0, -1064.31, 772.876, 0, 0, 0, 0, -878.852, -1028.34, 0, 0, 0, 0, 740.229, -995.535, 0, 0, 0, 0, 958.146, 721.617, 0, 0, 0, 0, -958.6, 765.7)
 }
-point_count = 8
+point_count = 5
 
 [node name="ByteSpawnerA" type="Area2D"]
 collision_layer = 0
@@ -28,8 +28,8 @@ curve = SubResource("Curve2D_0jxci")
 
 [node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
 unique_name_in_owner = true
-position = Vector2(-1349, -159)
-rotation = -0.446151
+position = Vector2(-1064.31, 772.876)
+rotation = -1.46819
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_body_exited"]

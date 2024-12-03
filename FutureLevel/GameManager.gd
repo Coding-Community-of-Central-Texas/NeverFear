@@ -76,3 +76,19 @@ func format_time(ms: int) -> String:
 
 func _on_add_cash(amount: int) -> void:
 	total_cash += amount
+
+@export var pause_scene: PackedScene = preload("res://Scenes/PauseMenu.tscn")
+var pause_instance: Node = null
+
+func toggle_pause():
+	if get_tree().paused:
+		# Unpause
+		get_tree().paused = false
+		if pause_instance and pause_instance.is_inside_tree():
+			pause_instance.queue_free()
+			pause_instance = null
+		else:
+			get_tree().paused = true
+			if not pause_instance:
+				pause_instance = pause_scene.instantiate()
+				get_tree().current_scene.add_child(pause_instance)

@@ -2,8 +2,8 @@ extends Area2D
 
 signal add_cash
 
-const GRAVITY = 180
-const MAX_FALL_SPEED = 250.0# Maximum falling speed
+var GRAVITY = 180
+var MAX_FALL_SPEED = 250.0# Maximum falling speed
 
 
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
@@ -29,6 +29,11 @@ func _on_ready():
 	animated_sprite_2d.play("spin")
 	ground_ray_cast_2d.enabled = true
 	audio_stream_player_2d.stream = pickup_song
+	
+	if get_tree().current_scene.name == "HypercoreGauntlet":
+		GRAVITY = 0  # Disable gravity in this scene
+		MAX_FALL_SPEED = 0
+
 	randomize_power_up()
 
 func randomize_power_up():

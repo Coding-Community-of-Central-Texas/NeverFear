@@ -17,3 +17,7 @@ func _process(delta):
 
 #func completion_time():
 	#var elapsed_time = Time.get_ticks_msec() - start_time
+
+
+func _on_stats_link_pressed() -> void:
+	get_tree().change_scene_to_file("res://Scenes/PerformanceIndex.tscn")

@@ -1,6 +1,6 @@
 extends Node
 
-var player = "res://Scenes/Hero.tscn"
+var player = ["res://Scenes/Hero.tscn", "res://Scenes/Survivor.tscn"]
 var legacy = "res://Scenes/LegacyProtocol.tscn"
 
 var lives: int = 3  

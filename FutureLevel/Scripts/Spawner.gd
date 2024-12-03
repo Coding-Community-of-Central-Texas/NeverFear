@@ -5,16 +5,28 @@ extends Node2D
 func _on_body_entered(body):
 	if body.is_in_group("player"):
 		timer.start()
-		print("spawning")
 
 func _on_body_exited(body):
 	if body.is_in_group("player"):
 		timer.stop()
-		print("stopted spawning")
 
 
 
 func _on_timer_timeout() -> void:
+	spawn_wave()
+	spawn_wave()
+	spawn_wave()
+	spawn_wave()
+	spawn_wave()
+	spawn_wave()
+	spawn_wave()
+	spawn_wave()
+	spawn_wave()
+	spawn_wave()
+	spawn_wave()
+	spawn_wave()
+
+func spawn_wave():
 	const DROID  = preload("res://Scenes/DriodLegacy.tscn")
 	const BYTE = preload("res://Scenes/OneHit.tscn")
 	var new_byte = BYTE.instantiate()

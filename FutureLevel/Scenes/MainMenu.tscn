@@ -64,13 +64,13 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -12.0
-offset_top = 189.0
-offset_right = 218.0
-offset_bottom = -208.0
+offset_left = 122.0
+offset_top = 201.0
+offset_right = 418.0
+offset_bottom = -196.0
 grow_horizontal = 2
 grow_vertical = 2
-scale = Vector2(0.688342, 1.17733)
+scale = Vector2(0.240752, 0.657328)
 size_flags_horizontal = 4
 theme_override_colors/font_color = Color(0.75, 0, 0.0124998, 1)
 theme_override_colors/font_shadow_color = Color(0.0279, 0.133145, 0.93, 1)
@@ -81,14 +81,14 @@ theme_override_constants/shadow_offset_y = 2
 theme_override_constants/outline_size = 2
 theme_override_constants/shadow_outline_size = 3
 theme_override_fonts/font = ExtResource("4_5gcgg")
-theme_override_font_sizes/font_size = 28
+theme_override_font_sizes/font_size = 50
 text = "HYPERCORE GAUNTLET"
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="HypercoreGauntlet" type="TouchScreenButton" parent="MenuBox/Survival"]
-position = Vector2(322.514, 23.7826)
-scale = Vector2(19.3653, 1.31549)
+position = Vector2(336.446, 24.341)
+scale = Vector2(33.4877, 2.59339)
 shape = SubResource("RectangleShape2D_b2lpd")
 
 [node name="PerformanceSettings" type="Label" parent="MenuBox"]
@@ -97,13 +97,13 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 112.0
-offset_top = 248.0
-offset_right = 70.0003
-offset_bottom = -140.0
+offset_left = 121.0
+offset_top = 239.0
+offset_right = 309.0
+offset_bottom = -107.0
 grow_horizontal = 2
 grow_vertical = 2
-scale = Vector2(0.48834, 0.796713)
+scale = Vector2(0.271805, 0.657829)
 size_flags_horizontal = 4
 theme_override_colors/font_color = Color(0.75, 0, 0.0124998, 1)
 theme_override_colors/font_shadow_color = Color(0.0279, 0.133145, 0.93, 1)
@@ -114,15 +114,14 @@ theme_override_constants/shadow_offset_y = 2
 theme_override_constants/outline_size = 2
 theme_override_constants/shadow_outline_size = 3
 theme_override_fonts/font = ExtResource("4_5gcgg")
-theme_override_font_sizes/font_size = 30
+theme_override_font_sizes/font_size = 50
 text = "PERFORMANCE INDEX"
 horizontal_alignment = 1
 vertical_alignment = 1
-autowrap_mode = 3
 
 [node name="Performance" type="TouchScreenButton" parent="MenuBox/PerformanceSettings"]
-position = Vector2(184.298, 28.8686)
-scale = Vector2(16.8087, 2.00413)
+position = Vector2(294.329, 47.1247)
+scale = Vector2(-31.6279, 2.87191)
 shape = SubResource("RectangleShape2D_nmumq")
 
 [node name="Credits" type="Label" parent="MenuBox"]
@@ -157,12 +156,13 @@ shape = SubResource("CapsuleShape2D_o5ej8")
 [node name="Story" type="Label" parent="MenuBox"]
 z_index = 1
 layout_mode = 2
-offset_left = 81.0
-offset_top = 147.0
-offset_right = 331.0
-offset_bottom = 178.0
+offset_left = 125.0
+offset_top = 148.0
+offset_right = 625.0
+offset_bottom = 199.0
 grow_horizontal = 2
 grow_vertical = 2
+scale = Vector2(0.32, 0.6)
 size_flags_horizontal = 4
 theme_override_colors/font_color = Color(0.75, 0, 0.0124998, 1)
 theme_override_colors/font_shadow_color = Color(0.0279, 0.133145, 0.93, 1)
@@ -173,7 +173,7 @@ theme_override_constants/shadow_offset_y = 2
 theme_override_constants/outline_size = 2
 theme_override_constants/shadow_outline_size = 3
 theme_override_fonts/font = ExtResource("4_5gcgg")
-theme_override_font_sizes/font_size = 25
+theme_override_font_sizes/font_size = 50
 text = "LEGACY PROTOCOL"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -181,9 +181,9 @@ justification_flags = 35
 
 [node name="LegacyProtocol" type="TouchScreenButton" parent="MenuBox/Story"]
 z_index = 1
-position = Vector2(121, 15)
+position = Vector2(250, 23.3333)
 rotation = 3.14159
-scale = Vector2(-13.2542, -1.73885)
+scale = Vector2(-25.6251, 2.89808)
 shape = SubResource("RectangleShape2D_b5rdu")
 shape_centered = false
 

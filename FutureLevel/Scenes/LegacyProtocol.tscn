@@ -1671,6 +1671,9 @@ position = Vector2(6328.99, -323.135)
 position = Vector2(6333, -122)
 rotation = 2.12854e-05
 
+[node name="Screen2" parent="Screens" instance=ExtResource("101_ghgg4")]
+position = Vector2(393, -267)
+
 [node name="ThreeHitter" type="Node" parent="."]
 
 [node name="ThreeHitter5" parent="ThreeHitter" instance=ExtResource("102_wbskb")]
@@ -1690,20 +1693,15 @@ position = Vector2(12285, -567)
 
 [node name="Spawner" type="Node" parent="."]
 
-[node name="ByteASpawner" parent="Spawner" instance=ExtResource("103_0k21k")]
-position = Vector2(1699, -343)
-rotation = 3.13797
-scale = Vector2(-0.708995, -0.560549)
-
 [node name="ByteSpawnerA" parent="Spawner" instance=ExtResource("103_0k21k")]
-position = Vector2(9240, -894)
+position = Vector2(8821, -323)
 rotation = 2.12854e-05
 
 [node name="ByteSpawnerA2" parent="Spawner" instance=ExtResource("103_0k21k")]
 position = Vector2(13048, -1133)
 
 [node name="ByteSpawnerA3" parent="Spawner" instance=ExtResource("103_0k21k")]
-position = Vector2(19146, -420)
+position = Vector2(19482, 7)
 rotation = 2.12854e-05
 
 [node name="BigSpawn" parent="Spawner" instance=ExtResource("105_1jfro")]
@@ -1725,23 +1723,21 @@ position = Vector2(11621, -473)
 [node name="BigSpawn6" parent="Spawner" instance=ExtResource("105_1jfro")]
 position = Vector2(7572, -401)
 
-[node name="MiniBoss" parent="Spawner" instance=ExtResource("106_614e6")]
-position = Vector2(15552, -684)
-
 [node name="BigSpawn7" parent="Spawner" instance=ExtResource("105_1jfro")]
 position = Vector2(13492, -160)
 rotation = 2.12854e-05
 
 [node name="ByteSpawnerA4" parent="Spawner" instance=ExtResource("103_0k21k")]
-position = Vector2(23029, -489)
+position = Vector2(22682, -28)
 rotation = 2.12854e-05
 
 [node name="ByteSpawnerA5" parent="Spawner" instance=ExtResource("103_0k21k")]
-position = Vector2(26052, -863)
+position = Vector2(25648, -104)
 rotation = 2.12854e-05
 
-[node name="Screen" parent="Spawner" instance=ExtResource("101_ghgg4")]
-position = Vector2(393, -267)
+[node name="ByteSpawnerA6" parent="Spawner" instance=ExtResource("103_0k21k")]
+position = Vector2(2063, 430)
+rotation = 2.12854e-05
 
 [node name="MiniBoss" type="Node" parent="."]
 
@@ -1772,6 +1768,12 @@ rotation = 2.12854e-05
 [node name="Platform7" parent="MiniBoss" instance=ExtResource("104_25ut1")]
 position = Vector2(15694, -409)
 rotation = 2.12854e-05
+
+[node name="MiniBoss" parent="MiniBoss" instance=ExtResource("106_614e6")]
+position = Vector2(15552, -684)
+
+[node name="MiniBoss2" parent="MiniBoss" instance=ExtResource("106_614e6")]
+position = Vector2(16642, -618)
 
 [node name="GameManager" parent="." instance=ExtResource("106_jtjrs")]
 

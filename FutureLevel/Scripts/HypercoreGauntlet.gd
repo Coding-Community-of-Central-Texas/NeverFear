@@ -17,3 +17,8 @@ func level_failed():
 	manager.update_longest_survival(elapsed_time)
 	manager.save_data()
 	
+
+
+func _on_pause_pressed() -> void:
+	
+	get_tree().paused = true
