@@ -295,7 +295,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"hurt",
-"speed": 8.0
+"speed": 20.0
 }]
 
 [sub_resource type="Animation" id="Animation_x5wps"]
@@ -339,6 +339,7 @@ tracks/2/keys = {
 
 [sub_resource type="Animation" id="Animation_pgjst"]
 resource_name = "hurt"
+length = 0.3
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -346,7 +347,7 @@ tracks/0/path = NodePath(".:sprite_frames")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.833333),
+"times": PackedFloat32Array(0, 0.3),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [SubResource("SpriteFrames_100ny"), SubResource("SpriteFrames_100ny")]
@@ -370,7 +371,7 @@ tracks/2/path = NodePath(".:frame")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.433333),
+"times": PackedFloat32Array(0, 0.166667),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [0, 1]

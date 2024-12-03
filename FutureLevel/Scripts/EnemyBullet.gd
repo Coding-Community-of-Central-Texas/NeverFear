@@ -6,6 +6,7 @@ var velocity = Vector2.ZERO
 
 func _ready():
 	%AnimatedSprite2D.play("shoot")
+	%AnimatedSprite2D.flip_h
 
 func _physics_process(delta):
 	const RANGE = 678.0
@@ -25,7 +26,7 @@ func _physics_process(delta):
 func _on_body_entered(body: CharacterBody2D) -> void:
 	if body.is_in_group("player") and body.has_method("take_damage"):
 		body.take_damage()
-	%AnimatedSprite2D.play("impact")
+		%AnimatedSprite2D.play("impact")
 	queue_free()
 
 func set_direction(direction: Vector2):

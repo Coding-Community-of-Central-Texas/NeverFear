@@ -1,7 +1,7 @@
 extends Node
 
 signal kill
-signal add_cash
+signal cash
 
 # Stats
 var total_kills: int = 0
@@ -59,7 +59,7 @@ func load_data():
 			if data.error == OK:
 				var parsed_data = data.result
 				total_kills = parsed_data.get("total_kills", 0)
-				quickest_time = parsed_data.get("quickest_time", INF)
+				quickest_time = parsed_data.get("quickest_time", 99999999)
 				longest_survival = parsed_data.get("longest_survival", 0)
 				total_cash = parsed_data.get("total_cash", 0)
 
@@ -76,4 +76,3 @@ func format_time(ms: int) -> String:
 
 func _on_add_cash(amount: int) -> void:
 	total_cash += amount
-	print(+10,000)

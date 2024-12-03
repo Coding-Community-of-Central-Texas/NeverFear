@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://d1ly636rhenqx"]
 
-[ext_resource type="Script" path="res://Credits.gd" id="1_8kx13"]
+[ext_resource type="Script" path="res://Scripts/Credits.gd" id="1_8kx13"]
 [ext_resource type="FontFile" uid="uid://ckid4fla6wirc" path="res://assets/etc/Starzoom-Shavian.ttf" id="2_ca8ye"]
 [ext_resource type="Texture2D" uid="uid://bv7fu6os82paq" path="res://assets/buttonsprites/UIbutton.png" id="3_4j024"]
 [ext_resource type="Texture2D" uid="uid://c37oonhsihxgf" path="res://assets/buttonsprites/UIButton2.png" id="4_o2d0a"]

@@ -1,10 +1,47 @@
-[gd_scene load_steps=4 format=3 uid="uid://c62nhdlvjd5tk"]
+[gd_scene load_steps=10 format=3 uid="uid://c62nhdlvjd5tk"]
 
 [ext_resource type="Script" path="res://Scripts/Bullet.gd" id="1_x7n78"]
 [ext_resource type="Texture2D" uid="uid://1imxhw66404d" path="res://assets/Guns&Bullets/01.png" id="2_qpgtf"]
+[ext_resource type="Texture2D" uid="uid://cf1o7yknimjyd" path="res://assets/Guns&Bullets/enemybullet.png" id="3_2mvqh"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_c5l0h"]
 radius = 6.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_grfer"]
+atlas = ExtResource("3_2mvqh")
+region = Rect2(512, 384, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q3jk6"]
+atlas = ExtResource("3_2mvqh")
+region = Rect2(544, 384, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_05glu"]
+atlas = ExtResource("3_2mvqh")
+region = Rect2(576, 384, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_325t3"]
+atlas = ExtResource("3_2mvqh")
+region = Rect2(608, 384, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_gg28p"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_grfer")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q3jk6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_05glu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_325t3")
+}],
+"loop": false,
+"name": &"impact",
+"speed": 5.0
+}]
 
 [node name="Bullet" type="Area2D"]
 top_level = true
@@ -20,3 +57,11 @@ shape = SubResource("CircleShape2D_c5l0h")
 position = Vector2(-0.99998, -0.00635644)
 scale = Vector2(0.605062, 0.535031)
 texture = ExtResource("2_qpgtf")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+unique_name_in_owner = true
+visible = false
+sprite_frames = SubResource("SpriteFrames_gg28p")
+animation = &"impact"
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

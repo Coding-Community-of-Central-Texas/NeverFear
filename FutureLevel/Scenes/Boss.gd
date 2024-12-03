@@ -6,18 +6,25 @@ extends CharacterBody2D
 @onready var weak_point_4: Area2D = $WeakPoint4
 @onready var health_bar: ProgressBar = $CanvasLayer/HealthBar
 
-var health = 400
-
+var health = 4000
+const GRAVITY = 20000
+var direction: Vector2 = Vector2(0,0)
 
 func _ready() -> void:
-	%BossRobo.play("walk")
-
+	if direction <= Vector2(0,1):
+		%Robo.play_walk()
+	if direction >= Vector2(1,0):
+		%Robo.play_walk()
 	%AnimationPlayer.play("protect")
 
-func take_damage():
-	health -= 30
+func _process(delta: float) -> void:
+	move_and_slide()
+	move_local_x(6,0)
+	move_local_x(-6,0)
+
+func boss_take_damage():
+	health -= 100
 	%AnimationPlayer.play("hurt")
-	%BossRobo.play("Attack")
 	health_bar.health = health
 	if health <= 0:
 		die()
@@ -34,3 +41,7 @@ func die():
 	Engine.time_scale = 0.5
 	queue_free()
 	get_tree().change_scene_to_file("res://Scenes/WinScreen.tscn")
+
+
+func _on_weak_point_1_boss_take_damage() -> void:
+	boss_take_damage()

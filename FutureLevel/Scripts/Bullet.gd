@@ -1,11 +1,10 @@
 extends Area2D
 
+@onready var animated_sprite_2d: AnimatedSprite2D = %AnimatedSprite2D
+
 var travelled_distance = 0.0
 
 
-
-func _ready():
-	connect("body_entered", Callable(self,"_on_body_entered"))
 
 func _physics_process(delta):
 	const SPEED = 2000.0
@@ -21,4 +20,4 @@ func _physics_process(delta):
 func _on_body_entered(body: CharacterBody2D) -> void:
 	if body.is_in_group("enemy") and body.has_method("take_damage"):
 		body.take_damage()
-	visible = false
+	queue_free()

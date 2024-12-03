@@ -1,13 +1,40 @@
-[gd_scene load_steps=14 format=3 uid="uid://bykdf5tjggur6"]
+[gd_scene load_steps=13 format=3 uid="uid://bykdf5tjggur6"]
 
 [ext_resource type="PackedScene" uid="uid://dr3tcip76rdmv" path="res://Scenes/Robo.tscn" id="1_ck7ha"]
 [ext_resource type="Script" path="res://Scenes/Boss.gd" id="1_dudcf"]
-[ext_resource type="PackedScene" uid="uid://cxo3uqnx4k0b0" path="res://WeakPoint.tscn" id="2_o2omp"]
-[ext_resource type="PackedScene" uid="uid://v1wqgbnfesbp" path="res://Scenes/HealthBar.tscn" id="4_yi1o8"]
+[ext_resource type="PackedScene" uid="uid://cxo3uqnx4k0b0" path="res://Scenes/WeakPoint.tscn" id="2_o2omp"]
 [ext_resource type="PackedScene" uid="uid://c2txtdlp7v66l" path="res://Scenes/BasicGun.tscn" id="5_nm6p2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gkffk"]
 size = Vector2(112, 193)
+
+[sub_resource type="Animation" id="Animation_c7ras"]
+resource_name = "Activate2"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("WeakPoint2:collision_layer")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [4, 4]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("WeakPoint2:collision_mask")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [4, 4]
+}
 
 [sub_resource type="Animation" id="Animation_uny4i"]
 resource_name = "Activate3"
@@ -35,6 +62,77 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [4, 4]
+}
+
+[sub_resource type="Animation" id="Animation_qss28"]
+resource_name = "Activate4"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("WeakPoint4:collision_mask")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [64, 64]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("WeakPoint4:collision_layer")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [64, 64]
+}
+
+[sub_resource type="Animation" id="Animation_gx0ab"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.001),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:self_modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 0.95, 0.95, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_lupqy"]
+resource_name = "hurt"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.566667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 0.95, 0.95, 1), Color(1, 0.05, 0.05, 1)]
 }
 
 [sub_resource type="Animation" id="Animation_cwt1h"]
@@ -111,129 +209,6 @@ tracks/5/keys = {
 "update": 1,
 "values": [64, 64]
 }
-tracks/6/type = "value"
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/path = NodePath(".:collision_layer")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [0, 0]
-}
-tracks/7/type = "value"
-tracks/7/imported = false
-tracks/7/enabled = true
-tracks/7/path = NodePath(".:collision_mask")
-tracks/7/interp = 1
-tracks/7/loop_wrap = true
-tracks/7/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [1, 1]
-}
-
-[sub_resource type="Animation" id="Animation_gx0ab"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:visible")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0.001),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:self_modulate")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 0.95, 0.95, 1)]
-}
-
-[sub_resource type="Animation" id="Animation_qss28"]
-resource_name = "Activate4"
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("WeakPoint4:collision_mask")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [64, 64]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("WeakPoint4:collision_layer")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [64, 64]
-}
-
-[sub_resource type="Animation" id="Animation_c7ras"]
-resource_name = "Activate2"
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("WeakPoint2:collision_layer")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [4, 4]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("WeakPoint2:collision_mask")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [4, 4]
-}
-
-[sub_resource type="Animation" id="Animation_lupqy"]
-resource_name = "hurt"
-length = 0.6
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:self_modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.566667),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(1, 0.95, 0.95, 1), Color(1, 0.05, 0.05, 1)]
-}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_3npny"]
 _data = {
@@ -245,12 +220,12 @@ _data = {
 "protect": SubResource("Animation_cwt1h")
 }
 
-[node name="Boss" type="CharacterBody2D"]
+[node name="Boss" type="CharacterBody2D" groups=["enemy"]]
 self_modulate = Color(1, 0.95, 0.95, 1)
 collision_layer = 0
 script = ExtResource("1_dudcf")
 
-[node name="BossRobo" parent="." instance=ExtResource("1_ck7ha")]
+[node name="Robo" parent="." instance=ExtResource("1_ck7ha")]
 unique_name_in_owner = true
 position = Vector2(0, -1)
 
@@ -258,20 +233,20 @@ position = Vector2(0, -1)
 position = Vector2(-1, 1)
 shape = SubResource("RectangleShape2D_gkffk")
 
-[node name="WeakPoint1" parent="." instance=ExtResource("2_o2omp")]
+[node name="WeakPoint1" parent="." groups=["enemy"] instance=ExtResource("2_o2omp")]
 
-[node name="WeakPoint2" parent="." instance=ExtResource("2_o2omp")]
+[node name="WeakPoint2" parent="." groups=["enemy"] instance=ExtResource("2_o2omp")]
 position = Vector2(54, -21)
 rotation = 0.00136793
 collision_layer = 64
 collision_mask = 64
 
-[node name="WeakPoint3" parent="." instance=ExtResource("2_o2omp")]
+[node name="WeakPoint3" parent="." groups=["enemy"] instance=ExtResource("2_o2omp")]
 position = Vector2(-36, 64)
 collision_layer = 64
 collision_mask = 64
 
-[node name="WeakPoint4" parent="." instance=ExtResource("2_o2omp")]
+[node name="WeakPoint4" parent="." groups=["enemy"] instance=ExtResource("2_o2omp")]
 position = Vector2(36, 65)
 collision_layer = 64
 collision_mask = 64
@@ -281,19 +256,15 @@ unique_name_in_owner = true
 libraries = {
 "": SubResource("AnimationLibrary_3npny")
 }
-autoplay = "protect"
-
-[node name="HealthBar" parent="." instance=ExtResource("4_yi1o8")]
-offset_left = -65.0
-offset_top = 99.0
-offset_right = 225.0
-offset_bottom = 126.0
-scale = Vector2(0.441169, -0.341361)
-max_value = 400.0
-value = 400.0
 
 [node name="BasicGun" parent="." instance=ExtResource("5_nm6p2")]
 position = Vector2(-62, 9)
+rotation = 3.13644
+collision_mask = 32
 
 [node name="BasicGun2" parent="." instance=ExtResource("5_nm6p2")]
-position = Vector2(-68, -28)
+position = Vector2(-32, -46)
+rotation = 2.5366
+collision_mask = 32
+
+[connection signal="boss_take_damage" from="WeakPoint1" to="." method="_on_weak_point_1_boss_take_damage"]

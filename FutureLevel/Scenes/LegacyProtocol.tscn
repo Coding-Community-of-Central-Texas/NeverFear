@@ -1,4 +1,4 @@
-[gd_scene load_steps=201 format=3 uid="uid://vmdnus7gyna4"]
+[gd_scene load_steps=204 format=3 uid="uid://vmdnus7gyna4"]
 
 [ext_resource type="Script" path="res://Scripts/LegacyProtocol.gd" id="1_aq02g"]
 [ext_resource type="Texture2D" uid="uid://knkdhrpitjcv" path="res://assets/1 Tiles/Tileset.png" id="2_6w7k1"]
@@ -1226,6 +1226,21 @@ sources/82 = SubResource("TileSetAtlasSource_w0onk")
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_nq6s1"]
 distance = -15.8755
 
+[sub_resource type="Animation" id="Animation_60q04"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(18275, -2.38899)]
+}
+
 [sub_resource type="Animation" id="Animation_36lx7"]
 resource_name = "move"
 length = 30.0
@@ -1243,7 +1258,16 @@ tracks/0/keys = {
 "values": [Vector2(18275, -2.38899), Vector2(27358, -2.58233), Vector2(27358, -2.58233)]
 }
 
-[sub_resource type="Animation" id="Animation_60q04"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_wcxm6"]
+_data = {
+"RESET": SubResource("Animation_60q04"),
+"move": SubResource("Animation_36lx7")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pqwp7"]
+size = Vector2(16.983, 30.2007)
+
+[sub_resource type="Animation" id="Animation_655y2"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -1255,17 +1279,31 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(18275, -2.38899)]
+"values": [Vector2(29306, -124.624)]
 }
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_wcxm6"]
+[sub_resource type="Animation" id="Animation_s5xfs"]
+resource_name = "move"
+length = 5.0
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(30409, -124.647), Vector2(28593, -124.609)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_vkgjy"]
 _data = {
-"RESET": SubResource("Animation_60q04"),
-"move": SubResource("Animation_36lx7")
+"RESET": SubResource("Animation_655y2"),
+"move": SubResource("Animation_s5xfs")
 }
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_pqwp7"]
-size = Vector2(16.983, 30.2007)
 
 [node name="LegacyProtocol" type="Node2D"]
 rotation = 2.12854e-05
@@ -1516,18 +1554,6 @@ collision_layer = 9
 
 [node name="Buttons" type="CanvasLayer" parent="."]
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Buttons"]
-anchors_preset = -1
-anchor_top = 0.574
-anchor_right = 0.316
-anchor_bottom = 1.0
-offset_top = 0.0480042
-offset_right = -0.0320129
-grow_vertical = 0
-
-[node name="Joystick" parent="Buttons/HBoxContainer" instance=ExtResource("93_u6o03")]
-position = Vector2(109, 111)
-
 [node name="Jump" type="HBoxContainer" parent="Buttons"]
 anchors_preset = -1
 anchor_left = 0.782
@@ -1545,18 +1571,35 @@ position = Vector2(108, 109)
 scale = Vector2(6.26548, 4.58)
 
 [node name="LifeCounter" parent="Buttons" instance=ExtResource("94_7l5pt")]
+modulate = Color(1, 1, 1, 1)
 offset_right = 123.0
 offset_bottom = 47.0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_colors/font_outline_color = Color(0.54, 0.0054, 0.0054, 1)
+theme_override_colors/font_color = Color(0.175928, 0.0987816, 1, 1)
+theme_override_colors/font_shadow_color = Color(0.823737, 0.0423293, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/line_spacing = 0
+theme_override_constants/shadow_offset_x = 1
+theme_override_constants/shadow_offset_y = 1
 theme_override_constants/outline_size = 2
+theme_override_constants/shadow_outline_size = 1
 
 [node name="Time" type="Label" parent="Buttons"]
-offset_left = 613.0
-offset_right = 653.0
+offset_left = 473.0
+offset_right = 513.0
 offset_bottom = 23.0
+scale = Vector2(4.76, 1.72)
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 script = ExtResource("96_32w4i")
+
+[node name="Money" type="Label" parent="Buttons"]
+offset_right = 40.0
+offset_bottom = 23.0
+scale = Vector2(3.4, 1.6)
+
+[node name="Joystick" parent="Buttons" instance=ExtResource("93_u6o03")]
+position = Vector2(127, 510)
+rotation = 0.0188619
+scale = Vector2(0.981498, 0.907444)
 
 [node name="Platforms" type="Node" parent="."]
 
@@ -1589,7 +1632,7 @@ texture = ExtResource("96_wwgqa")
 [node name="Sky" type="Sprite2D" parent="BackDrop"]
 modulate = Color(0.25, 0.7625, 1, 0.658824)
 z_index = -3
-position = Vector2(8497.12, -335.969)
+position = Vector2(8480, -329)
 rotation = 2.12854e-05
 scale = Vector2(30.8635, 4.86605)
 texture = ExtResource("97_elx5l")
@@ -1648,7 +1691,9 @@ position = Vector2(12285, -567)
 [node name="Spawner" type="Node" parent="."]
 
 [node name="ByteASpawner" parent="Spawner" instance=ExtResource("103_0k21k")]
-position = Vector2(1992, -769)
+position = Vector2(1699, -343)
+rotation = 3.13797
+scale = Vector2(-0.708995, -0.560549)
 
 [node name="ByteSpawnerA" parent="Spawner" instance=ExtResource("103_0k21k")]
 position = Vector2(9240, -894)
@@ -1694,6 +1739,9 @@ rotation = 2.12854e-05
 [node name="ByteSpawnerA5" parent="Spawner" instance=ExtResource("103_0k21k")]
 position = Vector2(26052, -863)
 rotation = 2.12854e-05
+
+[node name="Screen" parent="Spawner" instance=ExtResource("101_ghgg4")]
+position = Vector2(393, -267)
 
 [node name="MiniBoss" type="Node" parent="."]
 
@@ -1743,16 +1791,19 @@ libraries = {
 position = Vector2(-7.16553, -12.8991)
 shape = SubResource("RectangleShape2D_pqwp7")
 
-[node name="DropPlat" parent="." instance=ExtResource("95_ljrgr")]
-position = Vector2(1445, -219.031)
-
 [node name="Timer" type="Timer" parent="."]
 
 [node name="Boss" parent="." instance=ExtResource("111_nlqx5")]
-position = Vector2(29298, -124.624)
+position = Vector2(29306, -124.624)
+motion_mode = 1
+
+[node name="AnimationPlayer2" type="AnimationPlayer" parent="Boss"]
+libraries = {
+"": SubResource("AnimationLibrary_vkgjy")
+}
 
 [node name="End" parent="." instance=ExtResource("112_gj76c")]
-position = Vector2(29662, -66.6314)
+position = Vector2(30716, -63.6538)
 
-[connection signal="joystick_input" from="Buttons/HBoxContainer/Joystick" to="Hero" method="_on_joystick_joystick_input"]
+[connection signal="joystick_input" from="Buttons/Joystick" to="Hero" method="_on_joystick_joystick_input"]
 [connection signal="body_entered" from="Platform/Area2D" to="Platform" method="_on_area_2d_body_entered"]
