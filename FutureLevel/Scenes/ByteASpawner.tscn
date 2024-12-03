@@ -17,6 +17,7 @@ script = ExtResource("1_p0ixj")
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 1.615
+one_shot = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_gassc")
@@ -29,7 +30,7 @@ curve = SubResource("Curve2D_0jxci")
 [node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
 unique_name_in_owner = true
 position = Vector2(-1064.31, 772.876)
-rotation = -1.46819
+rotation = -1.4682
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_body_exited"]

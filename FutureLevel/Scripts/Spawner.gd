@@ -16,15 +16,7 @@ func _on_timer_timeout() -> void:
 	spawn_wave()
 	spawn_wave()
 	spawn_wave()
-	spawn_wave()
-	spawn_wave()
-	spawn_wave()
-	spawn_wave()
-	spawn_wave()
-	spawn_wave()
-	spawn_wave()
-	spawn_wave()
-	spawn_wave()
+
 
 func spawn_wave():
 	const DROID  = preload("res://Scenes/DriodLegacy.tscn")

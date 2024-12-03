@@ -20,5 +20,6 @@ func level_failed():
 
 
 func _on_pause_pressed() -> void:
-	
+	const PAUSE = preload("res://Scenes/PauseMenu.tscn")
+	var new_pauese = PAUSE.instantiate()
 	get_tree().paused = true

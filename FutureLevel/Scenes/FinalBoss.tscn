@@ -1,0 +1,38 @@
+[gd_scene load_steps=6 format=3 uid="uid://dcmrsrfl6ctr5"]
+
+[ext_resource type="Script" path="res://BossScript.gd" id="1_lc6rt"]
+[ext_resource type="PackedScene" uid="uid://dr3tcip76rdmv" path="res://Scenes/Robo.tscn" id="2_p1iq0"]
+[ext_resource type="PackedScene" uid="uid://c2txtdlp7v66l" path="res://Scenes/BasicGun.tscn" id="3_y2uyg"]
+[ext_resource type="PackedScene" uid="uid://v1wqgbnfesbp" path="res://Scenes/HealthBar.tscn" id="4_f425b"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_piomw"]
+size = Vector2(109.375, 177.778)
+
+[node name="FinalBoss" type="CharacterBody2D"]
+scale = Vector2(1.28, 1.44)
+collision_layer = 5
+script = ExtResource("1_lc6rt")
+AUTO_DIRECTION = 7
+
+[node name="BossRobo" parent="." instance=ExtResource("2_p1iq0")]
+unique_name_in_owner = true
+
+[node name="BasicGun" parent="." instance=ExtResource("3_y2uyg")]
+position = Vector2(-60, 11)
+rotation = 3.11916
+
+[node name="BasicGun2" parent="." instance=ExtResource("3_y2uyg")]
+position = Vector2(58, 12)
+rotation = 3.13625
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(2.34375, 9.72222)
+scale = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_piomw")
+
+[node name="HealthBar" parent="." instance=ExtResource("4_f425b")]
+unique_name_in_owner = true
+offset_left = -141.406
+offset_top = 115.278
+offset_right = 148.594
+offset_bottom = 142.278

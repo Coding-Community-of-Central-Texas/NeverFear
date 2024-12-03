@@ -43,6 +43,7 @@ scale = Vector2(14.0078, 2.72814)
 shape = SubResource("RectangleShape2D_iamjd")
 
 [node name="Restart" type="Label" parent="TextureRect"]
+layout_mode = 0
 offset_left = 430.0
 offset_top = 645.0
 offset_right = 470.0
@@ -62,6 +63,7 @@ scale = Vector2(12.0883, 2.71167)
 shape = SubResource("RectangleShape2D_5i2qq")
 
 [node name="Home" type="Label" parent="TextureRect"]
+layout_mode = 0
 offset_left = 430.0
 offset_top = 804.0
 offset_right = 470.0

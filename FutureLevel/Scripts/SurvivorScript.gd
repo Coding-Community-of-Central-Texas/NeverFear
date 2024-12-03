@@ -49,7 +49,8 @@ func _die():
 			audio_stream_player.play()
 
 func _on_game_over():
-	get_tree().change_scene_to_file.call_deferred("res://Scenes/GameOver.tscn")
+	Global.reset_game_state()
+	GameManager.toggle_pause()
 
 func _physics_process(delta: float) -> void:
 	handle_player_animation()
@@ -101,10 +102,10 @@ func handle_player_animation() -> void:
 func flip_sprite() -> void:
 	if velocity.x < 0:
 		# Flip the sprite when moving left (negative X velocity)
-		#animated_sprite_2d.scale.x = -1
-	#elif velocity.x > 0:
+		animated_sprite_2d.scale.x = -1
+	elif velocity.x > 0:
 		# Unflip the sprite when moving right (positive X velocity)
-		#animated_sprite_2d.scale.x = 1
+		animated_sprite_2d.scale.x = 1
 
 
 

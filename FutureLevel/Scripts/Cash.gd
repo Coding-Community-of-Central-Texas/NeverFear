@@ -33,6 +33,7 @@ func _on_ready():
 	if get_tree().current_scene.name == "HypercoreGauntlet":
 		GRAVITY = 0  # Disable gravity in this scene
 		MAX_FALL_SPEED = 0
+		ground_ray_cast_2d.enabled = false
 
 	randomize_power_up()
 
