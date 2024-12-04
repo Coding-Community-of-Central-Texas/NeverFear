@@ -51,6 +51,7 @@ script = ExtResource("1_8gd20")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 unique_name_in_owner = true
+rotation = -3.11775
 scale = Vector2(0.766667, 0.5)
 sprite_frames = SubResource("SpriteFrames_fbpsu")
 animation = &"shoot"

@@ -708,6 +708,10 @@ light_mask = 2
 visibility_layer = 2
 position = Vector2(581, 245)
 slide_on_ceiling = false
+SPEED = 400.0
+acceleration = 800.0
+deceleration = 600.0
+rate_of_fire = 0.15
 
 [node name="ChunkLoader2D" type="Node2D" parent="." node_paths=PackedStringArray("generator", "actor")]
 script = ExtResource("85_07p6e")

@@ -27,11 +27,7 @@ var starting_position = Vector2.ZERO
 
 func _ready():
 	%Tank.play_move()
-	starting_position = global_position
-	if velocity.x > 0:
-		%Tank.flip_h = false
-	elif velocity.x < 0: 
-		%Tank.flip_h = true
+
 
 func _physics_process(_delta):
 	if not is_on_floor():
@@ -46,6 +42,7 @@ func _physics_process(_delta):
 		else:
 			pursue_player()
 		move_and_slide()
+		handle_flip()
 
 
 func take_damage():
@@ -57,14 +54,16 @@ func take_damage():
 	knockback_timer = knockback_duration
 	
 	if health == 0.0:
-		emit_signal("kill")
 		_die()
 
 func _die():
+	emit_signal("kill")
+	%Tank.play_die()
 	
 	const BOOM = preload("res://Scenes/RobbieBoom.tscn")
 	var new_Boom = BOOM.instantiate()
 	new_Boom.global_position = global_position
+	new_Boom.visible = false
 	get_parent().add_child(new_Boom)
 	
 	const CASH = preload("res://Scenes/Cash.tscn")
@@ -84,9 +83,9 @@ func back_and_forth_movement():
 
 func handle_flip():
 	if velocity.x > 0:
-		%Tank.flip_h = false
+		%Tank.flip_h()
 	elif velocity.x < 0: 
-		%Tank.flip_h = true
+		%Tank.play_move()
 
 func is_near_wall() -> bool:
 	if direction == 1:

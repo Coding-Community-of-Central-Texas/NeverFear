@@ -1,5 +1,5 @@
 extends Node2D
-
+signal hurt
 func play_walk():
 	%AnimationPlayer.play("walk")
 

@@ -1,5 +1,5 @@
 extends CharacterBody2D
-
+signal input
 
 var health = 100.0
 const MAX_HEALTH = 100.0
@@ -165,3 +165,7 @@ func _on_game_over():
 
 func _on_joystick_joystick_input(_strength, dir, _delta) -> void:
 		direction = dir
+
+
+func _on_control_gui_input(event: InputEvent) -> void:
+	%TouchControls.use_input_actions()

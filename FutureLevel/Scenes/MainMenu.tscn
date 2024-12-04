@@ -192,5 +192,5 @@ shape_centered = false
 [connection signal="pressed" from="MenuBox/Survival/HypercoreGauntlet" to="." method="_on_hypercore_gauntlet_pressed"]
 [connection signal="pressed" from="MenuBox/PerformanceSettings/Performance" to="." method="_on_performance_pressed"]
 [connection signal="pressed" from="MenuBox/Credits/Credits" to="." method="_on_credits_pressed"]
-[connection signal="pressed" from="MenuBox/Story/LegacyProtocol" to="." method="_on_legacy_protocol_pressed"]
 [connection signal="pressed" from="MenuBox/Story/LegacyProtocol" to="." method="_on_touch_screen_button_pressed"]
+[connection signal="pressed" from="MenuBox/Story/LegacyProtocol" to="." method="_on_legacy_protocol_pressed"]

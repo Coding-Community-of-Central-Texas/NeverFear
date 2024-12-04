@@ -72,7 +72,7 @@ func _physics_process(delta: float) -> void:
 	velocity = velocity.move_toward(target_velocity, acceleration * delta)
 	move_and_slide()
 	
-	#flip_sprite()
+	flip_sprite()
 	
 	const DAMAGE_RATE = 10.0
 	var overlapping_mobs = %HurtBox.get_overlapping_bodies()
@@ -102,37 +102,12 @@ func handle_player_animation() -> void:
 func flip_sprite() -> void:
 	if velocity.x < 0:
 		# Flip the sprite when moving left (negative X velocity)
-		animated_sprite_2d.scale.x = -1
+		self.scale.x = -1
 	elif velocity.x > 0:
 		# Unflip the sprite when moving right (positive X velocity)
-		animated_sprite_2d.scale.x = 1
+		self.scale.x = 1
 
 
-
-@onready var timer: Timer = $Timer
-
-
-func _on_timer_timeout() -> void:
-	spawn_wave()
-	spawn_wave()
-	spawn_wave()
-
-
-func spawn_wave():
-	const DROID  = preload("res://Scenes/DriodLegacy.tscn")
-	const BYTE = preload("res://Scenes/OneHit.tscn")
-	var new_byte = BYTE.instantiate()
-	var new_droid = DROID.instantiate()
-	%PathFollow2D.progress_ratio = randf()
-	new_droid.position = %PathFollow2D.position
-	
-	%PathFollow2D.progress_ratio += 0.1  # Adjust this value for desired spacing
-	if %PathFollow2D.progress_ratio > 1.0:
-		%PathFollow2D.progress_ratio -= 1.0  # Wrap around if it exceeds 1.0
-		new_byte.position = %PathFollow2D.position
-	new_byte.position = %PathFollow2D.position
-	add_child(new_byte) 
-	add_child(new_droid)
 
 func _on_timer_2_timeout() -> void:
 	get_tree().change_scene_to_file("res://Scenes/GameOver.tscn")

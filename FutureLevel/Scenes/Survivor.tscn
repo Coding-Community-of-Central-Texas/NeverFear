@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://bsltfx5uw5yvq"]
+[gd_scene load_steps=35 format=3 uid="uid://bsltfx5uw5yvq"]
 
 [ext_resource type="Script" path="res://Scripts/SurvivorScript.gd" id="1_dqedt"]
 [ext_resource type="Texture2D" uid="uid://050tdjf5b57n" path="res://assets/3 Cyborg/Cyborg_death.png" id="2_cknjt"]
@@ -286,14 +286,8 @@ _data = {
 [sub_resource type="CircleShape2D" id="CircleShape2D_xqfdh"]
 radius = 31.1448
 
-[sub_resource type="Curve2D" id="Curve2D_dwh3c"]
-_data = {
-"points": PackedVector2Array(0, 0, 0, 0, 1253, 926.5, 0, 0, 0, 0, 134, 736.5, 0, 0, 0, 0, -896.5, 907.5, 0, 0, 0, 0, 1259, 936, 0, 0, 0, 0, 1001, 98.5, 0, 0, 0, 0, 1272, -632, 0, 0, 0, 0, -891, -633.5, 0, 0, 0, 0, -877.5, 885.5, 0, 0, 0, 0, -877.5, -610, 0, 0, 0, 0, 1262.5, -635.5, 0, 0, 0, 0, 1002.5, -517.5)
-}
-point_count = 11
-
 [sub_resource type="CircleShape2D" id="CircleShape2D_630u5"]
-radius = 35.0745
+radius = 45.364
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_5o6h1"]
 
@@ -325,15 +319,6 @@ offset_top = -17.0
 offset_right = 11.0
 offset_bottom = -14.0
 metadata/_edit_use_anchors_ = true
-
-[node name="Path2D" type="Path2D" parent="."]
-position = Vector2(-90, -45)
-curve = SubResource("Curve2D_dwh3c")
-
-[node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
-unique_name_in_owner = true
-position = Vector2(1253, 926.5)
-rotation = -2.9734
 
 [node name="Gun" parent="." instance=ExtResource("7_3segn")]
 show_behind_parent = true

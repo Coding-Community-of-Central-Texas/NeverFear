@@ -11,7 +11,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ctl43"]
 
 [node name="CanvasLayer" type="CanvasLayer"]
-process_mode = 2
+process_mode = 3
 script = ExtResource("1_gfvbg")
 
 [node name="TextureRect" type="TextureRect" parent="."]

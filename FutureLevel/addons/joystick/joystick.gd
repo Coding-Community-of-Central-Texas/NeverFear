@@ -59,7 +59,3 @@ func clamp_to_circle(point: Vector2, radius: float, value: Vector2) -> Vector2:
 	if direction.length_squared() > radius * radius:
 		direction = direction.normalized() * radius
 	return point + direction
-
-func _process(delta):
-	if held:
-		emit_signal("joystick_input", strength, direction, delta)

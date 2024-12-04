@@ -34,6 +34,8 @@ func _on_ready():
 		GRAVITY = 0  # Disable gravity in this scene
 		MAX_FALL_SPEED = 0
 		ground_ray_cast_2d.enabled = false
+	else: 
+		return
 
 	randomize_power_up()
 
