@@ -1,6 +1,8 @@
 extends Node2D
 
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
+@onready var animated_sprite_2d_2: AnimatedSprite2D = $AnimatedSprite2D2
+@onready var audio_stream_player: AudioStreamPlayer = $AudioStreamPlayer
 
 func play_move():
 	%AnimationPlayer.play("move")
@@ -13,3 +15,5 @@ func _flip():
 
 func play_die():
 	%AnimationPlayer.play("die")
+	animated_sprite_2d_2.play("boom")
+	audio_stream_player.play()

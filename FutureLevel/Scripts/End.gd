@@ -1,11 +1,15 @@
 extends Area2D
 
+@onready var legacy_protocol: Node2D = $".."
+@onready var timer: Timer = $"../Timer"
+@onready var winner: CanvasLayer = $Winner
+@onready var audio_stream_player: AudioStreamPlayer = $"../AudioStreamPlayer"
 
 
-func _on_tree_exiting():
-	
-	var level_time = Global.legacy.Timer.time_elapsed
+func _ready():
+	audio_stream_player.play()
 
 func _on_body_entered(body) -> void:
 	if body.is_in_group("player"):
-		get_tree().change_scene_to_file("res://Scenes/WinScreen.tscn")
+		Global.legacy.timer.stop()
+		winner.visible = true 

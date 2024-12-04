@@ -12,7 +12,6 @@ size = Vector2(176.563, 177.778)
 scale = Vector2(1.28, 1.44)
 collision_layer = 5
 script = ExtResource("1_lc6rt")
-SPEED = 100.0
 
 [node name="Robo" parent="." instance=ExtResource("2_p1iq0")]
 unique_name_in_owner = true
@@ -21,11 +20,13 @@ unique_name_in_owner = true
 position = Vector2(-60, 11)
 rotation = 3.11916
 collision_mask = 128
+rate_of_fire = 0.5
 
 [node name="BasicGun2" parent="." instance=ExtResource("3_y2uyg")]
 position = Vector2(58, 12)
 rotation = 3.13625
 collision_mask = 128
+rate_of_fire = 0.5
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-3.90625, 9.72222)
@@ -50,4 +51,14 @@ target_position = Vector2(-250, 135.417)
 [node name="RightGround" type="RayCast2D" parent="."]
 target_position = Vector2(217.969, 137.5)
 
-[connection signal="hurt" from="Robo" to="." method="_on_boss_robo_hurt"]
+[node name="StartAttack" type="Timer" parent="."]
+wait_time = 0.687
+
+[node name="Fire" type="Timer" parent="."]
+
+[node name="Fireloop" type="Timer" parent="."]
+
+[connection signal="timeout" from="StartAttack" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="StartAttack" to="." method="_on_start_attack_timeout"]
+[connection signal="timeout" from="Fire" to="." method="_on_fire_timeout"]
+[connection signal="timeout" from="Fireloop" to="." method="_on_fireloop_timeout"]

@@ -60,17 +60,13 @@ func _die():
 	emit_signal("kill")
 	%Tank.play_die()
 	
-	const BOOM = preload("res://Scenes/RobbieBoom.tscn")
-	var new_Boom = BOOM.instantiate()
-	new_Boom.global_position = global_position
-	new_Boom.visible = false
-	get_parent().add_child(new_Boom)
 	
 	const CASH = preload("res://Scenes/Cash.tscn")
 	var new_Cash = CASH.instantiate()
 	new_Cash.randomize_power_up()
 	new_Cash.global_position = global_position 
 	get_tree().current_scene.call_deferred("add_child", new_Cash)
+	
 	queue_free()
 
 func back_and_forth_movement():
@@ -83,7 +79,7 @@ func back_and_forth_movement():
 
 func handle_flip():
 	if velocity.x > 0:
-		%Tank.flip_h()
+		%Tank._flip()
 	elif velocity.x < 0: 
 		%Tank.play_move()
 

@@ -1,6 +1,7 @@
 extends TextureRect
 
-@onready var label_2: Label = $Label2
+@onready var label: Label = $StatsLink/Label
+@onready var run_time: Label = $RunTime
 
 
 func _ready():
@@ -12,12 +13,13 @@ func _ready():
 	Global.reset_game_state()
 
 func _process(delta):
-	label_2.text = "YOUR COMPLETION TIME: d%" % Global.legacy.total_time
+	run_time.text = "YOUR COMPLETION TIME: d%" % %LegacyProtocol.total_time
 	
 
-#func completion_time():
-	#var elapsed_time = Time.get_ticks_msec() - start_time
+
 
 
 func _on_stats_link_pressed() -> void:
+	Engine.time_scale = 1.0
+	Global.reset_game_state()
 	get_tree().change_scene_to_file("res://Scenes/PerformanceIndex.tscn")

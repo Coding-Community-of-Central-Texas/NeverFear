@@ -7,6 +7,7 @@ var has_sound_played: bool = false
 
 func _on_body_entered(body):
 	if body.is_in_group("player"):
+		%AnimationPlayer.play("check")
 		if not has_sound_played:
 			audio_stream_player.play()
 			has_sound_played = true

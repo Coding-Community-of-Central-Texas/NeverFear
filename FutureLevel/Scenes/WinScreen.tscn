@@ -1,15 +1,18 @@
-[gd_scene load_steps=7 format=3 uid="uid://cr16l7y5x5fys"]
+[gd_scene load_steps=6 format=3 uid="uid://cr16l7y5x5fys"]
 
 [ext_resource type="Texture2D" uid="uid://bcypd57pmrt63" path="res://assets/Background/Hero.svg" id="1_ykjtl"]
 [ext_resource type="Script" path="res://Scripts/WinScreen.gd" id="2_1sl55"]
 [ext_resource type="FontFile" uid="uid://ckid4fla6wirc" path="res://assets/etc/Starzoom-Shavian.ttf" id="3_c5ymd"]
 [ext_resource type="Texture2D" uid="uid://c0yymphvu7cv3" path="res://assets/Background/NeverFearIcon.svg" id="4_a6ix8"]
-[ext_resource type="PackedScene" uid="uid://cijayc3peexw" path="res://GameManager.tscn" id="4_gd2gp"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_2oy4v"]
 radius = 529.71
 
-[node name="Win" type="TextureRect"]
+[node name="Winner" type="CanvasLayer"]
+visible = false
+
+[node name="Win" type="TextureRect" parent="."]
+self_modulate = Color(1, 1, 1, 0.0862745)
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -18,7 +21,7 @@ grow_vertical = 2
 texture = ExtResource("1_ykjtl")
 script = ExtResource("2_1sl55")
 
-[node name="YouWin" type="Label" parent="."]
+[node name="YouWin" type="Label" parent="Win"]
 layout_mode = 0
 offset_left = 156.0
 offset_top = 236.0
@@ -35,7 +38,7 @@ theme_override_fonts/font = ExtResource("3_c5ymd")
 theme_override_font_sizes/font_size = 69
 text = "YOU WIN!!"
 
-[node name="RunTime" type="Label" parent="."]
+[node name="RunTime" type="Label" parent="Win"]
 layout_mode = 0
 offset_left = 269.0
 offset_top = 393.0
@@ -49,22 +52,22 @@ theme_override_constants/outline_size = 3
 theme_override_fonts/font = ExtResource("3_c5ymd")
 theme_override_font_sizes/font_size = 50
 
-[node name="StatsLink" type="TouchScreenButton" parent="."]
-z_index = 2
+[node name="StatsLink" type="TouchScreenButton" parent="Win"]
+self_modulate = Color(1, 1, 1, 0.254902)
 position = Vector2(808, 559)
 rotation = -3.14812
 scale = Vector2(0.467397, -0.222699)
 texture_normal = ExtResource("4_a6ix8")
 shape = SubResource("CircleShape2D_2oy4v")
 
-[node name="Label" type="Label" parent="StatsLink"]
+[node name="Label" type="Label" parent="Win/StatsLink"]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 999.408
-offset_top = 76.1128
-offset_right = 781.408
-offset_bottom = -734.887
+offset_left = 999.0
+offset_top = 76.0
+offset_right = 739.0
+offset_bottom = -735.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(-1.22498, 4.04752)
@@ -75,14 +78,12 @@ theme_override_constants/shadow_offset_x = 3
 theme_override_constants/outline_size = 3
 theme_override_fonts/font = ExtResource("3_c5ymd")
 theme_override_font_sizes/font_size = 50
-text = "TAP TO VIEW ALL YOUR STATS
+text = "   TAP TO VIEW YOUR STATS
 
+    PLEASE LEAVE A REVIEW!"
+horizontal_alignment = 1
 
-PLEASE LEAVE A REVIEW!"
-
-[node name="Camera2D" type="Camera2D" parent="."]
+[node name="Camera2D" type="Camera2D" parent="Win"]
 position = Vector2(568, 497)
 
-[node name="GameManager" parent="." instance=ExtResource("4_gd2gp")]
-
-[connection signal="pressed" from="StatsLink" to="." method="_on_stats_link_pressed"]
+[connection signal="pressed" from="Win/StatsLink" to="Win" method="_on_stats_link_pressed"]

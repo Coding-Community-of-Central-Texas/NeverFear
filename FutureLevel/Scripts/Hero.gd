@@ -3,13 +3,15 @@ signal input
 
 var health = 100.0
 const MAX_HEALTH = 100.0
-var SPEED = 400.0
+var SPEED = 500.0
 const JUMP_VELOCITY = -550.0
 const DOUBLE_JUMP_VELOCITY = -666.0
 const GRAVITY = 2000.0  # Custom gravity value
 const COYOTE_TIME = 0.2  # Time to allow jumping after falling
 const MAX_FALL_SPEED = 1000.0  # Limit the maximum fall speed
-var direction : Vector2 = Vector2(0,0)
+var direction : Vector2 = Vector2.ZERO
+@export var acceleration: float = 1000.0
+@export var deceleration: float = 1200.0
 
 
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
@@ -65,13 +67,24 @@ func _physics_process(delta: float) -> void:
 		return
 	apply_gravity(delta)
 	handle_jumping(delta)
-	handle_movement(delta)
+	#handle_movement(delta)
 	handle_animation()
 	
-	if direction:
-		velocity.x = direction.x * SPEED
-	else:
-		velocity.x = move_toward(velocity.x, 0, SPEED)
+	var target_velocity = Vector2.ZERO
+
+	if Input.is_action_pressed("move_up"):
+		target_velocity.y -= 1
+	if Input.is_action_pressed("move_down"):
+		target_velocity.y += 1
+	if Input.is_action_pressed("move_left"):
+		target_velocity.x -= 1
+	if Input.is_action_pressed("move_right"):
+		target_velocity.x += 1
+
+	if target_velocity.length() > 0:
+		target_velocity = target_velocity.normalized() * SPEED
+	
+	velocity = velocity.move_toward(target_velocity, acceleration * delta)
 	move_and_slide()
 	
 	const DAMAGE_RATE = 25.0
@@ -161,11 +174,3 @@ func _on_timer_timeout() -> void:
 
 func _on_game_over():
 	get_tree().change_scene_to_file.call_deferred("res://Scenes/GameOver.tscn")
-
-
-func _on_joystick_joystick_input(_strength, dir, _delta) -> void:
-		direction = dir
-
-
-func _on_control_gui_input(event: InputEvent) -> void:
-	%TouchControls.use_input_actions()

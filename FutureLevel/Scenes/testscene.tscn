@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://Scenes/testscene.gd" id="1_hwtyk"]
 [ext_resource type="Texture2D" uid="uid://c7nw8oj5k54fx" path="res://assets/1 Tiles/IndustrialTile_05.png" id="1_teooe"]
 [ext_resource type="PackedScene" uid="uid://csqktr6ixyato" path="res://Scenes/Hero.tscn" id="3_nq1a2"]
-[ext_resource type="PackedScene" uid="uid://dyissvogocr44" path="res://addons/joystick/joystick.tscn" id="5_octx6"]
+[ext_resource type="PackedScene" uid="uid://jpr8avx4r0pa" path="res://TouchControls.tscn" id="5_b3rtc"]
 [ext_resource type="PackedScene" uid="uid://dcmrsrfl6ctr5" path="res://Scenes/FinalBoss.tscn" id="5_v0qaq"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_24341"]
@@ -27,13 +27,16 @@ layer_0/tile_data = PackedInt32Array(131070, 0, 0, 131071, 0, 0, 65536, 0, 0, 65
 [node name="Hero" parent="." instance=ExtResource("3_nq1a2")]
 position = Vector2(-689, -26)
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-
-[node name="Joystick" parent="CanvasLayer" instance=ExtResource("5_octx6")]
-position = Vector2(370, 536)
-scale = Vector2(1.90244, 1.47668)
-
 [node name="CharacterBody2D" parent="." instance=ExtResource("5_v0qaq")]
 position = Vector2(-78, -138)
 
-[connection signal="joystick_input" from="CanvasLayer/Joystick" to="Hero" method="_on_joystick_joystick_input"]
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -40.0
+offset_right = 40.0
+grow_vertical = 0
+
+[node name="TouchControls" parent="Control" instance=ExtResource("5_b3rtc")]

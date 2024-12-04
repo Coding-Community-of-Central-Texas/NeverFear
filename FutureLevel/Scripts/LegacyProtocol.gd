@@ -1,4 +1,4 @@
-extends Node
+extends Node2D
 
 @export var game_manager: NodePath 
 @onready var manager = get_node(game_manager)
@@ -20,7 +20,8 @@ func complete_level():
 	GameManager.update_quickest_time(elapsed_time)
 	GameManager.save_data()
 
-func _on_tree_exiting():
-	
-	var level_time = $Timer.time_elapsed
-	
+
+
+
+func _on_end_body_entered(body: Node2D) -> void:
+	complete_level()
