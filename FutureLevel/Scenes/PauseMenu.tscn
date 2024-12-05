@@ -83,6 +83,9 @@ position = Vector2(84.8214, 25)
 scale = Vector2(8.65476, 2.48077)
 shape = SubResource("RectangleShape2D_ctl43")
 
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(573, 323)
+
 [connection signal="pressed" from="TextureRect/Continue/continue_game" to="." method="_on_continue_game_pressed"]
 [connection signal="pressed" from="TextureRect/Restart/Restart" to="." method="_on_restart_pressed"]
 [connection signal="pressed" from="TextureRect/Home/Home" to="." method="_on_home_pressed"]

@@ -5,7 +5,7 @@ signal cash
 
 # Stats
 var total_kills: int = 0
-var quickest_time: int = 99999999
+var quickest_time: int = INF
 var longest_survival: int = 0
 var total_cash: int = 0
 
@@ -59,7 +59,7 @@ func load_data():
 			if data.error == OK:
 				var parsed_data = data.result
 				total_kills = parsed_data.get("total_kills", 0)
-				quickest_time = parsed_data.get("quickest_time", 99999999)
+				quickest_time = parsed_data.get("quickest_time", INF)
 				longest_survival = parsed_data.get("longest_survival", 0)
 				total_cash = parsed_data.get("total_cash", 0)
 

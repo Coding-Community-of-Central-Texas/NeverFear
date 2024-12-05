@@ -17,7 +17,7 @@ collision_layer = 0
 script = ExtResource("1_gqxth")
 
 [node name="Timer" type="Timer" parent="."]
-wait_time = 1.03
+wait_time = 0.334
 one_shot = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
