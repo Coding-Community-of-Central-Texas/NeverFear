@@ -6,12 +6,13 @@ const MAX_HEALTH = 100.0
 var SPEED = 500.0
 const JUMP_VELOCITY = -550.0
 const DOUBLE_JUMP_VELOCITY = -666.0
-const GRAVITY = 2000.0  # Custom gravity value
+const GRAVITY = 1000.0  # Custom gravity value
 const COYOTE_TIME = 0.2  # Time to allow jumping after falling
-const MAX_FALL_SPEED = 1000.0  # Limit the maximum fall speed
+const MAX_FALL_SPEED = 2000.0  # Limit the maximum fall speed
 var direction : Vector2 = Vector2.ZERO
-@export var acceleration: float = 1000.0
-@export var deceleration: float = 1200.0
+@export var acceleration: float = 20.0
+@export var deceleration: float = 30.0
+@export var air_control: float = 0.5  # Reduced control in the air
 
 
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
@@ -30,7 +31,7 @@ var is_double_jumping = false
 var is_dead = false
 
 func _ready() -> void:
-	Global.player = self  # Assign the player reference
+	Global.player1 = self  # Assign the player reference
 	health_bar.init_health(health)
 	if Global.lives < 3:
 		position = Global.checkpoint_position
@@ -67,35 +68,20 @@ func _physics_process(delta: float) -> void:
 		return
 	apply_gravity(delta)
 	handle_jumping(delta)
-	#handle_movement(delta)
+	handle_movement(delta)
 	handle_animation()
-	
-	var target_velocity = Vector2.ZERO
-
-	if Input.is_action_pressed("move_up"):
-		target_velocity.y -= 1
-	if Input.is_action_pressed("move_down"):
-		target_velocity.y += 1
-	if Input.is_action_pressed("move_left"):
-		target_velocity.x -= 1
-	if Input.is_action_pressed("move_right"):
-		target_velocity.x += 1
-
-	if target_velocity.length() > 0:
-		target_velocity = target_velocity.normalized() * SPEED
-	
-	velocity = velocity.move_toward(target_velocity, acceleration * delta)
 	move_and_slide()
 	
-	const DAMAGE_RATE = 25.0
+	const DAMAGE_RATE = 20.0
 	var overlapping_mobs = %HurtBox.get_overlapping_bodies()
-	health_bar.value = health
+	health_bar.health = health
 	
 	if overlapping_mobs.size() > 0:
 		health -= DAMAGE_RATE * overlapping_mobs.size() * delta
 		health_bar.value = health
 		if health <= 0.0:
 			take_damage()
+
 
 func apply_gravity(delta: float) -> void:
 	if not is_on_floor():
@@ -125,20 +111,37 @@ func handle_jumping(delta: float) -> void:
 	if Input.is_action_just_released("jump") and velocity.y <0:
 		velocity.y *= 0.5
 
-func handle_movement(_delta: float) -> void:
-	if direction.x != 0:  # Use joystick's input direction
-		velocity.x = direction.x * SPEED
-	else:
-		velocity.x = move_toward(velocity.x, 0, SPEED)
+func handle_movement(delta: float) -> void:
+	var input_direction = Vector2.ZERO
+	var target_velocity = Vector2.ZERO
+	var target_speed = input_direction.x * SPEED
+	
+	input_direction = input_direction.normalized()
+	
+	if Input.is_action_pressed("move_up"):
+		target_velocity.y -= 1
+	if Input.is_action_pressed("move_down"):
+		target_velocity.y += 1
+	if Input.is_action_pressed("move_left"):
+		target_velocity.x -= 1
+	if Input.is_action_pressed("move_right"):
+		target_velocity.x += 1
+
+	if target_velocity.length() > 0:
+		target_velocity = target_velocity.normalized() * SPEED
+	
+	velocity = velocity.move_toward(target_velocity, acceleration * delta if target_velocity.length() > 0 else deceleration * delta)
+	var accel = acceleration if is_on_floor() else acceleration * air_control
+	velocity.x = lerp(velocity.x, target_speed, accel * delta)
 
 func handle_animation() -> void:
 	if health <= 0:
 		if not animated_sprite_2d.is_playing() or animated_sprite_2d.animation != "death":
 			animated_sprite_2d.play("death")
 		return
-
-	if animated_sprite_2d.animation == "hurt" and animated_sprite_2d.is_playing():
-		return
+	$AnimatedSprite2D.modulate = Color(1, 0.5, 0.5)
+	await set_deferred("get_tree().create_timer(0.1)", "timeout")
+	$AnimatedSprite2D.modulate = Color(1, 1, 1)
 
 	if is_double_jumping:
 		return

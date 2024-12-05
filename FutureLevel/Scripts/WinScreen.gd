@@ -12,7 +12,7 @@ func _ready():
 	Engine.time_scale = 1.0
 	Global.reset_game_state()
 
-func _process(delta):
+func _process(_delta):
 	run_time.text = "YOUR COMPLETION TIME: d%" % %LegacyProtocol.total_time
 	
 

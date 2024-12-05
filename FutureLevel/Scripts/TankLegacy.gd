@@ -67,7 +67,7 @@ func _die():
 	new_Cash.global_position = global_position 
 	get_tree().current_scene.call_deferred("add_child", new_Cash)
 	
-	queue_free()
+	call_deferred("queue_free")
 
 func back_and_forth_movement():
 	velocity.x = direction * move_speed

@@ -14,6 +14,6 @@ func _flip():
 	animated_sprite_2d.flip_h = true
 
 func play_die():
-	%AnimationPlayer.play("die")
+	%AnimationPlayer.play("hurt")
 	animated_sprite_2d_2.play("boom")
 	audio_stream_player.play()
