@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://cu36yuh2cmfj"]
+
+[ext_resource type="Texture2D" uid="uid://c8mqnh8i65mot" path="res://assets/Guns&Bullets/4_1.png" id="1_adosv"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_fucmt"]
+radius = 37.0
+
+[node name="PickUpGun" type="Area2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_fucmt")
+
+[node name="Gun" type="Sprite2D" parent="."]
+position = Vector2(-2, 1)
+texture = ExtResource("1_adosv")
