@@ -1,0 +1,22 @@
+[gd_scene load_steps=2 format=3 uid="uid://bnvfoqqwf8ub"]
+
+[ext_resource type="PackedScene" uid="uid://dmr0fcamx7t56" path="res://addons/virtual_joystick/virtual_joystick_scene.tscn" id="1_niblt"]
+
+[node name="SurvivalControl" type="CanvasLayer"]
+
+[node name="Virtual Joystick" parent="." instance=ExtResource("1_niblt")]
+modulate = Color(0, 0, 0, 0.207843)
+anchors_preset = 7
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -150.0
+offset_top = -300.0
+offset_right = 150.0
+offset_bottom = 0.0
+grow_horizontal = 2
+pressed_color = Color(0.75, 0.225, 0.225, 1)
+joystick_mode = 1
+action_left = "move_left"
+action_right = "move_right"
+action_up = "move_up"
+action_down = "move_down"

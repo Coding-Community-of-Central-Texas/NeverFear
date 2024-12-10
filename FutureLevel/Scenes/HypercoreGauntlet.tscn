@@ -88,7 +88,7 @@
 [ext_resource type="Script" path="res://addons/gaea/others/chunk_loader_2d.gd" id="85_07p6e"]
 [ext_resource type="PackedScene" uid="uid://cijayc3peexw" path="res://GameManager.tscn" id="87_esuwa"]
 [ext_resource type="FontFile" uid="uid://ckid4fla6wirc" path="res://assets/etc/Starzoom-Shavian.ttf" id="89_0wxma"]
-[ext_resource type="PackedScene" uid="uid://dtywskiwmn4en" path="res://Scenes/LegacyTouchControls.tscn" id="89_812rc"]
+[ext_resource type="PackedScene" uid="uid://bnvfoqqwf8ub" path="res://Scenes/SurvivorControl.tscn" id="89_4jwms"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_w27gi"]
 noise_type = 4
@@ -760,6 +760,6 @@ anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="TouchControls" parent="Control" instance=ExtResource("89_812rc")]
+[node name="SurvivalControl" parent="Control" instance=ExtResource("89_4jwms")]
 
 [connection signal="pressed" from="CanvasLayer/HBoxContainer/Pause" to="." method="_on_pause_pressed"]

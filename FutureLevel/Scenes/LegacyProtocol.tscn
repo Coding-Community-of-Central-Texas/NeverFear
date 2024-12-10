@@ -1,4 +1,4 @@
-[gd_scene load_steps=205 format=3 uid="uid://vmdnus7gyna4"]
+[gd_scene load_steps=206 format=3 uid="uid://vmdnus7gyna4"]
 
 [ext_resource type="Script" path="res://Scripts/LegacyProtocol.gd" id="1_aq02g"]
 [ext_resource type="Texture2D" uid="uid://knkdhrpitjcv" path="res://assets/1 Tiles/Tileset.png" id="2_6w7k1"]
@@ -112,6 +112,7 @@
 [ext_resource type="PackedScene" uid="uid://cp0mkjt4kb621" path="res://Scenes/MiniBossSpawn.tscn" id="106_614e6"]
 [ext_resource type="PackedScene" uid="uid://cijayc3peexw" path="res://GameManager.tscn" id="106_jtjrs"]
 [ext_resource type="Script" path="res://Scripts/Platform.gd" id="108_051rt"]
+[ext_resource type="PackedScene" uid="uid://bygt3a6360eme" path="res://Scenes/LegacyControl.tscn" id="113_84fyj"]
 [ext_resource type="PackedScene" uid="uid://dorufdk5325u3" path="res://Scenes/BossSpawn.tscn" id="114_rstwu"]
 [ext_resource type="PackedScene" uid="uid://cu36yuh2cmfj" path="res://Scenes/PickUp.tscn" id="115_2otky"]
 [ext_resource type="Script" path="res://Scripts/GunPickUp.gd" id="116_rrq72"]
@@ -1827,17 +1828,7 @@ offset_right = 40.0
 offset_bottom = 39.9999
 size_flags_horizontal = 0
 
-[node name="TouchControls" parent="Control"]
-_import_path = NodePath("")
-unique_name_in_owner = false
-process_mode = 0
-process_priority = 0
-process_physics_priority = 0
-process_thread_group = 0
-physics_interpolation_mode = 0
-auto_translate_mode = 0
-editor_description = ""
-script = null
+[node name="LegacyControl" parent="Control" instance=ExtResource("113_84fyj")]
 
 [node name="BossSpawn" parent="." instance=ExtResource("114_rstwu")]
 position = Vector2(30047, -524.64)
