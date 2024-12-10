@@ -31,3 +31,4 @@ func _on_timer_timeout() -> void:
 	spawn_bosses()
 	spawn_bosses()
 	spawn_bosses()
+	queue_free()

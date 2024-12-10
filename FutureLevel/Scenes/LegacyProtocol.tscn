@@ -1,4 +1,4 @@
-[gd_scene load_steps=200 format=3 uid="uid://vmdnus7gyna4"]
+[gd_scene load_steps=205 format=3 uid="uid://vmdnus7gyna4"]
 
 [ext_resource type="Script" path="res://Scripts/LegacyProtocol.gd" id="1_aq02g"]
 [ext_resource type="Texture2D" uid="uid://knkdhrpitjcv" path="res://assets/1 Tiles/Tileset.png" id="2_6w7k1"]
@@ -95,12 +95,15 @@
 [ext_resource type="PackedScene" uid="uid://d2y4fvw54o8rg" path="res://Scenes/JumpButton.tscn" id="93_hmujq"]
 [ext_resource type="PackedScene" uid="uid://cyik2prp6rqk4" path="res://Scenes/LifeCounter.tscn" id="94_7l5pt"]
 [ext_resource type="PackedScene" uid="uid://bjy4p1k6qgxm8" path="res://Scenes/DropPlat.tscn" id="95_ljrgr"]
-[ext_resource type="Script" path="res://Scenes/ElapsedTime.gd" id="96_32w4i"]
+[ext_resource type="Script" path="res://Scripts/TimePanel.gd" id="96_6vmts"]
+[ext_resource type="Texture2D" uid="uid://bnhfvq2i6dbp8" path="res://assets/etc/Icons_25.png" id="96_obt1p"]
 [ext_resource type="Texture2D" uid="uid://cjvpadkii8oj7" path="res://assets/Background/Overlay.png" id="96_wwgqa"]
+[ext_resource type="Script" path="res://Scripts/MoneyCount.gd" id="97_b7kug"]
 [ext_resource type="Texture2D" uid="uid://bfbm4a8dphl2i" path="res://assets/city 1/city 2/1.png" id="97_elx5l"]
+[ext_resource type="FontFile" uid="uid://ckid4fla6wirc" path="res://assets/etc/Starzoom-Shavian.ttf" id="97_tvle3"]
 [ext_resource type="Texture2D" uid="uid://bu5cxqxscn6be" path="res://assets/city 1/city 2/2.png" id="98_i340m"]
 [ext_resource type="PackedScene" uid="uid://2e2ccqhb4ij6" path="res://Scenes/CheckFlag.tscn" id="99_vjxur"]
-[ext_resource type="PackedScene" uid="uid://bnog7ctirydt7" path="res://Scenes/Door.tscn" id="100_6fp3d"]
+[ext_resource type="PackedScene" uid="uid://bnog7ctirydt7" path="res://Scenes/Doorv1.tscn" id="100_6fp3d"]
 [ext_resource type="PackedScene" uid="uid://by0k2g2udxfts" path="res://Scenes/Screen.tscn" id="101_ghgg4"]
 [ext_resource type="PackedScene" uid="uid://bq8ujsbmayllg" path="res://Scenes/ThreeHitter.tscn" id="102_wbskb"]
 [ext_resource type="PackedScene" uid="uid://dghcuiiuawq2p" path="res://Scenes/ByteASpawner.tscn" id="103_0k21k"]
@@ -108,9 +111,11 @@
 [ext_resource type="PackedScene" uid="uid://d2u5kjqvm0jcd" path="res://Scenes/BigSpawn.tscn" id="105_1jfro"]
 [ext_resource type="PackedScene" uid="uid://cp0mkjt4kb621" path="res://Scenes/MiniBossSpawn.tscn" id="106_614e6"]
 [ext_resource type="PackedScene" uid="uid://cijayc3peexw" path="res://GameManager.tscn" id="106_jtjrs"]
-[ext_resource type="Script" path="res://Scenes/Platform.gd" id="108_051rt"]
-[ext_resource type="PackedScene" uid="uid://dcmrsrfl6ctr5" path="res://Scenes/FinalBoss.tscn" id="112_4wq7m"]
-[ext_resource type="PackedScene" uid="uid://jpr8avx4r0pa" path="res://TouchControls.tscn" id="112_fa20o"]
+[ext_resource type="Script" path="res://Scripts/Platform.gd" id="108_051rt"]
+[ext_resource type="PackedScene" uid="uid://dorufdk5325u3" path="res://Scenes/BossSpawn.tscn" id="114_rstwu"]
+[ext_resource type="PackedScene" uid="uid://cu36yuh2cmfj" path="res://Scenes/PickUp.tscn" id="115_2otky"]
+[ext_resource type="Script" path="res://Scripts/GunPickUp.gd" id="116_rrq72"]
+[ext_resource type="PackedScene" uid="uid://cimhq6uapolif" path="res://Scenes/Fire.tscn" id="117_brvrh"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_s7fvl"]
 texture = ExtResource("2_6w7k1")
@@ -1272,7 +1277,6 @@ size = Vector2(16.983, 30.2007)
 [node name="LegacyProtocol" type="Node2D"]
 rotation = 2.12854e-05
 script = ExtResource("1_aq02g")
-game_manager = NodePath("GameManager")
 
 [node name="TileMap" type="TileMap" parent="."]
 position = Vector2(0, -2.38419e-07)
@@ -1535,37 +1539,93 @@ position = Vector2(108, 109)
 scale = Vector2(6.26548, 4.58)
 
 [node name="LifeCounter" parent="Buttons" instance=ExtResource("94_7l5pt")]
-modulate = Color(1, 1, 1, 1)
-offset_right = 123.0
+offset_left = 37.0
+offset_top = 19.0
+offset_right = 160.0
+offset_bottom = 51.0
+scale = Vector2(1.08, 0.879999)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("97_tvle3")
+theme_override_font_sizes/font_size = 25
+
+[node name="Sprite2D" type="Sprite2D" parent="Buttons/LifeCounter"]
+position = Vector2(-17.5926, 10.2273)
+texture = ExtResource("96_obt1p")
+
+[node name="TimePanel" type="Panel" parent="Buttons"]
+unique_name_in_owner = true
+self_modulate = Color(1, 1, 1, 0)
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -79.0
+offset_top = 17.0
+offset_right = 89.0
+offset_bottom = 75.0
+grow_horizontal = 2
+size_flags_vertical = 0
+script = ExtResource("96_6vmts")
+
+[node name="Minutes" type="Label" parent="Buttons/TimePanel"]
+layout_mode = 0
+offset_right = 51.0
 offset_bottom = 47.0
-theme_override_colors/font_color = Color(0.175928, 0.0987816, 1, 1)
-theme_override_colors/font_shadow_color = Color(0.823737, 0.0423293, 0, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/line_spacing = 0
-theme_override_constants/shadow_offset_x = 1
-theme_override_constants/shadow_offset_y = 1
-theme_override_constants/outline_size = 2
-theme_override_constants/shadow_outline_size = 1
+theme_override_constants/outline_size = 7
+theme_override_fonts/font = ExtResource("97_tvle3")
+theme_override_font_sizes/font_size = 25
+text = "00:"
+horizontal_alignment = 2
 
-[node name="Time" type="Label" parent="Buttons"]
-offset_left = 293.0
-offset_right = 333.0
-offset_bottom = 23.0
-scale = Vector2(4.76, 1.72)
-theme_override_colors/font_color = Color(0.229991, 0.0754812, 0.976611, 1)
-theme_override_colors/font_shadow_color = Color(0.929972, 0.239498, 0.235294, 1)
+[node name="Seconds" type="Label" parent="Buttons/TimePanel"]
+layout_mode = 0
+offset_left = 52.0
+offset_top = 1.0
+offset_right = 103.0
+offset_bottom = 36.0
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/shadow_offset_x = 1
-theme_override_constants/shadow_offset_y = 1
-theme_override_constants/outline_size = 2
-theme_override_constants/shadow_outline_size = 1
-theme_override_font_sizes/font_size = 15
-script = ExtResource("96_32w4i")
+theme_override_constants/outline_size = 7
+theme_override_fonts/font = ExtResource("97_tvle3")
+theme_override_font_sizes/font_size = 25
+text = "00."
 
-[node name="Money" type="Label" parent="Buttons"]
+[node name="Msec" type="Label" parent="Buttons/TimePanel"]
+layout_mode = 0
+offset_left = 99.0
+offset_top = 1.0
+offset_right = 149.0
+offset_bottom = 31.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 7
+theme_override_fonts/font = ExtResource("97_tvle3")
+theme_override_font_sizes/font_size = 25
+text = "000"
+
+[node name="MoneyCount" type="Panel" parent="Buttons"]
+self_modulate = Color(1, 1, 1, 0)
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -250.0
+offset_top = 10.0
+offset_bottom = 69.0
+grow_horizontal = 0
+script = ExtResource("97_b7kug")
+
+[node name="Money" type="Label" parent="Buttons/MoneyCount"]
+unique_name_in_owner = true
+layout_mode = 1
+offset_top = 6.0
 offset_right = 40.0
-offset_bottom = 23.0
-scale = Vector2(3.4, 1.6)
+offset_bottom = 32.0
+scale = Vector2(1.28, 1.04)
+theme_override_colors/font_color = Color(0.242792, 0.747165, 0.362575, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 7
+theme_override_fonts/font = ExtResource("97_tvle3")
+theme_override_font_sizes/font_size = 25
+text = "$ 0"
 
 [node name="Platforms" type="Node" parent="."]
 
@@ -1738,9 +1798,6 @@ rotation = 2.12854e-05
 [node name="MiniBoss" parent="MiniBoss" instance=ExtResource("106_614e6")]
 position = Vector2(15552, -684)
 
-[node name="MiniBoss2" parent="MiniBoss" instance=ExtResource("106_614e6")]
-position = Vector2(16642, -618)
-
 [node name="GameManager" parent="." instance=ExtResource("106_jtjrs")]
 
 [node name="Platform" parent="." instance=ExtResource("104_25ut1")]
@@ -1770,9 +1827,43 @@ offset_right = 40.0
 offset_bottom = 39.9999
 size_flags_horizontal = 0
 
-[node name="TouchControls" parent="Control" instance=ExtResource("112_fa20o")]
+[node name="TouchControls" parent="Control"]
+_import_path = NodePath("")
+unique_name_in_owner = false
+process_mode = 0
+process_priority = 0
+process_physics_priority = 0
+process_thread_group = 0
+physics_interpolation_mode = 0
+auto_translate_mode = 0
+editor_description = ""
+script = null
 
-[node name="FinalBoss" parent="." instance=ExtResource("112_4wq7m")]
-position = Vector2(29550, -170.629)
+[node name="BossSpawn" parent="." instance=ExtResource("114_rstwu")]
+position = Vector2(30047, -524.64)
+
+[node name="PickUpGun" parent="." instance=ExtResource("115_2otky")]
+position = Vector2(16928, -66.3603)
+script = ExtResource("116_rrq72")
+
+[node name="NoGo" type="Node" parent="."]
+
+[node name="Fire" parent="NoGo" instance=ExtResource("117_brvrh")]
+position = Vector2(6383, -400)
+rotation = 2.12854e-05
+
+[node name="Fire4" parent="NoGo" instance=ExtResource("117_brvrh")]
+position = Vector2(6676, -400)
+rotation = 2.12854e-05
+
+[node name="Fire3" parent="NoGo" instance=ExtResource("117_brvrh")]
+position = Vector2(6590, -399)
+rotation = 2.12854e-05
+
+[node name="Fire2" parent="NoGo" instance=ExtResource("117_brvrh")]
+position = Vector2(6459, -400)
+rotation = 2.12854e-05
 
 [connection signal="body_entered" from="Platform/Area2D" to="Platform" method="_on_area_2d_body_entered"]
+[connection signal="body_entered" from="PickUpGun" to="PickUpGun" method="_on_body_entered"]
+[connection signal="picked_up" from="PickUpGun" to="Hero" method="_on_pick_up_gun_picked_up"]

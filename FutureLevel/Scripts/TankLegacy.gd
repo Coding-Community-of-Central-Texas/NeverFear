@@ -58,8 +58,11 @@ func take_damage():
 
 func _die():
 	emit_signal("kill")
-	%Tank.play_die()
 	
+	const BOOM = preload("res://Scenes/RobbieBoom.tscn")
+	var new_Boom = BOOM.instantiate()
+	new_Boom.global_position = global_position
+	get_parent().add_child(new_Boom)
 	
 	const CASH = preload("res://Scenes/Cash.tscn")
 	var new_Cash = CASH.instantiate()

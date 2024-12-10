@@ -13,7 +13,9 @@ func play_hurt():
 func _flip():
 	animated_sprite_2d.flip_h = true
 
-func play_die():
-	%AnimationPlayer.play("hurt")
-	animated_sprite_2d_2.play("boom")
-	audio_stream_player.play()
+func _impact():
+	animated_sprite_2d_2.play("impact")
+	%BigBoom.little_impact()
+	%PathFollow2D.progress_ratio = randf()
+	animated_sprite_2d_2.position = %PathFollow2D.position
+	%BigBoom.position = %PathFollow2D.position

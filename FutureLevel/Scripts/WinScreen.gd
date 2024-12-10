@@ -9,11 +9,9 @@ func _ready():
 		get_viewport().screen_set_orientation(DisplayServer.SCREEN_PORTRAIT)
 	else:
 		return
-	Engine.time_scale = 1.0
-	Global.reset_game_state()
 
 func _process(_delta):
-	run_time.text = "YOUR COMPLETION TIME: d%" % %LegacyProtocol.total_time
+	run_time.text = "YOUR COMPLETION TIME: d%" % GameManager.current_level_time
 	
 
 

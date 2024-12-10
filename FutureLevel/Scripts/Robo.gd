@@ -7,16 +7,14 @@ func play_walk():
 	%AnimationPlayer.play("walk")
 
 func play_hurt():
-	%AnimationPlayer.play("hurt")
+	self.modulate = Color(1, 0, 0)  # Set to red
+	await get_tree().create_timer(0.1).timeout  # Wait for 0.1 seconds
+	self.modulate = Color(1, 1, 1)  # Reset to normal
 	_impact()
 	
 func play_attack():
 	%AnimationPlayer.play("attack")
 
-func play_die():
-	_impact()
-	_impact()
-	%BigBoom.boss_bang()
 
 func _impact():
 	animated_sprite_2d_2.play("impact1")

@@ -23,7 +23,7 @@ script = ExtResource("1_t61qt")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = SubResource("AudioStreamPlaylist_ek2e1")
-volume_db = 0.39
+volume_db = -1.722
 autoplay = true
 
 [connection signal="kill" from="." to="." method="_on_kill"]

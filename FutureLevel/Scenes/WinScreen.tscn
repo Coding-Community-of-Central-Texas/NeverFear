@@ -9,10 +9,9 @@
 radius = 529.71
 
 [node name="Winner" type="CanvasLayer"]
-visible = false
 
 [node name="Win" type="TextureRect" parent="."]
-self_modulate = Color(1, 1, 1, 0.0862745)
+self_modulate = Color(1, 1, 1, 0.435294)
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -53,7 +52,7 @@ theme_override_fonts/font = ExtResource("3_c5ymd")
 theme_override_font_sizes/font_size = 50
 
 [node name="StatsLink" type="TouchScreenButton" parent="Win"]
-self_modulate = Color(1, 1, 1, 0.254902)
+self_modulate = Color(1, 1, 1, 0.690196)
 position = Vector2(808, 559)
 rotation = -3.14812
 scale = Vector2(0.467397, -0.222699)
@@ -71,11 +70,9 @@ offset_bottom = -735.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(-1.22498, 4.04752)
-theme_override_colors/font_color = Color(0.170785, 0.3185, 1, 1)
-theme_override_colors/font_shadow_color = Color(0.893368, 0, 0.0997127, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/shadow_offset_x = 3
-theme_override_constants/outline_size = 3
+theme_override_constants/outline_size = 7
 theme_override_fonts/font = ExtResource("3_c5ymd")
 theme_override_font_sizes/font_size = 50
 text = "   TAP TO VIEW YOUR STATS

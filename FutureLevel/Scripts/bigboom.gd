@@ -2,7 +2,7 @@ extends Node2D
 
 
 func boss_bang():
-	position.x = -7; position.y = 49;
+	position.x = -7; position.y = -20;
 	scale.x = 2.84; scale.y = 3.96;
 	%AnimatedSprite2D.play("bossBoom")
 	%AudioStreamPlayer2D.play()

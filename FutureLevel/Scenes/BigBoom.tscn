@@ -1,6 +1,6 @@
 [gd_scene load_steps=23 format=3 uid="uid://7nrxkwybkljg"]
 
-[ext_resource type="Script" path="res://Scripts/bigboom.gd" id="1_ydni7"]
+[ext_resource type="Script" path="res://Scripts/BigBoom.gd" id="1_ydni7"]
 [ext_resource type="Texture2D" uid="uid://dhle0avw53f0o" path="res://assets/Guns&Bullets/BossBang.png" id="2_36t8h"]
 [ext_resource type="Texture2D" uid="uid://b2alp73hqohbg" path="res://assets/Guns&Bullets/impact two.png" id="3_il2ve"]
 [ext_resource type="AudioStream" uid="uid://dxfrttasqhqia" path="res://assets/FutrueSFX/Explosion Long 02.wav" id="4_10kr5"]

@@ -1,11 +1,12 @@
-[gd_scene load_steps=5 format=3 uid="uid://daeuuspwxjeag"]
+[gd_scene load_steps=6 format=3 uid="uid://daeuuspwxjeag"]
 
 [ext_resource type="Script" path="res://Scripts/Gun.gd" id="1_5s5d3"]
 [ext_resource type="Texture2D" uid="uid://c8mqnh8i65mot" path="res://assets/Guns&Bullets/4_1.png" id="1_i4qsf"]
 [ext_resource type="AudioStream" uid="uid://cm6khs2aq378r" path="res://assets/FutrueSFX/Gun Laser SingleShot.wav" id="3_b7egm"]
+[ext_resource type="Texture2D" uid="uid://ciamkaf732fdg" path="res://assets/Guns&Bullets/21.png" id="4_qdcb6"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_tnu2p"]
-radius = 214.002
+radius = 239.002
 
 [node name="Gun" type="Area2D"]
 collision_layer = 0
@@ -32,7 +33,15 @@ wait_time = 0.15
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_b7egm")
 volume_db = 1.943
-pitch_scale = 1.51
+pitch_scale = 2.73
 playback_type = 1
+
+[node name="Smoke" type="Sprite2D" parent="."]
+unique_name_in_owner = true
+visible = false
+z_index = -1
+position = Vector2(21, -1.00001)
+scale = Vector2(0.1, 0.163043)
+texture = ExtResource("4_qdcb6")
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

@@ -1,28 +1,17 @@
-[gd_scene load_steps=7 format=3 uid="uid://bp7nqo4n6tglk"]
+[gd_scene load_steps=6 format=3 uid="uid://bp7nqo4n6tglk"]
 
 [ext_resource type="Script" path="res://Scripts/End.gd" id="1_fbf3r"]
-[ext_resource type="PackedScene" uid="uid://cr16l7y5x5fys" path="res://Scenes/WinScreen.tscn" id="2_73ybn"]
 [ext_resource type="Texture2D" uid="uid://b2ans61yt43mf" path="res://assets/etc/Trophy.png" id="3_e3upx"]
 [ext_resource type="AudioStream" uid="uid://ddautlqi8racq" path="res://assets/FutrueSFX/win_sound.mp3" id="4_nxyhu"]
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_7q6o2"]
-radius = 48.0104
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_urx5v"]
 size = Vector2(34, 37)
 
-[node name="Trophy" type="Node2D"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_7q6o2"]
+radius = 48.0104
+
+[node name="Trophy" type="Area2D"]
 script = ExtResource("1_fbf3r")
-
-[node name="Area2D" type="Area2D" parent="."]
-script = ExtResource("1_fbf3r")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-shape = SubResource("CircleShape2D_7q6o2")
-
-[node name="Winner" parent="." instance=ExtResource("2_73ybn")]
-process_mode = 3
-visible = false
 
 [node name="RigidBody2D" type="RigidBody2D" parent="."]
 
@@ -37,6 +26,7 @@ shape = SubResource("RectangleShape2D_urx5v")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_nxyhu")
-volume_db = 2.562
+volume_db = 1.537
 
-[connection signal="body_entered" from="Area2D" to="Area2D" method="_on_body_entered"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_7q6o2")

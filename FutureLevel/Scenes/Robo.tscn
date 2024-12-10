@@ -64,7 +64,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_me00u")
 }],
-"loop": true,
+"loop": false,
 "name": &"attack",
 "speed": 10.0
 }, {
@@ -465,4 +465,3 @@ progress = 92.95
 
 [node name="BigBoom" parent="." instance=ExtResource("4_o1jao")]
 unique_name_in_owner = true
-position = Vector2(-7, 49)

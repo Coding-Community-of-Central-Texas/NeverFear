@@ -4,12 +4,14 @@ extends Area2D
 @onready var shootingpoint: Node2D = %shootingpoint
 @onready var timer: Timer = $Timer
 @onready var audio_stream_player: AudioStreamPlayer = $AudioStreamPlayer
+@onready var smoke: Sprite2D = %Smoke
+
 
 
 var shooting = false  # Whether shooting is active or not
 
 func on_ready():
-	Global.gun = self
+	%Smoke.visible = false
 # This function is called when the timer times out (i.e., it's time to shoot)
 func _on_timer_timeout():
 	if shooting:  # Only shoot if we are still actively shooting
@@ -35,6 +37,7 @@ func _physics_process(_delta):
 
 # Function to handle shooting
 func shoot():
+	%Smoke.visible = true
 	const BULLET = preload("res://Scenes/Bullet.tscn")
 	
 	var new_bullet = BULLET.instantiate()

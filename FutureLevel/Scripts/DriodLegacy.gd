@@ -43,6 +43,7 @@ func take_damage():
 
 
 func _die():
+	emit_signal("kill")
 	
 	const BOOM = preload("res://Scenes/Boom.tscn")
 	var new_Boom = BOOM.instantiate()

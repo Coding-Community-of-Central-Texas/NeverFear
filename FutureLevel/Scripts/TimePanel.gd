@@ -1,8 +1,10 @@
 extends Panel
 
+
 @onready var minutes_timer: Label = $Minutes
 @onready var seconds_timer: Label = $Seconds
-@onready var msecs_timer: Label = $Msecs
+@onready var msec_timer: Label = $Msec
+
 
 
 
@@ -20,7 +22,7 @@ func _process(delta) -> void:
 	minutes = fmod(time, 3600) / 60
 	$Minutes.text = "%02d:" % minutes
 	$Seconds.text = "%02d." % seconds
-	$Msecs.text = "%03d" % msec
+	$Msec.text = "%03d" % msec
 
 func get_time_formated() -> String:
 	return "%02d:%02d.%03d" % [minutes, seconds, msec]

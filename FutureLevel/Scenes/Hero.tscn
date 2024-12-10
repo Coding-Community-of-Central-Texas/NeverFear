@@ -1,4 +1,4 @@
-[gd_scene load_steps=53 format=3 uid="uid://csqktr6ixyato"]
+[gd_scene load_steps=47 format=3 uid="uid://csqktr6ixyato"]
 
 [ext_resource type="Script" path="res://Scripts/Hero.gd" id="1_43ipw"]
 [ext_resource type="Texture2D" uid="uid://050tdjf5b57n" path="res://assets/3 Cyborg/Cyborg_death.png" id="2_2ior6"]
@@ -7,7 +7,6 @@
 [ext_resource type="Texture2D" uid="uid://debisd6mjmfga" path="res://assets/Guns&Bullets/Jump1.png" id="3_ieg1k"]
 [ext_resource type="Texture2D" uid="uid://dhiabh1xfdvky" path="res://assets/3 Cyborg/Cyborg_climb.png" id="3_k6dpk"]
 [ext_resource type="Texture2D" uid="uid://bo7sscl6biwig" path="res://assets/Guns&Bullets/Run1.png" id="4_nq80s"]
-[ext_resource type="Texture2D" uid="uid://xqornd2ewtdu" path="res://assets/3 Cyborg/Cyborg_hurt.png" id="7_ef541"]
 [ext_resource type="AudioStream" uid="uid://ce5s2ggmqf78e" path="res://assets/FutrueSFX/Jump2.wav" id="9_weta3"]
 [ext_resource type="PackedScene" uid="uid://daeuuspwxjeag" path="res://Scenes/Gun.tscn" id="10_0uu0a"]
 [ext_resource type="AudioStream" uid="uid://dnjr7q6plu8wi" path="res://assets/FutrueSFX/PlayerDie.wav" id="10_qhkyu"]
@@ -101,6 +100,10 @@ region = Rect2(96, 0, 48, 48)
 atlas = ExtResource("2_vptny")
 region = Rect2(144, 0, 48, 48)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_ber3q"]
+atlas = ExtResource("4_nq80s")
+region = Rect2(240, 0, 48, 48)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_5u46u"]
 atlas = ExtResource("3_ieg1k")
 region = Rect2(0, 0, 48, 48)
@@ -117,6 +120,10 @@ region = Rect2(96, 0, 48, 48)
 atlas = ExtResource("3_ieg1k")
 region = Rect2(144, 0, 48, 48)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_bxk46"]
+atlas = ExtResource("4_nq80s")
+region = Rect2(96, 0, 48, 48)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_svr8s"]
 atlas = ExtResource("4_nq80s")
 region = Rect2(0, 0, 48, 48)
@@ -125,10 +132,6 @@ region = Rect2(0, 0, 48, 48)
 atlas = ExtResource("4_nq80s")
 region = Rect2(48, 0, 48, 48)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_bxk46"]
-atlas = ExtResource("4_nq80s")
-region = Rect2(96, 0, 48, 48)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_fy24p"]
 atlas = ExtResource("4_nq80s")
 region = Rect2(144, 0, 48, 48)
@@ -136,18 +139,6 @@ region = Rect2(144, 0, 48, 48)
 [sub_resource type="AtlasTexture" id="AtlasTexture_y3afc"]
 atlas = ExtResource("4_nq80s")
 region = Rect2(192, 0, 48, 48)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ber3q"]
-atlas = ExtResource("4_nq80s")
-region = Rect2(240, 0, 48, 48)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_he2nx"]
-atlas = ExtResource("7_ef541")
-region = Rect2(0, 0, 48, 48)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_iiyle"]
-atlas = ExtResource("7_ef541")
-region = Rect2(48, 0, 48, 48)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_100ny"]
 animations = [{
@@ -204,7 +195,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"doublejump",
-"speed": 10.0
+"speed": 13.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -231,9 +222,6 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_tak48")
-}, {
-"duration": 1.0,
 "texture": SubResource("AtlasTexture_ffoj2")
 }, {
 "duration": 1.0,
@@ -244,9 +232,12 @@ animations = [{
 }],
 "loop": false,
 "name": &"gunidle",
-"speed": 10.0
+"speed": 12.0
 }, {
 "frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ber3q")
+}, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_5u46u")
 }, {
@@ -258,10 +249,13 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_4a3bp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bxk46")
 }],
 "loop": false,
 "name": &"gunjump",
-"speed": 6.0
+"speed": 11.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -284,104 +278,8 @@ animations = [{
 }],
 "loop": false,
 "name": &"gunrun",
-"speed": 10.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_he2nx")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_iiyle")
-}],
-"loop": false,
-"name": &"hurt",
-"speed": 20.0
+"speed": 13.0
 }]
-
-[sub_resource type="Animation" id="Animation_x5wps"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:sprite_frames")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [SubResource("SpriteFrames_100ny")]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:animation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [&"hurt"]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath(".:frame")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [0]
-}
-
-[sub_resource type="Animation" id="Animation_pgjst"]
-resource_name = "hurt"
-length = 0.3
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:sprite_frames")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.3),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [SubResource("SpriteFrames_100ny"), SubResource("SpriteFrames_100ny")]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:animation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [&"hurt"]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath(".:frame")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.166667),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [0, 1]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_8djlk"]
-_data = {
-"RESET": SubResource("Animation_x5wps"),
-"hurt": SubResource("Animation_pgjst")
-}
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_d1tvn"]
 radius = 7.99
@@ -399,13 +297,9 @@ script = ExtResource("1_43ipw")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(10, -5)
 sprite_frames = SubResource("SpriteFrames_100ny")
-animation = &"hurt"
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="AnimatedSprite2D"]
-unique_name_in_owner = true
-libraries = {
-"": SubResource("AnimationLibrary_8djlk")
-}
+animation = &"gunidle"
+frame = 2
+frame_progress = 1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(1, 2)

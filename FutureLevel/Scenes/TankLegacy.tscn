@@ -14,6 +14,7 @@ script = ExtResource("1_qq3r5")
 
 [node name="Tank" parent="." instance=ExtResource("2_8kpeu")]
 unique_name_in_owner = true
+position = Vector2(24, -30)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-2, -3.25)

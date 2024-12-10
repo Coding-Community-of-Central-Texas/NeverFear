@@ -1,7 +1,8 @@
-[gd_scene load_steps=17 format=3 uid="uid://dwskcd6nh751f"]
+[gd_scene load_steps=26 format=3 uid="uid://dwskcd6nh751f"]
 
 [ext_resource type="Script" path="res://Scripts/Robbie.gd" id="1_2b8iv"]
 [ext_resource type="Texture2D" uid="uid://cvedoowxv87s2" path="res://assets/Enemies/Robbie.png.png" id="1_g7yjx"]
+[ext_resource type="Texture2D" uid="uid://b2alp73hqohbg" path="res://assets/Guns&Bullets/impact two.png" id="3_bvk6r"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_fr82j"]
 atlas = ExtResource("1_g7yjx")
@@ -117,70 +118,6 @@ tracks/2/keys = {
 "update": 1,
 "values": [&"hurt"]
 }
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("AnimatedSprite2D:self_modulate")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 0.0784314, 0, 1)]
-}
-
-[sub_resource type="Animation" id="Animation_ousn3"]
-resource_name = "hurt"
-length = 0.35
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("AnimatedSprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.3),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [0, 1]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("AnimatedSprite2D:animation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.366667),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [&"hurt", &"hurt"]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("AnimatedSprite2D:sprite_frames")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.366667),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [SubResource("SpriteFrames_c264i"), SubResource("SpriteFrames_c264i")]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("AnimatedSprite2D:self_modulate")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.366667),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(1, 0.0784314, 0, 1), Color(1, 0.0784314, 0, 1)]
-}
 
 [sub_resource type="Animation" id="Animation_3uaiu"]
 resource_name = "walk"
@@ -222,37 +159,89 @@ tracks/2/keys = {
 "update": 1,
 "values": [&"walk"]
 }
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("AnimatedSprite2D:self_modulate")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0, 1.43333),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(0.901768, 0.909546, 0.91346, 1), Color(0.901768, 0.909546, 0.91346, 1)]
-}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ywyig"]
 _data = {
 "RESET": SubResource("Animation_6nh7r"),
-"hurt": SubResource("Animation_ousn3"),
 "walk": SubResource("Animation_3uaiu")
 }
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i5lf0"]
+atlas = ExtResource("3_bvk6r")
+region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_we47c"]
+atlas = ExtResource("3_bvk6r")
+region = Rect2(48, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0g5l1"]
+atlas = ExtResource("3_bvk6r")
+region = Rect2(96, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tt1yl"]
+atlas = ExtResource("3_bvk6r")
+region = Rect2(144, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4adpm"]
+atlas = ExtResource("3_bvk6r")
+region = Rect2(192, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pibiv"]
+atlas = ExtResource("3_bvk6r")
+region = Rect2(240, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lwq7v"]
+atlas = ExtResource("3_bvk6r")
+region = Rect2(288, 0, 48, 48)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ryssa"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": null
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i5lf0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_we47c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0g5l1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tt1yl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4adpm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pibiv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lwq7v")
+}],
+"loop": false,
+"name": &"impact",
+"speed": 15.0
+}]
+
+[sub_resource type="Curve2D" id="Curve2D_n47q5"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, -2, 3, 0, 0, 0, 0, -12, -16, 0, 0, 0, 0, 4, -18, 0, 0, 0, 0, 4, 17, 0, 0, 0, 0, -17, 17, 0, 0, 0, 0, -16, -1, 0, 0, 0, 0, -1, -9, 0, 0, 0, 0, -16, -15, 0, 0, 0, 0, -2, 3)
+}
+point_count = 9
 
 [node name="Robbie" type="Node2D"]
 position = Vector2(1, -1)
 script = ExtResource("1_2b8iv")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-self_modulate = Color(1, 0.0784314, 0, 1)
+self_modulate = Color(0.901768, 0.909546, 0.91346, 1)
 position = Vector2(4.76837e-07, 0)
 scale = Vector2(0.247917, 0.215972)
 sprite_frames = SubResource("SpriteFrames_c264i")
 animation = &"hurt"
-frame = 1
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="AnimatedSprite2D"]
 unique_name_in_owner = true
@@ -260,3 +249,16 @@ root_node = NodePath("../..")
 libraries = {
 "": SubResource("AnimationLibrary_ywyig")
 }
+
+[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_ryssa")
+animation = &"impact"
+
+[node name="Path2D" type="Path2D" parent="."]
+curve = SubResource("Curve2D_n47q5")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
+unique_name_in_owner = true
+position = Vector2(-4.96501, -10.586)
+rotation = -2.76109
+progress = 132.924
