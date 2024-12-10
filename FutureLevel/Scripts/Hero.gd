@@ -177,5 +177,5 @@ func _on_game_over():
 func _on_pick_up_gun_picked_up() -> void:
 		const GUN = preload("res://Scenes/Gun.tscn")
 		var new_gun = GUN.instantiate()
-		new_gun.position = global_position
+		new_gun.position = self.global_position
 		get_tree().current_scene.call_deferred("add_child", new_gun)

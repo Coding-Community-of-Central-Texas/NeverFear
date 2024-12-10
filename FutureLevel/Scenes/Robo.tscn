@@ -453,15 +453,17 @@ position = Vector2(-26.8864, -49.1181)
 scale = Vector2(1.02384, 1.142)
 sprite_frames = SubResource("SpriteFrames_26u5r")
 animation = &"impact2"
+frame = 8
+frame_progress = 1.0
 
 [node name="Path2D" type="Path2D" parent="."]
 curve = SubResource("Curve2D_frwfj")
 
 [node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
 unique_name_in_owner = true
-position = Vector2(34.3088, 10.74)
-rotation = 1.50287
-progress = 92.95
+position = Vector2(-28.1754, 31.8436)
+rotation = 1.56322
+progress = 417.678
 
 [node name="BigBoom" parent="." instance=ExtResource("4_o1jao")]
 unique_name_in_owner = true

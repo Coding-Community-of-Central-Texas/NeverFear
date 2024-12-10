@@ -10,11 +10,15 @@ var die_executed: bool = false
 @onready var attack_duration: Timer = $AttackDuration
 @onready var die_timer: Timer = $DieTimer
 @onready var shooting_point: Marker2D = $ShootingPoint
+@onready var weak_point_1: CharacterBody2D = $WeakPoint1
+@onready var weak_point_2: CharacterBody2D = $WeakPoint2
 
+var weak_point_1_healthy = true 
+var weak_point_2_healthy = true 
 
 @onready var bullet_hell_scene = preload("res://Scenes/BulletHell1.tscn")
 
-var move_speed = 100.0  # Movement speed
+var move_speed = 150.0  # Movement speed
 var direction = 1  # 1 for right, -1 for left
 var is_attacking = false  # Whether the boss is currently attacking
 
@@ -22,6 +26,13 @@ func _ready():
 	%Robo.play_walk()
 	start_attack.start()  # Start the attack sequence
 
+func point_switch():
+	if weak_point_1.health <= 0.0:
+		weak_point_1_healthy = false 
+		weak_point_2.set_collision_layer_value(3, true)
+	if weak_point_2.health <= 0.0: 
+		weak_point_2_healthy = false
+		set_collision_layer_value(3, true)
 func _physics_process(delta: float) -> void:
 	if not is_on_floor():
 		velocity += get_gravity() * delta
@@ -45,9 +56,7 @@ func is_near_wall() -> bool:
 
 func take_damage():
 	boss_health -= 100
-	self.modulate = Color(1, 0, 0)  # Set to red
-	await get_tree().create_timer(0.1).timeout  # Wait for 0.1 seconds
-	self.modulate = Color(1, 1, 1)  # Reset to normal
+	%Robo.play_hurt()
 	%HealthBar.value = boss_health
 	if boss_health <= 0 and not die_executed:
 		die()

@@ -1,4 +1,4 @@
-[gd_scene load_steps=183 format=3 uid="uid://c8sbp2d4k2aou"]
+[gd_scene load_steps=184 format=3 uid="uid://c8sbp2d4k2aou"]
 
 [ext_resource type="Script" path="res://Scripts/HypercoreGauntlet.gd" id="1_dl73x"]
 [ext_resource type="Script" path="res://addons/gaea/renderers/2D/tilemap_gaea_renderer.gd" id="2_bqeif"]
@@ -87,8 +87,10 @@
 [ext_resource type="PackedScene" uid="uid://bsltfx5uw5yvq" path="res://Scenes/Survivor.tscn" id="84_7tc6j"]
 [ext_resource type="Script" path="res://addons/gaea/others/chunk_loader_2d.gd" id="85_07p6e"]
 [ext_resource type="PackedScene" uid="uid://cijayc3peexw" path="res://GameManager.tscn" id="87_esuwa"]
-[ext_resource type="FontFile" uid="uid://ckid4fla6wirc" path="res://assets/etc/Starzoom-Shavian.ttf" id="89_0wxma"]
+[ext_resource type="PackedScene" uid="uid://bpcrood65pxvy" path="res://Scenes/PauseButton.tscn" id="88_b882s"]
 [ext_resource type="PackedScene" uid="uid://bnvfoqqwf8ub" path="res://Scenes/SurvivorControl.tscn" id="89_4jwms"]
+[ext_resource type="PackedScene" uid="uid://8p6xxbnu26v8" path="res://Scenes/SpawnCircle.tscn" id="90_54fqq"]
+[ext_resource type="PackedScene" uid="uid://fsxm1bfx6ihb" path="res://Scenes/TimePanel.tscn" id="90_xpk53"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_w27gi"]
 noise_type = 4
@@ -678,9 +680,6 @@ sources/74 = SubResource("TileSetAtlasSource_y4tan")
 sources/75 = SubResource("TileSetAtlasSource_llo5o")
 sources/76 = SubResource("TileSetAtlasSource_g3xb1")
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_2wyy2"]
-radius = 16.8
-
 [node name="HypercoreGauntlet" type="Node2D"]
 script = ExtResource("1_dl73x")
 game_manager = NodePath("GameManager")
@@ -709,6 +708,11 @@ visibility_layer = 2
 position = Vector2(581, 245)
 slide_on_ceiling = false
 
+[node name="SpawnCircle2" parent="Survivor" instance=ExtResource("90_54fqq")]
+physics_interpolation_mode = 1
+position = Vector2(-33.5, -39)
+scale = Vector2(0.5, 0.5)
+
 [node name="ChunkLoader2D" type="Node2D" parent="." node_paths=PackedStringArray("generator", "actor")]
 script = ExtResource("85_07p6e")
 generator = NodePath("../NoiseGenerator")
@@ -720,39 +724,10 @@ process_mode = 3
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer"]
-offset_left = 59.0
-offset_top = 31.0
-offset_right = 99.0
-offset_bottom = 71.0
+[node name="TimePanel" parent="CanvasLayer" instance=ExtResource("90_xpk53")]
 
-[node name="Pause" type="TouchScreenButton" parent="CanvasLayer/HBoxContainer"]
-process_mode = 3
-self_modulate = Color(0.1608, 0.355993, 0.67, 1)
-position = Vector2(6, 4)
-scale = Vector2(0.959993, 0.960001)
-texture_normal = ExtResource("44_lc7im")
-shape = SubResource("CircleShape2D_2wyy2")
-
-[node name="pausebutton" type="Label" parent="CanvasLayer/HBoxContainer/Pause"]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -10.7916
-offset_top = -11.8333
-offset_right = 17.2084
-offset_bottom = 6.16666
-grow_horizontal = 2
-grow_vertical = 2
-scale = Vector2(0.80198, 1.40811)
-size_flags_horizontal = 4
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 3
-theme_override_fonts/font = ExtResource("89_0wxma")
-theme_override_font_sizes/font_size = 17
-text = "I I"
+[node name="PauseButton" parent="CanvasLayer" instance=ExtResource("88_b882s")]
+position = Vector2(59, 31)
 
 [node name="Control" type="Control" parent="."]
 layout_mode = 3
@@ -761,5 +736,3 @@ offset_right = 40.0
 offset_bottom = 40.0
 
 [node name="SurvivalControl" parent="Control" instance=ExtResource("89_4jwms")]
-
-[connection signal="pressed" from="CanvasLayer/HBoxContainer/Pause" to="." method="_on_pause_pressed"]

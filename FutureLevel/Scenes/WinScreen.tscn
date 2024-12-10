@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://cr16l7y5x5fys"]
+[gd_scene load_steps=7 format=3 uid="uid://cr16l7y5x5fys"]
 
 [ext_resource type="Texture2D" uid="uid://bcypd57pmrt63" path="res://assets/Background/Hero.svg" id="1_ykjtl"]
 [ext_resource type="Script" path="res://Scripts/WinScreen.gd" id="2_1sl55"]
 [ext_resource type="FontFile" uid="uid://ckid4fla6wirc" path="res://assets/etc/Starzoom-Shavian.ttf" id="3_c5ymd"]
 [ext_resource type="Texture2D" uid="uid://c0yymphvu7cv3" path="res://assets/Background/NeverFearIcon.svg" id="4_a6ix8"]
+[ext_resource type="AudioStream" uid="uid://dbnystp0y1gke" path="res://assets/FutrueSFX/PickUp.wav" id="5_els2m"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_2oy4v"]
 radius = 529.71
@@ -28,28 +29,26 @@ offset_right = 553.0
 offset_bottom = 306.0
 rotation = 0.00545926
 scale = Vector2(2.31642, 2.06861)
-theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_color = Color(0.469853, 0.402541, 0.912944, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/shadow_offset_x = 4
 theme_override_constants/outline_size = 11
-theme_override_constants/shadow_outline_size = 6
 theme_override_fonts/font = ExtResource("3_c5ymd")
 theme_override_font_sizes/font_size = 69
 text = "YOU WIN!!"
 
 [node name="RunTime" type="Label" parent="Win"]
 layout_mode = 0
-offset_left = 269.0
-offset_top = 393.0
-offset_right = 309.0
-offset_bottom = 444.0
-scale = Vector2(15.397, 1.63822)
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+offset_left = 182.0
+offset_top = 429.0
+offset_right = 654.0
+offset_bottom = 450.0
+scale = Vector2(1.677, 2.23822)
+theme_override_colors/font_color = Color(0.785203, 0.349248, 0.119916, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/shadow_offset_x = 3
-theme_override_constants/outline_size = 3
+theme_override_constants/outline_size = 6
 theme_override_fonts/font = ExtResource("3_c5ymd")
-theme_override_font_sizes/font_size = 50
+theme_override_font_sizes/font_size = 20
+text = "SPEED RUN TIME:"
 
 [node name="StatsLink" type="TouchScreenButton" parent="Win"]
 self_modulate = Color(1, 1, 1, 0.690196)
@@ -82,5 +81,11 @@ horizontal_alignment = 1
 
 [node name="Camera2D" type="Camera2D" parent="Win"]
 position = Vector2(568, 497)
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("5_els2m")
+volume_db = 2.1
+pitch_scale = 1.4
 
 [connection signal="pressed" from="Win/StatsLink" to="Win" method="_on_stats_link_pressed"]

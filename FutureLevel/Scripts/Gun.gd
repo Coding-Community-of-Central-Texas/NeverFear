@@ -1,18 +1,23 @@
 extends Area2D
 
-@export var rate_of_fire: float = 0.15  # Rate of fire: 0.15 seconds between shots (5 shots per second)
+@export var rate_of_fire: float = 0.15
+@export var default_range_scale: Vector2 = Vector2(1, 1)  # Rate of fire: 0.15 seconds between shots (5 shots per second)
 @onready var shootingpoint: Node2D = %shootingpoint
 @onready var timer: Timer = $Timer
 @onready var audio_stream_player: AudioStreamPlayer = $AudioStreamPlayer
-@onready var smoke: Sprite2D = %Smoke
-
+@onready var collision_shape: CollisionShape2D = %CollisionShape2D
+@onready var animated_sprite: AnimatedSprite2D = %AnimatedSprite
 
 
 var shooting = false  # Whether shooting is active or not
 
 func on_ready():
 	%Smoke.visible = false
+	collision_shape.scale = default_range_scale
 # This function is called when the timer times out (i.e., it's time to shoot)
+func set_range(new_scale: Vector2) -> void:
+	collision_shape.scale = new_scale
+
 func _on_timer_timeout():
 	if shooting:  # Only shoot if we are still actively shooting
 		shoot()
@@ -37,7 +42,7 @@ func _physics_process(_delta):
 
 # Function to handle shooting
 func shoot():
-	%Smoke.visible = true
+	%AnimatedSprite.play("poof")
 	const BULLET = preload("res://Scenes/Bullet.tscn")
 	
 	var new_bullet = BULLET.instantiate()
@@ -45,3 +50,7 @@ func shoot():
 	new_bullet.global_rotation = shootingpoint.global_rotation
 	shootingpoint.add_child(new_bullet)
 	audio_stream_player.play()
+
+func _on_body_entered(body):
+	if body.is_in_group("range_room"):  # Ensure the range zone has this group assigned
+		set_range(Vector2(2, 2)) 

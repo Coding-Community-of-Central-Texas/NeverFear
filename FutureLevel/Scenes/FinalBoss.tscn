@@ -1,13 +1,14 @@
-[gd_scene load_steps=7 format=3 uid="uid://dcmrsrfl6ctr5"]
+[gd_scene load_steps=8 format=3 uid="uid://dcmrsrfl6ctr5"]
 
 [ext_resource type="Script" path="res://Scripts/BossScript.gd" id="1_lc6rt"]
 [ext_resource type="PackedScene" uid="uid://dr3tcip76rdmv" path="res://Scenes/Robo.tscn" id="2_p1iq0"]
 [ext_resource type="PackedScene" uid="uid://v1wqgbnfesbp" path="res://Scenes/HealthBar.tscn" id="4_f425b"]
 [ext_resource type="FontFile" uid="uid://ckid4fla6wirc" path="res://assets/etc/Starzoom-Shavian.ttf" id="4_ygfge"]
 [ext_resource type="PackedScene" uid="uid://7nrxkwybkljg" path="res://Scenes/BigBoom.tscn" id="5_llw8d"]
+[ext_resource type="PackedScene" uid="uid://cxo3uqnx4k0b0" path="res://Scenes/WeakPoint.tscn" id="6_siv3w"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_piomw"]
-size = Vector2(176.563, 177.778)
+size = Vector2(75, 173.611)
 
 [node name="FinalBoss" type="CharacterBody2D" groups=["enemy"]]
 scale = Vector2(1.28, 1.44)
@@ -18,7 +19,7 @@ script = ExtResource("1_lc6rt")
 unique_name_in_owner = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-3.90625, 9.72222)
+position = Vector2(0, 7.63883)
 shape = SubResource("RectangleShape2D_piomw")
 
 [node name="RightWall" type="RayCast2D" parent="."]
@@ -46,49 +47,51 @@ one_shot = true
 
 [node name="HealthBar" parent="CanvasLayer" instance=ExtResource("4_f425b")]
 unique_name_in_owner = true
-anchors_preset = 7
+anchors_preset = 5
 anchor_left = 0.5
-anchor_top = 1.0
 anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -145.0
-offset_top = -27.0
-offset_right = 145.0
-offset_bottom = 0.0
+offset_left = -347.0
+offset_top = 52.0
+offset_right = -57.0
+offset_bottom = 79.0
 grow_horizontal = 2
-grow_vertical = 0
+scale = Vector2(2.28, 1.44)
 max_value = 10000.0
 value = 10000.0
 
 [node name="Label" type="Label" parent="CanvasLayer"]
 z_index = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -84.0
-offset_top = -26.0
-offset_right = 84.0
+anchors_preset = -1
+anchor_left = 0.412326
+anchor_top = 0.0910494
+anchor_right = 0.55816
+anchor_bottom = 0.131173
 grow_horizontal = 2
 grow_vertical = 0
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 7
 theme_override_fonts/font = ExtResource("4_ygfge")
 theme_override_font_sizes/font_size = 25
-text = "Ro-Bo "
+text = "Ro-Boss"
 horizontal_alignment = 1
 vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
 
 [node name="ShootingPoint" type="Marker2D" parent="."]
 position = Vector2(-115.625, -24.3056)
 
 [node name="DieTimer" type="Timer" parent="."]
-wait_time = 0.77
+wait_time = 1.403
 one_shot = true
 
 [node name="BigBoom" parent="." instance=ExtResource("5_llw8d")]
 unique_name_in_owner = true
+
+[node name="WeakPoint1" parent="." instance=ExtResource("6_siv3w")]
+position = Vector2(-62.5, -27.7778)
+
+[node name="WeakPoint2" parent="." instance=ExtResource("6_siv3w")]
+position = Vector2(56.25, -27.7778)
 
 [connection signal="timeout" from="StartAttack" to="." method="_on_start_attack_timeout"]
 [connection signal="timeout" from="StartAttack" to="." method="_on_timer_timeout"]

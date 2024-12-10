@@ -1,14 +1,14 @@
-extends Path2D
+extends Node2D
+
 
 
 @onready var timer: Timer = $Timer
+
 
 func _ready() -> void:
 	timer.start()
 
 func _on_timer_timeout() -> void:
-	spawn_wave()
-	spawn_wave()
 	spawn_wave()
 
 
@@ -25,5 +25,5 @@ func spawn_wave():
 		%PathFollow2D.progress_ratio -= 1.0  # Wrap around if it exceeds 1.0
 		new_byte.position = %PathFollow2D.position
 	new_byte.position = %PathFollow2D.position
-	add_child(new_byte) 
-	add_child(new_droid)
+	add_child(new_byte)
+	add_child(new_droid) 

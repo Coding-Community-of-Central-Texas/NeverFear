@@ -1,0 +1,52 @@
+[gd_scene load_steps=3 format=3 uid="uid://fsxm1bfx6ihb"]
+
+[ext_resource type="Script" path="res://Scripts/TimePanel.gd" id="1_4vdq7"]
+[ext_resource type="FontFile" uid="uid://ckid4fla6wirc" path="res://assets/etc/Starzoom-Shavian.ttf" id="2_lcrqh"]
+
+[node name="TimePanel" type="Panel"]
+self_modulate = Color(1, 1, 1, 0)
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -79.0
+offset_top = 17.0
+offset_right = 89.0
+offset_bottom = 75.0
+grow_horizontal = 2
+size_flags_vertical = 0
+script = ExtResource("1_4vdq7")
+
+[node name="Minutes" type="Label" parent="."]
+layout_mode = 0
+offset_right = 51.0
+offset_bottom = 47.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 7
+theme_override_fonts/font = ExtResource("2_lcrqh")
+theme_override_font_sizes/font_size = 25
+text = "00:"
+horizontal_alignment = 2
+
+[node name="Seconds" type="Label" parent="."]
+layout_mode = 0
+offset_left = 52.0
+offset_top = 1.0
+offset_right = 103.0
+offset_bottom = 36.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 7
+theme_override_fonts/font = ExtResource("2_lcrqh")
+theme_override_font_sizes/font_size = 25
+text = "00."
+
+[node name="Msec" type="Label" parent="."]
+layout_mode = 0
+offset_left = 99.0
+offset_top = 1.0
+offset_right = 149.0
+offset_bottom = 31.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 7
+theme_override_fonts/font = ExtResource("2_lcrqh")
+theme_override_font_sizes/font_size = 25
+text = "000"

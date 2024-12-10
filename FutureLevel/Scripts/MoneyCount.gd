@@ -4,5 +4,5 @@ extends Panel
 
 
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	%Money.text = "$ %d" % GameManager.game_cash

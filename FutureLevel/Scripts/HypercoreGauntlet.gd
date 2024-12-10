@@ -17,9 +17,3 @@ func level_failed():
 	manager.update_longest_survival(elapsed_time)
 	manager.save_data()
 	
-
-
-func _on_pause_pressed() -> void:
-	const PAUSE = preload("res://Scenes/PauseMenu.tscn")
-	var new_pauese = PAUSE.instantiate()
-	get_tree().paused = true

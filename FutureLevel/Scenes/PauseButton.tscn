@@ -1,0 +1,32 @@
+[gd_scene load_steps=6 format=3 uid="uid://bpcrood65pxvy"]
+
+[ext_resource type="Texture2D" uid="uid://r4yabe1kewtl" path="res://assets/etc/Icons_34.png" id="1_1ah3y"]
+[ext_resource type="Script" path="res://Scripts/PauseButton.gd" id="2_ny8u6"]
+[ext_resource type="Texture2D" uid="uid://c8fbdi8gxy03r" path="res://assets/etc/uncheckd.png" id="3_cpkma"]
+[ext_resource type="AudioStream" uid="uid://dbnystp0y1gke" path="res://assets/FutrueSFX/PickUp.wav" id="4_5mu5q"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_b5cbe"]
+
+[node name="PauseButton" type="Sprite2D"]
+modulate = Color(0.66, 0.3696, 0.3696, 1)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("1_1ah3y")
+script = ExtResource("2_ny8u6")
+
+[node name="Uncheckd" type="Sprite2D" parent="."]
+show_behind_parent = true
+position = Vector2(0.5, -0.5)
+scale = Vector2(0.5, 0.523438)
+texture = ExtResource("3_cpkma")
+
+[node name="TouchScreenButton" type="TouchScreenButton" parent="."]
+scale = Vector2(2, 2)
+shape = SubResource("CircleShape2D_b5cbe")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("4_5mu5q")
+volume_db = 2.1
+pitch_scale = 1.4
+
+[connection signal="pressed" from="TouchScreenButton" to="." method="_on_touch_screen_button_pressed"]

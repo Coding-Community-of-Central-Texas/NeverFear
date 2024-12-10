@@ -1,12 +1,68 @@
-[gd_scene load_steps=6 format=3 uid="uid://daeuuspwxjeag"]
+[gd_scene load_steps=13 format=3 uid="uid://daeuuspwxjeag"]
 
 [ext_resource type="Script" path="res://Scripts/Gun.gd" id="1_5s5d3"]
 [ext_resource type="Texture2D" uid="uid://c8mqnh8i65mot" path="res://assets/Guns&Bullets/4_1.png" id="1_i4qsf"]
 [ext_resource type="AudioStream" uid="uid://cm6khs2aq378r" path="res://assets/FutrueSFX/Gun Laser SingleShot.wav" id="3_b7egm"]
-[ext_resource type="Texture2D" uid="uid://ciamkaf732fdg" path="res://assets/Guns&Bullets/21.png" id="4_qdcb6"]
+[ext_resource type="Texture2D" uid="uid://b5j4crk6t517p" path="res://assets/Guns&Bullets/blasteffect.png" id="4_ikfiu"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_tnu2p"]
 radius = 239.002
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fstce"]
+atlas = ExtResource("4_ikfiu")
+region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0qmc5"]
+atlas = ExtResource("4_ikfiu")
+region = Rect2(48, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m4wbo"]
+atlas = ExtResource("4_ikfiu")
+region = Rect2(96, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_etwsr"]
+atlas = ExtResource("4_ikfiu")
+region = Rect2(144, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f03cq"]
+atlas = ExtResource("4_ikfiu")
+region = Rect2(192, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h5y8j"]
+atlas = ExtResource("4_ikfiu")
+region = Rect2(240, 0, 48, 48)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_jee0v"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": null
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fstce")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0qmc5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m4wbo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_etwsr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f03cq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h5y8j")
+}, {
+"duration": 1.0,
+"texture": null
+}],
+"loop": false,
+"name": &"poof",
+"speed": 30.0
+}]
 
 [node name="Gun" type="Area2D"]
 collision_layer = 0
@@ -14,6 +70,8 @@ collision_mask = 4
 script = ExtResource("1_5s5d3")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(0, 1)
 shape = SubResource("CircleShape2D_tnu2p")
 
 [node name="gunpivot" type="Marker2D" parent="."]
@@ -25,7 +83,7 @@ texture = ExtResource("1_i4qsf")
 
 [node name="shootingpoint" type="Marker2D" parent="gunpivot/Rifle"]
 unique_name_in_owner = true
-position = Vector2(13, -3)
+position = Vector2(11.1064, -2.93333)
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.15
@@ -36,12 +94,16 @@ volume_db = 1.943
 pitch_scale = 2.73
 playback_type = 1
 
-[node name="Smoke" type="Sprite2D" parent="."]
+[node name="AnimatedSprite" type="AnimatedSprite2D" parent="."]
 unique_name_in_owner = true
-visible = false
 z_index = -1
-position = Vector2(21, -1.00001)
-scale = Vector2(0.1, 0.163043)
-texture = ExtResource("4_qdcb6")
+position = Vector2(34.5352, -0.536489)
+rotation = 0.764125
+scale = Vector2(0.52973, 0.478341)
+sprite_frames = SubResource("SpriteFrames_jee0v")
+animation = &"poof"
+frame = 7
+frame_progress = 1.0
+flip_v = true
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

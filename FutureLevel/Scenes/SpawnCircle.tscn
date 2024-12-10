@@ -8,16 +8,18 @@ _data = {
 }
 point_count = 12
 
-[node name="Path2D" type="Path2D"]
+[node name="SpawnCircle" type="Path2D"]
 position = Vector2(518, 231)
 curve = SubResource("Curve2D_dwh3c")
 script = ExtResource("1_hge4p")
 
 [node name="PathFollow2D" type="PathFollow2D" parent="."]
 unique_name_in_owner = true
-position = Vector2(1253, 926.5)
-rotation = -2.9734
+position = Vector2(323.725, 923.634)
+rotation = 0.0132212
+progress = 3399.94
 
 [node name="Timer" type="Timer" parent="."]
-wait_time = 0.5
-autostart = true
+wait_time = 2.64
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

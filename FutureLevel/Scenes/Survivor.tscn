@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://bsltfx5uw5yvq"]
+[gd_scene load_steps=36 format=3 uid="uid://bsltfx5uw5yvq"]
 
 [ext_resource type="Script" path="res://Scripts/SurvivorScript.gd" id="1_dqedt"]
 [ext_resource type="Texture2D" uid="uid://050tdjf5b57n" path="res://assets/3 Cyborg/Cyborg_death.png" id="2_cknjt"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://v1wqgbnfesbp" path="res://Scenes/HealthBar.tscn" id="6_pjeyg"]
 [ext_resource type="PackedScene" uid="uid://daeuuspwxjeag" path="res://Scenes/Gun.tscn" id="7_3segn"]
 [ext_resource type="AudioStream" uid="uid://dnjr7q6plu8wi" path="res://assets/FutrueSFX/PlayerDie.wav" id="8_x70f2"]
+[ext_resource type="PackedScene" uid="uid://8p6xxbnu26v8" path="res://Scenes/SpawnCircle.tscn" id="9_agpeh"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_k5wwv"]
 atlas = ExtResource("2_cknjt")
@@ -155,7 +156,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"run",
-"speed": 10.0
+"speed": 15.0
 }]
 
 [sub_resource type="Animation" id="Animation_i8mf6"]
@@ -327,10 +328,6 @@ position = Vector2(-6.66667, 1.33333)
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(1.5, 0.7)
 
-[node name="Timer" type="Timer" parent="."]
-wait_time = 4.482
-autostart = true
-
 [node name="HurtBox" type="Area2D" parent="."]
 unique_name_in_owner = true
 collision_layer = 4
@@ -342,6 +339,7 @@ shape = SubResource("CircleShape2D_630u5")
 debug_color = Color(0.999138, 0.0238237, 3.85046e-07, 0.42)
 
 [node name="Timer2" type="Timer" parent="."]
+process_callback = 0
 wait_time = 0.687
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
@@ -358,5 +356,7 @@ offset_bottom = 59.0
 scale = Vector2(0.655241, 0.198042)
 texture = SubResource("CanvasTexture_5o6h1")
 
-[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[node name="SpawnCircle" parent="." instance=ExtResource("9_agpeh")]
+position = Vector2(-42, -37)
+
 [connection signal="timeout" from="Timer2" to="." method="_on_timer_2_timeout"]

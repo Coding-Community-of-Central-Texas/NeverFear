@@ -1,8 +1,69 @@
-[gd_scene load_steps=7 format=3 uid="uid://b0kr4yg6fgfci"]
+[gd_scene load_steps=11 format=3 uid="uid://b0kr4yg6fgfci"]
 
 [ext_resource type="Script" path="res://Scripts/PauseMenu.gd" id="1_gfvbg"]
 [ext_resource type="Texture2D" uid="uid://dhit27os2eis3" path="res://assets/Background/FinalMenu1.svg" id="1_nv4xp"]
 [ext_resource type="FontFile" uid="uid://ckid4fla6wirc" path="res://assets/etc/Starzoom-Shavian.ttf" id="2_16qji"]
+[ext_resource type="AudioStream" uid="uid://dbnystp0y1gke" path="res://assets/FutrueSFX/PickUp.wav" id="4_84h4p"]
+
+[sub_resource type="Animation" id="Animation_r58bc"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TextureRect:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("TextureRect:self_modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0.545098)]
+}
+
+[sub_resource type="Animation" id="Animation_73y8l"]
+resource_name = "onpause"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TextureRect:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.233333, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0.223529), Color(1, 1, 1, 1), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("TextureRect:self_modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.5, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0.545098), Color(1, 1, 1, 0.545098)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_a43k7"]
+_data = {
+"RESET": SubResource("Animation_r58bc"),
+"onpause": SubResource("Animation_73y8l")
+}
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_iamjd"]
 
@@ -10,82 +71,121 @@
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ctl43"]
 
-[node name="CanvasLayer" type="CanvasLayer"]
+[node name="PauseMenu" type="Control"]
 process_mode = 3
-script = ExtResource("1_gfvbg")
-
-[node name="TextureRect" type="TextureRect" parent="."]
+physics_interpolation_mode = 0
+layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_gfvbg")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+modulate = Color(1, 1, 1, 0)
+self_modulate = Color(1, 1, 1, 0.545098)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.200521
+anchor_top = 0.00154321
+anchor_right = 0.724826
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 texture = ExtResource("1_nv4xp")
+expand_mode = 1
+metadata/_edit_use_anchors_ = true
 
-[node name="Continue" type="Label" parent="TextureRect"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="TextureRect"]
+unique_name_in_owner = true
+root_node = NodePath("../..")
+libraries = {
+"": SubResource("AnimationLibrary_a43k7")
+}
+autoplay = "onpause"
+
+[node name="Panel" type="Panel" parent="."]
+self_modulate = Color(1, 1, 1, 0.0156863)
 layout_mode = 0
-offset_left = 430.0
-offset_top = 466.0
-offset_right = 470.0
-offset_bottom = 489.0
-scale = Vector2(2.1095, 2.11088)
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/shadow_offset_x = 3
-theme_override_constants/outline_size = 3
-theme_override_fonts/font = ExtResource("2_16qji")
-theme_override_font_sizes/font_size = 50
-text = "Continue"
+anchor_left = 0.326389
+anchor_top = 0.280864
+anchor_right = 0.597222
+anchor_bottom = 0.712963
+metadata/_edit_use_anchors_ = true
 
-[node name="continue_game" type="TouchScreenButton" parent="TextureRect/Continue"]
-position = Vector2(132.259, 22.2656)
-scale = Vector2(14.0078, 2.72814)
+[node name="Continue" type="Label" parent="Panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.119832
+anchor_top = 0.129359
+anchor_right = 0.850044
+anchor_bottom = 0.287675
+offset_right = -119.826
+offset_bottom = -23.3285
+scale = Vector2(2.1095, 2.11088)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 6
+theme_override_fonts/font = ExtResource("2_16qji")
+theme_override_font_sizes/font_size = 20
+text = "Continue"
+metadata/_edit_use_anchors_ = true
+
+[node name="continue_game" type="TouchScreenButton" parent="Panel/Continue"]
+position = Vector2(58.5979, 7.47534)
+scale = Vector2(6.35206, 1.09338)
 shape = SubResource("RectangleShape2D_iamjd")
 
-[node name="Restart" type="Label" parent="TextureRect"]
+[node name="Restart" type="Label" parent="Panel"]
 layout_mode = 0
-offset_left = 430.0
-offset_top = 645.0
-offset_right = 470.0
-offset_bottom = 668.0
+anchor_left = 0.119832
+anchor_top = 0.427354
+anchor_right = 0.850602
+anchor_bottom = 0.577354
+offset_right = -133.0
+offset_bottom = -21.0
 scale = Vector2(2.4, 2)
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/shadow_offset_x = 3
-theme_override_constants/outline_size = 3
+theme_override_constants/outline_size = 6
 theme_override_fonts/font = ExtResource("2_16qji")
-theme_override_font_sizes/font_size = 50
+theme_override_font_sizes/font_size = 20
 text = "Restart"
+metadata/_edit_use_anchors_ = true
 
-[node name="Restart" type="TouchScreenButton" parent="TextureRect/Restart"]
-position = Vector2(118.333, 23)
-scale = Vector2(12.0883, 2.71167)
+[node name="Restart" type="TouchScreenButton" parent="Panel/Restart"]
+position = Vector2(49.4218, 6.67038)
+scale = Vector2(4.70497, 1.31167)
 shape = SubResource("RectangleShape2D_5i2qq")
 
-[node name="Home" type="Label" parent="TextureRect"]
-layout_mode = 0
-offset_left = 430.0
-offset_top = 804.0
-offset_right = 470.0
-offset_bottom = 827.0
+[node name="Home" type="Label" parent="Panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.144231
+anchor_top = 0.671429
+anchor_right = 0.876539
+anchor_bottom = 0.827429
+offset_right = -160.48
+offset_bottom = -22.68
 scale = Vector2(3.36, 2.08)
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/shadow_offset_x = 3
-theme_override_constants/outline_size = 3
+theme_override_constants/outline_size = 6
 theme_override_fonts/font = ExtResource("2_16qji")
-theme_override_font_sizes/font_size = 50
+theme_override_font_sizes/font_size = 20
 text = "Home
 "
+metadata/_edit_use_anchors_ = true
 
-[node name="Home" type="TouchScreenButton" parent="TextureRect/Home"]
-position = Vector2(84.8214, 25)
-scale = Vector2(8.65476, 2.48077)
+[node name="Home" type="TouchScreenButton" parent="Panel/Home"]
+position = Vector2(33.3333, 10.0962)
+scale = Vector2(3.80952, 1.25)
 shape = SubResource("RectangleShape2D_ctl43")
 
-[node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(573, 323)
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("4_84h4p")
+volume_db = 2.11
+pitch_scale = 1.4
 
-[connection signal="pressed" from="TextureRect/Continue/continue_game" to="." method="_on_continue_game_pressed"]
-[connection signal="pressed" from="TextureRect/Restart/Restart" to="." method="_on_restart_pressed"]
-[connection signal="pressed" from="TextureRect/Home/Home" to="." method="_on_home_pressed"]
+[connection signal="pressed" from="Panel/Continue/continue_game" to="." method="_on_continue_game_pressed"]
+[connection signal="pressed" from="Panel/Restart/Restart" to="." method="_on_restart_pressed"]
+[connection signal="pressed" from="Panel/Home/Home" to="." method="_on_home_pressed"]

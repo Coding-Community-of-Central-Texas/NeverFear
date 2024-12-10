@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://byx1ogj7gmek6"
-path="res://.godot/imported/NodeIcons2.png-9da57de4b19b0c088a8f41872eaa0643.ctex"
+uid="uid://b5j4crk6t517p"
+path="res://.godot/imported/blasteffect.png-f0634fa26eeb15448e8424b9b188c0d0.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://addons/BulletUpHell/Sprites/NodeIcons2.png"
-dest_files=["res://.godot/imported/NodeIcons2.png-9da57de4b19b0c088a8f41872eaa0643.ctex"]
+source_file="res://assets/Guns&Bullets/blasteffect.png"
+dest_files=["res://.godot/imported/blasteffect.png-f0634fa26eeb15448e8424b9b188c0d0.ctex"]
 
 [params]
 

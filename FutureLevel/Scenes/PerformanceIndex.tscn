@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://btnf3drbkix5k"]
+[gd_scene load_steps=13 format=3 uid="uid://btnf3drbkix5k"]
 
 [ext_resource type="Texture2D" uid="uid://dcmt4rtiisn55" path="res://assets/Background/1.png" id="1_erotl"]
 [ext_resource type="FontFile" uid="uid://ckid4fla6wirc" path="res://assets/etc/Starzoom-Shavian.ttf" id="2_a7jdu"]
@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://d1jeejko1y8sn" path="res://assets/Background/3.png" id="5_37ixw"]
 [ext_resource type="Texture2D" uid="uid://bicepjut8amd5" path="res://assets/city 1/4.png" id="6_658f1"]
 [ext_resource type="Texture2D" uid="uid://ql70ode1roo" path="res://assets/city 1/3.png" id="7_xy8b8"]
+[ext_resource type="AudioStream" uid="uid://dbnystp0y1gke" path="res://assets/FutrueSFX/PickUp.wav" id="10_vq1oj"]
 
 [sub_resource type="GDScript" id="GDScript_ae00b"]
 script/source = "extends Control
@@ -27,16 +28,15 @@ func on_ready():
 	else:
 		return
 
-func _process(_delta) -> void:
-	ovkills.text = \"OVERALL KILLS: 
-					%d\" % GameManager.total_kills
 
-	%FastestTime.text = \"FASTEST LEGACY PROTOCOL RUN: \" + format_time(GameManager.quickest_time)
+func _process(_delta: float) -> void:
+	ovkills.text = \"OVERALL KILLS: %d\" % GameManager.total_kills
 
-	%LongestTimeSurvived.text = \"LONGEST TIME LASTED IN HYPERCORE GAUNTLET: \" + format_time(GameManager.longest_survival)
+	best_run.text = \"FASTEST SPEEDRUN: \" + GameManager.quickest_time
 
-	overall_cash.text = \"MONEY IN THE BANK: 
-							$ %d\" % GameManager.total_cash
+	time_survived.text = \"LONGEST TIME SURVIVED: %s\" % GameManager.longest_survival
+
+	overall_cash.text = \"MONEY IN THE BANK: $ %07d\" % GameManager.total_cash
 
 func format_time(ms: int) -> String:
 	return str(ms / 1000.0) + \"s\"
@@ -44,6 +44,10 @@ func format_time(ms: int) -> String:
 
 
 func _on_home_button_pressed() -> void:
+	%AudioStreamPlayer2D.play()
+	$CanvasLayer/Home.modulate = Color(0, 1, 0, 0.5)  # Set to red
+	await get_tree().create_timer(0.5).timeout  # Wait for 0.1 seconds
+	$CanvasLayer/Home.modulate = Color(1, 1, 1)  # Reset to normal
 	get_tree().change_scene_to_file(\"res://Scenes/MainMenu.tscn\")
 "
 
@@ -137,22 +141,18 @@ z_index = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 6.0
-offset_top = 334.0
-offset_right = 6.0
-offset_bottom = -253.0
+offset_left = 218.0
+offset_top = 298.0
+offset_right = -336.0
+offset_bottom = -289.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(0.63, 0, 0.0104998, 1)
-theme_override_colors/font_shadow_color = Color(0.375969, 0.223087, 1, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/line_spacing = 0
-theme_override_constants/shadow_offset_x = 1
-theme_override_constants/shadow_offset_y = 1
-theme_override_constants/outline_size = 3
-theme_override_constants/shadow_outline_size = 2
+theme_override_constants/outline_size = 6
 theme_override_fonts/font = ExtResource("2_a7jdu")
 theme_override_font_sizes/font_size = 20
+text = "Overall Kills:"
 horizontal_alignment = 1
 autowrap_mode = 3
 justification_flags = 35
@@ -163,22 +163,18 @@ z_index = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 41.0
-offset_top = 144.0
-offset_right = -37.0
-offset_bottom = -439.0
+offset_left = 210.0
+offset_top = 147.0
+offset_right = -372.0
+offset_bottom = -436.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(0.63, 0, 0.0104998, 1)
-theme_override_colors/font_shadow_color = Color(0.375969, 0.223087, 1, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/line_spacing = 0
-theme_override_constants/shadow_offset_x = 1
-theme_override_constants/shadow_offset_y = 1
-theme_override_constants/outline_size = 3
-theme_override_constants/shadow_outline_size = 2
+theme_override_constants/outline_size = 6
 theme_override_fonts/font = ExtResource("2_a7jdu")
 theme_override_font_sizes/font_size = 20
+text = "Best Run:"
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 3
@@ -190,29 +186,21 @@ z_index = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 103.0
-offset_top = 242.0
-offset_right = -1047.0
-offset_bottom = 25.0
+offset_left = 246.0
+offset_top = 228.0
+offset_right = -229.0
+offset_bottom = -397.0
 grow_horizontal = 2
 grow_vertical = 2
-scale = Vector2(460.279, 0.103154)
+scale = Vector2(0.837225, 1.21466)
 size_flags_horizontal = 4
 theme_override_colors/font_color = Color(0.63, 0, 0.0104998, 1)
-theme_override_colors/font_shadow_color = Color(0.375969, 0.223087, 1, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/line_spacing = 0
-theme_override_constants/shadow_offset_x = 1
-theme_override_constants/shadow_offset_y = 1
-theme_override_constants/outline_size = 3
-theme_override_constants/shadow_outline_size = 2
+theme_override_constants/outline_size = 6
 theme_override_fonts/font = ExtResource("2_a7jdu")
 theme_override_font_sizes/font_size = 20
+text = "Longest Survival:"
 horizontal_alignment = 1
-vertical_alignment = 1
-autowrap_mode = 3
-justification_flags = 35
-clip_text = true
 
 [node name="OverallCash" type="Label" parent="CanvasLayer"]
 unique_name_in_owner = true
@@ -220,22 +208,18 @@ z_index = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 35.0
-offset_top = 83.0
-offset_right = -11.0
-offset_bottom = -500.0
+offset_left = 216.0
+offset_top = 89.0
+offset_right = -265.0
+offset_bottom = -494.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(0.63, 0, 0.0104998, 1)
-theme_override_colors/font_shadow_color = Color(0.375969, 0.223087, 1, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/line_spacing = 0
-theme_override_constants/shadow_offset_x = 1
-theme_override_constants/shadow_offset_y = 1
-theme_override_constants/outline_size = 3
-theme_override_constants/shadow_outline_size = 2
+theme_override_constants/outline_size = 6
 theme_override_fonts/font = ExtResource("2_a7jdu")
 theme_override_font_sizes/font_size = 20
+text = "Money in the Bank: "
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 3
@@ -284,5 +268,11 @@ shape = SubResource("RectangleShape2D_ee6lp")
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(568.2, 321)
 ignore_rotation = false
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("10_vq1oj")
+volume_db = 2.1
+pitch_scale = 1.4
 
 [connection signal="pressed" from="CanvasLayer/Home/HomeButton" to="." method="_on_home_button_pressed"]

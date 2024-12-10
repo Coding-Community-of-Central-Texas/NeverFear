@@ -3,12 +3,13 @@ extends CharacterBody2D
 
 # Player properties
 var health: float = 100.0
-const MAX_HEALTH: float = 100.0
+const MAX_HEALTH = 100
 var direction: Vector2 = Vector2.ZERO
 const VELOCITY = 1000
-@export var SPEED: float = 400.0
+@export var SPEED: float = 500.0
 @export var acceleration: float = 800.0
-@export var deceleration: float = 600.0
+@export var deceleration: float = 1000.0
+@onready var spawn_circle: Path2D = $SpawnCircle
 
 
 # Animation setup
@@ -18,39 +19,23 @@ const VELOCITY = 1000
 @onready var timer_2: Timer = $Timer2
 @onready var audio_stream_player: AudioStreamPlayer = $AudioStreamPlayer
 @export var rate_of_fire: float = 0.15
-var is_dead = false
 
 func _ready() -> void:
 	# Initialize the player's properties
-	health = MAX_HEALTH
 	Global.player = self
 
 func take_damage():
-	if is_dead:
-		return
 	health -= 15.0
-	health_bar.health = health
-	%AnimationPlayer.play("hurt")
+	health_bar.value = health
 	if health <= 0.0:
 		_die()
+
 func _die():
-	if is_dead:
-		return
-	is_dead = true 
-	Global.lives -= 1
-	if Global.lives <= 0:
-		_on_game_over()
+	animated_sprite_2d.play("death")
+	timer_2.start()
+	if not audio_stream_player.is_playing():
+		audio_stream_player.play()
 
-	else:
-		timer_2.start()
-		animated_sprite_2d.play("death")
-		Engine.time_scale = 0.6
-		if not audio_stream_player.is_playing():
-			audio_stream_player.play()
-
-func _on_game_over():
-	Global.reset_game_state()
-	GameManager.toggle_pause()
 
 func _physics_process(delta: float) -> void:
 	handle_player_animation()
@@ -71,7 +56,6 @@ func _physics_process(delta: float) -> void:
 	# Smoothly accelerate or decelerate
 	velocity = velocity.move_toward(target_velocity, acceleration * delta)
 	move_and_slide()
-	
 	flip_sprite()
 	
 	const DAMAGE_RATE = 10.0
@@ -82,7 +66,7 @@ func _physics_process(delta: float) -> void:
 		health -= DAMAGE_RATE * overlapping_mobs.size() * delta
 		health_bar.value = health
 	if health == 0.0:
-		_die()
+		take_damage()
 		
 
 
@@ -101,13 +85,14 @@ func handle_player_animation() -> void:
 #Function to flip the sprite depending on the direction
 func flip_sprite() -> void:
 	if velocity.x < 0:
-		# Flip the sprite when moving left (negative X velocity)
-		self.scale.x = -1
+		animated_sprite_2d.flip_h = true
 	elif velocity.x > 0:
-		# Unflip the sprite when moving right (positive X velocity)
-		self.scale.x = 1
+		animated_sprite_2d.flip_h = false
+	spawn_circle.rotation = 0  # Prevents rotation effects, if any
 
 
+const GAME_OVER = preload("res://Scenes/GameOver.tscn")
 
 func _on_timer_2_timeout() -> void:
-	get_tree().change_scene_to_file("res://Scenes/GameOver.tscn")
+	var gameover = GAME_OVER.instantiate()
+	add_child(gameover)

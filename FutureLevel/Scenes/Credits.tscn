@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://d1ly636rhenqx"]
+[gd_scene load_steps=9 format=3 uid="uid://d1ly636rhenqx"]
 
 [ext_resource type="Script" path="res://Scripts/Credits.gd" id="1_8kx13"]
 [ext_resource type="FontFile" uid="uid://ckid4fla6wirc" path="res://assets/etc/Starzoom-Shavian.ttf" id="2_ca8ye"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://c37oonhsihxgf" path="res://assets/buttonsprites/UIButton2.png" id="4_o2d0a"]
 [ext_resource type="Texture2D" uid="uid://dcmt4rtiisn55" path="res://assets/Background/1.png" id="5_31scm"]
 [ext_resource type="PackedScene" uid="uid://cijayc3peexw" path="res://GameManager.tscn" id="6_kygu5"]
+[ext_resource type="AudioStream" uid="uid://dbnystp0y1gke" path="res://assets/FutrueSFX/PickUp.wav" id="7_jjscb"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_31v2l"]
 size = Vector2(600, 300)
@@ -91,5 +92,11 @@ Licences: MIT and Creative Commons Zero
 autowrap_mode = 3
 
 [node name="GameManager" parent="." instance=ExtResource("6_kygu5")]
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("7_jjscb")
+volume_db = 2.1
+pitch_scale = 1.4
 
 [connection signal="pressed" from="CanvasLayer/Home/HomeButton" to="." method="_on_home_button_pressed"]
