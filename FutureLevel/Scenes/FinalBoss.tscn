@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://dcmrsrfl6ctr5"]
+[gd_scene load_steps=7 format=3 uid="uid://dcmrsrfl6ctr5"]
 
-[ext_resource type="Script" path="res://BossScript.gd" id="1_lc6rt"]
+[ext_resource type="Script" path="res://Scripts/BossScript.gd" id="1_lc6rt"]
 [ext_resource type="PackedScene" uid="uid://dr3tcip76rdmv" path="res://Scenes/Robo.tscn" id="2_p1iq0"]
-[ext_resource type="PackedScene" uid="uid://c2txtdlp7v66l" path="res://Scenes/BasicGun.tscn" id="3_y2uyg"]
 [ext_resource type="PackedScene" uid="uid://v1wqgbnfesbp" path="res://Scenes/HealthBar.tscn" id="4_f425b"]
+[ext_resource type="FontFile" uid="uid://ckid4fla6wirc" path="res://assets/etc/Starzoom-Shavian.ttf" id="4_ygfge"]
+[ext_resource type="PackedScene" uid="uid://7nrxkwybkljg" path="res://Scenes/BigBoom.tscn" id="5_llw8d"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_piomw"]
 size = Vector2(176.563, 177.778)
@@ -16,28 +17,9 @@ script = ExtResource("1_lc6rt")
 [node name="Robo" parent="." instance=ExtResource("2_p1iq0")]
 unique_name_in_owner = true
 
-[node name="BasicGun" parent="." instance=ExtResource("3_y2uyg")]
-position = Vector2(-60, 11)
-rotation = 3.11916
-collision_mask = 128
-rate_of_fire = 0.5
-
-[node name="BasicGun2" parent="." instance=ExtResource("3_y2uyg")]
-position = Vector2(58, 12)
-rotation = 3.13625
-collision_mask = 128
-rate_of_fire = 0.5
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-3.90625, 9.72222)
 shape = SubResource("RectangleShape2D_piomw")
-
-[node name="HealthBar" parent="." instance=ExtResource("4_f425b")]
-offset_left = -141.406
-offset_top = 115.278
-offset_right = 148.594
-offset_bottom = 142.278
-max_value = 10001.0
 
 [node name="RightWall" type="RayCast2D" parent="."]
 target_position = Vector2(150.781, -0.694444)
@@ -52,13 +34,63 @@ target_position = Vector2(-250, 135.417)
 target_position = Vector2(217.969, 137.5)
 
 [node name="StartAttack" type="Timer" parent="."]
-wait_time = 0.687
+process_callback = 0
+wait_time = 3.08
+one_shot = true
 
-[node name="Fire" type="Timer" parent="."]
+[node name="AttackDuration" type="Timer" parent="."]
+process_callback = 0
+one_shot = true
 
-[node name="Fireloop" type="Timer" parent="."]
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[connection signal="timeout" from="StartAttack" to="." method="_on_timer_timeout"]
+[node name="HealthBar" parent="CanvasLayer" instance=ExtResource("4_f425b")]
+unique_name_in_owner = true
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -145.0
+offset_top = -27.0
+offset_right = 145.0
+offset_bottom = 0.0
+grow_horizontal = 2
+grow_vertical = 0
+max_value = 10000.0
+value = 10000.0
+
+[node name="Label" type="Label" parent="CanvasLayer"]
+z_index = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -84.0
+offset_top = -26.0
+offset_right = 84.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 7
+theme_override_fonts/font = ExtResource("4_ygfge")
+theme_override_font_sizes/font_size = 25
+text = "Ro-Bo "
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ShootingPoint" type="Marker2D" parent="."]
+position = Vector2(-115.625, -24.3056)
+
+[node name="DieTimer" type="Timer" parent="."]
+wait_time = 0.77
+one_shot = true
+
+[node name="BigBoom" parent="." instance=ExtResource("5_llw8d")]
+unique_name_in_owner = true
+
 [connection signal="timeout" from="StartAttack" to="." method="_on_start_attack_timeout"]
-[connection signal="timeout" from="Fire" to="." method="_on_fire_timeout"]
-[connection signal="timeout" from="Fireloop" to="." method="_on_fireloop_timeout"]
+[connection signal="timeout" from="StartAttack" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="AttackDuration" to="." method="_on_attack_duration_timeout"]
+[connection signal="timeout" from="DieTimer" to="." method="_on_die_timer_timeout"]
