@@ -9,21 +9,6 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_u1hko"]
 size = Vector2(90, 40)
 
-[sub_resource type="Animation" id="Animation_2370h"]
-resource_name = "gameover"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.3, 0.6, 0.8, 1),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0.25098), Color(1, 1, 1, 0.47451), Color(1, 1, 1, 0.843137), Color(1, 1, 1, 1)]
-}
-
 [sub_resource type="Animation" id="Animation_0sdvk"]
 length = 0.001
 tracks/0/type = "value"
@@ -37,6 +22,21 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_2370h"]
+resource_name = "gameover"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6, 0.8, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0.25098), Color(1, 1, 1, 0.47451), Color(1, 1, 1, 0.843137), Color(1, 1, 1, 1)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_frrq6"]
@@ -66,8 +66,8 @@ modulate = Color(1, 1, 1, 0)
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_right = -509.0
-offset_bottom = 221.0
+offset_right = -508.0
+offset_bottom = 229.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(1.78797, 0.741051)
@@ -121,19 +121,18 @@ position = Vector2(-2.95424, 23.6137)
 scale = Vector2(0.142968, 0.241212)
 texture = ExtResource("4_ssp7s")
 
-[node name="Back to Main Menu" type="TouchScreenButton" parent="CanvasLayer/ColorRect"]
-self_modulate = Color(0.1534, 0.59, 0.1534, 1)
+[node name="MainMenu" type="TouchScreenButton" parent="CanvasLayer/ColorRect"]
 position = Vector2(439.605, 545.172)
 scale = Vector2(1.45862, 1.53977)
 shape = SubResource("RectangleShape2D_u1hko")
 
-[node name="UIbutton2" type="Sprite2D" parent="CanvasLayer/ColorRect/Back to Main Menu"]
+[node name="UIbutton2" type="Sprite2D" parent="CanvasLayer/ColorRect/MainMenu"]
 modulate = Color(0.285653, 0.2496, 0.52, 1)
 position = Vector2(0, 21.9097)
 scale = Vector2(0.14845, 0.232757)
 texture = ExtResource("4_ssp7s")
 
-[node name="Label3" type="Label" parent="CanvasLayer/ColorRect/Back to Main Menu"]
+[node name="Label3" type="Label" parent="CanvasLayer/ColorRect/MainMenu"]
 z_index = 1
 texture_filter = 6
 offset_left = -31.0587
@@ -162,4 +161,4 @@ volume_db = 2.1
 pitch_scale = 1.4
 
 [connection signal="pressed" from="CanvasLayer/ColorRect/Restart" to="." method="_on_restart_pressed"]
-[connection signal="pressed" from="CanvasLayer/ColorRect/Back to Main Menu" to="." method="_on_back_to_main_menu_pressed"]
+[connection signal="pressed" from="CanvasLayer/ColorRect/MainMenu" to="." method="_on_back_to_main_menu_pressed"]

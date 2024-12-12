@@ -71,7 +71,7 @@ func attack():
 func die():
 	die_executed = true 
 	direction = 0
-	is_attacking = true
+	is_attacking = false
 	%BigBoom.boss_bang()
 	%Robo.visible = false
 	die_timer.start()

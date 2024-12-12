@@ -35,27 +35,17 @@ sources/3 = SubResource("TileSetAtlasSource_wrl78")
 
 [node name="Platform" type="AnimatableBody2D"]
 z_index = 3
-collision_mask = 0
-constant_linear_velocity = Vector2(1, 0)
-sync_to_physics = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 1)
 shape = SubResource("RectangleShape2D_tpnl3")
 one_way_collision = true
 
-[node name="Layer0" type="TileMapLayer" parent="CollisionShape2D"]
+[node name="Layer0" type="TileMapLayer" parent="."]
 z_index = 1
 use_parent_material = true
-position = Vector2(0, -1)
 scale = Vector2(0.2, 0.2)
 tile_map_data = PackedByteArray("AAD0/wAAAAAAAAAAAAD2/wAAAgAAAAAAAAD3/wAAAgAAAAAAAAD4/wAAAgAAAAAAAAD5/wAAAgAAAAAAAAD6/wAAAgAAAAAAAAD7/wAAAgAAAAAAAAD8/wAAAgAAAAAAAAD9/wAAAgAAAAAAAAD+/wAAAgAAAAAAAAD//wAAAgAAAAAAAAAAAAAAAgAAAAAAAAABAAAAAgAAAAAAAAACAAAAAgAAAAAAAAADAAAAAgAAAAAAAAAEAAAAAgAAAAAAAAAFAAAAAgAAAAAAAAAGAAAAAgAAAAAAAAAHAAAAAgAAAAAAAAAIAAAAAgAAAAAAAAAJAAAAAgAAAAAAAAALAAAAAwAAAAAAAAA=")
 tile_set = SubResource("TileSet_7u184")
+collision_enabled = false
 use_kinematic_bodies = true
-
-[node name="TileMap" type="TileMap" parent="."]
-z_index = 1
-scale = Vector2(0.2, 0.2)
-tile_set = SubResource("TileSet_7u184")
-collision_animatable = true
-format = 2

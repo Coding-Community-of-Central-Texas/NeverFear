@@ -15,6 +15,7 @@ script = ExtResource("1_tq7np")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 1)
 shape = SubResource("CircleShape2D_wrg8w")
+debug_color = Color(0, 0.595, 0.7, 0)
 
 [node name="Timer" type="Timer" parent="."]
 

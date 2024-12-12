@@ -21,6 +21,7 @@ one_shot = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_gassc")
+debug_color = Color(0, 0.595, 0.7, 0)
 
 [node name="Path2D" type="Path2D" parent="."]
 position = Vector2(105.745, -3.90314)

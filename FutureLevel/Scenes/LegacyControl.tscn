@@ -5,8 +5,8 @@
 [node name="LegacyControl" type="CanvasLayer"]
 
 [node name="Virtual Joystick" parent="." instance=ExtResource("1_as08j")]
-modulate = Color(0, 0, 0, 0.356863)
-pressed_color = Color(1, 1, 1, 1)
+modulate = Color(0.960784, 0, 0.247059, 0.627451)
+pressed_color = Color(0.384314, 0.262745, 1, 1)
 joystick_mode = 1
 action_left = "move_left"
 action_right = "move_right"
