@@ -1274,7 +1274,7 @@ _data = {
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pqwp7"]
-size = Vector2(16.983, 30.2007)
+size = Vector2(6.85014, 75.7297)
 
 [node name="LegacyProtocol" type="Node2D"]
 rotation = 2.12854e-05
@@ -1541,9 +1541,9 @@ position = Vector2(108, 109)
 scale = Vector2(6.26548, 4.58)
 
 [node name="LifeCounter" parent="Buttons" instance=ExtResource("94_7l5pt")]
-offset_left = 37.0
+offset_left = 77.0
 offset_top = 19.0
-offset_right = 160.0
+offset_right = 200.0
 offset_bottom = 51.0
 scale = Vector2(1.08, 0.879999)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
@@ -1729,30 +1729,37 @@ rotation = 2.12854e-05
 [node name="Platform" parent="MiniBoss" instance=ExtResource("104_25ut1")]
 position = Vector2(15129, -110)
 rotation = 2.12854e-05
+scale = Vector2(3, 3)
 
 [node name="Platform2" parent="MiniBoss" instance=ExtResource("104_25ut1")]
 position = Vector2(15137, -239)
 rotation = 2.12854e-05
+scale = Vector2(3, 3)
 
 [node name="Platform3" parent="MiniBoss" instance=ExtResource("104_25ut1")]
 position = Vector2(15700, -170)
 rotation = 2.12854e-05
+scale = Vector2(3, 3)
 
 [node name="Platform4" parent="MiniBoss" instance=ExtResource("104_25ut1")]
 position = Vector2(15696, -311)
 rotation = 2.12854e-05
+scale = Vector2(3, 3)
 
 [node name="Platform5" parent="MiniBoss" instance=ExtResource("104_25ut1")]
 position = Vector2(16240, -104)
 rotation = 2.12854e-05
+scale = Vector2(3, 3)
 
 [node name="Platform6" parent="MiniBoss" instance=ExtResource("104_25ut1")]
 position = Vector2(16240, -225)
 rotation = 2.12854e-05
+scale = Vector2(3, 3)
 
 [node name="Platform7" parent="MiniBoss" instance=ExtResource("104_25ut1")]
 position = Vector2(15694, -409)
 rotation = 2.12854e-05
+scale = Vector2(3, 3)
 
 [node name="MiniBoss" parent="MiniBoss" instance=ExtResource("106_614e6")]
 position = Vector2(15552, -684)
@@ -1761,6 +1768,7 @@ position = Vector2(15552, -684)
 
 [node name="Platform" parent="." instance=ExtResource("104_25ut1")]
 position = Vector2(18275, -2.38899)
+scale = Vector2(7.92016, 2.04)
 constant_linear_velocity = Vector2(200, 0)
 script = ExtResource("108_051rt")
 
@@ -1773,7 +1781,8 @@ libraries = {
 [node name="Area2D" type="Area2D" parent="Platform"]
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Platform/Area2D"]
-position = Vector2(-7.16553, -12.8991)
+position = Vector2(-35.4951, -35.6616)
+scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_pqwp7")
 
 [node name="Timer" type="Timer" parent="."]

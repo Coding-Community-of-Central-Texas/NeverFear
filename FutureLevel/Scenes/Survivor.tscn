@@ -339,8 +339,7 @@ shape = SubResource("CircleShape2D_630u5")
 debug_color = Color(0.999138, 0.0238237, 3.85046e-07, 0.42)
 
 [node name="Timer2" type="Timer" parent="."]
-process_callback = 0
-wait_time = 0.687
+wait_time = 0.86
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("8_x70f2")

@@ -725,14 +725,22 @@ process_mode = 3
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="TimePanel" parent="CanvasLayer" instance=ExtResource("90_xpk53")]
+offset_top = 42.0
+offset_bottom = 100.0
 
-[node name="PauseButton" parent="CanvasLayer" instance=ExtResource("88_b882s")]
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer"]
+offset_right = 142.0
+offset_bottom = 108.0
+
+[node name="PauseButton" parent="CanvasLayer/TextureRect" instance=ExtResource("88_b882s")]
 position = Vector2(59, 31)
 
-[node name="Control" type="Control" parent="."]
-layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+[node name="Control" type="TextureRect" parent="."]
+offset_left = 455.0
+offset_top = 373.0
+offset_right = 707.0
+offset_bottom = 629.0
+stretch_mode = 4
+metadata/_edit_use_anchors_ = true
 
 [node name="SurvivalControl" parent="Control" instance=ExtResource("89_4jwms")]

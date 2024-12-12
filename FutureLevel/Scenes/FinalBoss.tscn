@@ -88,9 +88,11 @@ one_shot = true
 unique_name_in_owner = true
 
 [node name="WeakPoint1" parent="." instance=ExtResource("6_siv3w")]
+visible = false
 position = Vector2(-62.5, -27.7778)
 
 [node name="WeakPoint2" parent="." instance=ExtResource("6_siv3w")]
+visible = false
 position = Vector2(56.25, -27.7778)
 
 [connection signal="timeout" from="StartAttack" to="." method="_on_start_attack_timeout"]

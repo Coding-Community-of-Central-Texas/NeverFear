@@ -23,6 +23,7 @@ func _on_restart_pressed() -> void:
 	restart.modulate = Color(0, 1, 0, 0.5)  # Set to red
 	await get_tree().create_timer(0.2).timeout  # Wait for 0.1 seconds
 	restart.modulate = Color(1, 1, 1, 1)  # Reset to normal
+	Global.reset_game_state()
 	get_tree().reload_current_scene()
 
 

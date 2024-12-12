@@ -170,12 +170,14 @@ func _on_timer_timeout() -> void:
 
 
 func _on_game_over():
-	get_tree().change_scene_to_file.call_deferred("res://Scenes/GameOver.tscn") 
+	const GAMEOVER = preload("res://Scenes/GameOver.tscn") 
+	var new_gameover = GAMEOVER.instantiate()
+	add_child(new_gameover)
 
 
 
 func _on_pick_up_gun_picked_up() -> void:
 		const GUN = preload("res://Scenes/Gun.tscn")
 		var new_gun = GUN.instantiate()
-		new_gun.position = self.global_position
-		get_tree().current_scene.call_deferred("add_child", new_gun)
+		new_gun.position = global_position
+		get_tree().current_scene.call_deferred("add_sibling", new_gun)

@@ -6,3 +6,7 @@ const FRICTION = 2000
 func _on_area_2d_body_entered(body) -> void:
 	if body.is_in_group("player"):
 		%AnimationPlayer.play("move")
+
+func call_reset():
+	if Global.player._respawn(): 
+		%AnimatonPlayer.play("RESET")

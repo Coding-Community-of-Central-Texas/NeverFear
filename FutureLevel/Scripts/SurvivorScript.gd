@@ -8,7 +8,7 @@ var direction: Vector2 = Vector2.ZERO
 const VELOCITY = 1000
 @export var SPEED: float = 500.0
 @export var acceleration: float = 800.0
-@export var deceleration: float = 1000.0
+@export var deceleration: float = 2000.0
 @onready var spawn_circle: Path2D = $SpawnCircle
 
 
@@ -25,9 +25,9 @@ func _ready() -> void:
 	Global.player = self
 
 func take_damage():
-	health -= 15.0
-	health_bar.value = health
-	if health <= 0.0:
+	health -= 15
+	%HealthBar.value = health
+	if health <= 0:
 		_die()
 
 func _die():
@@ -65,7 +65,7 @@ func _physics_process(delta: float) -> void:
 	if overlapping_mobs.size() > 0:
 		health -= DAMAGE_RATE * overlapping_mobs.size() * delta
 		health_bar.value = health
-	if health == 0.0:
+	if health <= 0:
 		take_damage()
 		
 
@@ -91,8 +91,13 @@ func flip_sprite() -> void:
 	spawn_circle.rotation = 0  # Prevents rotation effects, if any
 
 
-const GAME_OVER = preload("res://Scenes/GameOver.tscn")
+
 
 func _on_timer_2_timeout() -> void:
-	var gameover = GAME_OVER.instantiate()
-	add_child(gameover)
+	_game_over()
+
+func _game_over():
+	const GAMEOVER = preload("res://Scenes/GameOver.tscn")
+	var new_gameover = GAMEOVER.instantiate()
+	add_child(new_gameover)
+	print("gameover")

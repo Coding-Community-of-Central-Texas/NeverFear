@@ -1,31 +1,61 @@
-[gd_scene load_steps=4 format=3 uid="uid://dr5l1ix6ofil2"]
+[gd_scene load_steps=9 format=4 uid="uid://dr5l1ix6ofil2"]
 
-[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_2eakx"]
-friction = 69.35
-
-[sub_resource type="CanvasTexture" id="CanvasTexture_xgg25"]
+[ext_resource type="Texture2D" uid="uid://bikcw1c25kkp" path="res://assets/1 Tiles/IndustrialTile_04.png" id="1_hewkp"]
+[ext_resource type="Texture2D" uid="uid://c7nw8oj5k54fx" path="res://assets/1 Tiles/IndustrialTile_05.png" id="2_e4x5n"]
+[ext_resource type="Texture2D" uid="uid://du0amabk2v8a8" path="res://assets/1 Tiles/IndustrialTile_06.png" id="3_ho037"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tpnl3"]
-size = Vector2(31.2118, 4)
+size = Vector2(80, 5)
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_dci0a"]
+texture = ExtResource("1_hewkp")
+0:0/size_in_atlas = Vector2i(2, 2)
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(15.5, -15.25, -14.75, -15, -14.75, 14.75, 15.25, 15)
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_xjcgt"]
+texture = ExtResource("2_e4x5n")
+0:0/size_in_atlas = Vector2i(2, 2)
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(15.5, -15.25, -14.75, -15, -14.75, 14.75, 15.25, 15)
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_wrl78"]
+texture = ExtResource("3_ho037")
+0:0/size_in_atlas = Vector2i(2, 2)
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(15.5, -15.25, -14.75, -15, -14.75, 14.75, 15.25, 15)
+
+[sub_resource type="TileSet" id="TileSet_7u184"]
+occlusion_layer_0/light_mask = 1
+physics_layer_0/collision_layer = 1
+navigation_layer_0/layers = 1
+sources/0 = SubResource("TileSetAtlasSource_dci0a")
+sources/2 = SubResource("TileSetAtlasSource_xjcgt")
+sources/3 = SubResource("TileSetAtlasSource_wrl78")
 
 [node name="Platform" type="AnimatableBody2D"]
-scale = Vector2(19.608, 5)
+z_index = 3
 collision_mask = 0
-physics_material_override = SubResource("PhysicsMaterial_2eakx")
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
-modulate = Color(0.45, 0.2295, 0.2295, 1)
-position = Vector2(-2.98023e-08, 0.013133)
-scale = Vector2(31.5295, 4.22973)
-texture = SubResource("CanvasTexture_xgg25")
-
-[node name="Sprite2D" type="Sprite2D" parent="Sprite2D"]
-modulate = Color(0.45, 0.45, 0.45, 1)
-position = Vector2(-9.31323e-09, -0.00665355)
-scale = Vector2(0.922187, -0.517048)
-texture = SubResource("CanvasTexture_xgg25")
+constant_linear_velocity = Vector2(1, 0)
+sync_to_physics = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-0.0509992, 0)
+position = Vector2(0, 1)
 shape = SubResource("RectangleShape2D_tpnl3")
 one_way_collision = true
+
+[node name="Layer0" type="TileMapLayer" parent="CollisionShape2D"]
+z_index = 1
+use_parent_material = true
+position = Vector2(0, -1)
+scale = Vector2(0.2, 0.2)
+tile_map_data = PackedByteArray("AAD0/wAAAAAAAAAAAAD2/wAAAgAAAAAAAAD3/wAAAgAAAAAAAAD4/wAAAgAAAAAAAAD5/wAAAgAAAAAAAAD6/wAAAgAAAAAAAAD7/wAAAgAAAAAAAAD8/wAAAgAAAAAAAAD9/wAAAgAAAAAAAAD+/wAAAgAAAAAAAAD//wAAAgAAAAAAAAAAAAAAAgAAAAAAAAABAAAAAgAAAAAAAAACAAAAAgAAAAAAAAADAAAAAgAAAAAAAAAEAAAAAgAAAAAAAAAFAAAAAgAAAAAAAAAGAAAAAgAAAAAAAAAHAAAAAgAAAAAAAAAIAAAAAgAAAAAAAAAJAAAAAgAAAAAAAAALAAAAAwAAAAAAAAA=")
+tile_set = SubResource("TileSet_7u184")
+use_kinematic_bodies = true
+
+[node name="TileMap" type="TileMap" parent="."]
+z_index = 1
+scale = Vector2(0.2, 0.2)
+tile_set = SubResource("TileSet_7u184")
+collision_animatable = true
+format = 2

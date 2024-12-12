@@ -8,8 +8,8 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_b5cbe"]
 
 [node name="PauseButton" type="Sprite2D"]
-modulate = Color(0.66, 0.3696, 0.3696, 1)
-scale = Vector2(1.5, 1.5)
+modulate = Color(1, 0.34, 0.395, 1)
+scale = Vector2(2, 2)
 texture = ExtResource("1_1ah3y")
 script = ExtResource("2_ny8u6")
 

@@ -1,11 +1,12 @@
-[gd_scene load_steps=8 format=3 uid="uid://2e2ccqhb4ij6"]
+[gd_scene load_steps=9 format=3 uid="uid://2e2ccqhb4ij6"]
 
 [ext_resource type="Script" path="res://Scripts/CheckPoint.gd" id="1_nag81"]
 [ext_resource type="Texture2D" uid="uid://d3210eyw0vswt" path="res://assets/etc/CheckFlag.png" id="3_1nvpp"]
 [ext_resource type="AudioStream" uid="uid://cu4ww1fxb7vca" path="res://assets/FutrueSFX/OpenDoor.wav" id="3_o8uqb"]
+[ext_resource type="Texture2D" uid="uid://c8fbdi8gxy03r" path="res://assets/etc/uncheckd.png" id="4_3ijuj"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_clkbr"]
-size = Vector2(33, 84)
+size = Vector2(33, 158)
 
 [sub_resource type="Animation" id="Animation_f0mu2"]
 length = 0.001
@@ -32,6 +33,18 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [-3.13673]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Uncheckd:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
 }
 
 [sub_resource type="Animation" id="Animation_araw8"]
@@ -61,6 +74,18 @@ tracks/1/keys = {
 "update": 0,
 "values": [-3.13673, -1.59523, 0.0]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Uncheckd:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_urma1"]
 _data = {
@@ -73,7 +98,7 @@ position = Vector2(0, -37)
 script = ExtResource("1_nag81")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0.5, -6)
+position = Vector2(0.5, -43)
 shape = SubResource("RectangleShape2D_clkbr")
 
 [node name="Checked" type="Sprite2D" parent="."]
@@ -94,5 +119,9 @@ libraries = {
 "": SubResource("AnimationLibrary_urma1")
 }
 autoplay = "RESET"
+
+[node name="Uncheckd" type="Sprite2D" parent="."]
+position = Vector2(-1, 20)
+texture = ExtResource("4_3ijuj")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
