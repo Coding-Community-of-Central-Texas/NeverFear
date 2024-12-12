@@ -9,7 +9,7 @@ const VELOCITY = 1000
 @export var SPEED: float = 500.0
 @export var acceleration: float = 800.0
 @export var deceleration: float = 2000.0
-@onready var spawn_circle: Path2D = $SpawnCircle
+@onready var shadow: Sprite2D = $AnimatedSprite2D/Shadow
 
 
 # Animation setup
@@ -20,21 +20,27 @@ const VELOCITY = 1000
 @onready var audio_stream_player: AudioStreamPlayer = $AudioStreamPlayer
 @export var rate_of_fire: float = 0.15
 
+var is_dead: bool = false
+
 func _ready() -> void:
 	# Initialize the player's properties
 	Global.player = self
 
 func take_damage():
+	if is_dead:
+		return  # Ignore damage if the player is already dead
 	health -= 15
-	%HealthBar.value = health
+	health_bar.value = health
 	if health <= 0:
 		_die()
 
 func _die():
+	if is_dead:
+		return  # Ensure _die() only runs once
+	is_dead = true
 	animated_sprite_2d.play("death")
 	timer_2.start()
-	if not audio_stream_player.is_playing():
-		audio_stream_player.play()
+	audio_stream_player.play()
 
 
 func _physics_process(delta: float) -> void:
@@ -66,7 +72,7 @@ func _physics_process(delta: float) -> void:
 		health -= DAMAGE_RATE * overlapping_mobs.size() * delta
 		health_bar.value = health
 	if health <= 0:
-		take_damage()
+		_die()
 		
 
 
@@ -86,9 +92,11 @@ func handle_player_animation() -> void:
 func flip_sprite() -> void:
 	if velocity.x < 0:
 		animated_sprite_2d.flip_h = true
+		shadow.position.x = 5; shadow.position.y = 34;
 	elif velocity.x > 0:
 		animated_sprite_2d.flip_h = false
-	spawn_circle.rotation = 0  # Prevents rotation effects, if any
+		shadow.position.x = -9.5; shadow.position.y = 34;
+	#spawn_circle.rotation = 0  # Prevents rotation effects, if any
 
 
 

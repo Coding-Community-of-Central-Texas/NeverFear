@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://bsltfx5uw5yvq"]
+[gd_scene load_steps=37 format=3 uid="uid://bsltfx5uw5yvq"]
 
 [ext_resource type="Script" path="res://Scripts/SurvivorScript.gd" id="1_dqedt"]
 [ext_resource type="Texture2D" uid="uid://050tdjf5b57n" path="res://assets/3 Cyborg/Cyborg_death.png" id="2_cknjt"]
@@ -9,6 +9,8 @@
 [ext_resource type="PackedScene" uid="uid://daeuuspwxjeag" path="res://Scenes/Gun.tscn" id="7_3segn"]
 [ext_resource type="AudioStream" uid="uid://dnjr7q6plu8wi" path="res://assets/FutrueSFX/PlayerDie.wav" id="8_x70f2"]
 [ext_resource type="PackedScene" uid="uid://8p6xxbnu26v8" path="res://Scenes/SpawnCircle.tscn" id="9_agpeh"]
+[ext_resource type="Texture2D" uid="uid://c1t7ic4fo0him" path="res://assets/etc/health.png" id="9_bjhe2"]
+[ext_resource type="Texture2D" uid="uid://dkp57y2x4axvt" path="res://assets/etc/shadow.png" id="10_e0fqp"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_k5wwv"]
 atlas = ExtResource("2_cknjt")
@@ -285,15 +287,14 @@ _data = {
 }
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_xqfdh"]
-radius = 31.1448
+radius = 20.5
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_630u5"]
-radius = 45.364
-
-[sub_resource type="CanvasTexture" id="CanvasTexture_5o6h1"]
+radius = 33.8596
 
 [node name="Survivor" type="CharacterBody2D" groups=["player"]]
 scale = Vector2(2, 2)
+collision_layer = 129
 collision_mask = 33
 script = ExtResource("1_dqedt")
 
@@ -308,10 +309,22 @@ libraries = {
 }
 autoplay = "idle"
 
+[node name="Shadow" type="Sprite2D" parent="AnimatedSprite2D"]
+modulate = Color(0.0901961, 0.0901961, 0.0901961, 0.556863)
+self_modulate = Color(0.909804, 0.909804, 0.909804, 1)
+show_behind_parent = true
+position = Vector2(-10, 34)
+scale = Vector2(0.174045, 0.25881)
+texture = ExtResource("10_e0fqp")
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-5, 9)
 shape = SubResource("CircleShape2D_xqfdh")
-debug_color = Color(0.327069, 0.623768, 1.92523e-07, 0.42)
+debug_color = Color(0.320333, 0.62, 0, 0)
+
+[node name="Gun" parent="." instance=ExtResource("7_3segn")]
+show_behind_parent = true
+position = Vector2(-6.66667, 1.33333)
 
 [node name="HealthBar" parent="." instance=ExtResource("6_pjeyg")]
 unique_name_in_owner = true
@@ -321,9 +334,10 @@ offset_right = 11.0
 offset_bottom = -14.0
 metadata/_edit_use_anchors_ = true
 
-[node name="Gun" parent="." instance=ExtResource("7_3segn")]
-show_behind_parent = true
-position = Vector2(-6.66667, 1.33333)
+[node name="Health" type="Sprite2D" parent="HealthBar"]
+position = Vector2(-5, 1.5)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("9_bjhe2")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(1.5, 0.7)
@@ -336,7 +350,7 @@ collision_mask = 4
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
 position = Vector2(-5.33333, 8.66667)
 shape = SubResource("CircleShape2D_630u5")
-debug_color = Color(0.999138, 0.0238237, 3.85046e-07, 0.42)
+debug_color = Color(1, 0.0166667, 0, 0)
 
 [node name="Timer2" type="Timer" parent="."]
 wait_time = 0.86
@@ -345,17 +359,7 @@ wait_time = 0.86
 stream = ExtResource("8_x70f2")
 pitch_scale = 0.54
 
-[node name="TextureRect" type="TextureRect" parent="."]
-self_modulate = Color(0, 0, 0, 0.407843)
-show_behind_parent = true
-offset_left = -21.0
-offset_top = 19.0
-offset_right = 19.0
-offset_bottom = 59.0
-scale = Vector2(0.655241, 0.198042)
-texture = SubResource("CanvasTexture_5o6h1")
-
 [node name="SpawnCircle" parent="." instance=ExtResource("9_agpeh")]
-position = Vector2(-42, -37)
+position = Vector2(2249, 110)
 
 [connection signal="timeout" from="Timer2" to="." method="_on_timer_2_timeout"]

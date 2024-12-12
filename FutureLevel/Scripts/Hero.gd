@@ -13,10 +13,9 @@ var direction : Vector2 = Vector2.ZERO
 @export var deceleration: float = 5000.0
 
 
-
+@onready var audio_stream_player_2d_2: AudioStreamPlayer2D = $AudioStreamPlayer2D2
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 @onready var collision_shape_2d: CollisionShape2D = $CollisionShape2D
-@onready var audio_stream_player_2d_2: AudioStreamPlayer2D = $AudioStreamPlayer2D2
 @onready var audio_stream_player_2d: AudioStreamPlayer2D = $AudioStreamPlayer2D
 @onready var timer: Timer = $Timer
 @onready var gun: Area2D = $Gun
@@ -43,7 +42,7 @@ func take_damage():
 		return
 	health -= 10.0
 	self.modulate = Color(1, 0, 0)  # Set to red
-	await get_tree().create_timer(0.1).timeout  # Wait for 0.1 seconds
+	await get_tree().create_timer(0.2).timeout  # Wait for 0.1 seconds
 	self.modulate = Color(1, 1, 1)  # Reset to normal
 	health_bar.health = health
 	if health <= 0.0:
@@ -65,14 +64,15 @@ func _die():
 
 
 func _physics_process(delta: float) -> void:
+	
 	if is_dead:
 		return
 	handle_jumping(delta)
 	handle_movement(delta)
 	handle_animation()
 	
-	if is_on_floor():
-		const FRICTION = 1500
+	#if is_on_floor():
+		#var friction = 5
 	
 	if not is_on_floor():
 		velocity.y += GRAVITY * delta
@@ -147,8 +147,9 @@ func handle_animation() -> void:
 	
 		
 	if Input.is_action_pressed("move_right") or Input.is_action_pressed("move_left"):
-		if not animated_sprite_2d.is_playing():
-			animated_sprite_2d.play("gunrun")
+		animated_sprite_2d.play("gunrun")
+		if not is_on_floor():
+			animated_sprite_2d.play("gunjump")
 	else: 
 		if is_on_floor() and not Input.is_action_pressed("jump") or Input.is_action_pressed("move_left") or Input.is_action_pressed("move_right"):
 			animated_sprite_2d.play("gunidle")
@@ -174,10 +175,6 @@ func _on_game_over():
 	var new_gameover = GAMEOVER.instantiate()
 	add_child(new_gameover)
 
-
-
 func _on_pick_up_gun_picked_up() -> void:
-		const GUN = preload("res://Scenes/Gun.tscn")
-		var new_gun = GUN.instantiate()
-		new_gun.position = global_position
-		get_tree().current_scene.call_deferred("add_sibling", new_gun)
+	%Gun2.set_collision_mask_value(3, true)
+	%Gun2.visible = true

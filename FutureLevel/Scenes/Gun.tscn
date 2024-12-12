@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://b5j4crk6t517p" path="res://assets/Guns&Bullets/blasteffect.png" id="4_ikfiu"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_tnu2p"]
-radius = 239.002
+radius = 264.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_fstce"]
 atlas = ExtResource("4_ikfiu")
@@ -61,7 +61,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"poof",
-"speed": 30.0
+"speed": 40.0
 }]
 
 [node name="Gun" type="Area2D"]
@@ -73,6 +73,7 @@ script = ExtResource("1_5s5d3")
 unique_name_in_owner = true
 position = Vector2(0, 1)
 shape = SubResource("CircleShape2D_tnu2p")
+debug_color = Color(0, 0.595, 0.7, 0)
 
 [node name="gunpivot" type="Marker2D" parent="."]
 
@@ -96,10 +97,10 @@ playback_type = 1
 
 [node name="AnimatedSprite" type="AnimatedSprite2D" parent="."]
 unique_name_in_owner = true
-z_index = -1
-position = Vector2(34.5352, -0.536489)
+z_index = 1
+position = Vector2(44.9636, -0.536489)
 rotation = 0.764125
-scale = Vector2(0.52973, 0.478341)
+scale = Vector2(0.843447, 0.778987)
 sprite_frames = SubResource("SpriteFrames_jee0v")
 animation = &"poof"
 frame = 7

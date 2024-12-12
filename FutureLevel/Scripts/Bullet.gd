@@ -20,4 +20,5 @@ func _physics_process(delta):
 func _on_body_entered(body: CharacterBody2D) -> void:
 	if body.is_in_group("enemy") and body.has_method("take_damage"):
 		body.take_damage()
+		%AnimatedSprite2D.visible = true
 	queue_free()

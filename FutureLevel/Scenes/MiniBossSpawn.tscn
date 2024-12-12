@@ -8,7 +8,7 @@ b = Vector2(-970, 668)
 
 [sub_resource type="Curve2D" id="Curve2D_0jxci"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 344.268, -639.803, 0, 0, 0, 0, -487.528, -631.601, 0, 0, 0, 0, -556.148, 610.899, 0, 0, 0, 0, 339.631, 602.698, 0, 0, 0, 0, 339.631, -584.444, 0, 0, 0, 0, -629.406, -693.111)
+"points": PackedVector2Array(0, 0, 0, 0, -573.767, -658.256, 0, 0, 0, 0, 284.92, -668.507, 0, 0, 0, 0, -74.8755, 595.522, 0, 0, 0, 0, 339.631, 602.698, 0, 0, 0, 0, 339.631, -584.444, 0, 0, 0, 0, -629.406, -693.111)
 }
 point_count = 6
 
@@ -30,8 +30,8 @@ curve = SubResource("Curve2D_0jxci")
 
 [node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
 unique_name_in_owner = true
-position = Vector2(344.268, -639.803)
-rotation = 3.13173
+position = Vector2(-573.767, -658.256)
+rotation = -0.0119382
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_body_exited"]

@@ -27,6 +27,9 @@ region = Rect2(608, 384, 32, 32)
 animations = [{
 "frames": [{
 "duration": 1.0,
+"texture": null
+}, {
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_grfer")
 }, {
 "duration": 1.0,
@@ -38,9 +41,9 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_325t3")
 }],
-"loop": false,
+"loop": true,
 "name": &"impact",
-"speed": 5.0
+"speed": 20.0
 }]
 
 [node name="Bullet" type="Area2D"]
@@ -63,5 +66,6 @@ unique_name_in_owner = true
 visible = false
 sprite_frames = SubResource("SpriteFrames_gg28p")
 animation = &"impact"
+autoplay = "impact"
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

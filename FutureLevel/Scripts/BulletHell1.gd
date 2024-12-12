@@ -1,8 +1,8 @@
 extends Node2D
 
 @export var bullet_scene = preload("res://Scenes/BossBullet.tscn")  # The bullet scene
-@export var bullet_speed = 300  # Speed of the bullets
-@export var bullet_count = 6  # Number of bullets per wave
+@export var bullet_speed = 350  # Speed of the bullets
+@export var bullet_count = 9  # Number of bullets per wave
 @export var angle_spread = 45  # Angle spread for the fan bullet pattern
 @onready var timer: Timer = $Timer
 @onready var audio_stream_player_2d: AudioStreamPlayer2D = $AudioStreamPlayer2D

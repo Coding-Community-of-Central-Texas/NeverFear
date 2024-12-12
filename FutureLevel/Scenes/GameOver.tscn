@@ -1,10 +1,11 @@
-[gd_scene load_steps=10 format=3 uid="uid://8o5ihpf0h8ej"]
+[gd_scene load_steps=16 format=3 uid="uid://8o5ihpf0h8ej"]
 
 [ext_resource type="Script" path="res://Scripts/GameOver.gd" id="1_r0wvx"]
 [ext_resource type="AudioStream" uid="uid://bpcayivn7waop" path="res://assets/FutrueSFX/DavidKBD - Eternity Pack - 05 - Evil soul inside - loop.ogg" id="2_ypdy7"]
 [ext_resource type="FontFile" uid="uid://ckid4fla6wirc" path="res://assets/etc/Starzoom-Shavian.ttf" id="2_yq4vp"]
 [ext_resource type="Texture2D" uid="uid://bv7fu6os82paq" path="res://assets/buttonsprites/UIbutton.png" id="4_ssp7s"]
 [ext_resource type="AudioStream" uid="uid://dbnystp0y1gke" path="res://assets/FutrueSFX/PickUp.wav" id="5_r0rrm"]
+[ext_resource type="Texture2D" uid="uid://cf1o7yknimjyd" path="res://assets/Guns&Bullets/enemybullet.png" id="6_xxxhg"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_u1hko"]
 size = Vector2(90, 40)
@@ -44,6 +45,42 @@ _data = {
 "RESET": SubResource("Animation_0sdvk"),
 "gameover": SubResource("Animation_2370h")
 }
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pes4g"]
+atlas = ExtResource("6_xxxhg")
+region = Rect2(352, 384, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kk6uc"]
+atlas = ExtResource("6_xxxhg")
+region = Rect2(384, 384, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0d7h0"]
+atlas = ExtResource("6_xxxhg")
+region = Rect2(416, 384, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6ycqv"]
+atlas = ExtResource("6_xxxhg")
+region = Rect2(448, 384, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ghm2x"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pes4g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kk6uc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0d7h0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6ycqv")
+}],
+"loop": true,
+"name": &"burn",
+"speed": 11.0
+}]
 
 [node name="GameOver" type="Node2D"]
 process_mode = 3
@@ -159,6 +196,39 @@ unique_name_in_owner = true
 stream = ExtResource("5_r0rrm")
 volume_db = 2.1
 pitch_scale = 1.4
+
+[node name="Fire" type="AnimatedSprite2D" parent="CanvasLayer"]
+z_index = 1
+position = Vector2(156, 595)
+scale = Vector2(10.28, 3.4)
+sprite_frames = SubResource("SpriteFrames_ghm2x")
+animation = &"burn"
+autoplay = "burn"
+frame_progress = 0.399281
+
+[node name="Fire4" type="AnimatedSprite2D" parent="CanvasLayer"]
+position = Vector2(1013, 597)
+scale = Vector2(10.28, 3.4)
+sprite_frames = SubResource("SpriteFrames_ghm2x")
+animation = &"burn"
+autoplay = "burn"
+frame_progress = 0.870152
+
+[node name="Fire3" type="AnimatedSprite2D" parent="CanvasLayer"]
+position = Vector2(793, 595)
+scale = Vector2(10.28, 3.4)
+sprite_frames = SubResource("SpriteFrames_ghm2x")
+animation = &"burn"
+autoplay = "burn"
+frame_progress = 0.861047
+
+[node name="Fire2" type="AnimatedSprite2D" parent="CanvasLayer"]
+position = Vector2(477, 594)
+scale = Vector2(10.28, 3.4)
+sprite_frames = SubResource("SpriteFrames_ghm2x")
+animation = &"burn"
+autoplay = "burn"
+frame_progress = 0.603268
 
 [connection signal="pressed" from="CanvasLayer/ColorRect/Restart" to="." method="_on_restart_pressed"]
 [connection signal="pressed" from="CanvasLayer/ColorRect/MainMenu" to="." method="_on_back_to_main_menu_pressed"]

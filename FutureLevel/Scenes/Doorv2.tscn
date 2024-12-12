@@ -63,9 +63,9 @@ animations = [{
 size = Vector2(37.501, 41.9991)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_r2r2i"]
-size = Vector2(25.3676, 46.803)
+size = Vector2(25.3676, 35.2273)
 
-[node name="Node2D" type="Node2D"]
+[node name="Door" type="Node2D"]
 scale = Vector2(1.36, 1.76)
 script = ExtResource("1_xtj2h")
 
@@ -88,8 +88,9 @@ shape = SubResource("RectangleShape2D_uxnbw")
 position = Vector2(1, 1)
 scale = Vector2(1, 0.719999)
 stream = ExtResource("3_xruwe")
-volume_db = 1.497
+volume_db = 1.021
 pitch_scale = 0.82
+max_distance = 5000.0
 
 [node name="Area2D" type="Area2D" parent="."]
 position = Vector2(-2, 3)
@@ -97,8 +98,7 @@ collision_layer = 0
 collision_mask = 8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(-1268.04, -234.25)
-scale = Vector2(1, 1)
+position = Vector2(-1268.04, -222.318)
 shape = SubResource("RectangleShape2D_r2r2i")
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

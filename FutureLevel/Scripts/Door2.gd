@@ -4,7 +4,6 @@ extends Node2D
 @onready var animated_sprite = %AnimatedSprite2D
 @onready var trigger_area = $Area2D
 @onready var door_shape: CollisionShape2D = $StaticBody2D/CollisionShape2D
-@onready var player = get_node("../Hero")
 @onready var static_body_2d: AnimatableBody2D = $StaticBody2D
 
 # Signal that will be emitted when the player enters the area
@@ -21,11 +20,12 @@ func _ready():
 
 @onready var audio_stream_player_2d: AudioStreamPlayer2D = $AudioStreamPlayer2D
 
-
+var has_sound_played: bool = false
 
 func _on_area_2d_body_entered(body: CharacterBody2D) -> void:
 	if body.is_in_group("player"):
 		audio_stream_player_2d.play()
+		has_sound_played = true
 		if animated_sprite.animation != "open":
 			animated_sprite.play("open")
 			$StaticBody2D/CollisionShape2D.call_deferred("set_disabled", true)
