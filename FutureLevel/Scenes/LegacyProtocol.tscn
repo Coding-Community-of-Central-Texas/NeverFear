@@ -1393,7 +1393,6 @@ theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 7
 theme_override_fonts/font = ExtResource("97_tvle3")
 theme_override_font_sizes/font_size = 25
-text = "$ 0"
 
 [node name="PauseButton" parent="Buttons" instance=ExtResource("99_ec2gt")]
 position = Vector2(547, 595)
@@ -1534,7 +1533,7 @@ position = Vector2(25648, -104)
 rotation = 2.12854e-05
 
 [node name="ByteSpawnerA6" parent="Spawner" instance=ExtResource("103_0k21k")]
-position = Vector2(1851, -371)
+position = Vector2(2016, -581)
 rotation = 2.12854e-05
 
 [node name="MiniBoss" type="Node" parent="."]

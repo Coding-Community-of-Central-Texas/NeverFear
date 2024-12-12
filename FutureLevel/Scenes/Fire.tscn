@@ -1,11 +1,7 @@
-[gd_scene load_steps=9 format=3 uid="uid://cimhq6uapolif"]
+[gd_scene load_steps=11 format=3 uid="uid://cimhq6uapolif"]
 
 [ext_resource type="Texture2D" uid="uid://cf1o7yknimjyd" path="res://assets/Guns&Bullets/enemybullet.png" id="1_loaqn"]
 [ext_resource type="PackedScene" uid="uid://bjwjnne7i3x33" path="res://Scenes/Killzone.tscn" id="2_1cvao"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_m2oj5"]
-atlas = ExtResource("1_loaqn")
-region = Rect2(350, 384, 35, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_xrebe"]
 atlas = ExtResource("1_loaqn")
@@ -15,16 +11,25 @@ region = Rect2(385, 384, 35, 32)
 atlas = ExtResource("1_loaqn")
 region = Rect2(420, 384, 35, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_x3xpg"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_b2fsx"]
 atlas = ExtResource("1_loaqn")
-region = Rect2(455, 384, 35, 32)
+region = Rect2(352, 384, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cxfy4"]
+atlas = ExtResource("1_loaqn")
+region = Rect2(384, 384, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_06mly"]
+atlas = ExtResource("1_loaqn")
+region = Rect2(416, 384, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nvdp5"]
+atlas = ExtResource("1_loaqn")
+region = Rect2(448, 384, 32, 32)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_v7f73"]
 animations = [{
 "frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_m2oj5")
-}, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_xrebe")
 }, {
@@ -32,7 +37,16 @@ animations = [{
 "texture": SubResource("AtlasTexture_l7gl3")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_x3xpg")
+"texture": SubResource("AtlasTexture_b2fsx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cxfy4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_06mly")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nvdp5")
 }],
 "loop": true,
 "name": &"fire",
@@ -49,7 +63,7 @@ scale = Vector2(2.62857, 1)
 sprite_frames = SubResource("SpriteFrames_v7f73")
 animation = &"fire"
 autoplay = "fire"
-frame_progress = 0.64293
+frame_progress = 0.329477
 
 [node name="Killzone" parent="." instance=ExtResource("2_1cvao")]
 

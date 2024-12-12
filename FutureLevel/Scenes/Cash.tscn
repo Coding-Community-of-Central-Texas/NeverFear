@@ -78,7 +78,7 @@ frame_progress = 0.153313
 shape = SubResource("CircleShape2D_w81d5")
 
 [node name="GroundRayCast2D" type="RayCast2D" parent="."]
-target_position = Vector2(0, 15)
+target_position = Vector2(0, 18.75)
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("3_jwobk")

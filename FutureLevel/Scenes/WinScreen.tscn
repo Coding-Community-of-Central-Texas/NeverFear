@@ -10,12 +10,17 @@
 radius = 529.71
 
 [node name="Winner" type="CanvasLayer"]
+layer = 3
 
 [node name="Win" type="TextureRect" parent="."]
 self_modulate = Color(1, 1, 1, 0.435294)
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 4.0
+offset_top = -183.0
+offset_right = 4.0
+offset_bottom = 193.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("1_ykjtl")
@@ -51,7 +56,7 @@ theme_override_font_sizes/font_size = 20
 text = "SPEED RUN TIME:"
 
 [node name="StatsLink" type="TouchScreenButton" parent="Win"]
-self_modulate = Color(1, 1, 1, 0.690196)
+self_modulate = Color(1, 1, 1, 0.823529)
 position = Vector2(808, 559)
 rotation = -3.14812
 scale = Vector2(0.467397, -0.222699)

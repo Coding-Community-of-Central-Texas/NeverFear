@@ -3,13 +3,13 @@ extends Path2D
 const ROBBIE = preload("res://Scenes/GauntletThreeHitter.tscn")
 const TANK = preload("res://Scenes/TankGauntlet.tscn")
 
-
 enum CharacterType {
 	ROBBIE,
 	TANK
 }
 
 @onready var big_timer: Timer = $BigTimer
+@onready var queue_free_timer: Timer = $QueueFreeTimer
 
 func _ready() -> void:
 	big_timer.start()
@@ -35,3 +35,8 @@ func spawn_wave():
 
 func get_random_character(_type1: int, _type2: int) -> PackedScene:
 	return ROBBIE if randi() % 2 == 0 else TANK 
+
+
+func _on_queue_free_timer_timeout() -> void:
+	print("quefree!")
+	queue_free()

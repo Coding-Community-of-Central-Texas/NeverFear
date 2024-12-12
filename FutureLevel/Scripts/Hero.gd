@@ -147,12 +147,12 @@ func handle_animation() -> void:
 	
 		
 	if Input.is_action_pressed("move_right") or Input.is_action_pressed("move_left"):
-		animated_sprite_2d.play("gunrun")
-		if not is_on_floor():
-			animated_sprite_2d.play("gunjump")
+		if not animated_sprite_2d.is_playing():
+			animated_sprite_2d.play("gunrun")
 	else: 
 		if is_on_floor() and not Input.is_action_pressed("jump") or Input.is_action_pressed("move_left") or Input.is_action_pressed("move_right"):
-			animated_sprite_2d.play("gunidle")
+			if not animated_sprite_2d.is_playing():
+				animated_sprite_2d.play("gunidle")
 
 func _respawn():
 	# Reset the player's position, health, and state

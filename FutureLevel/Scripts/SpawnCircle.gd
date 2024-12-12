@@ -1,14 +1,15 @@
 extends Path2D
 
 
-
 @onready var timer: Timer = $Timer
+@onready var queue_free_timer: Timer = $QueueFreeTimer
 
 
 func _ready() -> void:
 	timer.start()
 
 func _on_timer_timeout() -> void:
+	print("spawning")
 	spawn_wave()
 	spawn_wave()
 
@@ -27,3 +28,8 @@ func spawn_wave():
 	new_byte.position = %PathFollow2D.position
 	get_tree().current_scene.add_child(new_byte)
 	get_tree().current_scene.add_child(new_droid) 
+
+
+func _on_queue_free_timer_timeout() -> void:
+	print("free!")
+	queue_free()

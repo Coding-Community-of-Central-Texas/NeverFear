@@ -1,4 +1,4 @@
-[gd_scene load_steps=185 format=3 uid="uid://c8sbp2d4k2aou"]
+[gd_scene load_steps=183 format=3 uid="uid://c8sbp2d4k2aou"]
 
 [ext_resource type="Script" path="res://Scripts/HypercoreGauntlet.gd" id="1_dl73x"]
 [ext_resource type="Script" path="res://addons/gaea/renderers/2D/tilemap_gaea_renderer.gd" id="2_bqeif"]
@@ -89,9 +89,7 @@
 [ext_resource type="PackedScene" uid="uid://cijayc3peexw" path="res://GameManager.tscn" id="87_esuwa"]
 [ext_resource type="PackedScene" uid="uid://bpcrood65pxvy" path="res://Scenes/PauseButton.tscn" id="88_b882s"]
 [ext_resource type="PackedScene" uid="uid://bnvfoqqwf8ub" path="res://Scenes/SurvivorControl.tscn" id="89_4jwms"]
-[ext_resource type="PackedScene" uid="uid://8p6xxbnu26v8" path="res://Scenes/SpawnCircle.tscn" id="90_54fqq"]
 [ext_resource type="PackedScene" uid="uid://fsxm1bfx6ihb" path="res://Scenes/TimePanel.tscn" id="90_xpk53"]
-[ext_resource type="PackedScene" uid="uid://drpwlcnitqf1n" path="res://Scenes/BigSpawnCircle.tscn" id="91_huhca"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_w27gi"]
 noise_type = 4
@@ -695,7 +693,7 @@ generator = NodePath("../NoiseGenerator")
 [node name="NoiseGenerator" type="Node" parent="."]
 script = ExtResource("3_iryc7")
 settings = SubResource("Resource_ka20b")
-chunk_size = Vector2i(5, 5)
+chunk_size = Vector2i(10, 10)
 tile_size = Vector2i(32, 32)
 
 [node name="TileMap" type="TileMap" parent="."]
@@ -710,14 +708,6 @@ visibility_layer = 2
 position = Vector2(581, 245)
 motion_mode = 1
 slide_on_ceiling = false
-
-[node name="BigSpawnCircle" parent="Survivor" instance=ExtResource("91_huhca")]
-position = Vector2(-45.2306, -53.1445)
-scale = Vector2(0.263546, 0.370347)
-
-[node name="SpawnCircle" parent="Survivor" instance=ExtResource("90_54fqq")]
-position = Vector2(-51.4061, -36.2152)
-scale = Vector2(0.433495, 0.610991)
 
 [node name="ChunkLoader2D" type="Node2D" parent="." node_paths=PackedStringArray("generator", "actor")]
 script = ExtResource("85_07p6e")
@@ -741,7 +731,8 @@ position = Vector2(59, 46)
 [node name="Control" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
-offset_right = 23.0
-offset_bottom = 27.0
+offset_right = 39.0
+offset_bottom = 42.0
+size_flags_horizontal = 3
 
 [node name="SurvivalControl" parent="Control" instance=ExtResource("89_4jwms")]

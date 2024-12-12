@@ -51,16 +51,3 @@ func shoot():
 	new_bullet.global_rotation = shootingpoint.global_rotation
 	shootingpoint.add_child(new_bullet)
 	audio_stream_player.play()
-
-var velocity: Vector2 = Vector2.ZERO
-
-func flip_sprite() -> void:
-	var velocity = velocity.x
-	if velocity.x < 0:
-		rifle.flip_h = true
-	elif velocity.x > 0:
-		rifle.flip_h = false
-
-func _on_body_entered(body):
-	if body.is_in_group("range_room"):  # Ensure the range zone has this group assigned
-		set_range(Vector2(2, 2)) 

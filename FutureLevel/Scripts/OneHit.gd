@@ -39,12 +39,11 @@ func take_damage():
 	knockback_timer = knockback_duration
 	
 	if health == 0.0:
-		emit_signal("kill")
 		_die()
 
 
 func _die():
-	
+	emit_signal("kill")
 	const BOOM = preload("res://Scenes/Boom.tscn")
 	var new_Boom = BOOM.instantiate()
 	new_Boom.global_position = global_position

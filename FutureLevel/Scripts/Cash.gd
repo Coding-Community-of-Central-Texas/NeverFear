@@ -2,7 +2,7 @@ extends Area2D
 
 signal add_cash
 
-var GRAVITY = 180
+var GRAVITY = 200
 var MAX_FALL_SPEED = 250.0# Maximum falling speed
 
 
@@ -91,7 +91,7 @@ func randomize_power_up():
 
 
 func _physics_process(delta: float):
-	if is_in_group("Legacy"):
+	if get_tree().current_scene.is_in_group("Legacy"):
 		if !ground_ray_cast_2d.is_colliding():
 			velocity.y += GRAVITY * delta
 			velocity.y = min(velocity.y, MAX_FALL_SPEED)  # Cap the falling speed
@@ -140,4 +140,5 @@ func _on_audio_stream_player_2d_finished() -> void:
 
 func _on_add_cash() -> void:
 	GameManager._on_add_cash(randi_range(1000, 10000))
+	print("add cash")
 	

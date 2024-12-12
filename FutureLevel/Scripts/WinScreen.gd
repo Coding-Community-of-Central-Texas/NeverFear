@@ -9,10 +9,10 @@ func _ready():
 	if DisplayServer.is_touchscreen_available() and OS.has_feature("Andriod"):
 		get_viewport().screen_set_orientation(DisplayServer.SCREEN_PORTRAIT)
 	else:
-		return
+		pass
 
 func _process(_delta):
-	run_time.text = "YOUR COMPLETION TIME: " + GameManager.current_level_time
+	run_time.text = "YOUR COMPLETION TIME: " + Global.legacy.TimePanel.get_time_formated()
 	
 
 

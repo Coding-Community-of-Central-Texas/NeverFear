@@ -4,22 +4,29 @@
 
 [sub_resource type="Curve2D" id="Curve2D_dwh3c"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 1253, 926.5, 0, 0, 0, 0, 152, 922.5, 0, 0, 0, 0, -896.5, 907.5, 0, 0, 0, 0, 1259, 936, 0, 0, 0, 0, 1246.5, 164.5, 0, 0, 0, 0, 1272, -632, 0, 0, 0, 0, -891, -633.5, 0, 0, 0, 0, -877.5, 885.5, 0, 0, 0, 0, -877.5, -610, 0, 0, 0, 0, 1262.5, -635.5, 0, 0, 0, 0, 1251.5, -300, 0, 0, 0, 0, 1253, 926.5)
+"points": PackedVector2Array(0, 0, 0, 0, -896.5, 907.5, 0, 0, 0, 0, -891, -633.5, 0, 0, 0, 0, -467.129, -612.641, 0, 0, 0, 0, -49.6853, -620.893, 0, 0, 0, 0, -60.287, 146.126, 0, 0, 0, 0, -56.059, 886.378, 0, 0, 0, 0, -896.5, 907.5)
 }
-point_count = 12
+point_count = 7
 
 [node name="SpawnCircle" type="Path2D"]
-position = Vector2(518, 231)
+position = Vector2(494.523, -31.0444)
+scale = Vector2(0.976601, 0.500325)
 curve = SubResource("Curve2D_dwh3c")
 script = ExtResource("1_hge4p")
 
 [node name="PathFollow2D" type="PathFollow2D" parent="."]
 unique_name_in_owner = true
-position = Vector2(353.716, 924.03)
-rotation = 0.0132212
-progress = 3399.94
+position = Vector2(-623.609, 900.642)
+rotation = 3.11647
+progress = 4458.0
+rotates = false
 
 [node name="Timer" type="Timer" parent="."]
-wait_time = 2.845
+wait_time = 2.273
+
+[node name="QueueFreeTimer" type="Timer" parent="."]
+wait_time = 11.883
+autostart = true
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="QueueFreeTimer" to="." method="_on_queue_free_timer_timeout"]

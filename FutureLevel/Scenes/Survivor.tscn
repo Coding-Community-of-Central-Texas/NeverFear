@@ -248,7 +248,7 @@ tracks/0/path = NodePath(".:sprite_frames")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.433333),
+"times": PackedFloat32Array(0, 0.466667),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [SubResource("SpriteFrames_38a1o"), SubResource("SpriteFrames_38a1o")]
@@ -272,10 +272,10 @@ tracks/2/path = NodePath(".:frame")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.0666667, 0.133333, 0.2, 0.266667, 0.366667),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.0666667, 0.133333, 0.2, 0.266667, 0.333333, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [0, 1, 2, 3, 4, 5]
+"values": [0, 1, 2, 3, 4, 5, 0]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_2oiib"]
@@ -359,4 +359,9 @@ wait_time = 1.077
 stream = ExtResource("8_x70f2")
 pitch_scale = 0.54
 
+[node name="SpawnTimer" type="Timer" parent="."]
+wait_time = 14.881
+autostart = true
+
 [connection signal="timeout" from="Timer2" to="." method="_on_timer_2_timeout"]
+[connection signal="timeout" from="SpawnTimer" to="." method="_on_spawn_timer_timeout"]
