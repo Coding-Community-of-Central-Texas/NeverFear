@@ -286,7 +286,7 @@ animations = [{
 size = Vector2(16.6667, 31.3333)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_x6iwv"]
-radius = 13.0384
+radius = 21.7588
 
 [node name="Hero" type="CharacterBody2D" groups=["player"]]
 scale = Vector2(1.5, 1.5)
@@ -341,7 +341,7 @@ collision_layer = 0
 collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
-position = Vector2(1, 6)
+position = Vector2(0.666667, 2)
 shape = SubResource("CircleShape2D_x6iwv")
 debug_color = Color(0.845147, 0.373597, 0.157764, 0.42)
 

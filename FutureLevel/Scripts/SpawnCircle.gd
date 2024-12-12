@@ -1,4 +1,4 @@
-extends Node2D
+extends Path2D
 
 
 
@@ -10,7 +10,7 @@ func _ready() -> void:
 
 func _on_timer_timeout() -> void:
 	spawn_wave()
-
+	spawn_wave()
 
 func spawn_wave():
 	const DROID  = preload("res://Scenes/DriodLegacy.tscn")
@@ -25,5 +25,5 @@ func spawn_wave():
 		%PathFollow2D.progress_ratio -= 1.0  # Wrap around if it exceeds 1.0
 		new_byte.position = %PathFollow2D.position
 	new_byte.position = %PathFollow2D.position
-	add_child(new_byte)
-	add_child(new_droid) 
+	get_tree().current_scene.add_child(new_byte)
+	get_tree().current_scene.add_child(new_droid) 

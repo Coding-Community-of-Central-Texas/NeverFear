@@ -1083,7 +1083,7 @@ _data = {
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pqwp7"]
 size = Vector2(0.757693, 124.749)
 
-[node name="LegacyProtocol" type="Node2D"]
+[node name="LegacyProtocol" type="Node2D" groups=["Legacy"]]
 rotation = 2.12854e-05
 script = ExtResource("1_aq02g")
 
@@ -1595,7 +1595,6 @@ libraries = {
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Platform/Area2D"]
 position = Vector2(-38.2573, -60.1713)
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_pqwp7")
 
 [node name="Timer" type="Timer" parent="."]
@@ -1663,7 +1662,6 @@ rotation = 2.12854e-05
 [node name="Door2" parent="Doors" instance=ExtResource("119_2xs3b")]
 position = Vector2(17401, -62)
 rotation = 2.12854e-05
-scale = Vector2(1.36, 1.76)
 
 [connection signal="body_entered" from="Platform/Area2D" to="Platform" method="_on_area_2d_body_entered"]
 [connection signal="body_entered" from="PickUpGun" to="PickUpGun" method="_on_body_entered"]

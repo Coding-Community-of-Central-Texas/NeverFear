@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=3 uid="uid://bsltfx5uw5yvq"]
+[gd_scene load_steps=36 format=3 uid="uid://bsltfx5uw5yvq"]
 
 [ext_resource type="Script" path="res://Scripts/SurvivorScript.gd" id="1_dqedt"]
 [ext_resource type="Texture2D" uid="uid://050tdjf5b57n" path="res://assets/3 Cyborg/Cyborg_death.png" id="2_cknjt"]
@@ -8,7 +8,6 @@
 [ext_resource type="PackedScene" uid="uid://v1wqgbnfesbp" path="res://Scenes/HealthBar.tscn" id="6_pjeyg"]
 [ext_resource type="PackedScene" uid="uid://daeuuspwxjeag" path="res://Scenes/Gun.tscn" id="7_3segn"]
 [ext_resource type="AudioStream" uid="uid://dnjr7q6plu8wi" path="res://assets/FutrueSFX/PlayerDie.wav" id="8_x70f2"]
-[ext_resource type="PackedScene" uid="uid://8p6xxbnu26v8" path="res://Scenes/SpawnCircle.tscn" id="9_agpeh"]
 [ext_resource type="Texture2D" uid="uid://c1t7ic4fo0him" path="res://assets/etc/health.png" id="9_bjhe2"]
 [ext_resource type="Texture2D" uid="uid://dkp57y2x4axvt" path="res://assets/etc/shadow.png" id="10_e0fqp"]
 
@@ -158,7 +157,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"run",
-"speed": 15.0
+"speed": 12.0
 }]
 
 [sub_resource type="Animation" id="Animation_i8mf6"]
@@ -241,7 +240,7 @@ tracks/2/keys = {
 
 [sub_resource type="Animation" id="Animation_pqmon"]
 resource_name = "walk"
-length = 0.9
+length = 0.45
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -249,7 +248,7 @@ tracks/0/path = NodePath(".:sprite_frames")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.833333),
+"times": PackedFloat32Array(0, 0.433333),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [SubResource("SpriteFrames_38a1o"), SubResource("SpriteFrames_38a1o")]
@@ -273,7 +272,7 @@ tracks/2/path = NodePath(".:frame")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.133333, 0.3, 0.433333, 0.566667, 0.733333),
+"times": PackedFloat32Array(0, 0.0666667, 0.133333, 0.2, 0.266667, 0.366667),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
 "update": 1,
 "values": [0, 1, 2, 3, 4, 5]
@@ -294,7 +293,7 @@ radius = 33.8596
 
 [node name="Survivor" type="CharacterBody2D" groups=["player"]]
 scale = Vector2(2, 2)
-collision_layer = 129
+collision_layer = 137
 collision_mask = 33
 script = ExtResource("1_dqedt")
 
@@ -353,13 +352,11 @@ shape = SubResource("CircleShape2D_630u5")
 debug_color = Color(1, 0.0166667, 0, 0)
 
 [node name="Timer2" type="Timer" parent="."]
-wait_time = 0.86
+process_callback = 0
+wait_time = 1.077
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("8_x70f2")
 pitch_scale = 0.54
-
-[node name="SpawnCircle" parent="." instance=ExtResource("9_agpeh")]
-position = Vector2(2249, 110)
 
 [connection signal="timeout" from="Timer2" to="." method="_on_timer_2_timeout"]

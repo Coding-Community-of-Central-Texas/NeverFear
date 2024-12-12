@@ -1,0 +1,38 @@
+[gd_scene load_steps=6 format=3 uid="uid://bhlqatei3k7dl"]
+
+[ext_resource type="Script" path="res://Scripts/GuantThreeHitter.gd" id="1_3djek"]
+[ext_resource type="PackedScene" uid="uid://dwskcd6nh751f" path="res://Scenes/Robbie.tscn" id="2_xinxc"]
+[ext_resource type="PackedScene" uid="uid://ck5iyeqefbgyc" path="res://Scenes/EnemyGun.tscn" id="3_yuh7s"]
+[ext_resource type="Texture2D" uid="uid://dkp57y2x4axvt" path="res://assets/etc/shadow.png" id="4_r1v46"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_s5lme"]
+size = Vector2(31, 39)
+
+[node name="GThreeHitter" type="CharacterBody2D" groups=["enemy"]]
+scale = Vector2(1.5, 1.5)
+collision_layer = 4
+collision_mask = 5
+motion_mode = 1
+script = ExtResource("1_3djek")
+
+[node name="Robbie" parent="." instance=ExtResource("2_xinxc")]
+unique_name_in_owner = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-2.5, -1.5)
+shape = SubResource("RectangleShape2D_s5lme")
+debug_color = Color(3.46541e-06, 0.690906, 0.804784, 0.42)
+
+[node name="EnemyGun" parent="." instance=ExtResource("3_yuh7s")]
+unique_name_in_owner = true
+show_behind_parent = true
+position = Vector2(-1, 0)
+
+[node name="Shadow" type="Sprite2D" parent="."]
+modulate = Color(0.0846899, 0.0846899, 0.0846899, 1)
+show_behind_parent = true
+position = Vector2(-1.33333, 33.3333)
+scale = Vector2(0.262491, 0.334444)
+texture = ExtResource("4_r1v46")
+
+[connection signal="kill" from="." to="." method="_on_kill"]

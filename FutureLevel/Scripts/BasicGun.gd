@@ -1,6 +1,6 @@
 extends Area2D
 
-@export var rate_of_fire: float = 1.0
+@export var rate_of_fire: float = 0.5
 @onready var timer: Timer = $Timer
 @onready var shootingpoint: Marker2D = %shootingpoint
 @onready var audio_stream_player_2d: AudioStreamPlayer2D = $AudioStreamPlayer2D

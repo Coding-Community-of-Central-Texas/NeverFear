@@ -1,8 +1,11 @@
-[gd_scene load_steps=12 format=3 uid="uid://d3m3pthstoelx"]
+[gd_scene load_steps=15 format=3 uid="uid://d3m3pthstoelx"]
 
 [ext_resource type="Script" path="res://Scripts/Cash.gd" id="1_wjjbo"]
 [ext_resource type="Texture2D" uid="uid://dtey7mq3og40d" path="res://assets/etc/Money.png" id="2_kau2e"]
 [ext_resource type="AudioStream" uid="uid://dbnystp0y1gke" path="res://assets/FutrueSFX/PickUp.wav" id="3_jwobk"]
+[ext_resource type="Texture2D" uid="uid://c1t7ic4fo0him" path="res://assets/etc/health.png" id="4_irqxg"]
+[ext_resource type="Texture2D" uid="uid://bnhfvq2i6dbp8" path="res://assets/etc/Icons_25.png" id="5_k002h"]
+[ext_resource type="Texture2D" uid="uid://35dyx2vgd6cm" path="res://assets/etc/Star.png" id="6_skr7e"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_h05mr"]
 atlas = ExtResource("2_kau2e")
@@ -58,11 +61,13 @@ animations = [{
 radius = 11.1803
 
 [node name="Cash" type="Area2D"]
+scale = Vector2(1.16, 1.12)
 collision_layer = 32
 collision_mask = 33
 script = ExtResource("1_wjjbo")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="CashSpin" type="AnimatedSprite2D" parent="."]
+unique_name_in_owner = true
 scale = Vector2(1.5, 1.41667)
 sprite_frames = SubResource("SpriteFrames_73xw1")
 animation = &"spin"
@@ -80,6 +85,24 @@ stream = ExtResource("3_jwobk")
 volume_db = -1.799
 pitch_scale = 0.78
 playback_type = 1
+
+[node name="Health" type="Sprite2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(0, -0.892857)
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("4_irqxg")
+
+[node name="Heart" type="Sprite2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(0, -2.67857)
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("5_k002h")
+
+[node name="Star" type="Sprite2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(0, -0.892857)
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("6_skr7e")
 
 [connection signal="add_cash" from="." to="." method="_on_add_cash"]
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

@@ -6,10 +6,11 @@ var health: float = 100.0
 const MAX_HEALTH = 100
 var direction: Vector2 = Vector2.ZERO
 const VELOCITY = 1000
-@export var SPEED: float = 500.0
-@export var acceleration: float = 800.0
+@export var SPEED: float = 600.0
+@export var acceleration: float = 900.0
 @export var deceleration: float = 2000.0
 @onready var shadow: Sprite2D = $AnimatedSprite2D/Shadow
+@onready var spawn_circle: Path2D = $SpawnCircle
 
 
 # Animation setup
@@ -29,7 +30,7 @@ func _ready() -> void:
 func take_damage():
 	if is_dead:
 		return  # Ignore damage if the player is already dead
-	health -= 15
+	health -= 1
 	health_bar.value = health
 	if health <= 0:
 		_die()
@@ -64,7 +65,7 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 	flip_sprite()
 	
-	const DAMAGE_RATE = 10.0
+	const DAMAGE_RATE = 2.0
 	var overlapping_mobs = %HurtBox.get_overlapping_bodies()
 	health_bar.value = health
 	
@@ -96,7 +97,7 @@ func flip_sprite() -> void:
 	elif velocity.x > 0:
 		animated_sprite_2d.flip_h = false
 		shadow.position.x = -9.5; shadow.position.y = 34;
-	#spawn_circle.rotation = 0  # Prevents rotation effects, if any
+	spawn_circle.rotation = 0  # Prevents rotation effects, if any
 
 
 
@@ -105,7 +106,7 @@ func _on_timer_2_timeout() -> void:
 	_game_over()
 
 func _game_over():
+	get_parent().level_failed()
 	const GAMEOVER = preload("res://Scenes/GameOver.tscn")
 	var new_gameover = GAMEOVER.instantiate()
 	add_child(new_gameover)
-	print("gameover")

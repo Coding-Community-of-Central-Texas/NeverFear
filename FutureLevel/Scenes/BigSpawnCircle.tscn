@@ -1,0 +1,27 @@
+[gd_scene load_steps=3 format=3 uid="uid://drpwlcnitqf1n"]
+
+[ext_resource type="Script" path="res://Scripts/BigSpawnGauntlet.gd" id="1_n1gul"]
+
+[sub_resource type="Curve2D" id="Curve2D_dwh3c"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 1253, 926.5, 0, 0, 0, 0, 152, 922.5, 0, 0, 0, 0, -896.5, 907.5, 0, 0, 0, 0, 1259, 936, 0, 0, 0, 0, 1246.5, 164.5, 0, 0, 0, 0, 1272, -632, 0, 0, 0, 0, -891, -633.5, 0, 0, 0, 0, -877.5, 885.5, 0, 0, 0, 0, -877.5, -610, 0, 0, 0, 0, -286.225, -613.181, 0, 0, 0, 0, 1262.5, -635.5, 0, 0, 0, 0, 1251.5, -300, 0, 0, 0, 0, 1253, 926.5)
+}
+point_count = 13
+
+[node name="BigSpawnCircle" type="Path2D"]
+position = Vector2(494.595, 210.522)
+scale = Vector2(1.014, 1.223)
+curve = SubResource("Curve2D_dwh3c")
+script = ExtResource("1_n1gul")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(1252.48, 533.445)
+rotation = -1.587
+progress = 4707.91
+rotates = false
+
+[node name="BigTimer" type="Timer" parent="."]
+wait_time = 2.108
+
+[connection signal="timeout" from="BigTimer" to="." method="_on_timer_timeout"]

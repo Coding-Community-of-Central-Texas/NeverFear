@@ -4,7 +4,7 @@
 
 [sub_resource type="Curve2D" id="Curve2D_dwh3c"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 1253, 926.5, 0, 0, 0, 0, 134, 736.5, 0, 0, 0, 0, -896.5, 907.5, 0, 0, 0, 0, 1259, 936, 0, 0, 0, 0, 1001, 98.5, 0, 0, 0, 0, 1272, -632, 0, 0, 0, 0, -891, -633.5, 0, 0, 0, 0, -877.5, 885.5, 0, 0, 0, 0, -877.5, -610, 0, 0, 0, 0, 1262.5, -635.5, 0, 0, 0, 0, 1002.5, -517.5, 0, 0, 0, 0, 1253, 926.5)
+"points": PackedVector2Array(0, 0, 0, 0, 1253, 926.5, 0, 0, 0, 0, 152, 922.5, 0, 0, 0, 0, -896.5, 907.5, 0, 0, 0, 0, 1259, 936, 0, 0, 0, 0, 1246.5, 164.5, 0, 0, 0, 0, 1272, -632, 0, 0, 0, 0, -891, -633.5, 0, 0, 0, 0, -877.5, 885.5, 0, 0, 0, 0, -877.5, -610, 0, 0, 0, 0, 1262.5, -635.5, 0, 0, 0, 0, 1251.5, -300, 0, 0, 0, 0, 1253, 926.5)
 }
 point_count = 12
 
@@ -15,11 +15,11 @@ script = ExtResource("1_hge4p")
 
 [node name="PathFollow2D" type="PathFollow2D" parent="."]
 unique_name_in_owner = true
-position = Vector2(323.725, 923.634)
+position = Vector2(353.716, 924.03)
 rotation = 0.0132212
 progress = 3399.94
 
 [node name="Timer" type="Timer" parent="."]
-wait_time = 2.64
+wait_time = 2.845
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

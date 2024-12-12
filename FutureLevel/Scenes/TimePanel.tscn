@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://fsxm1bfx6ihb"]
+[gd_scene load_steps=4 format=3 uid="uid://fsxm1bfx6ihb"]
 
 [ext_resource type="Script" path="res://Scripts/TimePanel.gd" id="1_4vdq7"]
 [ext_resource type="FontFile" uid="uid://ckid4fla6wirc" path="res://assets/etc/Starzoom-Shavian.ttf" id="2_lcrqh"]
+[ext_resource type="Texture2D" uid="uid://bbofee6bwlhcn" path="res://assets/etc/Clock.png" id="3_sfdqy"]
 
 [node name="TimePanel" type="Panel"]
 self_modulate = Color(1, 1, 1, 0)
@@ -50,3 +51,7 @@ theme_override_constants/outline_size = 7
 theme_override_fonts/font = ExtResource("2_lcrqh")
 theme_override_font_sizes/font_size = 25
 text = "000"
+
+[node name="Clock" type="Sprite2D" parent="."]
+position = Vector2(-16, 10)
+texture = ExtResource("3_sfdqy")

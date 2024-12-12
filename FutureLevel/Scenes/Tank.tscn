@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://7rfkwwydbnmb"]
+[gd_scene load_steps=35 format=3 uid="uid://7rfkwwydbnmb"]
 
 [ext_resource type="Texture2D" uid="uid://dnw7akb1ljmh2" path="res://assets/Enemies/GolfBot/Attack.png" id="1_s1u1l"]
 [ext_resource type="Script" path="res://Scripts/Tank.gd" id="1_xawmx"]
@@ -6,7 +6,6 @@
 [ext_resource type="Texture2D" uid="uid://jggg7oeuaspo" path="res://assets/Enemies/GolfBot/Hurt.png" id="3_bqlyk"]
 [ext_resource type="Texture2D" uid="uid://dxl2oauxmr4ak" path="res://assets/Enemies/GolfBot/Walk.png" id="4_3qwlk"]
 [ext_resource type="Texture2D" uid="uid://b2alp73hqohbg" path="res://assets/Guns&Bullets/impact two.png" id="6_iy7qo"]
-[ext_resource type="AudioStream" uid="uid://bvvweeusmq3u4" path="res://assets/FutrueSFX/Explosion Swoshes.wav" id="7_hdc50"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qalvl"]
 atlas = ExtResource("1_s1u1l")
@@ -126,7 +125,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"move",
-"speed": 8.0
+"speed": 10.0
 }]
 
 [sub_resource type="Animation" id="Animation_0u3on"]
@@ -223,6 +222,7 @@ tracks/2/keys = {
 [sub_resource type="Animation" id="Animation_ik6n3"]
 resource_name = "move"
 length = 0.3
+loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -230,10 +230,10 @@ tracks/0/path = NodePath(".:sprite_frames")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [SubResource("SpriteFrames_otiv8")]
+"values": [SubResource("SpriteFrames_otiv8"), SubResource("SpriteFrames_otiv8")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -322,7 +322,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_1o83g")
 }],
-"loop": false,
+"loop": true,
 "name": &"impact",
 "speed": 15.0
 }]
@@ -351,22 +351,18 @@ libraries = {
 }
 
 [node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="."]
-position = Vector2(-37.4604, 17.3627)
-scale = Vector2(-0.494259, 0.380395)
+position = Vector2(-28.2887, 7.84533)
+scale = Vector2(-0.876412, 0.776952)
 sprite_frames = SubResource("SpriteFrames_y5egs")
 animation = &"impact"
 frame = 7
 frame_progress = 1.0
-
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("7_hdc50")
-pitch_scale = 1.65
 
 [node name="Path2D" type="Path2D" parent="."]
 curve = SubResource("Curve2D_bykuh")
 
 [node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
 unique_name_in_owner = true
-position = Vector2(-28.1997, 12.6387)
+position = Vector2(-28.1998, 12.6388)
 rotation = 1.45846
 progress = 18.7399
