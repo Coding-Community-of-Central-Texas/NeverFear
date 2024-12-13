@@ -36,10 +36,6 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 413.0
-offset_top = 262.0
-offset_right = -402.0
-offset_bottom = -276.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(0.959132, 1.00369)
@@ -55,20 +51,20 @@ vertical_alignment = 1
 
 [node name="HypercoreGauntlet" type="TouchScreenButton" parent="MenuBox/Survival"]
 unique_name_in_owner = true
-position = Vector2(166.817, 51.809)
-scale = Vector2(25.0225, 2.34356)
+position = Vector2(558.839, 527.055)
+scale = Vector2(22.5619, 3.53915)
 shape = SubResource("RectangleShape2D_b2lpd")
 
 [node name="PerformanceSettings" type="Label" parent="MenuBox"]
 z_index = 1
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 334.0
-offset_top = 357.0
-offset_right = -236.0
-offset_bottom = -216.0
+anchors_preset = -1
+anchor_left = 0.302778
+anchor_top = 0.576852
+anchor_right = 0.695573
+anchor_bottom = 0.641478
+offset_right = 85.781
+offset_bottom = 0.203552
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(0.831802, 0.997092)
@@ -81,11 +77,12 @@ theme_override_font_sizes/font_size = 50
 text = "DATA VAULT"
 horizontal_alignment = 1
 vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
 
 [node name="Performance" type="TouchScreenButton" parent="MenuBox/PerformanceSettings"]
 unique_name_in_owner = true
-position = Vector2(295.743, 35.1021)
-scale = Vector2(-27.8289, 2.87191)
+position = Vector2(256.071, 28.0817)
+scale = Vector2(-26.5786, 3.47366)
 shape = SubResource("RectangleShape2D_nmumq")
 
 [node name="Credits" type="Label" parent="MenuBox"]
@@ -93,10 +90,10 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 505.0
-offset_top = 480.0
-offset_right = -553.0
-offset_bottom = -84.9999
+offset_left = 475.0
+offset_top = 829.0
+offset_right = -514.0
+offset_bottom = -169.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(1.6, 1.36)
@@ -121,10 +118,12 @@ shape = SubResource("CapsuleShape2D_o5ej8")
 [node name="Story" type="Label" parent="MenuBox"]
 z_index = 1
 layout_mode = 2
-offset_left = 332.0
-offset_top = 212.0
-offset_right = 832.0
-offset_bottom = 263.0
+anchor_left = 0.117593
+anchor_top = 0.308333
+anchor_right = 0.881482
+anchor_bottom = 0.415412
+offset_right = 19.9995
+offset_bottom = -1.64526
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(0.960001, 1.03226)
@@ -139,13 +138,13 @@ text = "LEGACY"
 horizontal_alignment = 1
 vertical_alignment = 1
 justification_flags = 35
+metadata/_edit_use_anchors_ = true
 
-[node name="LegacyProtocol" type="TouchScreenButton" parent="MenuBox/Story"]
+[node name="LegacyProtocol" type="TouchScreenButton" parent="MenuBox"]
 unique_name_in_owner = true
 z_index = 1
-position = Vector2(253.125, 24.2187)
-rotation = 3.14159
-scale = Vector2(-23.8578, 2.66558)
+position = Vector2(531, 390)
+scale = Vector2(23.8235, -4.59157)
 shape = SubResource("RectangleShape2D_b5rdu")
 shape_centered = false
 
@@ -168,4 +167,4 @@ pitch_scale = 1.43
 [connection signal="pressed" from="MenuBox/Survival/HypercoreGauntlet" to="." method="_on_hypercore_gauntlet_pressed"]
 [connection signal="pressed" from="MenuBox/PerformanceSettings/Performance" to="." method="_on_performance_pressed"]
 [connection signal="pressed" from="MenuBox/Credits/Credits" to="." method="_on_credits_pressed"]
-[connection signal="pressed" from="MenuBox/Story/LegacyProtocol" to="." method="_on_legacy_protocol_pressed"]
+[connection signal="pressed" from="MenuBox/LegacyProtocol" to="." method="_on_legacy_protocol_pressed"]

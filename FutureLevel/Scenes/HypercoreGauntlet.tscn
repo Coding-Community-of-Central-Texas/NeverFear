@@ -721,18 +721,23 @@ process_mode = 3
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="TimePanel" parent="CanvasLayer" instance=ExtResource("90_xpk53")]
+offset_left = -97.0
 offset_top = 42.0
+offset_right = 71.0
 offset_bottom = 100.0
+scale = Vector2(1.36, 1)
 
 [node name="PauseButton" parent="CanvasLayer" instance=ExtResource("88_b882s")]
 top_level = true
-position = Vector2(59, 46)
+position = Vector2(102, 56)
 
 [node name="Control" type="Control" parent="."]
 layout_mode = 3
-anchors_preset = 0
-offset_right = 39.0
-offset_bottom = 42.0
-size_flags_horizontal = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="SurvivalControl" parent="Control" instance=ExtResource("89_4jwms")]
+follow_viewport_scale = 3.86

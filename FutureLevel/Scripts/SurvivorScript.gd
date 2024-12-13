@@ -7,8 +7,8 @@ const MAX_HEALTH = 100
 var direction: Vector2 = Vector2.ZERO
 const VELOCITY = 1000
 @export var SPEED: float = 600.0
-@export var acceleration: float = 900.0
-@export var deceleration: float = 2000.0
+@export var acceleration: float = 1200.0
+@export var deceleration: float = 3000.0
 @onready var shadow: Sprite2D = $AnimatedSprite2D/Shadow
 
 
@@ -49,13 +49,13 @@ func _physics_process(delta: float) -> void:
 	var target_velocity = Vector2.ZERO
 
 	if Input.is_action_pressed("move_up"):
-		target_velocity.y -= 1
+		target_velocity.y -= 2
 	if Input.is_action_pressed("move_down"):
-		target_velocity.y += 1
+		target_velocity.y += 2
 	if Input.is_action_pressed("move_left"):
-		target_velocity.x -= 1
+		target_velocity.x -= 2
 	if Input.is_action_pressed("move_right"):
-		target_velocity.x += 1
+		target_velocity.x += 2
 
 	if target_velocity.length() > 0:
 		target_velocity = target_velocity.normalized() * SPEED

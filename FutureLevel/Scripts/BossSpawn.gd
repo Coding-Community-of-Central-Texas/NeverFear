@@ -4,10 +4,7 @@ extends Node2D
 @onready var audio_stream_player_2d: AudioStreamPlayer2D = $AudioStreamPlayer2D
 
 
-
 const BOSS = preload("res://Scenes/FinalBoss.tscn")
-
-
 
 
 func _on_body_entered(body):

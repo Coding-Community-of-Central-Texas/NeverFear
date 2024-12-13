@@ -117,10 +117,10 @@ metadata/_edit_use_anchors_ = true
 [node name="Continue" type="Label" parent="Panel"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.119832
-anchor_top = 0.129359
-anchor_right = 0.850044
-anchor_bottom = 0.287675
+anchor_left = 0.121367
+anchor_top = 0.134286
+anchor_right = 0.900261
+anchor_bottom = 0.267847
 offset_right = -119.826
 offset_bottom = -23.3285
 scale = Vector2(2.1095, 2.11088)
@@ -132,16 +132,17 @@ text = "Continue"
 metadata/_edit_use_anchors_ = true
 
 [node name="continue_game" type="TouchScreenButton" parent="Panel/Continue"]
-position = Vector2(58.5979, 7.47534)
-scale = Vector2(6.35206, 1.09338)
+position = Vector2(53.0931, 11.3697)
+scale = Vector2(5.66943, 1.85136)
 shape = SubResource("RectangleShape2D_iamjd")
 
 [node name="Restart" type="Label" parent="Panel"]
-layout_mode = 0
-anchor_left = 0.119832
-anchor_top = 0.427354
-anchor_right = 0.850602
-anchor_bottom = 0.577354
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.121367
+anchor_top = 0.432143
+anchor_right = 0.900855
+anchor_bottom = 0.528572
 offset_right = -133.0
 offset_bottom = -21.0
 scale = Vector2(2.4, 2)
@@ -153,17 +154,17 @@ text = "Restart"
 metadata/_edit_use_anchors_ = true
 
 [node name="Restart" type="TouchScreenButton" parent="Panel/Restart"]
-position = Vector2(49.4218, 6.67038)
-scale = Vector2(4.70497, 1.31167)
+position = Vector2(46.6667, 10)
+scale = Vector2(4.70497, 1.83167)
 shape = SubResource("RectangleShape2D_5i2qq")
 
 [node name="Home" type="Label" parent="Panel"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.144231
-anchor_top = 0.671429
-anchor_right = 0.876539
-anchor_bottom = 0.827429
+anchor_left = 0.11453
+anchor_top = 0.678572
+anchor_right = 0.902496
+anchor_bottom = 0.791457
 offset_right = -160.48
 offset_bottom = -22.68
 scale = Vector2(3.36, 2.08)
@@ -176,8 +177,8 @@ text = "Home
 metadata/_edit_use_anchors_ = true
 
 [node name="Home" type="TouchScreenButton" parent="Panel/Home"]
-position = Vector2(33.3333, 10.0962)
-scale = Vector2(3.80952, 1.25)
+position = Vector2(35.4167, 13.9423)
+scale = Vector2(3.53571, 1.71154)
 shape = SubResource("RectangleShape2D_ctl43")
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
