@@ -21,6 +21,7 @@ var direction : Vector2 = Vector2.ZERO
 @onready var gun: Area2D = $Gun
 @onready var health_bar: ProgressBar = $HealthBar
 @export var rate_of_fire: float = 0.15
+@onready var animated_sprite_2d_2: AnimatedSprite2D = $AnimatedSprite2D2
 
 
 var can_double_jump = false

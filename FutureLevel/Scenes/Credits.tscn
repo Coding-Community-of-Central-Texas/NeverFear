@@ -9,7 +9,7 @@
 [ext_resource type="AudioStream" uid="uid://dbnystp0y1gke" path="res://assets/FutrueSFX/PickUp.wav" id="7_jjscb"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_31v2l"]
-size = Vector2(600, 300)
+size = Vector2(600, 600)
 
 [node name="Control" type="Control"]
 layout_mode = 3
@@ -29,10 +29,10 @@ anchor_left = 0.41
 anchor_top = 0.821
 anchor_right = 0.553
 anchor_bottom = 0.896
-offset_left = -0.320007
-offset_top = -0.00799561
-offset_right = -87.056
-offset_bottom = -22.608
+offset_left = 2.67999
+offset_top = 6.992
+offset_right = -84.056
+offset_bottom = -15.608
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(2.11333, 1.88)
@@ -53,7 +53,7 @@ metadata/_edit_use_anchors_ = true
 [node name="HomeButton" type="TouchScreenButton" parent="CanvasLayer/Home"]
 modulate = Color(0.306, 0.3501, 0.6, 1)
 z_index = -1
-position = Vector2(-88.959, -36.7021)
+position = Vector2(-86.593, -36.326)
 scale = Vector2(0.241522, 0.204393)
 texture_normal = ExtResource("3_4j024")
 texture_pressed = ExtResource("4_o2d0a")
@@ -89,6 +89,7 @@ SoundSFX:  Luis Zuno, uppbeat.io
 
 Licences: MIT and Creative Commons Zero
 "
+horizontal_alignment = 1
 autowrap_mode = 3
 
 [node name="GameManager" parent="." instance=ExtResource("6_kygu5")]

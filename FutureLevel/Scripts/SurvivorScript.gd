@@ -7,8 +7,8 @@ const MAX_HEALTH = 100
 var direction: Vector2 = Vector2.ZERO
 const VELOCITY = 1000
 @export var SPEED: float = 600.0
-@export var acceleration: float = 900.0
-@export var deceleration: float = 2000.0
+@export var acceleration: float = 2000.0
+@export var deceleration: float = 5000.0
 @onready var shadow: Sprite2D = $AnimatedSprite2D/Shadow
 
 
@@ -49,13 +49,13 @@ func _physics_process(delta: float) -> void:
 	var target_velocity = Vector2.ZERO
 
 	if Input.is_action_pressed("move_up"):
-		target_velocity.y -= 1
+		target_velocity.y -= 5
 	if Input.is_action_pressed("move_down"):
-		target_velocity.y += 1
+		target_velocity.y += 5
 	if Input.is_action_pressed("move_left"):
-		target_velocity.x -= 1
+		target_velocity.x -= 10
 	if Input.is_action_pressed("move_right"):
-		target_velocity.x += 1
+		target_velocity.x += 10
 
 	if target_velocity.length() > 0:
 		target_velocity = target_velocity.normalized() * SPEED
@@ -91,10 +91,10 @@ func handle_player_animation() -> void:
 
 #Function to flip the sprite depending on the direction
 func flip_sprite() -> void:
-	if velocity.x < 0:
+	if velocity.x < -3:
 		animated_sprite_2d.flip_h = true
 		shadow.position.x = 5; shadow.position.y = 34;
-	elif velocity.x > 0:
+	elif velocity.x > 3:
 		animated_sprite_2d.flip_h = false
 		shadow.position.x = -9.5; shadow.position.y = 34;
 
@@ -106,7 +106,6 @@ func _on_timer_2_timeout() -> void:
 	_game_over()
 
 func _game_over():
-	get_parent().level_failed()
 	const GAMEOVER = preload("res://Scenes/GameOver.tscn")
 	var new_gameover = GAMEOVER.instantiate()
 	add_child(new_gameover)

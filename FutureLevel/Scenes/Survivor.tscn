@@ -339,7 +339,6 @@ scale = Vector2(0.3, 0.3)
 texture = ExtResource("9_bjhe2")
 
 [node name="Camera2D" type="Camera2D" parent="."]
-zoom = Vector2(1.5, 0.7)
 
 [node name="HurtBox" type="Area2D" parent="."]
 unique_name_in_owner = true

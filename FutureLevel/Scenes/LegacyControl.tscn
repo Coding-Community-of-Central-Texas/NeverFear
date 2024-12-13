@@ -6,6 +6,8 @@
 
 [node name="Virtual Joystick" parent="." instance=ExtResource("1_as08j")]
 modulate = Color(0.96, 0, 0.24, 0.34902)
+offset_left = 25.0
+offset_right = 325.0
 pressed_color = Color(0.383333, 0.26, 1, 1)
 joystick_mode = 1
 action_left = "move_left"

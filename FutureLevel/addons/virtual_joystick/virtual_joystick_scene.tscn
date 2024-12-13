@@ -5,6 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://dt13r06u87fib" path="res://addons/virtual_joystick/textures/joystick_tip_arrows.png" id="3_3etdg"]
 
 [node name="Virtual Joystick" type="Control"]
+top_level = true
 layout_mode = 3
 anchors_preset = 2
 anchor_top = 1.0
@@ -16,22 +17,12 @@ grow_vertical = 0
 script = ExtResource("1_8x4dy")
 
 [node name="Base" type="TextureRect" parent="."]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -100.0
-offset_top = -100.0
-offset_right = 100.0
-offset_bottom = 100.0
-grow_horizontal = 2
-grow_vertical = 2
+layout_mode = 0
+offset_right = 200.0
+offset_bottom = 200.0
 pivot_offset = Vector2(100, 100)
 mouse_force_pass_scroll_events = false
 texture = ExtResource("2_jhjs2")
-stretch_mode = 5
 
 [node name="Tip" type="TextureRect" parent="Base"]
 layout_mode = 1
