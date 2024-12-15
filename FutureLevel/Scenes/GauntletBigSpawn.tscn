@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://b0oeqk6jov218"]
+
+[ext_resource type="Script" path="res://Scripts/BigSpawnGauntletv2.gd" id="1_7i4oh"]
+
+[node name="GauntletBigSpawn" type="Marker2D"]
+position = Vector2(199, -2.5)
+script = ExtResource("1_7i4oh")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 6.424
+autostart = true
+
+[node name="Marker1" type="Marker2D" parent="."]
+position = Vector2(-10, 97.5)
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

@@ -27,6 +27,7 @@ debug_color = Color(3.46541e-06, 0.690906, 0.804784, 0.42)
 unique_name_in_owner = true
 show_behind_parent = true
 position = Vector2(-1, 0)
+rate_of_fire = 0.5
 
 [node name="Shadow" type="Sprite2D" parent="."]
 modulate = Color(0.0846899, 0.0846899, 0.0846899, 1)
@@ -35,4 +36,10 @@ position = Vector2(-1.33333, 33.3333)
 scale = Vector2(0.262491, 0.334444)
 texture = ExtResource("4_r1v46")
 
+[node name="QueueTimer" type="Timer" parent="."]
+process_callback = 0
+wait_time = 230.285
+autostart = true
+
 [connection signal="kill" from="." to="." method="_on_kill"]
+[connection signal="timeout" from="QueueTimer" to="." method="_on_queue_timer_timeout"]

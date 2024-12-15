@@ -2,6 +2,7 @@ extends Node
 
 signal kill
 signal cash
+signal scene_kill_updated(kills: int)
 
 # Stats
 var total_kills: int = 0
@@ -9,6 +10,7 @@ var quickest_time: String = "99:59.999"
 var longest_survival: int = 0
 var total_cash: int = 0
 var current_level_time: String = "" 
+var current_kills: int = 0
 
 
 # File path for save data
@@ -17,12 +19,19 @@ const SAVE_PATH = "user://save_data.json"
 func _ready():
 	load_data()
 
+func _on_kill(amount: int) -> void:
+	total_kills += amount
+	current_kills += amount  # Increment current scene kills
+	print("Kill +1 | Total Kills:", total_kills, "| Level Kills:", current_kills)
 
+	# Emit a signal for the current scene's kills
+	emit_signal("scene_kill_updated", current_kills)
 
-# Function to add kills
-func _on_kill():
-	total_kills += 1
-	print("Kill +1")
+func reset_scene_kills() -> void:
+	# Reset scene-specific kill counter
+	current_kills = 0
+	print("Scene Kills Reset")
+
 
 # Function to update the quickest time for Legacy Protocol
 func update_quickest_time(time: String):

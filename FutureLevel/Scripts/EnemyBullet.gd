@@ -10,7 +10,7 @@ func _ready():
 
 func _physics_process(delta):
 	const RANGE = 678.0
-	const SPEED = 200.0
+	const SPEED = 250.0
 	
 	var displacement = velocity * delta
 	position += displacement

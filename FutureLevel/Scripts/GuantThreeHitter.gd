@@ -29,14 +29,14 @@ func _physics_process(delta):
 
 
 func take_damage():
-	health -= 20.0
+	health -= 15.0
 	%Robbie.play_hurt()
 	
 	var knockback_direction = (global_position - Global.player.global_position).normalized()
 	knockback_velocity = knockback_direction * knockback_strength
 	knockback_timer = knockback_duration
 	
-	if health == 0.0:
+	if health <= 0.0:
 		_die()
 
 func _die():
@@ -67,4 +67,7 @@ func pursue_player():
 
 
 func _on_kill() -> void:
-	GameManager._on_kill()
+	GameManager._on_kill(1)
+
+func _on_queue_timer_timeout() -> void:
+	queue_free()

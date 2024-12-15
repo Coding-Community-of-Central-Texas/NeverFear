@@ -12,7 +12,7 @@ func _ready():
 		pass
 
 func _process(_delta):
-	run_time.text = "YOUR COMPLETION TIME: " + Global.legacy.TimePanel.get_time_formated()
+	run_time.text = "YOUR COMPLETION TIME: "
 	
 
 

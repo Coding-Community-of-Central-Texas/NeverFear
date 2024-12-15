@@ -4,12 +4,17 @@ extends CharacterBody2D
 # Player properties
 var health: float = 100.0
 const MAX_HEALTH = 100
-var direction: Vector2 = Vector2.ZERO
 const VELOCITY = 1000
 @export var SPEED: float = 600.0
 @export var acceleration: float = 2000.0
-@export var deceleration: float = 5000.0
+@export var deceleration: float = 6000.0
 @onready var shadow: Sprite2D = $AnimatedSprite2D/Shadow
+@onready var rank_1: Sprite2D = $Rank1
+@onready var rank_2: Sprite2D = $Rank2
+@onready var rank_3: Sprite2D = $Rank3
+@onready var rank_4: Sprite2D = $Rank4
+@onready var rank_5: Sprite2D = $Rank5
+@onready var gun: Area2D = $Gun
 
 
 
@@ -19,13 +24,16 @@ const VELOCITY = 1000
 @onready var health_bar: ProgressBar = %HealthBar
 @onready var timer_2: Timer = $Timer2
 @onready var audio_stream_player: AudioStreamPlayer = $AudioStreamPlayer
-@export var rate_of_fire: float = 0.15
 
 var is_dead: bool = false
+var current_kills: int = 0
+@export var rank_thresholds: Array = [25, 50, 70, 100, 200]  # Thresholds for rank-ups
+@export var fire_rates: Array = [0.15, 0.12, 0.10, 0.08, 0.05]  # Rate of fire per rank
 
 func _ready() -> void:
 	# Initialize the player's properties
 	Global.player = self
+	GameManager.connect("scene_kill_updated", Callable(self, "_on_game_manager_scene_kill_updated"))
 
 func take_damage():
 	if is_dead:
@@ -39,33 +47,76 @@ func _die():
 	if is_dead:
 		return  # Ensure _die() only runs once
 	is_dead = true
-	animated_sprite_2d.play("death")
+	if animation_player.current_animation != "death":
+		animation_player.stop()
+	animation_player.play("death")
+	# Stop movement (optional, but recommended)
+	velocity = Vector2.ZERO
 	timer_2.start()
 	audio_stream_player.play()
 
+func update_shooting_rate():
+	# Stop and restart shooting if it's already ongoing
+	if gun.has_method("stop_shooting"):
+		gun.call("stop_shooting")
+	if gun.has_method("_physics_process(_delta: float)"):
+		gun.call("_physics_process(_delta: float)")
+
+func rank_up():
+	# Check rank based on current kills
+	for i in range(rank_thresholds.size()):
+		if current_kills < rank_thresholds[i]:
+			_update_rank_display(i)
+			return
+
+	# If kills exceed all thresholds, display the max rank
+	_update_rank_display(rank_thresholds.size())
+
+func _update_rank_display(rank_index: int) -> void:
+	if rank_index >= fire_rates.size():
+		rank_index = fire_rates.size() - 1
+	# Update rate of fire
+	gun.rate_of_fire = fire_rates[rank_index]
+	
+	update_shooting_rate()
+	# Update rank visibility
+	rank_1.visible = rank_index == 0
+	rank_2.visible = rank_index == 1
+	rank_3.visible = rank_index == 2
+	rank_4.visible = rank_index == 3
+	rank_5.visible = rank_index == 4
 
 func _physics_process(delta: float) -> void:
 	handle_player_animation()
-	var target_velocity = Vector2.ZERO
+	# Collect joystick or directional input
+	var raw_input = Vector2(
+		Input.get_action_strength("move_right") - Input.get_action_strength("move_left"),
+		Input.get_action_strength("move_down") - Input.get_action_strength("move_up")
+	)
 
-	if Input.is_action_pressed("move_up"):
-		target_velocity.y -= 5
-	if Input.is_action_pressed("move_down"):
-		target_velocity.y += 5
-	if Input.is_action_pressed("move_left"):
-		target_velocity.x -= 10
-	if Input.is_action_pressed("move_right"):
-		target_velocity.x += 10
+	# Determine the dominant axis
+	var direction = Vector2.ZERO
+	if raw_input.length() > 0:  # Only process if there is any input
+		if abs(raw_input.x) > abs(raw_input.y):  # Horizontal dominance
+			direction.x = raw_input.x
+		else:  # Vertical dominance
+			direction.y = raw_input.y
 
-	if target_velocity.length() > 0:
-		target_velocity = target_velocity.normalized() * SPEED
+		# Normalize direction for diagonal movement
+		if raw_input.length() > 0.5:  # Adjust diagonal sensitivity threshold if needed
+			direction = raw_input.normalized()
+
+	# Calculate target velocity
+	var target_velocity = direction * SPEED
 
 	# Smoothly accelerate or decelerate
 	velocity = velocity.move_toward(target_velocity, acceleration * delta)
 	move_and_slide()
 	flip_sprite()
+	handle_collisions(delta)
 	
-	const DAMAGE_RATE = 5.0
+func handle_collisions(delta: float):
+	const DAMAGE_RATE = 2.0
 	var overlapping_mobs = %HurtBox.get_overlapping_bodies()
 	health_bar.value = health
 	
@@ -76,34 +127,31 @@ func _physics_process(delta: float) -> void:
 		_die()
 		
 
-
-
 # Function to handle the player animation based on movement
 func handle_player_animation() -> void:
 	# If the player is moving, play the "run" animation
 	if velocity.length() > 0:
-		if !animation_player.is_playing() or animation_player.current_animation != "walk":
+		if animation_player.current_animation != "walk":
 			animation_player.play("walk")
 	# If the player is not moving, play the "idle" animation
 	else:
-		if !animation_player.is_playing() or animation_player.current_animation != "idle":
+		if animation_player.current_animation != "idle":
 			animation_player.play("idle")
 
 #Function to flip the sprite depending on the direction
 func flip_sprite() -> void:
 	if velocity.x < -3:
 		animated_sprite_2d.flip_h = true
-		shadow.position.x = 5; shadow.position.y = 34;
+		shadow.position = Vector2(5, 34)
 	elif velocity.x > 3:
 		animated_sprite_2d.flip_h = false
-		shadow.position.x = -9.5; shadow.position.y = 34;
-
-
+		shadow.position = Vector2(-9.5, 34)
 
 
 
 func _on_timer_2_timeout() -> void:
 	_game_over()
+	GameManager.reset_scene_kills()
 
 func _game_over():
 	const GAMEOVER = preload("res://Scenes/GameOver.tscn")
@@ -116,5 +164,13 @@ func _on_spawn_timer_timeout() -> void:
 	const BIGSPAWN = preload("res://Scenes/BigSpawnCircle.tscn")
 	var new_big = BIGSPAWN.instantiate()
 	var new_spawn = SPAWN.instantiate()
-	get_tree().current_scene.add_child(new_big)
-	get_tree().current_scene.add_child(new_spawn)
+	new_big.position = global_position
+	new_spawn.position = global_position
+	add_child(new_big)
+	add_child(new_spawn)
+
+
+func _on_game_manager_scene_kill_updated(kills: int) -> void:
+	print("ranking up")
+	current_kills = kills
+	rank_up()

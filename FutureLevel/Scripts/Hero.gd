@@ -2,7 +2,8 @@ extends CharacterBody2D
 
 var health = 100.0
 const MAX_HEALTH = 100.0
-var SPEED = 600.0
+@export var SPEED = 600.0
+var previous_speed: float = SPEED
 const JUMP_VELOCITY = -1000.0
 const DOUBLE_JUMP_VELOCITY = -1200.0
 const GRAVITY = 4000.0  # Custom gravity value
@@ -21,7 +22,8 @@ var direction : Vector2 = Vector2.ZERO
 @onready var gun: Area2D = $Gun
 @onready var health_bar: ProgressBar = $HealthBar
 @export var rate_of_fire: float = 0.15
-@onready var animated_sprite_2d_2: AnimatedSprite2D = $AnimatedSprite2D2
+@onready var cpu_particles: CPUParticles2D = $AnimatedSprite2D/CPUParticles2D2
+
 
 
 var can_double_jump = false
@@ -41,7 +43,7 @@ func _ready() -> void:
 func take_damage():
 	if is_dead:
 		return
-	health -= 10.0
+	health -= 20.0
 	self.modulate = Color(1, 0, 0)  # Set to red
 	await get_tree().create_timer(0.2).timeout  # Wait for 0.1 seconds
 	self.modulate = Color(1, 1, 1)  # Reset to normal
@@ -72,8 +74,6 @@ func _physics_process(delta: float) -> void:
 	handle_movement(delta)
 	handle_animation()
 	
-	#if is_on_floor():
-		#var friction = 5
 	
 	if not is_on_floor():
 		velocity.y += GRAVITY * delta
@@ -85,8 +85,13 @@ func _physics_process(delta: float) -> void:
 		is_double_jumping = false
 	
 	move_and_slide()
+	if SPEED > previous_speed:
+		print("Speed increased from", previous_speed, "to", SPEED)
+		_on_speed_increase()
+	# Update the previous speed for the next frame
+	previous_speed = SPEED
 	
-	const DAMAGE_RATE = 20.0
+	const DAMAGE_RATE = 30.0
 	var overlapping_mobs = %HurtBox.get_overlapping_bodies()
 	health_bar.health = health
 	
@@ -96,6 +101,10 @@ func _physics_process(delta: float) -> void:
 		if health <= 0.0:
 			take_damage()
 
+func _on_speed_increase() -> void:
+	# Make the particle node visible and emit particles
+	cpu_particles.visible = true
+	cpu_particles.emitting = true
 
 
 func handle_jumping(delta: float) -> void:

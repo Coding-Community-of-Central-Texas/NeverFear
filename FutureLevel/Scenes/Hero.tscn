@@ -275,7 +275,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_y3afc")
 }],
-"loop": true,
+"loop": false,
 "name": &"gunrun",
 "speed": 15.0
 }]
@@ -296,14 +296,47 @@ script = ExtResource("1_43ipw")
 position = Vector2(10, -5)
 sprite_frames = SubResource("SpriteFrames_100ny")
 animation = &"gunrun"
-frame_progress = 0.888246
+frame = 4
+frame_progress = 1.0
+
+[node name="CPUParticles2D2" type="CPUParticles2D" parent="AnimatedSprite2D"]
+visible = false
+position = Vector2(-16, 4.33333)
+amount = 5
+lifetime = 0.46
+speed_scale = 12.81
+explosiveness = 1.0
+fixed_fps = 30
+local_coords = true
+texture = ExtResource("13_yqouy")
+emission_shape = 5
+emission_points = PackedVector2Array(3, 10, 18, 2, 5, 1, 2, -6, -4, -3, -8, 1)
+emission_normals = PackedVector2Array()
+emission_colors = PackedColorArray()
+direction = Vector2(0, 0)
+spread = 67.62
+gravity = Vector2(0, 0)
+linear_accel_min = 3.78
+linear_accel_max = 73.19
+tangential_accel_min = 2.25
+tangential_accel_max = 2.25
+scale_amount_min = 0.0
+scale_amount_max = 0.2
+hue_variation_min = 0.46
+hue_variation_max = 0.72
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(1.33334, 0.999991)
 shape = SubResource("RectangleShape2D_0p44e")
+debug_color = Color(0, 0.6, 0.701961, 0)
 
 [node name="Camera2D" type="Camera2D" parent="."]
 unique_name_in_owner = true
+zoom = Vector2(0.9, 1.8)
+limit_bottom = 300
+limit_smoothed = true
+position_smoothing_enabled = true
+position_smoothing_speed = 25.0
 
 [node name="Gun" parent="." instance=ExtResource("10_0uu0a")]
 show_behind_parent = true
@@ -331,14 +364,13 @@ one_shot = true
 
 [node name="HurtBox" type="Area2D" parent="."]
 unique_name_in_owner = true
-modulate = Color(1, 1, 1, 0.196078)
 collision_layer = 0
 collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
 position = Vector2(0.666667, 2)
 shape = SubResource("CircleShape2D_x6iwv")
-debug_color = Color(0.845147, 0.373597, 0.157764, 0.42)
+debug_color = Color(0.847059, 0.372549, 0.156863, 0)
 
 [node name="HealthBar" parent="." instance=ExtResource("12_i3t22")]
 show_behind_parent = true
@@ -351,29 +383,6 @@ offset_bottom = -22.0
 position = Vector2(-4.667, 1.4)
 scale = Vector2(0.3, 0.3)
 texture = ExtResource("12_j60bv")
-
-[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
-position = Vector2(-4.76837e-07, 1.33333)
-rotation = 1.59477
-amount = 5
-lifetime = 0.26
-speed_scale = 3.96
-explosiveness = 1.0
-randomness = 0.16
-lifetime_randomness = 1.0
-fixed_fps = 30
-texture = ExtResource("13_yqouy")
-emission_shape = 2
-emission_sphere_radius = 13.73
-direction = Vector2(0, 0)
-spread = 67.62
-gravity = Vector2(-1000, -200)
-tangential_accel_min = 2.25
-tangential_accel_max = 2.25
-scale_amount_min = 0.0
-scale_amount_max = 0.25
-hue_variation_min = 0.46
-hue_variation_max = 0.72
 
 [connection signal="finished" from="AudioStreamPlayer2D2" to="." method="_on_audio_stream_player_2d_2_finished"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

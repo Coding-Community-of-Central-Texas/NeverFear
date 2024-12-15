@@ -103,8 +103,8 @@ modulate = Color(1, 1, 1, 0)
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_right = -508.0
-offset_bottom = 229.0
+offset_right = -473.0
+offset_bottom = 379.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(1.78797, 0.741051)
@@ -132,7 +132,7 @@ theme_override_font_sizes/font_size = 50
 text = "GAME OVER!"
 
 [node name="Restart" type="TouchScreenButton" parent="CanvasLayer/ColorRect"]
-position = Vector2(187.363, 546.521)
+position = Vector2(170.025, 906.82)
 scale = Vector2(1.51455, 1.4858)
 shape = SubResource("RectangleShape2D_u1hko")
 
@@ -159,7 +159,7 @@ scale = Vector2(0.142968, 0.241212)
 texture = ExtResource("4_ssp7s")
 
 [node name="MainMenu" type="TouchScreenButton" parent="CanvasLayer/ColorRect"]
-position = Vector2(439.605, 545.172)
+position = Vector2(451.909, 906.82)
 scale = Vector2(1.45862, 1.53977)
 shape = SubResource("RectangleShape2D_u1hko")
 
@@ -199,32 +199,32 @@ pitch_scale = 1.4
 
 [node name="Fire" type="AnimatedSprite2D" parent="CanvasLayer"]
 z_index = 1
-position = Vector2(156, 595)
+position = Vector2(147, 1023)
 scale = Vector2(10.28, 3.4)
 sprite_frames = SubResource("SpriteFrames_ghm2x")
 animation = &"burn"
 autoplay = "burn"
 frame_progress = 0.399281
 
-[node name="Fire4" type="AnimatedSprite2D" parent="CanvasLayer"]
-position = Vector2(1013, 597)
-scale = Vector2(10.28, 3.4)
+[node name="Fire4" type="AnimatedSprite2D" parent="CanvasLayer/Fire"]
+position = Vector2(83.3658, 0.588242)
+scale = Vector2(1, 1)
 sprite_frames = SubResource("SpriteFrames_ghm2x")
 animation = &"burn"
 autoplay = "burn"
 frame_progress = 0.870152
 
-[node name="Fire3" type="AnimatedSprite2D" parent="CanvasLayer"]
-position = Vector2(793, 595)
-scale = Vector2(10.28, 3.4)
+[node name="Fire3" type="AnimatedSprite2D" parent="CanvasLayer/Fire"]
+position = Vector2(61.965, 0)
+scale = Vector2(1, 1)
 sprite_frames = SubResource("SpriteFrames_ghm2x")
 animation = &"burn"
 autoplay = "burn"
 frame_progress = 0.861047
 
-[node name="Fire2" type="AnimatedSprite2D" parent="CanvasLayer"]
-position = Vector2(477, 594)
-scale = Vector2(10.28, 3.4)
+[node name="Fire2" type="AnimatedSprite2D" parent="CanvasLayer/Fire"]
+position = Vector2(31.2257, -0.294113)
+scale = Vector2(1, 1)
 sprite_frames = SubResource("SpriteFrames_ghm2x")
 animation = &"burn"
 autoplay = "burn"

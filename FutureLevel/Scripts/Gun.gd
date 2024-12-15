@@ -24,7 +24,7 @@ func _on_timer_timeout():
 		shoot()
 
 # Called every frame in the physics process
-func _physics_process(_delta):
+func _physics_process(_delta: float):
 	var enemies_in_range = get_overlapping_bodies()
 	if enemies_in_range.size() > 0:
 		# There are enemies in range, look at the first one
@@ -51,3 +51,7 @@ func shoot():
 	new_bullet.global_rotation = shootingpoint.global_rotation
 	shootingpoint.add_child(new_bullet)
 	audio_stream_player.play()
+
+func stop_shooting():
+	shooting = false
+	timer.stop()

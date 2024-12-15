@@ -33,4 +33,10 @@ position = Vector2(-9, 48)
 scale = Vector2(0.398437, 0.640432)
 texture = ExtResource("4_iwgws")
 
+[node name="QueueTimer" type="Timer" parent="."]
+process_callback = 0
+wait_time = 221.969
+autostart = true
+
 [connection signal="kill" from="." to="." method="_on_kill"]
+[connection signal="timeout" from="QueueTimer" to="." method="_on_queue_timer_timeout"]

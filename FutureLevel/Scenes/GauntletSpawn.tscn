@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://cule8xvwt1ral"]
+
+[ext_resource type="Script" path="res://Scripts/Spawnerv2.gd" id="1_sbdtd"]
+
+[node name="GauntletSpawn" type="Marker2D"]
+position = Vector2(199, -62)
+script = ExtResource("1_sbdtd")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 2.633
+autostart = true
+
+[node name="Marker1" type="Marker2D" parent="."]
+position = Vector2(106, 184)
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

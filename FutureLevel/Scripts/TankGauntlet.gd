@@ -2,7 +2,7 @@ extends CharacterBody2D
 
 signal kill
 
-var health = 60.0
+var health = 80.0
 var knockback_strength = 0.5
 var knockback_duration = 0.1
 var knockback_timer = 0.0  # Keeps track of the knockback time
@@ -37,11 +37,10 @@ func take_damage():
 	knockback_timer = knockback_duration
 	
 	if health == 0.0:
-		emit_signal("kill")
 		_die()
 
 func _die():
-	
+	emit_signal("kill")
 	const BOOM = preload("res://Scenes/RobbieBoom.tscn")
 	var new_Boom = BOOM.instantiate()
 	new_Boom.global_position = global_position
@@ -68,4 +67,8 @@ func pursue_player():
 
 
 func _on_kill() -> void:
-	GameManager._on_kill()
+	GameManager._on_kill(1)
+
+
+func _on_queue_timer_timeout() -> void:
+	queue_free()

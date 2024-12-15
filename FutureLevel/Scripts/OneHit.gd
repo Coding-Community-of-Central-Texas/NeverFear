@@ -58,4 +58,4 @@ func _die():
 
 
 func _on_kill() -> void:
-	GameManager._on_kill()
+	GameManager._on_kill(1)

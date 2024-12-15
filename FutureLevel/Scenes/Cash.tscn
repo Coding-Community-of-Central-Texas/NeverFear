@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://d3m3pthstoelx"]
+[gd_scene load_steps=18 format=3 uid="uid://d3m3pthstoelx"]
 
 [ext_resource type="Script" path="res://Scripts/Cash.gd" id="1_wjjbo"]
 [ext_resource type="Texture2D" uid="uid://dtey7mq3og40d" path="res://assets/etc/Money.png" id="2_kau2e"]
@@ -60,6 +60,43 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_w81d5"]
 radius = 11.1803
 
+[sub_resource type="Animation" id="Animation_d0yw4"]
+resource_name = "moveUpnDown"
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, -2.5), Vector2(0, -5), Vector2(0, -10), Vector2(0, -12), Vector2(0, -10)]
+}
+
+[sub_resource type="Animation" id="Animation_mhxhs"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_6fdu0"]
+_data = {
+"RESET": SubResource("Animation_mhxhs"),
+"moveUpnDown": SubResource("Animation_d0yw4")
+}
+
 [node name="Cash" type="Area2D"]
 scale = Vector2(1.16, 1.12)
 collision_layer = 32
@@ -104,6 +141,17 @@ position = Vector2(0, -0.892857)
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("6_skr7e")
 
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_6fdu0")
+}
+
+[node name="QueueTimer" type="Timer" parent="."]
+process_callback = 0
+wait_time = 30.014
+autostart = true
+
 [connection signal="add_cash" from="." to="." method="_on_add_cash"]
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="finished" from="AudioStreamPlayer2D" to="." method="_on_audio_stream_player_2d_finished"]
+[connection signal="timeout" from="QueueTimer" to="." method="_on_queue_timer_timeout"]

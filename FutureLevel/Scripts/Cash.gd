@@ -10,10 +10,7 @@ var MAX_FALL_SPEED = 250.0# Maximum falling speed
 @onready var collision_shape_2d: CollisionShape2D = $CollisionShape2D
 @onready var ground_ray_cast_2d: RayCast2D = $GroundRayCast2D
 @onready var audio_stream_player_2d: AudioStreamPlayer2D = $AudioStreamPlayer2D
-
-
-
-
+@onready var animation_player: AnimationPlayer = $AnimationPlayer
 
 var pickup_song: AudioStream = preload("res://assets/FutrueSFX/PickUp.wav")
 var velocity = Vector2.ZERO
@@ -33,6 +30,7 @@ func _on_ready():
 	%CashSpin.play("spin")
 	ground_ray_cast_2d.enabled = true
 	audio_stream_player_2d.stream = pickup_song
+	animation_player.play("moveUpnDown")
 	
 	randomize_power_up()
 
@@ -142,3 +140,7 @@ func _on_add_cash() -> void:
 	GameManager._on_add_cash(randi_range(1000, 10000))
 	print("add cash")
 	
+
+
+func _on_queue_timer_timeout() -> void:
+	queue_free()

@@ -1,5 +1,6 @@
-[gd_scene load_steps=182 format=3 uid="uid://c8sbp2d4k2aou"]
+[gd_scene load_steps=183 format=3 uid="uid://c8sbp2d4k2aou"]
 
+[ext_resource type="Script" path="res://Scenes/HypercoreGauntlet.gd" id="1_aav37"]
 [ext_resource type="Script" path="res://addons/gaea/renderers/2D/tilemap_gaea_renderer.gd" id="2_bqeif"]
 [ext_resource type="Script" path="res://addons/gaea/generators/2D/noise_generator/noise_generator.gd" id="3_iryc7"]
 [ext_resource type="Script" path="res://addons/gaea/modifiers/2D/modifier_2d.gd" id="4_8em6s"]
@@ -679,6 +680,7 @@ sources/75 = SubResource("TileSetAtlasSource_llo5o")
 sources/76 = SubResource("TileSetAtlasSource_g3xb1")
 
 [node name="HypercoreGauntlet" type="Node2D"]
+script = ExtResource("1_aav37")
 
 [node name="TilemapGaeaRenderer" type="Node" parent="." node_paths=PackedStringArray("tile_map", "generator")]
 script = ExtResource("2_bqeif")
@@ -703,7 +705,6 @@ layer_0/tile_data = PackedInt32Array(0, 5, 0, 65536, 6, 0, 131072, 6, 0, 196608,
 light_mask = 2
 visibility_layer = 2
 position = Vector2(581, 245)
-motion_mode = 1
 slide_on_ceiling = false
 
 [node name="ChunkLoader2D" type="Node2D" parent="." node_paths=PackedStringArray("generator", "actor")]
@@ -718,13 +719,15 @@ process_mode = 3
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="TimePanel" parent="CanvasLayer" instance=ExtResource("90_xpk53")]
-offset_top = 42.0
-offset_bottom = 100.0
+offset_left = -49.0
+offset_top = 63.0
+offset_right = 119.0
+offset_bottom = 121.0
 
 [node name="PauseButton" parent="CanvasLayer" instance=ExtResource("88_b882s")]
 top_level = true
 z_index = 2
-position = Vector2(59, 46)
+position = Vector2(104, 62)
 
 [node name="Control" type="Control" parent="."]
 layout_mode = 3
@@ -737,3 +740,5 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="SurvivalControl" parent="Control" instance=ExtResource("89_4jwms")]
+
+[connection signal="scene_kill_updated" from="GameManager" to="Survivor" method="_on_game_manager_scene_kill_updated"]

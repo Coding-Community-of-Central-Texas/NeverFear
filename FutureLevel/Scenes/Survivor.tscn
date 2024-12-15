@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://bsltfx5uw5yvq"]
+[gd_scene load_steps=44 format=3 uid="uid://bsltfx5uw5yvq"]
 
 [ext_resource type="Script" path="res://Scripts/SurvivorScript.gd" id="1_dqedt"]
 [ext_resource type="Texture2D" uid="uid://050tdjf5b57n" path="res://assets/3 Cyborg/Cyborg_death.png" id="2_cknjt"]
@@ -10,6 +10,13 @@
 [ext_resource type="AudioStream" uid="uid://dnjr7q6plu8wi" path="res://assets/FutrueSFX/PlayerDie.wav" id="8_x70f2"]
 [ext_resource type="Texture2D" uid="uid://c1t7ic4fo0him" path="res://assets/etc/health.png" id="9_bjhe2"]
 [ext_resource type="Texture2D" uid="uid://dkp57y2x4axvt" path="res://assets/etc/shadow.png" id="10_e0fqp"]
+[ext_resource type="PackedScene" uid="uid://cule8xvwt1ral" path="res://Scenes/GauntletSpawn.tscn" id="11_dc7s1"]
+[ext_resource type="PackedScene" uid="uid://b0oeqk6jov218" path="res://Scenes/GauntletBigSpawn.tscn" id="12_kcvup"]
+[ext_resource type="Texture2D" uid="uid://bw01rrado42yn" path="res://assets/etc/ranks/rank1.png" id="13_s40jq"]
+[ext_resource type="Texture2D" uid="uid://b6cm7h2doheu5" path="res://assets/etc/ranks/rank2.png" id="14_hs66e"]
+[ext_resource type="Texture2D" uid="uid://mdptrw78jjto" path="res://assets/etc/ranks/rank3.png" id="15_8rmoa"]
+[ext_resource type="Texture2D" uid="uid://da5geqo2feqta" path="res://assets/etc/ranks/rank4.png" id="16_lm2s2"]
+[ext_resource type="Texture2D" uid="uid://cnpfouiqjf46n" path="res://assets/etc/ranks/rank5.png" id="17_8c2if"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_k5wwv"]
 atlas = ExtResource("2_cknjt")
@@ -106,7 +113,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"death",
-"speed": 8.0
+"speed": 10.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -278,9 +285,49 @@ tracks/2/keys = {
 "values": [0, 1, 2, 3, 4, 5, 0]
 }
 
+[sub_resource type="Animation" id="Animation_xrceq"]
+resource_name = "death"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:sprite_frames")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [SubResource("SpriteFrames_38a1o"), SubResource("SpriteFrames_38a1o")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:animation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"death"]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.166667, 0.333333, 0.5, 0.666667, 0.866667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_2oiib"]
 _data = {
 "RESET": SubResource("Animation_i8mf6"),
+"death": SubResource("Animation_xrceq"),
 "idle": SubResource("Animation_234nm"),
 "walk": SubResource("Animation_pqmon")
 }
@@ -295,6 +342,7 @@ radius = 33.8596
 scale = Vector2(2, 2)
 collision_layer = 137
 collision_mask = 33
+motion_mode = 1
 script = ExtResource("1_dqedt")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -324,6 +372,7 @@ debug_color = Color(0.320333, 0.62, 0, 0)
 [node name="Gun" parent="." instance=ExtResource("7_3segn")]
 show_behind_parent = true
 position = Vector2(-6.66667, 1.33333)
+rate_of_fire = 0.2
 
 [node name="HealthBar" parent="." instance=ExtResource("6_pjeyg")]
 unique_name_in_owner = true
@@ -339,6 +388,7 @@ scale = Vector2(0.3, 0.3)
 texture = ExtResource("9_bjhe2")
 
 [node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(1.2, 1.2)
 
 [node name="HurtBox" type="Area2D" parent="."]
 unique_name_in_owner = true
@@ -352,15 +402,66 @@ debug_color = Color(1, 0.0166667, 0, 0)
 
 [node name="Timer2" type="Timer" parent="."]
 process_callback = 0
-wait_time = 1.077
+wait_time = 2.176
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("8_x70f2")
 pitch_scale = 0.54
 
 [node name="SpawnTimer" type="Timer" parent="."]
-wait_time = 14.881
+wait_time = 141.185
 autostart = true
+
+[node name="GauntletSpawn" parent="." instance=ExtResource("11_dc7s1")]
+position = Vector2(321.5, -8)
+
+[node name="GauntletSpawn4" parent="." instance=ExtResource("11_dc7s1")]
+position = Vector2(-59, 359.5)
+
+[node name="GauntletSpawn3" parent="." instance=ExtResource("11_dc7s1")]
+position = Vector2(-539, -75)
+
+[node name="GauntletSpawn2" parent="." instance=ExtResource("11_dc7s1")]
+position = Vector2(2, -440.5)
+
+[node name="GauntletBigSpawn" parent="." instance=ExtResource("12_kcvup")]
+position = Vector2(397.5, -371)
+
+[node name="GauntletBigSpawn3" parent="." instance=ExtResource("12_kcvup")]
+position = Vector2(-523.5, -480)
+
+[node name="GauntletBigSpawn2" parent="." instance=ExtResource("12_kcvup")]
+position = Vector2(634, 56)
+
+[node name="Rank1" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(-7, -24.5)
+scale = Vector2(0.640625, 0.71875)
+texture = ExtResource("13_s40jq")
+
+[node name="Rank2" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(-7, -27)
+scale = Vector2(0.632813, 0.679688)
+texture = ExtResource("14_hs66e")
+
+[node name="Rank3" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(-7, -29.5)
+scale = Vector2(0.65625, 0.734375)
+texture = ExtResource("15_8rmoa")
+
+[node name="Rank4" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(-7, -29.5)
+scale = Vector2(0.648438, 0.710938)
+texture = ExtResource("16_lm2s2")
+
+[node name="Rank5" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(-6.5, -31.5)
+scale = Vector2(0.6875, 0.71875)
+texture = ExtResource("17_8c2if")
 
 [connection signal="timeout" from="Timer2" to="." method="_on_timer_2_timeout"]
 [connection signal="timeout" from="SpawnTimer" to="." method="_on_spawn_timer_timeout"]

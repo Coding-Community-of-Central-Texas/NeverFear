@@ -87,6 +87,7 @@ unique_name_in_owner = true
 position = Vector2(11.1064, -2.93333)
 
 [node name="Timer" type="Timer" parent="."]
+process_callback = 0
 wait_time = 0.15
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
