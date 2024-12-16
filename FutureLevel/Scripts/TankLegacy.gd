@@ -13,6 +13,7 @@ var knockback_velocity = Vector2.ZERO  # Stores knockback velocity
 @onready var ground_ray_left: RayCast2D = $GroundRayLeft
 @onready var left_wall_ray: RayCast2D = $LeftWallRay
 @onready var right_wall_ray: RayCast2D = $RightWallRay
+@onready var damage_numbers_origin: Node2D = $DamageNumbersOrigin
 
 
 
@@ -48,6 +49,7 @@ func _physics_process(_delta):
 func take_damage():
 	health -= 10.0
 	%Tank.play_hurt()
+	DamageNumbers.display_number(10, damage_numbers_origin.global_position, true)
 	
 	var knockback_direction = (global_position - Global.player.global_position).normalized()
 	knockback_velocity = knockback_direction * knockback_strength

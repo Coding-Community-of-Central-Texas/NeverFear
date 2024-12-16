@@ -5,15 +5,16 @@ extends CanvasLayer
 @onready var performance: TouchScreenButton = %Performance
 @onready var credits: TouchScreenButton = %Credits
 @onready var audio_stream_player_2d: AudioStreamPlayer2D = $AudioStreamPlayer2D
-@onready var survival: Label = $MenuBox/Survival
-@onready var performance_settings: Label = $MenuBox/PerformanceSettings
+@onready var story: Label = $MenuBox/UIbutton/LegacyProtocol/Story
+@onready var performance_settings: Label = $MenuBox/Performance/PerformanceSettings
+@onready var survival: Label = $MenuBox/HypercoreGauntlet/Survival
 @onready var credits_label: Label = $MenuBox/Credits
-@onready var story: Label = $MenuBox/Story
+
 
 
 
 # Called when the node enters the scene tree for the first time.
-func _ready() -> void:
+func _process(delta: float) -> void:
 	if DisplayServer.is_touchscreen_available() and OS.has_feature("Andriod"):
 		get_viewport().screen_set_orientation(DisplayServer.SCREEN_PORTRAIT)
 	else:

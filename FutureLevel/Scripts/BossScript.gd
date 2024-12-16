@@ -12,6 +12,7 @@ var die_executed: bool = false
 @onready var shooting_point: Marker2D = $ShootingPoint
 @onready var weak_point_1: CharacterBody2D = $WeakPoint1
 @onready var weak_point_2: CharacterBody2D = $WeakPoint2
+@onready var damage_numbers_origin: Node2D = $DamageNumbersOrigin
 
 var weak_point_1_healthy = true 
 var weak_point_2_healthy = true 
@@ -56,6 +57,7 @@ func is_near_wall() -> bool:
 
 func take_damage():
 	boss_health -= 100
+	DamageNumbers.display_number(100, damage_numbers_origin.global_position, true)
 	%Robo.play_hurt()
 	%HealthBar.value = boss_health
 	if boss_health <= 0 and not die_executed:

@@ -87,8 +87,8 @@ _data = [Vector2(0.00552486, 0.119903), 0.0, 0.0, 0, 0, Vector2(0.461326, 0.2035
 point_count = 3
 
 [sub_resource type="Gradient" id="Gradient_y33nf"]
-offsets = PackedFloat32Array(0.0958084, 0.203593, 0.305389, 0.398204, 0.47006, 0.541916, 0.670659, 0.808383, 0.928144)
-colors = PackedColorArray(0.9, 0.9, 0.9, 1, 0, 0, 42.162, 1, 0, 96.757, 49.189, 1, 0, 0, 21.081, 1, 0, 60, 0, 1, 10.811, 0, 0, 1, 10.811, 0, 0, 1, 0, 0, 0, 1, 0, 0, 37.298, 1)
+offsets = PackedFloat32Array(0.0688623, 0.140719, 0.197605, 0.257485, 0.320359, 0.374251, 0.428144, 0.47006, 0.541916, 0.58982, 0.670659, 0.775449, 0.856287, 0.928144)
+colors = PackedColorArray(0.9, 0.9, 0.9, 1, 0, 0, 42.162, 1, 0, 96.757, 49.189, 1, 0.8, 1, 0, 1, 0.7575, 0.03, 1, 1, 0, 0, 21.081, 1, 0, 0.53, 0.141333, 1, 0, 60, 0, 1, 10.811, 0, 0, 1, 0.43, 0, 0, 1, 0.1716, 0.76986, 0.78, 1, 0, 0, 0, 1, 0, 0, 0.57, 1, 0, 0, 37.298, 1)
 
 [node name="EnemyBullet" type="Area2D"]
 scale = Vector2(1.5, 1.5)
@@ -115,8 +115,8 @@ local_coords = true
 texture = ExtResource("3_exen8")
 direction = Vector2(0, 0)
 gravity = Vector2(0, 0)
-angular_velocity_min = 324.18
-angular_velocity_max = 324.18
+angular_velocity_min = -505.14
+angular_velocity_max = 535.28
 scale_amount_min = 0.1
 scale_amount_max = 0.3
 split_scale = true

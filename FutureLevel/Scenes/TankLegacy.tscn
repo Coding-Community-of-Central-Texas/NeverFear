@@ -38,4 +38,7 @@ target_position = Vector2(-47, -1)
 [node name="BasicGun" parent="." instance=ExtResource("3_axuio")]
 position = Vector2(-3, -10)
 
+[node name="DamageNumbersOrigin" type="Node2D" parent="."]
+position = Vector2(-5, -52)
+
 [connection signal="kill" from="." to="." method="_on_kill"]

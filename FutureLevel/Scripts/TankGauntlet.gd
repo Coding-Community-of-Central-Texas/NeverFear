@@ -9,10 +9,11 @@ var knockback_timer = 0.0  # Keeps track of the knockback time
 var knockback_velocity = Vector2.ZERO  # Stores knockback velocity
 
 @onready var robbie: Node2D = %Tank
+@onready var damage_numbers_origin: Node2D = $DamageNumberOrigin
 
-var move_speed = 200.0  # Movement speed
+var move_speed = 150.0  # Movement speed
 var is_pursuing = false  # Whether the enemy is pursuing the player
-var stop_distance = 320.0
+var stop_distance = 200.0
 
 func _ready():
 	%Tank.play_move()
@@ -31,6 +32,7 @@ func _physics_process(delta):
 func take_damage():
 	health -= 20.0
 	%Tank.play_hurt()
+	DamageNumbers.display_number(20, damage_numbers_origin.global_position, true)
 	
 	var knockback_direction = (global_position - Global.player.global_position).normalized()
 	knockback_velocity = knockback_direction * knockback_strength

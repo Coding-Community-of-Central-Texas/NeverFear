@@ -1,5 +1,6 @@
 
 extends CharacterBody2D
+signal rank_changed(rank_index: int)
 
 # Player properties
 var health: float = 100.0
@@ -67,10 +68,13 @@ func rank_up():
 	for i in range(rank_thresholds.size()):
 		if current_kills < rank_thresholds[i]:
 			_update_rank_display(i)
+			emit_signal("rank_changed", i)
 			return
+	
 
 	# If kills exceed all thresholds, display the max rank
 	_update_rank_display(rank_thresholds.size())
+	emit_signal("rank_changed", rank_thresholds.size())
 
 func _update_rank_display(rank_index: int) -> void:
 	if rank_index >= fire_rates.size():

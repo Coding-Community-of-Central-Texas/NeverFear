@@ -11,7 +11,7 @@ var longest_survival: int = 0
 var total_cash: int = 0
 var current_level_time: String = "" 
 var current_kills: int = 0
-
+var game_cash: int = 0 
 
 # File path for save data
 const SAVE_PATH = "user://save_data.json"
@@ -26,24 +26,31 @@ func _on_kill(amount: int) -> void:
 
 	# Emit a signal for the current scene's kills
 	emit_signal("scene_kill_updated", current_kills)
+	save_data()  # Save updated stats
 
 func reset_scene_kills() -> void:
 	# Reset scene-specific kill counter
 	current_kills = 0
 	print("Scene Kills Reset")
 
+func add_cash(amount: int):
+	game_cash += amount
+	print("Earned Cash: $", amount, "| Current Game Cash: $", game_cash)
 
-# Function to update the quickest time for Legacy Protocol
+func finalize_cash():
+	total_cash += game_cash
+	game_cash = 0
+	print("Level Cash Added to Total. Total Cash: $", total_cash)
+	save_data()  # Save updated cash stats
+
+# Update the quickest time
 func update_quickest_time(time: String):
-	# Convert the time (MM:SS.MS) into total milliseconds for comparison
-	var new_time_ms = time_to_ms(time)
-	var quickest_time_ms = time_to_ms(quickest_time)
-
-	if new_time_ms < quickest_time_ms or quickest_time == "00:00.000":  # First time or new record
+	if time_to_ms(time) < time_to_ms(quickest_time) or quickest_time == "99:59.999":
 		quickest_time = time
 		print("New quickest time: ", quickest_time)
+		save_data()  # Save updated quickest time
 
-# Function to convert time (MM:SS.MS) to milliseconds
+# Convert time (MM:SS.MS) to milliseconds
 func time_to_ms(time: String) -> int:
 	var parts = time.split(":")
 	var minutes = int(parts[0])
@@ -52,84 +59,48 @@ func time_to_ms(time: String) -> int:
 	var msec = int(seconds_and_msec[1])
 	return (minutes * 60 + seconds) * 1000 + msec
 
-
-# Function to update the longest survival time for Hypercore Override
+# Update the longest survival time
 func update_longest_survival(time: int):
 	if time > longest_survival:
 		longest_survival = time
+		print("New longest survival time:", longest_survival)
+		save_data()  # Save updated survival time
 
-# Function to add cash
 
 
-# Save game data
+# Save game data to a file
 func save_data():
+	var data = {
+		"total_kills": total_kills,
+		"quickest_time": quickest_time,
+		"longest_survival": longest_survival,
+		"total_cash": total_cash
+	}
 	var save_file = FileAccess.open(SAVE_PATH, FileAccess.WRITE)
 	if save_file:
-		var data = {
-			"total_kills": total_kills,
-			"quickest_time": quickest_time,
-			"longest_survival": longest_survival,
-			"total_cash": total_cash
-		}
 		save_file.store_string(JSON.stringify(data))
 		save_file.close()
 
-# Load game data
+# Load game data from a file
 func load_data():
 	if FileAccess.file_exists(SAVE_PATH):
 		var save_file = FileAccess.open(SAVE_PATH, FileAccess.READ)
 		if save_file:
-			# Attempt to parse the file contents
 			var raw_text = save_file.get_as_text()
 			var data = JSON.parse_string(raw_text)
 			save_file.close()
-			
-			# Check if parsing was successful
-			if typeof(data) == TYPE_DICTIONARY and "error" in data:
-				if data["error"] == OK:
-					if "result" in data:
-						var parsed_data = data["result"]
-						total_kills = parsed_data.get("total_kills", 0)
-						quickest_time = parsed_data.get("quickest_time", "99:59.999")
-						longest_survival = parsed_data.get("longest_survival", 0)
-						total_cash = parsed_data.get("total_cash", 0)
-						return
-					else:
-						print("Error: 'result' key missing in parsed data.")
-				else:
-					print("Error parsing JSON: Code", data["error"])
+			if typeof(data) == TYPE_DICTIONARY:
+				total_kills = data.get("total_kills", 0)
+				quickest_time = data.get("quickest_time", "99:59.999")
+				longest_survival = data.get("longest_survival", 0)
+				total_cash = data.get("total_cash", 0)
+				print("Game data loaded successfully")
 			else:
-				print("Error: Unexpected data format or missing 'error' key.")
+				print("Error: Failed to parse save data")
 	else:
-		print("Save file does not exist.")
-# Debug print for stats
-func print_stats():
-	print("Total Kills:", total_kills)
-	print("Quickest Time:", quickest_time)
-	print("Longest Survival:", longest_survival)
-	print("Total Cash:", total_cash)
+		print("No save file found, starting with default values")
 
-
-var game_cash: float = 0
-
-func _on_add_cash(amount: float) -> void:
-	game_cash += amount
-
-func add_total_cash():
-	game_cash += total_cash
-
-@export var pause_scene: PackedScene = preload("res://Scenes/PauseMenu.tscn")
-var pause_instance: Node = null
-
-func toggle_pause():
-	if get_tree().paused:
-		# Unpause
-		get_tree().paused = false
-		if pause_instance and pause_instance.is_inside_tree():
-			pause_instance.queue_free()
-			pause_instance = null
-		else:
-			get_tree().paused = true
-			if not pause_instance:
-				pause_instance = pause_scene.instantiate()
-				get_tree().current_scene.add_child(pause_instance)
+# Save data when exiting the game
+func _on_tree_exiting():
+	finalize_cash()
+	save_data()

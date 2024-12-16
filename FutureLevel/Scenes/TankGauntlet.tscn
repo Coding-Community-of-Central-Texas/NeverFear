@@ -38,5 +38,8 @@ process_callback = 0
 wait_time = 221.969
 autostart = true
 
+[node name="DamageNumberOrigin" type="Node2D" parent="."]
+position = Vector2(-5, -54)
+
 [connection signal="kill" from="." to="." method="_on_kill"]
 [connection signal="timeout" from="QueueTimer" to="." method="_on_queue_timer_timeout"]

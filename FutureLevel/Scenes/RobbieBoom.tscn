@@ -1,8 +1,9 @@
-[gd_scene load_steps=17 format=3 uid="uid://bcq6mw46qd5xs"]
+[gd_scene load_steps=19 format=3 uid="uid://bcq6mw46qd5xs"]
 
 [ext_resource type="Script" path="res://Scripts/RobbieBoom.gd" id="1_hd2ls"]
 [ext_resource type="Texture2D" uid="uid://coutsd2rj5gso" path="res://assets/Guns&Bullets/Robbieboom.png" id="2_vomud"]
 [ext_resource type="AudioStream" uid="uid://dxfrttasqhqia" path="res://assets/FutrueSFX/Explosion Long 02.wav" id="3_xnipk"]
+[ext_resource type="Texture2D" uid="uid://ddbpbs2mo4tn8" path="res://assets/Guns&Bullets/dingbats-327.png" id="4_6r557"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5selo"]
 atlas = ExtResource("2_vomud")
@@ -93,15 +94,20 @@ animations = [{
 }],
 "loop": false,
 "name": &"RobbieBoom",
-"speed": 11.0
+"speed": 12.0
 }]
+
+[sub_resource type="Curve" id="Curve_tevec"]
+max_value = 0.55
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.11326, 0.0475054), 0.179171, 0.179171, 0, 0, Vector2(0.251381, 0.0705204), 0.622464, 0.622464, 0, 0, Vector2(1, 0.408074), -0.0514289, 1.4026, 0, 0]
+point_count = 4
 
 [node name="RobbieBoom" type="Node2D"]
 script = ExtResource("1_hd2ls")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(0, -67)
-scale = Vector2(1.125, 1.39844)
+position = Vector2(0, -82.7499)
+scale = Vector2(1.4375, 1.64453)
 sprite_frames = SubResource("SpriteFrames_dm27n")
 animation = &"RobbieBoom"
 autoplay = "RobbieBoom"
@@ -110,7 +116,24 @@ frame_progress = 1.0
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("3_xnipk")
-volume_db = 1.375
+volume_db = 3.105
 autoplay = true
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+position = Vector2(1, 23)
+emitting = false
+amount = 1
+explosiveness = 1.0
+local_coords = true
+texture = ExtResource("4_6r557")
+direction = Vector2(0, -1)
+spread = 9.55
+gravity = Vector2(0, 0)
+initial_velocity_min = 54.37
+initial_velocity_max = 83.6
+scale_amount_min = 0.5
+scale_amount_max = 0.5
+scale_amount_curve = SubResource("Curve_tevec")
+color = Color(8.66354e-07, 0.402436, 0.48496, 1)
 
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]

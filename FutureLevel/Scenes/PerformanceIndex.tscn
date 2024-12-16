@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://btnf3drbkix5k"]
+[gd_scene load_steps=30 format=3 uid="uid://btnf3drbkix5k"]
 
 [ext_resource type="Texture2D" uid="uid://dcmt4rtiisn55" path="res://assets/Background/1.png" id="1_erotl"]
 [ext_resource type="FontFile" uid="uid://ckid4fla6wirc" path="res://assets/etc/Starzoom-Shavian.ttf" id="2_a7jdu"]
@@ -9,7 +9,13 @@
 [ext_resource type="Texture2D" uid="uid://d1jeejko1y8sn" path="res://assets/Background/3.png" id="5_37ixw"]
 [ext_resource type="Texture2D" uid="uid://bicepjut8amd5" path="res://assets/city 1/4.png" id="6_658f1"]
 [ext_resource type="Texture2D" uid="uid://ql70ode1roo" path="res://assets/city 1/3.png" id="7_xy8b8"]
+[ext_resource type="Texture2D" uid="uid://35dyx2vgd6cm" path="res://assets/etc/Star.png" id="9_kiffg"]
+[ext_resource type="Texture2D" uid="uid://dtmoad6blffsk" path="res://assets/etc/flare_3.png" id="10_8ltut"]
 [ext_resource type="AudioStream" uid="uid://dbnystp0y1gke" path="res://assets/FutrueSFX/PickUp.wav" id="10_vq1oj"]
+[ext_resource type="Texture2D" uid="uid://bbofee6bwlhcn" path="res://assets/etc/Clock.png" id="11_w0vdt"]
+[ext_resource type="Texture2D" uid="uid://brastt74lxpni" path="res://assets/etc/ranks/overkill.png" id="12_mi1w0"]
+[ext_resource type="Texture2D" uid="uid://d1wlj0qisaufc" path="res://assets/Guns&Bullets/fire_30.png" id="13_i6et3"]
+[ext_resource type="Texture2D" uid="uid://dtey7mq3og40d" path="res://assets/etc/Money.png" id="14_gul7b"]
 
 [sub_resource type="GDScript" id="GDScript_ae00b"]
 script/source = "extends Control
@@ -19,6 +25,7 @@ script/source = "extends Control
 @onready var best_run: Label = %FastestTime
 @onready var time_survived: Label = %LongestTimeSurvived
 @onready var overall_cash: Label = %OverallCash
+@onready var home: Label = $CanvasLayer/HomeButton/Home
 
 
 
@@ -27,32 +34,409 @@ func on_ready():
 		get_viewport().screen_set_orientation(DisplayServer.SCREEN_PORTRAIT)
 	else:
 		return
-
-
-func _process(_delta: float) -> void:
-	ovkills.text = \"OVERALL KILLS: %d\" % GameManager.total_kills
-
-	best_run.text = \"FASTEST SPEEDRUN: \" + GameManager.quickest_time
-
-	time_survived.text = \"LONGEST TIME SURVIVED: %s\" % GameManager.longest_survival
-
-	overall_cash.text = \"MONEY IN THE BANK: $ %07d\" % GameManager.total_cash
-
-func format_time(ms: int) -> String:
-	return str(ms / 1000.0) + \"s\"
-
+func _process(delta: float) -> void:
+	update_performance_page()
+	
+func update_performance_page():
+	%OverallKills.text = \"Enimeies 
+	Eliminated: %s\" % str(GameManager.total_kills)
+	%FastestTime.text = \"FASTEST LEGACY RUN: %\" % GameManager.quickest_time
+	%LongestTimeSurvived.text = str(GameManager.longest_survival) + \"s\"
+	%OverallCash.text = str(GameManager.total_cash)
 
 
 func _on_home_button_pressed() -> void:
 	%AudioStreamPlayer2D.play()
-	$CanvasLayer/Home.modulate = Color(0, 1, 0, 0.5)  # Set to red
+	home.modulate = Color(0, 1, 0, 0.5)  # Set to red
 	await get_tree().create_timer(0.5).timeout  # Wait for 0.1 seconds
-	$CanvasLayer/Home.modulate = Color(1, 1, 1)  # Reset to normal
+	home.modulate = Color(1, 1, 1)  # Reset to normal
 	get_tree().change_scene_to_file(\"res://Scenes/MainMenu.tscn\")
 "
 
+[sub_resource type="Curve" id="Curve_id4cq"]
+min_value = -0.4
+max_value = 0.85
+_data = [Vector2(0.0331492, -0.14088), 0.0, 0.0, 0, 0, Vector2(0.171271, 0.335649), 3.52712, 3.52712, 0, 0, Vector2(0.350829, 0.710515), 0.538803, 0.538803, 0, 0, Vector2(1, 0.85), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wevuv"]
+atlas = ExtResource("14_gul7b")
+region = Rect2(0, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8qggd"]
+atlas = ExtResource("14_gul7b")
+region = Rect2(24, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xu5ht"]
+atlas = ExtResource("14_gul7b")
+region = Rect2(48, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_352m2"]
+atlas = ExtResource("14_gul7b")
+region = Rect2(72, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_golr2"]
+atlas = ExtResource("14_gul7b")
+region = Rect2(96, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rc8qc"]
+atlas = ExtResource("14_gul7b")
+region = Rect2(120, 0, 24, 24)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_8o6w7"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wevuv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8qggd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xu5ht")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_352m2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_golr2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rc8qc")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ee6lp"]
 size = Vector2(600, 300)
+
+[sub_resource type="Animation" id="Animation_25s1s"]
+resource_name = "PerformanceScreen"
+length = 10.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/Clock:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 10),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [ExtResource("11_w0vdt"), ExtResource("11_w0vdt")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CanvasLayer/Clock:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.0666667, 0.1, 0.166667, 0.233333, 0.266667, 0.333333, 0.4, 0.433333, 0.5, 0.566667, 0.6, 0.666667, 0.733333, 0.766667, 0.833333, 0.9, 0.933333, 1.2, 1.43333, 1.5, 1.56667, 1.6, 1.7, 2.1, 2.16667, 2.23333, 2.26667, 2.6, 2.86667, 2.93333, 3, 3.03333, 3.4, 3.73333, 3.8, 3.86667, 3.9, 4.13333, 4.36667, 4.43333, 4.5, 4.53333, 5, 5.43333, 5.7, 5.93333, 6, 6.06667, 6.1, 6.4, 6.6, 6.66667, 6.73333, 6.76667, 7, 7.06667, 7.36667, 7.43333, 7.5, 7.53333, 7.9, 8.23333, 8.3, 8.36667, 8.4, 8.6, 8.86667, 8.93333, 9, 9.03333, 9.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.18326, -0.270526, 0.0, 0.18326, -0.270526, 0.0, 0.18326, -0.270526, 0.0, 0.18326, -0.270526, 0.0, 0.18326, -0.270526, 0.0, 0.18326, -0.270526, 0.0, -0.270526, 0.0, 0.18326, -0.270526, 0.0, -0.270526, 0.0, 0.18326, -0.270526, 0.0, -0.270526, 0.0, 0.18326, -0.270526, 0.0, -0.270526, 0.0, 0.18326, -0.270526, 0.0, -0.270526, 0.0, 0.18326, -0.270526, 0.0, -0.270526, 0.0, -0.270526, 0.0, 0.18326, -0.270526, 0.0261799, -0.270526, 0.0, 0.18326, -0.270526, 0.0, -0.270526, -0.270526, 0.0, 0.18326, -0.270526, 0.0, -0.270526, 0.0, 0.18326, -0.270526, -0.00872665, -0.270526, 0.0, 0.18326, -0.270526, 0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CanvasLayer/Star:texture")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 10),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [ExtResource("9_kiffg"), ExtResource("9_kiffg")]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("CanvasLayer/Star:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.5, 1, 1.33333, 1.73333, 2.06667, 3.36667, 10),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(-104, 258), Vector2(28, 307), Vector2(53, 279), Vector2(75, 332), Vector2(79, 307), Vector2(72.3455, 409), Vector2(59.0364, 406), Vector2(59.0364, 406)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("CanvasLayer/Star:rotation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(2.46667, 2.73333, 3, 3.23333, 5.93333, 6.13333, 6.33333, 6.5, 9.23333, 9.43333, 9.63333, 9.83333),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 3.16079, 6.28319, 0.0, 0.0, 3.16079, 6.28319, 0.0, 0.0, 3.16079, 6.28319, 0.0]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("CanvasLayer/Star/Flare3:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.366667, 0.5, 0.8, 0.9, 1.56667, 1.7, 2.33333, 2.5, 3.1, 3.26667, 4.6, 4.73333, 5.36667, 5.53333, 6.13333, 6.3, 8.2, 8.33333, 8.96667, 9.13333, 9.73333, 9.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [false, true, false, true, false, true, false, true, false, true, false, true, false, true, false, true, false, true, false, true, false, true, false]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("CanvasLayer/Star/Flare3:scale")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0.4, 0.433333, 0.466667, 0.833333, 0.866667, 0.9, 1.6, 1.63333, 1.66667, 2.4, 2.43333, 2.46667, 3.13333, 3.16667, 3.2, 4.63333, 4.66667, 4.7, 5.43333, 5.46667, 5.5, 6.16667, 6.2, 6.23333, 8.23333, 8.26667, 8.3, 9.03333, 9.06667, 9.1, 9.76667, 9.8, 9.83333),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0.095627, 0.347274), Vector2(0.369913, 0.398474), Vector2(0.15955, 0.141606), Vector2(0.095627, 0.347274), Vector2(0.369913, 0.398474), Vector2(0.15955, 0.141606), Vector2(0.095627, 0.347274), Vector2(0.369913, 0.398474), Vector2(0.15955, 0.141606), Vector2(0.095627, 0.347274), Vector2(0.369913, 0.398474), Vector2(0.15955, 0.141606), Vector2(0.095627, 0.347274), Vector2(0.369913, 0.398474), Vector2(0.15955, 0.141606), Vector2(0.095627, 0.347274), Vector2(0.369913, 0.398474), Vector2(0.15955, 0.141606), Vector2(0.095627, 0.347274), Vector2(0.369913, 0.398474), Vector2(0.15955, 0.141606), Vector2(0.095627, 0.347274), Vector2(0.369913, 0.398474), Vector2(0.15955, 0.141606), Vector2(0.095627, 0.347274), Vector2(0.369913, 0.398474), Vector2(0.15955, 0.141606), Vector2(0.095627, 0.347274), Vector2(0.369913, 0.398474), Vector2(0.15955, 0.141606), Vector2(0.095627, 0.347274), Vector2(0.369913, 0.398474), Vector2(0.15955, 0.141606)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("CanvasLayer/Overkill:texture")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 10),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [ExtResource("12_mi1w0"), ExtResource("12_mi1w0")]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("CanvasLayer/Overkill:self_modulate")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0, 0.6, 1.2, 2, 9.23333, 9.5, 9.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0.135), Color(1, 1, 1, 0.546), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0.481), Color(1, 1, 1, 0.0961997)]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("CanvasLayer/Overkill/CPUParticles2D:emitting")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0, 1.36667, 9.36667, 9.96667),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [false, true, true, false]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("CanvasLayer/Clock:scale")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1, 1.2, 1.36667, 8.73333),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0.1, 0.1), Vector2(0.2, 0.1), Vector2(0.4, 0.2), Vector2(0.6, 0.4), Vector2(0.8, 0.4), Vector2(1, 0.8), Vector2(1.9, 1), Vector2(1.9, 1.75449), Vector2(1.9, 1.75449)]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("CanvasLayer/AnimatedSprite2D:sprite_frames")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [SubResource("SpriteFrames_8o6w7")]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("CanvasLayer/AnimatedSprite2D:position")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0, 0.366667, 0.566667, 1.63333, 2.46667, 3.16667, 3.93333, 4.93333, 6.3, 9.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(-4.99999, -66), Vector2(37, -8), Vector2(172, 47), Vector2(244, 62), Vector2(64, 86), Vector2(231, 135), Vector2(26, 152), Vector2(101, 196), Vector2(64, 241), Vector2(65, 236)]
+}
+
+[sub_resource type="Animation" id="Animation_xtduc"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/Clock:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("11_w0vdt")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CanvasLayer/Clock:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CanvasLayer/Star:texture")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("9_kiffg")]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("CanvasLayer/Star:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-104, 258)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("CanvasLayer/Star:rotation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("CanvasLayer/Star/Flare3:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("CanvasLayer/Star/Flare3:scale")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.369913, 0.398474)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("CanvasLayer/Overkill:texture")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("12_mi1w0")]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("CanvasLayer/Overkill:self_modulate")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("CanvasLayer/Overkill/CPUParticles2D:emitting")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("CanvasLayer/Clock:scale")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.1, 0.1)]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("CanvasLayer/AnimatedSprite2D:sprite_frames")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [SubResource("SpriteFrames_8o6w7")]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("CanvasLayer/AnimatedSprite2D:position")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-4.99999, -66)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_t37ra"]
+_data = {
+"PerformanceScreen": SubResource("Animation_25s1s"),
+"RESET": SubResource("Animation_xtduc")
+}
 
 [node name="PerformanceIndex" type="Control"]
 layout_mode = 3
@@ -71,51 +455,15 @@ z_index = -4
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 4.79993
-offset_top = 2.0
-offset_right = 4.79993
-offset_bottom = 2.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("1_erotl")
 expand_mode = 4
 
-[node name="style" type="Sprite2D" parent="CanvasLayer/TextureRect"]
-modulate = Color(0.65, 0.273, 0.273, 0.329412)
-top_level = true
-z_index = -2
-position = Vector2(583.5, 397)
-scale = Vector2(2.00174, 3.05556)
-texture = ExtResource("4_cx5d3")
-
-[node name="addition" type="Sprite2D" parent="CanvasLayer/TextureRect"]
-modulate = Color(1, 1, 1, 0.556863)
-top_level = true
-z_index = -1
-position = Vector2(573.5, 322)
-scale = Vector2(1.98438, 3.55556)
-texture = ExtResource("5_37ixw")
-
-[node name="city" type="Sprite2D" parent="CanvasLayer/TextureRect"]
-modulate = Color(1, 0.1, 0.1, 0.329412)
-top_level = true
-z_index = -2
-position = Vector2(573, 364.5)
-scale = Vector2(2.01042, 3.30556)
-texture = ExtResource("6_658f1")
-
-[node name="clouds" type="Sprite2D" parent="CanvasLayer/TextureRect"]
-modulate = Color(1, 0.739333, 0.32, 0.341176)
-top_level = true
-z_index = -2
-position = Vector2(553, 315)
-rotation = 0.0005793
-scale = Vector2(2.04086, 1.91849)
-texture = ExtResource("7_xy8b8")
-
 [node name="Performance Index" type="Label" parent="CanvasLayer"]
 z_index = 1
-anchors_preset = 15
+anchors_preset = -1
+anchor_top = 0.0805556
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
@@ -123,73 +471,68 @@ grow_vertical = 2
 theme_override_colors/font_color = Color(0.63, 0, 0.0104998, 1)
 theme_override_colors/font_shadow_color = Color(0.375969, 0.223087, 1, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/line_spacing = 0
-theme_override_constants/shadow_offset_x = 1
-theme_override_constants/shadow_offset_y = 1
-theme_override_constants/outline_size = 3
-theme_override_constants/shadow_outline_size = 2
+theme_override_constants/outline_size = 7
 theme_override_fonts/font = ExtResource("2_a7jdu")
 theme_override_font_sizes/font_size = 40
 text = "PERFORMANCE INDEX"
 horizontal_alignment = 1
 autowrap_mode = 3
 justification_flags = 35
+metadata/_edit_use_anchors_ = true
 
 [node name="OverallKills" type="Label" parent="CanvasLayer"]
 unique_name_in_owner = true
 z_index = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 218.0
-offset_top = 298.0
-offset_right = -336.0
-offset_bottom = -289.0
+anchors_preset = -1
+anchor_left = 0.567593
+anchor_top = 0.381481
+anchor_right = 1.00185
+anchor_bottom = 0.413889
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(0.63, 0, 0.0104998, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 6
 theme_override_fonts/font = ExtResource("2_a7jdu")
-theme_override_font_sizes/font_size = 20
-text = "Overall Kills:"
-horizontal_alignment = 1
+theme_override_font_sizes/font_size = 30
+text = "# OF ENEMIES 
+ELIMINATED:"
 autowrap_mode = 3
 justification_flags = 35
+metadata/_edit_use_anchors_ = true
 
 [node name="FastestTime" type="Label" parent="CanvasLayer"]
 unique_name_in_owner = true
 z_index = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 210.0
-offset_top = 147.0
-offset_right = -372.0
-offset_bottom = -436.0
+anchors_preset = -1
+anchor_left = 0.0935185
+anchor_top = 0.367593
+anchor_right = 0.494444
+anchor_bottom = 0.427778
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(0.63, 0, 0.0104998, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 6
 theme_override_fonts/font = ExtResource("2_a7jdu")
-theme_override_font_sizes/font_size = 20
-text = "Best Run:"
-horizontal_alignment = 1
+theme_override_font_sizes/font_size = 30
+text = "FASTEST LEGACY 
+RUN:"
 vertical_alignment = 1
 autowrap_mode = 3
 justification_flags = 35
+metadata/_edit_use_anchors_ = true
 
 [node name="LongestTimeSurvived" type="Label" parent="CanvasLayer"]
 unique_name_in_owner = true
 z_index = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 246.0
-offset_top = 228.0
-offset_right = -229.0
-offset_bottom = -397.0
+anchors_preset = -1
+anchor_left = 0.558333
+anchor_top = 0.200926
+anchor_right = 1.0002
+anchor_bottom = 0.242539
+offset_right = 92.7817
+offset_bottom = -7.94241
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(0.837225, 1.21466)
@@ -198,47 +541,139 @@ theme_override_colors/font_color = Color(0.63, 0, 0.0104998, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 6
 theme_override_fonts/font = ExtResource("2_a7jdu")
-theme_override_font_sizes/font_size = 20
-text = "Longest Survival:"
-horizontal_alignment = 1
+theme_override_font_sizes/font_size = 30
+text = "BEST GAUNTLET 
+TIME:"
+metadata/_edit_use_anchors_ = true
 
 [node name="OverallCash" type="Label" parent="CanvasLayer"]
 unique_name_in_owner = true
 z_index = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 216.0
-offset_top = 89.0
-offset_right = -265.0
-offset_bottom = -494.0
+anchors_preset = -1
+anchor_left = 0.087037
+anchor_top = 0.191667
+anchor_right = 0.515741
+anchor_bottom = 0.250926
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(0.63, 0, 0.0104998, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 6
 theme_override_fonts/font = ExtResource("2_a7jdu")
-theme_override_font_sizes/font_size = 20
-text = "Money in the Bank: "
-horizontal_alignment = 1
+theme_override_font_sizes/font_size = 30
+text = "$BANK$: "
 vertical_alignment = 1
 autowrap_mode = 3
 justification_flags = 35
+metadata/_edit_use_anchors_ = true
 
-[node name="Home" type="Label" parent="CanvasLayer"]
+[node name="style" type="Sprite2D" parent="CanvasLayer"]
+modulate = Color(0.65, 0.273, 0.273, 0.329412)
+top_level = true
+z_index = -2
+position = Vector2(583.5, 493.5)
+scale = Vector2(2.00174, 3.65124)
+texture = ExtResource("4_cx5d3")
+
+[node name="addition" type="Sprite2D" parent="CanvasLayer"]
+modulate = Color(1, 1, 1, 0.556863)
+top_level = true
+z_index = -1
+position = Vector2(573.5, 415)
+scale = Vector2(1.98438, 4.12963)
+texture = ExtResource("5_37ixw")
+
+[node name="city" type="Sprite2D" parent="CanvasLayer"]
+modulate = Color(1, 0.1, 0.1, 0.329412)
+top_level = true
+z_index = -2
+position = Vector2(573, 459.5)
+scale = Vector2(2.01042, 3.89198)
+texture = ExtResource("6_658f1")
+
+[node name="clouds" type="Sprite2D" parent="CanvasLayer"]
+modulate = Color(1, 0.739333, 0.32, 0.341176)
+top_level = true
+z_index = -2
+position = Vector2(554.129, 417.272)
+rotation = 0.0005793
+scale = Vector2(2.40836, 2.5498)
+texture = ExtResource("7_xy8b8")
+
+[node name="Star" type="Sprite2D" parent="CanvasLayer"]
+position = Vector2(-104, 258)
+scale = Vector2(1.75, 1.5625)
+texture = ExtResource("9_kiffg")
+
+[node name="Flare3" type="Sprite2D" parent="CanvasLayer/Star"]
+position = Vector2(8.55064, -1.12305)
+scale = Vector2(0.369913, 0.398474)
+texture = ExtResource("10_8ltut")
+
+[node name="Clock" type="Sprite2D" parent="CanvasLayer"]
+position = Vector2(564.671, 212.757)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("11_w0vdt")
+
+[node name="Overkill" type="Sprite2D" parent="CanvasLayer"]
+self_modulate = Color(1, 1, 1, 0)
+position = Vector2(565.158, 419.818)
+scale = Vector2(2.5724, 1.82386)
+texture = ExtResource("12_mi1w0")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="CanvasLayer/Overkill"]
+position = Vector2(5.76956, 0.0996585)
+scale = Vector2(0.1, 0.1)
+emitting = false
+amount = 20
+lifetime = 0.93
+speed_scale = 1.29
+local_coords = true
+texture = ExtResource("13_i6et3")
+emission_shape = 5
+emission_points = PackedVector2Array(-120, 0, 0, 0)
+emission_normals = PackedVector2Array()
+emission_colors = PackedColorArray()
+direction = Vector2(0, -1)
+spread = 20.64
+gravity = Vector2(0, 0)
+initial_velocity_min = 65.33
+initial_velocity_max = 86.0
+scale_amount_min = 0.15
+scale_amount_max = 0.3
+scale_amount_curve = SubResource("Curve_id4cq")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CanvasLayer"]
+position = Vector2(-4.99999, -66)
+scale = Vector2(3.40438, 3.2082)
+sprite_frames = SubResource("SpriteFrames_8o6w7")
+autoplay = "default"
+frame_progress = 0.917033
+
+[node name="HomeButton" type="TouchScreenButton" parent="CanvasLayer"]
+unique_name_in_owner = true
+self_modulate = Color(1, 1, 0, 1)
+z_index = -1
+position = Vector2(257, 711)
+scale = Vector2(0.510416, 0.384259)
+texture_normal = ExtResource("3_erunh")
+texture_pressed = ExtResource("4_wpohw")
+shape = SubResource("RectangleShape2D_ee6lp")
+
+[node name="Home" type="Label" parent="CanvasLayer/HomeButton"]
+modulate = Color(1, 1, 0, 1)
 z_index = 4
 anchors_preset = -1
-anchor_left = 0.41
-anchor_top = 0.821
-anchor_right = 0.553
-anchor_bottom = 0.896
-offset_left = -0.320007
-offset_top = -0.00799561
-offset_right = -87.056
-offset_bottom = -22.608
+anchor_left = 0.340137
+anchor_top = 0.297189
+anchor_right = 0.592769
+anchor_bottom = 0.423145
+offset_left = 3.05176e-05
+offset_right = -213.474
+offset_bottom = -60.6192
 grow_horizontal = 2
 grow_vertical = 2
-scale = Vector2(2.11333, 1.88)
+scale = Vector2(3.75243, 3.88663)
 theme_override_colors/font_color = Color(0.82, 0.0984, 0.110426, 1)
 theme_override_colors/font_shadow_color = Color(0.1496, 0.173947, 0.88, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
@@ -253,26 +688,19 @@ horizontal_alignment = 1
 vertical_alignment = 1
 metadata/_edit_use_anchors_ = true
 
-[node name="HomeButton" type="TouchScreenButton" parent="CanvasLayer/Home"]
-unique_name_in_owner = true
-modulate = Color(0.306, 0.3501, 0.6, 1)
-z_index = -1
-position = Vector2(-88.959, -36.7021)
-scale = Vector2(0.241522, 0.204393)
-texture_normal = ExtResource("3_erunh")
-texture_pressed = ExtResource("4_wpohw")
-shape = SubResource("RectangleShape2D_ee6lp")
-
 [node name="GameManager" parent="." instance=ExtResource("3_g0ec8")]
-
-[node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(568.2, 321)
-ignore_rotation = false
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 unique_name_in_owner = true
+position = Vector2(2, 2)
 stream = ExtResource("10_vq1oj")
 volume_db = 2.1
 pitch_scale = 1.4
 
-[connection signal="pressed" from="CanvasLayer/Home/HomeButton" to="." method="_on_home_button_pressed"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_t37ra")
+}
+autoplay = "PerformanceScreen"
+
+[connection signal="pressed" from="CanvasLayer/HomeButton" to="." method="_on_home_button_pressed"]

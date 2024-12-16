@@ -10,6 +10,7 @@ var knockback_velocity = Vector2.ZERO  # Stores knockback velocity
 
 @onready var byte: Node2D = %Byte
 @onready var collision_shape_2d: CollisionShape2D = $CollisionShape2D
+@onready var damage_numbers_origin: Node2D = $DamageNumbersOrigin
 
 
 
@@ -32,6 +33,7 @@ func _physics_process(delta):
 func take_damage():
 	health -= 5.0
 	%Byte.play_hurt()
+	DamageNumbers.display_number(5, damage_numbers_origin.global_position, true)
 	
 	var knockback_direction = (global_position - Global.player.global_position).normalized()
 	knockback_velocity = knockback_direction * knockback_strength

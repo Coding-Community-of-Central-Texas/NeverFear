@@ -12,4 +12,3 @@ func reset_game_state():
 	checkpoint_position = Vector2(353.993, -306.008) # Starting position
 	lives = 3  # Reset lives to the initial value
 	Engine.time_scale = 1.0
-	GameManager.game_cash = 0 

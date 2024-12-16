@@ -7,7 +7,7 @@ var travelled_distance = 0.0
 
 func _physics_process(delta):
 	const SPEED = 2000.0
-	const RANGE = 600.0
+	const RANGE = 500.0
 	
 	var direction = Vector2.RIGHT.rotated(rotation)
 	position += direction * SPEED * delta
@@ -19,4 +19,3 @@ func _physics_process(delta):
 func _on_body_entered(body: CharacterBody2D) -> void:
 	if body.is_in_group("enemy") and body.has_method("take_damage"):
 		body.take_damage()
-	queue_free()

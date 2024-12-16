@@ -9,10 +9,10 @@ var knockback_timer = 0.0  # Keeps track of the knockback time
 var knockback_velocity = Vector2.ZERO  # Stores knockback velocity
 
 @onready var robbie: Node2D = %Robbie
-
+@onready var damage_numbers_origin: Node2D = $DamageNumbersOrigin
 var move_speed = 250.0  # Movement speed
 var is_pursuing = false  # Whether the enemy is pursuing the player
-var stop_distance = 340.0
+var stop_distance = 200.0
 
 func _ready():
 	%Robbie.play_walk()
@@ -31,7 +31,7 @@ func _physics_process(delta):
 func take_damage():
 	health -= 15.0
 	%Robbie.play_hurt()
-	
+	DamageNumbers.display_number(15, damage_numbers_origin.global_position, true)
 	var knockback_direction = (global_position - Global.player.global_position).normalized()
 	knockback_velocity = knockback_direction * knockback_strength
 	knockback_timer = knockback_duration

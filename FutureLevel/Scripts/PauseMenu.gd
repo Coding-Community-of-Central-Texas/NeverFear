@@ -1,9 +1,9 @@
 extends Control
 
 
-@onready var continuebutton: Label = $Panel/Continue
-@onready var restart: Label = $Panel/Restart
-@onready var home: Label = $Panel/Home
+@onready var continuebutton: Label = $Panel/ContinueButton/Continue
+@onready var home: Label = $Panel/Homebutton/Home
+@onready var restart: Label = $Panel/Restartbutton/Restart
 
 func _ready() -> void:
 	get_tree().paused = true

@@ -137,7 +137,7 @@ func _on_audio_stream_player_2d_finished() -> void:
 
 
 func _on_add_cash() -> void:
-	GameManager._on_add_cash(randi_range(1000, 10000))
+	GameManager.add_cash(randi_range(1000, 10000))
 	print("add cash")
 	
 

@@ -19,4 +19,7 @@ position = Vector2(-1, 0)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_cnpoq")
 
+[node name="DamageNumbersOrigin" type="Node2D" parent="."]
+position = Vector2(0, -22)
+
 [connection signal="kill" from="." to="." method="_on_kill"]

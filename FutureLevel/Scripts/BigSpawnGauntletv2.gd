@@ -11,7 +11,7 @@ enum CharacterType {
 
 @onready var timer: Timer = $Timer
 @onready var marker_1: Marker2D = $Marker1
-
+@export var spawn_intervals: Array = [6.5, 6.0, 5.0, 4.0, 2.0]
 
 func _on_timer_timeout() -> void:
 	spawn_wave()
@@ -30,3 +30,9 @@ func spawn_wave():
 
 func get_random_character(_type1: int, _type2: int) -> PackedScene:
 	return ROBBIE if randi() % 2 == 0 else TANK 
+
+
+func _on_survivor_rank_changed(rank_index: int) -> void:
+	if rank_index >= 0 and rank_index < spawn_intervals.size():
+		timer.wait_time = spawn_intervals[rank_index]
+		print("Spawner updated: Rank =", rank_index, "New wait_time =", timer.wait_time)

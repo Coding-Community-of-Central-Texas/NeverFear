@@ -346,10 +346,10 @@ hue_variation_min = 0.46
 hue_variation_max = 0.72
 
 [node name="WalknJumpR" type="Marker2D" parent="AnimatedSprite2D"]
-position = Vector2(-10, 23.6667)
+position = Vector2(-12, 23.6667)
 
 [node name="WalknJumpL" type="Marker2D" parent="AnimatedSprite2D"]
-position = Vector2(9.33333, 23.6667)
+position = Vector2(23.3333, 23.6667)
 
 [node name="JumpEffect" type="CPUParticles2D" parent="AnimatedSprite2D"]
 unique_name_in_owner = true

@@ -27,3 +27,4 @@ volume_db = -1.722
 autoplay = true
 
 [connection signal="kill" from="." to="." method="_on_kill"]
+[connection signal="tree_exiting" from="." to="." method="_on_tree_exiting"]

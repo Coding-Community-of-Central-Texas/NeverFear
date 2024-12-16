@@ -84,7 +84,7 @@ colors = PackedColorArray(0.547022, 0.384021, 0.745838, 1, 21.081, 0, 41.081, 1,
 
 [sub_resource type="Curve" id="Curve_8ne5l"]
 min_value = -0.45
-_data = [Vector2(0.00276243, 0.234227), 0.0, 0.21, 0, 0, Vector2(0.0801105, 0.340934), 0.0, 0.0, 0, 0, Vector2(0.212707, 0.158906), -1.08246, -1.08246, 0, 0, Vector2(0.458564, -0.173069), -0.0841559, -0.0841559, 0, 0, Vector2(0.977901, -0.40566), 0.0, 0.0, 0, 0]
+_data = [Vector2(0, -0.0314914), 0.0, 0.21, 0, 0, Vector2(0.107735, 0.180874), 0.0, 0.0, 0, 0, Vector2(0.256906, 0.0190718), -1.28622, -1.28622, 0, 0, Vector2(0.530387, -0.193294), -0.43068, -0.43068, 0, 0, Vector2(0.977901, -0.40566), 0.0, 0.0, 0, 0]
 point_count = 5
 
 [node name="Gun" type="Area2D"]
@@ -152,25 +152,28 @@ scale_curve_y = SubResource("Curve_wqnjr")
 color = Color(67.567, 35.675, 0, 1)
 color_ramp = SubResource("Gradient_vuq11")
 
-[node name="Bangs" type="CPUParticles2D" parent="."]
+[node name="bangs" type="Node2D" parent="."]
+position = Vector2(16, -12)
+
+[node name="Bangs" type="CPUParticles2D" parent="bangs"]
 unique_name_in_owner = true
 show_behind_parent = true
+z_index = -1
 position = Vector2(10, 11)
 rotation = 0.138923
 emitting = false
-amount = 6
-lifetime = 0.35
-speed_scale = 0.35
-local_coords = true
+amount = 7
+lifetime = 0.75
+speed_scale = 0.45
 draw_order = 1
 texture = ExtResource("6_su6ol")
 emission_shape = 2
 emission_sphere_radius = 23.17
 direction = Vector2(0, -1)
-spread = 37.19
+spread = 40.96
 gravity = Vector2(0, 69)
-initial_velocity_min = 76.34
-initial_velocity_max = 94.44
+initial_velocity_min = 172.39
+initial_velocity_max = 256.74
 linear_accel_min = 14.66
 linear_accel_max = 25.13
 radial_accel_max = 20.94
