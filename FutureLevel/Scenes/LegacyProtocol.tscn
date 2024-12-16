@@ -1174,7 +1174,8 @@ _data = {
 "move": SubResource("Animation_v55cb")
 }
 
-[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_up8l6"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xklbj"]
+size = Vector2(207.021, 20)
 
 [node name="LegacyProtocol" type="Node2D" groups=["Legacy"]]
 rotation = 2.12854e-05
@@ -1453,6 +1454,7 @@ texture = ExtResource("94_vbgdy")
 
 [node name="Pipland" type="Sprite2D" parent="TileMap/CityBack/Background"]
 visible = false
+self_modulate = Color(0.4, 0.4, 0.4, 1)
 z_index = -2
 position = Vector2(582, 584.5)
 scale = Vector2(1.41797, 1.79018)
@@ -1846,7 +1848,9 @@ rotation = -1.58821
 script = ExtResource("127_vmawy")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SetBackground"]
-shape = SubResource("WorldBoundaryShape2D_up8l6")
+position = Vector2(39.5549, 0.00390625)
+scale = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_xklbj")
 
 [connection signal="body_entered" from="Platform/Area2D" to="Platform" method="_on_area_2d_body_entered"]
 [connection signal="body_entered" from="PickUpGun" to="PickUpGun" method="_on_body_entered"]

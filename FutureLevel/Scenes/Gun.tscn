@@ -84,7 +84,7 @@ colors = PackedColorArray(0.547022, 0.384021, 0.745838, 1, 21.081, 0, 41.081, 1,
 
 [sub_resource type="Curve" id="Curve_8ne5l"]
 min_value = -0.45
-_data = [Vector2(0, -0.0314914), 0.0, 0.21, 0, 0, Vector2(0.107735, 0.180874), 0.0, 0.0, 0, 0, Vector2(0.256906, 0.0190718), -1.28622, -1.28622, 0, 0, Vector2(0.530387, -0.193294), -0.43068, -0.43068, 0, 0, Vector2(0.977901, -0.40566), 0.0, 0.0, 0, 0]
+_data = [Vector2(0, 0.101408), 0.0, 0.21, 0, 0, Vector2(0.0752089, 0.387324), 0.0, 0.0, 0, 0, Vector2(0.256906, 0.0190718), -1.28622, -1.28622, 0, 0, Vector2(0.530387, -0.193294), -0.43068, -0.43068, 0, 0, Vector2(0.977901, -0.40566), 0.0, 0.0, 0, 0]
 point_count = 5
 
 [node name="Gun" type="Area2D"]
@@ -161,7 +161,6 @@ show_behind_parent = true
 z_index = -1
 position = Vector2(10, 11)
 rotation = 0.138923
-emitting = false
 amount = 7
 lifetime = 0.75
 speed_scale = 0.45
