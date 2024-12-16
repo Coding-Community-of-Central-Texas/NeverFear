@@ -34,6 +34,7 @@ func _on_hypercore_gauntlet_pressed() -> void:
 	survival.modulate = Color(0, 1, 0, 0.5)  # Set to red
 	await get_tree().create_timer(0.5).timeout  # Wait for 0.1 seconds
 	survival.modulate = Color(1, 1, 1)  # Reset to normal
+	GameManager.reset_scene_kills()
 	get_tree().change_scene_to_file("res://Scenes/HypercoreGauntlet.tscn")
 	Global.reset_game_state()
 

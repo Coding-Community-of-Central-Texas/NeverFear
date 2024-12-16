@@ -1,7 +1,8 @@
-[gd_scene load_steps=13 format=3 uid="uid://bcuaf3fm014qf"]
+[gd_scene load_steps=17 format=3 uid="uid://bcuaf3fm014qf"]
 
 [ext_resource type="Texture2D" uid="uid://cf1o7yknimjyd" path="res://assets/Guns&Bullets/enemybullet.png" id="1_j6ltc"]
 [ext_resource type="Script" path="res://Scripts/EnemyBullet.gd" id="1_yti00"]
+[ext_resource type="Texture2D" uid="uid://dvwivx33k03h5" path="res://assets/Guns&Bullets/spirowires_1.png" id="3_exen8"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4hj3s"]
 atlas = ExtResource("1_j6ltc")
@@ -75,6 +76,20 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_x6wp8"]
 radius = 7.0
 
+[sub_resource type="Curve" id="Curve_1omsg"]
+max_value = 0.5
+_data = [Vector2(0, 0.123391), 0.0, 0.0, 0, 0, Vector2(0.461326, 0.203594), 0.0, 0.0, 0, 0, Vector2(0.961326, 0.0885193), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Curve" id="Curve_xiw3y"]
+max_value = 0.5
+_data = [Vector2(0.00552486, 0.119903), 0.0, 0.0, 0, 0, Vector2(0.461326, 0.203594), 0.0, 0.0, 0, 0, Vector2(0.955801, 0.0920064), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Gradient" id="Gradient_y33nf"]
+offsets = PackedFloat32Array(0.0958084, 0.203593, 0.305389, 0.398204, 0.47006, 0.541916, 0.670659, 0.808383, 0.928144)
+colors = PackedColorArray(0.9, 0.9, 0.9, 1, 0, 0, 42.162, 1, 0, 96.757, 49.189, 1, 0, 0, 21.081, 1, 0, 60, 0, 1, 10.811, 0, 0, 1, 10.811, 0, 0, 1, 0, 0, 0, 1, 0, 0, 37.298, 1)
+
 [node name="EnemyBullet" type="Area2D"]
 scale = Vector2(1.5, 1.5)
 collision_layer = 8
@@ -92,5 +107,24 @@ frame_progress = 0.39015
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_x6wp8")
 debug_color = Color(0, 0.595, 0.7, 0)
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+amount = 20
+preprocess = 9.42
+local_coords = true
+texture = ExtResource("3_exen8")
+direction = Vector2(0, 0)
+gravity = Vector2(0, 0)
+angular_velocity_min = 324.18
+angular_velocity_max = 324.18
+scale_amount_min = 0.1
+scale_amount_max = 0.3
+split_scale = true
+scale_curve_x = SubResource("Curve_1omsg")
+scale_curve_y = SubResource("Curve_xiw3y")
+color = Color(0.991441, 0.196927, 0.146441, 1)
+color_ramp = SubResource("Gradient_y33nf")
+hue_variation_min = -0.78
+hue_variation_max = 0.64
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

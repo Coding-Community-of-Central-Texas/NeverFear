@@ -1,14 +1,14 @@
 extends Node2D
 
 @onready var time_panel: Panel = %TimePanel
+@onready var upscale: Sprite2D = $TileMap/CityBack/Background/Upscale
+@onready var upscaled_1: Sprite2D = $TileMap/CityBack/Background/Upscaled1
 
 
 func _ready():
 	Global.legacy = self
 	if DisplayServer.is_touchscreen_available() and OS.has_feature("Andriod"):
 		get_viewport().screen_set_orientation(DisplayServer.SCREEN_LANDSCAPE)
-	else:
-		pass
 
 func complete_level():
 	# Call stop() on the timer and get the formatted time

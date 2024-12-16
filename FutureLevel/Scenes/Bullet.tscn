@@ -1,10 +1,15 @@
-[gd_scene load_steps=4 format=3 uid="uid://c62nhdlvjd5tk"]
+[gd_scene load_steps=6 format=3 uid="uid://c62nhdlvjd5tk"]
 
 [ext_resource type="Script" path="res://Scripts/Bullet.gd" id="1_x7n78"]
 [ext_resource type="Texture2D" uid="uid://1imxhw66404d" path="res://assets/Guns&Bullets/01.png" id="2_qpgtf"]
+[ext_resource type="Texture2D" uid="uid://uko5x07l6fyc" path="res://assets/Guns&Bullets/lines_8.png" id="3_22a64"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_c5l0h"]
 radius = 6.0
+
+[sub_resource type="Gradient" id="Gradient_74j88"]
+offsets = PackedFloat32Array(0.0868263, 0.158683, 0.242515, 0.565868, 0.838323, 0.904192)
+colors = PackedColorArray(90.811, 51.351, 0, 1, 78.378, 0, 100, 0.973, 0.389625, 0.568854, 0.959647, 0.975, 0.967076, 0.955537, 0.949679, 1, 1, 1, 1, 1, 0.61, 0.61, 0.0244, 1)
 
 [node name="Bullet" type="Area2D"]
 top_level = true
@@ -20,5 +25,24 @@ shape = SubResource("CircleShape2D_c5l0h")
 position = Vector2(-0.99998, -0.00635644)
 scale = Vector2(0.605062, 0.535031)
 texture = ExtResource("2_qpgtf")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+position = Vector2(-11.9998, -0.0762773)
+amount = 9
+lifetime = 0.7
+speed_scale = 4.35
+local_coords = true
+texture = ExtResource("3_22a64")
+direction = Vector2(-1, 0)
+spread = 3.36
+gravity = Vector2(0, 0)
+initial_velocity_min = 118.9
+initial_velocity_max = 158.95
+angle_min = -90.0
+angle_max = -90.0
+scale_amount_min = 0.15
+scale_amount_max = 0.2
+color = Color(0.23, 0.428, 0.9, 0.87)
+color_ramp = SubResource("Gradient_74j88")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://dcmt4rtiisn55" path="res://assets/Background/1.png" id="1_erotl"]
 [ext_resource type="FontFile" uid="uid://ckid4fla6wirc" path="res://assets/etc/Starzoom-Shavian.ttf" id="2_a7jdu"]
 [ext_resource type="Texture2D" uid="uid://bv7fu6os82paq" path="res://assets/buttonsprites/UIbutton.png" id="3_erunh"]
-[ext_resource type="PackedScene" uid="uid://cijayc3peexw" path="res://GameManager.tscn" id="3_g0ec8"]
+[ext_resource type="PackedScene" uid="uid://cijayc3peexw" path="res://Singletons/GameManager.tscn" id="3_g0ec8"]
 [ext_resource type="Texture2D" uid="uid://dc7ixn8hk14hw" path="res://assets/Background/2.png" id="4_cx5d3"]
 [ext_resource type="Texture2D" uid="uid://c37oonhsihxgf" path="res://assets/buttonsprites/UIButton2.png" id="4_wpohw"]
 [ext_resource type="Texture2D" uid="uid://d1jeejko1y8sn" path="res://assets/Background/3.png" id="5_37ixw"]

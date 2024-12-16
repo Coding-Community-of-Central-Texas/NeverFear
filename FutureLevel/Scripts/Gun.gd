@@ -13,7 +13,7 @@ extends Area2D
 var shooting = false  # Whether shooting is active or not
 
 func on_ready():
-	%Smoke.visible = false
+	#%Smoke.visible = false
 	collision_shape.scale = default_range_scale
 # This function is called when the timer times out (i.e., it's time to shoot)
 func set_range(new_scale: Vector2) -> void:
@@ -39,11 +39,15 @@ func _physics_process(_delta: float):
 		# No enemies in range, stop shooting
 		if shooting:
 			shooting = false
+			%Muzzleflash.emitting = false
+			%Bangs.emitting = false 
 			timer.stop()  # Stop the shooting timer when no enemies are detected
 
 # Function to handle shooting
 func shoot():
-	%AnimatedSprite.play("poof")
+	%Muzzleflash.emitting = true 
+	%Bangs.emitting = true
+	%Bangs.rotation_degrees == 8 
 	const BULLET = preload("res://Scenes/Bullet.tscn")
 	
 	var new_bullet = BULLET.instantiate()

@@ -18,8 +18,8 @@ config/icon="res://assets/Background/NeverFearIcon.svg"
 
 [autoload]
 
-Global="*res://Global.gd"
-GameManager="*res://GameManager.gd"
+Global="*res://Singletons/Global.gd"
+GameManager="*res://Singletons/GameManager.gd"
 
 [display]
 

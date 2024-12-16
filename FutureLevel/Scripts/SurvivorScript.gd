@@ -27,7 +27,7 @@ const VELOCITY = 1000
 
 var is_dead: bool = false
 var current_kills: int = 0
-@export var rank_thresholds: Array = [25, 50, 70, 100, 200]  # Thresholds for rank-ups
+@export var rank_thresholds: Array = [25, 100, 150, 200, 350]  # Thresholds for rank-ups
 @export var fire_rates: Array = [0.15, 0.12, 0.10, 0.08, 0.05]  # Rate of fire per rank
 
 func _ready() -> void:

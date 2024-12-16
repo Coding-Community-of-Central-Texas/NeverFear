@@ -1,0 +1,48 @@
+[gd_scene load_steps=5 format=3 uid="uid://caame5dgh5vbo"]
+
+[ext_resource type="Script" path="res://Scripts/RunDust.gd" id="1_ict0m"]
+[ext_resource type="Texture2D" uid="uid://d1wlj0qisaufc" path="res://assets/Guns&Bullets/fire_30.png" id="2_ao56p"]
+
+[sub_resource type="Curve" id="Curve_f5sd8"]
+min_value = 0.1
+max_value = 0.5
+_data = [Vector2(0.0110497, 0.413519), 0.0, 0.0, 0, 0, Vector2(0.251381, 0.438627), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_alrvi"]
+min_value = 0.1
+max_value = 0.5
+_data = [Vector2(0.0524862, 0.427468), 0.0, 0.0, 0, 0, Vector2(0.190608, 0.332618), 0.0, 0.0, 0, 0, Vector2(0.267956, 0.469313), 0.0, 0.0, 0, 0, Vector2(0.417127, 0.332618), 1.39828, 1.39828, 0, 0, Vector2(0.654696, 0.335408), -1.15414, -1.15414, 0, 0, Vector2(0.71547, 0.463734), 0.0, 0.0, 0, 0, Vector2(0.895028, 0.380043), 0.0, 0.0, 0, 0]
+point_count = 7
+
+[node name="RunDust" type="Node2D"]
+script = ExtResource("1_ict0m")
+
+[node name="RunPuffR" type="CPUParticles2D" parent="."]
+z_index = -1
+position = Vector2(-38, -4)
+rotation = 0.0342883
+scale = Vector2(0.5, 0.5)
+amount = 30
+lifetime = 4.55
+speed_scale = 2.66
+randomness = 0.27
+local_coords = true
+texture = ExtResource("2_ao56p")
+emission_shape = 3
+emission_rect_extents = Vector2(100, -5)
+gravity = Vector2(-2, -2)
+scale_amount_min = 0.1
+scale_amount_max = 0.3
+split_scale = true
+scale_curve_x = SubResource("Curve_f5sd8")
+scale_curve_y = SubResource("Curve_alrvi")
+hue_variation_min = 0.21
+hue_variation_max = 1.0
+
+[node name="QueueTimer" type="Timer" parent="."]
+process_callback = 0
+wait_time = 0.206
+autostart = true
+
+[connection signal="timeout" from="QueueTimer" to="." method="_on_queue_timer_timeout"]

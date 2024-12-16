@@ -12,7 +12,7 @@ const MAX_FALL_SPEED = 3000.0  # Limit the maximum fall speed
 var direction : Vector2 = Vector2.ZERO
 @export var acceleration: float = 3000.0
 @export var deceleration: float = 5000.0
-
+@export var run_dust: PackedScene
 
 @onready var audio_stream_player_2d_2: AudioStreamPlayer2D = $AudioStreamPlayer2D2
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
@@ -22,7 +22,11 @@ var direction : Vector2 = Vector2.ZERO
 @onready var gun: Area2D = $Gun
 @onready var health_bar: ProgressBar = $HealthBar
 @export var rate_of_fire: float = 0.15
-@onready var cpu_particles: CPUParticles2D = $AnimatedSprite2D/CPUParticles2D2
+@onready var cpu_particles: CPUParticles2D = $AnimatedSprite2D/SpeedBoost
+@onready var jump_effect: CPUParticles2D = %JumpEffect
+@onready var walkn_jump_r: Marker2D = $AnimatedSprite2D/WalknJumpR
+@onready var walkn_jump_l: Marker2D = $AnimatedSprite2D/WalknJumpL
+@onready var foot_steps: Timer = $FootSteps
 
 
 
@@ -30,6 +34,8 @@ var can_double_jump = false
 var coyote_time_remaining = 0.0  # Keeps track of the coyote time
 var is_double_jumping = false
 var is_dead = false
+var jump_effect_visible = false 
+var is_walking: bool = false
 
 func _ready() -> void:
 	Global.player = self  # Assign the player reference
@@ -67,7 +73,6 @@ func _die():
 
 
 func _physics_process(delta: float) -> void:
-	
 	if is_dead:
 		return
 	handle_jumping(delta)
@@ -83,6 +88,7 @@ func _physics_process(delta: float) -> void:
 		coyote_time_remaining = COYOTE_TIME  # Reset coyote time
 		can_double_jump = true
 		is_double_jumping = false
+	
 	
 	move_and_slide()
 	if SPEED > previous_speed:
@@ -105,23 +111,39 @@ func _on_speed_increase() -> void:
 	# Make the particle node visible and emit particles
 	cpu_particles.visible = true
 	cpu_particles.emitting = true
+	await get_tree().create_timer(2.0).timeout
+	cpu_particles.emitting = false
 
+func _trigger_step_particles():
+	# Instance the particle scene
+	var new_rundust = run_dust.instantiate() as Node2D
+	
+	# Set the particle's position to the character's position (adjust offset if needed)
+	if velocity.x < 0:
+		new_rundust.position = walkn_jump_l.global_position
+	if velocity.x > 0:
+		new_rundust.position = walkn_jump_r.global_position  # Offset for foot placement
+	
+	# Add the particle instance to the scene
+	get_tree().current_scene.add_child(new_rundust)
+	
 
 func handle_jumping(delta: float) -> void:
 	if !is_on_floor():
 		coyote_time_remaining -= delta
-	
 	if Input.is_action_just_pressed("jump"):
 		if is_on_floor() or coyote_time_remaining > 0.0:
 			velocity.y = JUMP_VELOCITY
 			can_double_jump = true  # Reset double jump
 			animated_sprite_2d.play("gunjump")
+			_trigger_jump_effect()
 			audio_stream_player_2d.play()
 		elif can_double_jump:
 			velocity.y = DOUBLE_JUMP_VELOCITY
 			can_double_jump = false
 			is_double_jumping = true
 			animated_sprite_2d.play("doublejump")
+			_trigger_doublejump_effect()
 			audio_stream_player_2d.play()
 
 	if Input.is_action_just_released("jump") and velocity.y <0:
@@ -142,6 +164,25 @@ func handle_movement(delta: float) -> void:
 	elif velocity.x > target_velocity_x:
 		velocity.x -= deceleration * delta
 		velocity.x = max(velocity.x, target_velocity_x)  # Clamp to avoid overshooting
+		
+	if is_on_floor() and target_velocity_x != 0 and !is_walking:
+		foot_steps.start()
+		is_walking = true
+	elif target_velocity_x == 0:
+		is_walking = false
+
+
+func _trigger_jump_effect() -> void:
+	# Make the particle effect visible and emit
+	%JumpEffect.visible = true
+	%JumpEffect.emitting = true
+	%JumpEffect2.emitting = true
+	
+func _trigger_doublejump_effect() -> void:
+	# Make the particle effect visible and emit
+	%DoubleJumpEffect.visible = true
+	%DoubleJumpEffect.emitting = true
+	%JumpEffect2.emitting = true 
 
 func handle_animation() -> void:
 	if health <= 0:
@@ -188,3 +229,7 @@ func _on_game_over():
 func _on_pick_up_gun_picked_up() -> void:
 	%Gun2.set_collision_mask_value(3, true)
 	%Gun2.visible = true
+
+
+func _on_foot_steps_timeout() -> void:
+	_trigger_step_particles()
