@@ -1,4 +1,4 @@
-[gd_scene load_steps=183 format=3 uid="uid://c8sbp2d4k2aou"]
+[gd_scene load_steps=184 format=3 uid="uid://c8sbp2d4k2aou"]
 
 [ext_resource type="Script" path="res://Scenes/HypercoreGauntlet.gd" id="1_aav37"]
 [ext_resource type="Script" path="res://addons/gaea/renderers/2D/tilemap_gaea_renderer.gd" id="2_bqeif"]
@@ -90,6 +90,7 @@
 [ext_resource type="PackedScene" uid="uid://bpcrood65pxvy" path="res://Scenes/PauseButton.tscn" id="88_b882s"]
 [ext_resource type="PackedScene" uid="uid://bnvfoqqwf8ub" path="res://Scenes/SurvivorControl.tscn" id="89_4jwms"]
 [ext_resource type="PackedScene" uid="uid://fsxm1bfx6ihb" path="res://Scenes/TimePanel.tscn" id="90_xpk53"]
+[ext_resource type="FontFile" uid="uid://ckid4fla6wirc" path="res://assets/etc/Starzoom-Shavian.ttf" id="91_ty3lm"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_w27gi"]
 noise_type = 4
@@ -740,5 +741,16 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="SurvivalControl" parent="Control" instance=ExtResource("89_4jwms")]
+
+[node name="FinalTime" type="Label" parent="."]
+z_index = 4
+offset_left = 197.0
+offset_top = 257.0
+offset_right = 585.0
+offset_bottom = 288.0
+scale = Vector2(1.96832, 1.47186)
+theme_override_fonts/font = ExtResource("91_ty3lm")
+theme_override_font_sizes/font_size = 30
+metadata/_edit_use_anchors_ = true
 
 [connection signal="scene_kill_updated" from="GameManager" to="Survivor" method="_on_game_manager_scene_kill_updated"]

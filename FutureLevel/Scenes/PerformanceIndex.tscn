@@ -40,9 +40,9 @@ func _process(delta: float) -> void:
 func update_performance_page():
 	%OverallKills.text = \"Enimeies 
 	Eliminated: %s\" % str(GameManager.total_kills)
-	%FastestTime.text = \"FASTEST LEGACY RUN: %\" % GameManager.quickest_time
-	%LongestTimeSurvived.text = str(GameManager.longest_survival) + \"s\"
-	%OverallCash.text = str(GameManager.total_cash)
+	%FastestTime.text = \"FASTEST LEGACY RUN: %s\" % GameManager.quickest_time
+	%LongestTimeSurvived.text = \"LONGEST GAUNTLET RUN:\" + str(GameManager.longest_survival) + \"s\"
+	%OverallCash.text = \"$BANK$: $%s\" % str(GameManager.total_cash)
 
 
 func _on_home_button_pressed() -> void:

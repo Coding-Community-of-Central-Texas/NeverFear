@@ -208,7 +208,6 @@ frame_progress = 0.399281
 
 [node name="Fire4" type="AnimatedSprite2D" parent="CanvasLayer/Fire"]
 position = Vector2(83.3658, 0.588242)
-scale = Vector2(1, 1)
 sprite_frames = SubResource("SpriteFrames_ghm2x")
 animation = &"burn"
 autoplay = "burn"
@@ -216,7 +215,6 @@ frame_progress = 0.870152
 
 [node name="Fire3" type="AnimatedSprite2D" parent="CanvasLayer/Fire"]
 position = Vector2(61.965, 0)
-scale = Vector2(1, 1)
 sprite_frames = SubResource("SpriteFrames_ghm2x")
 animation = &"burn"
 autoplay = "burn"
@@ -224,7 +222,6 @@ frame_progress = 0.861047
 
 [node name="Fire2" type="AnimatedSprite2D" parent="CanvasLayer/Fire"]
 position = Vector2(31.2257, -0.294113)
-scale = Vector2(1, 1)
 sprite_frames = SubResource("SpriteFrames_ghm2x")
 animation = &"burn"
 autoplay = "burn"
