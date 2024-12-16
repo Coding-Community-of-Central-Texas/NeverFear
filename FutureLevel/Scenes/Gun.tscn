@@ -161,6 +161,7 @@ show_behind_parent = true
 z_index = -1
 position = Vector2(10, 11)
 rotation = 0.138923
+emitting = false
 amount = 7
 lifetime = 0.75
 speed_scale = 0.45
