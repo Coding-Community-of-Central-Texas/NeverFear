@@ -66,13 +66,13 @@ func randomize_power_up():
 			%Health.visible = false
 			%Heart.visible = false
 		PowerUpType.SPEED:
-			power_up_value = randi_range(15, 19)
+			power_up_value = randi_range(15, 40)
 			%Star.visible = true
 			%Health.visible = false
 			%Heart.visible = false
 			%CashSpin.visible = false
 		PowerUpType.HEALTH:
-			power_up_value = randi_range(5, 10)  
+			power_up_value = randi_range(10, 60)  
 			%Health.visible = true
 			%Star.visible = false
 			%Heart.visible = false

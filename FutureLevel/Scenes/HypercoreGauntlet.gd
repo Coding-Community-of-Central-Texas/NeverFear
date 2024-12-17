@@ -1,8 +1,8 @@
 extends Node2D
 
 @onready var survivor: CharacterBody2D = $Survivor
-@onready var final_time: Label = $FinalTime
 @onready var time_panel: Panel = $CanvasLayer/TimePanel
+@onready var final_time: Label = $DeathndSpawn/FinalTime
 
 
 func _on_scene_transition() -> void:

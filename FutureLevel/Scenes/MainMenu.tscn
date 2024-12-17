@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://b8aq7pak842g0"]
+[gd_scene load_steps=24 format=3 uid="uid://b8aq7pak842g0"]
 
 [ext_resource type="Script" path="res://Scripts/MainMenu.gd" id="1_ole10"]
 [ext_resource type="Texture2D" uid="uid://bcypd57pmrt63" path="res://assets/Background/Hero.svg" id="2_fschk"]
@@ -12,7 +12,6 @@
 [ext_resource type="Texture2D" uid="uid://d1wlj0qisaufc" path="res://assets/Guns&Bullets/fire_30.png" id="8_116gb"]
 [ext_resource type="Texture2D" uid="uid://35dyx2vgd6cm" path="res://assets/etc/Star.png" id="9_g7gmw"]
 [ext_resource type="Texture2D" uid="uid://dtmoad6blffsk" path="res://assets/etc/flare_3.png" id="10_daf4p"]
-[ext_resource type="Texture2D" uid="uid://cvp6xuoc6u6l4" path="res://assets/etc/Icons_56.png" id="11_pv86b"]
 [ext_resource type="Texture2D" uid="uid://b2ans61yt43mf" path="res://assets/etc/Trophy.png" id="13_8ftns"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_o5ej8"]
@@ -290,12 +289,6 @@ scale_amount_min = 0.0
 scale_amount_max = 0.9
 scale_amount_curve = SubResource("Curve_tljel")
 color = Color(0.991606, 1, 0.496144, 1)
-
-[node name="Icons56" type="Sprite2D" parent="MenuBox"]
-z_index = 2
-position = Vector2(394, 393)
-rotation = 0.191986
-texture = ExtResource("11_pv86b")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 z_index = -1

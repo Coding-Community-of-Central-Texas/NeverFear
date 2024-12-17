@@ -1,4 +1,4 @@
-[gd_scene load_steps=184 format=3 uid="uid://c8sbp2d4k2aou"]
+[gd_scene load_steps=189 format=3 uid="uid://c8sbp2d4k2aou"]
 
 [ext_resource type="Script" path="res://Scenes/HypercoreGauntlet.gd" id="1_aav37"]
 [ext_resource type="Script" path="res://addons/gaea/renderers/2D/tilemap_gaea_renderer.gd" id="2_bqeif"]
@@ -680,6 +680,120 @@ sources/74 = SubResource("TileSetAtlasSource_y4tan")
 sources/75 = SubResource("TileSetAtlasSource_llo5o")
 sources/76 = SubResource("TileSetAtlasSource_g3xb1")
 
+[sub_resource type="CanvasTexture" id="CanvasTexture_gihud"]
+
+[sub_resource type="Animation" id="Animation_l2rq5"]
+resource_name = "load"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("FinalTime:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("TextureRect/3:text")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.433333, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": ["READY?", "GO! GO!", "GOOO!!!"]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("TextureRect:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="Animation" id="Animation_4r3fk"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("FinalTime:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("TextureRect/3:text")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": ["3"]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("TextureRect:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_46cvv"]
+resource_name = "diestat"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TextureRect:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("FinalTime:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ukdey"]
+_data = {
+"RESET": SubResource("Animation_4r3fk"),
+"diestat": SubResource("Animation_46cvv"),
+"load": SubResource("Animation_l2rq5")
+}
+
 [node name="HypercoreGauntlet" type="Node2D"]
 script = ExtResource("1_aav37")
 
@@ -743,15 +857,93 @@ size_flags_vertical = 3
 
 [node name="SurvivalControl" parent="Control" instance=ExtResource("89_4jwms")]
 
-[node name="FinalTime" type="Label" parent="."]
-z_index = 4
-offset_left = 197.0
-offset_top = 257.0
-offset_right = 585.0
-offset_bottom = 288.0
+[node name="DeathndSpawn" type="CanvasLayer" parent="."]
+process_mode = 3
+layer = 2
+
+[node name="FinalTime" type="Label" parent="DeathndSpawn"]
+visible = false
+z_index = 6
+anchors_preset = -1
+anchor_left = 0.175
+anchor_top = 0.384259
+anchor_right = 0.882137
+anchor_bottom = 0.43741
+offset_right = -375.708
+offset_bottom = -18.4026
 scale = Vector2(1.96832, 1.47186)
 theme_override_fonts/font = ExtResource("91_ty3lm")
 theme_override_font_sizes/font_size = 30
+text = "Final Time: "
 metadata/_edit_use_anchors_ = true
+
+[node name="TextureRect" type="TextureRect" parent="DeathndSpawn"]
+self_modulate = Color(0.0383972, 0.0383972, 0.0383972, 1)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("CanvasTexture_gihud")
+
+[node name="Title" type="Label" parent="DeathndSpawn/TextureRect"]
+layout_mode = 0
+offset_left = 350.0
+offset_top = 214.0
+offset_right = 600.0
+offset_bottom = 373.0
+scale = Vector2(1.5669, 1.12145)
+theme_override_fonts/font = ExtResource("91_ty3lm")
+theme_override_font_sizes/font_size = 50
+text = "Mission:
+
+Survive"
+horizontal_alignment = 1
+
+[node name="3" type="Label" parent="DeathndSpawn/TextureRect"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.475926
+anchor_top = 0.389815
+anchor_right = 0.524074
+anchor_bottom = 0.45463
+offset_left = 7.0
+offset_top = 6.0
+offset_right = -7.0
+offset_bottom = -6.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("91_ty3lm")
+theme_override_font_sizes/font_size = 69
+text = "3"
+metadata/_edit_use_anchors_ = true
+
+[node name="1" type="Label" parent="DeathndSpawn/TextureRect"]
+visible = false
+layout_mode = 0
+offset_left = 486.0
+offset_top = 461.0
+offset_right = 526.0
+offset_bottom = 512.0
+theme_override_fonts/font = ExtResource("91_ty3lm")
+theme_override_font_sizes/font_size = 50
+text = "1"
+
+[node name="2" type="Label" parent="DeathndSpawn/TextureRect"]
+visible = false
+layout_mode = 0
+offset_left = 486.0
+offset_top = 461.0
+offset_right = 526.0
+offset_bottom = 512.0
+theme_override_fonts/font = ExtResource("91_ty3lm")
+theme_override_font_sizes/font_size = 50
+text = "2"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="DeathndSpawn"]
+libraries = {
+"": SubResource("AnimationLibrary_ukdey")
+}
+autoplay = "load"
 
 [connection signal="scene_kill_updated" from="GameManager" to="Survivor" method="_on_game_manager_scene_kill_updated"]

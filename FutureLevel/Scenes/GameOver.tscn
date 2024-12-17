@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://8o5ihpf0h8ej"]
+[gd_scene load_steps=23 format=3 uid="uid://8o5ihpf0h8ej"]
 
 [ext_resource type="Script" path="res://Scripts/GameOver.gd" id="1_r0wvx"]
 [ext_resource type="AudioStream" uid="uid://bpcayivn7waop" path="res://assets/FutrueSFX/DavidKBD - Eternity Pack - 05 - Evil soul inside - loop.ogg" id="2_ypdy7"]
@@ -27,9 +27,251 @@ tracks/0/keys = {
 "update": 0,
 "values": [Color(1, 1, 1, 0)]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CyborgDeath:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CyborgDeath:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0.027)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("CyborgDeath/Shadow2:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("CyborgDeath/Shadow2:scale")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.461765, 2.00411)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("MissionFail:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(69.298, 601.848)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("MissionFail:scale")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1.99858)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("MissionFail:rotation")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-0.340339]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("MissionFail:self_modulate")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(7.567, 100, 100, 1)]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("MissionFail:text")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": ["MISSION FAILED!"]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("Fail:text")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": ["                      FAILED!"]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("Fail:rotation")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("MissionFail:layout_mode")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("Fail:position")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(62, 1360.23)]
+}
+tracks/14/type = "value"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath("Fail:visible")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/15/type = "value"
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/path = NodePath("Fail:scale")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(2.08, 1.999)]
+}
+tracks/16/type = "value"
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/path = NodePath("Lightrays8:self_modulate")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.643, 0.643, 0.643, 0.232)]
+}
+tracks/17/type = "value"
+tracks/17/imported = false
+tracks/17/enabled = true
+tracks/17/path = NodePath("Lightrays8/CPUParticles2D:visible")
+tracks/17/interp = 1
+tracks/17/loop_wrap = true
+tracks/17/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/18/type = "value"
+tracks/18/imported = false
+tracks/18/enabled = true
+tracks/18/path = NodePath("MainMenu:modulate")
+tracks/18/interp = 1
+tracks/18/loop_wrap = true
+tracks/18/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/19/type = "value"
+tracks/19/imported = false
+tracks/19/enabled = true
+tracks/19/path = NodePath("Restart:modulate")
+tracks/19/interp = 1
+tracks/19/loop_wrap = true
+tracks/19/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/20/type = "value"
+tracks/20/imported = false
+tracks/20/enabled = true
+tracks/20/path = NodePath("Lightrays8/CPUParticles2D:emitting")
+tracks/20/interp = 1
+tracks/20/loop_wrap = true
+tracks/20/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="Animation" id="Animation_2370h"]
 resource_name = "gameover"
+length = 10.0
+step = 0.0333
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -37,10 +279,250 @@ tracks/0/path = NodePath(".:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.433333, 0.666667, 0.8, 1),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.266667, 0.533333, 0.833333),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0.25098), Color(1, 1, 1, 0.47451), Color(1, 1, 1, 0.843137), Color(1, 1, 1, 1)]
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0.25098), Color(1, 1, 1, 0.47451), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CyborgDeath:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CyborgDeath:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(1, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0.027), Color(1, 1, 1, 0.984)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("CyborgDeath/Shadow2:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.966667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("CyborgDeath/Shadow2:scale")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(1.13333, 1.56667, 1.998, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0.2, 0.754), Vector2(0.397, 0.719), Vector2(0.461, 0.824), Vector2(0.462, 0.829)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("MissionFail:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0.866667, 1.4, 2.23333, 2.5, 2.8, 3.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(69.298, -136.293), Vector2(69.298, 500.64), Vector2(106.266, 455.299), Vector2(14.5416, 409.958), Vector2(69.298, 349.504), Vector2(69.298, 349.504)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("MissionFail:scale")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0.733333, 1.63333, 2.06667),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0.002, 0.004), Vector2(0.007, 0.014), Vector2(1, 1.99858)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("MissionFail:rotation")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0.666667, 1.93333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [-0.340339, 0.0]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("MissionFail:self_modulate")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(2.1, 2.36667, 2.63333, 2.96667),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(0.756863, 0.45098, 0, 1), Color(1, 1, 1, 1), Color(0.755653, 0.451036, 0, 1), Color(1, 1, 1, 1)]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("MissionFail:text")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0.266667, 3.7, 3.83333, 4.7, 4.796, 5.1, 5.43333, 5.8, 6.1, 6.26667, 6.56667, 6.93333, 7.26667, 7.66667, 8.13333),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": ["MISSION FAILED!", "MISSION FAILED!", "MISSION ", "MISSION ", "MISSION.", "MISSION..", "MISSION...", "MISSION.", "MISSION..", "MISSION ", "MISSION..", "MISSION...", "MISSION.", "MISSION..", "MISSION "]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("Fail:text")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(3.73333),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": ["                      FAILED!"]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("Fail:rotation")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(3.73333, 4.03333, 4.43333, 4.6, 4.76667, 4.96667, 8.73447),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.297823, 1.76654, 1.82387, 1.39452, 1.58246, 0.0]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("MissionFail:layout_mode")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0.266667),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("Fail:position")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(3.73157, 4.66667, 4.9, 8.73447, 9.2, 9.60573, 9.99),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(62, 365.697), Vector2(62, 365.697), Vector2(62, 1360.23), Vector2(465, 1518), Vector2(465, 353.552), Vector2(62, 365.697), Vector2(58.1665, 365.697)]
+}
+tracks/14/type = "value"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath("Fail:visible")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = {
+"times": PackedFloat32Array(0.0666667, 3.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/15/type = "value"
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/path = NodePath("Fail:scale")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/keys = {
+"times": PackedFloat32Array(3.73427, 4.30037, 4.66667, 8.86767, 8.96757, 9.43333, 9.63357, 9.86667, 10),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1.999), Vector2(1.27, 1.999), Vector2(1.379, 1.999), Vector2(1, 1.99858), Vector2(2.08, 1.999), Vector2(2.08, 1.999), Vector2(0.355, 1.999), Vector2(1.33, 1.999), Vector2(1, 1.999)]
+}
+tracks/16/type = "value"
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/path = NodePath("Lightrays8:self_modulate")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/keys = {
+"times": PackedFloat32Array(0.9657, 2.1645),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0.643, 0.643, 0.643, 0), Color(0.643, 0.643, 0.643, 0.902)]
+}
+tracks/17/type = "value"
+tracks/17/imported = false
+tracks/17/enabled = false
+tracks/17/path = NodePath("Lightrays8/CPUParticles2D:visible")
+tracks/17/interp = 1
+tracks/17/loop_wrap = true
+tracks/17/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"update": 1,
+"values": []
+}
+tracks/18/type = "value"
+tracks/18/imported = false
+tracks/18/enabled = true
+tracks/18/path = NodePath("MainMenu:modulate")
+tracks/18/interp = 1
+tracks/18/loop_wrap = true
+tracks/18/keys = {
+"times": PackedFloat32Array(0, 3.03333, 3.76667, 4.36667),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 0.222), Color(1, 1, 1, 1)]
+}
+tracks/19/type = "value"
+tracks/19/imported = false
+tracks/19/enabled = true
+tracks/19/path = NodePath("Restart:modulate")
+tracks/19/interp = 1
+tracks/19/loop_wrap = true
+tracks/19/keys = {
+"times": PackedFloat32Array(0, 2.96667, 3.73333, 4.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 0.157), Color(1, 1, 1, 1)]
+}
+tracks/20/type = "value"
+tracks/20/imported = false
+tracks/20/enabled = true
+tracks/20/path = NodePath("Lightrays8/CPUParticles2D:emitting")
+tracks/20/interp = 1
+tracks/20/loop_wrap = true
+tracks/20/keys = {
+"times": PackedFloat32Array(0, 2.5308, 8.9577),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, true]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_frrq6"]
@@ -48,6 +530,34 @@ _data = {
 "RESET": SubResource("Animation_0sdvk"),
 "gameover": SubResource("Animation_2370h")
 }
+
+[sub_resource type="Shader" id="Shader_fgswh"]
+code = "shader_type canvas_item;
+
+uniform vec4 color_override : source_color;
+void fragment() {
+    vec4 tex_color = texture(TEXTURE, UV);
+    if (tex_color.a > 0.0) { // Ignore transparent pixels
+        COLOR = color_override * vec4(1.0, 1.0, 1.0, tex_color.a);
+    } else {
+        COLOR = tex_color;
+    }
+}
+"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ggxw1"]
+shader = SubResource("Shader_fgswh")
+shader_parameter/color_override = Color(0.277528, 0.277528, 0.277528, 1)
+
+[sub_resource type="Curve" id="Curve_163tk"]
+max_value = 2.75
+_data = [Vector2(0, 0.193662), 0.0, 1.93124, 0, 1, Vector2(0.401114, 0.96831), 0.0, 0.0, 0, 0, Vector2(0.685237, 1.06514), 0.239739, 0.239739, 0, 0, Vector2(0.888579, 0.0968311), -11.3767, 0.0, 0, 0, Vector2(0.896936, 1.68486), 0.0, 0.0, 0, 0, Vector2(0.924791, 0.116197), 0.0, 0.0, 0, 0, Vector2(0.955432, 1.78169), 0.0, 0.0, 0, 0, Vector2(0.961003, 0.0774648), 0.0, 0.0, 0, 0]
+point_count = 8
+
+[sub_resource type="Curve" id="Curve_erosc"]
+max_value = 3.25
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.314763, 0), 0.0, 0.0, 0, 0, Vector2(0.423398, 1.28169), 0.0, 0.0, 0, 0, Vector2(0.752089, 1.32746), 0.0, 0.0, 0, 0, Vector2(0.871866, 0.205986), 0.0, 0.0, 0, 0, Vector2(0.874652, 1.69366), 0.0, 0.0, 0, 0, Vector2(0.924791, 0.205986), -1.68545, -1.68545, 0, 0, Vector2(0.941504, 1.8081), 0.0, 0.0, 0, 0, Vector2(0.969359, 0.0228872), 0.0, 0.0, 0, 0]
+point_count = 9
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_pes4g"]
 atlas = ExtResource("6_xxxhg")
@@ -87,22 +597,23 @@ animations = [{
 
 [node name="GameOver" type="Node2D"]
 process_mode = 3
-z_index = 1
 position = Vector2(221.996, -197.005)
 scale = Vector2(2, 2)
 script = ExtResource("1_r0wvx")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("2_ypdy7")
-volume_db = 0.795
-pitch_scale = 0.41
+volume_db = 1.19
+pitch_scale = 0.91
 autoplay = true
+playback_type = 1
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 layer = 2
 
 [node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
 modulate = Color(1, 1, 1, 0)
+self_modulate = Color(0.366595, 0.366595, 0.366595, 1)
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -113,48 +624,64 @@ grow_vertical = 2
 scale = Vector2(1.78797, 0.741051)
 color = Color(0, 0, 0, 1)
 
-[node name="Label" type="Label" parent="CanvasLayer/ColorRect"]
+[node name="MissionFail" type="Label" parent="CanvasLayer/ColorRect"]
+self_modulate = Color(7.567, 100, 100, 1)
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -159.202
-offset_top = -331.417
-offset_right = 178.798
-offset_bottom = -280.417
+anchors_preset = -1
+anchor_left = 0.114165
+anchor_top = 0.222451
+anchor_right = 0.918119
+anchor_bottom = 0.292313
+offset_top = 24.9469
+offset_bottom = -25.9807
 grow_horizontal = 2
 grow_vertical = 2
+rotation = -0.340339
 scale = Vector2(1, 1.99858)
+pivot_offset = Vector2(248.381, 24.9824)
 theme_override_colors/font_color = Color(0.8, 0.016, 0.016, 1)
-theme_override_colors/font_shadow_color = Color(0.1782, 0.66, 0.65197, 1)
-theme_override_colors/font_outline_color = Color(0.266, 0.410667, 0.7, 1)
+theme_override_colors/font_shadow_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = -4
+theme_override_constants/shadow_offset_y = 3
+theme_override_constants/outline_size = 7
 theme_override_fonts/font = ExtResource("2_yq4vp")
 theme_override_font_sizes/font_size = 50
 text = "MISSION FAILED!"
+metadata/_edit_use_anchors_ = true
+
+[node name="Fail" type="Label" parent="CanvasLayer/ColorRect"]
+visible = false
+z_index = 2
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.499453
+anchor_top = -1.10186
+anchor_right = 0.499453
+anchor_bottom = -1.10186
+offset_left = 161.832
+offset_top = 2567.23
+offset_right = 655.832
+offset_bottom = 2619.27
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(2.08, 1.999)
+pivot_offset = Vector2(271.257, 42.6178)
+theme_override_colors/font_color = Color(0.8, 0.016, 0.016, 1)
+theme_override_colors/font_shadow_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = -4
+theme_override_constants/shadow_offset_y = 3
+theme_override_constants/outline_size = 7
+theme_override_fonts/font = ExtResource("2_yq4vp")
+theme_override_font_sizes/font_size = 50
+text = "                      FAILED!"
 
 [node name="Restart" type="TouchScreenButton" parent="CanvasLayer/ColorRect"]
+modulate = Color(1, 1, 1, 0)
 position = Vector2(170.025, 707.104)
-scale = Vector2(1.51455, 1.4858)
+scale = Vector2(2.04254, 2.14059)
 shape = SubResource("RectangleShape2D_u1hko")
-
-[node name="Label2" type="Label" parent="CanvasLayer/ColorRect/Restart"]
-z_index = 1
-texture_filter = 6
-offset_left = -42.4671
-offset_top = -13.6234
-offset_right = 91.5329
-offset_bottom = 10.3766
-scale = Vector2(0.519683, 1.71934)
-theme_override_colors/font_color = Color(0.891402, 0, 0.00656927, 1)
-theme_override_colors/font_outline_color = Color(0.0338533, 0.0338533, 0.0338533, 1)
-theme_override_constants/outline_size = 6
-theme_override_fonts/font = ExtResource("2_yq4vp")
-theme_override_font_sizes/font_size = 20
-text = "TRY AGAIN?"
-autowrap_mode = 2
-metadata/_edit_use_anchors_ = true
 
 [node name="UIbutton" type="Sprite2D" parent="CanvasLayer/ColorRect/Restart"]
 modulate = Color(1, 1, 0, 1)
@@ -162,9 +689,33 @@ position = Vector2(-2.95424, 23.6137)
 scale = Vector2(0.142968, 0.241212)
 texture = ExtResource("4_ssp7s")
 
+[node name="Label2" type="Label" parent="CanvasLayer/ColorRect/Restart"]
+z_index = 1
+texture_filter = 6
+anchors_preset = -1
+offset_left = -25.1916
+offset_top = -11.9777
+offset_right = 108.808
+offset_bottom = 93.0223
+scale = Vector2(0.264571, 0.498435)
+theme_override_colors/font_color = Color(0.891402, 0, 0.00656927, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/shadow_offset_x = -6
+theme_override_constants/shadow_offset_y = 6
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("2_yq4vp")
+theme_override_font_sizes/font_size = 50
+text = "AGAIN?"
+horizontal_alignment = 1
+autowrap_mode = 2
+metadata/_edit_use_anchors_ = true
+
 [node name="MainMenu" type="TouchScreenButton" parent="CanvasLayer/ColorRect"]
-position = Vector2(451.909, 700.357)
-scale = Vector2(1.45862, 1.53977)
+modulate = Color(1, 1, 1, 0)
+z_index = 3
+position = Vector2(466.451, 709.803)
+scale = Vector2(2.006, 2.1)
 shape = SubResource("RectangleShape2D_u1hko")
 
 [node name="UIbutton2" type="Sprite2D" parent="CanvasLayer/ColorRect/MainMenu"]
@@ -176,17 +727,26 @@ texture = ExtResource("4_ssp7s")
 [node name="Label3" type="Label" parent="CanvasLayer/ColorRect/MainMenu"]
 z_index = 1
 texture_filter = 6
-offset_left = -31.0587
-offset_top = -13.1458
-offset_right = 64.9413
-offset_bottom = 10.8542
-scale = Vector2(0.670851, 1.51697)
+anchors_preset = -1
+anchor_left = 0.0423847
+anchor_top = 0.00277474
+anchor_right = 0.0423847
+anchor_bottom = 0.0164828
+offset_left = -18.1227
+offset_top = -10.924
+offset_right = 77.8773
+offset_bottom = 40.076
+scale = Vector2(0.278089, 0.503312)
 theme_override_colors/font_color = Color(0.891402, 0, 0.00656927, 1)
-theme_override_colors/font_outline_color = Color(0.0338533, 0.0338533, 0.0338533, 1)
-theme_override_constants/outline_size = 6
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/shadow_offset_x = -6
+theme_override_constants/shadow_offset_y = 5
+theme_override_constants/outline_size = 3
 theme_override_fonts/font = ExtResource("2_yq4vp")
-theme_override_font_sizes/font_size = 20
+theme_override_font_sizes/font_size = 50
 text = "HOME"
+horizontal_alignment = 1
 autowrap_mode = 2
 metadata/_edit_use_anchors_ = true
 
@@ -203,26 +763,66 @@ volume_db = 2.1
 pitch_scale = 1.4
 
 [node name="CyborgDeath" type="Sprite2D" parent="CanvasLayer/ColorRect"]
-z_index = 1
-position = Vector2(305.934, 1003.98)
+visible = false
+modulate = Color(1, 1, 1, 0.027)
+z_index = 3
+position = Vector2(315.442, 774.576)
 scale = Vector2(1.11859, 2.69887)
 texture = ExtResource("6_q5oov")
 region_enabled = true
 region_rect = Rect2(231, 0, 57, 48)
 
-[node name="Lightrays8" type="Sprite2D" parent="CanvasLayer/ColorRect"]
-modulate = Color(1, 1, 1, 0.454)
-position = Vector2(309.289, 885.229)
-texture = ExtResource("7_78ycr")
-
-[node name="Shadow" type="Sprite2D" parent="CanvasLayer/ColorRect"]
-modulate = Color(0, 0, 0, 0.760784)
-position = Vector2(299.222, 1107.89)
-scale = Vector2(0.125654, 1.02093)
+[node name="Shadow" type="Sprite2D" parent="CanvasLayer/ColorRect/CyborgDeath"]
+modulate = Color(0, 0, 0, 0.936)
+show_behind_parent = true
+position = Vector2(-5.60202, 39.9692)
+scale = Vector2(0.113024, 0.382811)
 texture = ExtResource("8_g2vhn")
 
+[node name="Shadow2" type="Sprite2D" parent="CanvasLayer/ColorRect/CyborgDeath"]
+visible = false
+show_behind_parent = true
+z_index = -1
+material = SubResource("ShaderMaterial_ggxw1")
+position = Vector2(-2.50003, 26.3712)
+scale = Vector2(0.461765, 2.00411)
+texture = ExtResource("8_g2vhn")
+region_enabled = true
+region_rect = Rect2(451.44, 235.9, 281.56, 101.2)
+
+[node name="Lightrays8" type="Sprite2D" parent="CanvasLayer/ColorRect"]
+self_modulate = Color(0.643, 0.643, 0.643, 0.232)
+z_index = 3
+position = Vector2(311.526, 655.052)
+scale = Vector2(0.425, 0.924718)
+texture = ExtResource("7_78ycr")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="CanvasLayer/ColorRect/Lightrays8"]
+visible = false
+z_index = 4
+position = Vector2(2.63196, -311.453)
+scale = Vector2(2.35294, 1.08141)
+emitting = false
+amount = 81
+lifetime = 0.9
+speed_scale = 0.99
+emission_shape = 3
+emission_rect_extents = Vector2(3.28, 0.33)
+direction = Vector2(0, -1)
+spread = 173.15
+initial_velocity_min = 38.88
+initial_velocity_max = 38.88
+linear_accel_min = 0.1
+linear_accel_max = 0.1
+scale_amount_min = 2.1
+scale_amount_max = 2.96
+split_scale = true
+scale_curve_x = SubResource("Curve_163tk")
+scale_curve_y = SubResource("Curve_erosc")
+color = Color(0.0879139, 0.237604, 0.62394, 1)
+
 [node name="Fire" type="AnimatedSprite2D" parent="CanvasLayer"]
-z_index = 1
+z_index = 3
 position = Vector2(147, 1023)
 scale = Vector2(10.28, 3.4)
 sprite_frames = SubResource("SpriteFrames_ghm2x")

@@ -7,14 +7,11 @@
 [node name="Virtual Joystick" parent="." instance=ExtResource("1_niblt")]
 modulate = Color(0.960784, 0, 0.247059, 0.909804)
 anchors_preset = -1
-anchor_left = 0.353
-anchor_top = 0.746
-anchor_right = 0.631
-anchor_bottom = 1.024
-offset_left = -0.240021
-offset_top = 0.319885
-offset_right = -0.480042
-offset_bottom = 0.0799561
+anchor_top = 0.192593
+anchor_right = 1.0
+offset_top = 0.0
+offset_right = 0.0
+offset_bottom = 0.0
 grow_horizontal = 2
 grow_vertical = 2
 pressed_color = Color(0.383468, 0.262729, 1, 1)

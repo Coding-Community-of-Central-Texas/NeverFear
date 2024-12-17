@@ -357,7 +357,7 @@ _data = {
 }
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_xqfdh"]
-radius = 20.5
+radius = 26.0048
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_630u5"]
 radius = 33.8596
@@ -436,25 +436,29 @@ wait_time = 134.62
 autostart = true
 
 [node name="GauntletSpawn" parent="." instance=ExtResource("11_dc7s1")]
-position = Vector2(321.5, -8)
+position = Vector2(870.5, -73.5)
 
 [node name="GauntletSpawn4" parent="." instance=ExtResource("11_dc7s1")]
-position = Vector2(-59, 359.5)
+position = Vector2(-17.5, 1044.5)
+rotation = -1.4829
 
 [node name="GauntletSpawn3" parent="." instance=ExtResource("11_dc7s1")]
-position = Vector2(-539, -75)
+position = Vector2(-1273, -41.5)
 
 [node name="GauntletSpawn2" parent="." instance=ExtResource("11_dc7s1")]
-position = Vector2(2, -440.5)
+position = Vector2(-0.499996, -826)
+rotation = -1.47059
 
 [node name="GauntletBigSpawn" parent="." instance=ExtResource("12_kcvup")]
-position = Vector2(397.5, -371)
+position = Vector2(228, -282.5)
+rotation = -0.82512
 
 [node name="GauntletBigSpawn3" parent="." instance=ExtResource("12_kcvup")]
-position = Vector2(-523.5, -480)
+position = Vector2(-262, -290.5)
+rotation = 0.591119
 
 [node name="GauntletBigSpawn2" parent="." instance=ExtResource("12_kcvup")]
-position = Vector2(634, 56)
+position = Vector2(27.5, 288.5)
 
 [node name="Rank1" type="Sprite2D" parent="."]
 visible = false

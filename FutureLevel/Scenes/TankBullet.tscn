@@ -50,7 +50,7 @@ _data = [Vector2(0.0220995, 0.090515), 0.0, 0.0, 0, 0, Vector2(0.143646, 0.08270
 point_count = 4
 
 [sub_resource type="Gradient" id="Gradient_xi4jx"]
-offsets = PackedFloat32Array(0.0508982, 0.107784, 0.377246, 0.526946, 0.670659)
+offsets = PackedFloat32Array(0.0508982, 0.199396, 0.34139, 0.655589, 0.8429)
 colors = PackedColorArray(0.02, 0.02, 0.02, 1, 0.61, 0.61, 0.61, 1, 1, 1, 1, 1, 1, 1, 1, 0.564706, 1, 1, 1, 0.180392)
 
 [node name="TankBullet" type="Area2D"]
@@ -88,6 +88,7 @@ gravity = Vector2(0, 0)
 initial_velocity_min = 267.01
 initial_velocity_max = 382.19
 scale_amount_curve = SubResource("Curve_ylm13")
+color = Color(1, 1, 1, 0.341)
 color_ramp = SubResource("Gradient_xi4jx")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

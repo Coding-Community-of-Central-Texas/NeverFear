@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://c62nhdlvjd5tk"]
+[gd_scene load_steps=8 format=3 uid="uid://c62nhdlvjd5tk"]
 
 [ext_resource type="Script" path="res://Scripts/Bullet.gd" id="1_x7n78"]
 [ext_resource type="Texture2D" uid="uid://1imxhw66404d" path="res://assets/Guns&Bullets/01.png" id="2_qpgtf"]
@@ -7,9 +7,19 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_c5l0h"]
 radius = 6.0
 
+[sub_resource type="Curve" id="Curve_8obes"]
+max_value = 1.4
+_data = [Vector2(0, 0), 0.0, 0.765284, 0, 0, Vector2(0.284123, 0.295775), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Curve" id="Curve_88qj6"]
+max_value = 0.6
+_data = [Vector2(0, 0.0676056), 0.0, 0.0421364, 0, 0, Vector2(0.454039, 0.346479), 0.0, 0.0, 0, 0, Vector2(0.997214, 0.0422535), 0.0, 0.0, 0, 0]
+point_count = 3
+
 [sub_resource type="Gradient" id="Gradient_74j88"]
-offsets = PackedFloat32Array(0.0868263, 0.158683, 0.242515, 0.565868, 0.838323, 0.904192)
-colors = PackedColorArray(90.811, 51.351, 0, 1, 78.378, 0, 100, 0.973, 0.389625, 0.568854, 0.959647, 0.975, 0.967076, 0.955537, 0.949679, 1, 1, 1, 1, 1, 0.61, 0.61, 0.0244, 1)
+offsets = PackedFloat32Array(0.0422961, 0.302115, 0.652568)
+colors = PackedColorArray(90.811, 51.351, 0, 1, 15.135, 0.54, 0.12, 0.991, 0.0893148, 0.232086, 0.60583, 0.99)
 
 [node name="Bullet" type="Area2D"]
 top_level = true
@@ -27,22 +37,31 @@ scale = Vector2(0.605062, 0.535031)
 texture = ExtResource("2_qpgtf")
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="."]
-position = Vector2(-11.9998, -0.0762773)
-amount = 9
-lifetime = 0.7
-speed_scale = 4.35
+position = Vector2(9.9998, 0.0635644)
+amount = 20
+lifetime = 1.08
+speed_scale = 2.47
 local_coords = true
 texture = ExtResource("3_22a64")
+emission_shape = 1
+emission_sphere_radius = 3.12
 direction = Vector2(-1, 0)
-spread = 3.36
+spread = 0.0
 gravity = Vector2(0, 0)
-initial_velocity_min = 118.9
-initial_velocity_max = 158.95
-angle_min = -90.0
-angle_max = -90.0
-scale_amount_min = 0.15
-scale_amount_max = 0.2
-color = Color(0.23, 0.428, 0.9, 0.87)
+initial_velocity_min = 148.16
+initial_velocity_max = 174.61
+radial_accel_min = 58.67
+radial_accel_max = 58.67
+angle_min = 90.0
+angle_max = 90.0
+scale_amount_min = 0.0
+scale_amount_max = 0.75
+split_scale = true
+scale_curve_x = SubResource("Curve_8obes")
+scale_curve_y = SubResource("Curve_88qj6")
+color = Color(0.23, 0.428, 0.9, 0.946)
 color_ramp = SubResource("Gradient_74j88")
+hue_variation_min = 0.34
+hue_variation_max = 0.58
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

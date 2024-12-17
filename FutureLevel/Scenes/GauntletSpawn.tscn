@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://Scripts/Spawnerv2.gd" id="1_sbdtd"]
 
 [node name="GauntletSpawn" type="Marker2D"]
-position = Vector2(199, -62)
+position = Vector2(200, -53)
 script = ExtResource("1_sbdtd")
 
 [node name="Timer" type="Timer" parent="."]
@@ -11,6 +11,6 @@ wait_time = 2.633
 autostart = true
 
 [node name="Marker1" type="Marker2D" parent="."]
-position = Vector2(106, 184)
+position = Vector2(0, 104)
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

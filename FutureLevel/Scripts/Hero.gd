@@ -28,6 +28,7 @@ var direction : Vector2 = Vector2.ZERO
 @onready var walkn_jump_l: Marker2D = $AnimatedSprite2D/WalknJumpL
 @onready var foot_steps: Timer = $FootSteps
 @onready var boost_r_two: CPUParticles2D = $AnimatedSprite2D/BoostRTwo
+@onready var boost_r_one: CPUParticles2D = $AnimatedSprite2D/BoostROne
 
 
 
@@ -110,14 +111,10 @@ func _physics_process(delta: float) -> void:
 
 func _on_speed_increase() -> void:
 	# Make the particle node visible and emit particles
-	if velocity.x > 0:
-		%AnimationPlayer.play("SpeedRight")
-	elif velocity.x < 0: 
-		%AnimationPlayer.play("Runleft")
-	else:
-		%AnimationPlayer.play("IdleRigt ")
-	await get_tree().create_timer(5.0).timeout
-	%AnimationPlayer.play("RESET")
+	boost_r_two.emitting = true
+	boost_r_one.emitting  = true 
+	await get_tree().create_timer(0.5).timeout
+	boost_r_one.emitting = false 
 
 func _trigger_step_particles():
 	# Instance the particle scene
@@ -198,10 +195,8 @@ func handle_animation() -> void:
 		return
 	if velocity.x > 0:
 		animated_sprite_2d.flip_h = false
-		%CollisionShape2D.position = Vector2(1.333, 1)
 	elif velocity.x < 0: 
 		animated_sprite_2d.flip_h = true
-		%CollisionShape2D.position = Vector2(19.443, 1)
 		
 	
 		
