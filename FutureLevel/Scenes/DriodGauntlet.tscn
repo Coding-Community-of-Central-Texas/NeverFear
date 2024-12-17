@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://cptg5v2kfde2k"]
+
+[ext_resource type="Script" path="res://Scripts/DriodGauntlet.gd" id="1_u15ns"]
+[ext_resource type="PackedScene" uid="uid://bw58uocrpgcba" path="res://Scenes/Driod.tscn" id="2_qhe0i"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_tex5f"]
+radius = 19.0263
+
+[node name="DriodGauntlet" type="CharacterBody2D" groups=["enemy"]]
+collision_layer = 132
+collision_mask = 132
+safe_margin = 0.001
+script = ExtResource("1_u15ns")
+
+[node name="Driod" parent="." instance=ExtResource("2_qhe0i")]
+unique_name_in_owner = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_tex5f")
+
+[node name="DamageNumbersOrigin" type="Node2D" parent="."]
+position = Vector2(0, -24)
+
+[connection signal="kill" from="." to="." method="_on_kill"]

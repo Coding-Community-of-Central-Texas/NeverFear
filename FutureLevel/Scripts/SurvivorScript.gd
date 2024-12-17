@@ -6,7 +6,7 @@ signal rank_changed(rank_index: int)
 var health: float = 100.0
 const MAX_HEALTH = 100
 const VELOCITY = 1000
-@export var SPEED: float = 300.0
+@export var SPEED: float = 500.0
 @export var acceleration: float = 2000.0
 @export var deceleration: float = 6000.0
 @onready var shadow: Sprite2D = $AnimatedSprite2D/Shadow
@@ -156,6 +156,7 @@ func flip_sprite() -> void:
 func _on_timer_2_timeout() -> void:
 	_game_over()
 	GameManager.reset_scene_kills()
+	%TimePanel.stop()
 
 func _game_over():
 	const GAMEOVER = preload("res://Scenes/GameOver.tscn")

@@ -10,7 +10,7 @@ func _ready() -> void:
 func _on_restart_pressed() -> void:
 	get_tree().paused = false
 	%AudioStreamPlayer2D.play()
-	restart.modulate = Color(0, 1, 0, 0.5)  # Set to red
+	restart.modulate = Color(0.5, 0.5, 0)  # Set to red
 	await get_tree().create_timer(0.2).timeout  # Wait for 0.1 seconds
 	restart.modulate = Color(1, 1, 1, 1)  # Reset to normal
 	Global.reset_game_state()
@@ -22,7 +22,7 @@ func _on_restart_pressed() -> void:
 func _on_back_to_main_menu_pressed() -> void:
 	get_tree().paused = false 
 	%AudioStreamPlayer2D.play()
-	main_menu.modulate = Color(0, 1, 0, 0.5)  # Set to red
+	main_menu.modulate = Color(0.5, 0.5, 0)  # Set to red
 	await get_tree().create_timer(0.2).timeout  # Wait for 0.1 seconds
 	main_menu.modulate = Color(1, 1, 1, 1)  # Reset to normal
 	get_tree().change_scene_to_file("res://Scenes/MainMenu.tscn")

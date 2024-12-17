@@ -1,15 +1,171 @@
-[gd_scene load_steps=9 format=3 uid="uid://d1ly636rhenqx"]
+[gd_scene load_steps=11 format=3 uid="uid://d1ly636rhenqx"]
 
 [ext_resource type="Script" path="res://Scripts/Credits.gd" id="1_8kx13"]
 [ext_resource type="FontFile" uid="uid://ckid4fla6wirc" path="res://assets/etc/Starzoom-Shavian.ttf" id="2_ca8ye"]
 [ext_resource type="Texture2D" uid="uid://bv7fu6os82paq" path="res://assets/buttonsprites/UIbutton.png" id="3_4j024"]
-[ext_resource type="Texture2D" uid="uid://c37oonhsihxgf" path="res://assets/buttonsprites/UIButton2.png" id="4_o2d0a"]
 [ext_resource type="Texture2D" uid="uid://dcmt4rtiisn55" path="res://assets/Background/1.png" id="5_31scm"]
 [ext_resource type="PackedScene" uid="uid://cijayc3peexw" path="res://Singletons/GameManager.tscn" id="6_kygu5"]
 [ext_resource type="AudioStream" uid="uid://dbnystp0y1gke" path="res://assets/FutrueSFX/PickUp.wav" id="7_jjscb"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_31v2l"]
 size = Vector2(600, 600)
+
+[sub_resource type="Animation" id="Animation_38a7b"]
+resource_name = "rollcredits"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/Label:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 3),
+"transitions": PackedFloat32Array(0.203063, 0.34151),
+"update": 0,
+"values": [Vector2(30, 854), Vector2(30, 43)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CanvasLayer/Label:anchors_preset")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(3),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [-1]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CanvasLayer/Title:anchors_preset")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(2.73333),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [-1]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("CanvasLayer/Title:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 2.6),
+"transitions": PackedFloat32Array(4.75683, 1),
+"update": 0,
+"values": [-12.5664, 0.0]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("CanvasLayer/Title:scale")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 1.5, 2.73333),
+"transitions": PackedFloat32Array(4, 12.1257, 1),
+"update": 0,
+"values": [Vector2(0.026, 0.02), Vector2(0.731, 0.543), Vector2(2.87696, 2.13666)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("CanvasLayer/Title:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.833333, 2.66667),
+"transitions": PackedFloat32Array(1, 0.378929, 1),
+"update": 0,
+"values": [Vector2(1005, 126), Vector2(879.74, 126), Vector2(437, 126)]
+}
+
+[sub_resource type="Animation" id="Animation_ckmp4"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/Label:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(30, 43)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CanvasLayer/Label:anchors_preset")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [-1]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CanvasLayer/Title:anchors_preset")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [-1]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("CanvasLayer/Title:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("CanvasLayer/Title:scale")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(2.87696, 2.13666)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("CanvasLayer/Title:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(437, 126)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_shxe1"]
+_data = {
+"RESET": SubResource("Animation_ckmp4"),
+"rollcredits": SubResource("Animation_38a7b")
+}
 
 [node name="Control" type="Control"]
 layout_mode = 3
@@ -21,43 +177,6 @@ grow_vertical = 2
 script = ExtResource("1_8kx13")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
-
-[node name="Home" type="Label" parent="CanvasLayer"]
-z_index = 4
-anchors_preset = -1
-anchor_left = 0.41
-anchor_top = 0.821
-anchor_right = 0.553
-anchor_bottom = 0.896
-offset_left = 2.67999
-offset_top = 6.992
-offset_right = -84.056
-offset_bottom = -15.608
-grow_horizontal = 2
-grow_vertical = 2
-scale = Vector2(2.11333, 1.88)
-theme_override_colors/font_color = Color(0.82, 0.0984, 0.110426, 1)
-theme_override_colors/font_shadow_color = Color(0.1496, 0.173947, 0.88, 1)
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/shadow_offset_x = 2
-theme_override_constants/shadow_offset_y = 2
-theme_override_constants/outline_size = 3
-theme_override_constants/shadow_outline_size = 2
-theme_override_fonts/font = ExtResource("2_ca8ye")
-theme_override_font_sizes/font_size = 20
-text = "HOME"
-horizontal_alignment = 1
-vertical_alignment = 1
-metadata/_edit_use_anchors_ = true
-
-[node name="HomeButton" type="TouchScreenButton" parent="CanvasLayer/Home"]
-modulate = Color(0.306, 0.3501, 0.6, 1)
-z_index = -1
-position = Vector2(-86.593, -36.326)
-scale = Vector2(0.241522, 0.204393)
-texture_normal = ExtResource("3_4j024")
-texture_pressed = ExtResource("4_o2d0a")
-shape = SubResource("RectangleShape2D_31v2l")
 
 [node name="TextureRect" type="TextureRect" parent="CanvasLayer"]
 anchors_preset = 15
@@ -72,9 +191,25 @@ expand_mode = 4
 stretch_mode = 6
 
 [node name="Label" type="Label" parent="CanvasLayer"]
-offset_top = 56.0
-offset_right = 1146.0
-offset_bottom = 442.0
+anchors_preset = -1
+anchor_left = 0.028
+anchor_top = 0.04
+anchor_right = 0.974
+anchor_bottom = 0.94
+offset_left = -0.240002
+offset_top = -0.200005
+offset_right = 0.0799561
+offset_bottom = -0.200073
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_shadow_color = Color(0.281187, 0.281187, 0.281187, 1)
+theme_override_colors/font_outline_color = Color(0, 0.67451, 0.713726, 1)
+theme_override_constants/line_spacing = 0
+theme_override_constants/shadow_offset_x = -6
+theme_override_constants/shadow_offset_y = 6
+theme_override_constants/outline_size = 3
+theme_override_constants/shadow_outline_size = 3
+theme_override_font_sizes/font_size = 21
 text = "\"NeverFear\" Developed and designed by Stephen H. and the Open-Source Coding Communit of Central Texas. 
 www.osccct.org
 
@@ -82,15 +217,73 @@ www.osccct.org
 -Stephen H.
  
 Music: DavidKBD
-
-Art: Craftpix.net, BDDragon, itch.io
-
+Art: Craftpix.net, BDDragon, itch.io, OpenArt.ai
 SoundSFX:  Luis Zuno, uppbeat.io
-
 Licences: MIT and Creative Commons Zero
 "
 horizontal_alignment = 1
+vertical_alignment = 1
 autowrap_mode = 3
+
+[node name="HomeButton" type="TouchScreenButton" parent="CanvasLayer"]
+self_modulate = Color(1, 1, 0, 1)
+position = Vector2(258, 746.707)
+scale = Vector2(0.510416, 0.384259)
+texture_normal = ExtResource("3_4j024")
+shape = SubResource("RectangleShape2D_31v2l")
+
+[node name="Home" type="Label" parent="CanvasLayer/HomeButton"]
+z_index = 4
+anchors_preset = -1
+anchor_left = 0.302544
+anchor_top = 0.270411
+anchor_right = 0.642412
+anchor_bottom = 0.444774
+offset_left = 10.0001
+offset_top = 2.49997
+offset_right = -303.528
+offset_bottom = -84.4872
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(3.99518, 3.64475)
+theme_override_colors/font_shadow_color = Color(0.1496, 0.173947, 0.88, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 5
+theme_override_constants/shadow_outline_size = 3
+theme_override_fonts/font = ExtResource("2_ca8ye")
+theme_override_font_sizes/font_size = 30
+text = "HOME"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Title" type="Label" parent="CanvasLayer"]
+anchors_preset = -1
+anchor_left = 0.228704
+anchor_top = 0.0796296
+anchor_right = 0.812087
+anchor_bottom = 0.180528
+offset_left = 190.0
+offset_top = 40.0
+offset_right = -221.054
+offset_bottom = -17.9698
+grow_horizontal = 2
+scale = Vector2(2.87696, 2.13666)
+pivot_offset = Vector2(104.972, 26.2091)
+theme_override_colors/font_shadow_color = Color(0.1496, 0.173947, 0.88, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = -6
+theme_override_constants/shadow_offset_y = 5
+theme_override_constants/outline_size = 5
+theme_override_constants/shadow_outline_size = 3
+theme_override_fonts/font = ExtResource("2_ca8ye")
+theme_override_font_sizes/font_size = 50
+text = "Credits"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
 
 [node name="GameManager" parent="." instance=ExtResource("6_kygu5")]
 
@@ -100,4 +293,10 @@ stream = ExtResource("7_jjscb")
 volume_db = 2.1
 pitch_scale = 1.4
 
-[connection signal="pressed" from="CanvasLayer/Home/HomeButton" to="." method="_on_home_button_pressed"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_shxe1")
+}
+autoplay = "rollcredits"
+
+[connection signal="pressed" from="CanvasLayer/HomeButton" to="." method="_on_home_button_pressed"]

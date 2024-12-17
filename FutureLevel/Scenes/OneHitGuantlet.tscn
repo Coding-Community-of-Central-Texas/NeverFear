@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=3 uid="uid://dlmwrma7sd51s"]
+
+[ext_resource type="Script" path="res://Scripts/OneHitGauntlet.gd" id="1_hf14j"]
+[ext_resource type="PackedScene" uid="uid://dyimxg6mdgoab" path="res://Scenes/Byte.tscn" id="2_g3ocj"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_cnpoq"]
+radius = 18.0
+
+[node name="OneHit" type="CharacterBody2D" groups=["enemy"]]
+collision_layer = 132
+collision_mask = 132
+motion_mode = 1
+script = ExtResource("1_hf14j")
+
+[node name="Byte" parent="." instance=ExtResource("2_g3ocj")]
+unique_name_in_owner = true
+position = Vector2(-1, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_cnpoq")
+
+[node name="DamageNumbersOrigin" type="Node2D" parent="."]
+position = Vector2(0, -22)
+
+[connection signal="kill" from="." to="." method="_on_kill"]

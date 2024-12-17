@@ -1,11 +1,14 @@
-[gd_scene load_steps=16 format=3 uid="uid://8o5ihpf0h8ej"]
+[gd_scene load_steps=19 format=3 uid="uid://8o5ihpf0h8ej"]
 
 [ext_resource type="Script" path="res://Scripts/GameOver.gd" id="1_r0wvx"]
 [ext_resource type="AudioStream" uid="uid://bpcayivn7waop" path="res://assets/FutrueSFX/DavidKBD - Eternity Pack - 05 - Evil soul inside - loop.ogg" id="2_ypdy7"]
 [ext_resource type="FontFile" uid="uid://ckid4fla6wirc" path="res://assets/etc/Starzoom-Shavian.ttf" id="2_yq4vp"]
 [ext_resource type="Texture2D" uid="uid://bv7fu6os82paq" path="res://assets/buttonsprites/UIbutton.png" id="4_ssp7s"]
 [ext_resource type="AudioStream" uid="uid://dbnystp0y1gke" path="res://assets/FutrueSFX/PickUp.wav" id="5_r0rrm"]
+[ext_resource type="Texture2D" uid="uid://050tdjf5b57n" path="res://assets/3 Cyborg/Cyborg_death.png" id="6_q5oov"]
 [ext_resource type="Texture2D" uid="uid://cf1o7yknimjyd" path="res://assets/Guns&Bullets/enemybullet.png" id="6_xxxhg"]
+[ext_resource type="Texture2D" uid="uid://csikad8cdh0ti" path="res://assets/etc/lightrays_8.png" id="7_78ycr"]
+[ext_resource type="Texture2D" uid="uid://dkp57y2x4axvt" path="res://assets/etc/shadow.png" id="8_g2vhn"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_u1hko"]
 size = Vector2(90, 40)
@@ -34,7 +37,7 @@ tracks/0/path = NodePath(".:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.3, 0.6, 0.8, 1),
+"times": PackedFloat32Array(0, 0.433333, 0.666667, 0.8, 1),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0.25098), Color(1, 1, 1, 0.47451), Color(1, 1, 1, 0.843137), Color(1, 1, 1, 1)]
@@ -117,10 +120,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -139.26
-offset_top = -83.5869
-offset_right = 141.74
-offset_bottom = -32.5869
+offset_left = -159.202
+offset_top = -331.417
+offset_right = 178.798
+offset_bottom = -280.417
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(1, 1.99858)
@@ -129,42 +132,43 @@ theme_override_colors/font_shadow_color = Color(0.1782, 0.66, 0.65197, 1)
 theme_override_colors/font_outline_color = Color(0.266, 0.410667, 0.7, 1)
 theme_override_fonts/font = ExtResource("2_yq4vp")
 theme_override_font_sizes/font_size = 50
-text = "GAME OVER!"
+text = "MISSION FAILED!"
 
 [node name="Restart" type="TouchScreenButton" parent="CanvasLayer/ColorRect"]
-position = Vector2(170.025, 906.82)
+position = Vector2(170.025, 707.104)
 scale = Vector2(1.51455, 1.4858)
 shape = SubResource("RectangleShape2D_u1hko")
 
 [node name="Label2" type="Label" parent="CanvasLayer/ColorRect/Restart"]
 z_index = 1
 texture_filter = 6
-offset_left = -41.0
-offset_top = -13.0
-offset_right = 55.0
-offset_bottom = 11.0
-scale = Vector2(0.670851, 1.51697)
+offset_left = -42.4671
+offset_top = -13.6234
+offset_right = 91.5329
+offset_bottom = 10.3766
+scale = Vector2(0.519683, 1.71934)
 theme_override_colors/font_color = Color(0.891402, 0, 0.00656927, 1)
 theme_override_colors/font_outline_color = Color(0.0338533, 0.0338533, 0.0338533, 1)
 theme_override_constants/outline_size = 6
 theme_override_fonts/font = ExtResource("2_yq4vp")
 theme_override_font_sizes/font_size = 20
-text = "RESTART"
+text = "TRY AGAIN?"
 autowrap_mode = 2
+metadata/_edit_use_anchors_ = true
 
 [node name="UIbutton" type="Sprite2D" parent="CanvasLayer/ColorRect/Restart"]
-modulate = Color(0.285653, 0.2496, 0.52, 1)
+modulate = Color(1, 1, 0, 1)
 position = Vector2(-2.95424, 23.6137)
 scale = Vector2(0.142968, 0.241212)
 texture = ExtResource("4_ssp7s")
 
 [node name="MainMenu" type="TouchScreenButton" parent="CanvasLayer/ColorRect"]
-position = Vector2(451.909, 906.82)
+position = Vector2(451.909, 700.357)
 scale = Vector2(1.45862, 1.53977)
 shape = SubResource("RectangleShape2D_u1hko")
 
 [node name="UIbutton2" type="Sprite2D" parent="CanvasLayer/ColorRect/MainMenu"]
-modulate = Color(0.285653, 0.2496, 0.52, 1)
+modulate = Color(1, 1, 0, 1)
 position = Vector2(0, 21.9097)
 scale = Vector2(0.14845, 0.232757)
 texture = ExtResource("4_ssp7s")
@@ -184,6 +188,7 @@ theme_override_fonts/font = ExtResource("2_yq4vp")
 theme_override_font_sizes/font_size = 20
 text = "HOME"
 autowrap_mode = 2
+metadata/_edit_use_anchors_ = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer/ColorRect"]
 libraries = {
@@ -196,6 +201,25 @@ unique_name_in_owner = true
 stream = ExtResource("5_r0rrm")
 volume_db = 2.1
 pitch_scale = 1.4
+
+[node name="CyborgDeath" type="Sprite2D" parent="CanvasLayer/ColorRect"]
+z_index = 1
+position = Vector2(305.934, 1003.98)
+scale = Vector2(1.11859, 2.69887)
+texture = ExtResource("6_q5oov")
+region_enabled = true
+region_rect = Rect2(231, 0, 57, 48)
+
+[node name="Lightrays8" type="Sprite2D" parent="CanvasLayer/ColorRect"]
+modulate = Color(1, 1, 1, 0.454)
+position = Vector2(309.289, 885.229)
+texture = ExtResource("7_78ycr")
+
+[node name="Shadow" type="Sprite2D" parent="CanvasLayer/ColorRect"]
+modulate = Color(0, 0, 0, 0.760784)
+position = Vector2(299.222, 1107.89)
+scale = Vector2(0.125654, 1.02093)
+texture = ExtResource("8_g2vhn")
 
 [node name="Fire" type="AnimatedSprite2D" parent="CanvasLayer"]
 z_index = 1

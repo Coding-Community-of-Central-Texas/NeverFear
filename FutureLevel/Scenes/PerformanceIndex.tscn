@@ -1,11 +1,10 @@
-[gd_scene load_steps=30 format=3 uid="uid://btnf3drbkix5k"]
+[gd_scene load_steps=29 format=3 uid="uid://btnf3drbkix5k"]
 
 [ext_resource type="Texture2D" uid="uid://dcmt4rtiisn55" path="res://assets/Background/1.png" id="1_erotl"]
 [ext_resource type="FontFile" uid="uid://ckid4fla6wirc" path="res://assets/etc/Starzoom-Shavian.ttf" id="2_a7jdu"]
 [ext_resource type="Texture2D" uid="uid://bv7fu6os82paq" path="res://assets/buttonsprites/UIbutton.png" id="3_erunh"]
 [ext_resource type="PackedScene" uid="uid://cijayc3peexw" path="res://Singletons/GameManager.tscn" id="3_g0ec8"]
 [ext_resource type="Texture2D" uid="uid://dc7ixn8hk14hw" path="res://assets/Background/2.png" id="4_cx5d3"]
-[ext_resource type="Texture2D" uid="uid://c37oonhsihxgf" path="res://assets/buttonsprites/UIButton2.png" id="4_wpohw"]
 [ext_resource type="Texture2D" uid="uid://d1jeejko1y8sn" path="res://assets/Background/3.png" id="5_37ixw"]
 [ext_resource type="Texture2D" uid="uid://bicepjut8amd5" path="res://assets/city 1/4.png" id="6_658f1"]
 [ext_resource type="Texture2D" uid="uid://ql70ode1roo" path="res://assets/city 1/3.png" id="7_xy8b8"]
@@ -34,22 +33,25 @@ func on_ready():
 		get_viewport().screen_set_orientation(DisplayServer.SCREEN_PORTRAIT)
 	else:
 		return
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	update_performance_page()
 	
 func update_performance_page():
 	%OverallKills.text = \"Enimeies 
 	Eliminated: %s\" % str(GameManager.total_kills)
-	%FastestTime.text = \"FASTEST LEGACY RUN: %s\" % GameManager.quickest_time
-	%LongestTimeSurvived.text = \"LONGEST GAUNTLET RUN:\" + str(GameManager.longest_survival) + \"s\"
-	%OverallCash.text = \"$BANK$: $%s\" % str(GameManager.total_cash)
+	%FastestTime.text = \"FASTEST 
+	LEGACY RUN: %s\" % GameManager.quickest_time
+	%LongestTimeSurvived.text = \"LONGEST 
+	GAUNTLET RUN:\" + str(GameManager.longest_survival) + \"s\"
+	%OverallCash.text = \"$BANK$: 
+		$%s\" % str(GameManager.total_cash)
 
 
 func _on_home_button_pressed() -> void:
 	%AudioStreamPlayer2D.play()
-	home.modulate = Color(0, 1, 0, 0.5)  # Set to red
+	home_button.modulate = Color(0.5, 0.5, 0)  # Set to red
 	await get_tree().create_timer(0.5).timeout  # Wait for 0.1 seconds
-	home.modulate = Color(1, 1, 1)  # Reset to normal
+	home_button.modulate = Color(1, 1, 1)  # Reset to normal
 	get_tree().change_scene_to_file(\"res://Scenes/MainMenu.tscn\")
 "
 
@@ -528,14 +530,16 @@ unique_name_in_owner = true
 z_index = 1
 anchors_preset = -1
 anchor_left = 0.558333
-anchor_top = 0.200926
+anchor_top = 0.187963
 anchor_right = 1.0002
-anchor_bottom = 0.242539
-offset_right = 92.7817
-offset_bottom = -7.94241
+anchor_bottom = 0.255502
+offset_left = 0.000366211
+offset_top = 15.0001
+offset_right = 92.7803
+offset_bottom = 7.05765
 grow_horizontal = 2
 grow_vertical = 2
-scale = Vector2(0.837225, 1.21466)
+scale = Vector2(0.837225, 0.974722)
 size_flags_horizontal = 4
 theme_override_colors/font_color = Color(0.63, 0, 0.0104998, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
@@ -657,7 +661,6 @@ z_index = -1
 position = Vector2(257, 711)
 scale = Vector2(0.510416, 0.384259)
 texture_normal = ExtResource("3_erunh")
-texture_pressed = ExtResource("4_wpohw")
 shape = SubResource("RectangleShape2D_ee6lp")
 
 [node name="Home" type="Label" parent="CanvasLayer/HomeButton"]

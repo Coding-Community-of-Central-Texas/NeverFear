@@ -25,23 +25,32 @@ animations = [{
 }],
 "loop": false,
 "name": &"jump",
-"speed": 20.0
+"speed": 1.0
 }]
 
 [node name="Jump" type="TouchScreenButton"]
-modulate = Color(1, 0.71, 0.71, 0.376471)
+modulate = Color(1, 0.71, 0.71, 0.482)
 position = Vector2(-166, -151)
 scale = Vector2(8.02548, 7.54)
 shape = SubResource("RectangleShape2D_ndicd")
+shape_visible = false
 passby_press = true
 action = "jump"
 script = ExtResource("1_u2pio")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+z_index = 1
 position = Vector2(0.855802, 0.571428)
 scale = Vector2(0.105, 0.095)
 sprite_frames = SubResource("SpriteFrames_rubr5")
 animation = &"jump"
+
+[node name="Jumpbutton" type="Sprite2D" parent="."]
+position = Vector2(0.855802, 0.571428)
+scale = Vector2(0.105, 0.095)
+texture = ExtResource("1_43kw5")
+region_enabled = true
+region_rect = Rect2(0, 323.774, 320, 316.226)
 
 [connection signal="pressed" from="." to="." method="_on_pressed"]
 [connection signal="released" from="." to="." method="_on_released"]

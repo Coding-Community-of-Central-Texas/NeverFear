@@ -13,8 +13,8 @@ func _on_timer_timeout() -> void:
 
 
 func spawn_wave():
-	const DROID  = preload("res://Scenes/DriodLegacy.tscn")
-	const BYTE = preload("res://Scenes/OneHit.tscn")
+	const DROID  = preload("res://Scenes/DriodGauntlet.tscn")
+	const BYTE = preload("res://Scenes/OneHitGuantlet.tscn")
 	var new_byte = BYTE.instantiate()
 	var new_droid = DROID.instantiate()
 	new_byte.position = global_position

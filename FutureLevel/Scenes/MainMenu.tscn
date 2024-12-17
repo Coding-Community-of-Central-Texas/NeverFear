@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://b8aq7pak842g0"]
+[gd_scene load_steps=25 format=3 uid="uid://b8aq7pak842g0"]
 
 [ext_resource type="Script" path="res://Scripts/MainMenu.gd" id="1_ole10"]
 [ext_resource type="Texture2D" uid="uid://bcypd57pmrt63" path="res://assets/Background/Hero.svg" id="2_fschk"]
@@ -9,19 +9,47 @@
 [ext_resource type="Texture2D" uid="uid://brastt74lxpni" path="res://assets/etc/ranks/overkill.png" id="5_ujj2x"]
 [ext_resource type="AudioStream" uid="uid://dbnystp0y1gke" path="res://assets/FutrueSFX/PickUp.wav" id="6_k30q2"]
 [ext_resource type="Texture2D" uid="uid://r4yabe1kewtl" path="res://assets/etc/Icons_34.png" id="6_uavnv"]
-[ext_resource type="Texture2D" uid="uid://bbofee6bwlhcn" path="res://assets/etc/Clock.png" id="8_j5grk"]
+[ext_resource type="Texture2D" uid="uid://d1wlj0qisaufc" path="res://assets/Guns&Bullets/fire_30.png" id="8_116gb"]
 [ext_resource type="Texture2D" uid="uid://35dyx2vgd6cm" path="res://assets/etc/Star.png" id="9_g7gmw"]
+[ext_resource type="Texture2D" uid="uid://dtmoad6blffsk" path="res://assets/etc/flare_3.png" id="10_daf4p"]
+[ext_resource type="Texture2D" uid="uid://cvp6xuoc6u6l4" path="res://assets/etc/Icons_56.png" id="11_pv86b"]
+[ext_resource type="Texture2D" uid="uid://b2ans61yt43mf" path="res://assets/etc/Trophy.png" id="13_8ftns"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_o5ej8"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_dfg3l"]
-size = Vector2(600, 300)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_de1g5"]
 size = Vector2(560, 360)
 
+[sub_resource type="CanvasTexture" id="CanvasTexture_fcqq0"]
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yl8pi"]
 size = Vector2(800, 500)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dfg3l"]
+size = Vector2(600, 300)
+
+[sub_resource type="Curve" id="Curve_stlyn"]
+min_value = -0.4
+max_value = 0.85
+_data = [Vector2(0.0331492, -0.14088), 0.0, 0.0, 0, 0, Vector2(0.171271, 0.335649), 3.52712, 3.52712, 0, 0, Vector2(0.350829, 0.710515), 0.538803, 0.538803, 0, 0, Vector2(1, 0.85), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="Curve" id="Curve_tljel"]
+max_value = 0.7
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.086351, 0.300704), 0.621793, 0.621793, 0, 0, Vector2(0.381616, 0.0049296), -0.171263, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Animation" id="Animation_u05n2"]
+resource_name = "HomeAnimation"
+
+[sub_resource type="Animation" id="Animation_4e3u6"]
+length = 0.001
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_fvkqm"]
+_data = {
+"HomeAnimation": SubResource("Animation_u05n2"),
+"RESET": SubResource("Animation_4e3u6")
+}
 
 [node name="MainMenu" type="CanvasLayer"]
 script = ExtResource("1_ole10")
@@ -43,73 +71,39 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 448.0
-offset_top = 832.0
-offset_right = -540.0
-offset_bottom = -173.0
+offset_left = 476.0
+offset_top = 800.0
+offset_right = -533.0
+offset_bottom = -205.0
 grow_horizontal = 2
 grow_vertical = 2
-scale = Vector2(2.04, 1.4)
+scale = Vector2(1.87041, 2.14214)
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_shadow_color = Color(1, 1, 1, 1)
 theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
 theme_override_constants/outline_size = 3
 theme_override_fonts/font = ExtResource("4_5gcgg")
-theme_override_font_sizes/font_size = 20
+theme_override_font_sizes/font_size = 15
 text = "Credits"
+horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 3
 
 [node name="Credits" type="TouchScreenButton" parent="MenuBox/Credits"]
 unique_name_in_owner = true
-position = Vector2(45, 41.1764)
+position = Vector2(35.821, 38.2795)
 rotation = 1.56002
 scale = Vector2(5.8711, 3.28531)
 skew = 0.00268269
 shape = SubResource("CapsuleShape2D_o5ej8")
+shape_visible = false
 
 [node name="Icons34" type="Sprite2D" parent="MenuBox/Credits"]
+modulate = Color(1, 1, 0, 1)
 show_behind_parent = true
-position = Vector2(44.375, 36.7646)
-scale = Vector2(2.96875, 2.38971)
+position = Vector2(34.217, 39.2132)
+scale = Vector2(1.78331, 1.4335)
 texture = ExtResource("6_uavnv")
-
-[node name="HypercoreGauntlet" type="TouchScreenButton" parent="MenuBox"]
-unique_name_in_owner = true
-self_modulate = Color(1, 1, 0, 1)
-position = Vector2(544, 528)
-scale = Vector2(0.561298, 0.275767)
-shape = SubResource("RectangleShape2D_dfg3l")
-
-[node name="Survival" type="Label" parent="MenuBox/HypercoreGauntlet"]
-z_index = 1
-anchors_preset = -1
-anchor_left = 0.757857
-anchor_top = 0.0892686
-anchor_right = 1.4719
-anchor_bottom = 0.568733
-offset_left = -270.801
-offset_top = -87.0302
-offset_right = 4.19922
-offset_bottom = -36.0302
-grow_horizontal = 2
-grow_vertical = 2
-scale = Vector2(1.82482, 3.73137)
-size_flags_horizontal = 4
-theme_override_colors/font_color = Color(0.75, 0, 0.0124998, 1)
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 6
-theme_override_fonts/font = ExtResource("4_5gcgg")
-theme_override_font_sizes/font_size = 50
-text = "GAUNTLET"
-horizontal_alignment = 1
-vertical_alignment = 1
-metadata/_edit_use_anchors_ = true
-
-[node name="Overkill" type="Sprite2D" parent="MenuBox/HypercoreGauntlet"]
-position = Vector2(-399.075, -3.75624)
-scale = Vector2(3.69978, 7.48727)
-texture = ExtResource("5_ujj2x")
 
 [node name="Performance" type="TouchScreenButton" parent="MenuBox"]
 unique_name_in_owner = true
@@ -144,14 +138,16 @@ text = "DATA VAULT"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Clock" type="Sprite2D" parent="MenuBox/Performance"]
-z_index = 2
-position = Vector2(869.283, 236.557)
-scale = Vector2(3.68414, 6.10156)
-skew = 0.00722766
-texture = ExtResource("8_j5grk")
+[node name="Back2" type="Sprite2D" parent="MenuBox/Performance"]
+modulate = Color(0.752661, 0.752661, 0, 1)
+z_index = -1
+position = Vector2(543.387, 242.963)
+rotation = 3.14159
+scale = Vector2(505.358, -212.956)
+skew = 0.00723219
+texture = SubResource("CanvasTexture_fcqq0")
 
-[node name="UIbutton" type="Sprite2D" parent="MenuBox"]
+[node name="LegacyButton" type="Sprite2D" parent="MenuBox"]
 self_modulate = Color(1, 1, 0, 1)
 z_index = 1
 position = Vector2(536, 392)
@@ -160,7 +156,7 @@ texture = ExtResource("5_ksm5j")
 region_enabled = true
 region_rect = Rect2(243.516, 109.438, 598.061, 259.374)
 
-[node name="LegacyProtocol" type="TouchScreenButton" parent="MenuBox/UIbutton"]
+[node name="LegacyProtocol" type="TouchScreenButton" parent="MenuBox/LegacyButton"]
 unique_name_in_owner = true
 self_modulate = Color(1, 1, 0, 1)
 z_index = 1
@@ -168,7 +164,7 @@ position = Vector2(0, 0.00012207)
 scale = Vector2(0.637534, 0.339674)
 shape = SubResource("RectangleShape2D_yl8pi")
 
-[node name="Story" type="Label" parent="MenuBox/UIbutton/LegacyProtocol"]
+[node name="Story" type="Label" parent="MenuBox/LegacyButton/LegacyProtocol"]
 z_index = 2
 anchors_preset = -1
 anchor_left = 0.180075
@@ -193,10 +189,113 @@ vertical_alignment = 1
 justification_flags = 35
 metadata/_edit_use_anchors_ = true
 
-[node name="Star" type="Sprite2D" parent="MenuBox/UIbutton"]
-position = Vector2(-313.317, -3.01673)
-scale = Vector2(3.06546, 6.12788)
+[node name="Gauntlet" type="Sprite2D" parent="MenuBox"]
+self_modulate = Color(1, 1, 0, 1)
+z_index = 1
+position = Vector2(538.661, 528)
+rotation = 3.14159
+scale = Vector2(0.683642, -0.327294)
+texture = ExtResource("5_ksm5j")
+region_enabled = true
+region_rect = Rect2(254.462, 113.928, 578.769, 261.518)
+
+[node name="HypercoreGauntlet" type="TouchScreenButton" parent="MenuBox/Gauntlet"]
+unique_name_in_owner = true
+self_modulate = Color(1, 1, 0, 1)
+position = Vector2(-7.80963, 0)
+rotation = 3.14159
+scale = Vector2(0.821041, -0.842567)
+shape = SubResource("RectangleShape2D_dfg3l")
+
+[node name="Survival" type="Label" parent="MenuBox/Gauntlet/HypercoreGauntlet"]
+z_index = 1
+anchors_preset = -1
+anchor_left = 0.757857
+anchor_top = 0.0892686
+anchor_right = 1.4719
+anchor_bottom = 0.568733
+offset_left = -270.801
+offset_top = -87.0302
+offset_right = 4.19922
+offset_bottom = -36.0302
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.82482, 3.73137)
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(0.75, 0, 0.0124998, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 6
+theme_override_fonts/font = ExtResource("4_5gcgg")
+theme_override_font_sizes/font_size = 50
+text = "GAUNTLET"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Back2" type="Sprite2D" parent="MenuBox/Gauntlet"]
+modulate = Color(0.752661, 0.752661, 0, 1)
+z_index = -1
+position = Vector2(9.74341, -3.05518)
+rotation = 3.14159
+scale = Vector2(501.354, -203.039)
+texture = SubResource("CanvasTexture_fcqq0")
+
+[node name="Overkill" type="Sprite2D" parent="MenuBox"]
+position = Vector2(320, 526.964)
+scale = Vector2(1.61517, 1.50522)
+texture = ExtResource("5_ujj2x")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="MenuBox/Overkill"]
+position = Vector2(5.76956, 0.0996585)
+scale = Vector2(0.1, 0.1)
+amount = 20
+lifetime = 0.93
+speed_scale = 1.29
+local_coords = true
+texture = ExtResource("8_116gb")
+emission_shape = 5
+emission_points = PackedVector2Array(-120, 0, 0, 0)
+emission_normals = PackedVector2Array()
+emission_colors = PackedColorArray()
+direction = Vector2(0, -1)
+spread = 20.64
+gravity = Vector2(0, 0)
+initial_velocity_min = 65.33
+initial_velocity_max = 86.0
+scale_amount_min = 0.15
+scale_amount_max = 0.3
+scale_amount_curve = SubResource("Curve_stlyn")
+
+[node name="Star" type="Sprite2D" parent="MenuBox"]
+visibility_layer = 2
+z_index = 2
+position = Vector2(322, 391)
+scale = Vector2(1.59904, 1.38775)
 texture = ExtResource("9_g7gmw")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="MenuBox/Star"]
+position = Vector2(-8.11945, -0.98463)
+amount = 1
+speed_scale = 1.2
+local_coords = true
+texture = ExtResource("10_daf4p")
+emission_shape = 5
+emission_points = PackedVector2Array(15, 0, 0, 0, 2, 10)
+emission_normals = PackedVector2Array()
+emission_colors = PackedColorArray()
+direction = Vector2(0, 0)
+gravity = Vector2(0, 0)
+angular_velocity_max = 251.43
+scale_amount_min = 0.0
+scale_amount_max = 0.9
+scale_amount_curve = SubResource("Curve_tljel")
+color = Color(0.991606, 1, 0.496144, 1)
+
+[node name="Icons56" type="Sprite2D" parent="MenuBox"]
+z_index = 2
+position = Vector2(394, 393)
+rotation = 0.191986
+texture = ExtResource("11_pv86b")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 z_index = -1
@@ -214,33 +313,41 @@ stream = ExtResource("6_k30q2")
 volume_db = 2.112
 pitch_scale = 1.43
 
-[node name="UIbutton" type="Sprite2D" parent="."]
-self_modulate = Color(1, 1, 0, 1)
-position = Vector2(672, 400)
-scale = Vector2(0.155056, 0.19467)
-texture = ExtResource("5_ksm5j")
+[node name="Back" type="Sprite2D" parent="."]
+modulate = Color(0.752661, 0.752661, 0, 1)
+position = Vector2(539, 393)
+scale = Vector2(342.747, 66.4536)
+texture = SubResource("CanvasTexture_fcqq0")
 
-[node name="UIbutton3" type="Sprite2D" parent="."]
-self_modulate = Color(1, 1, 0, 1)
-position = Vector2(408, 536)
-scale = Vector2(0.155056, 0.19467)
-texture = ExtResource("5_ksm5j")
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_fvkqm")
+}
 
-[node name="UIbutton4" type="Sprite2D" parent="."]
-self_modulate = Color(1, 1, 0, 1)
-position = Vector2(416, 664)
-scale = Vector2(0.155056, 0.19467)
-texture = ExtResource("5_ksm5j")
+[node name="Trophy" type="Sprite2D" parent="."]
+position = Vector2(326, 650)
+scale = Vector2(1.31976, 1.62596)
+texture = ExtResource("13_8ftns")
 
-[node name="UIbutton2" type="Sprite2D" parent="."]
-self_modulate = Color(1, 1, 0, 1)
-position = Vector2(538.661, 528)
-scale = Vector2(-0.683642, 0.327294)
-texture = ExtResource("5_ksm5j")
-region_enabled = true
-region_rect = Rect2(254.462, 113.928, 578.769, 261.518)
+[node name="CPUParticles2D" type="CPUParticles2D" parent="Trophy"]
+position = Vector2(-3.99999, 1.90735e-06)
+amount = 1
+speed_scale = 1.2
+local_coords = true
+texture = ExtResource("10_daf4p")
+emission_shape = 5
+emission_points = PackedVector2Array(15, 0, 0, 0, 2, 10)
+emission_normals = PackedVector2Array()
+emission_colors = PackedColorArray()
+direction = Vector2(0, 0)
+gravity = Vector2(0, 0)
+angular_velocity_max = 251.43
+scale_amount_min = 0.0
+scale_amount_max = 0.9
+scale_amount_curve = SubResource("Curve_tljel")
+color = Color(0.991606, 1, 0.496144, 1)
 
 [connection signal="pressed" from="MenuBox/Credits/Credits" to="." method="_on_credits_pressed"]
-[connection signal="pressed" from="MenuBox/HypercoreGauntlet" to="." method="_on_hypercore_gauntlet_pressed"]
 [connection signal="pressed" from="MenuBox/Performance" to="." method="_on_performance_pressed"]
-[connection signal="pressed" from="MenuBox/UIbutton/LegacyProtocol" to="." method="_on_legacy_protocol_pressed"]
+[connection signal="pressed" from="MenuBox/LegacyButton/LegacyProtocol" to="." method="_on_legacy_protocol_pressed"]
+[connection signal="pressed" from="MenuBox/Gauntlet/HypercoreGauntlet" to="." method="_on_hypercore_gauntlet_pressed"]

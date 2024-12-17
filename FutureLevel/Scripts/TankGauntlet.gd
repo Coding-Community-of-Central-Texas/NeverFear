@@ -11,7 +11,7 @@ var knockback_velocity = Vector2.ZERO  # Stores knockback velocity
 @onready var robbie: Node2D = %Tank
 @onready var damage_numbers_origin: Node2D = $DamageNumberOrigin
 
-var move_speed = 150.0  # Movement speed
+var move_speed = 520.0  # Movement speed
 var is_pursuing = false  # Whether the enemy is pursuing the player
 var stop_distance = 200.0
 

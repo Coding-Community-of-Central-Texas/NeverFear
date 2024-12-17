@@ -1,5 +1,6 @@
-[gd_scene load_steps=18 format=3 uid="uid://bjy4p1k6qgxm8"]
+[gd_scene load_steps=17 format=3 uid="uid://bjy4p1k6qgxm8"]
 
+[ext_resource type="Script" path="res://Scenes/DropPlat.gd" id="1_a81pg"]
 [ext_resource type="Texture2D" uid="uid://dpnldt7qfxni8" path="res://assets/etc/Platform.png" id="2_q2ta0"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_uo4r8"]
@@ -30,14 +31,6 @@ region = Rect2(192, 0, 32, 32)
 atlas = ExtResource("2_q2ta0")
 region = Rect2(224, 0, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_kc6pj"]
-atlas = ExtResource("2_q2ta0")
-region = Rect2(0, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_aamvr"]
-atlas = ExtResource("2_q2ta0")
-region = Rect2(0, 0, 32, 32)
-
 [sub_resource type="SpriteFrames" id="SpriteFrames_ywbrd"]
 animations = [{
 "frames": [{
@@ -65,17 +58,6 @@ animations = [{
 "loop": false,
 "name": &"end",
 "speed": 11.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_kc6pj")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_aamvr")
-}],
-"loop": false,
-"name": &"start",
-"speed": 5.0
 }]
 
 [sub_resource type="Animation" id="Animation_uxxk0"]
@@ -116,10 +98,58 @@ tracks/2/keys = {
 "update": 1,
 "values": [0]
 }
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 4)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("%CollisionShape2D:disabled")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath(".:modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(4.865, 1, 1, 1)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath(".:self_modulate")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1.15, 1, 1)]
+}
 
 [sub_resource type="Animation" id="Animation_v7m23"]
 resource_name = "end"
-length = 0.22
+length = 3.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -127,10 +157,10 @@ tracks/0/path = NodePath(".:sprite_frames")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 3),
+"transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [SubResource("SpriteFrames_ywbrd")]
+"values": [SubResource("SpriteFrames_ywbrd"), SubResource("SpriteFrames_ywbrd")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -151,10 +181,58 @@ tracks/2/path = NodePath(".:frame")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.0333333, 0.0666667, 0.1, 0.133333),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 1.1, 1.2, 1.33333, 1.43333, 2.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [0, 1, 2, 3, 4]
+"values": [0, 1, 2, 3, 4, 0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.166667, 0.3, 0.466667, 0.7, 0.9),
+"transitions": PackedFloat32Array(1, 1.03526, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 4), Vector2(-0.846, -0.305), Vector2(-0.353, -0.765), Vector2(0.375, 0.13), Vector2(0.625, 2.39), Vector2(0, 4)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("%CollisionShape2D:disabled")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0.0333333, 1.06667, 2.96667),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath(".:modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0.133333, 0.3, 0.566667, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [Color(4.865, 1, 1, 1), Color(1, 1, 1, 1), Color(4.865, 1, 1, 1), Color(1, 1, 1, 1)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath(".:self_modulate")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 2.8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1.15, 1, 1), Color(1, 1.15, 1, 1)]
 }
 
 [sub_resource type="Animation" id="Animation_omrlh"]
@@ -211,11 +289,15 @@ size = Vector2(60, 38)
 
 [node name="DropPlat" type="AnimatableBody2D"]
 scale = Vector2(2.14, 1.5)
+script = ExtResource("1_a81pg")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+modulate = Color(4.865, 1, 1, 1)
+self_modulate = Color(1, 1.15, 1, 1)
+position = Vector2(0, 4)
+scale = Vector2(1, 1.25)
 sprite_frames = SubResource("SpriteFrames_ywbrd")
 animation = &"end"
-autoplay = "start"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="AnimatedSprite2D"]
 unique_name_in_owner = true
@@ -225,6 +307,7 @@ libraries = {
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 unique_name_in_owner = true
+visible = false
 position = Vector2(1, -6)
 shape = SubResource("RectangleShape2D_q3aqr")
 
@@ -232,12 +315,8 @@ shape = SubResource("RectangleShape2D_q3aqr")
 collision_layer = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+visible = false
 position = Vector2(0, -31)
 shape = SubResource("RectangleShape2D_kcamk")
 
-[node name="Timer" type="Timer" parent="."]
-wait_time = 0.905
-one_shot = true
-
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
-[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

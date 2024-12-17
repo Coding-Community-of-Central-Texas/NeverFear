@@ -10,10 +10,8 @@ func _ready():
 	jump.connect("pressed", Callable(self, "_on_jump_button_pressed"))
 
 func _on_jump_button_pressed():
-	# Play the "left" animation
-	animated_sprite_2d.play("jump")
+	animated_sprite_2d.z_index = 0
 
 
 func _on_jump_button_released():
-	animated_sprite_2d.stop()
-	animated_sprite_2d.frame = 0 
+	animated_sprite_2d.z_index = 1
