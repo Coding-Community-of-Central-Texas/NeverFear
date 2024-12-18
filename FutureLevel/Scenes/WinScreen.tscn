@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://cr16l7y5x5fys"]
+[gd_scene load_steps=8 format=3 uid="uid://cr16l7y5x5fys"]
 
 [ext_resource type="Texture2D" uid="uid://bcypd57pmrt63" path="res://assets/Background/Hero.svg" id="1_ykjtl"]
 [ext_resource type="Script" path="res://Scripts/WinScreen.gd" id="2_1sl55"]
@@ -8,6 +8,9 @@
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mg0hu"]
 size = Vector2(900, 500)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1wfes"]
+size = Vector2(550, 250)
 
 [node name="Winner" type="CanvasLayer"]
 layer = 3
@@ -25,21 +28,21 @@ texture = ExtResource("1_ykjtl")
 [node name="YouWin" type="Label" parent="Win"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.165741
-anchor_top = 0.158333
-anchor_right = 0.806068
-anchor_bottom = 0.305577
+anchor_left = 0.172222
+anchor_top = 0.0824074
+anchor_right = 0.812549
+anchor_bottom = 0.229651
 offset_right = -297.553
 offset_bottom = -89.0233
 grow_horizontal = 2
 rotation = 0.00282774
 scale = Vector2(1.75635, 2.24382)
 theme_override_colors/font_color = Color(100, 0, 0, 1)
-theme_override_colors/font_shadow_color = Color(1, 1, 1, 1)
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/shadow_offset_x = -6
-theme_override_constants/shadow_offset_y = 4
-theme_override_constants/outline_size = 11
+theme_override_colors/font_shadow_color = Color(0.747639, 0.878767, 0.0401129, 1)
+theme_override_colors/font_outline_color = Color(0.787759, 0.787759, 0.787759, 1)
+theme_override_constants/shadow_offset_x = -1
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 2
 theme_override_fonts/font = ExtResource("3_c5ymd")
 theme_override_font_sizes/font_size = 69
 text = "VICTORY!!"
@@ -49,54 +52,54 @@ metadata/_edit_use_anchors_ = true
 [node name="RunTime" type="Label" parent="Win"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.275926
-anchor_top = 0.330556
-anchor_right = 0.656381
-anchor_bottom = 0.360867
-offset_right = -22.892
-offset_bottom = -1.73599
+anchor_left = 0.276852
+anchor_top = 0.294444
+anchor_right = 0.657
+anchor_bottom = 0.344148
+offset_right = -22.56
+offset_bottom = -12.68
 scale = Vector2(1.059, 1.056)
 theme_override_colors/font_color = Color(97.838, 0, 0, 1)
-theme_override_colors/font_shadow_color = Color(0.91664, 0.91664, 0.91664, 1)
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/shadow_offset_x = -2
-theme_override_constants/shadow_offset_y = 3
-theme_override_constants/outline_size = 6
+theme_override_colors/font_shadow_color = Color(0.747639, 0.878767, 0.0401129, 1)
+theme_override_colors/font_outline_color = Color(0.787759, 0.787759, 0.787759, 1)
+theme_override_constants/shadow_offset_x = -1
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 2
 theme_override_fonts/font = ExtResource("3_c5ymd")
-theme_override_font_sizes/font_size = 30
+theme_override_font_sizes/font_size = 40
 text = "RUN TIME:"
 metadata/_edit_use_anchors_ = true
 
-[node name="UIbutton" type="Sprite2D" parent="Win"]
+[node name="DataVault" type="Sprite2D" parent="Win"]
 self_modulate = Color(1, 1, 0, 1)
-position = Vector2(550, 715)
-scale = Vector2(0.833067, 0.529087)
+position = Vector2(523, 747)
+scale = Vector2(0.749477, 0.453407)
 texture = ExtResource("4_hj3s0")
+region_enabled = true
+region_rect = Rect2(256.327, 111.147, 584.771, 266.448)
 
-[node name="StatsLink" type="TouchScreenButton" parent="Win/UIbutton"]
-position = Vector2(-36.0115, -85.0522)
+[node name="StatsLink" type="TouchScreenButton" parent="Win/DataVault"]
+position = Vector2(-13.2574, -1.89007)
 rotation = 3.13132
 scale = Vector2(0.561073, -0.420907)
 skew = 0.00613165
 shape = SubResource("RectangleShape2D_mg0hu")
 shape_visible = false
 
-[node name="Label" type="Label" parent="Win/UIbutton/StatsLink"]
-offset_left = 273.391
-offset_top = -151.931
-offset_right = 640.391
-offset_bottom = -82.9306
-grow_horizontal = 2
-grow_vertical = 2
-scale = Vector2(-1.6022, 5.30977)
-theme_override_colors/font_color = Color(48.649, 0, 0, 1)
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+[node name="Label" type="Label" parent="Win/DataVault/StatsLink"]
+offset_left = 394.373
+offset_top = -179.072
+offset_right = 792.373
+offset_bottom = -110.072
+scale = Vector2(-2.09846, 5.36982)
+theme_override_colors/font_color = Color(47.027, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0.0202373, 0.440257, 0.493826, 1)
 theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
-theme_override_constants/shadow_offset_x = -8
-theme_override_constants/shadow_offset_y = 3
-theme_override_constants/outline_size = 4
+theme_override_constants/shadow_offset_x = -2
+theme_override_constants/shadow_offset_y = 4
+theme_override_constants/outline_size = 3
 theme_override_fonts/font = ExtResource("3_c5ymd")
-theme_override_font_sizes/font_size = 50
+theme_override_font_sizes/font_size = 60
 text = "DATA VALUT"
 horizontal_alignment = 1
 metadata/_edit_use_anchors_ = true
@@ -104,20 +107,21 @@ metadata/_edit_use_anchors_ = true
 [node name="EnimiesKilled" type="Label" parent="Win"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.275926
-anchor_top = 0.402778
-anchor_right = 0.792028
-anchor_bottom = 0.431481
-offset_right = -0.390015
+anchor_left = 0.269444
+anchor_top = 0.415741
+anchor_right = 0.786
+anchor_bottom = 0.463333
+offset_right = -0.880005
+offset_bottom = -10.4
 scale = Vector2(1.001, 1)
 theme_override_colors/font_color = Color(100, 0, 0, 1)
-theme_override_colors/font_shadow_color = Color(1, 1, 1, 1)
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/shadow_offset_x = -2
-theme_override_constants/shadow_offset_y = 3
-theme_override_constants/outline_size = 7
+theme_override_colors/font_shadow_color = Color(0.747639, 0.878767, 0.0401129, 1)
+theme_override_colors/font_outline_color = Color(0.787759, 0.787759, 0.787759, 1)
+theme_override_constants/shadow_offset_x = -1
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 2
 theme_override_fonts/font = ExtResource("3_c5ymd")
-theme_override_font_sizes/font_size = 30
+theme_override_font_sizes/font_size = 40
 text = "ENEMIES ELIMINATED: "
 metadata/_edit_use_anchors_ = true
 
@@ -125,22 +129,55 @@ metadata/_edit_use_anchors_ = true
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.275926
-anchor_top = 0.481481
-anchor_right = 0.761787
-anchor_bottom = 0.512539
-offset_right = -2.72998
-offset_bottom = -2.54199
+anchor_top = 0.547222
+anchor_right = 0.739148
+anchor_bottom = 0.588704
+offset_right = -3.28009
+offset_bottom = -3.80005
 scale = Vector2(1.007, 1.082)
 theme_override_colors/font_color = Color(100, 0, 0, 1)
-theme_override_colors/font_shadow_color = Color(1, 1, 1, 1)
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/shadow_offset_x = -2
-theme_override_constants/shadow_offset_y = 3
-theme_override_constants/outline_size = 6
+theme_override_colors/font_shadow_color = Color(0.747639, 0.878767, 0.0401129, 1)
+theme_override_colors/font_outline_color = Color(0.787759, 0.787759, 0.787759, 1)
+theme_override_constants/shadow_offset_x = -1
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 2
 theme_override_fonts/font = ExtResource("3_c5ymd")
-theme_override_font_sizes/font_size = 30
+theme_override_font_sizes/font_size = 40
 text = "CASH COLLECTED:"
 metadata/_edit_use_anchors_ = true
+
+[node name="Restart" type="Sprite2D" parent="Win"]
+self_modulate = Color(1, 1, 0, 1)
+position = Vector2(518, 902)
+scale = Vector2(0.720918, 0.407834)
+texture = ExtResource("4_hj3s0")
+region_enabled = true
+region_rect = Rect2(252.961, 109.427, 577.698, 266.448)
+
+[node name="Label" type="Label" parent="Win/Restart"]
+anchors_preset = -1
+anchor_left = 0.274022
+anchor_top = 0.251115
+anchor_right = 0.74201
+anchor_bottom = 0.82114
+offset_left = -323.178
+offset_top = -142.808
+offset_right = -345.207
+offset_bottom = -211.434
+scale = Vector2(1.33807, 2.25091)
+theme_override_colors/font_color = Color(49.729, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0.0202373, 0.440257, 0.493826, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/shadow_offset_x = -2
+theme_override_constants/shadow_offset_y = 4
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("3_c5ymd")
+theme_override_font_sizes/font_size = 60
+text = "Replay"
+metadata/_edit_use_anchors_ = true
+
+[node name="Restart" type="TouchScreenButton" parent="Win/Restart"]
+shape = SubResource("RectangleShape2D_1wfes")
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 unique_name_in_owner = true
@@ -148,5 +185,6 @@ stream = ExtResource("5_els2m")
 volume_db = 2.1
 pitch_scale = 1.4
 
-[connection signal="pressed" from="Win/UIbutton/StatsLink" to="." method="_on_stats_link_pressed"]
-[connection signal="pressed" from="Win/UIbutton/StatsLink" to="Win" method="_on_stats_link_pressed"]
+[connection signal="pressed" from="Win/DataVault/StatsLink" to="." method="_on_stats_link_pressed"]
+[connection signal="pressed" from="Win/DataVault/StatsLink" to="Win" method="_on_stats_link_pressed"]
+[connection signal="pressed" from="Win/Restart/Restart" to="." method="_on_restart_pressed"]

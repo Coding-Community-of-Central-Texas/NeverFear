@@ -78,7 +78,7 @@ func randomize_power_up():
 			%Heart.visible = false
 			%CashSpin.visible = false
 		PowerUpType.LIVES:
-			power_up_value = randi_range(0, 1)   
+			power_up_value = randi_range(1, 2)   
 			%Heart.visible = true 
 			%Star.visible = false
 			%Health.visible = false

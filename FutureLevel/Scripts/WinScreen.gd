@@ -7,6 +7,8 @@ extends CanvasLayer
 @onready var run_time: Label = $Win/RunTime
 @onready var stats_link: TouchScreenButton = $Win/UIbutton/StatsLink
 @onready var label: Label = $Win/UIbutton/StatsLink/Label
+@onready var data_vault: Sprite2D = $Win/DataVault
+@onready var restart: Sprite2D = $Win/Restart
 
 
 func _ready():
@@ -25,9 +27,20 @@ func _process(_delta):
 
 func _on_stats_link_pressed() -> void:
 	audio_stream_player_2d.play()
-	label.modulate = Color(0, 0.5, 1)  # Set to red
-	await get_tree().create_timer(0.5).timeout  # Wait for 0.1 seconds
-	label.modulate = Color(1, 1, 1)  # Reset to normal
+	data_vault.modulate = Color(0.5, 0.5, 0)  # Set to red
+	await get_tree().create_timer(0.2).timeout  # Wait for 0.1 seconds
+	data_vault.modulate = Color(1, 1, 1)  # Reset to normal
 	Engine.time_scale = 1.0
 	Global.reset_game_state()
 	get_tree().change_scene_to_file("res://Scenes/PerformanceIndex.tscn")
+
+
+func _on_restart_pressed() -> void:
+	audio_stream_player_2d.play()
+	restart.modulate = Color(0.5, 0.5, 0)  # Set to red
+	await get_tree().create_timer(0.2).timeout  # Wait for 0.1 seconds
+	restart.modulate = Color(1, 1, 1)  # Reset to normal
+	Engine.time_scale = 1.0
+	Global.reset_game_state()
+	get_tree().reload_current_scene()
+	

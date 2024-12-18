@@ -29,4 +29,3 @@ func spawn_wave():
 func _on_survivor_rank_changed(rank_index: int) -> void:
 	if rank_index >= 0 and rank_index < spawn_intervals.size():
 		timer.wait_time = spawn_intervals[rank_index]
-		print("Spawner updated: Rank =", rank_index, "New wait_time =", timer.wait_time)

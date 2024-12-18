@@ -343,7 +343,7 @@ autoplay = "heart"
 
 [node name="QueueTimer" type="Timer" parent="."]
 process_callback = 0
-wait_time = 30.014
+wait_time = 10.006
 autostart = true
 
 [connection signal="add_cash" from="." to="." method="_on_add_cash"]

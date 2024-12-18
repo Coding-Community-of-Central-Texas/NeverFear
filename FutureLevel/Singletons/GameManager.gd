@@ -7,7 +7,7 @@ signal scene_kill_updated(kills: int)
 # Stats
 var total_kills: int = 0
 var quickest_time: String = "99:59.999"
-var longest_survival: int = 0
+var longest_survival: String = "00:00.000"
 var total_cash: int = 0
 var current_level_time: String = "" 
 var current_kills: int = 0
@@ -22,7 +22,6 @@ func _ready():
 func _on_kill(amount: int) -> void:
 	total_kills += amount
 	current_kills += amount  # Increment current scene kills
-	print("Kill +1 | Total Kills:", total_kills, "| Level Kills:", current_kills)
 
 	# Emit a signal for the current scene's kills
 	emit_signal("scene_kill_updated", current_kills)
@@ -31,11 +30,9 @@ func _on_kill(amount: int) -> void:
 func reset_scene_kills() -> void:
 	# Reset scene-specific kill counter
 	current_kills = 0
-	print("Scene Kills Reset")
 
 func add_cash(amount: int):
 	game_cash += amount
-	print("Earned Cash: $", amount, "| Current Game Cash: $", game_cash)
 
 func finalize_cash():
 	total_cash += game_cash
@@ -60,8 +57,8 @@ func time_to_ms(time: String) -> int:
 	return (minutes * 60 + seconds) * 1000 + msec
 
 # Update the longest survival time
-func update_longest_survival(time: int):
-	if time > longest_survival:
+func update_longest_survival(time: String):
+	if time_to_ms(time) < time_to_ms(longest_survival) or longest_survival == "00:00.000":
 		longest_survival = time
 		print("New longest survival time:", longest_survival)
 		save_data()  # Save updated survival time
@@ -92,7 +89,7 @@ func load_data():
 			if typeof(data) == TYPE_DICTIONARY:
 				total_kills = data.get("total_kills", 0)
 				quickest_time = data.get("quickest_time", "99:59.999")
-				longest_survival = data.get("longest_survival", 0)
+				longest_survival = data.get("longest_survival", "00:00.000")
 				total_cash = data.get("total_cash", 0)
 				print("Game data loaded successfully")
 			else:
