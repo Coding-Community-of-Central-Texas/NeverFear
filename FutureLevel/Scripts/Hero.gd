@@ -4,14 +4,14 @@ var health = 100.0
 const MAX_HEALTH = 100.0
 @export var SPEED = 600.0
 var previous_speed: float = SPEED
-const JUMP_VELOCITY = -1000.0
-const DOUBLE_JUMP_VELOCITY = -1200.0
+const JUMP_VELOCITY = -1100.0
+const DOUBLE_JUMP_VELOCITY = -1300.0
 const GRAVITY = 4000.0  # Custom gravity value
 const COYOTE_TIME = 0.2  # Time to allow jumping after falling
-const MAX_FALL_SPEED = 3000.0  # Limit the maximum fall speed
+const MAX_FALL_SPEED = 3500.0  # Limit the maximum fall speed
 var direction : Vector2 = Vector2.ZERO
-@export var acceleration: float = 3000.0
-@export var deceleration: float = 5000.0
+@export var acceleration: float = 4000.0
+@export var deceleration: float = 7000.0
 @export var run_dust: PackedScene
 
 @onready var audio_stream_player_2d_2: AudioStreamPlayer2D = $AudioStreamPlayer2D2
