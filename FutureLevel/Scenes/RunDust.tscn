@@ -16,6 +16,7 @@ _data = [Vector2(0.0524862, 0.427468), 0.0, 0.0, 0, 0, Vector2(0.190608, 0.33261
 point_count = 7
 
 [node name="RunDust" type="Node2D"]
+visible = false
 script = ExtResource("1_ict0m")
 
 [node name="RunPuffR" type="CPUParticles2D" parent="."]

@@ -222,19 +222,19 @@ tracks/16/keys = {
 tracks/17/type = "value"
 tracks/17/imported = false
 tracks/17/enabled = true
-tracks/17/path = NodePath("Lightrays8/CPUParticles2D:visible")
+tracks/17/path = NodePath("MainMenu:modulate")
 tracks/17/interp = 1
 tracks/17/loop_wrap = true
 tracks/17/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
 }
 tracks/18/type = "value"
 tracks/18/imported = false
 tracks/18/enabled = true
-tracks/18/path = NodePath("MainMenu:modulate")
+tracks/18/path = NodePath("Restart:modulate")
 tracks/18/interp = 1
 tracks/18/loop_wrap = true
 tracks/18/keys = {
@@ -246,22 +246,10 @@ tracks/18/keys = {
 tracks/19/type = "value"
 tracks/19/imported = false
 tracks/19/enabled = true
-tracks/19/path = NodePath("Restart:modulate")
+tracks/19/path = NodePath("Lightrays8/CPUParticles2D:emitting")
 tracks/19/interp = 1
 tracks/19/loop_wrap = true
 tracks/19/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 0)]
-}
-tracks/20/type = "value"
-tracks/20/imported = false
-tracks/20/enabled = true
-tracks/20/path = NodePath("Lightrays8/CPUParticles2D:emitting")
-tracks/20/interp = 1
-tracks/20/loop_wrap = true
-tracks/20/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
@@ -339,10 +327,10 @@ tracks/5/path = NodePath("MissionFail:position")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
-"times": PackedFloat32Array(0.866667, 1.4, 2.23333, 2.5, 2.8, 3.7),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0.866667, 1.4, 2.26667, 2.43333, 2.63333, 3.1, 4, 4.56667, 6.63333, 8.658, 8.96667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 5.09824, 1, 1, 1, 1, 1, 1),
 "update": 0,
-"values": [Vector2(69.298, -136.293), Vector2(69.298, 500.64), Vector2(106.266, 455.299), Vector2(14.5416, 409.958), Vector2(69.298, 349.504), Vector2(69.298, 349.504)]
+"values": [Vector2(69.298, -136.293), Vector2(69.298, 500.64), Vector2(119.386, 455.299), Vector2(2.282, 409.958), Vector2(69.298, 349.504), Vector2(69.298, 349.504), Vector2(69.298, 349.504), Vector2(69.298, 1198.3), Vector2(69.298, 1053.91), Vector2(69.298, 408.879), Vector2(69.298, 349.504)]
 }
 tracks/6/type = "value"
 tracks/6/imported = false
@@ -351,10 +339,10 @@ tracks/6/path = NodePath("MissionFail:scale")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
-"times": PackedFloat32Array(0.733333, 1.63333, 2.06667),
-"transitions": PackedFloat32Array(1, 1, 1),
+"times": PackedFloat32Array(0.733333, 1.63333, 2.06667, 9.6237, 9.7236, 9.8235, 9.96667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
 "update": 0,
-"values": [Vector2(0.002, 0.004), Vector2(0.007, 0.014), Vector2(1, 1.99858)]
+"values": [Vector2(0.002, 0.004), Vector2(0.007, 0.014), Vector2(1, 1.99858), Vector2(1, 1.164), Vector2(1, 2.309), Vector2(0.7, 1.559), Vector2(1, 1.99858)]
 }
 tracks/7/type = "value"
 tracks/7/imported = false
@@ -363,10 +351,10 @@ tracks/7/path = NodePath("MissionFail:rotation")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/keys = {
-"times": PackedFloat32Array(0.666667, 1.93333),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0.666667, 1.93333, 3.6963, 3.7629, 3.86667, 3.9627, 7.96667, 7.992, 8, 8.03333, 8.06667, 8.092, 8.1, 8.13333, 8.3916, 8.658),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 0,
-"values": [-0.340339, 0.0]
+"values": [-0.340339, 0.0, 0.0, -0.1309, -0.776672, -1.213, -1.28282, -1.213, -1.16064, -1.07338, -1.28282, -1.213, -1.16064, -1.07338, 3.87289, 6.28319]
 }
 tracks/8/type = "value"
 tracks/8/imported = false
@@ -387,7 +375,7 @@ tracks/9/path = NodePath("MissionFail:text")
 tracks/9/interp = 1
 tracks/9/loop_wrap = true
 tracks/9/keys = {
-"times": PackedFloat32Array(0.266667, 3.7, 3.83333, 4.7, 4.796, 5.1, 5.43333, 5.8, 6.1, 6.26667, 6.56667, 6.93333, 7.26667, 7.66667, 8.13333),
+"times": PackedFloat32Array(0.266667, 3.7, 3.73333, 4.7, 4.796, 5.1, 5.43333, 5.8, 6.1, 6.26667, 6.56667, 6.93333, 7.26667, 7.66667, 8.13333),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
 "values": ["MISSION FAILED!", "MISSION FAILED!", "MISSION ", "MISSION ", "MISSION.", "MISSION..", "MISSION...", "MISSION.", "MISSION..", "MISSION ", "MISSION..", "MISSION...", "MISSION.", "MISSION..", "MISSION "]
@@ -411,10 +399,10 @@ tracks/11/path = NodePath("Fail:rotation")
 tracks/11/interp = 1
 tracks/11/loop_wrap = true
 tracks/11/keys = {
-"times": PackedFloat32Array(3.73333, 4.03333, 4.43333, 4.6, 4.76667, 4.96667, 8.73447),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(3.73333, 4.13333, 5.4, 8.73447),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
-"values": [0.0, 0.297823, 1.76654, 1.82387, 1.39452, 1.58246, 0.0]
+"values": [0.0, 0.603884, 1.58246, 0.0]
 }
 tracks/12/type = "value"
 tracks/12/imported = false
@@ -435,10 +423,10 @@ tracks/13/path = NodePath("Fail:position")
 tracks/13/interp = 1
 tracks/13/loop_wrap = true
 tracks/13/keys = {
-"times": PackedFloat32Array(3.73157, 4.66667, 4.9, 8.73447, 9.2, 9.60573, 9.99),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(3.73157, 4.43333, 4.66667, 5.4, 8.73447, 9.2, 9.60573, 9.99),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
 "update": 0,
-"values": [Vector2(62, 365.697), Vector2(62, 365.697), Vector2(62, 1360.23), Vector2(465, 1518), Vector2(465, 353.552), Vector2(62, 365.697), Vector2(58.1665, 365.697)]
+"values": [Vector2(62, 365.697), Vector2(62, 322.515), Vector2(62, 365.697), Vector2(62, 1360.23), Vector2(465, 1518), Vector2(465, 353.552), Vector2(62, 365.697), Vector2(58.1665, 365.697)]
 }
 tracks/14/type = "value"
 tracks/14/imported = false
@@ -447,7 +435,7 @@ tracks/14/path = NodePath("Fail:visible")
 tracks/14/interp = 1
 tracks/14/loop_wrap = true
 tracks/14/keys = {
-"times": PackedFloat32Array(0.0666667, 3.6),
+"times": PackedFloat32Array(0.0666667, 3.66667),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [false, true]
@@ -459,10 +447,10 @@ tracks/15/path = NodePath("Fail:scale")
 tracks/15/interp = 1
 tracks/15/loop_wrap = true
 tracks/15/keys = {
-"times": PackedFloat32Array(3.73427, 4.30037, 4.66667, 8.86767, 8.96757, 9.43333, 9.63357, 9.86667, 10),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(3.73427, 4.36667, 4.73333, 5.1948, 8.86767, 8.96757, 9.43333, 9.63357, 9.86667, 10),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 0,
-"values": [Vector2(1, 1.999), Vector2(1.27, 1.999), Vector2(1.379, 1.999), Vector2(1, 1.99858), Vector2(2.08, 1.999), Vector2(2.08, 1.999), Vector2(0.355, 1.999), Vector2(1.33, 1.999), Vector2(1, 1.999)]
+"values": [Vector2(1, 1.999), Vector2(1.349, 1.999), Vector2(1.254, 1.104), Vector2(1.087, 1.144), Vector2(1, 1.99858), Vector2(2.08, 1.999), Vector2(2.08, 1.999), Vector2(0.355, 1.999), Vector2(1.33, 1.999), Vector2(1, 1.999)]
 }
 tracks/16/type = "value"
 tracks/16/imported = false
@@ -478,47 +466,35 @@ tracks/16/keys = {
 }
 tracks/17/type = "value"
 tracks/17/imported = false
-tracks/17/enabled = false
-tracks/17/path = NodePath("Lightrays8/CPUParticles2D:visible")
+tracks/17/enabled = true
+tracks/17/path = NodePath("MainMenu:modulate")
 tracks/17/interp = 1
 tracks/17/loop_wrap = true
 tracks/17/keys = {
-"times": PackedFloat32Array(),
-"transitions": PackedFloat32Array(),
-"update": 1,
-"values": []
-}
-tracks/18/type = "value"
-tracks/18/imported = false
-tracks/18/enabled = true
-tracks/18/path = NodePath("MainMenu:modulate")
-tracks/18/interp = 1
-tracks/18/loop_wrap = true
-tracks/18/keys = {
 "times": PackedFloat32Array(0, 3.03333, 3.76667, 4.36667),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 0.222), Color(1, 1, 1, 1)]
 }
-tracks/19/type = "value"
-tracks/19/imported = false
-tracks/19/enabled = true
-tracks/19/path = NodePath("Restart:modulate")
-tracks/19/interp = 1
-tracks/19/loop_wrap = true
-tracks/19/keys = {
+tracks/18/type = "value"
+tracks/18/imported = false
+tracks/18/enabled = true
+tracks/18/path = NodePath("Restart:modulate")
+tracks/18/interp = 1
+tracks/18/loop_wrap = true
+tracks/18/keys = {
 "times": PackedFloat32Array(0, 2.96667, 3.73333, 4.4),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 0.157), Color(1, 1, 1, 1)]
 }
-tracks/20/type = "value"
-tracks/20/imported = false
-tracks/20/enabled = true
-tracks/20/path = NodePath("Lightrays8/CPUParticles2D:emitting")
-tracks/20/interp = 1
-tracks/20/loop_wrap = true
-tracks/20/keys = {
+tracks/19/type = "value"
+tracks/19/imported = false
+tracks/19/enabled = true
+tracks/19/path = NodePath("Lightrays8/CPUParticles2D:emitting")
+tracks/19/interp = 1
+tracks/19/loop_wrap = true
+tracks/19/keys = {
 "times": PackedFloat32Array(0, 2.5308, 8.9577),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
@@ -629,11 +605,13 @@ self_modulate = Color(7.567, 100, 100, 1)
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.114165
-anchor_top = 0.222451
+anchor_top = 0.263146
 anchor_right = 0.918119
-anchor_bottom = 0.292313
-offset_top = 24.9469
-offset_bottom = -25.9807
+anchor_bottom = 0.333008
+offset_left = -0.000137329
+offset_top = -34.4267
+offset_right = -0.000183105
+offset_bottom = -85.3543
 grow_horizontal = 2
 grow_vertical = 2
 rotation = -0.340339
@@ -659,10 +637,10 @@ anchor_left = 0.499453
 anchor_top = -1.10186
 anchor_right = 0.499453
 anchor_bottom = -1.10186
-offset_left = 161.832
-offset_top = 2567.23
-offset_right = 655.832
-offset_bottom = 2619.27
+offset_left = -245.001
+offset_top = 1973.31
+offset_right = 248.998
+offset_bottom = 2025.35
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(2.08, 1.999)
@@ -692,7 +670,6 @@ texture = ExtResource("4_ssp7s")
 [node name="Label2" type="Label" parent="CanvasLayer/ColorRect/Restart"]
 z_index = 1
 texture_filter = 6
-anchors_preset = -1
 offset_left = -25.1916
 offset_top = -11.9777
 offset_right = 108.808
@@ -798,7 +775,6 @@ scale = Vector2(0.425, 0.924718)
 texture = ExtResource("7_78ycr")
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="CanvasLayer/ColorRect/Lightrays8"]
-visible = false
 z_index = 4
 position = Vector2(2.63196, -311.453)
 scale = Vector2(2.35294, 1.08141)

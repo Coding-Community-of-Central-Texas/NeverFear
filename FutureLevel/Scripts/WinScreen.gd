@@ -18,6 +18,7 @@ func _ready():
 		return
 
 func _process(_delta):
+	
 	run_time.text = "RUN TIME: %s" % GameManager.current_level_time
 	enimies_killed.text = "ENEMIES VAPORIZED: %d" % GameManager.current_kills
 	cash_collected.text = "CASH COLLECTED: $ %s" % GameManager.game_cash

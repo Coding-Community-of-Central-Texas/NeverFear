@@ -1,7 +1,7 @@
 
 extends CharacterBody2D
 signal rank_changed(rank_index: int)
-
+signal playerdeath
 # Player properties
 var health: float = 100.0
 const MAX_HEALTH = 100
@@ -48,9 +48,10 @@ func _die():
 	if is_dead:
 		return  # Ensure _die() only runs once
 	is_dead = true
-	if animation_player.current_animation != "death":
-		animation_player.stop()
-	animation_player.play("death")
+	if %AnimationPlayer.current_animation != "death":
+		%AnimationPlayer.stop()
+	%AnimationPlayer.play("death")
+	emit_signal("playerdeath")
 	# Stop movement (optional, but recommended)
 	velocity = Vector2.ZERO
 	timer_2.start()
@@ -156,7 +157,7 @@ func flip_sprite() -> void:
 func _on_timer_2_timeout() -> void:
 	_game_over()
 	GameManager.reset_scene_kills()
-	Global.gauntlet.time_survived()
+
 
 func _game_over():
 	const GAMEOVER = preload("res://Scenes/GameOver.tscn")

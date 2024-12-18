@@ -681,21 +681,6 @@ sources/76 = SubResource("TileSetAtlasSource_g3xb1")
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_gihud"]
 
-[sub_resource type="Animation" id="Animation_l2rq5"]
-resource_name = "load"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("TextureRect:self_modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.3, 0.733333),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Color(0, 0, 0, 1), Color(0, 0, 0, 0.838), Color(0, 0, 0, 0)]
-}
-
 [sub_resource type="Animation" id="Animation_4r3fk"]
 length = 0.001
 tracks/0/type = "value"
@@ -736,6 +721,21 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_l2rq5"]
+resource_name = "load"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TextureRect:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.733333),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 1), Color(0, 0, 0, 0.838), Color(0, 0, 0, 0)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ukdey"]
@@ -827,4 +827,5 @@ libraries = {
 }
 autoplay = "load"
 
+[connection signal="playerdeath" from="Survivor" to="." method="_on_survivor_playerdeath"]
 [connection signal="scene_kill_updated" from="GameManager" to="Survivor" method="_on_game_manager_scene_kill_updated"]

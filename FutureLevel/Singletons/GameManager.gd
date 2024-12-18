@@ -14,7 +14,7 @@ var current_kills: int = 0
 var game_cash: int = 0 
 
 # File path for save data
-const SAVE_PATH = "user://save_data.json"
+const SAVE_PATH = "user://save_data1.json"
 
 func _ready():
 	load_data()
@@ -57,7 +57,7 @@ func time_to_ms(time: String) -> int:
 	return (minutes * 60 + seconds) * 1000 + msec
 
 # Update the longest survival time
-func update_longest_survival(time: String):
+func update_longest_survival(time: String) -> void:
 	if time_to_ms(time) < time_to_ms(longest_survival) or longest_survival == "00:00.000":
 		longest_survival = time
 		print("New longest survival time:", longest_survival)
@@ -89,7 +89,7 @@ func load_data():
 			if typeof(data) == TYPE_DICTIONARY:
 				total_kills = data.get("total_kills", 0)
 				quickest_time = data.get("quickest_time", "99:59.999")
-				longest_survival = data.get("longest_survival", "00:00.000")
+				longest_survival = data.get("longest_survival", "0")
 				total_cash = data.get("total_cash", 0)
 				print("Game data loaded successfully")
 			else:
