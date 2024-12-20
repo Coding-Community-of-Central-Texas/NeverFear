@@ -177,6 +177,5 @@ func _on_spawn_timer_timeout() -> void:
 
 
 func _on_game_manager_scene_kill_updated(kills: int) -> void:
-	print("ranking up")
 	current_kills = kills
 	rank_up()

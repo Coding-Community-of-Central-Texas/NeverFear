@@ -637,9 +637,9 @@ anchor_left = 0.499453
 anchor_top = -1.10186
 anchor_right = 0.499453
 anchor_bottom = -1.10186
-offset_left = -245.001
+offset_left = -245.002
 offset_top = 1973.31
-offset_right = 248.998
+offset_right = 248.997
 offset_bottom = 2025.35
 grow_horizontal = 2
 grow_vertical = 2
@@ -735,9 +735,10 @@ autoplay = "gameover"
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="CanvasLayer/ColorRect"]
 unique_name_in_owner = true
+process_mode = 3
 stream = ExtResource("5_r0rrm")
 volume_db = 2.1
-pitch_scale = 1.4
+pitch_scale = 1.6
 
 [node name="CyborgDeath" type="Sprite2D" parent="CanvasLayer/ColorRect"]
 visible = false

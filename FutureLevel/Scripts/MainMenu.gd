@@ -23,18 +23,18 @@ func _process(_delta: float) -> void:
 
 func _on_legacy_protocol_pressed() -> void:
 	audio_stream_player_2d.play()
-	legacy_button.modulate = Color(0.5, 0.5, 0)  # Set to red
-	await get_tree().create_timer(0.4).timeout  # Wait for 0.1 seconds
-	legacy_button.modulate = Color(1, 1, 1)  # Reset to normal
+	legacy_button.modulate = Color(0.5, 0.5, 0, 0.7)  # Set to red
+	await get_tree().create_timer(0.2).timeout  # Wait for 0.1 seconds
+	legacy_button.modulate = Color(1, 1, 1, 1)  # Reset to normal
 	Global.reset_game_state()
 	get_tree().change_scene_to_file("res://Scenes/LegacyProtocol.tscn")
 
 
 func _on_hypercore_gauntlet_pressed() -> void:
 	audio_stream_player_2d.play()
-	gauntlet.modulate = Color(0.5, 0.5, 0)  # Set to red
-	await get_tree().create_timer(0.4).timeout  # Wait for 0.1 seconds
-	gauntlet.modulate = Color(1, 1, 1)  # Reset to normal
+	gauntlet.modulate = Color(0.5, 0.5, 0, 0.7)  # Set to red
+	await get_tree().create_timer(0.2).timeout  # Wait for 0.1 seconds
+	gauntlet.modulate = Color(1, 1, 1, 1)  # Reset to normal
 	GameManager.reset_scene_kills()
 	get_tree().change_scene_to_file("res://Scenes/HypercoreGauntlet.tscn")
 	Global.reset_game_state()
@@ -42,15 +42,15 @@ func _on_hypercore_gauntlet_pressed() -> void:
 
 func _on_credits_pressed() -> void:
 	audio_stream_player_2d.play()
-	credits_label.modulate = Color(0.5, 0.5, 0)  # Set to red
-	await get_tree().create_timer(0.4).timeout  # Wait for 0.1 seconds
-	credits_label.modulate = Color(1, 1, 1)  # Reset to normal
+	credits_label.modulate = Color(0.5, 0.5, 0, 0.7)  # Set to red
+	await get_tree().create_timer(0.2).timeout  # Wait for 0.1 seconds
+	credits_label.modulate = Color(1, 1, 1, 1)  # Reset to normal
 	get_tree().change_scene_to_file("res://Scenes/Credits.tscn")
 
 
 func _on_performance_pressed() -> void:
 	audio_stream_player_2d.play()
-	performance_settings.modulate = Color(0.5, 0.5, 0)  # Set to red
-	await get_tree().create_timer(0.4).timeout  # Wait for 0.1 seconds
-	performance_settings.modulate = Color(1, 1, 1)  # Reset to normal
+	performance_settings.modulate = Color(0.5, 0.5, 0, 0.7)  # Set to red
+	await get_tree().create_timer(0.2).timeout  # Wait for 0.1 seconds
+	performance_settings.modulate = Color(1, 1, 1, 1)  # Reset to normal
 	get_tree().change_scene_to_file("res://Scenes/PerformanceIndex.tscn")

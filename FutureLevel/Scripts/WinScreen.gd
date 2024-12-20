@@ -5,8 +5,6 @@ extends CanvasLayer
 @onready var enimies_killed: Label = $Win/EnimiesKilled
 @onready var cash_collected: Label = $Win/CashCollected
 @onready var run_time: Label = $Win/RunTime
-@onready var stats_link: TouchScreenButton = $Win/UIbutton/StatsLink
-@onready var label: Label = $Win/UIbutton/StatsLink/Label
 @onready var data_vault: Sprite2D = $Win/DataVault
 @onready var restart: Sprite2D = $Win/Restart
 
@@ -19,7 +17,7 @@ func _ready():
 
 func _process(_delta):
 	
-	run_time.text = "RUN TIME: %s" % GameManager.current_level_time
+	run_time.text = "RUN TIME: %s" % Global.legacy.level_time()
 	enimies_killed.text = "ENEMIES VAPORIZED: %d" % GameManager.current_kills
 	cash_collected.text = "CASH COLLECTED: $ %s" % GameManager.game_cash
 

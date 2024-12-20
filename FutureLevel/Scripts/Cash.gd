@@ -84,8 +84,6 @@ func randomize_power_up():
 			%Health.visible = false
 			%CashSpin.visible = false
 
-	print("Randomized power-up type:", power_up_type)
-	print("Power-up value:", power_up_value)
 
 
 func _physics_process(delta: float):
@@ -138,7 +136,6 @@ func _on_audio_stream_player_2d_finished() -> void:
 
 func _on_add_cash() -> void:
 	GameManager.add_cash(randi_range(1000, 10000))
-	print("add cash")
 	
 
 

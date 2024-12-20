@@ -42,9 +42,9 @@ func update_performance_page():
 	%FastestTime.text = \"FASTEST 
 	LEGACY RUN: %s\" % GameManager.quickest_time
 	%LongestTimeSurvived.text = \"LONGEST 
-	GAUNTLET RUN: %s\" + str(GameManager.longest_survival)
+	GAUNTLET RUN: \" + str(GameManager.longest_survival)
 	%OverallCash.text = \"$BANK$: 
-		$%s\" % str(GameManager.total_cash)
+		$ %s \" % GameManager.total_cash
 
 
 func _on_home_button_pressed() -> void:

@@ -14,7 +14,7 @@ var current_kills: int = 0
 var game_cash: int = 0 
 
 # File path for save data
-const SAVE_PATH = "user://save_data1.json"
+const SAVE_PATH = "user://save_data01.json"
 
 func _ready():
 	load_data()
@@ -30,15 +30,12 @@ func _on_kill(amount: int) -> void:
 func reset_scene_kills() -> void:
 	# Reset scene-specific kill counter
 	current_kills = 0
+	game_cash = 0
 
 func add_cash(amount: int):
 	game_cash += amount
+	total_cash += amount
 
-func finalize_cash():
-	total_cash += game_cash
-	game_cash = 0
-	print("Level Cash Added to Total. Total Cash: $", total_cash)
-	save_data()  # Save updated cash stats
 
 # Update the quickest time
 func update_quickest_time(time: String):
@@ -58,7 +55,7 @@ func time_to_ms(time: String) -> int:
 
 # Update the longest survival time
 func update_longest_survival(time: String) -> void:
-	if time_to_ms(time) < time_to_ms(longest_survival) or longest_survival == "00:00.000":
+	if time_to_ms(time) > time_to_ms(longest_survival) or longest_survival == "00:00.000":
 		longest_survival = time
 		print("New longest survival time:", longest_survival)
 		save_data()  # Save updated survival time
@@ -89,7 +86,7 @@ func load_data():
 			if typeof(data) == TYPE_DICTIONARY:
 				total_kills = data.get("total_kills", 0)
 				quickest_time = data.get("quickest_time", "99:59.999")
-				longest_survival = data.get("longest_survival", "0")
+				longest_survival = data.get("longest_survival", "00:00.000")
 				total_cash = data.get("total_cash", 0)
 				print("Game data loaded successfully")
 			else:
@@ -99,5 +96,4 @@ func load_data():
 
 # Save data when exiting the game
 func _on_tree_exiting():
-	finalize_cash()
 	save_data()
