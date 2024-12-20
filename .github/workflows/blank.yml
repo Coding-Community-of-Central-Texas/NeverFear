@@ -1,0 +1,30 @@
+name: Sync Issues to Notion
+
+on:
+  issues:
+    types: [opened, edited, closed]
+
+jobs:
+  sync-to-notion:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.x'
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install requests
+
+      - name: Sync issue to Notion
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NOTION_TOKEN: ${{ secrets.NOTION_TOKEN }}
+          NOTION_DATABASE_ID: ${{ secrets.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 }}
+        run: |
+          python sync_to_notion.py
