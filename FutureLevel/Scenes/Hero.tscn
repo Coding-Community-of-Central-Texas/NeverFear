@@ -1,4 +1,4 @@
-[gd_scene load_steps=65 format=3 uid="uid://csqktr6ixyato"]
+[gd_scene load_steps=67 format=3 uid="uid://csqktr6ixyato"]
 
 [ext_resource type="Script" path="res://Scripts/Hero.gd" id="1_43ipw"]
 [ext_resource type="Texture2D" uid="uid://050tdjf5b57n" path="res://assets/3 Cyborg/Cyborg_death.png" id="2_2ior6"]
@@ -285,13 +285,13 @@ animations = [{
 
 [sub_resource type="Curve" id="Curve_im4hk"]
 max_value = 0.75
-_data = [Vector2(0, 0), 0.0, 0.361166, 0, 0, Vector2(0.0306407, 0.602113), 0.0, 0.0, 0, 0, Vector2(0.0529248, 0), 0.213314, 0.213314, 0, 0, Vector2(0.0779944, 0.464789), 0.0, 0.0, 0, 0, Vector2(0.103064, 0), 0.0, 0.0, 0, 0, Vector2(0.125348, 0.454225), -3.53041, -3.53041, 0, 0, Vector2(0.158774, 0), 0.0, 0.0, 0, 0, Vector2(0.169916, 0.427817), -5.39944, -5.39944, 0, 0, Vector2(0.250696, 0), -1.79079, -1.79079, 0, 0, Vector2(0.259053, 0.475352), 0.0, 0.0, 0, 0, Vector2(0.342618, 0), 0.0, 0.0, 0, 0, Vector2(0.406685, 0.443662), 0.0, 0.0, 0, 0, Vector2(0.462396, 0), 0.0, 0.0, 0, 0, Vector2(0.51532, 0.491197), 0.0, 0.0, 0, 0, Vector2(0.576602, 0), 0.0, 0.0, 0, 0, Vector2(0.587744, 0.507042), 0.0, 0.0, 0, 0, Vector2(0.629526, 0), 0.0, 0.0, 0, 0, Vector2(0.657382, 0.681338), 0.0, 0.0, 0, 0, Vector2(0.682451, 0), 0.0, 0.0, 0, 0, Vector2(0.718663, 0.545423), 0.0, 0.0, 0, 0, Vector2(0.743733, 0), 0.0, 0.0, 0, 0, Vector2(0.791086, 0.521127), 0.0, 0.0, 0, 0, Vector2(0.799443, 0), 0.0, 0.0, 0, 0, Vector2(0.846797, 0.488732), 0.0, 0.0, 0, 0, Vector2(0.888579, 0), 0.0, 0.0, 0, 0, Vector2(0.905293, 0.472535), 0.0, 0.0, 0, 0, Vector2(0.935933, 0.75), 0.0, 0.0, 0, 0, Vector2(0.947075, 0), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
-point_count = 29
+_data = [Vector2(0, 0.0369718), 0.0, 0.361166, 0, 0, Vector2(0.0389972, 0.454225), 0.0, 0.0, 0, 0, Vector2(0.0612813, 0.0316901), 0.213314, 0.213314, 0, 0, Vector2(0.091922, 0.359155), 0.0, 0.0, 0, 0, Vector2(0.111421, 0.0369718), 0.0, 0.0, 0, 0, Vector2(0.144847, 0.362676), -3.53041, -3.53041, 0, 0, Vector2(0.169916, 0.0528169), 0.0, 0.0, 0, 0, Vector2(0.194986, 0.362676), -5.39944, -5.39944, 0, 0, Vector2(0.250696, 0.0316901), -1.79079, -1.79079, 0, 0, Vector2(0.289694, 0.355634), 0.0, 0.0, 0, 0, Vector2(0.362117, 0.0316901), 0.0, 0.0, 0, 0, Vector2(0.428969, 0.359155), 0.0, 0.0, 0, 0, Vector2(0.476323, 0.0475352), 0.0, 0.0, 0, 0, Vector2(0.523677, 0.376761), 0.0, 0.0, 0, 0, Vector2(0.579387, 0.0369718), 0.0, 0.0, 0, 0, Vector2(0.601671, 0.411972), 0.0, 0.0, 0, 0, Vector2(0.632312, 0.0316901), 0.0, 0.0, 0, 0, Vector2(0.662953, 0.475352), 0.0, 0.0, 0, 0, Vector2(0.696379, 0.0316901), 0.0, 0.0, 0, 0, Vector2(0.735376, 0.471831), 0.0, 0.0, 0, 0, Vector2(0.779944, 0.0211267), 0.0, 0.0, 0, 0, Vector2(0.816156, 0.43662), 0.0, 0.0, 0, 0, Vector2(0.899721, 0.0211267), 0.0, 0.0, 0, 0, Vector2(0.938719, 0.422535), 0.0, 0.0, 0, 0, Vector2(1, 0.0211267), 0.0, 0.0, 0, 0]
+point_count = 25
 
 [sub_resource type="Curve" id="Curve_nkvrc"]
 max_value = 0.57
-_data = [Vector2(0, 0), 0.0, 0.341644, 0, 0, Vector2(0.0222841, 0.419327), -1.14175, -1.14175, 0, 0, Vector2(0.0501393, 0), 1.11792, 1.11792, 0, 0, Vector2(0.0724234, 0.295699), 0.0, 0.0, 0, 0, Vector2(0.0947075, 0), 0.0, 0.0, 0, 0, Vector2(0.181058, 0.313099), 0.617596, 0.617596, 0, 0, Vector2(0.233983, 0), -0.0514662, -0.0514662, 0, 0, Vector2(0.284123, 0.280986), 0.0, 0.0, 0, 0, Vector2(0.309192, 0), 0.0, 0.0, 0, 0, Vector2(0.362117, 0.413451), 0.0, 0.0, 0, 0, Vector2(0.4039, 0), 0.0, 0.0, 0, 0, Vector2(0.462396, 0.268944), 0.0, 0.0, 0, 0, Vector2(0.504178, 0), 0.0, 0.0, 0, 0, Vector2(0.54039, 0.252887), 0.0, 0.0, 0, 0, Vector2(0.579387, 0), 0.0, 0.0, 0, 0, Vector2(0.612813, 0.397394), -1.06472, -1.06472, 0, 0, Vector2(0.662953, 0.0401409), -0.720529, -0.720529, 0, 0, Vector2(0.688022, 0.240845), 0.0, 0.0, 0, 0, Vector2(0.724234, 0.0401409), 0.0046784, 0.0046784, 0, 0, Vector2(0.871866, 0.0561972), 0.0, 0.0, 0, 0, Vector2(1, 0.0682395), 0.0, 0.0, 0, 0]
-point_count = 21
+_data = [Vector2(0, 0), 0.0, 0.341644, 0, 0, Vector2(0.0306407, 0.529859), -1.14175, -1.14175, 0, 0, Vector2(0.0668524, 0.0240845), 1.11792, 1.11792, 0, 0, Vector2(0.0891365, 0.39338), 0.0, 0.0, 0, 0, Vector2(0.111421, 0.0321127), 0.0, 0.0, 0, 0, Vector2(0.181058, 0.525845), 0.617596, 0.617596, 0, 0, Vector2(0.228412, 0.0240845), -0.0514662, -0.0514662, 0, 0, Vector2(0.281337, 0.349225), 0.0, 0.0, 0, 0, Vector2(0.292479, 0.0200704), 0.0, 0.0, 0, 0, Vector2(0.370474, 0.493732), 0.0, 0.0, 0, 0, Vector2(0.401114, 0.0120423), 0.0, 0.0, 0, 0, Vector2(0.45961, 0.297042), 0.0, 0.0, 0, 0, Vector2(0.495822, 0.0160564), 0.0, 0.0, 0, 0, Vector2(0.54039, 0.252887), 0.0, 0.0, 0, 0, Vector2(0.568245, 0.0160564), 0.0, 0.0, 0, 0, Vector2(0.612813, 0.397394), -1.06472, -1.06472, 0, 0, Vector2(0.662953, 0.0401409), -0.720529, -0.720529, 0, 0, Vector2(0.688022, 0.240845), 0.0, 0.0, 0, 0, Vector2(0.724234, 0.0401409), 0.0046784, 0.0046784, 0, 0, Vector2(0.754875, 0.337183), 0.0, 0.0, 0, 0, Vector2(0.802228, 0.0361268), 0.0, 0.0, 0, 0, Vector2(0.830084, 0.321127), 0.0, 0.0, 0, 0, Vector2(0.871866, 0.0361268), 0.0, 0.0, 0, 0, Vector2(0.891365, 0.297042), 0.0, 0.0, 0, 0, Vector2(0.935933, 0.0240845), 0.0, 0.0, 0, 0, Vector2(0.955432, 0.289014), 0.0, 0.0, 0, 0, Vector2(1, 0.00401407), 0.0, 0.0, 0, 0]
+point_count = 27
 
 [sub_resource type="Curve" id="Curve_tryft"]
 max_value = 0.5
@@ -1273,6 +1273,12 @@ tracks/13/keys = {
 "values": [true]
 }
 
+[sub_resource type="Animation" id="Animation_305b1"]
+resource_name = "leftface"
+
+[sub_resource type="Animation" id="Animation_v77dw"]
+resource_name = "rightface"
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_vhrnj"]
 _data = {
 "IdleRigt ": SubResource("Animation_dl5oi"),
@@ -1280,6 +1286,8 @@ _data = {
 "Runleft": SubResource("Animation_ndcye"),
 "SpeedRight": SubResource("Animation_8bytw"),
 "idleshockL": SubResource("Animation_dp88d"),
+"leftface": SubResource("Animation_305b1"),
+"rightface": SubResource("Animation_v77dw"),
 "speed": SubResource("Animation_3y0yo")
 }
 
@@ -1421,7 +1429,7 @@ rotation = 1.28282
 scale = Vector2(1.085, 1.02)
 emitting = false
 amount = 18
-lifetime = 0.66
+lifetime = 2.71
 speed_scale = 3.24
 local_coords = true
 texture = ExtResource("13_yqouy")
@@ -1444,29 +1452,27 @@ hue_variation_min = 0.22
 hue_variation_max = 0.63
 
 [node name="BoostRTwo" type="CPUParticles2D" parent="AnimatedSprite2D"]
-position = Vector2(16, 38.6667)
-rotation = -0.748746
+position = Vector2(16, 35.3333)
+rotation = 0.0139626
 emitting = false
-amount = 7
-lifetime = 0.58
+amount = 5
+lifetime = 1.08
 one_shot = true
-speed_scale = 4.19
+speed_scale = 0.79
 explosiveness = 1.0
-randomness = 1.0
 local_coords = true
 draw_order = 1
 texture = ExtResource("13_yqouy")
 emission_shape = 1
-emission_sphere_radius = 10.0
+emission_sphere_radius = 12.22
 direction = Vector2(1, -1)
-spread = 53.4
+spread = 180.0
 gravity = Vector2(0, 0)
-initial_velocity_min = 58.43
-initial_velocity_max = 58.43
-angle_min = -117.9
-angle_max = 123.7
-scale_amount_min = 0.75
-scale_amount_max = 1.05
+initial_velocity_max = 11.51
+angle_min = -108.9
+angle_max = 177.3
+scale_amount_min = 0.0
+scale_amount_max = 0.85
 split_scale = true
 scale_curve_x = SubResource("Curve_im4hk")
 scale_curve_y = SubResource("Curve_nkvrc")
