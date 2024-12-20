@@ -38,11 +38,14 @@ func _process(_delta: float) -> void:
 	
 func update_performance_page():
 	%OverallKills.text = \"Enimeies 
-	Eliminated: %s\" % str(GameManager.total_kills)
+	Eliminated: 
+		%s\" % str(GameManager.total_kills)
 	%FastestTime.text = \"FASTEST 
-	LEGACY RUN: %s\" % GameManager.quickest_time
+	LEGACY RUN: 
+		%s\" % GameManager.quickest_time
 	%LongestTimeSurvived.text = \"LONGEST 
-	GAUNTLET RUN: \" + str(GameManager.longest_survival)
+	GAUNTLET RUN: 
+		\" + str(GameManager.longest_survival)
 	%OverallCash.text = \"$BANK$: 
 		$ %s \" % GameManager.total_cash
 
@@ -470,10 +473,12 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_colors/font_color = Color(0.63, 0, 0.0104998, 1)
-theme_override_colors/font_shadow_color = Color(0.375969, 0.223087, 1, 1)
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 7
+theme_override_colors/font_color = Color(14.004, 0.45, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/shadow_offset_x = -6
+theme_override_constants/shadow_offset_y = 3
+theme_override_constants/outline_size = 2
 theme_override_fonts/font = ExtResource("2_a7jdu")
 theme_override_font_sizes/font_size = 40
 text = "PERFORMANCE INDEX"
@@ -492,9 +497,13 @@ anchor_right = 1.00185
 anchor_bottom = 0.413889
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_colors/font_color = Color(0.63, 0, 0.0104998, 1)
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 6
+theme_override_colors/font_color = Color(14.004, 0.45, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/line_spacing = 10
+theme_override_constants/shadow_offset_x = -6
+theme_override_constants/shadow_offset_y = 4
+theme_override_constants/outline_size = 3
 theme_override_fonts/font = ExtResource("2_a7jdu")
 theme_override_font_sizes/font_size = 30
 text = "# OF ENEMIES 
@@ -513,9 +522,13 @@ anchor_right = 0.494444
 anchor_bottom = 0.427778
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_colors/font_color = Color(0.63, 0, 0.0104998, 1)
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 6
+theme_override_colors/font_color = Color(14.004, 0.45, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/line_spacing = 10
+theme_override_constants/shadow_offset_x = -6
+theme_override_constants/shadow_offset_y = 4
+theme_override_constants/outline_size = 3
 theme_override_fonts/font = ExtResource("2_a7jdu")
 theme_override_font_sizes/font_size = 30
 text = "FASTEST LEGACY 
@@ -541,9 +554,13 @@ grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(0.837225, 0.974722)
 size_flags_horizontal = 4
-theme_override_colors/font_color = Color(0.63, 0, 0.0104998, 1)
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 6
+theme_override_colors/font_color = Color(14.004, 0.45, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/line_spacing = 10
+theme_override_constants/shadow_offset_x = -6
+theme_override_constants/shadow_offset_y = 4
+theme_override_constants/outline_size = 3
 theme_override_fonts/font = ExtResource("2_a7jdu")
 theme_override_font_sizes/font_size = 30
 text = "BEST GAUNTLET 
@@ -560,9 +577,13 @@ anchor_right = 0.515741
 anchor_bottom = 0.250926
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_colors/font_color = Color(0.63, 0, 0.0104998, 1)
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 6
+theme_override_colors/font_color = Color(14.004, 0.45, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/line_spacing = 10
+theme_override_constants/shadow_offset_x = -6
+theme_override_constants/shadow_offset_y = 4
+theme_override_constants/outline_size = 3
 theme_override_fonts/font = ExtResource("2_a7jdu")
 theme_override_font_sizes/font_size = 30
 text = "$BANK$: "
@@ -664,28 +685,26 @@ texture_normal = ExtResource("3_erunh")
 shape = SubResource("RectangleShape2D_ee6lp")
 
 [node name="Home" type="Label" parent="CanvasLayer/HomeButton"]
-modulate = Color(1, 1, 0, 1)
 z_index = 4
 anchors_preset = -1
-anchor_left = 0.340137
+anchor_left = 0.357143
 anchor_top = 0.297189
-anchor_right = 0.592769
-anchor_bottom = 0.423145
-offset_left = 3.05176e-05
-offset_right = -213.474
-offset_bottom = -60.6192
+anchor_right = 0.571881
+anchor_bottom = 0.441278
+offset_top = 1.52588e-05
+offset_right = -23.378
+offset_bottom = -23.3694
 grow_horizontal = 2
 grow_vertical = 2
-scale = Vector2(3.75243, 3.88663)
-theme_override_colors/font_color = Color(0.82, 0.0984, 0.110426, 1)
-theme_override_colors/font_shadow_color = Color(0.1496, 0.173947, 0.88, 1)
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/shadow_offset_x = 2
-theme_override_constants/shadow_offset_y = 2
+scale = Vector2(1.10437, 1.33385)
+theme_override_colors/font_color = Color(14, 0.45, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/shadow_offset_x = -6
+theme_override_constants/shadow_offset_y = 4
 theme_override_constants/outline_size = 3
-theme_override_constants/shadow_outline_size = 2
 theme_override_fonts/font = ExtResource("2_a7jdu")
-theme_override_font_sizes/font_size = 20
+theme_override_font_sizes/font_size = 69
 text = "HOME"
 horizontal_alignment = 1
 vertical_alignment = 1

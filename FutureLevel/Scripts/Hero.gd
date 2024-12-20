@@ -52,7 +52,7 @@ func take_damage():
 	if is_dead:
 		return
 	health -= 20.0
-	self.modulate = Color(1, 0, 0)  # Set to red
+	self.modulate = Color(80, 0, 0)  # Set to red
 	await get_tree().create_timer(0.2).timeout  # Wait for 0.1 seconds
 	self.modulate = Color(1, 1, 1)  # Reset to normal
 	health_bar.health = health
@@ -194,9 +194,9 @@ func handle_animation() -> void:
 	if is_double_jumping:
 		return
 	if velocity.x > 0:
-		animated_sprite_2d.flip_h = false
+		%AnimationPlayer.play("rightface")
 	elif velocity.x < 0: 
-		animated_sprite_2d.flip_h = true
+		%AnimationPlayer.play("leftface")
 		
 	
 		
