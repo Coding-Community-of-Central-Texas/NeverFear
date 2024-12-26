@@ -7,10 +7,6 @@ extends Node2D
 
 func _ready():
 	Global.legacy = self
-	if DisplayServer.is_touchscreen_available() and OS.has_feature("Andriod") and DisplayServer.SCREEN_LANDSCAPE:
-		get_viewport().screen_set_orientation(DisplayServer.SCREEN_LANDSCAPE)
-	else: 
-		return
 func complete_level():
 	# Call stop() on the timer and get the formatted time
 	%TimePanel.stop()

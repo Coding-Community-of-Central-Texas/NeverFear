@@ -24,7 +24,7 @@ func _physics_process(delta):
 	else:
 		var direction = (Global.player.global_position - global_position).normalized()
 		global_position.direction_to(Global.player.global_position)
-		velocity = direction * 400.0
+		velocity = direction * 290.0
 		move_and_slide()
 	
 	move_and_slide()

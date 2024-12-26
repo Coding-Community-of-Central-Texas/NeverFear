@@ -46,7 +46,7 @@ func _ready() -> void:
 		position = Global.checkpoint_position
 	else: 
 		position = Vector2(353.993, -306.008)
-	
+
 
 func take_damage():
 	if is_dead:

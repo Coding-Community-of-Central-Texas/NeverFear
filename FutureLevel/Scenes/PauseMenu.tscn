@@ -1,11 +1,10 @@
-[gd_scene load_steps=13 format=3 uid="uid://b0kr4yg6fgfci"]
+[gd_scene load_steps=12 format=3 uid="uid://b0kr4yg6fgfci"]
 
 [ext_resource type="Script" path="res://Scripts/PauseMenu.gd" id="1_gfvbg"]
 [ext_resource type="Texture2D" uid="uid://dhit27os2eis3" path="res://assets/Background/FinalMenu1.svg" id="1_nv4xp"]
 [ext_resource type="FontFile" uid="uid://ckid4fla6wirc" path="res://assets/etc/Starzoom-Shavian.ttf" id="2_16qji"]
 [ext_resource type="Texture2D" uid="uid://bv7fu6os82paq" path="res://assets/buttonsprites/UIbutton.png" id="3_iwkgg"]
 [ext_resource type="AudioStream" uid="uid://dbnystp0y1gke" path="res://assets/FutrueSFX/PickUp.wav" id="4_84h4p"]
-[ext_resource type="Texture2D" uid="uid://c37oonhsihxgf" path="res://assets/buttonsprites/UIButton2.png" id="5_vtwv0"]
 
 [sub_resource type="Animation" id="Animation_r58bc"]
 length = 0.001
@@ -170,7 +169,6 @@ metadata/_edit_use_anchors_ = true
 [node name="ContiueTouch" type="TouchScreenButton" parent="Panel/ContinueButton"]
 position = Vector2(-39.5259, -77.856)
 scale = Vector2(0.674909, 0.923715)
-texture_pressed = ExtResource("5_vtwv0")
 shape = SubResource("RectangleShape2D_iamjd")
 shape_visible = false
 

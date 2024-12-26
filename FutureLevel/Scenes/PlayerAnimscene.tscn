@@ -1,8 +1,9 @@
-[gd_scene load_steps=22 format=3 uid="uid://gvjway55ybny"]
+[gd_scene load_steps=25 format=3 uid="uid://gvjway55ybny"]
 
 [ext_resource type="Texture2D" uid="uid://xpfpovn5uxaw" path="res://assets/3 Cyborg/Cyborg_run.png" id="1_8toqc"]
 [ext_resource type="Texture2D" uid="uid://c8mqnh8i65mot" path="res://assets/Guns&Bullets/4_1.png" id="1_83adv"]
 [ext_resource type="Texture2D" uid="uid://bo7sscl6biwig" path="res://assets/Guns&Bullets/Run1.png" id="2_lp0sw"]
+[ext_resource type="Texture2D" uid="uid://dm5e8dvxsdivl" path="res://assets/etc/smoke3_18.png" id="4_w0iul"]
 
 [sub_resource type="SkeletonModification2DJiggle" id="SkeletonModification2DJiggle_bgi0c"]
 target_nodepath = NodePath("Bone2D")
@@ -234,6 +235,310 @@ tracks/8/keys = {
 "update": 0,
 "values": [Vector2(-37, -57)]
 }
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("..:modification_stack")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [SubResource("SkeletonModificationStack2D_h8wkx")]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("..:position")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-21, -1)]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath(".:flip_h")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("../Bone2D/42:flip_h")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("../Bone2D/42:rotation")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.80293]
+}
+tracks/14/type = "value"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath("../CPUParticles2D:emitting")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/15/type = "value"
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/path = NodePath("../CPUParticles2D:position")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(21, 39)]
+}
+tracks/16/type = "value"
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/path = NodePath("../CPUParticles2D:one_shot")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_r1xu1"]
+resource_name = "runleft"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:sprite_frames")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [SubResource("SpriteFrames_g2bdk"), SubResource("SpriteFrames_g2bdk")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:animation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"gunrun"]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.0333333, 0.2, 0.366667, 0.533333, 0.7, 0.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = false
+tracks/3/path = NodePath("../Bone2D:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(22.22, -4), Vector2(12.795, -4), Vector2(20.815, -0.18), Vector2(18, -4), Vector2(12.795, -4), Vector2(13.94, -0.18)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("..:modification_stack")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [SubResource("SkeletonModificationStack2D_h8wkx")]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("..:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-21, -1)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = false
+tracks/6/path = NodePath("../Bone2D:rotation")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0.0333333, 0.266667, 0.5, 0.733333, 0.966667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [1.07861, 1.12225, 1.07861, 0.581195, 1.12225]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath(".:position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.333333, 0.5, 0.7, 0.833333),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(-37, -57), Vector2(-41.01, -57.01), Vector2(-41.01, -57.01), Vector2(-37, -57), Vector2(-41.01, -57.01), Vector2(-41.01, -57.01)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath(".:scale")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.333333, 0.5, 0.7, 0.833333),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(2, 2), Vector2(2, 2), Vector2(2, 1.87479), Vector2(2, 2), Vector2(2, 2), Vector2(2, 1.87479)]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath(".:flip_h")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, true]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("../Bone2D:rotation")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.366667, 0.566667, 0.7, 0.833333, 1),
+"transitions": PackedFloat32Array(2, 1, 1, 1, 0.5, 2, -0.5, 2),
+"update": 0,
+"values": [-1.09159, -1.08576, -0.98262, -1.14494, -1.02974, -0.851721, -0.788889, -1.08385]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("../Bone2D:position")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0, 0.233333, 0.5, 0.7, 0.9, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(2, 2), Vector2(2, 4.238), Vector2(2, 1.97), Vector2(2, 3.375), Vector2(2, 2.015), Vector2(2, 2.395)]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("../Bone2D/42:rotation")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [1.80293, 1.80293]
+}
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("../Bone2D/42:flip_h")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, true]
+}
+tracks/14/type = "value"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath("../CPUParticles2D:emitting")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.133333, 0.166667, 0.266667, 0.3, 0.333333, 0.433333, 0.466667, 0.5, 0.633333, 0.666667, 0.7, 0.8, 0.833333, 0.9, 0.966667, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [true, true, false, true, true, false, true, true, false, true, true, false, true, true, false, true, false, true]
+}
+tracks/15/type = "value"
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/path = NodePath("../CPUParticles2D:position")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.366667, 0.533334, 0.7, 0.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(21, 39), Vector2(27, 39), Vector2(38, 35), Vector2(16, 39), Vector2(27, 39), Vector2(39, 36)]
+}
+tracks/16/type = "value"
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/path = NodePath("../CPUParticles2D:one_shot")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="Animation" id="Animation_kdwvx"]
 resource_name = "runright"
@@ -332,7 +637,7 @@ tracks/7/keys = {
 "times": PackedFloat32Array(0, 0.233333, 0.5, 0.7, 0.9, 1),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
 "update": 0,
-"values": [Vector2(2, 2), Vector2(2, 4.238), Vector2(2, 1.97), Vector2(2, 3.375), Vector2(2, 2.015), Vector2(2, 2.395)]
+"values": [Vector2(2, 1.475), Vector2(2, 1.803), Vector2(2, 1.7), Vector2(2, 3.375), Vector2(2, 2.015), Vector2(2, 2.395)]
 }
 tracks/8/type = "value"
 tracks/8/imported = false
@@ -344,7 +649,7 @@ tracks/8/keys = {
 "times": PackedFloat32Array(0, 0.3, 0.566667, 0.733333, 0.966667),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 0,
-"values": [Vector2(11.0852, 1.45537), Vector2(12.273, 3.939), Vector2(12.794, 5.106), Vector2(11.6, 4.083), Vector2(10.326, 0.279)]
+"values": [Vector2(0.578015, 6.58946), Vector2(-0.323385, 8.35546), Vector2(0.194658, 9.53152), Vector2(5.89037, 9.47441), Vector2(-0.956292, 8.9977)]
 }
 tracks/9/type = "value"
 tracks/9/imported = false
@@ -358,27 +663,59 @@ tracks/9/keys = {
 "update": 1,
 "values": [Vector2(-37, -57), Vector2(-37, -57), Vector2(-32.99, -57), Vector2(-32.99, -57), Vector2(-37, -57), Vector2(-37, -57), Vector2(-32.99, -57), Vector2(-32.99, -57), Vector2(-37, -57), Vector2(-37, -57)]
 }
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("../Bone2D/42:flip_h")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, false]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath(".:flip_h")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_464tr"]
 _data = {
 "RESET": SubResource("Animation_v3hft"),
+"runleft": SubResource("Animation_r1xu1"),
 "runright": SubResource("Animation_kdwvx")
 }
 
+[sub_resource type="Curve" id="Curve_p7mgv"]
+min_value = -0.4
+max_value = 0.2
+_data = [Vector2(0, 0.030986), 0.0, 0.0, 0, 0, Vector2(0.0612813, 0.149296), 0.0, 0.0, 0, 0, Vector2(0.303621, -0.0323943), -0.834296, -0.834296, 0, 0, Vector2(0.571031, -0.138028), 0.0, 0.0, 0, 0]
+point_count = 4
+
 [node name="Skeleton2D" type="Skeleton2D"]
+position = Vector2(-21, -1)
 modification_stack = SubResource("SkeletonModificationStack2D_h8wkx")
 
 [node name="Bone2D" type="Bone2D" parent="."]
 position = Vector2(2, 3.375)
 rotation = -1.08576
-scale = Vector2(0.999866, 0.999866)
+scale = Vector2(0.999868, 0.999868)
 rest = Transform2D(1, -1, 1, 0, 0, 0)
 editor_settings/show_bone_gizmo = false
 
 [node name="42" type="Sprite2D" parent="Bone2D"]
 z_index = -1
 position = Vector2(11.0852, 1.45537)
-rotation = -0.0124755
+rotation = 1.80293
 scale = Vector2(1.23004, 1.20776)
 texture = ExtResource("1_83adv")
 
@@ -389,9 +726,36 @@ scale = Vector2(2, 1.92708)
 sprite_frames = SubResource("SpriteFrames_g2bdk")
 animation = &"run"
 centered = false
+flip_h = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 root_node = NodePath("../AnimatedSprite2D")
 libraries = {
 "": SubResource("AnimationLibrary_464tr")
 }
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+z_index = 1
+position = Vector2(21, 39)
+scale = Vector2(0.6, 0.58)
+amount = 21
+lifetime = 1.55
+one_shot = true
+speed_scale = 1.7
+explosiveness = 1.0
+lifetime_randomness = 0.24
+local_coords = true
+texture = ExtResource("4_w0iul")
+emission_shape = 5
+emission_points = PackedVector2Array(3.935, 0, -10.685, 0)
+emission_normals = PackedVector2Array()
+emission_colors = PackedColorArray()
+direction = Vector2(2.17, -0.06)
+spread = 27.77
+gravity = Vector2(0, 0)
+initial_velocity_min = 24.45
+initial_velocity_max = 54.37
+scale_amount_min = 0.0
+scale_amount_max = 0.35
+scale_amount_curve = SubResource("Curve_p7mgv")
+color = Color(14.054, 7.027, 1.621, 0.292)

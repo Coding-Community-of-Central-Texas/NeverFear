@@ -63,7 +63,7 @@ animations = [{
 size = Vector2(37.501, 41.9991)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_r2r2i"]
-size = Vector2(25.3676, 35.2273)
+size = Vector2(34.7442, 45.7217)
 
 [node name="Door" type="Node2D"]
 scale = Vector2(1.36, 1.76)
@@ -98,7 +98,7 @@ collision_layer = 0
 collision_mask = 8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(-1268.04, -222.318)
+position = Vector2(-976.216, -500.293)
 shape = SubResource("RectangleShape2D_r2r2i")
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

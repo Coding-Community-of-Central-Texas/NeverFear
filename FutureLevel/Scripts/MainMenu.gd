@@ -13,13 +13,6 @@ extends CanvasLayer
 
 
 
-# Called when the node enters the scene tree for the first time.
-func _process(_delta: float) -> void:
-	if DisplayServer.is_touchscreen_available() and OS.has_feature("Andriod"):
-		get_viewport().screen_set_orientation(DisplayServer.SCREEN_PORTRAIT)
-	else:
-		return
-
 
 func _on_legacy_protocol_pressed() -> void:
 	audio_stream_player_2d.play()

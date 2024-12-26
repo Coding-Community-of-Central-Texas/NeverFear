@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dtcdrrh1u7cr8"
-path="res://.godot/imported/Byte.webp-eb9fb714a4f171b783ce62adba346e99.ctex"
+uid="uid://gtcd0brmmrad"
+path="res://.godot/imported/Byte1.2.png-d1d6a63edac637572af5bb44c60ffa47.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Enemies/Byte.webp"
-dest_files=["res://.godot/imported/Byte.webp-eb9fb714a4f171b783ce62adba346e99.ctex"]
+source_file="res://assets/Enemies/Byte1.2.png"
+dest_files=["res://.godot/imported/Byte1.2.png-d1d6a63edac637572af5bb44c60ffa47.ctex"]
 
 [params]
 

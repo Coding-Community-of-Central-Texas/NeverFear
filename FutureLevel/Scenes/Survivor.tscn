@@ -364,6 +364,7 @@ radius = 33.8596
 
 [node name="Survivor" type="CharacterBody2D" groups=["player"]]
 scale = Vector2(2, 2)
+disable_mode = 2
 collision_layer = 137
 collision_mask = 33
 motion_mode = 1
@@ -411,7 +412,6 @@ scale = Vector2(0.3, 0.3)
 texture = ExtResource("9_bjhe2")
 
 [node name="Camera2D" type="Camera2D" parent="."]
-zoom = Vector2(1.2, 1.2)
 
 [node name="HurtBox" type="Area2D" parent="."]
 unique_name_in_owner = true
@@ -436,29 +436,29 @@ wait_time = 134.62
 autostart = true
 
 [node name="GauntletSpawn" parent="." instance=ExtResource("11_dc7s1")]
-position = Vector2(870.5, -73.5)
+position = Vector2(370, -61)
 
 [node name="GauntletSpawn4" parent="." instance=ExtResource("11_dc7s1")]
-position = Vector2(-17.5, 1044.5)
+position = Vector2(296, 248)
 rotation = -1.4829
 
 [node name="GauntletSpawn3" parent="." instance=ExtResource("11_dc7s1")]
-position = Vector2(-1273, -41.5)
+position = Vector2(-496, -2.5)
 
 [node name="GauntletSpawn2" parent="." instance=ExtResource("11_dc7s1")]
-position = Vector2(-0.499996, -826)
+position = Vector2(-27.5, -453.5)
 rotation = -1.47059
 
 [node name="GauntletBigSpawn" parent="." instance=ExtResource("12_kcvup")]
-position = Vector2(228, -282.5)
+position = Vector2(385, -336)
 rotation = -0.82512
 
 [node name="GauntletBigSpawn3" parent="." instance=ExtResource("12_kcvup")]
-position = Vector2(-262, -290.5)
+position = Vector2(-338.5, -345.5)
 rotation = 0.591119
 
 [node name="GauntletBigSpawn2" parent="." instance=ExtResource("12_kcvup")]
-position = Vector2(27.5, 288.5)
+position = Vector2(-108, 356)
 
 [node name="Rank1" type="Sprite2D" parent="."]
 visible = false
