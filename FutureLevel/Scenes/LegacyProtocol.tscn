@@ -1937,9 +1937,17 @@ texture = ExtResource("85_tbdfy")
 [node name="CityM2" type="Sprite2D" parent="TileMap/CityBack/Close"]
 modulate = Color(0.41, 0.41, 0.41, 1)
 show_behind_parent = true
-position = Vector2(10238.7, -141.727)
+position = Vector2(4298.75, 232.5)
 rotation = 2.12854e-05
-scale = Vector2(2.11291, 2.82306)
+scale = Vector2(2.33781, 3.39221)
+texture = ExtResource("84_qeaix")
+
+[node name="CityM3" type="Sprite2D" parent="TileMap/CityBack/Close"]
+modulate = Color(0.41, 0.41, 0.41, 1)
+show_behind_parent = true
+position = Vector2(9931.25, 298.75)
+rotation = 2.12854e-05
+scale = Vector2(2.79774, 3.7656)
 texture = ExtResource("84_qeaix")
 
 [node name="CityL2" type="Sprite2D" parent="TileMap/CityBack/Close"]
@@ -1948,6 +1956,30 @@ show_behind_parent = true
 position = Vector2(13669, -261.459)
 rotation = 2.12854e-05
 scale = Vector2(1.95409, 2.19616)
+texture = ExtResource("86_p4f10")
+
+[node name="CityL3" type="Sprite2D" parent="TileMap/CityBack/Close"]
+modulate = Color(0.45, 0.45, 0.45, 1)
+show_behind_parent = true
+position = Vector2(11827.5, 540)
+rotation = 2.12854e-05
+scale = Vector2(2.39426, 3.49257)
+texture = ExtResource("86_p4f10")
+
+[node name="CityL4" type="Sprite2D" parent="TileMap/CityBack/Close"]
+modulate = Color(0.45, 0.45, 0.45, 1)
+show_behind_parent = true
+position = Vector2(8571.25, 406.25)
+rotation = 2.12854e-05
+scale = Vector2(3.09968, 3.49256)
+texture = ExtResource("86_p4f10")
+
+[node name="CityL5" type="Sprite2D" parent="TileMap/CityBack/Close"]
+modulate = Color(0.45, 0.45, 0.45, 1)
+show_behind_parent = true
+position = Vector2(4766.25, 326.25)
+rotation = 2.12854e-05
+scale = Vector2(3.09968, 3.49256)
 texture = ExtResource("86_p4f10")
 
 [node name="B6" type="Sprite2D" parent="TileMap/CityBack/Close"]
@@ -2028,7 +2060,7 @@ follow_viewport_scale = 1.79
 [node name="Smog4" type="Sprite2D" parent="TileMap/CityBack/ForgroundPara"]
 modulate = Color(0, 8.649, 1, 0.228)
 z_index = 1
-position = Vector2(17625.7, -231.285)
+position = Vector2(17614, -326.816)
 rotation = 2.12854e-05
 scale = Vector2(0.991389, 1.05756)
 texture = ExtResource("99_6cglh")
@@ -2038,40 +2070,46 @@ region_rect = Rect2(38, 0, 538, 324)
 [node name="Smog8" type="Sprite2D" parent="TileMap/CityBack/ForgroundPara"]
 modulate = Color(0, 8.649, 1, 0.092)
 z_index = 1
-position = Vector2(19337.4, -75.419)
+position = Vector2(19301.7, 270.391)
 rotation = 2.12854e-05
 scale = Vector2(2.46159, 3.26588)
 texture = ExtResource("99_6cglh")
+region_enabled = true
+region_rect = Rect2(56.89, 45.84, 298.87, 278.16)
 
 [node name="Smog7" type="Sprite2D" parent="TileMap/CityBack/ForgroundPara"]
 modulate = Color(0, 8.649, 1, 0.092)
 z_index = 1
-position = Vector2(21382.1, -221.229)
+position = Vector2(20741.9, 139.106)
 rotation = 2.12854e-05
 scale = Vector2(2.33833, 2.09657)
 texture = ExtResource("99_6cglh")
+region_enabled = true
+region_rect = Rect2(71.4099, 45.84, 360.58, 278.16)
 
 [node name="Smog6" type="Sprite2D" parent="TileMap/CityBack/ForgroundPara"]
 modulate = Color(0, 8.649, 1, 0.103)
 z_index = 1
-position = Vector2(24420.1, -182.682)
+position = Vector2(24916.2, 400)
 rotation = 2.12854e-05
-scale = Vector2(2.26045, 1.02087)
+scale = Vector2(4.19192, 2.80222)
 texture = ExtResource("99_6cglh")
+region_enabled = true
+region_rect = Rect2(167.907, 46.84, 247.143, 277.16)
 
 [node name="Smog5" type="Sprite2D" parent="TileMap/CityBack/ForgroundPara"]
 modulate = Color(0, 8.649, 1, 0.065)
 z_index = 1
-position = Vector2(26469.3, -231.844)
+position = Vector2(26544.7, 129.05)
 rotation = 2.12854e-05
 scale = Vector2(2.98855, 2.7563)
 texture = ExtResource("99_6cglh")
 region_enabled = true
-region_rect = Rect2(40, 0, 536, 324)
+region_rect = Rect2(163.36, 46.7977, 207.5, 277.202)
 
 [node name="C2" type="Sprite2D" parent="TileMap/CityBack/ForgroundPara"]
 self_modulate = Color(0.111, 0.111, 0.111, 1)
-position = Vector2(19360.9, 82.6816)
+position = Vector2(19691.6, 188.268)
 rotation = 2.12854e-05
 scale = Vector2(0.729, 2.892)
 texture = ExtResource("93_h88hb")
@@ -2224,7 +2262,7 @@ region_rect = Rect2(0, 0, 463, 324)
 [node name="Smog5" type="Sprite2D" parent="TileMap/Forgrd"]
 self_modulate = Color(1, 8.649, 1, 0.281)
 z_index = -2
-position = Vector2(18278, -320)
+position = Vector2(18326, -356)
 rotation = 2.12854e-05
 scale = Vector2(1.49836, 1.12947)
 texture = ExtResource("88_d30jl")
@@ -2235,7 +2273,7 @@ region_rect = Rect2(0, 0, 463, 324)
 [node name="Smog6" type="Sprite2D" parent="TileMap/Forgrd"]
 self_modulate = Color(1, 8.649, 1, 0.281)
 z_index = -2
-position = Vector2(19021, -273)
+position = Vector2(19009, -333)
 rotation = 2.12854e-05
 scale = Vector2(1.40457, 1.47034)
 texture = ExtResource("88_d30jl")
@@ -2265,34 +2303,32 @@ region_rect = Rect2(19, 30, 454, 294)
 [node name="Smog10" type="Sprite2D" parent="TileMap/Forgrd"]
 self_modulate = Color(1, 8.649, 1, 0.281)
 z_index = 1
-position = Vector2(22859, -591)
+position = Vector2(22983, 217)
 rotation = 2.12854e-05
 scale = Vector2(1.49566, 1.3272)
 texture = ExtResource("88_d30jl")
-flip_v = true
 region_enabled = true
-region_rect = Rect2(0, 0, 463, 324)
+region_rect = Rect2(48, 32, 415, 292)
 
 [node name="Smog11" type="Sprite2D" parent="TileMap/Forgrd"]
 self_modulate = Color(1, 8.649, 1, 0.281)
 z_index = 1
-position = Vector2(23937, -247)
+position = Vector2(24005, 93)
 rotation = 2.12854e-05
-scale = Vector2(1.73566, 1.3272)
+scale = Vector2(1.88971, 1.74764)
 texture = ExtResource("88_d30jl")
 region_enabled = true
-region_rect = Rect2(0, 0, 463, 324)
+region_rect = Rect2(47.21, 33.74, 415.79, 290.26)
 
 [node name="Smog12" type="Sprite2D" parent="TileMap/Forgrd"]
 self_modulate = Color(1, 8.649, 1, 0.281)
 z_index = -1
-position = Vector2(25417, 85)
+position = Vector2(25673, 381)
 rotation = 2.12854e-05
-scale = Vector2(4.10424, 1.96465)
+scale = Vector2(3.06822, 2.11306)
 texture = ExtResource("88_d30jl")
-flip_v = true
 region_enabled = true
-region_rect = Rect2(0, 0, 463, 324)
+region_rect = Rect2(48.42, 33.74, 414.58, 290.26)
 
 [node name="Smog8" type="Sprite2D" parent="TileMap/Forgrd"]
 self_modulate = Color(1, 8.649, 1, 0.281)

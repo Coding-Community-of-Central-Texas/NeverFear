@@ -357,17 +357,16 @@ _data = {
 }
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_xqfdh"]
-radius = 26.0048
+radius = 15.5322
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_630u5"]
-radius = 33.8596
+radius = 25.887
 
 [node name="Survivor" type="CharacterBody2D" groups=["player"]]
 scale = Vector2(2, 2)
 disable_mode = 2
 collision_layer = 137
 collision_mask = 33
-motion_mode = 1
 script = ExtResource("1_dqedt")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -436,7 +435,7 @@ wait_time = 134.62
 autostart = true
 
 [node name="GauntletSpawn" parent="." instance=ExtResource("11_dc7s1")]
-position = Vector2(370, -61)
+position = Vector2(457, -52)
 
 [node name="GauntletSpawn4" parent="." instance=ExtResource("11_dc7s1")]
 position = Vector2(296, 248)
@@ -458,7 +457,10 @@ position = Vector2(-338.5, -345.5)
 rotation = 0.591119
 
 [node name="GauntletBigSpawn2" parent="." instance=ExtResource("12_kcvup")]
-position = Vector2(-108, 356)
+position = Vector2(36, 359)
+
+[node name="GauntletBigSpawn4" parent="." instance=ExtResource("12_kcvup")]
+position = Vector2(-398.5, 287)
 
 [node name="Rank1" type="Sprite2D" parent="."]
 visible = false
