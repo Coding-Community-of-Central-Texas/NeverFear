@@ -242,6 +242,7 @@ position = Vector2(4.76837e-07, 0)
 scale = Vector2(0.247917, 0.215972)
 sprite_frames = SubResource("SpriteFrames_c264i")
 animation = &"hurt"
+frame = 1
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="AnimatedSprite2D"]
 unique_name_in_owner = true
