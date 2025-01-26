@@ -1,7 +1,6 @@
-[gd_scene load_steps=73 format=3 uid="uid://kf7jmgk6fkes"]
+[gd_scene load_steps=68 format=3 uid="uid://kf7jmgk6fkes"]
 
-[ext_resource type="Script" path="res://Scripts/Hero.gd" id="1_5t32r"]
-[ext_resource type="PackedScene" uid="uid://caame5dgh5vbo" path="res://Scenes/RunDust.tscn" id="2_6jttb"]
+[ext_resource type="Script" path="res://Scripts/HeroA.gd" id="1_oygpg"]
 [ext_resource type="Texture2D" uid="uid://050tdjf5b57n" path="res://assets/3 Cyborg/Cyborg_death.png" id="3_bki4o"]
 [ext_resource type="Texture2D" uid="uid://dhiabh1xfdvky" path="res://assets/3 Cyborg/Cyborg_climb.png" id="4_7fkbj"]
 [ext_resource type="Texture2D" uid="uid://huv5y4v78n8o" path="res://assets/3 Cyborg/Cyborg_doublejump.png" id="5_r5jvd"]
@@ -1414,114 +1413,14 @@ size = Vector2(16, 30.6667)
 [sub_resource type="CircleShape2D" id="CircleShape2D_x6iwv"]
 radius = 28.0
 
-[sub_resource type="Animation" id="Animation_oake4"]
-resource_name = "Landscape"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Landscape:enabled")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Protrait:enabled")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-
-[sub_resource type="Animation" id="Animation_q3q08"]
-resource_name = "Portrait"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Protrait:enabled")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Landscape:enabled")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-
-[sub_resource type="Animation" id="Animation_pixu8"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Landscape:zoom")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0.9, 1.8)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Landscape:enabled")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Protrait:enabled")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_waqaa"]
-_data = {
-"Landscape": SubResource("Animation_oake4"),
-"Portrait": SubResource("Animation_q3q08"),
-"RESET": SubResource("Animation_pixu8")
-}
-
-[node name="Hero" type="CharacterBody2D" groups=["player"]]
+[node name="HeroA" type="CharacterBody2D"]
 scale = Vector2(1.5, 1.5)
 collision_layer = 169
 collision_mask = 41
-script = ExtResource("1_5t32r")
-run_dust = ExtResource("2_6jttb")
+script = ExtResource("1_oygpg")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+visible = false
 position = Vector2(-14.6667, -29.3333)
 sprite_frames = SubResource("SpriteFrames_100ny")
 animation = &"gunrun"
@@ -1711,15 +1610,8 @@ position = Vector2(1.333, 3.33333)
 shape = SubResource("RectangleShape2D_0p44e")
 debug_color = Color(0, 0.6, 0.701961, 0)
 
-[node name="Landscape" type="Camera2D" parent="."]
-unique_name_in_owner = true
-zoom = Vector2(1, 1.2)
-process_callback = 0
-limit_smoothed = true
-position_smoothing_enabled = true
-position_smoothing_speed = 25.0
-
 [node name="Gun" parent="." instance=ExtResource("12_u28lh")]
+visible = false
 show_behind_parent = true
 position = Vector2(8, -1)
 
@@ -1769,19 +1661,8 @@ texture = ExtResource("16_wcseq")
 process_callback = 0
 wait_time = 0.055
 
-[node name="Cameraswap" type="AnimationPlayer" parent="."]
-unique_name_in_owner = true
-active = false
-libraries = {
-"": SubResource("AnimationLibrary_waqaa")
-}
-
-[node name="Protrait" type="Camera2D" parent="."]
-enabled = false
-zoom = Vector2(1.325, 0.865)
-process_callback = 0
-
 [node name="AnimatedHero" parent="." instance=ExtResource("17_qmi0w")]
+unique_name_in_owner = true
 scale = Vector2(0.599393, 0.516888)
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

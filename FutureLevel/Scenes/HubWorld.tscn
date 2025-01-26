@@ -940,9 +940,6 @@ position = Vector2(691, 483.5)
 scale = Vector2(0.503418, 0.367932)
 texture = ExtResource("81_axvne")
 
-[node name="Hero" parent="." instance=ExtResource("83_hhacw")]
-position = Vector2(-704.499, -325.5)
-
 [node name="ByteSpawnerA" parent="." instance=ExtResource("84_ci5bu")]
 position = Vector2(-2147.5, -399.5)
 rotation = 6.27527
@@ -1121,7 +1118,7 @@ position = Vector2(1150.5, -145.5)
 shape = SubResource("RectangleShape2D_sbldj")
 
 [node name="PlayerStat" type="Area2D" parent="."]
-position = Vector2(151.501, -111.5)
+position = Vector2(156.501, -113.5)
 script = ExtResource("91_wjoib")
 
 [node name="StatDoor" type="AnimatedSprite2D" parent="PlayerStat"]
@@ -1258,6 +1255,15 @@ theme_override_fonts/font = ExtResource("82_gf70t")
 theme_override_font_sizes/font_size = 97
 text = "NeverFear"
 metadata/_edit_use_anchors_ = true
+
+[node name="Hero" parent="." instance=ExtResource("83_hhacw")]
+position = Vector2(342.501, -221.5)
+
+[node name="CameraFollow2" type="CanvasLayer" parent="Hero"]
+follow_viewport_enabled = true
+
+[node name="Camera2D" type="Camera2D" parent="Hero/CameraFollow2"]
+ignore_rotation = false
 
 [connection signal="body_entered" from="LegacyPass" to="LegacyPass" method="_on_body_entered"]
 [connection signal="body_entered" from="GauntletPass" to="GauntletPass" method="_on_body_entered"]
