@@ -1,0 +1,43 @@
+[gd_scene load_steps=4 format=3 uid="uid://csydnyrmpycg"]
+
+[ext_resource type="FontFile" uid="uid://ckid4fla6wirc" path="res://assets/etc/Starzoom-Shavian.ttf" id="1_gnngp"]
+[ext_resource type="Texture2D" uid="uid://r4yabe1kewtl" path="res://assets/etc/Icons_34.png" id="2_lek2h"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_o5ej8"]
+
+[node name="Credits2" type="Label"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 476.0
+offset_top = 800.0
+offset_right = -533.0
+offset_bottom = -205.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.87041, 2.14214)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("1_gnngp")
+theme_override_font_sizes/font_size = 15
+text = "Credits"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="Credits" type="TouchScreenButton" parent="."]
+position = Vector2(35.821, 38.2795)
+rotation = 1.56002
+scale = Vector2(5.8711, 3.28531)
+skew = 0.00268269
+shape = SubResource("CapsuleShape2D_o5ej8")
+shape_visible = false
+
+[node name="Icons34" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 0, 1)
+show_behind_parent = true
+position = Vector2(34.217, 39.2132)
+scale = Vector2(1.78331, 1.4335)
+texture = ExtResource("2_lek2h")

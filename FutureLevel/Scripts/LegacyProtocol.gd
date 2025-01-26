@@ -7,6 +7,8 @@ extends Node2D
 
 func _ready():
 	Global.legacy = self
+	Engine.time_scale = 1.0
+
 func complete_level():
 	# Call stop() on the timer and get the formatted time
 	%TimePanel.stop()

@@ -1,7 +1,8 @@
 extends Area2D
 
 @onready var door: AnimatedSprite2D = $Door
-@onready var scene_transition: AnimationPlayer = $"../SceneTransition"
+@onready var scene_transition: AnimationPlayer = $"../SceneTransitionScreen/SceneTransition"
+
 
 
 func _on_body_entered(body: CharacterBody2D) -> void:

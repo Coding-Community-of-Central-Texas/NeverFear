@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://gvjway55ybny"]
+[gd_scene load_steps=25 format=3 uid="uid://bfvnnircytto7"]
 
 [ext_resource type="Texture2D" uid="uid://xpfpovn5uxaw" path="res://assets/3 Cyborg/Cyborg_run.png" id="1_8toqc"]
 [ext_resource type="Texture2D" uid="uid://c8mqnh8i65mot" path="res://assets/Guns&Bullets/4_1.png" id="1_83adv"]
@@ -701,7 +701,7 @@ max_value = 0.2
 _data = [Vector2(0, 0.030986), 0.0, 0.0, 0, 0, Vector2(0.0612813, 0.149296), 0.0, 0.0, 0, 0, Vector2(0.303621, -0.0323943), -0.834296, -0.834296, 0, 0, Vector2(0.571031, -0.138028), 0.0, 0.0, 0, 0]
 point_count = 4
 
-[node name="Skeleton2D" type="Skeleton2D"]
+[node name="AnimatedHero" type="Skeleton2D"]
 position = Vector2(-21, -1)
 modification_stack = SubResource("SkeletonModificationStack2D_h8wkx")
 

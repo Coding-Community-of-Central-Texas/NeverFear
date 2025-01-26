@@ -1,10 +1,11 @@
-[gd_scene load_steps=12 format=3 uid="uid://b0kr4yg6fgfci"]
+[gd_scene load_steps=13 format=3 uid="uid://b0kr4yg6fgfci"]
 
 [ext_resource type="Script" path="res://Scripts/PauseMenu.gd" id="1_gfvbg"]
 [ext_resource type="Texture2D" uid="uid://dhit27os2eis3" path="res://assets/Background/FinalMenu1.svg" id="1_nv4xp"]
 [ext_resource type="FontFile" uid="uid://ckid4fla6wirc" path="res://assets/etc/Starzoom-Shavian.ttf" id="2_16qji"]
 [ext_resource type="Texture2D" uid="uid://bv7fu6os82paq" path="res://assets/buttonsprites/UIbutton.png" id="3_iwkgg"]
 [ext_resource type="AudioStream" uid="uid://dbnystp0y1gke" path="res://assets/FutrueSFX/PickUp.wav" id="4_84h4p"]
+[ext_resource type="PackedScene" uid="uid://csydnyrmpycg" path="res://Scenes/creditsButton.tscn" id="5_6jfa2"]
 
 [sub_resource type="Animation" id="Animation_r58bc"]
 length = 0.001
@@ -235,6 +236,13 @@ metadata/_edit_use_anchors_ = true
 position = Vector2(-8.97618, -5.27191)
 scale = Vector2(25.3708, -10.2428)
 shape = SubResource("RectangleShape2D_ctl43")
+
+[node name="Credits2" parent="Panel" instance=ExtResource("5_6jfa2")]
+layout_mode = 1
+offset_left = 79.4999
+offset_top = 488.667
+offset_right = -134.0
+offset_bottom = 99.0
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 unique_name_in_owner = true
