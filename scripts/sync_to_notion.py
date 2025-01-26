@@ -6,7 +6,7 @@ NOTION_API_URL = "https://api.notion.com/v1"
 
 def get_github_issues():
     headers = {
-        "Authorization": f"token {os.getenv('GITHUB_TOKEN')}"
+        "Authorization": f"token {os.getenv('HUB_TOKEN')}"
     }
     response = requests.get(f"{GITHUB_API_URL}/repos/Coding-Community-of-Central-Texas/NeverFear/issues", headers=headers)
     return response.json()
