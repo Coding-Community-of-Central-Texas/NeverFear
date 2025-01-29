@@ -363,7 +363,7 @@ position = Vector2(-30, -30)
 scale = Vector2(1.19427, 1.1736)
 sprite_frames = SubResource("SpriteFrames_q4g6d")
 autoplay = "default"
-frame_progress = 0.674263
+frame_progress = 0.269988
 speed_scale = 0.9
 
 [node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="."]
@@ -372,7 +372,7 @@ position = Vector2(2748, -101)
 scale = Vector2(1.19427, 1.1736)
 sprite_frames = SubResource("SpriteFrames_q4g6d")
 autoplay = "default"
-frame_progress = 0.20653
+frame_progress = 0.802256
 speed_scale = 0.9
 
 [node name="AnimatedSprite2D3" type="AnimatedSprite2D" parent="."]
@@ -381,7 +381,7 @@ position = Vector2(-1845, -95)
 scale = Vector2(1.19427, 1.1736)
 sprite_frames = SubResource("SpriteFrames_q4g6d")
 autoplay = "default"
-frame_progress = 0.302231
+frame_progress = 0.897956
 speed_scale = 0.9
 
 [node name="AnimatedSprite2D4" type="AnimatedSprite2D" parent="."]
@@ -390,7 +390,7 @@ position = Vector2(1189, -136)
 scale = Vector2(1.19427, 1.1736)
 sprite_frames = SubResource("SpriteFrames_q4g6d")
 autoplay = "default"
-frame_progress = 0.875264
+frame_progress = 0.470989
 speed_scale = 0.9
 
 [node name="AnimatedSprite2D5" type="AnimatedSprite2D" parent="."]
@@ -399,7 +399,7 @@ position = Vector2(469, -436)
 scale = Vector2(1.19427, 1.1736)
 sprite_frames = SubResource("SpriteFrames_q4g6d")
 autoplay = "default"
-frame_progress = 0.72892
+frame_progress = 0.324646
 speed_scale = 0.9
 
 [node name="AnimatedSprite2D6" type="AnimatedSprite2D" parent="."]
@@ -408,7 +408,7 @@ position = Vector2(1187, -774)
 scale = Vector2(1.19427, 1.1736)
 sprite_frames = SubResource("SpriteFrames_q4g6d")
 autoplay = "default"
-frame_progress = 0.998533
+frame_progress = 0.594259
 speed_scale = 0.9
 
 [node name="AnimatedSprite2D7" type="AnimatedSprite2D" parent="."]
@@ -417,7 +417,7 @@ position = Vector2(-1271, -629)
 scale = Vector2(1.19427, 1.1736)
 sprite_frames = SubResource("SpriteFrames_q4g6d")
 autoplay = "default"
-frame_progress = 0.784707
+frame_progress = 0.380432
 speed_scale = 0.9
 
 [node name="AnimatedSprite2D8" type="AnimatedSprite2D" parent="."]
@@ -426,7 +426,7 @@ position = Vector2(-1181, 85)
 scale = Vector2(1.19427, 1.1736)
 sprite_frames = SubResource("SpriteFrames_q4g6d")
 autoplay = "default"
-frame_progress = 0.455663
+frame_progress = 0.0513884
 speed_scale = 0.9
 
 [node name="AnimatedSprite2D9" type="AnimatedSprite2D" parent="."]
@@ -435,7 +435,7 @@ position = Vector2(648, 97)
 scale = Vector2(1.19427, 1.1736)
 sprite_frames = SubResource("SpriteFrames_q4g6d")
 autoplay = "default"
-frame_progress = 0.6057
+frame_progress = 0.201426
 speed_scale = 0.9
 
 [node name="AnimatedSprite2D10" type="AnimatedSprite2D" parent="."]
@@ -444,7 +444,7 @@ position = Vector2(-51, -656)
 scale = Vector2(1.19427, 1.1736)
 sprite_frames = SubResource("SpriteFrames_q4g6d")
 autoplay = "default"
-frame_progress = 0.753302
+frame_progress = 0.349028
 speed_scale = 0.9
 
 [node name="AnimatedSprite2D11" type="AnimatedSprite2D" parent="."]
@@ -453,7 +453,7 @@ position = Vector2(-845, -514)
 scale = Vector2(1.19427, 1.1736)
 sprite_frames = SubResource("SpriteFrames_q4g6d")
 autoplay = "default"
-frame_progress = 0.551932
+frame_progress = 0.147658
 speed_scale = 0.9
 
 [node name="AnimatedSprite2D12" type="AnimatedSprite2D" parent="."]
@@ -462,7 +462,7 @@ position = Vector2(2032, -493)
 scale = Vector2(1.19427, 1.1736)
 sprite_frames = SubResource("SpriteFrames_q4g6d")
 autoplay = "default"
-frame_progress = 0.599806
+frame_progress = 0.195531
 speed_scale = 0.9
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
