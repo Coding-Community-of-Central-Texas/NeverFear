@@ -1,6 +1,5 @@
 extends Area2D
 
-@onready var door: AnimatedSprite2D = $Door
 @onready var scene_transition: AnimationPlayer = $"../SceneTransitionScreen/SceneTransition"
 
 

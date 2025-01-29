@@ -437,30 +437,51 @@ autostart = true
 [node name="GauntletSpawn" parent="." instance=ExtResource("11_dc7s1")]
 position = Vector2(457, -52)
 
+[node name="GauntletSpawn" parent="GauntletSpawn" instance=ExtResource("11_dc7s1")]
+position = Vector2(553, 33.5)
+
+[node name="GauntletSpawn2" parent="GauntletSpawn" instance=ExtResource("11_dc7s1")]
+position = Vector2(1060, 42)
+
 [node name="GauntletSpawn4" parent="." instance=ExtResource("11_dc7s1")]
-position = Vector2(296, 248)
+position = Vector2(170, 381.5)
 rotation = -1.4829
 
+[node name="GauntletSpawn4" parent="GauntletSpawn4" instance=ExtResource("11_dc7s1")]
+position = Vector2(-170.271, 579.685)
+rotation = -1.4829
+
+[node name="GauntletSpawn5" parent="GauntletSpawn4" instance=ExtResource("11_dc7s1")]
+position = Vector2(-475.272, -392.294)
+rotation = -2.9658
+scale = Vector2(1, 1)
+
 [node name="GauntletSpawn3" parent="." instance=ExtResource("11_dc7s1")]
-position = Vector2(-496, -2.5)
+position = Vector2(-478.5, 239.5)
+
+[node name="GauntletSpawn3" parent="GauntletSpawn3" instance=ExtResource("11_dc7s1")]
+position = Vector2(-631.5, 125.5)
+
+[node name="GauntletSpawn4" parent="GauntletSpawn3" instance=ExtResource("11_dc7s1")]
+position = Vector2(-749.5, -220)
 
 [node name="GauntletSpawn2" parent="." instance=ExtResource("11_dc7s1")]
-position = Vector2(-27.5, -453.5)
+position = Vector2(-2.5, -471)
 rotation = -1.47059
+
+[node name="GauntletSpawn3" parent="GauntletSpawn2" instance=ExtResource("11_dc7s1")]
+position = Vector2(350.168, -65.8607)
+
+[node name="GauntletSpawn4" parent="GauntletSpawn2" instance=ExtResource("11_dc7s1")]
+position = Vector2(199.062, -824.048)
 
 [node name="GauntletBigSpawn" parent="." instance=ExtResource("12_kcvup")]
 position = Vector2(385, -336)
 rotation = -0.82512
 
 [node name="GauntletBigSpawn3" parent="." instance=ExtResource("12_kcvup")]
-position = Vector2(-338.5, -345.5)
+position = Vector2(-439.5, -280)
 rotation = 0.591119
-
-[node name="GauntletBigSpawn2" parent="." instance=ExtResource("12_kcvup")]
-position = Vector2(36, 359)
-
-[node name="GauntletBigSpawn4" parent="." instance=ExtResource("12_kcvup")]
-position = Vector2(-398.5, 287)
 
 [node name="Rank1" type="Sprite2D" parent="."]
 visible = false

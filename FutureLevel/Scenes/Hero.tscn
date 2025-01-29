@@ -1712,8 +1712,6 @@ debug_color = Color(0, 0.6, 0.701961, 0)
 
 [node name="Landscape" type="Camera2D" parent="."]
 unique_name_in_owner = true
-visible = false
-enabled = false
 zoom = Vector2(1, 1.2)
 process_callback = 0
 limit_smoothed = true

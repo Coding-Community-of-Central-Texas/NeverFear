@@ -1,4 +1,4 @@
-[gd_scene load_steps=204 format=3 uid="uid://h4x4k7a7p168"]
+[gd_scene load_steps=214 format=3 uid="uid://h4x4k7a7p168"]
 
 [ext_resource type="Texture2D" uid="uid://la502iaoukma" path="res://assets/1 Tiles/IndustrialTile_02.png" id="1_frcqt"]
 [ext_resource type="Script" path="res://Scripts/HubWorld.gd" id="1_xr35x"]
@@ -85,18 +85,25 @@
 [ext_resource type="FontFile" uid="uid://ckid4fla6wirc" path="res://assets/etc/Starzoom-Shavian.ttf" id="82_gf70t"]
 [ext_resource type="PackedScene" uid="uid://csqktr6ixyato" path="res://Scenes/Hero.tscn" id="83_hhacw"]
 [ext_resource type="PackedScene" uid="uid://dghcuiiuawq2p" path="res://Scenes/ByteASpawner.tscn" id="84_ci5bu"]
+[ext_resource type="Texture2D" uid="uid://35dyx2vgd6cm" path="res://assets/etc/Star.png" id="85_rmrcr"]
 [ext_resource type="PackedScene" uid="uid://bjwjnne7i3x33" path="res://Scenes/Killzone.tscn" id="85_s3rr4"]
 [ext_resource type="Script" path="res://Scenes/LegacyPass.gd" id="86_wbc52"]
 [ext_resource type="Script" path="res://Scenes/GauntletPass.gd" id="87_2x6u5"]
 [ext_resource type="Texture2D" uid="uid://bfkq0dn281svy" path="res://assets/etc/Entry.png" id="87_rais6"]
 [ext_resource type="Script" path="res://Scenes/Lgdoors.gd" id="88_6kphh"]
 [ext_resource type="Script" path="res://Scenes/PlayerPass.gd" id="88_52oqi"]
+[ext_resource type="Texture2D" uid="uid://brastt74lxpni" path="res://assets/etc/ranks/overkill.png" id="89_djsyt"]
 [ext_resource type="Script" path="res://Scenes/Gadoors.gd" id="90_7r6qs"]
+[ext_resource type="Texture2D" uid="uid://d1wlj0qisaufc" path="res://assets/Guns&Bullets/fire_30.png" id="90_sqrcb"]
+[ext_resource type="Texture2D" uid="uid://b2ans61yt43mf" path="res://assets/etc/Trophy.png" id="91_ooiwe"]
 [ext_resource type="Texture2D" uid="uid://00s18hlgmpih" path="res://assets/etc/color_burst_25.png" id="91_puagk"]
 [ext_resource type="Script" path="res://Scenes/PlayerDoor.gd" id="91_wjoib"]
 [ext_resource type="Texture2D" uid="uid://cim8utwe2atqw" path="res://assets/city 1/8.png" id="92_bxu38"]
 [ext_resource type="Texture2D" uid="uid://csikad8cdh0ti" path="res://assets/etc/lightrays_8.png" id="93_1ejjv"]
 [ext_resource type="Texture2D" uid="uid://dtmoad6blffsk" path="res://assets/etc/flare_3.png" id="94_xosn5"]
+[ext_resource type="PackedScene" uid="uid://d2y4fvw54o8rg" path="res://Scenes/JumpButton.tscn" id="102_a2xof"]
+[ext_resource type="PackedScene" uid="uid://bpcrood65pxvy" path="res://Scenes/PauseButton.tscn" id="103_f0cqt"]
+[ext_resource type="PackedScene" uid="uid://bygt3a6360eme" path="res://Scenes/LegacyControl.tscn" id="104_a2ua2"]
 
 [sub_resource type="TileMapPattern" id="TileMapPattern_avtng"]
 tile_data = PackedInt32Array(0, 65564, 268435456, 65536, 65564, 268435457, 1, 28, 268435456, 65537, 28, 268435457, 2, 27, 0, 65538, 27, 1, 3, 65563, 0, 65539, 65563, 1, 4, 27, 0, 65540, 27, 1, 5, 65563, 0, 65541, 65563, 1, 6, 27, 0, 65542, 27, 1, 7, 65563, 0, 65543, 65563, 1, 8, 28, 0, 65544, 28, 1, 9, 65564, 0, 65545, 65564, 1)
@@ -763,12 +770,28 @@ pattern_0 = SubResource("TileMapPattern_avtng")
 pattern_1 = SubResource("TileMapPattern_p4mu8")
 pattern_2 = SubResource("TileMapPattern_026c3")
 
+[sub_resource type="Curve" id="Curve_4h671"]
+max_value = 0.7
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.086351, 0.300704), 0.621793, 0.621793, 0, 0, Vector2(0.381616, 0.0049296), -0.171263, 0.0, 0, 0]
+point_count = 3
+
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_odear"]
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_lnrvt"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_s5nso"]
 size = Vector2(32.5, 80)
+
+[sub_resource type="Curve" id="Curve_i1mgp"]
+min_value = -0.4
+max_value = 0.85
+_data = [Vector2(0.0331492, -0.14088), 0.0, 0.0, 0, 0, Vector2(0.171271, 0.335649), 3.52712, 3.52712, 0, 0, Vector2(0.350829, 0.710515), 0.538803, 0.538803, 0, 0, Vector2(1, 0.85), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="Curve" id="Curve_wjgec"]
+max_value = 0.7
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.086351, 0.300704), 0.621793, 0.621793, 0, 0, Vector2(0.381616, 0.0049296), -0.171263, 0.0, 0, 0]
+point_count = 3
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ypthf"]
 atlas = ExtResource("87_rais6")
@@ -876,6 +899,21 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sbldj"]
 size = Vector2(30, 70)
 
+[sub_resource type="Animation" id="Animation_mpyw3"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SceneTransitionScreen/ColorRect:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 0)]
+}
+
 [sub_resource type="Animation" id="Animation_ctn7l"]
 resource_name = "Transition"
 length = 0.8
@@ -890,21 +928,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 0.329877),
 "update": 0,
 "values": [Color(0, 0, 0, 0), Color(0, 0, 0, 1)]
-}
-
-[sub_resource type="Animation" id="Animation_mpyw3"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("SceneTransitionScreen/ColorRect:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(0, 0, 0, 0)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_hnuao"]
@@ -978,6 +1001,31 @@ theme_override_fonts/font = ExtResource("82_gf70t")
 theme_override_font_sizes/font_size = 45
 text = "Legacy  >  >  >"
 
+[node name="Star" type="Sprite2D" parent="Legacy"]
+visibility_layer = 2
+z_index = -1
+position = Vector2(-31.3773, 22.4368)
+scale = Vector2(1.33841, 1.23757)
+texture = ExtResource("85_rmrcr")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="Legacy/Star"]
+position = Vector2(-8.11945, -0.98463)
+amount = 1
+speed_scale = 1.2
+local_coords = true
+texture = ExtResource("94_xosn5")
+emission_shape = 5
+emission_points = PackedVector2Array(15, 0, 0, 0, 2, 10)
+emission_normals = PackedVector2Array()
+emission_colors = PackedColorArray()
+direction = Vector2(0, 0)
+gravity = Vector2(0, 0)
+angular_velocity_max = 251.43
+scale_amount_min = 0.0
+scale_amount_max = 0.9
+scale_amount_curve = SubResource("Curve_4h671")
+color = Color(0.991606, 1, 0.496144, 1)
+
 [node name="Killzone" parent="." instance=ExtResource("85_s3rr4")]
 position = Vector2(-2132, 365)
 
@@ -997,10 +1045,10 @@ texture = SubResource("CanvasTexture_lnrvt")
 [node name="BorderR3" type="TextureRect" parent="."]
 modulate = Color(0, 0, 0, 1)
 z_index = 3
-offset_left = 1546.5
-offset_top = -568.5
-offset_right = 1713.5
-offset_bottom = 23.4999
+offset_left = 1496.0
+offset_top = -568.0
+offset_right = 1675.0
+offset_bottom = 24.0
 scale = Vector2(4.18743, 1.95731)
 texture = SubResource("CanvasTexture_lnrvt")
 
@@ -1052,7 +1100,33 @@ theme_override_font_sizes/font_size = 45
 text = "Gauntlet  >  >  >"
 metadata/_edit_use_anchors_ = true
 
-[node name="Gauntlet2" type="Label" parent="."]
+[node name="Overkill" type="Sprite2D" parent="Gauntlet"]
+position = Vector2(-22.9293, 22.4368)
+scale = Vector2(1.32, 1.23)
+texture = ExtResource("89_djsyt")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="Gauntlet/Overkill"]
+position = Vector2(5.76956, 0.0996585)
+scale = Vector2(0.1, 0.1)
+amount = 20
+lifetime = 0.93
+speed_scale = 1.29
+local_coords = true
+texture = ExtResource("90_sqrcb")
+emission_shape = 5
+emission_points = PackedVector2Array(-120, 0, 0, 0)
+emission_normals = PackedVector2Array()
+emission_colors = PackedColorArray()
+direction = Vector2(0, -1)
+spread = 20.64
+gravity = Vector2(0, 0)
+initial_velocity_min = 65.33
+initial_velocity_max = 86.0
+scale_amount_min = 0.15
+scale_amount_max = 0.3
+scale_amount_curve = SubResource("Curve_i1mgp")
+
+[node name="Datavault" type="Label" parent="."]
 offset_left = 975.501
 offset_top = -283.5
 offset_right = 1414.5
@@ -1068,6 +1142,29 @@ theme_override_fonts/font = ExtResource("82_gf70t")
 theme_override_font_sizes/font_size = 45
 text = "Data Vault  >  >  >"
 metadata/_edit_use_anchors_ = true
+
+[node name="Trophy" type="Sprite2D" parent="Datavault"]
+position = Vector2(-32.5854, 22.4368)
+scale = Vector2(1.18, 1.454)
+texture = ExtResource("91_ooiwe")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="Datavault/Trophy"]
+position = Vector2(-3.99999, 1.90735e-06)
+amount = 1
+speed_scale = 1.2
+local_coords = true
+texture = ExtResource("94_xosn5")
+emission_shape = 5
+emission_points = PackedVector2Array(15, 0, 0, 0, 2, 10)
+emission_normals = PackedVector2Array()
+emission_colors = PackedColorArray()
+direction = Vector2(0, 0)
+gravity = Vector2(0, 0)
+angular_velocity_max = 251.43
+scale_amount_min = 0.0
+scale_amount_max = 0.9
+scale_amount_curve = SubResource("Curve_wjgec")
+color = Color(0.991606, 1, 0.496144, 1)
 
 [node name="GauntletPass" type="Area2D" parent="."]
 position = Vector2(1432, -150)
@@ -1259,11 +1356,30 @@ metadata/_edit_use_anchors_ = true
 [node name="Hero" parent="." instance=ExtResource("83_hhacw")]
 position = Vector2(342.501, -221.5)
 
-[node name="CameraFollow2" type="CanvasLayer" parent="Hero"]
-follow_viewport_enabled = true
+[node name="Buttons" type="CanvasLayer" parent="."]
 
-[node name="Camera2D" type="Camera2D" parent="Hero/CameraFollow2"]
-ignore_rotation = false
+[node name="Jump" type="HBoxContainer" parent="Buttons"]
+anchors_preset = -1
+anchor_left = 0.782
+anchor_top = 0.673
+anchor_right = 0.987
+anchor_bottom = 1.0
+offset_left = -73.04
+offset_top = -24.56
+offset_right = -73.2
+offset_bottom = -24.4559
+grow_horizontal = 0
+grow_vertical = 0
+metadata/_edit_use_anchors_ = true
+
+[node name="Jump" parent="Buttons/Jump" instance=ExtResource("102_a2xof")]
+position = Vector2(108, 176.264)
+scale = Vector2(6.26548, 4.58)
+
+[node name="PauseButton" parent="Buttons" instance=ExtResource("103_f0cqt")]
+position = Vector2(517, 932)
+
+[node name="LegacyControl" parent="." instance=ExtResource("104_a2ua2")]
 
 [connection signal="body_entered" from="LegacyPass" to="LegacyPass" method="_on_body_entered"]
 [connection signal="body_entered" from="GauntletPass" to="GauntletPass" method="_on_body_entered"]
