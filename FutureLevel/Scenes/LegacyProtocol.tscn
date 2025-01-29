@@ -1,4 +1,4 @@
-[gd_scene load_steps=255 format=3 uid="uid://vmdnus7gyna4"]
+[gd_scene load_steps=257 format=3 uid="uid://vmdnus7gyna4"]
 
 [ext_resource type="Script" path="res://Scripts/LegacyProtocol.gd" id="1_aq02g"]
 [ext_resource type="Texture2D" uid="uid://c72vebtk3dx07" path="res://assets/1 Tiles/IndustrialTile_09.png" id="3_ledwt"]
@@ -96,11 +96,13 @@
 [ext_resource type="PackedScene" uid="uid://bjwjnne7i3x33" path="res://Scenes/Killzone.tscn" id="90_nnmq4"]
 [ext_resource type="PackedScene" uid="uid://csqktr6ixyato" path="res://Scenes/Hero.tscn" id="91_munkx"]
 [ext_resource type="Texture2D" uid="uid://dc7ixn8hk14hw" path="res://assets/Background/2.png" id="92_lc5b6"]
+[ext_resource type="PackedScene" uid="uid://bbcjsyub6565j" path="res://Scenes/DestructionSmke.tscn" id="92_qrwbh"]
 [ext_resource type="Texture2D" uid="uid://bmiyl0s8mp43g" path="res://assets/2 Background/Upscale.png" id="93_cigjs"]
 [ext_resource type="Texture2D" uid="uid://bkl32iwam6u1q" path="res://assets/city 1/city 2/4.png" id="93_h88hb"]
 [ext_resource type="PackedScene" uid="uid://d2y4fvw54o8rg" path="res://Scenes/JumpButton.tscn" id="93_hmujq"]
 [ext_resource type="PackedScene" uid="uid://cyik2prp6rqk4" path="res://Scenes/LifeCounter.tscn" id="94_7l5pt"]
 [ext_resource type="Texture2D" uid="uid://d1jeejko1y8sn" path="res://assets/Background/3.png" id="94_ac58c"]
+[ext_resource type="PackedScene" uid="uid://br05tlj7lvjkq" path="res://Scenes/RandomExplosions.tscn" id="94_lvtxy"]
 [ext_resource type="Texture2D" uid="uid://r5tirk7xmgwn" path="res://assets/2 Background/upscaled1.png" id="94_vbgdy"]
 [ext_resource type="PackedScene" uid="uid://bjy4p1k6qgxm8" path="res://Scenes/DropPlat.tscn" id="95_ljrgr"]
 [ext_resource type="Texture2D" uid="uid://1sjjrx2qufrj" path="res://assets/2 Background/openart-image_PupBMZC1_1734267330183_raw.png" id="96_0kd3w"]
@@ -130,7 +132,7 @@
 [ext_resource type="PackedScene" uid="uid://dtuqhypetdr3c" path="res://Scenes/Doorv2.tscn" id="119_2xs3b"]
 [ext_resource type="Texture2D" uid="uid://00s18hlgmpih" path="res://assets/etc/color_burst_25.png" id="123_4m2p7"]
 [ext_resource type="Script" path="res://Scripts/SetBackground.gd" id="127_vmawy"]
-[ext_resource type="PackedScene" path="res://Scenes/Hammer.tscn" id="131_r6jtf"]
+[ext_resource type="PackedScene" uid="uid://65xehuevf8h7" path="res://Scenes/Hammer.tscn" id="131_r6jtf"]
 
 [sub_resource type="TileMapPattern" id="TileMapPattern_ix37f"]
 tile_data = PackedInt32Array(0, 5, 0, 65536, 5, 1, 1, 65541, 0, 65537, 65542, 1, 2, 6, 0, 65538, 6, 1, 3, 65542, 0, 65539, 65542, 1, 4, 6, 0, 65540, 6, 1, 5, 65542, 0, 65541, 65542, 1, 6, 6, 0, 65542, 6, 1, 7, 65542, 0, 65543, 65542, 1, 8, 6, 0, 65544, 6, 1, 9, 65542, 0, 65545, 65542, 1)
@@ -1660,7 +1662,7 @@ texture = ExtResource("85_tbdfy")
 [node name="FarCity4" type="Sprite2D" parent="TileMap/CityBack/Far"]
 modulate = Color(0.201527, 0.201527, 0.201527, 1)
 z_index = 1
-position = Vector2(2653.71, -489.998)
+position = Vector2(2654, -478)
 rotation = 2.12854e-05
 scale = Vector2(2.05064, 5.16757)
 texture = ExtResource("84_qeaix")
@@ -1668,7 +1670,7 @@ texture = ExtResource("84_qeaix")
 [node name="FarCity5" type="Sprite2D" parent="TileMap/CityBack/Far"]
 modulate = Color(0.172833, 0.172833, 0.172833, 1)
 show_behind_parent = true
-position = Vector2(3894, -382)
+position = Vector2(3916, -258)
 rotation = 2.12854e-05
 scale = Vector2(1.98441, 3.43805)
 texture = ExtResource("84_qeaix")
@@ -1677,7 +1679,7 @@ texture = ExtResource("84_qeaix")
 modulate = Color(0.140447, 0.140447, 0.140447, 1)
 show_behind_parent = true
 z_index = -1
-position = Vector2(4834, -330)
+position = Vector2(4970, -250)
 rotation = 2.12854e-05
 scale = Vector2(2.83945, 3.9364)
 texture = ExtResource("84_qeaix")
@@ -1685,7 +1687,7 @@ texture = ExtResource("84_qeaix")
 [node name="FarCity7" type="Sprite2D" parent="TileMap/CityBack/Far"]
 modulate = Color(0.169245, 0.169245, 0.169245, 1)
 show_behind_parent = true
-position = Vector2(6702, -244)
+position = Vector2(6714, -164)
 rotation = 2.12854e-05
 scale = Vector2(2.19529, 4.27013)
 texture = ExtResource("86_p4f10")
@@ -1693,7 +1695,7 @@ texture = ExtResource("86_p4f10")
 [node name="CityI" type="Sprite2D" parent="TileMap/CityBack/Far"]
 modulate = Color(0.165656, 0.165656, 0.165656, 1)
 show_behind_parent = true
-position = Vector2(9706, -212.793)
+position = Vector2(9672, -100)
 rotation = 2.12854e-05
 scale = Vector2(2.4588, 3.92845)
 texture = ExtResource("85_tbdfy")
@@ -1711,7 +1713,7 @@ texture = ExtResource("98_i340m")
 modulate = Color(0.215902, 0.215902, 0.215902, 1)
 show_behind_parent = true
 z_index = -1
-position = Vector2(11780, -306)
+position = Vector2(11836, -204)
 rotation = 2.12854e-05
 scale = Vector2(2.79834, 4.65645)
 texture = ExtResource("86_p4f10")
@@ -1727,25 +1729,48 @@ texture = ExtResource("85_tbdfy")
 
 [node name="A" type="Sprite2D" parent="TileMap/CityBack/Far"]
 self_modulate = Color(0.263, 0.263, 0.263, 1)
-position = Vector2(18824, 268)
+position = Vector2(18384, 1184)
 rotation = 2.12854e-05
-scale = Vector2(1.6093, 1.84387)
+scale = Vector2(3.73627, 4.02346)
 texture = ExtResource("92_lc5b6")
 
 [node name="A5" type="Sprite2D" parent="TileMap/CityBack/Far"]
 self_modulate = Color(0.262932, 0.262932, 0.262932, 1)
-position = Vector2(26464, 332)
+position = Vector2(26566, 1078)
 rotation = 2.12854e-05
-scale = Vector2(2.53291, 1.98561)
+scale = Vector2(4.44088, 4.5387)
 texture = ExtResource("92_lc5b6")
 flip_h = true
 
 [node name="A2" type="Sprite2D" parent="TileMap/CityBack/Far"]
 self_modulate = Color(0.262932, 0.262932, 0.262932, 1)
-position = Vector2(20128, 354)
+position = Vector2(20094, 828)
 rotation = 2.12854e-05
-scale = Vector2(1.58839, 1.57193)
+scale = Vector2(4.9086, 3.92776)
 texture = ExtResource("92_lc5b6")
+
+[node name="Fsmok" type="Node2D" parent="TileMap/CityBack/Far"]
+modulate = Color(0.54, 0.54, 0.54, 0.458824)
+scale = Vector2(0.815, 0.815)
+
+[node name="DestructionSomke" parent="TileMap/CityBack/Far/Fsmok" instance=ExtResource("92_qrwbh")]
+position = Vector2(4976.69, 181.595)
+
+[node name="DestructionSomke2" parent="TileMap/CityBack/Far/Fsmok" instance=ExtResource("92_qrwbh")]
+position = Vector2(1170, 130)
+
+[node name="DestructionSomke3" parent="TileMap/CityBack/Far/Fsmok" instance=ExtResource("92_qrwbh")]
+position = Vector2(7877.3, 218.405)
+
+[node name="DestructionSomke5" parent="TileMap/CityBack/Far/Fsmok" instance=ExtResource("92_qrwbh")]
+position = Vector2(17617.2, 166.871)
+
+[node name="DestructionSomke6" parent="TileMap/CityBack/Far/Fsmok" instance=ExtResource("92_qrwbh")]
+position = Vector2(13921.5, 979.141)
+
+[node name="DestructionSomke4" parent="TileMap/CityBack/Far/Fsmok" instance=ExtResource("92_qrwbh")]
+z_index = -1
+position = Vector2(12012.3, -564.417)
 
 [node name="Between" type="CanvasLayer" parent="TileMap/CityBack"]
 layer = -1
@@ -1756,7 +1781,7 @@ follow_viewport_scale = 0.7
 modulate = Color(0.351563, 0.351563, 0.351563, 1)
 show_behind_parent = true
 z_index = -2
-position = Vector2(2491.43, -274.286)
+position = Vector2(2507.14, -210)
 rotation = 2.12854e-05
 scale = Vector2(1.75197, 2.73699)
 texture = ExtResource("84_qeaix")
@@ -1764,7 +1789,7 @@ texture = ExtResource("84_qeaix")
 [node name="CloseCity4" type="Sprite2D" parent="TileMap/CityBack/Between"]
 modulate = Color(0.3, 0.3, 0.3, 1)
 show_behind_parent = true
-position = Vector2(4942.86, -79.9984)
+position = Vector2(4942.86, -31.4286)
 rotation = 2.12854e-05
 scale = Vector2(2.27574, 2.06635)
 texture = ExtResource("85_tbdfy")
@@ -1780,7 +1805,7 @@ texture = ExtResource("84_qeaix")
 [node name="CityK" type="Sprite2D" parent="TileMap/CityBack/Between"]
 modulate = Color(0.27, 0.27, 0.27, 1)
 show_behind_parent = true
-position = Vector2(10770, -324.529)
+position = Vector2(10770, -267.143)
 rotation = 2.12854e-05
 scale = Vector2(1.94561, 2.80531)
 texture = ExtResource("86_p4f10")
@@ -1816,7 +1841,7 @@ texture = ExtResource("84_qeaix")
 self_modulate = Color(0, 0, 0, 0.811)
 position = Vector2(19245.7, 147.143)
 rotation = 2.12854e-05
-scale = Vector2(2.70462, 2.51374)
+scale = Vector2(4.76502, 4.64092)
 texture = ExtResource("94_ac58c")
 flip_h = true
 
@@ -1824,35 +1849,35 @@ flip_h = true
 self_modulate = Color(0.10748, 0.10748, 0.10748, 1)
 position = Vector2(24204.3, 95.7143)
 rotation = 2.12854e-05
-scale = Vector2(1.98699, 3.06814)
+scale = Vector2(7.96654, 5.17162)
 texture = ExtResource("94_ac58c")
 
 [node name="B3" type="Sprite2D" parent="TileMap/CityBack/Between"]
 self_modulate = Color(0.322, 0.322, 0.322, 0.789)
 position = Vector2(21650, 155.714)
 rotation = 2.12854e-05
-scale = Vector2(1.50376, 2.70174)
+scale = Vector2(6.66057, 5.54203)
 texture = ExtResource("94_ac58c")
 
 [node name="B2" type="Sprite2D" parent="TileMap/CityBack/Between"]
 self_modulate = Color(0.245, 0.245, 0.245, 0.821)
-position = Vector2(25272.9, 182.857)
+position = Vector2(25531.4, -97.1429)
 rotation = 2.12854e-05
-scale = Vector2(1.50376, 2.70174)
+scale = Vector2(5.66766, 5.54503)
 texture = ExtResource("94_ac58c")
 
 [node name="A4" type="Sprite2D" parent="TileMap/CityBack/Between"]
 self_modulate = Color(0.262932, 0.262932, 0.262932, 1)
-position = Vector2(23287.1, 300)
+position = Vector2(23697.1, 170)
 rotation = 2.12854e-05
-scale = Vector2(2.3484, 1.93604)
+scale = Vector2(4.22832, 4.46793)
 texture = ExtResource("92_lc5b6")
 
 [node name="A3" type="Sprite2D" parent="TileMap/CityBack/Between"]
 self_modulate = Color(0.262932, 0.262932, 0.262932, 1)
 position = Vector2(21908.6, 188.571)
 rotation = 2.12854e-05
-scale = Vector2(1.48644, 1.97811)
+scale = Vector2(3.81865, 3.9638)
 texture = ExtResource("92_lc5b6")
 flip_h = true
 
@@ -1860,10 +1885,13 @@ flip_h = true
 modulate = Color(0.299547, 0.299547, 0.299547, 1)
 show_behind_parent = true
 z_index = -2
-position = Vector2(1575.71, -328.571)
+position = Vector2(1617.14, -314.286)
 rotation = 2.12854e-05
-scale = Vector2(2.10387, 3.01605)
+scale = Vector2(2.24939, 3.01604)
 texture = ExtResource("85_tbdfy")
+
+[node name="Explosions" parent="TileMap/CityBack/Between" instance=ExtResource("94_lvtxy")]
+position = Vector2(3038.57, -355.714)
 
 [node name="Close" type="CanvasLayer" parent="TileMap/CityBack"]
 layer = -1
@@ -1889,7 +1917,7 @@ texture = ExtResource("85_tbdfy")
 [node name="CloseCity3" type="Sprite2D" parent="TileMap/CityBack/Close"]
 modulate = Color(0.347817, 0.347817, 0.347817, 1)
 show_behind_parent = true
-position = Vector2(3178.75, -322.5)
+position = Vector2(3202.5, -262.5)
 rotation = 2.12854e-05
 scale = Vector2(1.58593, 2.99602)
 texture = ExtResource("84_qeaix")
@@ -1897,7 +1925,7 @@ texture = ExtResource("84_qeaix")
 [node name="CloseCity2" type="Sprite2D" parent="TileMap/CityBack/Close"]
 modulate = Color(0.340339, 0.340339, 0.340339, 1)
 show_behind_parent = true
-position = Vector2(1173.75, 190)
+position = Vector2(1186.25, 166.25)
 rotation = 2.12854e-05
 scale = Vector2(2.21973, 3.40779)
 texture = ExtResource("85_tbdfy")
@@ -1905,7 +1933,7 @@ texture = ExtResource("85_tbdfy")
 [node name="CloseCity4" type="Sprite2D" parent="TileMap/CityBack/Close"]
 modulate = Color(0.347817, 0.347817, 0.347817, 1)
 show_behind_parent = true
-position = Vector2(2123.75, 161.25)
+position = Vector2(2160, 185)
 rotation = 2.12854e-05
 scale = Vector2(2.08593, 3.29602)
 texture = ExtResource("84_qeaix")
@@ -1913,7 +1941,7 @@ texture = ExtResource("84_qeaix")
 [node name="CloseCity5" type="Sprite2D" parent="TileMap/CityBack/Close"]
 modulate = Color(0.46, 0.46, 0.46, 1)
 show_behind_parent = true
-position = Vector2(5745, -203.75)
+position = Vector2(5781.25, -167.5)
 rotation = 2.12854e-05
 scale = Vector2(2.02568, 2.06635)
 texture = ExtResource("85_tbdfy")
@@ -1921,7 +1949,7 @@ texture = ExtResource("85_tbdfy")
 [node name="CloseCity6" type="Sprite2D" parent="TileMap/CityBack/Close"]
 modulate = Color(0.46, 0.46, 0.46, 1)
 show_behind_parent = true
-position = Vector2(3847.5, 272.5)
+position = Vector2(3931.25, 248.75)
 rotation = 2.12854e-05
 scale = Vector2(2.78818, 2.64105)
 texture = ExtResource("85_tbdfy")
@@ -1929,7 +1957,7 @@ texture = ExtResource("85_tbdfy")
 [node name="CityH" type="Sprite2D" parent="TileMap/CityBack/Close"]
 modulate = Color(0.41598, 0.41598, 0.41598, 1)
 show_behind_parent = true
-position = Vector2(8760.69, -469.095)
+position = Vector2(8761.25, -335)
 rotation = 2.12854e-05
 scale = Vector2(3.08707, 3.57315)
 texture = ExtResource("85_tbdfy")
@@ -1937,7 +1965,7 @@ texture = ExtResource("85_tbdfy")
 [node name="CityM2" type="Sprite2D" parent="TileMap/CityBack/Close"]
 modulate = Color(0.41, 0.41, 0.41, 1)
 show_behind_parent = true
-position = Vector2(4298.75, 232.5)
+position = Vector2(4335, 256.25)
 rotation = 2.12854e-05
 scale = Vector2(2.33781, 3.39221)
 texture = ExtResource("84_qeaix")
@@ -1945,7 +1973,7 @@ texture = ExtResource("84_qeaix")
 [node name="CityM3" type="Sprite2D" parent="TileMap/CityBack/Close"]
 modulate = Color(0.41, 0.41, 0.41, 1)
 show_behind_parent = true
-position = Vector2(9931.25, 298.75)
+position = Vector2(10276.3, 145)
 rotation = 2.12854e-05
 scale = Vector2(2.79774, 3.7656)
 texture = ExtResource("84_qeaix")
@@ -1953,7 +1981,7 @@ texture = ExtResource("84_qeaix")
 [node name="CityL2" type="Sprite2D" parent="TileMap/CityBack/Close"]
 modulate = Color(0.45, 0.45, 0.45, 1)
 show_behind_parent = true
-position = Vector2(13669, -261.459)
+position = Vector2(13728.8, -118.75)
 rotation = 2.12854e-05
 scale = Vector2(1.95409, 2.19616)
 texture = ExtResource("86_p4f10")
@@ -1961,7 +1989,7 @@ texture = ExtResource("86_p4f10")
 [node name="CityL3" type="Sprite2D" parent="TileMap/CityBack/Close"]
 modulate = Color(0.45, 0.45, 0.45, 1)
 show_behind_parent = true
-position = Vector2(11827.5, 540)
+position = Vector2(12528.7, -33.75)
 rotation = 2.12854e-05
 scale = Vector2(2.39426, 3.49257)
 texture = ExtResource("86_p4f10")
@@ -1969,7 +1997,7 @@ texture = ExtResource("86_p4f10")
 [node name="CityL4" type="Sprite2D" parent="TileMap/CityBack/Close"]
 modulate = Color(0.45, 0.45, 0.45, 1)
 show_behind_parent = true
-position = Vector2(8571.25, 406.25)
+position = Vector2(8482.5, 192.5)
 rotation = 2.12854e-05
 scale = Vector2(3.09968, 3.49256)
 texture = ExtResource("86_p4f10")
@@ -1977,44 +2005,44 @@ texture = ExtResource("86_p4f10")
 [node name="CityL5" type="Sprite2D" parent="TileMap/CityBack/Close"]
 modulate = Color(0.45, 0.45, 0.45, 1)
 show_behind_parent = true
-position = Vector2(4766.25, 326.25)
+position = Vector2(4540, 150)
 rotation = 2.12854e-05
-scale = Vector2(3.09968, 3.49256)
+scale = Vector2(3.46593, 3.49255)
 texture = ExtResource("86_p4f10")
 
 [node name="B6" type="Sprite2D" parent="TileMap/CityBack/Close"]
 self_modulate = Color(0.069, 0.069, 0.069, 0.691)
-position = Vector2(20410, 77.5)
+position = Vector2(20315, 191.25)
 rotation = 2.12854e-05
-scale = Vector2(1.56786, 3.32285)
+scale = Vector2(4.17659, 5.03832)
 texture = ExtResource("94_ac58c")
 
 [node name="B" type="Sprite2D" parent="TileMap/CityBack/Close"]
 self_modulate = Color(0.061, 0.061, 0.061, 0.638)
-position = Vector2(18524.8, -7.04514)
+position = Vector2(18253.8, 48.75)
 rotation = 2.12854e-05
-scale = Vector2(1.89555, 2.89609)
+scale = Vector2(3.83313, 4.43675)
 texture = ExtResource("94_ac58c")
 
 [node name="B8" type="Sprite2D" parent="TileMap/CityBack/Close"]
 self_modulate = Color(0, 0, 0, 0.789)
-position = Vector2(28276.8, -183.082)
+position = Vector2(28115, -126.25)
 rotation = 2.12854e-05
-scale = Vector2(1.13012, 1.97898)
+scale = Vector2(4.4186, 4.80879)
 texture = ExtResource("94_ac58c")
 
 [node name="B7" type="Sprite2D" parent="TileMap/CityBack/Close"]
 self_modulate = Color(0.2484, 0.2484, 0.2484, 1)
-position = Vector2(26965, 132.5)
+position = Vector2(27045, -32.5)
 rotation = 2.12854e-05
-scale = Vector2(1.65966, 3.41759)
+scale = Vector2(5.25485, 5.3991)
 texture = ExtResource("94_ac58c")
 
 [node name="B5" type="Sprite2D" parent="TileMap/CityBack/Close"]
 self_modulate = Color(0, 0, 0, 0.686)
-position = Vector2(22472.5, 111.25)
+position = Vector2(22717.5, 102.5)
 rotation = 2.12854e-05
-scale = Vector2(1.63323, 2.71798)
+scale = Vector2(5.27329, 5.62945)
 texture = ExtResource("94_ac58c")
 
 [node name="CityFar2" type="Sprite2D" parent="TileMap/CityBack/Close"]
@@ -2129,22 +2157,23 @@ scale = Vector2(2.07795, 4.29772)
 texture = ExtResource("87_0e3ta")
 
 [node name="Veryfar" type="CanvasLayer" parent="TileMap/CityBack"]
-layer = -1
+layer = -2
 follow_viewport_enabled = true
 follow_viewport_scale = 0.55
 
 [node name="C" type="Sprite2D" parent="TileMap/CityBack/Veryfar"]
 self_modulate = Color(0.133196, 0.133196, 0.133196, 1)
-position = Vector2(17769.1, -36.3637)
+z_index = -2
+position = Vector2(18478.2, 183.636)
 rotation = 2.12854e-05
-scale = Vector2(1.51162, 3.82679)
+scale = Vector2(1.51166, 6.09528)
 texture = ExtResource("93_h88hb")
 
 [node name="C3" type="Sprite2D" parent="TileMap/CityBack/Veryfar"]
 self_modulate = Color(0, 0, 0, 0.908)
-position = Vector2(20848, -152)
+position = Vector2(21436.4, 43.6364)
 rotation = 2.12854e-05
-scale = Vector2(1.4314, 5.30842)
+scale = Vector2(4.03043, 6.14906)
 texture = ExtResource("93_h88hb")
 flip_h = true
 
@@ -2152,14 +2181,14 @@ flip_h = true
 self_modulate = Color(0, 0, 0, 1)
 position = Vector2(21946, 146)
 rotation = 2.12854e-05
-scale = Vector2(1.51096, 3.44854)
+scale = Vector2(3.71221, 9.35707)
 texture = ExtResource("93_h88hb")
 
 [node name="C4" type="Sprite2D" parent="TileMap/CityBack/Veryfar"]
 self_modulate = Color(0.00351917, 0.00351917, 0.00351916, 1)
 position = Vector2(23328, 58)
 rotation = 2.12854e-05
-scale = Vector2(1.83027, 7.52521)
+scale = Vector2(4.29345, 7.5251)
 texture = ExtResource("93_h88hb")
 flip_h = true
 
@@ -2167,7 +2196,7 @@ flip_h = true
 self_modulate = Color(0.00184107, 0.00184107, 0.00184107, 1)
 position = Vector2(24564, -199)
 rotation = 2.12854e-05
-scale = Vector2(1.41989, 7.7586)
+scale = Vector2(2.87482, 13.2475)
 texture = ExtResource("93_h88hb")
 flip_h = true
 
@@ -2175,21 +2204,21 @@ flip_h = true
 self_modulate = Color(0.0923971, 0.0923971, 0.092397, 1)
 position = Vector2(25888, -143.634)
 rotation = 2.12854e-05
-scale = Vector2(1.25165, 7.21822)
+scale = Vector2(3.65078, 12.4691)
 texture = ExtResource("93_h88hb")
 flip_h = true
 
 [node name="C8" type="Sprite2D" parent="TileMap/CityBack/Veryfar"]
 self_modulate = Color(0.0768358, 0.0768358, 0.0768358, 1)
-position = Vector2(27764, 16)
+position = Vector2(27274.5, -441.818)
 rotation = 2.12854e-05
-scale = Vector2(1.67886, 8.80675)
+scale = Vector2(2.75385, 11.0819)
 texture = ExtResource("93_h88hb")
 
 [node name="Smog9" type="Sprite2D" parent="TileMap/CityBack/Veryfar"]
 modulate = Color(0.451, 0.451, 0.451, 0.892)
 z_index = 1
-position = Vector2(26395, 144)
+position = Vector2(26394.5, -49.0909)
 rotation = 2.12854e-05
 scale = Vector2(3.01857, -2.49542)
 texture = ExtResource("99_6cglh")
@@ -2225,6 +2254,34 @@ scale = Vector2(2.95754, -2.43459)
 texture = ExtResource("99_6cglh")
 region_enabled = true
 region_rect = Rect2(40, 0, 536, 324)
+
+[node name="Smokeybear" type="Node2D" parent="TileMap/CityBack/Veryfar"]
+modulate = Color(0.473976, 0.473976, 0.473976, 1)
+
+[node name="DestructionSomke" parent="TileMap/CityBack/Veryfar/Smokeybear" instance=ExtResource("92_qrwbh")]
+position = Vector2(18676.4, 243.636)
+scale = Vector2(0.585, 0.585)
+skew = 0.198968
+
+[node name="DestructionSomke2" parent="TileMap/CityBack/Veryfar/Smokeybear" instance=ExtResource("92_qrwbh")]
+position = Vector2(18249.1, 49.0909)
+scale = Vector2(0.585, 0.585)
+skew = 0.198968
+
+[node name="DestructionSomke3" parent="TileMap/CityBack/Veryfar/Smokeybear" instance=ExtResource("92_qrwbh")]
+position = Vector2(21356.4, -220)
+scale = Vector2(0.585, 0.585)
+skew = 0.198968
+
+[node name="DestructionSomke4" parent="TileMap/CityBack/Veryfar/Smokeybear" instance=ExtResource("92_qrwbh")]
+position = Vector2(23609.1, 125.455)
+scale = Vector2(0.585, 0.585)
+skew = 0.198968
+
+[node name="DestructionSomke5" parent="TileMap/CityBack/Veryfar/Smokeybear" instance=ExtResource("92_qrwbh")]
+position = Vector2(26618.2, -185.455)
+scale = Vector2(0.585, 0.585)
+skew = 0.198968
 
 [node name="Forgrd" type="Node" parent="TileMap"]
 
@@ -2351,6 +2408,7 @@ region_enabled = true
 region_rect = Rect2(0, 0, 463, 324)
 
 [node name="Overlay" type="Sprite2D" parent="TileMap/Forgrd"]
+visible = false
 self_modulate = Color(1, 1, 1, 0.146)
 z_index = 2
 position = Vector2(24794.1, -301.993)
@@ -2535,6 +2593,7 @@ position = Vector2(12283, -654)
 [node name="Spawner" type="Node" parent="."]
 
 [node name="ByteSpawnerA" parent="Spawner" instance=ExtResource("103_0k21k")]
+visible = false
 position = Vector2(9530, -404)
 rotation = 2.12854e-05
 
@@ -2542,6 +2601,7 @@ rotation = 2.12854e-05
 position = Vector2(13154, -531)
 
 [node name="ByteSpawnerA3" parent="Spawner" instance=ExtResource("103_0k21k")]
+visible = false
 position = Vector2(19651, -23)
 rotation = 2.12854e-05
 
@@ -2639,7 +2699,7 @@ rotation = 2.12854e-05
 scale = Vector2(3, 3)
 
 [node name="MiniBoss" parent="MiniBoss" instance=ExtResource("106_614e6")]
-position = Vector2(15890, -610)
+position = Vector2(16878, -676)
 
 [node name="GameManager" parent="." instance=ExtResource("106_jtjrs")]
 
@@ -2806,7 +2866,40 @@ autoplay = "start"
 position = Vector2(18762, -65)
 
 [node name="Hammer2" parent="Hammers" instance=ExtResource("131_r6jtf")]
-position = Vector2(18967, -63)
+position = Vector2(19076, -63)
+
+[node name="Hammer3" parent="Hammers" instance=ExtResource("131_r6jtf")]
+position = Vector2(19418, -63)
+
+[node name="Hammer4" parent="Hammers" instance=ExtResource("131_r6jtf")]
+position = Vector2(19977, -63)
+
+[node name="Hammer5" parent="Hammers" instance=ExtResource("131_r6jtf")]
+position = Vector2(20211, -63)
+
+[node name="Hammer6" parent="Hammers" instance=ExtResource("131_r6jtf")]
+position = Vector2(20281, -63)
+
+[node name="Hammer7" parent="Hammers" instance=ExtResource("131_r6jtf")]
+position = Vector2(20515, -63)
+
+[node name="Hammer8" parent="Hammers" instance=ExtResource("131_r6jtf")]
+position = Vector2(20581, -63)
+
+[node name="Hammer9" parent="Hammers" instance=ExtResource("131_r6jtf")]
+position = Vector2(20815, -63)
+
+[node name="Hammer10" parent="Hammers" instance=ExtResource("131_r6jtf")]
+position = Vector2(21502, -63)
+
+[node name="Hammer11" parent="Hammers" instance=ExtResource("131_r6jtf")]
+position = Vector2(21570, -63)
+
+[node name="Hammer12" parent="Hammers" instance=ExtResource("131_r6jtf")]
+position = Vector2(21639, -63)
+
+[node name="Hammer13" parent="Hammers" instance=ExtResource("131_r6jtf")]
+position = Vector2(22407, -63)
 
 [connection signal="body_entered" from="Platform/Area2D" to="Platform" method="_on_area_2d_body_entered"]
 [connection signal="body_entered" from="PickUpGun" to="PickUpGun" method="_on_body_entered"]

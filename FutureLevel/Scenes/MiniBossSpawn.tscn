@@ -3,12 +3,12 @@
 [ext_resource type="Script" path="res://Scripts/MiniSpawner.gd" id="1_gqxth"]
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_w3xj1"]
-a = Vector2(-987, -713)
-b = Vector2(-970, 668)
+a = Vector2(-1917, -1014)
+b = Vector2(-1924, 1424)
 
 [sub_resource type="Curve2D" id="Curve2D_0jxci"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, -573.767, -658.256, 0, 0, 0, 0, 284.92, -668.507, 0, 0, 0, 0, -74.8755, 595.522, 0, 0, 0, 0, 339.631, 602.698, 0, 0, 0, 0, 339.631, -584.444, 0, 0, 0, 0, -629.406, -693.111)
+"points": PackedVector2Array(0, 0, 0, 0, -573.767, -658.256, 0, 0, 0, 0, -600.659, -292.272, 0, 0, 0, 0, 79.985, -431.694, 0, 0, 0, 0, 339.631, 602.698, 0, 0, 0, 0, 324.794, -676.709, 0, 0, 0, 0, -629.406, -693.111)
 }
 point_count = 6
 
@@ -31,7 +31,7 @@ curve = SubResource("Curve2D_0jxci")
 [node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
 unique_name_in_owner = true
 position = Vector2(-573.767, -658.256)
-rotation = -0.0119375
+rotation = 1.64414
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_body_exited"]

@@ -16,8 +16,8 @@ func spawn_bosses():
 	%PathFollow2D.progress_ratio = randf()
 	new_droid.position = %PathFollow2D.position
 	new_byte.position = %PathFollow2D.position
-	add_child(new_byte)
-	add_child(new_droid)
+	get_tree().current_scene.add_child(new_byte)
+	get_tree().current_scene.add_child(new_droid)
 
 
 func _on_timer_timeout() -> void:
@@ -38,3 +38,5 @@ func _on_timer_timeout() -> void:
 	spawn_bosses()
 	spawn_bosses()
 	spawn_bosses()
+	await get_tree().create_timer(0.9).timeout
+	queue_free()

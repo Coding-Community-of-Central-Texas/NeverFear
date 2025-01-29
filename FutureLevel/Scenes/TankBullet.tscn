@@ -44,14 +44,13 @@ animations = [{
 radius = 12.449
 
 [sub_resource type="Curve" id="Curve_ylm13"]
-min_value = -0.2
-max_value = 0.36
-_data = [Vector2(0.0220995, 0.090515), 0.0, 0.0, 0, 0, Vector2(0.143646, 0.0827039), 0.146747, 0.146747, 0, 0, Vector2(0.414365, 0.149099), 0.457412, 0.457412, 0, 0, Vector2(0.991713, 0.36), 0.0, 0.0, 0, 0]
-point_count = 4
+max_value = 1.11
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.411765, 0.134176), 0.231061, 0.231061, 0, 0, Vector2(1, 0.146374), 0.0, 0.0, 0, 0]
+point_count = 3
 
 [sub_resource type="Gradient" id="Gradient_xi4jx"]
-offsets = PackedFloat32Array(0.0508982, 0.199396, 0.34139, 0.655589, 0.8429)
-colors = PackedColorArray(0.02, 0.02, 0.02, 1, 0.61, 0.61, 0.61, 1, 1, 1, 1, 1, 1, 1, 1, 0.564706, 1, 1, 1, 0.180392)
+offsets = PackedFloat32Array(0.259067, 0.502591, 0.80829, 0.937824)
+colors = PackedColorArray(0.02, 0.02, 0.02, 1, 0.7, 0.6608, 0.504, 1, 0.61, 0.61, 0.61, 1, 1, 1, 1, 0.188235)
 
 [node name="TankBullet" type="Area2D"]
 rotation = -6.29509
@@ -74,21 +73,27 @@ frame_progress = 0.0162463
 position = Vector2(5.99958, 0.0714276)
 scale = Vector2(1.53333, 0.6)
 shape = SubResource("CircleShape2D_x6wp8")
+debug_color = Color(0, 0.595, 0.7, 0)
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="."]
-position = Vector2(-12.6658, -0.150792)
-amount = 30
-lifetime = 1.99
-speed_scale = 1.67
+show_behind_parent = true
+position = Vector2(21.316, 1.5872)
+rotation = 0.0349066
+amount = 15
+lifetime = 2.24
+speed_scale = 1.37
+lifetime_randomness = 0.04
 local_coords = true
 texture = ExtResource("3_srlk6")
 direction = Vector2(-1, 0)
-spread = 0.0
-gravity = Vector2(0, 0)
-initial_velocity_min = 267.01
-initial_velocity_max = 382.19
+spread = 4.2
+gravity = Vector2(0, -5)
+initial_velocity_min = 109.47
+initial_velocity_max = 109.47
+angular_velocity_min = 276.0
+angular_velocity_max = 276.0
 scale_amount_curve = SubResource("Curve_ylm13")
-color = Color(1, 1, 1, 0.341)
+color = Color(1, 1, 1, 0.615686)
 color_ramp = SubResource("Gradient_xi4jx")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

@@ -21,7 +21,6 @@ config/icon="res://assets/Background/NeverFearIcon.svg"
 Global="*res://Singletons/Global.gd"
 GameManager="*res://Singletons/GameManager.gd"
 DamageNumbers="*res://Singletons/DamageNumbers.gd"
-ScreenAspect="*res://Singletons/ScreenAspect.tscn"
 
 [display]
 

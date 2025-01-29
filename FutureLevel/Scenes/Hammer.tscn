@@ -1,5 +1,6 @@
-[gd_scene load_steps=15 format=3 uid="uid://chlqfko40k3p3"]
+[gd_scene load_steps=16 format=3 uid="uid://65xehuevf8h7"]
 
+[ext_resource type="Script" path="res://Scripts/Hammer.gd" id="1_femfq"]
 [ext_resource type="Texture2D" uid="uid://bi4rkixlbhp17" path="res://assets/etc/Hammer.png" id="1_njfb8"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_f03dy"]
@@ -74,7 +75,7 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("RigidBody2D/CollisionShape2D:position")
+tracks/0/path = NodePath("HammerPys/CollisionShape2D:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -126,7 +127,7 @@ loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("RigidBody2D/CollisionShape2D:position")
+tracks/0/path = NodePath("HammerPys/CollisionShape2D:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -179,17 +180,18 @@ _data = {
 }
 
 [node name="Hammer" type="Node2D"]
+script = ExtResource("1_femfq")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(2, 1.24)
 sprite_frames = SubResource("SpriteFrames_ew0pc")
 animation = &"ham"
 
-[node name="RigidBody2D" type="RigidBody2D" parent="."]
-collision_layer = 8
-collision_mask = 8
+[node name="HammerPys" type="AnimatableBody2D" parent="."]
+collision_layer = 9
+collision_mask = 9
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HammerPys"]
 position = Vector2(0.5, -18.5)
 shape = SubResource("RectangleShape2D_0njma")
 
@@ -198,5 +200,3 @@ libraries = {
 "": SubResource("AnimationLibrary_v74f2")
 }
 autoplay = "hammer"
-
-[node name="Camera2D" type="Camera2D" parent="."]
