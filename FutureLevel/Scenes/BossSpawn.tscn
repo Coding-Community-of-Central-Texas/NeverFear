@@ -17,9 +17,9 @@ shape = SubResource("SegmentShape2D_20hbk")
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("2_rq1h1")
-volume_db = 5.807
-pitch_scale = 0.88
-max_distance = 10129.0
+volume_db = 19.839
+pitch_scale = 0.68
+max_distance = 20979.0
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_body_exited"]

@@ -16,17 +16,19 @@ _data = [Vector2(0.0524862, 0.427468), 0.0, 0.0, 0, 0, Vector2(0.190608, 0.33261
 point_count = 7
 
 [node name="RunDust" type="Node2D"]
-visible = false
+modulate = Color(0.963361, 0.67725, 0.476892, 0.757)
+scale = Vector2(0.429997, 0.44501)
 script = ExtResource("1_ict0m")
 
 [node name="RunPuffR" type="CPUParticles2D" parent="."]
 z_index = -1
-position = Vector2(-38, -4)
+position = Vector2(0.999996, -1)
 rotation = 0.0342883
 scale = Vector2(0.5, 0.5)
 amount = 30
 lifetime = 4.55
-speed_scale = 2.66
+speed_scale = 3.11
+explosiveness = 0.44
 randomness = 0.27
 local_coords = true
 texture = ExtResource("2_ao56p")

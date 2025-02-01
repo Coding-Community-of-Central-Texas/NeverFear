@@ -297,22 +297,22 @@ point_count = 27
 
 [sub_resource type="Curve" id="Curve_1v7rp"]
 max_value = 0.5
-_data = [Vector2(0, 0.0352113), 0.0, 0.0, 0, 0, Vector2(0.147632, 0.422535), -0.580795, -0.580795, 0, 0, Vector2(0.506964, 0), -0.811504, 0.0, 0, 0]
+_data = [Vector2(0, 0.0352113), 0.0, 0.0, 0, 0, Vector2(0.113122, 0.428571), 0.110389, 0.110389, 0, 0, Vector2(0.597285, 0), -0.811504, 0.0, 0, 0]
 point_count = 3
 
 [sub_resource type="Curve" id="Curve_224pu"]
 max_value = 0.5
-_data = [Vector2(0, 0.0316901), 0.0, 0.0, 0, 0, Vector2(0.0696379, 0.239437), 0.0, 0.0, 0, 0, Vector2(0.256267, 0.0176057), -0.223074, -0.223074, 0, 0, Vector2(0.51532, 0), 0.0, 0.0, 0, 0]
+_data = [Vector2(0, 0.0316901), 0.0, 0.0, 0, 0, Vector2(0.0723982, 0.39011), 0.0, 0.0, 0, 0, Vector2(0.20362, 0.0274725), -0.223074, -0.223074, 0, 0, Vector2(0.51532, 0), 0.0, 0.0, 0, 0]
 point_count = 4
 
 [sub_resource type="Curve" id="Curve_2txmc"]
 max_value = 0.6
-_data = [Vector2(0.00278552, 0.0563381), 0.0, 0.0, 0, 0, Vector2(0.0724234, 0.36338), 0.0, 0.0, 0, 0, Vector2(0.225627, 0), 0.0, 0.0, 0, 0]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.0135747, 0.6), 0.0, 0.0, 0, 0, Vector2(0.122172, 0), 0.0, 0.0, 0, 0]
 point_count = 3
 
 [sub_resource type="Curve" id="Curve_rlbob"]
 max_value = 0.6
-_data = [Vector2(0, 0.112676), 0.0, 0.0, 0, 0, Vector2(0.181058, 0.485916), 0.0, 0.0, 0, 0, Vector2(0.415042, 0), 0.0, 0.0, 0, 0]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.0226244, 0.6), 0.0, 0.0, 0, 0, Vector2(0.0995475, 0), 0.0, 0.0, 0, 0]
 point_count = 3
 
 [sub_resource type="Curve" id="Curve_8qhti"]
@@ -1458,27 +1458,28 @@ hue_variation_min = 0.22
 hue_variation_max = 0.63
 
 [node name="WalknJumpR" type="Marker2D" parent="AnimatedSprite2D"]
-position = Vector2(-5.33333, 47.3333)
+position = Vector2(5.33337, 48)
 
 [node name="WalknJumpL" type="Marker2D" parent="AnimatedSprite2D"]
-position = Vector2(36, 47.3333)
+position = Vector2(26, 47.3333)
 
 [node name="JumpEffect" type="CPUParticles2D" parent="AnimatedSprite2D"]
 unique_name_in_owner = true
 show_behind_parent = true
-position = Vector2(14.6667, 46.6666)
+position = Vector2(15.3334, 40)
 scale = Vector2(0.5, 0.5)
 emitting = false
 amount = 1
-lifetime = 0.5
+lifetime = 0.25
 one_shot = true
+speed_scale = 2.45
 explosiveness = 1.0
 texture = ExtResource("10_o76pr")
 direction = Vector2(0, 1)
 spread = 0.0
 gravity = Vector2(0, 0)
-initial_velocity_min = 176.65
-initial_velocity_max = 176.65
+initial_velocity_min = 601.65
+initial_velocity_max = 601.65
 linear_accel_min = 10.47
 linear_accel_max = 10.47
 scale_amount_min = 0.4
@@ -1490,20 +1491,24 @@ color = Color(26.487, 12.973, 1, 1)
 
 [node name="JumpEffect2" type="CPUParticles2D" parent="AnimatedSprite2D"]
 unique_name_in_owner = true
-position = Vector2(14.6667, 46)
+show_behind_parent = true
+position = Vector2(14, 42)
+rotation = 1.58028
 emitting = false
 amount = 1
 lifetime = 0.5
 one_shot = true
 speed_scale = 2.0
 texture = ExtResource("11_x6ujp")
-direction = Vector2(0, 1)
+direction = Vector2(0, 0)
 spread = 0.0
 gravity = Vector2(0, 0)
-initial_velocity_min = 126.99
-initial_velocity_max = 127.74
+initial_velocity_min = 318.66
+initial_velocity_max = 318.66
 linear_accel_min = 10.47
 linear_accel_max = 10.47
+angle_min = 96.0
+angle_max = 96.0
 scale_amount_min = 0.6
 split_scale = true
 scale_curve_x = SubResource("Curve_2txmc")
@@ -1512,8 +1517,10 @@ color = Color(9.729, 23.783, 59.459, 1)
 
 [node name="DoubleJumpEffect" type="CPUParticles2D" parent="AnimatedSprite2D"]
 unique_name_in_owner = true
-position = Vector2(14.6667, 53.3333)
+show_behind_parent = true
+position = Vector2(14.6667, 45.3333)
 scale = Vector2(0.5, 0.5)
+skew = 0.654498
 emitting = false
 amount = 2
 lifetime = 0.5
@@ -1522,14 +1529,14 @@ speed_scale = 1.1
 explosiveness = 1.0
 texture = ExtResource("10_o76pr")
 emission_shape = 5
-emission_points = PackedVector2Array(0, 0, 0, -20, 0, -15)
+emission_points = PackedVector2Array(0, 0, 0, 50)
 emission_normals = PackedVector2Array()
 emission_colors = PackedColorArray()
 direction = Vector2(0, 1)
 spread = 0.0
 gravity = Vector2(0, 0)
-initial_velocity_min = 111.11
-initial_velocity_max = 111.11
+initial_velocity_min = 611.11
+initial_velocity_max = 611.11
 linear_accel_min = 10.47
 linear_accel_max = 10.47
 scale_amount_min = 0.4
@@ -1577,12 +1584,12 @@ hue_variation_min = 0.22
 hue_variation_max = 0.63
 
 [node name="BoostRTwo" type="CPUParticles2D" parent="AnimatedSprite2D"]
-position = Vector2(18, 48)
+position = Vector2(18, 34)
 emitting = false
-amount = 5
-lifetime = 0.88
+amount = 15
+lifetime = 4.48
 one_shot = true
-speed_scale = 1.06
+speed_scale = 1.51
 explosiveness = 1.0
 randomness = 1.0
 local_coords = true
@@ -1592,10 +1599,15 @@ emission_shape = 5
 emission_points = PackedVector2Array(-15, 0, 5, -4)
 emission_normals = PackedVector2Array()
 emission_colors = PackedColorArray()
-direction = Vector2(0, -1)
-spread = 25.13
-gravity = Vector2(0, 0)
-initial_velocity_max = 68.78
+direction = Vector2(-1, 0)
+spread = 172.78
+gravity = Vector2(0, -59.31)
+initial_velocity_min = 106.01
+initial_velocity_max = 106.01
+orbit_velocity_min = -366.67
+orbit_velocity_max = 316.67
+angle_min = -288.0
+angle_max = 204.0
 scale_amount_min = 0.25
 scale_amount_max = 0.55
 split_scale = true
@@ -1613,12 +1625,14 @@ debug_color = Color(0, 0.6, 0.701961, 0)
 
 [node name="Camera" type="Camera2D" parent="."]
 unique_name_in_owner = true
-zoom = Vector2(0.905, 1.56)
+zoom = Vector2(1.15, 1.81)
+limit_bottom = 669
 limit_smoothed = true
 position_smoothing_enabled = true
 position_smoothing_speed = 25.0
 script = ExtResource("12_ofnp4")
-landscape_zoom = Vector2(0.75, 1.2)
+landscape_zoom = Vector2(1.15, 1.81)
+portrait_zoom = Vector2(1.5, 1)
 
 [node name="Gun" parent="." instance=ExtResource("10_0uu0a")]
 show_behind_parent = true
@@ -1632,13 +1646,14 @@ collision_mask = 0
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("9_weta3")
-volume_db = 5.775
-pitch_scale = 3.4
+volume_db = 2.473
+pitch_scale = 2.4
 
 [node name="AudioStreamPlayer2D2" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("10_qhkyu")
-volume_db = 1.094
-pitch_scale = 2.01
+volume_db = -1.537
+pitch_scale = 0.93
+attenuation = 2.46229
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.898
@@ -1669,6 +1684,7 @@ texture = ExtResource("12_j60bv")
 [node name="FootSteps" type="Timer" parent="."]
 process_callback = 0
 wait_time = 0.055
+autostart = true
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="timeout" from="FootSteps" to="." method="_on_foot_steps_timeout"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://cijayc3peexw"]
+[gd_scene load_steps=10 format=3 uid="uid://cijayc3peexw"]
 
 [ext_resource type="Script" path="res://Singletons/GameManager.gd" id="1_t61qt"]
 [ext_resource type="AudioStream" uid="uid://b3ebqxxcgi3x1" path="res://assets/FutrueSFX/DavidKBD - Eternity Pack - 02 - Agony Space-deep - oneshoot.ogg" id="2_8be7v"]
@@ -7,24 +7,29 @@
 [ext_resource type="AudioStream" uid="uid://bd5t17ta1iu13" path="res://assets/FutrueSFX/DavidKBD - Pink Bloom Pack - 01 - Pink Bloom.ogg" id="5_f3ilo"]
 [ext_resource type="AudioStream" uid="uid://c6tl0bmpj4kth" path="res://assets/FutrueSFX/DavidKBD - Pink Bloom Pack - 02 - Portal to Underworld.ogg" id="6_4nfip"]
 [ext_resource type="AudioStream" uid="uid://ddkgskoqvher2" path="res://assets/FutrueSFX/DavidKBD - Pink Bloom Pack - 09 - Lightyear City.ogg" id="7_u5oi0"]
+[ext_resource type="AudioStream" uid="uid://c3ppdmdonxpdj" path="res://assets/FutrueSFX/dub ssteppy short.wav" id="8_t0xe0"]
 
 [sub_resource type="AudioStreamPlaylist" id="AudioStreamPlaylist_ek2e1"]
 shuffle = true
-stream_count = 6
+fade_time = 1.0
+stream_count = 7
 stream_0 = ExtResource("2_8be7v")
 stream_1 = ExtResource("3_m3ghm")
 stream_2 = ExtResource("4_3m1f7")
 stream_3 = ExtResource("5_f3ilo")
 stream_4 = ExtResource("6_4nfip")
 stream_5 = ExtResource("7_u5oi0")
+stream_6 = ExtResource("8_t0xe0")
 
 [node name="GameManager" type="Node"]
 script = ExtResource("1_t61qt")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = SubResource("AudioStreamPlaylist_ek2e1")
-volume_db = 0.329
+volume_db = -15.749
 autoplay = true
+mix_target = 2
+bus = &"Music"
 
 [connection signal="kill" from="." to="." method="_on_kill"]
 [connection signal="tree_exiting" from="." to="." method="_on_tree_exiting"]
