@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-var boss_health: float = 10000.0
+var boss_health: float = 100000.0
 var die_executed: bool = false
 
 @onready var health_bar: ProgressBar = %HealthBar

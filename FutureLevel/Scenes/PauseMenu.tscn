@@ -1,11 +1,12 @@
-[gd_scene load_steps=13 format=3 uid="uid://b0kr4yg6fgfci"]
+[gd_scene load_steps=14 format=3 uid="uid://b0kr4yg6fgfci"]
 
 [ext_resource type="Script" path="res://Scripts/PauseMenu.gd" id="1_gfvbg"]
 [ext_resource type="Texture2D" uid="uid://dhit27os2eis3" path="res://assets/Background/FinalMenu1.svg" id="1_nv4xp"]
 [ext_resource type="FontFile" uid="uid://ckid4fla6wirc" path="res://assets/etc/Starzoom-Shavian.ttf" id="2_16qji"]
 [ext_resource type="Texture2D" uid="uid://bv7fu6os82paq" path="res://assets/buttonsprites/UIbutton.png" id="3_iwkgg"]
 [ext_resource type="AudioStream" uid="uid://dbnystp0y1gke" path="res://assets/FutrueSFX/PickUp.wav" id="4_84h4p"]
-[ext_resource type="PackedScene" uid="uid://csydnyrmpycg" path="res://Scenes/creditsButton.tscn" id="5_6jfa2"]
+[ext_resource type="PackedScene" uid="uid://csydnyrmpycg" path="res://Scenes/CreditsButton.tscn" id="5_uotpj"]
+[ext_resource type="PackedScene" uid="uid://c842jhh50kqui" path="res://Scenes/SettingsButton.tscn" id="6_buugp"]
 
 [sub_resource type="Animation" id="Animation_r58bc"]
 length = 0.001
@@ -135,11 +136,12 @@ autoplay = "onpause"
 [node name="Panel" type="Panel" parent="."]
 modulate = Color(1, 1, 1, 0)
 self_modulate = Color(1, 1, 1, 0.0156863)
-layout_mode = 0
-anchor_left = 0.326389
-anchor_top = 0.280864
-anchor_right = 0.597222
-anchor_bottom = 0.712963
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.324074
+anchor_top = 0.280556
+anchor_right = 0.611111
+anchor_bottom = 0.856481
 metadata/_edit_use_anchors_ = true
 
 [node name="ContinueButton" type="Sprite2D" parent="Panel"]
@@ -237,12 +239,26 @@ position = Vector2(-8.97618, -5.27191)
 scale = Vector2(25.3708, -10.2428)
 shape = SubResource("RectangleShape2D_ctl43")
 
-[node name="Credits2" parent="Panel" instance=ExtResource("5_6jfa2")]
+[node name="Credits" parent="Panel" instance=ExtResource("5_uotpj")]
 layout_mode = 1
-offset_left = 79.4999
-offset_top = 488.667
-offset_right = -134.0
-offset_bottom = 99.0
+anchors_preset = -1
+anchor_left = 0.0
+anchor_top = 0.653
+anchor_right = 1.162
+anchor_bottom = 1.025
+offset_left = 95.0
+offset_top = 83.834
+offset_right = 383.78
+offset_bottom = 81.45
+scale = Vector2(0.432933, 0.428642)
+
+[node name="Settings" parent="Panel" instance=ExtResource("6_buugp")]
+layout_mode = 1
+offset_left = -138.0
+offset_top = -105.0
+offset_right = -137.48
+offset_bottom = -100.68
+scale = Vector2(0.43, 0.43)
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 unique_name_in_owner = true
