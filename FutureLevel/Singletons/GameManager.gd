@@ -3,6 +3,7 @@ extends Node
 signal kill
 signal cash
 signal scene_kill_updated(kills: int)
+signal send_data
 
 # Stats
 var total_kills: int = 0
@@ -16,8 +17,12 @@ var game_cash: int = 0
 # File path for save data
 const SAVE_PATH = "user://save_data01.json"
 
+# API Endpoint URL
+const API_URL: String = "https://osccct.org/api/endpoint.php"
+
 func _ready():
 	load_data()
+
 
 func _on_kill(amount: int) -> void:
 	total_kills += amount
@@ -35,7 +40,6 @@ func reset_scene_kills() -> void:
 func add_cash(amount: int):
 	game_cash += amount
 	total_cash += amount
-
 
 # Update the quickest time
 func update_quickest_time(time: String):
@@ -59,8 +63,6 @@ func update_longest_survival(time: String) -> void:
 		longest_survival = time
 		print("New longest survival time:", longest_survival)
 		save_data()  # Save updated survival time
-
-
 
 # Save game data to a file
 func save_data():
@@ -97,3 +99,21 @@ func load_data():
 # Save data when exiting the game
 func _on_tree_exiting():
 	save_data()
+
+func send_stats(http_request: HTTPRequest) -> void:
+	var headers = ["Content-Type: application/json"]
+	
+	var payload = {
+		"total_kills": total_kills,
+		"quickest_time": quickest_time,
+		"longest_survival": longest_survival,
+		"total_cash": total_cash
+	}
+	
+	var json_payload = JSON.stringify(payload)
+	var error = http_request.request(API_URL, headers, HTTPClient.METHOD_POST, json_payload)
+	
+	if error != OK:
+		push_error("Failed to send data! Error code: " + str(error))
+	else:
+		print("API request sent successfully.")

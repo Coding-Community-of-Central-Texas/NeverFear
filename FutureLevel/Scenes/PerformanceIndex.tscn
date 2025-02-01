@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://btnf3drbkix5k"]
+[gd_scene load_steps=30 format=3 uid="uid://btnf3drbkix5k"]
 
 [ext_resource type="Texture2D" uid="uid://dcmt4rtiisn55" path="res://assets/Background/1.png" id="1_erotl"]
 [ext_resource type="FontFile" uid="uid://ckid4fla6wirc" path="res://assets/etc/Starzoom-Shavian.ttf" id="2_a7jdu"]
@@ -15,6 +15,7 @@
 [ext_resource type="Texture2D" uid="uid://brastt74lxpni" path="res://assets/etc/ranks/overkill.png" id="12_mi1w0"]
 [ext_resource type="Texture2D" uid="uid://d1wlj0qisaufc" path="res://assets/Guns&Bullets/fire_30.png" id="13_i6et3"]
 [ext_resource type="Texture2D" uid="uid://dtey7mq3og40d" path="res://assets/etc/Money.png" id="14_gul7b"]
+[ext_resource type="PackedScene" uid="uid://cjjw13ufub2t8" path="res://Scenes/HTTPRecords.tscn" id="14_ren0u"]
 
 [sub_resource type="GDScript" id="GDScript_ae00b"]
 script/source = "extends Control
@@ -25,14 +26,13 @@ script/source = "extends Control
 @onready var time_survived: Label = %LongestTimeSurvived
 @onready var overall_cash: Label = %OverallCash
 @onready var home: Label = $CanvasLayer/HomeButton/Home
-
+@onready var http_request: HTTPRequest = $HTTPRequest
 
 
 func on_ready():
-	if DisplayServer.is_touchscreen_available() and OS.has_feature(\"Andriod\"):
-		get_viewport().screen_set_orientation(DisplayServer.SCREEN_PORTRAIT)
-	else:
-		return
+	
+	http_request.request_completed.connect(_on_http_request_gui_input)
+	
 func _process(_delta: float) -> void:
 	update_performance_page()
 	
@@ -56,6 +56,20 @@ func _on_home_button_pressed() -> void:
 	await get_tree().create_timer(0.5).timeout  # Wait for 0.1 seconds
 	home_button.modulate = Color(1, 1, 1)  # Reset to normal
 	get_tree().change_scene_to_file(\"res://Scenes/HubWorld.tscn\")
+
+
+func _on_http_request_gui_input(event: InputEvent) -> void:
+	GameManager.send_stats(http_request)
+	
+func _on_request_completed(result, response_code, headers, body):
+	print(\"Response Code: \", response_code)
+	var response_text = body.get_string_from_utf8()
+	var parsed_response = JSON.parse_string(response_text)
+	
+	if parsed_response is Dictionary:
+		print(\"Server Response: \", parsed_response)
+	else:
+		push_error(\"Failed to parse response JSON\")
 "
 
 [sub_resource type="Curve" id="Curve_id4cq"]
@@ -679,8 +693,8 @@ frame_progress = 0.917033
 unique_name_in_owner = true
 self_modulate = Color(1, 1, 0, 1)
 z_index = -1
-position = Vector2(257, 711)
-scale = Vector2(0.510416, 0.384259)
+position = Vector2(22, 557)
+scale = Vector2(0.371528, 0.308642)
 texture_normal = ExtResource("3_erunh")
 shape = SubResource("RectangleShape2D_ee6lp")
 
@@ -691,9 +705,10 @@ anchor_left = 0.357143
 anchor_top = 0.297189
 anchor_right = 0.571881
 anchor_bottom = 0.441278
-offset_top = 1.52588e-05
-offset_right = -23.378
-offset_bottom = -23.3694
+offset_left = -10.3819
+offset_top = 5.06172
+offset_right = -33.7599
+offset_bottom = -18.3077
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(1.10437, 1.33385)
@@ -709,6 +724,36 @@ text = "HOME"
 horizontal_alignment = 1
 vertical_alignment = 1
 metadata/_edit_use_anchors_ = true
+
+[node name="HTTPRequest" parent="CanvasLayer" instance=ExtResource("14_ren0u")]
+offset_left = 241.68
+offset_top = 127.84
+offset_right = 209.36
+offset_bottom = 115.88
+scale = Vector2(5.21875, 3.75)
+
+[node name="Label" type="Label" parent="CanvasLayer/HTTPRequest"]
+layout_mode = 0
+offset_left = -45.988
+offset_top = 17.6
+offset_right = 1520.01
+offset_bottom = 369.6
+scale = Vector2(0.0621412, 0.106681)
+theme_override_colors/font_color = Color(1, 0.45098, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/shadow_offset_x = -6
+theme_override_constants/shadow_offset_y = 4
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("2_a7jdu")
+theme_override_font_sizes/font_size = 67
+text = "Join the Leaderboards! 
+
+https://osccct.org/leaderboards
+
+TAP THE BUTTON TO AUTOMATICALLY JOIN!"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="GameManager" parent="." instance=ExtResource("3_g0ec8")]
 
@@ -726,3 +771,4 @@ libraries = {
 autoplay = "PerformanceScreen"
 
 [connection signal="pressed" from="CanvasLayer/HomeButton" to="." method="_on_home_button_pressed"]
+[connection signal="gui_input" from="CanvasLayer/HTTPRequest" to="." method="_on_http_request_gui_input"]

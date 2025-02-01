@@ -1,10 +1,10 @@
-extends Control  # or any other relevant node type for your UI
+extends Control
 
-# Pre-configured webhook/API endpoint
-var api_url: String = "https://www.osccct.org/NeverFearLeaderBoard"  # Replace with your endpoint URL
 
-# Reference to the HTTPRequest node (if placed in the scene)
-onready var http_request: HTTPRequest = $HTTPRequest
+var api_url: String = "https://www.osccct.org/api/about (3).html" # Replace with your endpoint URL
+
+
+@onready var http_request: HTTPRequest = $HTTPRequest
 
 # Example function to retrieve player's best time (in seconds)
 func get_player_best_time() -> float:
@@ -40,3 +40,7 @@ func _on_HTTPRequest_request_completed(result, response_code, headers, body):
 		print("Best time submitted successfully!")
 	else:
 		print("Failed to submit best time. Response code: ", response_code)
+
+
+func _on_http_request_request_completed(result: int, response_code: int, headers: PackedStringArray, body: PackedByteArray) -> void:
+	pass # Replace with function body.

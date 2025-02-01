@@ -28,7 +28,6 @@ script = ExtResource("1_t61qt")
 stream = SubResource("AudioStreamPlaylist_ek2e1")
 volume_db = -15.749
 autoplay = true
-stream_paused = true
 mix_target = 2
 bus = &"Music"
 

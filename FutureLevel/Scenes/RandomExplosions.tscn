@@ -347,12 +347,12 @@ _data = {
 
 [sub_resource type="Curve" id="Curve_ew6op"]
 max_value = 13.95
-_data = [Vector2(0.484163, 2.29945), 0.0, 0.0, 0, 0]
+_data = [Vector2(0.475138, 3.17766), 0.0, 0.0, 0, 0]
 point_count = 1
 
 [sub_resource type="Curve" id="Curve_ol6ea"]
 max_value = 4.95
-_data = [Vector2(0.122172, 0.979121), 0.0, 0.0, 0, 0, Vector2(0.977376, 1.35989), 0.0, 0.0, 0, 0]
+_data = [Vector2(0.118785, 1.22727), 0.0, 0.0, 0, 0, Vector2(0.980663, 1.18704), 0.0, 0.0, 0, 0]
 point_count = 2
 
 [node name="Explosions" type="Node2D"]
@@ -360,109 +360,110 @@ point_count = 2
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 visible = false
 position = Vector2(-30, -30)
-scale = Vector2(2.234, 2.197)
+scale = Vector2(2.569, 2.526)
 sprite_frames = SubResource("SpriteFrames_q4g6d")
 autoplay = "default"
-frame_progress = 0.392993
+frame_progress = 0.311479
 speed_scale = 0.9
 
 [node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="."]
 visible = false
 position = Vector2(2748, -101)
-scale = Vector2(2.234, 2.197)
+scale = Vector2(2.569, 2.526)
 sprite_frames = SubResource("SpriteFrames_q4g6d")
 autoplay = "default"
-frame_progress = 0.438155
+frame_progress = 0.922337
 speed_scale = 0.9
 
 [node name="AnimatedSprite2D3" type="AnimatedSprite2D" parent="."]
 visible = false
 position = Vector2(-1845, -95)
-scale = Vector2(2.234, 2.197)
+scale = Vector2(2.569, 2.526)
 sprite_frames = SubResource("SpriteFrames_q4g6d")
 autoplay = "default"
-frame_progress = 0.897956
+frame_progress = 0.878949
 speed_scale = 0.9
 
 [node name="AnimatedSprite2D4" type="AnimatedSprite2D" parent="."]
 visible = false
 position = Vector2(1189, -136)
-scale = Vector2(2.234, 2.197)
+scale = Vector2(2.569, 2.526)
 sprite_frames = SubResource("SpriteFrames_q4g6d")
 autoplay = "default"
-frame_progress = 0.470989
+frame_progress = 0.859081
 speed_scale = 0.9
 
 [node name="AnimatedSprite2D5" type="AnimatedSprite2D" parent="."]
 visible = false
 position = Vector2(469, -436)
-scale = Vector2(2.234, 2.197)
+scale = Vector2(2.569, 2.526)
 sprite_frames = SubResource("SpriteFrames_q4g6d")
 autoplay = "default"
-frame_progress = 0.324646
+frame_progress = 0.559483
 speed_scale = 0.9
 
 [node name="AnimatedSprite2D6" type="AnimatedSprite2D" parent="."]
 visible = false
 position = Vector2(1187, -774)
-scale = Vector2(2.234, 2.197)
+scale = Vector2(2.569, 2.526)
 sprite_frames = SubResource("SpriteFrames_q4g6d")
 autoplay = "default"
-frame_progress = 0.594259
+frame_progress = 0.47545
 speed_scale = 0.9
 
 [node name="AnimatedSprite2D7" type="AnimatedSprite2D" parent="."]
 visible = false
 position = Vector2(-1271, -629)
-scale = Vector2(2.234, 2.197)
+scale = Vector2(2.569, 2.526)
 sprite_frames = SubResource("SpriteFrames_q4g6d")
 autoplay = "default"
-frame_progress = 0.380432
+frame_progress = 0.860848
 speed_scale = 0.9
 
 [node name="AnimatedSprite2D8" type="AnimatedSprite2D" parent="."]
 visible = false
 position = Vector2(-1181, 85)
-scale = Vector2(2.234, 2.197)
+scale = Vector2(2.569, 2.526)
 sprite_frames = SubResource("SpriteFrames_q4g6d")
 autoplay = "default"
-frame_progress = 0.0513884
+frame_progress = 0.878941
 speed_scale = 0.9
 
 [node name="AnimatedSprite2D9" type="AnimatedSprite2D" parent="."]
 visible = false
 position = Vector2(648, 97)
-scale = Vector2(2.234, 2.197)
+scale = Vector2(2.569, 2.526)
 sprite_frames = SubResource("SpriteFrames_q4g6d")
 autoplay = "default"
-frame_progress = 0.201426
+frame_progress = 0.918204
 speed_scale = 0.9
 
 [node name="AnimatedSprite2D10" type="AnimatedSprite2D" parent="."]
 visible = false
 position = Vector2(-51, -656)
-scale = Vector2(2.234, 2.197)
+scale = Vector2(2.569, 2.526)
 sprite_frames = SubResource("SpriteFrames_q4g6d")
 autoplay = "default"
-frame_progress = 0.349028
+frame_progress = 0.671512
 speed_scale = 0.9
 
 [node name="AnimatedSprite2D11" type="AnimatedSprite2D" parent="."]
 visible = false
 position = Vector2(-845, -514)
-scale = Vector2(2.234, 2.197)
+scale = Vector2(2.569, 2.526)
 sprite_frames = SubResource("SpriteFrames_q4g6d")
 autoplay = "default"
-frame_progress = 0.147658
+frame_progress = 0.423577
 speed_scale = 0.9
 
 [node name="AnimatedSprite2D12" type="AnimatedSprite2D" parent="."]
 visible = false
+z_index = 1
 position = Vector2(2032, -493)
-scale = Vector2(2.234, 2.197)
+scale = Vector2(2.569, 2.526)
 sprite_frames = SubResource("SpriteFrames_q4g6d")
 autoplay = "default"
-frame_progress = 0.195531
+frame_progress = 0.965476
 speed_scale = 0.9
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -474,17 +475,18 @@ autoplay = "randombooms"
 [node name="CPUParticles2D" type="CPUParticles2D" parent="."]
 position = Vector2(2035, 94)
 amount = 5
-lifetime = 14.85
-speed_scale = 10.42
-randomness = 1.0
+lifetime = 8.7
+speed_scale = 18.47
+explosiveness = 1.0
+randomness = 0.63
 texture = ExtResource("2_j0fbf")
 emission_shape = 3
 emission_rect_extents = Vector2(2000, 2000)
 direction = Vector2(-1, 0)
-spread = 16.15
+spread = 71.0
 gravity = Vector2(0, 0)
-initial_velocity_min = 541.67
-initial_velocity_max = 808.33
+initial_velocity_min = 950.04
+initial_velocity_max = 950.04
 angle_min = 180.0
 angle_max = 180.0
 split_scale = true
