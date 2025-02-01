@@ -35,7 +35,7 @@ texture = ExtResource("4_iwgws")
 
 [node name="QueueTimer" type="Timer" parent="."]
 process_callback = 0
-wait_time = 221.969
+wait_time = 7.09
 autostart = true
 
 [node name="DamageNumberOrigin" type="Node2D" parent="."]

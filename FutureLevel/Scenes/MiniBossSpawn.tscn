@@ -3,8 +3,8 @@
 [ext_resource type="Script" path="res://Scripts/MiniSpawner.gd" id="1_gqxth"]
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_w3xj1"]
-a = Vector2(-1262, -557)
-b = Vector2(-1171, 671)
+a = Vector2(-2128, -990)
+b = Vector2(-2072, 534)
 
 [sub_resource type="Curve2D" id="Curve2D_0jxci"]
 _data = {
@@ -17,7 +17,7 @@ collision_layer = 0
 script = ExtResource("1_gqxth")
 
 [node name="Timer" type="Timer" parent="."]
-wait_time = 0.334
+wait_time = 0.099
 one_shot = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

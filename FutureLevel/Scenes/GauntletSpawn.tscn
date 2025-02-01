@@ -7,7 +7,7 @@ position = Vector2(200, -53)
 script = ExtResource("1_sbdtd")
 
 [node name="Timer" type="Timer" parent="."]
-wait_time = 2.633
+wait_time = 8.95
 autostart = true
 
 [node name="Marker1" type="Marker2D" parent="."]

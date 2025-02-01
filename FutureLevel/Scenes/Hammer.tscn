@@ -471,5 +471,6 @@ shape = SubResource("RectangleShape2D_kbkft")
 stream = ExtResource("3_flaku")
 volume_db = -25.469
 pitch_scale = 0.86
+max_distance = 1570.0
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

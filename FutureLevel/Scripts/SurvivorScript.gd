@@ -6,9 +6,9 @@ signal playerdeath
 var health: float = 100.0
 const MAX_HEALTH = 100
 const VELOCITY = 1000
-@export var SPEED: float = 600.0
-@export var acceleration: float = 2000.0
-@export var deceleration: float = 6000.0
+@export var SPEED: float = 500.0
+@export var acceleration: float = 1000.0
+@export var deceleration: float = 1500.0
 @onready var shadow: Sprite2D = $AnimatedSprite2D/Shadow
 @onready var rank_1: Sprite2D = $Rank1
 @onready var rank_2: Sprite2D = $Rank2

@@ -18,7 +18,7 @@ var game_cash: int = 0
 const SAVE_PATH = "user://save_data01.json"
 
 # API Endpoint URL
-const API_URL: String = "https://osccct.org/api/endpoint.php"
+const API_URL: String = "http://osccct.org/api/endpoint.php"
 
 func _ready():
 	load_data()

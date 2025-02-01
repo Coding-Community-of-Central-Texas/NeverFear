@@ -1,11 +1,29 @@
 extends Area2D
 
-@export var conveyor_speed: float = 25.0  # Speed of movement
+@export var conveyor_speed: float = 50.0  # Speed of movement
 var players_on_belt = []
 var direction = Vector2()
 
 func _ready():
+	await get_tree().create_timer(1.0).timeout
 	randomize_direction()
+	await get_tree().create_timer(3.0).timeout
+	randomize_direction()
+	await get_tree().create_timer(4.0).timeout
+	randomize_direction()
+	await get_tree().create_timer(1.0).timeout
+	randomize_direction()
+	await get_tree().create_timer(5.0).timeout
+	randomize_direction()
+	await get_tree().create_timer(1.0).timeout
+	randomize_direction()
+	await get_tree().create_timer(3.0).timeout
+	randomize_direction()
+	await get_tree().create_timer(4.0).timeout
+	randomize_direction()
+	await get_tree().create_timer(1.0).timeout
+	randomize_direction()
+	await get_tree().create_timer(5.0).timeout
 
 func randomize_direction():
 	var angle = randf() * PI * 2  # Random angle in radians

@@ -347,13 +347,13 @@ _data = {
 
 [sub_resource type="Curve" id="Curve_ew6op"]
 max_value = 13.95
-_data = [Vector2(0.475138, 3.17766), 0.0, 0.0, 0, 0]
+_data = [Vector2(0.5, 5.21209), 0.0, 0.0, 0, 0]
 point_count = 1
 
 [sub_resource type="Curve" id="Curve_ol6ea"]
 max_value = 4.95
-_data = [Vector2(0.118785, 1.22727), 0.0, 0.0, 0, 0, Vector2(0.980663, 1.18704), 0.0, 0.0, 0, 0]
-point_count = 2
+_data = [Vector2(0.0322581, 2.17582), 0.0, 0.0, 0, 0]
+point_count = 1
 
 [node name="Explosions" type="Node2D"]
 
@@ -363,7 +363,7 @@ position = Vector2(-30, -30)
 scale = Vector2(2.569, 2.526)
 sprite_frames = SubResource("SpriteFrames_q4g6d")
 autoplay = "default"
-frame_progress = 0.311479
+frame_progress = 0.43145
 speed_scale = 0.9
 
 [node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="."]
@@ -372,7 +372,7 @@ position = Vector2(2748, -101)
 scale = Vector2(2.569, 2.526)
 sprite_frames = SubResource("SpriteFrames_q4g6d")
 autoplay = "default"
-frame_progress = 0.922337
+frame_progress = 0.0423072
 speed_scale = 0.9
 
 [node name="AnimatedSprite2D3" type="AnimatedSprite2D" parent="."]
@@ -381,7 +381,7 @@ position = Vector2(-1845, -95)
 scale = Vector2(2.569, 2.526)
 sprite_frames = SubResource("SpriteFrames_q4g6d")
 autoplay = "default"
-frame_progress = 0.878949
+frame_progress = 0.998918
 speed_scale = 0.9
 
 [node name="AnimatedSprite2D4" type="AnimatedSprite2D" parent="."]
@@ -390,7 +390,7 @@ position = Vector2(1189, -136)
 scale = Vector2(2.569, 2.526)
 sprite_frames = SubResource("SpriteFrames_q4g6d")
 autoplay = "default"
-frame_progress = 0.859081
+frame_progress = 0.979051
 speed_scale = 0.9
 
 [node name="AnimatedSprite2D5" type="AnimatedSprite2D" parent="."]
@@ -399,7 +399,7 @@ position = Vector2(469, -436)
 scale = Vector2(2.569, 2.526)
 sprite_frames = SubResource("SpriteFrames_q4g6d")
 autoplay = "default"
-frame_progress = 0.559483
+frame_progress = 0.679453
 speed_scale = 0.9
 
 [node name="AnimatedSprite2D6" type="AnimatedSprite2D" parent="."]
@@ -408,7 +408,7 @@ position = Vector2(1187, -774)
 scale = Vector2(2.569, 2.526)
 sprite_frames = SubResource("SpriteFrames_q4g6d")
 autoplay = "default"
-frame_progress = 0.47545
+frame_progress = 0.59542
 speed_scale = 0.9
 
 [node name="AnimatedSprite2D7" type="AnimatedSprite2D" parent="."]
@@ -417,7 +417,7 @@ position = Vector2(-1271, -629)
 scale = Vector2(2.569, 2.526)
 sprite_frames = SubResource("SpriteFrames_q4g6d")
 autoplay = "default"
-frame_progress = 0.860848
+frame_progress = 0.980818
 speed_scale = 0.9
 
 [node name="AnimatedSprite2D8" type="AnimatedSprite2D" parent="."]
@@ -426,7 +426,7 @@ position = Vector2(-1181, 85)
 scale = Vector2(2.569, 2.526)
 sprite_frames = SubResource("SpriteFrames_q4g6d")
 autoplay = "default"
-frame_progress = 0.878941
+frame_progress = 0.998911
 speed_scale = 0.9
 
 [node name="AnimatedSprite2D9" type="AnimatedSprite2D" parent="."]
@@ -435,7 +435,7 @@ position = Vector2(648, 97)
 scale = Vector2(2.569, 2.526)
 sprite_frames = SubResource("SpriteFrames_q4g6d")
 autoplay = "default"
-frame_progress = 0.918204
+frame_progress = 0.0381743
 speed_scale = 0.9
 
 [node name="AnimatedSprite2D10" type="AnimatedSprite2D" parent="."]
@@ -444,7 +444,7 @@ position = Vector2(-51, -656)
 scale = Vector2(2.569, 2.526)
 sprite_frames = SubResource("SpriteFrames_q4g6d")
 autoplay = "default"
-frame_progress = 0.671512
+frame_progress = 0.791482
 speed_scale = 0.9
 
 [node name="AnimatedSprite2D11" type="AnimatedSprite2D" parent="."]
@@ -453,7 +453,7 @@ position = Vector2(-845, -514)
 scale = Vector2(2.569, 2.526)
 sprite_frames = SubResource("SpriteFrames_q4g6d")
 autoplay = "default"
-frame_progress = 0.423577
+frame_progress = 0.543547
 speed_scale = 0.9
 
 [node name="AnimatedSprite2D12" type="AnimatedSprite2D" parent="."]
@@ -463,7 +463,7 @@ position = Vector2(2032, -493)
 scale = Vector2(2.569, 2.526)
 sprite_frames = SubResource("SpriteFrames_q4g6d")
 autoplay = "default"
-frame_progress = 0.965476
+frame_progress = 0.085446
 speed_scale = 0.9
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -487,8 +487,8 @@ spread = 71.0
 gravity = Vector2(0, 0)
 initial_velocity_min = 950.04
 initial_velocity_max = 950.04
-angle_min = 180.0
-angle_max = 180.0
+angle_min = 280.0
+angle_max = 280.0
 split_scale = true
 scale_curve_x = SubResource("Curve_ew6op")
 scale_curve_y = SubResource("Curve_ol6ea")

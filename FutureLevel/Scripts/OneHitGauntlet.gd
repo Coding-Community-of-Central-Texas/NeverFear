@@ -3,9 +3,9 @@ extends CharacterBody2D
 signal kill
 
 var health = 10.0
-var knockback_strength = 320.0
-var knockback_duration = 0.1
-var knockback_timer = 0.0  # Keeps track of the knockback time
+var knockback_strength = 420.0
+var knockback_duration = 0.2
+var knockback_timer = 0.25  # Keeps track of the knockback time
 var knockback_velocity = Vector2.ZERO  # Stores knockback velocity
 
 @onready var byte: Node2D = %Byte
@@ -24,7 +24,7 @@ func _physics_process(delta):
 	else:
 		var direction = (Global.player.global_position - global_position).normalized()
 		global_position.direction_to(Global.player.global_position)
-		velocity = direction * 100.0
+		velocity = direction * 60.0
 		move_and_slide()
 	
 	move_and_slide()

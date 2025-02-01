@@ -7,7 +7,7 @@ position = Vector2(199, -2.5)
 script = ExtResource("1_7i4oh")
 
 [node name="Timer" type="Timer" parent="."]
-wait_time = 6.5
+wait_time = 14.38
 autostart = true
 
 [node name="Marker1" type="Marker2D" parent="."]

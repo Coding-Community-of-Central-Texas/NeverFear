@@ -1,10 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://cjjw13ufub2t8"]
+[gd_scene load_steps=6 format=3 uid="uid://cjjw13ufub2t8"]
 
 [ext_resource type="Texture2D" uid="uid://r4yabe1kewtl" path="res://assets/etc/Icons_34.png" id="1_b6slc"]
 [ext_resource type="Script" path="res://Scripts/HttpRecords.gd" id="2_mnsdi"]
 [ext_resource type="Texture2D" uid="uid://c8fbdi8gxy03r" path="res://assets/etc/uncheckd.png" id="3_1q6cl"]
 [ext_resource type="AudioStream" uid="uid://dbnystp0y1gke" path="res://assets/FutrueSFX/PickUp.wav" id="4_gamyh"]
-[ext_resource type="Texture2D" uid="uid://dkp57y2x4axvt" path="res://assets/etc/shadow.png" id="5_8typ3"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_b5cbe"]
 radius = 19.15
@@ -46,11 +45,6 @@ volume_db = 2.22
 pitch_scale = 0.85
 
 [node name="Sprite2D" type="Sprite2D" parent="PauseButton"]
-
-[node name="Shadow" type="Sprite2D" parent="PauseButton"]
-position = Vector2(7.1526, 1.08698)
-scale = Vector2(-0.118903, 0.0764246)
-texture = ExtResource("5_8typ3")
 
 [node name="HTTPRequest" type="HTTPRequest" parent="."]
 

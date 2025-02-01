@@ -1,7 +1,7 @@
 extends Control
 
 
-var api_url: String = "https://www.osccct.org/api/about (3).html" # Replace with your endpoint URL
+var api_url: String = "https://www.osccct.org/api/endpoint.php" # Replace with your endpoint URL
 
 
 @onready var http_request: HTTPRequest = $HTTPRequest
@@ -23,24 +23,20 @@ func _on_submit_button_pressed():
 	}
 	
 	# Convert the dictionary to a JSON string
-	var json_payload = JSON.print(payload)
+	var json_payload = JSON.stringify(payload)
 	
 	# Set HTTP headers – for JSON use application/json
 	var headers = ["Content-Type: application/json"]
 	
 	# Send the POST request; note the "true" parameter for SSL verification if needed
-	var error = http_request.request(api_url, headers, true, HTTPClient.METHOD_POST, json_payload)
+	var error = http_request.request(api_url, headers, HTTPClient.METHOD_POST, json_payload)
 	
 	if error != OK:
 		print("Error sending request: ", error)
 
 # Callback function for when the HTTPRequest completes
-func _on_HTTPRequest_request_completed(result, response_code, headers, body):
+func _on_HTTPRequest_request_completed(_result, response_code, _headers, _body):
 	if response_code == 200:
 		print("Best time submitted successfully!")
 	else:
 		print("Failed to submit best time. Response code: ", response_code)
-
-
-func _on_http_request_request_completed(result: int, response_code: int, headers: PackedStringArray, body: PackedByteArray) -> void:
-	pass # Replace with function body.

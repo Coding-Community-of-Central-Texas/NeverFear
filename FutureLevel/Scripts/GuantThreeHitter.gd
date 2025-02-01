@@ -3,14 +3,14 @@ extends CharacterBody2D
 signal kill
 
 var health = 80.0
-var knockback_strength = 0.5
+var knockback_strength = 475
 var knockback_duration = 0.1
 var knockback_timer = 0.0  # Keeps track of the knockback time
 var knockback_velocity = Vector2.ZERO  # Stores knockback velocity
 
 @onready var robbie: Node2D = %Robbie
 @onready var damage_numbers_origin: Node2D = $DamageNumbersOrigin
-var move_speed = 100.0  # Movement speed
+var move_speed = 45.0  # Movement speed
 var is_pursuing = false  # Whether the enemy is pursuing the player
 var stop_distance = 200.0
 

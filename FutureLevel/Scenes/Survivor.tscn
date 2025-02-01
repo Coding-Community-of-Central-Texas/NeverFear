@@ -411,6 +411,7 @@ scale = Vector2(0.3, 0.3)
 texture = ExtResource("9_bjhe2")
 
 [node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(1.15, 1.15)
 
 [node name="HurtBox" type="Area2D" parent="."]
 unique_name_in_owner = true
@@ -424,7 +425,7 @@ debug_color = Color(1, 0.0166667, 0, 0)
 
 [node name="Timer2" type="Timer" parent="."]
 process_callback = 0
-wait_time = 2.176
+wait_time = 11.056
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("8_x70f2")
@@ -454,7 +455,6 @@ rotation = -1.4829
 [node name="GauntletSpawn5" parent="GauntletSpawn4" instance=ExtResource("11_dc7s1")]
 position = Vector2(-475.272, -392.294)
 rotation = -2.9658
-scale = Vector2(1, 1)
 
 [node name="GauntletSpawn3" parent="." instance=ExtResource("11_dc7s1")]
 position = Vector2(-478.5, 239.5)

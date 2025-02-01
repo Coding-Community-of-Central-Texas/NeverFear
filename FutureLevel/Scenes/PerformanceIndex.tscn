@@ -28,44 +28,33 @@ script/source = "extends Control
 @onready var home: Label = $CanvasLayer/HomeButton/Home
 @onready var http_request: HTTPRequest = $HTTPRequest
 
-
 func on_ready():
-	
-	http_request.request_completed.connect(_on_http_request_gui_input)
-	
+	http_request.request_completed.connect(_on_request_completed)
+
 func _process(_delta: float) -> void:
 	update_performance_page()
-	
-func update_performance_page():
-	%OverallKills.text = \"Enimeies 
-	Eliminated: 
-		%s\" % str(GameManager.total_kills)
-	%FastestTime.text = \"FASTEST 
-	LEGACY RUN: 
-		%s\" % GameManager.quickest_time
-	%LongestTimeSurvived.text = \"LONGEST 
-	GAUNTLET RUN: 
-		\" + str(GameManager.longest_survival)
-	%OverallCash.text = \"$BANK$: 
-		$ %s \" % GameManager.total_cash
 
+func update_performance_page():
+	%OverallKills.text = \"Enemies Eliminated: %s\" % str(GameManager.total_kills)
+	%FastestTime.text = \"FASTEST LEGACY RUN: %s\" % GameManager.quickest_time
+	%LongestTimeSurvived.text = \"LONGEST GAUNTLET RUN: %s\" % GameManager.longest_survival
+	%OverallCash.text = \"$BANK$: $ %s\" % GameManager.total_cash
 
 func _on_home_button_pressed() -> void:
 	%AudioStreamPlayer2D.play()
 	home_button.modulate = Color(0.5, 0.5, 0)  # Set to red
-	await get_tree().create_timer(0.5).timeout  # Wait for 0.1 seconds
+	await get_tree().create_timer(0.5).timeout  # Wait for 0.5 seconds
 	home_button.modulate = Color(1, 1, 1)  # Reset to normal
 	get_tree().change_scene_to_file(\"res://Scenes/HubWorld.tscn\")
 
-
-func _on_http_request_gui_input(event: InputEvent) -> void:
+func _on_http_request_gui_input(_event: InputEvent) -> void:
 	GameManager.send_stats(http_request)
-	
-func _on_request_completed(result, response_code, headers, body):
+
+func _on_request_completed(_result, response_code, _headers, body):
 	print(\"Response Code: \", response_code)
 	var response_text = body.get_string_from_utf8()
 	var parsed_response = JSON.parse_string(response_text)
-	
+
 	if parsed_response is Dictionary:
 		print(\"Server Response: \", parsed_response)
 	else:
@@ -726,11 +715,16 @@ vertical_alignment = 1
 metadata/_edit_use_anchors_ = true
 
 [node name="HTTPRequest" parent="CanvasLayer" instance=ExtResource("14_ren0u")]
-offset_left = 241.68
-offset_top = 127.84
-offset_right = 209.36
-offset_bottom = 115.88
+anchor_left = 0.502778
+anchor_top = 0.543
+anchor_right = 0.873852
+anchor_bottom = 0.786
+offset_left = 192.0
+offset_top = 56.5599
+offset_right = -156.76
+offset_bottom = -150.88
 scale = Vector2(5.21875, 3.75)
+metadata/_edit_use_anchors_ = true
 
 [node name="Label" type="Label" parent="CanvasLayer/HTTPRequest"]
 layout_mode = 0
