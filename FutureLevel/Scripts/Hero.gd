@@ -54,6 +54,11 @@ func take_damage():
 	health -= 20.0
 	self.modulate = Color(80, 0, 0)  # Set to red
 	await get_tree().create_timer(0.2).timeout  # Wait for 0.1 seconds
+	
+	# Apply knockback
+	var knockback_force = Vector2(-200, -200)  # Adjust the values as needed
+	velocity += knockback_force
+	
 	self.modulate = Color(1, 1, 1)  # Reset to normal
 	health_bar.health = health
 	if health <= 0.0:
