@@ -1,11 +1,13 @@
 extends Control
 
-@onready var resolution_option_button: OptionButton = $ResolutionOptionButton
-@onready var stretch_factor_option: OptionButton = $StretchFactorOption
-@onready var stretch_aspect_option: OptionButton = $StretchAspectOption
-@onready var scale_factor_value: LineEdit = $ScaleFactorValue
-@onready var scale_factor_slider: HSlider = $ScaleFactorSlider
+
 @onready var settings_popup: PopupPanel = $SettingsPopup
+@onready var resolution_option: OptionButton = $SettingsPopup/ResolutionOption
+@onready var stretch_factor_option: OptionButton = $SettingsPopup/StretchFactorOption
+@onready var stretch_aspect_option: OptionButton = $SettingsPopup/StretchAspectOption
+@onready var scale_factor_value: LineEdit = $SettingsPopup/ScaleFactorValue
+@onready var scale_factor_slider: HSlider = $SettingsPopup/ScaleFactorSlider
+
 
 var base_window_size = Vector2()
 var stretch_mode = Window.CONTENT_SCALE_MODE_DISABLED
@@ -50,18 +52,18 @@ func setup_ui():
 	resolution_label.text = "Resolution"
 	vbox.add_child(resolution_label)
 
-	resolution_option_button = OptionButton.new()
-	resolution_option_button.name = "ResolutionOptionButton"
-	resolution_option_button.add_item("648×648 (1:1)", 0)
-	resolution_option_button.add_item("640×480 (4:3)", 1)
-	resolution_option_button.add_item("720×480 (3:2)", 2)
-	resolution_option_button.add_item("800×600 (4:3)", 3)
-	resolution_option_button.add_item("1152×648 (16:9)", 4)
-	resolution_option_button.add_item("1280×720 (16:9)", 5)
-	resolution_option_button.add_item("1280×800 (16:10)", 6)
-	resolution_option_button.add_item("1680×720 (21:9)", 7)
-	resolution_option_button.connect("item_selected", Callable(self, "on_window_base_size_item_selected"))
-	vbox.add_child(resolution_option_button)
+	resolution_option = OptionButton.new()
+	resolution_option.name = "ResolutionOptionButton"
+	resolution_option.add_item("648×648 (1:1)", 0)
+	resolution_option.add_item("640×480 (4:3)", 1)
+	resolution_option.add_item("720×480 (3:2)", 2)
+	resolution_option.add_item("800×600 (4:3)", 3)
+	resolution_option.add_item("1152×648 (16:9)", 4)
+	resolution_option.add_item("1280×720 (16:9)", 5)
+	resolution_option.add_item("1280×800 (16:10)", 6)
+	resolution_option.add_item("1680×720 (21:9)", 7)
+	resolution_option.connect("item_selected", Callable(self, "on_window_base_size_item_selected"))
+	vbox.add_child(resolution_option)
 
 	var close_button = Button.new()
 	close_button.text = "Close"
@@ -136,16 +138,16 @@ func setup_ui():
 	vbox.add_child(credits_button)
 
 func update_ui():
-	if $ResolutionOption:
-		$ResolutionOption.selected_index = get_resolution_index(base_window_size)
-	if $StrechModeOption:
-		$StretchModeOption.selected_index = stretch_mode
-	if $StretchAspectOption:
-		$StretchAspectOption.selected_index = stretch_aspect
-	if $ScaleFactorSlider:
-		$ScaleFactorSlider.value = scale_factor
-	if $ScaleFactorValue:
-		$ScaleFactorValue.text = "%d%%" % (scale_factor * 100)
+	if $SettingsPopup/ResolutionOption:
+		$SettingsPopup/ResolutionOption.selected_index = get_resolution_index(base_window_size)
+	if $SettingsPopup/StrechModeOption:
+		$SettingsPopup/StretchModeOption.selected_index = stretch_mode
+	if $SettingsPopup/StretchAspectOption:
+		$SettingsPopup/StretchAspectOption.selected_index = stretch_aspect
+	if $SettingsPopup/ScaleFactorSlider:
+		$SettingsPopup/ScaleFactorSlider.value = scale_factor
+	if $SettingsPopup/ScaleFactorValue:
+		$SettingsPopup/ScaleFactorValue.text = "%d%%" % (scale_factor * 100)
 
 
 func get_resolution_index(size: Vector2) -> int:

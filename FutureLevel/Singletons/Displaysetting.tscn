@@ -12,6 +12,7 @@ grow_vertical = 2
 script = ExtResource("1_ws6ni")
 
 [node name="SettingsPopup" type="PopupPanel" parent="."]
+initial_position = 1
 visible = true
 
 [node name="ResolutionOption" type="OptionButton" parent="SettingsPopup"]

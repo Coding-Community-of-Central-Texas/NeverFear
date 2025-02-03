@@ -204,7 +204,9 @@ texture = ExtResource("5_6y1p0")
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ju4ce"]
 texture = ExtResource("6_rmotv")
 0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 1:0/0 = 0
+1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 0:1/0 = 0
 1:1/0 = 0
 
@@ -1534,22 +1536,10 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("ColorRect:color")
+tracks/0/path = NodePath("ColorRect:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(0, 0, 0, 1)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("ColorRect:modulate")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
@@ -1558,30 +1548,18 @@ tracks/1/keys = {
 
 [sub_resource type="Animation" id="Animation_qfcvm"]
 resource_name = "start"
-length = 3.0
+length = 1.5
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("ColorRect:color")
+tracks/0/path = NodePath("ColorRect:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 1.5),
+"transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Color(0, 0, 0, 1)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("ColorRect:modulate")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 2.46667, 3.03333),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0.815686), Color(1, 1, 1, 0)]
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_g20u8"]
@@ -2582,7 +2560,6 @@ rotation = 2.12854e-05
 position = Vector2(13218, -616)
 
 [node name="ByteSpawnerA3" parent="Spawner" instance=ExtResource("103_0k21k")]
-visible = false
 position = Vector2(20047, -23)
 rotation = 2.12854e-05
 
@@ -2618,7 +2595,6 @@ position = Vector2(25648, -104)
 rotation = 2.12854e-05
 
 [node name="ByteSpawnerA6" parent="Spawner" instance=ExtResource("103_0k21k")]
-visible = false
 position = Vector2(1874, -420)
 rotation = 2.12854e-05
 scale = Vector2(1.00006, 0.992097)
@@ -2771,7 +2747,7 @@ position = Vector2(17401, -62)
 rotation = 2.12854e-05
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Doors"]
-position = Vector2(119.46, -288)
+position = Vector2(75, -287)
 scale = Vector2(1.47125, 1.505)
 sprite_frames = SubResource("SpriteFrames_70vuj")
 animation = &"door"
@@ -2823,8 +2799,11 @@ libraries = {
 [node name="Start" type="CanvasLayer" parent="."]
 
 [node name="ColorRect" type="ColorRect" parent="Start"]
-offset_right = 1085.0
-offset_bottom = 1072.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 color = Color(0, 0, 0, 1)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Start"]

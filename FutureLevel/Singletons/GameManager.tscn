@@ -26,10 +26,12 @@ script = ExtResource("1_t61qt")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = SubResource("AudioStreamPlaylist_ek2e1")
-volume_db = -9.082
+volume_db = -5.627
 autoplay = true
 mix_target = 2
 bus = &"Music"
+
+[node name="HTTPRequest" type="HTTPRequest" parent="."]
 
 [connection signal="kill" from="." to="." method="_on_kill"]
 [connection signal="tree_exiting" from="." to="." method="_on_tree_exiting"]

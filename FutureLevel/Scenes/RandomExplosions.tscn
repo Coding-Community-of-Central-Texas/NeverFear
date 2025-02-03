@@ -1,7 +1,6 @@
-[gd_scene load_steps=17 format=3 uid="uid://br05tlj7lvjkq"]
+[gd_scene load_steps=14 format=3 uid="uid://br05tlj7lvjkq"]
 
 [ext_resource type="Texture2D" uid="uid://bwmcmb0hqc4j5" path="res://assets/Guns&Bullets/impact.png" id="1_lewd4"]
-[ext_resource type="Texture2D" uid="uid://cqwasas7u3ah1" path="res://assets/Guns&Bullets/PlasmaBul.png" id="2_j0fbf"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_67ure"]
 atlas = ExtResource("1_lewd4")
@@ -345,16 +344,6 @@ _data = {
 "randombooms": SubResource("Animation_eg0s7")
 }
 
-[sub_resource type="Curve" id="Curve_ew6op"]
-max_value = 13.95
-_data = [Vector2(0.5, 5.21209), 0.0, 0.0, 0, 0]
-point_count = 1
-
-[sub_resource type="Curve" id="Curve_ol6ea"]
-max_value = 4.95
-_data = [Vector2(0.0322581, 2.17582), 0.0, 0.0, 0, 0]
-point_count = 1
-
 [node name="Explosions" type="Node2D"]
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -471,47 +460,3 @@ libraries = {
 "": SubResource("AnimationLibrary_714bw")
 }
 autoplay = "randombooms"
-
-[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
-position = Vector2(2035, 94)
-amount = 5
-lifetime = 8.7
-speed_scale = 18.47
-explosiveness = 1.0
-randomness = 0.63
-texture = ExtResource("2_j0fbf")
-emission_shape = 3
-emission_rect_extents = Vector2(2000, 2000)
-direction = Vector2(-1, 0)
-spread = 71.0
-gravity = Vector2(0, 0)
-initial_velocity_min = 950.04
-initial_velocity_max = 950.04
-angle_min = 280.0
-angle_max = 280.0
-split_scale = true
-scale_curve_x = SubResource("Curve_ew6op")
-scale_curve_y = SubResource("Curve_ol6ea")
-color = Color(3.784, 1.081, 0, 1)
-hue_variation_min = 1.0
-hue_variation_max = 1.0
-
-[node name="CPUParticles2D2" type="CPUParticles2D" parent="."]
-position = Vector2(-6547, 17)
-amount = 5
-lifetime = 10.15
-speed_scale = 10.42
-randomness = 1.0
-texture = ExtResource("2_j0fbf")
-emission_shape = 3
-emission_rect_extents = Vector2(2000, 2000)
-spread = 16.15
-gravity = Vector2(0, 0)
-initial_velocity_min = 541.67
-initial_velocity_max = 808.33
-split_scale = true
-scale_curve_x = SubResource("Curve_ew6op")
-scale_curve_y = SubResource("Curve_ol6ea")
-color = Color(3.784, 1.081, 0, 1)
-hue_variation_min = 1.0
-hue_variation_max = 1.0

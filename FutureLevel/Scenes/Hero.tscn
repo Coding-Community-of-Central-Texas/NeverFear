@@ -1631,8 +1631,6 @@ limit_smoothed = true
 position_smoothing_enabled = true
 position_smoothing_speed = 25.0
 script = ExtResource("12_ofnp4")
-landscape_zoom = Vector2(1.15, 1.81)
-portrait_zoom = Vector2(1.5, 1)
 
 [node name="Gun" parent="." instance=ExtResource("10_0uu0a")]
 show_behind_parent = true

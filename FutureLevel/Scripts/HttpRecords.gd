@@ -1,15 +1,12 @@
-extends Control
+extends HTTPRequest
 
 
 var api_url: String = "https://www.osccct.org/api/endpoint.php" # Replace with your endpoint URL
 
-
-@onready var http_request: HTTPRequest = $HTTPRequest
-
 # Example function to retrieve player's best time (in seconds)
 func get_player_best_time() -> float:
 	# Replace this with your actual code to retrieve the best time
-	return 123.45
+	return payload
 
 # Called when the submit button is pressed
 func _on_submit_button_pressed():

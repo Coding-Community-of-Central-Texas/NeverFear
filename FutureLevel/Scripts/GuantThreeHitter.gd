@@ -13,6 +13,7 @@ var knockback_velocity = Vector2.ZERO  # Stores knockback velocity
 var move_speed = 45.0  # Movement speed
 var is_pursuing = false  # Whether the enemy is pursuing the player
 var stop_distance = 200.0
+var max_distance_from_player = 1000.0
 
 func _ready():
 	%Robbie.play_walk()
@@ -25,6 +26,7 @@ func _physics_process(delta):
 		knockback_timer -= delta # decrease knockback time 
 	else:
 		pursue_player()
+	check_distance_from_player()
 	move_and_slide()
 
 
@@ -65,6 +67,11 @@ func pursue_player():
 		else:
 			velocity = Vector2.ZERO  # Stop moving if within stop distance
 
+func check_distance_from_player():
+	if Global.player:
+		var distance_to_player = global_position.distance_to(Global.player.global_position)
+		if distance_to_player > max_distance_from_player:
+			queue_free()
 
 func _on_kill() -> void:
 	GameManager._on_kill(1)

@@ -23,7 +23,7 @@ position = Vector2(0, -24)
 
 [node name="QueueTimer" type="Timer" parent="."]
 process_callback = 0
-wait_time = 4.217
+wait_time = 14.998
 autostart = true
 
 [connection signal="kill" from="." to="." method="_on_kill"]

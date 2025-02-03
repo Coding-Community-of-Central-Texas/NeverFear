@@ -3,6 +3,7 @@ extends Node
 var player = ["res://Scenes/Hero.tscn", "res://Scenes/Survivor.tscn"]
 var legacy = "res://Scenes/LegacyProtocol.tscn"
 var gauntlet = "res://Scenes/HypercoreGauntlet.tscn"
+var hub = "res://Scenes/HubWorld.tscn"
 var lives: int = 3  
 var checkpoint_position: Vector2 = Vector2(353.993, -306.008)
 var hub_world_position: Vector2 = Vector2(144.501, -387.5)
@@ -23,7 +24,8 @@ func spawn_player():
 
 # Call this function when entering the Hub World
 func enter_hub_world():
-	returning_from_game = true  # Set the flag so the player spawns correctly
+	if get_tree().current_scene.is_in_group("Hub"):
+		returning_from_game = true  # Set the flag so the player spawns correctly
  
 func reset_game_state():
 	checkpoint_position = Vector2(353.993, -306.008) # Starting position

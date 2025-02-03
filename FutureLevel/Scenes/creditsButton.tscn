@@ -5,7 +5,7 @@
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_yhqgm"]
 
-[node name="CreditsSettings" type="Panel"]
+[node name="Credits" type="Panel"]
 self_modulate = Color(1, 1, 1, 0)
 anchors_preset = 7
 anchor_left = 0.5
@@ -26,16 +26,16 @@ scale = Vector2(6.88291, 5.59331)
 texture = ExtResource("2_e2ij4")
 
 [node name="Credits" type="TouchScreenButton" parent="Icons34"]
+unique_name_in_owner = true
 position = Vector2(1.32111, 0.72316)
 rotation = 1.53996
 scale = Vector2(1.70995, 2.57264)
 skew = 0.0280093
 shape = SubResource("CircleShape2D_yhqgm")
 shape_centered = false
-shape_visible = false
 
 [node name="Credits2" type="Label" parent="Icons34"]
-anchors_preset = -1
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = -29.348

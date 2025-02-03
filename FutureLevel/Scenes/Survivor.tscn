@@ -1,4 +1,4 @@
-[gd_scene load_steps=44 format=3 uid="uid://bsltfx5uw5yvq"]
+[gd_scene load_steps=45 format=3 uid="uid://bsltfx5uw5yvq"]
 
 [ext_resource type="Script" path="res://Scripts/SurvivorScript.gd" id="1_dqedt"]
 [ext_resource type="Texture2D" uid="uid://050tdjf5b57n" path="res://assets/3 Cyborg/Cyborg_death.png" id="2_cknjt"]
@@ -10,6 +10,7 @@
 [ext_resource type="AudioStream" uid="uid://dnjr7q6plu8wi" path="res://assets/FutrueSFX/PlayerDie.wav" id="8_x70f2"]
 [ext_resource type="Texture2D" uid="uid://c1t7ic4fo0him" path="res://assets/etc/health.png" id="9_bjhe2"]
 [ext_resource type="Texture2D" uid="uid://dkp57y2x4axvt" path="res://assets/etc/shadow.png" id="10_e0fqp"]
+[ext_resource type="Script" path="res://Scenes/GauntletCamera.gd" id="10_opkhv"]
 [ext_resource type="PackedScene" uid="uid://cule8xvwt1ral" path="res://Scenes/GauntletSpawn.tscn" id="11_dc7s1"]
 [ext_resource type="PackedScene" uid="uid://b0oeqk6jov218" path="res://Scenes/GauntletBigSpawn.tscn" id="12_kcvup"]
 [ext_resource type="Texture2D" uid="uid://bw01rrado42yn" path="res://assets/etc/ranks/rank1.png" id="13_s40jq"]
@@ -412,6 +413,8 @@ texture = ExtResource("9_bjhe2")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(1.15, 1.15)
+script = ExtResource("10_opkhv")
+portrait_zoom = Vector2(1.15, 1.15)
 
 [node name="HurtBox" type="Area2D" parent="."]
 unique_name_in_owner = true

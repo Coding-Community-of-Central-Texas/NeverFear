@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://cj5jk5dgunafv"]
 
-[ext_resource type="Script" path="res://Scripts/BulletHell1.gd" id="1_f2q6d"]
+[ext_resource type="Script" path="res://Scripts/BulletHeck.gd" id="1_f2q6d"]
 [ext_resource type="AudioStream" uid="uid://gauoua60vry" path="res://assets/FutrueSFX/Missile Launcher.wav" id="2_rfdr0"]
 
 [node name="Node2D" type="Node2D"]

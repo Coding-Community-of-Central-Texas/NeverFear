@@ -15,7 +15,7 @@
 [ext_resource type="Texture2D" uid="uid://brastt74lxpni" path="res://assets/etc/ranks/overkill.png" id="12_mi1w0"]
 [ext_resource type="Texture2D" uid="uid://d1wlj0qisaufc" path="res://assets/Guns&Bullets/fire_30.png" id="13_i6et3"]
 [ext_resource type="Texture2D" uid="uid://dtey7mq3og40d" path="res://assets/etc/Money.png" id="14_gul7b"]
-[ext_resource type="PackedScene" uid="uid://cjjw13ufub2t8" path="res://Scenes/HTTPRecords.tscn" id="14_ren0u"]
+[ext_resource type="PackedScene" uid="uid://bqcx6ju2n7a3t" path="res://Scenes/RestartButton.tscn" id="14_wagey"]
 
 [sub_resource type="GDScript" id="GDScript_ae00b"]
 script/source = "extends Control
@@ -26,10 +26,8 @@ script/source = "extends Control
 @onready var time_survived: Label = %LongestTimeSurvived
 @onready var overall_cash: Label = %OverallCash
 @onready var home: Label = $CanvasLayer/HomeButton/Home
-@onready var http_request: HTTPRequest = $HTTPRequest
+@onready var http_request: HTTPRequest = $CanvasLayer/HTTPRequest
 
-func on_ready():
-	http_request.request_completed.connect(_on_request_completed)
 
 func _process(_delta: float) -> void:
 	update_performance_page()
@@ -47,9 +45,6 @@ func _on_home_button_pressed() -> void:
 	home_button.modulate = Color(1, 1, 1)  # Reset to normal
 	get_tree().change_scene_to_file(\"res://Scenes/HubWorld.tscn\")
 
-func _on_http_request_gui_input(_event: InputEvent) -> void:
-	GameManager.send_stats(http_request)
-
 func _on_request_completed(_result, response_code, _headers, body):
 	print(\"Response Code: \", response_code)
 	var response_text = body.get_string_from_utf8()
@@ -59,6 +54,9 @@ func _on_request_completed(_result, response_code, _headers, body):
 		print(\"Server Response: \", parsed_response)
 	else:
 		push_error(\"Failed to parse response JSON\")
+
+func _on_restart_pressed() -> void:
+	GameManager.send_stats(http_request)
 "
 
 [sub_resource type="Curve" id="Curve_id4cq"]
@@ -694,10 +692,10 @@ anchor_left = 0.357143
 anchor_top = 0.297189
 anchor_right = 0.571881
 anchor_bottom = 0.441278
-offset_left = -10.3819
-offset_top = 5.06172
-offset_right = -33.7599
-offset_bottom = -18.3077
+offset_left = 11.1504
+offset_top = 1.82152
+offset_right = -12.2276
+offset_bottom = -21.5479
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(1.10437, 1.33385)
@@ -714,25 +712,44 @@ horizontal_alignment = 1
 vertical_alignment = 1
 metadata/_edit_use_anchors_ = true
 
-[node name="HTTPRequest" parent="CanvasLayer" instance=ExtResource("14_ren0u")]
-anchor_left = 0.502778
-anchor_top = 0.543
-anchor_right = 0.873852
-anchor_bottom = 0.786
-offset_left = 192.0
-offset_top = 56.5599
-offset_right = -156.76
-offset_bottom = -150.88
-scale = Vector2(5.21875, 3.75)
+[node name="Restart" parent="CanvasLayer" instance=ExtResource("14_wagey")]
+position = Vector2(733, 627)
+scale = Vector2(2.55792, 1.27356)
+
+[node name="Home2" type="Label" parent="CanvasLayer/Restart"]
+z_index = 4
+anchors_preset = -1
+anchor_left = 0.357143
+anchor_top = 0.297189
+anchor_right = 0.571881
+anchor_bottom = 0.441278
+offset_left = -43.0037
+offset_top = -10.2076
+offset_right = 499.996
+offset_bottom = 59.7924
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.131634, 0.377456)
+theme_override_colors/font_color = Color(14, 0.45, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/shadow_offset_x = -6
+theme_override_constants/shadow_offset_y = 4
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("2_a7jdu")
+theme_override_font_sizes/font_size = 69
+text = "LEADERBOARD"
+horizontal_alignment = 1
+vertical_alignment = 1
 metadata/_edit_use_anchors_ = true
 
-[node name="Label" type="Label" parent="CanvasLayer/HTTPRequest"]
-layout_mode = 0
-offset_left = -45.988
-offset_top = 17.6
-offset_right = 1520.01
-offset_bottom = 369.6
-scale = Vector2(0.0621412, 0.106681)
+[node name="LeaderBoard" type="Label" parent="CanvasLayer/Restart"]
+offset_left = -118.0
+offset_top = 39.0
+offset_right = 1246.0
+offset_bottom = 215.0
+rotation = -0.00158599
+scale = Vector2(0.154679, 0.420396)
 theme_override_colors/font_color = Color(1, 0.45098, 0, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
@@ -741,13 +758,11 @@ theme_override_constants/shadow_offset_y = 4
 theme_override_constants/outline_size = 3
 theme_override_fonts/font = ExtResource("2_a7jdu")
 theme_override_font_sizes/font_size = 67
-text = "Join the Leaderboards! 
-
-https://osccct.org/leaderboards
-
-TAP THE BUTTON TO AUTOMATICALLY JOIN!"
+text = "^Join the Leaderboards! ^
+https://osccct.org/leaderboard"
 horizontal_alignment = 1
 vertical_alignment = 1
+autowrap_mode = 3
 
 [node name="GameManager" parent="." instance=ExtResource("3_g0ec8")]
 
@@ -765,4 +780,4 @@ libraries = {
 autoplay = "PerformanceScreen"
 
 [connection signal="pressed" from="CanvasLayer/HomeButton" to="." method="_on_home_button_pressed"]
-[connection signal="gui_input" from="CanvasLayer/HTTPRequest" to="." method="_on_http_request_gui_input"]
+[connection signal="pressed" from="CanvasLayer/Restart" to="." method="_on_restart_pressed"]

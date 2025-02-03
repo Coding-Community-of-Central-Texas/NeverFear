@@ -3,12 +3,12 @@ extends Area2D
 
 
 var travelled_distance = 0.0
-@export var bullet_pen = 0.03
+@export var bullet_pen = 0.07
 
 
 func _physics_process(delta):
 	const SPEED = 2000.0
-	const RANGE = 380.0
+	const RANGE = 400.0
 	
 	var direction = Vector2.RIGHT.rotated(rotation)
 	position += direction * SPEED * delta

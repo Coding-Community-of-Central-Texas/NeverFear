@@ -40,16 +40,12 @@ func _physics_process(_delta: float):
 		if shooting:
 			shooting = false
 			%Muzzleflash.emitting = false
-			%Bangs.emitting = false 
 			timer.stop()  # Stop the shooting timer when no enemies are detected
 
 # Function to handle shooting
 func shoot():
 	%Muzzleflash.emitting = true 
-	%Bangs.emitting = true
-	%Bangs.rotation_degrees == 8 
 	const BULLET = preload("res://Scenes/Bullet.tscn")
-	
 	var new_bullet = BULLET.instantiate()
 	new_bullet.global_position = shootingpoint.global_position
 	new_bullet.global_rotation = shootingpoint.global_rotation
