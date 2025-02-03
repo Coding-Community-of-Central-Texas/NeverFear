@@ -167,13 +167,7 @@ _data = {
 "rollcredits": SubResource("Animation_38a7b")
 }
 
-[node name="Control" type="Control"]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="Credits" type="Node2D"]
 script = ExtResource("1_8kx13")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]

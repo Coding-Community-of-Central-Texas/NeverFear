@@ -12,7 +12,6 @@ const MAX_FALL_SPEED = 3500.0  # Limit the maximum fall speed
 var direction : Vector2 = Vector2.ZERO
 @export var acceleration: float = 4000.0
 @export var deceleration: float = 7000.0
-@export var run_dust: PackedScene
 
 @onready var audio_stream_player_2d_2: AudioStreamPlayer2D = $AudioStreamPlayer2D2
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
@@ -26,7 +25,6 @@ var direction : Vector2 = Vector2.ZERO
 @onready var jump_effect: CPUParticles2D = %JumpEffect
 @onready var walkn_jump_r: Marker2D = $AnimatedSprite2D/WalknJumpR
 @onready var walkn_jump_l: Marker2D = $AnimatedSprite2D/WalknJumpL
-@onready var foot_steps: Timer = $FootSteps
 @onready var boost_r_two: CPUParticles2D = $AnimatedSprite2D/BoostRTwo
 @onready var boost_r_one: CPUParticles2D = $AnimatedSprite2D/BoostROne
 
@@ -124,19 +122,6 @@ func _on_speed_increase() -> void:
 	await get_tree().create_timer(0.5).timeout
 	boost_r_one.emitting = false 
 
-func _trigger_step_particles():
-	# Instance the particle scene
-	var new_rundust = run_dust.instantiate() as Node2D
-	
-	# Set the particle's position to the character's position (adjust offset if needed)
-	if velocity.x < 0:
-		new_rundust.position = walkn_jump_l.global_position
-	if velocity.x > 0:
-		new_rundust.position = walkn_jump_r.global_position  # Offset for foot placement
-	
-	# Add the particle instance to the scene
-	get_tree().current_scene.add_child(new_rundust)
-	
 
 func handle_jumping(delta: float) -> void:
 	if !is_on_floor():
@@ -175,12 +160,6 @@ func handle_movement(delta: float) -> void:
 		velocity.x -= deceleration * delta
 		velocity.x = max(velocity.x, target_velocity_x)  # Clamp to avoid overshooting
 		
-	if is_on_floor() and target_velocity_x != 0 and !is_walking:
-		foot_steps.start()
-		is_walking = true
-	elif target_velocity_x == 0:
-		is_walking = false
-
 
 func _trigger_jump_effect() -> void:
 	# Make the particle effect visible and emit
@@ -206,7 +185,6 @@ func handle_animation() -> void:
 	elif velocity.x < 0: 
 		%AnimationPlayer.play("leftface")
 		
-	
 		
 	if Input.is_action_pressed("move_right") or Input.is_action_pressed("move_left"):
 		if not animated_sprite_2d.is_playing():
@@ -244,7 +222,3 @@ func _on_game_over():
 func _on_pick_up_gun_picked_up() -> void:
 	%Gun2.set_collision_mask_value(3, true)
 	%Gun2.visible = true
-
-
-func _on_foot_steps_timeout() -> void:
-	_trigger_step_particles()

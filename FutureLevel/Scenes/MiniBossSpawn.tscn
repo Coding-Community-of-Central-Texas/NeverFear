@@ -17,7 +17,7 @@ collision_layer = 0
 script = ExtResource("1_gqxth")
 
 [node name="Timer" type="Timer" parent="."]
-wait_time = 5.624
+wait_time = 1.932
 one_shot = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -30,7 +30,7 @@ curve = SubResource("Curve2D_0jxci")
 
 [node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
 unique_name_in_owner = true
-position = Vector2(-59.3062, -25.9607)
+position = Vector2(-59.3058, -25.9607)
 rotation = -0.0645206
 progress = 1279.7
 

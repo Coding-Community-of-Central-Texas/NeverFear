@@ -31,7 +31,5 @@ autoplay = true
 mix_target = 2
 bus = &"Music"
 
-[node name="HTTPRequest" type="HTTPRequest" parent="."]
-
 [connection signal="kill" from="." to="." method="_on_kill"]
 [connection signal="tree_exiting" from="." to="." method="_on_tree_exiting"]

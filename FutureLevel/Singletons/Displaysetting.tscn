@@ -12,6 +12,7 @@ grow_vertical = 2
 script = ExtResource("1_ws6ni")
 
 [node name="SettingsPopup" type="PopupPanel" parent="."]
+unique_name_in_owner = true
 initial_position = 1
 size = Vector2i(230, 230)
 visible = true

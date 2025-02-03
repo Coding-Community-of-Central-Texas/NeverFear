@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://1sjjrx2qufrj"
-path="res://.godot/imported/openart-image_PupBMZC1_1734267330183_raw.png-669d41b65dfb95be4750d8f74f40cfc0.ctex"
+path="res://.godot/imported/Pipes.png-391af92a85fb27086fca9b3a245852e8.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/2 Background/openart-image_PupBMZC1_1734267330183_raw.png"
-dest_files=["res://.godot/imported/openart-image_PupBMZC1_1734267330183_raw.png-669d41b65dfb95be4750d8f74f40cfc0.ctex"]
+source_file="res://assets/2 Background/Pipes.png"
+dest_files=["res://.godot/imported/Pipes.png-391af92a85fb27086fca9b3a245852e8.ctex"]
 
 [params]
 

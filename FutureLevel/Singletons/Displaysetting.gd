@@ -1,7 +1,7 @@
 extends Control
 
 
-@onready var settings_popup: PopupPanel = $SettingsPopup
+@onready var settings_popup: PopupPanel = %SettingsPopup
 @onready var resolution_option: OptionButton = $SettingsPopup/ResolutionOption
 @onready var stretch_factor_option: OptionButton = $SettingsPopup/StretchFactorOption
 @onready var stretch_aspect_option: OptionButton = $SettingsPopup/StretchAspectOption
@@ -17,12 +17,13 @@ var scale_factor = 1.0
 
 func _ready():
 	load_settings()
-	apply_best_resolution()
 	setup_ui()
 	update_ui()
+	apply_best_resolution()
+
 
 func apply_best_resolution():
-	var screen_size = DisplayServer.window_get_size_with_decorations()
+	var screen_size = DisplayServer.window_get_position()
 	if screen_size.x >= 1680 and screen_size.y >= 720:
 		base_window_size = Vector2(1680, 720)
 	elif screen_size.x >= 1280 and screen_size.y >= 800:
@@ -190,7 +191,7 @@ func on_window_scale_factor_drag_ended(_value_changed: bool) -> void:
 	save_settings()
 
 func on_credits_pressed() -> void:
-	get_tree().change_scene_to_file("res://Singletons/Displaysetting.tscn")
+	get_tree().change_scene_to_file("res://Scenes/PauseMenu.tscn")
 
 # Save user settings
 func save_settings():

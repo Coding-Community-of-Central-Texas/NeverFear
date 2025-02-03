@@ -2,7 +2,7 @@ extends Node2D
 
 @onready var time_panel: Panel = %TimePanel
 @onready var upscale: Sprite2D = $TileMap/CityBack/Background/Upscale
-@onready var upscaled_1: Sprite2D = $TileMap/CityBack/Background/Upscaled1
+
 
 
 func _ready():

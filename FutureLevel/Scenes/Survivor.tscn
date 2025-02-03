@@ -10,7 +10,7 @@
 [ext_resource type="AudioStream" uid="uid://dnjr7q6plu8wi" path="res://assets/FutrueSFX/PlayerDie.wav" id="8_x70f2"]
 [ext_resource type="Texture2D" uid="uid://c1t7ic4fo0him" path="res://assets/etc/health.png" id="9_bjhe2"]
 [ext_resource type="Texture2D" uid="uid://dkp57y2x4axvt" path="res://assets/etc/shadow.png" id="10_e0fqp"]
-[ext_resource type="Script" path="res://Scenes/GauntletCamera.gd" id="10_opkhv"]
+[ext_resource type="Script" path="res://Scripts/GauntletCamera.gd" id="10_opkhv"]
 [ext_resource type="PackedScene" uid="uid://cule8xvwt1ral" path="res://Scenes/GauntletSpawn.tscn" id="11_dc7s1"]
 [ext_resource type="PackedScene" uid="uid://b0oeqk6jov218" path="res://Scenes/GauntletBigSpawn.tscn" id="12_kcvup"]
 [ext_resource type="Texture2D" uid="uid://bw01rrado42yn" path="res://assets/etc/ranks/rank1.png" id="13_s40jq"]
@@ -472,12 +472,6 @@ position = Vector2(-749.5, -220)
 position = Vector2(-2.5, -471)
 rotation = -1.47059
 
-[node name="GauntletSpawn3" parent="GauntletSpawn2" instance=ExtResource("11_dc7s1")]
-position = Vector2(350.168, -65.8607)
-
-[node name="GauntletSpawn4" parent="GauntletSpawn2" instance=ExtResource("11_dc7s1")]
-position = Vector2(199.062, -824.048)
-
 [node name="GauntletBigSpawn" parent="." instance=ExtResource("12_kcvup")]
 position = Vector2(385, -336)
 rotation = -0.82512
@@ -515,6 +509,14 @@ visible = false
 position = Vector2(-6.5, -31.5)
 scale = Vector2(0.6875, 0.71875)
 texture = ExtResource("17_8c2if")
+
+[node name="GauntletSpawn5" parent="." instance=ExtResource("11_dc7s1")]
+position = Vector2(-33, -826)
+rotation = -1.47059
+
+[node name="GauntletSpawn6" parent="." instance=ExtResource("11_dc7s1")]
+position = Vector2(-802.5, -751.5)
+rotation = -1.47059
 
 [connection signal="rank_changed" from="." to="GauntletSpawn" method="_on_survivor_rank_changed"]
 [connection signal="rank_changed" from="." to="GauntletBigSpawn" method="_on_survivor_rank_changed"]

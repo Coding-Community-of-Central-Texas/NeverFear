@@ -1,4 +1,4 @@
-extends Control
+extends Node2D
 
 @onready var home: Label = $CanvasLayer/HomeButton/Home
 @onready var home_button: TouchScreenButton = $CanvasLayer/HomeButton

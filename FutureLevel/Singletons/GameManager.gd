@@ -5,7 +5,7 @@ signal cash
 signal scene_kill_updated(kills: int)
 signal send_data
 
-@onready var http_request: HTTPRequest = $HTTPRequest
+var http_request = "res://Scenes/HTTPRequest.tscn"
 
 # Stats
 var total_kills: int = 0
@@ -113,7 +113,7 @@ func send_stats(http_request: HTTPRequest) -> void:
 	}
 	
 	var json_payload = JSON.stringify(payload)
-	var error = $HTTPRequest.request(API_URL, headers, HTTPClient.METHOD_POST, json_payload)
+	var error = http_request.request(API_URL, headers, HTTPClient.METHOD_POST, json_payload)
 	
 	if error != OK:
 		push_error("Failed to send data! Error code: " + str(error))

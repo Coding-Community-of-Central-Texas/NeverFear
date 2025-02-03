@@ -1,0 +1,29 @@
+[gd_scene load_steps=3 format=3 uid="uid://dt87is5ehp8xl"]
+
+[ext_resource type="Texture2D" uid="uid://s0314e7iecn4" path="res://assets/2 Background/OSCCCTLogo.png" id="1_8bp2i"]
+[ext_resource type="Script" path="res://Scripts/LoadScreen.gd" id="1_qx27v"]
+
+[node name="LoadScreen" type="AspectRatioContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+stretch_mode = 3
+script = ExtResource("1_qx27v")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 5.036
+one_shot = true
+autostart = true
+
+[node name="Logo" type="Sprite2D" parent="."]
+position = Vector2(543, 541)
+scale = Vector2(0.272949, 0.471788)
+texture = ExtResource("1_8bp2i")
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

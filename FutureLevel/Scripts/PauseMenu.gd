@@ -38,6 +38,7 @@ func _on_home_pressed() -> void:
 	get_tree().change_scene_to_file("res://Scenes/HubWorld.tscn")
 
 func _on_settingsbutton_pressed() -> void:
+	get_tree().paused = false
 	%AudioStreamPlayer2D.play()
 	credits.modulate = Color(0.5, 0.5, 0, 0.7)  # Set to red
 	await get_tree().create_timer(0.2).timeout  # Wait for 0.1 seconds
@@ -45,6 +46,7 @@ func _on_settingsbutton_pressed() -> void:
 	Displaysetting.show_settings()
 
 func _on_credits_pressed() -> void:
+	get_tree().paused = false
 	%AudioStreamPlayer2D.play()
 	credits.modulate = Color(0.5, 0.5, 0, 0.7)  # Set to red
 	await get_tree().create_timer(0.2).timeout  # Wait for 0.1 seconds

@@ -1,9 +1,8 @@
-[gd_scene load_steps=69 format=3 uid="uid://csqktr6ixyato"]
+[gd_scene load_steps=68 format=3 uid="uid://csqktr6ixyato"]
 
 [ext_resource type="Script" path="res://Scripts/Hero.gd" id="1_43ipw"]
 [ext_resource type="Texture2D" uid="uid://050tdjf5b57n" path="res://assets/3 Cyborg/Cyborg_death.png" id="2_2ior6"]
 [ext_resource type="Texture2D" uid="uid://huv5y4v78n8o" path="res://assets/3 Cyborg/Cyborg_doublejump.png" id="2_a50ia"]
-[ext_resource type="PackedScene" uid="uid://caame5dgh5vbo" path="res://Scenes/RunDust.tscn" id="2_hk0hm"]
 [ext_resource type="Texture2D" uid="uid://b8he4ug50vnxx" path="res://assets/Guns&Bullets/Idle1.png" id="2_vptny"]
 [ext_resource type="Texture2D" uid="uid://debisd6mjmfga" path="res://assets/Guns&Bullets/Jump1.png" id="3_ieg1k"]
 [ext_resource type="Texture2D" uid="uid://dhiabh1xfdvky" path="res://assets/3 Cyborg/Cyborg_climb.png" id="3_k6dpk"]
@@ -1419,7 +1418,6 @@ scale = Vector2(1.5, 1.5)
 collision_layer = 169
 collision_mask = 41
 script = ExtResource("1_43ipw")
-run_dust = ExtResource("2_hk0hm")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(-14.6667, -29.3333)
@@ -1679,10 +1677,4 @@ position = Vector2(-4.667, 1.4)
 scale = Vector2(0.3, 0.3)
 texture = ExtResource("12_j60bv")
 
-[node name="FootSteps" type="Timer" parent="."]
-process_callback = 0
-wait_time = 0.055
-autostart = true
-
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
-[connection signal="timeout" from="FootSteps" to="." method="_on_foot_steps_timeout"]

@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://dcxq7foaq7ww0"]
+
+[node name="HTTPRequest" type="HTTPRequest"]
+download_file = "res://Scripts/HTTPResponse.txt"
+use_threads = true
+body_size_limit = 600
+timeout = 10.0
