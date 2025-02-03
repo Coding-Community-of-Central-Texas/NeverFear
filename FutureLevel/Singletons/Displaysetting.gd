@@ -139,11 +139,11 @@ func setup_ui():
 
 func update_ui():
 	if $SettingsPopup/ResolutionOption:
-		$SettingsPopup/ResolutionOption.selected_index = get_resolution_index(base_window_size)
-	if $SettingsPopup/StrechModeOption:
-		$SettingsPopup/StretchModeOption.selected_index = stretch_mode
+		$SettingsPopup/ResolutionOption.select(get_resolution_index(base_window_size))
+	if $SettingsPopup/StretchModeOption:
+		$SettingsPopup/StretchModeOption.select(stretch_mode)
 	if $SettingsPopup/StretchAspectOption:
-		$SettingsPopup/StretchAspectOption.selected_index = stretch_aspect
+		$SettingsPopup/StretchAspectOption.select(stretch_aspect)
 	if $SettingsPopup/ScaleFactorSlider:
 		$SettingsPopup/ScaleFactorSlider.value = scale_factor
 	if $SettingsPopup/ScaleFactorValue:

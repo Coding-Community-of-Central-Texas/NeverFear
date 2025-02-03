@@ -42,7 +42,10 @@ var is_walking: bool = false
 func _ready() -> void:
 	Global.player = self  # Assign the player reference
 	health_bar.init_health(health)
-	if Global.lives < 3:
+	if Global.returning_from_game:
+		position = Global.hub_world_position
+		Global.returning_from_game = false
+	elif Global.lives < 3:
 		position = Global.checkpoint_position
 	else: 
 		position = Vector2(353.993, -306.008)
@@ -219,7 +222,11 @@ func _respawn():
 	health_bar.value = health
 	is_dead = false
 	Engine.time_scale = 1.0
-	position = Global.checkpoint_position
+	if Global.returning_from_game:
+		position = Global.hub_world_position
+		Global.returning_from_game = false
+	else:
+		position = Global.checkpoint_position
 
 
 func _on_timer_timeout() -> void:

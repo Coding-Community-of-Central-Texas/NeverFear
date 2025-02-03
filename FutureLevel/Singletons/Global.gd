@@ -25,6 +25,7 @@ func spawn_player():
 # Call this function when entering the Hub World
 func enter_hub_world():
 	if get_tree().current_scene.is_in_group("Hub"):
+		Global.checkpoint_position = Global.hub_world_position
 		returning_from_game = true  # Set the flag so the player spawns correctly
  
 func reset_game_state():

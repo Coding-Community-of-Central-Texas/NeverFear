@@ -38,5 +38,3 @@ func _on_timer_timeout() -> void:
 	spawn_bosses()
 	spawn_bosses()
 	spawn_bosses()
-	await get_tree().create_timer(2.0).timeout
-	queue_free()

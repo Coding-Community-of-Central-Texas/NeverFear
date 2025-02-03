@@ -782,7 +782,7 @@ point_count = 3
 [sub_resource type="CanvasTexture" id="CanvasTexture_lnrvt"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_s5nso"]
-size = Vector2(32.5, 80)
+size = Vector2(58.0001, 80)
 
 [sub_resource type="Curve" id="Curve_i1mgp"]
 min_value = -0.4
@@ -918,7 +918,7 @@ tracks/0/keys = {
 }
 tracks/1/type = "value"
 tracks/1/imported = false
-tracks/1/enabled = true
+tracks/1/enabled = false
 tracks/1/path = NodePath("GameTitle/NeverFear/Lightrays8:self_modulate")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
@@ -962,7 +962,7 @@ tracks/4/keys = {
 "times": PackedFloat32Array(1.43333, 2.2, 2.96667),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [Vector2(533, -18), Vector2(533, -18), Vector2(533, -276)]
+"values": [Vector2(533, -18), Vector2(533, -18), Vector2(533.04, -276)]
 }
 
 [sub_resource type="Animation" id="Animation_mpyw3"]
@@ -1194,7 +1194,7 @@ collision_mask = 8
 script = ExtResource("86_wbc52")
 
 [node name="NextMission" type="CollisionShape2D" parent="LegacyPass"]
-position = Vector2(44.501, -0.500031)
+position = Vector2(10.501, -0.500031)
 shape = SubResource("RectangleShape2D_s5nso")
 
 [node name="Gauntlet" type="Label" parent="."]
@@ -1287,7 +1287,7 @@ collision_mask = 8
 script = ExtResource("87_2x6u5")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="GauntletPass"]
-position = Vector2(64.501, -1.50003)
+position = Vector2(34.501, 1.49997)
 shape = SubResource("RectangleShape2D_s5nso")
 
 [node name="PlayerStats" type="Area2D" parent="."]
@@ -1297,7 +1297,7 @@ collision_mask = 8
 script = ExtResource("88_52oqi")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerStats"]
-position = Vector2(64, 1)
+position = Vector2(46.001, 1.99997)
 shape = SubResource("RectangleShape2D_s5nso")
 
 [node name="LeDoors" type="Area2D" parent="."]
@@ -1437,6 +1437,7 @@ position = Vector2(533, -18)
 scale = Vector2(-0.045, -0.045)
 
 [node name="Lightrays8" type="Sprite2D" parent="GameTitle/NeverFear"]
+visible = false
 self_modulate = Color(1, 1, 1, 0)
 z_index = -2
 position = Vector2(3.49921, 265)
@@ -1474,9 +1475,6 @@ theme_override_font_sizes/font_size = 97
 text = "NEVERFEAR"
 metadata/_edit_use_anchors_ = true
 
-[node name="Hero" parent="." instance=ExtResource("83_hhacw")]
-position = Vector2(144.501, -387.5)
-
 [node name="Buttons" type="CanvasLayer" parent="."]
 
 [node name="Jump" type="HBoxContainer" parent="Buttons"]
@@ -1503,12 +1501,16 @@ position = Vector2(517, 932)
 [node name="LegacyControl" parent="." instance=ExtResource("104_a2ua2")]
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+position = Vector2(103.501, -78.5)
 stream = ExtResource("105_r350c")
 volume_db = 5.332
 autoplay = true
 max_distance = 6710.0
 
 [node name="GameManager" parent="." instance=ExtResource("106_swtsy")]
+
+[node name="Hero" parent="." instance=ExtResource("83_hhacw")]
+position = Vector2(88.501, -472.5)
 
 [connection signal="body_entered" from="LegacyPass" to="LegacyPass" method="_on_body_entered"]
 [connection signal="body_entered" from="GauntletPass" to="GauntletPass" method="_on_body_entered"]
