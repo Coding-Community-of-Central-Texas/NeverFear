@@ -785,6 +785,7 @@ libraries = {
 autoplay = "PerformanceScreen"
 
 [node name="HTTPRequest" parent="." instance=ExtResource("17_6vdmp")]
+download_file = ""
 
 [connection signal="pressed" from="CanvasLayer/HomeButton" to="." method="_on_home_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/Restart" to="." method="_on_restart_pressed"]

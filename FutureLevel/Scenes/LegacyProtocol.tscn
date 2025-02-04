@@ -2536,6 +2536,10 @@ rotation = 2.12854e-05
 position = Vector2(15683, -255)
 rotation = 2.12854e-05
 
+[node name="BigSpawn12" parent="Spawner" instance=ExtResource("105_1jfro")]
+position = Vector2(16213, -230)
+rotation = 2.12854e-05
+
 [node name="BigSpawn10" parent="Spawner" instance=ExtResource("105_1jfro")]
 position = Vector2(15696, -693)
 rotation = 2.12854e-05
@@ -2823,20 +2827,16 @@ position = Vector2(20199, 5)
 position = Vector2(21935, 5)
 
 [node name="Fallout" parent="Convarerbelt" instance=ExtResource("135_f2jvr")]
-position = Vector2(23901, -6)
+position = Vector2(23928, 0)
 
 [node name="Fallout2" parent="Convarerbelt" instance=ExtResource("135_f2jvr")]
-position = Vector2(24668, -4)
+position = Vector2(24983, 0)
 
 [node name="Fallout3" parent="Convarerbelt" instance=ExtResource("135_f2jvr")]
-position = Vector2(25439, 0)
+position = Vector2(25952, 0)
 
 [node name="Fallout4" parent="Convarerbelt" instance=ExtResource("135_f2jvr")]
-position = Vector2(26204, 0)
-
-[node name="Fallout5" parent="Convarerbelt" instance=ExtResource("135_f2jvr")]
-position = Vector2(26974, 2)
-rotation = -0.00264305
+position = Vector2(27004, 0)
 
 [connection signal="body_entered" from="PickUpGun" to="PickUpGun" method="_on_body_entered"]
 [connection signal="picked_up" from="PickUpGun" to="Hero" method="_on_pick_up_gun_picked_up"]

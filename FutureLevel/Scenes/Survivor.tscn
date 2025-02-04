@@ -1,4 +1,4 @@
-[gd_scene load_steps=50 format=3 uid="uid://bsltfx5uw5yvq"]
+[gd_scene load_steps=53 format=3 uid="uid://bsltfx5uw5yvq"]
 
 [ext_resource type="Script" path="res://Scripts/SurvivorScript.gd" id="1_dqedt"]
 [ext_resource type="Texture2D" uid="uid://050tdjf5b57n" path="res://assets/3 Cyborg/Cyborg_death.png" id="2_cknjt"]
@@ -364,45 +364,65 @@ radius = 15.5322
 [sub_resource type="CircleShape2D" id="CircleShape2D_630u5"]
 radius = 25.887
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_bwgh6"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_rmf2d"]
 atlas = ExtResource("19_d3tlq")
-region = Rect2(756, 0, 63, 75)
+region = Rect2(0, 644, 118, 161)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_a2p8e"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_5qjf8"]
 atlas = ExtResource("19_d3tlq")
-region = Rect2(693, 0, 63, 75)
+region = Rect2(236, 483, 118, 161)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_md3it"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_nnc8f"]
 atlas = ExtResource("19_d3tlq")
-region = Rect2(621, 0, 69, 80)
+region = Rect2(472, 483, 118, 161)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x4tbn"]
+atlas = ExtResource("19_d3tlq")
+region = Rect2(118, 141, 118, 141)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i6aoh"]
+atlas = ExtResource("19_d3tlq")
+region = Rect2(354, 141, 118, 141)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yfh7n"]
+atlas = ExtResource("19_d3tlq")
+region = Rect2(236, 141, 118, 141)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_l1v2x"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_bwgh6")
+"texture": SubResource("AtlasTexture_rmf2d")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_a2p8e")
+"texture": SubResource("AtlasTexture_5qjf8")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_bwgh6")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_a2p8e")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_md3it")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_a2p8e")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_md3it")
+"texture": SubResource("AtlasTexture_nnc8f")
 }],
 "loop": true,
 "name": &"default",
 "speed": 15.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x4tbn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i6aoh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yfh7n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i6aoh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x4tbn")
+}],
+"loop": true,
+"name": &"partfour",
+"speed": 20.0
 }]
 
 [node name="Survivor" type="CharacterBody2D" groups=["player"]]
@@ -442,6 +462,7 @@ rate_of_fire = 0.2
 
 [node name="HealthBar" parent="." instance=ExtResource("6_pjeyg")]
 unique_name_in_owner = true
+z_index = 2
 offset_left = -21.0
 offset_top = -17.0
 offset_right = 11.0
@@ -478,7 +499,7 @@ stream = ExtResource("8_x70f2")
 pitch_scale = 0.54
 
 [node name="SpawnTimer" type="Timer" parent="."]
-wait_time = 134.62
+wait_time = 200.964
 autostart = true
 
 [node name="GauntletSpawn" parent="." instance=ExtResource("11_dc7s1")]
@@ -547,19 +568,33 @@ position = Vector2(-7, -29.5)
 scale = Vector2(0.648438, 0.710938)
 texture = ExtResource("16_lm2s2")
 
+[node name="SuperSayain4" type="AnimatedSprite2D" parent="Rank4"]
+unique_name_in_owner = true
+self_modulate = Color(1, 1, 1, 0.535)
+show_behind_parent = true
+position = Vector2(-3.85542, 28.8351)
+scale = Vector2(0.686134, 0.677086)
+sprite_frames = SubResource("SpriteFrames_l1v2x")
+animation = &"partfour"
+autoplay = "partfour"
+frame_progress = 0.63671
+offset = Vector2(0, 7.6)
+
 [node name="Rank5" type="Sprite2D" parent="."]
 visible = false
+z_index = 1
 position = Vector2(-6.5, -31.5)
 scale = Vector2(0.6875, 0.71875)
 texture = ExtResource("17_8c2if")
 
 [node name="SuperSayain" type="AnimatedSprite2D" parent="Rank5"]
-z_index = -1
-position = Vector2(-0.727273, 38.7826)
-scale = Vector2(1.32756, 1.17826)
+unique_name_in_owner = true
+z_index = -2
+position = Vector2(-5.09091, 32.6957)
+scale = Vector2(1.13405, 0.965704)
 sprite_frames = SubResource("SpriteFrames_l1v2x")
 autoplay = "default"
-frame_progress = 0.950875
+frame_progress = 0.72374
 
 [node name="GauntletSpawn5" parent="." instance=ExtResource("11_dc7s1")]
 position = Vector2(102.5, -362.5)

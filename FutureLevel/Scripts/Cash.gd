@@ -34,9 +34,9 @@ func _on_ready():
 func randomize_power_up():
 	# Define weighted probabilities for each power-up type
 	var weights = {
-		PowerUpType.CASH: 69,
-		PowerUpType.SPEED: 10,  
-		PowerUpType.HEALTH: 16,  
+		PowerUpType.CASH: 59,
+		PowerUpType.SPEED: 15,  
+		PowerUpType.HEALTH: 21,  
 		PowerUpType.LIVES: 5   
 	}
 	# Generate a random number between 0 and the total weight

@@ -1,12 +1,13 @@
 extends CharacterBody2D
+
 signal rank_changed(rank_index: int)
-signal playerdeath
+
 # Player properties
 var health: float = 100.0
 const MAX_HEALTH = 100
 const VELOCITY = 1000
 @export var SPEED: float = 500.0
-@export var acceleration: float = 10000
+@export var acceleration: float = 1200
 @export var deceleration: float = 1000
 @onready var shadow: Sprite2D = $AnimatedSprite2D/Shadow
 @onready var rank_1: Sprite2D = $Rank1
@@ -25,8 +26,8 @@ const VELOCITY = 1000
 
 var is_dead: bool = false
 var current_kills: int = 0
-@export var rank_thresholds: Array = [50, 200, 300, 400, 500]  # Thresholds for rank-ups
-@export var fire_rates: Array = [0.15, 0.12, 0.10, 0.08, 0.05]  # Rate of fire per rank
+@export var rank_thresholds: Array = [50, 300, 400, 600, 700]  # Thresholds for rank-ups
+@export var fire_rates: Array = [0.20, 0.15, 0.10, 0.08, 0.05]  # Rate of fire per rank
 
 func _ready() -> void:
 	# Initialize the player's properties
@@ -45,12 +46,7 @@ func _die():
 	if is_dead:
 		return  # Ensure _die() only runs once
 	is_dead = true
-	if %AnimationPlayer.current_animation != "death":
-		%AnimationPlayer.stop()
 	%AnimationPlayer.play("death")
-	emit_signal("playerdeath")
-	# Stop movement (optional, but recommended)
-	velocity = Vector2.ZERO
 	timer_2.start()
 	audio_stream_player.play()
 
@@ -113,7 +109,7 @@ func _physics_process(delta: float) -> void:
 	handle_collisions(delta)
 
 func handle_collisions(delta: float):
-	const DAMAGE_RATE = 5.0
+	const DAMAGE_RATE = 10.0
 	var overlapping_mobs = %HurtBox.get_overlapping_bodies()
 	health_bar.value = health
 	
@@ -139,9 +135,13 @@ func flip_sprite() -> void:
 	if velocity.x < -3:
 		animated_sprite_2d.flip_h = true
 		shadow.position = Vector2(5, 34)
+		%SuperSayain.position = Vector2(19.6, 36.8)
+		%SuperSayain4.position = Vector2(19.2, 33.7)
 	elif velocity.x > 3:
 		animated_sprite_2d.flip_h = false
 		shadow.position = Vector2(-9.5, 34)
+		%SuperSayain.position = Vector2(-5.0, 32.6)
+		%SuperSayain4.position = Vector2(-3.8, 28.8)
 
 func _on_timer_2_timeout() -> void:
 	_game_over()

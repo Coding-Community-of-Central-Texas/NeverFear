@@ -34,6 +34,7 @@ func _on_home_pressed() -> void:
 	await get_tree().create_timer(0.2).timeout  # Wait for 0.1 seconds
 	home.modulate = Color(1, 1, 1, 1)  # Reset to normal
 	GameManager.reset_scene_kills()
+	Global.reset_game_state()
 	get_tree().change_scene_to_file("res://Scenes/HubWorld.tscn")
 
 func _on_credits_pressed() -> void:

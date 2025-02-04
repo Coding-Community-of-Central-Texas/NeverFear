@@ -17,7 +17,7 @@ var current_kills: int = 0
 var game_cash: int = 0 
 
 # File path for save data
-const SAVE_PATH = "user://player_data.json"
+const SAVE_PATH = "user://stat_data.json"
 
 # API Endpoint URL
 const API_URL: String = "https://osccct.org/api/endpoint.php"

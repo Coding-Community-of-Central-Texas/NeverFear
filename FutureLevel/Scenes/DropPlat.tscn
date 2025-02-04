@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://bjy4p1k6qgxm8"]
+[gd_scene load_steps=16 format=3 uid="uid://bjy4p1k6qgxm8"]
 
 [ext_resource type="Script" path="res://Scripts/DropPlatFix.gd" id="1_a81pg"]
 [ext_resource type="Texture2D" uid="uid://dpnldt7qfxni8" path="res://assets/etc/Platform.png" id="2_q2ta0"]
@@ -108,7 +108,7 @@ tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(0, 4)]
+"values": [Vector2(0, 0)]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
@@ -259,50 +259,10 @@ tracks/7/keys = {
 "values": [Color(1, 1, 1, 1)]
 }
 
-[sub_resource type="Animation" id="Animation_omrlh"]
-resource_name = "start"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:sprite_frames")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.6),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [SubResource("SpriteFrames_ywbrd"), SubResource("SpriteFrames_ywbrd")]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:animation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [&"start"]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath(".:frame")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.2),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [0, 1]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_i43n8"]
 _data = {
 "RESET": SubResource("Animation_uxxk0"),
-"end": SubResource("Animation_v7m23"),
-"start": SubResource("Animation_omrlh")
+"end": SubResource("Animation_v7m23")
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_q3aqr"]
@@ -316,7 +276,6 @@ scale = Vector2(2.14, 1.5)
 script = ExtResource("1_a81pg")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(0, 4)
 scale = Vector2(1, 1.25)
 sprite_frames = SubResource("SpriteFrames_ywbrd")
 animation = &"end"

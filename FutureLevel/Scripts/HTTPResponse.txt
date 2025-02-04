@@ -1,0 +1,1 @@
+{"status":"success","message":"Data received and processed","data":{"total_kills":100,"quickest_time":"02:44.099","longest_survival":"00:00.000","total_cash":101271}}

@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://b0kr4yg6fgfci"]
+[gd_scene load_steps=14 format=3 uid="uid://b0kr4yg6fgfci"]
 
 [ext_resource type="Script" path="res://Scripts/PauseMenu.gd" id="1_gfvbg"]
 [ext_resource type="Texture2D" uid="uid://dhit27os2eis3" path="res://assets/Background/FinalMenu1.svg" id="1_nv4xp"]
@@ -97,8 +97,6 @@ size = Vector2(500, 300)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5i2qq"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ctl43"]
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_eyv4r"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_os3di"]
 
@@ -242,46 +240,10 @@ position = Vector2(-8.97618, -5.27191)
 scale = Vector2(25.3708, -10.2428)
 shape = SubResource("RectangleShape2D_ctl43")
 
-[node name="Settings" type="Sprite2D" parent="Panel"]
-self_modulate = Color(0.986752, 0.986752, 0.986752, 1)
-show_behind_parent = true
-position = Vector2(1.28465, 476.485)
-scale = Vector2(2.60721, 2.46781)
-texture = ExtResource("5_bjb6w")
-
-[node name="Settingsbutton" type="TouchScreenButton" parent="Panel/Settings"]
-position = Vector2(1.32111, 0.72316)
-rotation = 1.53996
-scale = Vector2(1.70995, 2.57264)
-skew = 0.0280093
-shape = SubResource("CircleShape2D_eyv4r")
-
-[node name="Settings" type="Label" parent="Panel/Settings"]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -18.8874
-offset_top = -12.515
-offset_right = 274.113
-offset_bottom = 60.485
-grow_horizontal = 2
-grow_vertical = 2
-scale = Vector2(0.119779, 0.270752)
-theme_override_colors/font_color = Color(0.311549, 0.227017, 0.519254, 1)
-theme_override_colors/font_shadow_color = Color(1, 1, 1, 1)
-theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
-theme_override_constants/outline_size = 8
-theme_override_fonts/font = ExtResource("2_16qji")
-theme_override_font_sizes/font_size = 50
-text = "Settings"
-horizontal_alignment = 1
-vertical_alignment = 1
-metadata/_edit_use_anchors_ = true
-
 [node name="Credits" type="Sprite2D" parent="Panel"]
 self_modulate = Color(0.986752, 0.986752, 0.986752, 1)
 show_behind_parent = true
-position = Vector2(294.56, 476)
+position = Vector2(147, 476)
 scale = Vector2(2.285, 2.17917)
 texture = ExtResource("5_bjb6w")
 
@@ -324,5 +286,4 @@ pitch_scale = 1.4
 [connection signal="pressed" from="Panel/ContinueButton/ContiueTouch" to="." method="_on_continue_game_pressed"]
 [connection signal="pressed" from="Panel/Restartbutton/RestartTouch" to="." method="_on_restart_pressed"]
 [connection signal="pressed" from="Panel/Homebutton/HomeTouch" to="." method="_on_home_pressed"]
-[connection signal="pressed" from="Panel/Settings/Settingsbutton" to="." method="_on_settingsbutton_pressed"]
 [connection signal="pressed" from="Panel/Credits/Credits" to="." method="_on_credits_pressed"]

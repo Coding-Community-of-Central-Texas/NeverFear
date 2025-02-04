@@ -21,4 +21,5 @@ func _on_back_to_main_menu_pressed() -> void:
 	main_menu.modulate = Color(0.5, 0.5, 0, 0.7)  # Set to red
 	await get_tree().create_timer(0.2).timeout  # Wait for 0.1 seconds
 	main_menu.modulate = Color(1, 1, 1, 1)  # Reset to normal
+	Global.reset_game_state()
 	get_tree().change_scene_to_file("res://Scenes/HubWorld.tscn")

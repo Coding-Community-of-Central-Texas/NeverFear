@@ -6,21 +6,21 @@
 position = Vector2(-15, 0)
 
 [node name="DropPlat" parent="." instance=ExtResource("1_4k2qq")]
-position = Vector2(-269, 31)
+position = Vector2(-269, 0)
 scale = Vector2(4.615, 2.033)
 
 [node name="DropPlat2" parent="." instance=ExtResource("1_4k2qq")]
-position = Vector2(-113, 31)
+position = Vector2(-113, 0)
 scale = Vector2(4.615, 2.033)
 
 [node name="DropPlat3" parent="." instance=ExtResource("1_4k2qq")]
-position = Vector2(39, 30)
+position = Vector2(39, 0)
 scale = Vector2(4.615, 2.033)
 
 [node name="DropPlat4" parent="." instance=ExtResource("1_4k2qq")]
-position = Vector2(189, 33)
+position = Vector2(189, 0)
 scale = Vector2(4.615, 2.033)
 
 [node name="DropPlat5" parent="." instance=ExtResource("1_4k2qq")]
-position = Vector2(343, 34)
+position = Vector2(343, 0)
 scale = Vector2(4.615, 2.033)

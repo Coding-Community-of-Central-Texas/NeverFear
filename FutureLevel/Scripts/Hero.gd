@@ -37,10 +37,7 @@ var is_walking: bool = false
 func _ready() -> void:
 	Global.player = self  # Assign the player reference
 	health_bar.init_health(health)
-	if Global.returning_from_game:
-		position = Global.hub_world_position
-		Global.returning_from_game = false
-	elif Global.lives < 3:
+	if Global.lives < 3:
 		position = Global.checkpoint_position
 	else: 
 		position = Vector2(353.993, -306.008)
