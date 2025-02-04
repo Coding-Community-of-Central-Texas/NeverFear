@@ -899,7 +899,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sbldj"]
-size = Vector2(30, 70)
+size = Vector2(30, 85)
 
 [sub_resource type="Animation" id="Animation_0t33p"]
 resource_name = "Enter"
@@ -1099,7 +1099,7 @@ text = "Practice Zone
                      				< < <"
 
 [node name="Legacy" type="Label" parent="."]
-z_index = 1
+z_index = -1
 offset_left = 1056.5
 offset_top = -53.5
 offset_right = 1399.5
@@ -1339,7 +1339,7 @@ sprite_frames = SubResource("SpriteFrames_6ii2w")
 animation = &"open"
 
 [node name="OpenStDoor" type="CollisionShape2D" parent="PlayerStat"]
-position = Vector2(1125, -145)
+position = Vector2(1125, -152.5)
 shape = SubResource("RectangleShape2D_sbldj")
 
 [node name="ParlaxCity" type="CanvasLayer" parent="."]

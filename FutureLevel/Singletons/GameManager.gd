@@ -17,19 +17,17 @@ var current_kills: int = 0
 var game_cash: int = 0 
 
 # File path for save data
-const SAVE_PATH = "user://save_data01.json"
+const SAVE_PATH = "user://player_data.json"
 
 # API Endpoint URL
-const API_URL: String = "http://osccct.org/api/endpoint.php"
+const API_URL: String = "https://osccct.org/api/endpoint.php"
 
 func _ready():
 	load_data()
 
-
 func _on_kill(amount: int) -> void:
 	total_kills += amount
 	current_kills += amount  # Increment current scene kills
-
 	# Emit a signal for the current scene's kills
 	emit_signal("scene_kill_updated", current_kills)
 	save_data()  # Save updated stats

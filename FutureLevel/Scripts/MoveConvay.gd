@@ -1,8 +1,7 @@
 extends Area2D
 
-@export var conveyor_speed: float = 50.0  # Speed of movement
+@export var conveyor_speed: float = 5.0  # Speed of movement
 var players_on_belt = []
-
 
 func _process(_delta):
 	for player in players_on_belt:

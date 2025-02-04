@@ -3,8 +3,6 @@ extends Node2D
 @onready var time_panel: Panel = %TimePanel
 @onready var upscale: Sprite2D = $TileMap/CityBack/Background/Upscale
 
-
-
 func _ready():
 	Global.legacy = self
 	Engine.time_scale = 1.0

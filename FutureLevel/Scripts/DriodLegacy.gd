@@ -12,8 +12,6 @@ var knockback_velocity = Vector2.ZERO  # Stores knockback velocity
 @onready var collision_shape_2d: CollisionShape2D = $CollisionShape2D
 @onready var damage_numbers_origin: Node2D = $DamageNumbersOrigin
 
-
-
 func _ready():
 	%Driod.play_walk()
 
@@ -29,7 +27,6 @@ func _physics_process(delta):
 	
 	move_and_slide()
 
-
 func take_damage():
 	health -= 5.0
 	%Driod.play_die()
@@ -42,7 +39,6 @@ func take_damage():
 	
 	if health == 0.0:
 		_die()
-
 
 func _die():
 	emit_signal("kill")
@@ -58,7 +54,6 @@ func _die():
 	new_Cash.global_position = global_position
 	get_tree().current_scene.call_deferred("add_child", new_Cash)
 	queue_free()
-
 
 func _on_kill() -> void:
 	GameManager._on_kill(1)

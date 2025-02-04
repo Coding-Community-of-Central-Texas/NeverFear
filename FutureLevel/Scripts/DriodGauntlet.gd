@@ -68,6 +68,5 @@ func check_distance_from_player():
 func _on_kill() -> void:
 	GameManager._on_kill(1)
 
-
 func _on_queue_timer_timeout() -> void:
 	queue_free()

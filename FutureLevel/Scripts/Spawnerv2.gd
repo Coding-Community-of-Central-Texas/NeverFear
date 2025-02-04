@@ -2,15 +2,10 @@ extends Marker2D
 
 @onready var timer: Timer = $Timer
 @onready var marker_1: Marker2D = $Marker1
-@export var spawn_intervals: Array = [0.9, 1.5, 1.0, 0.8, 0.5]
-
-
-
+@export var spawn_intervals: Array = [2.0, 1.5, 1.0, 0.8, 0.5]
 
 func _on_timer_timeout() -> void:
 	spawn_wave()
-
-
 
 func spawn_wave():
 	const DROID  = preload("res://Scenes/DriodGauntlet.tscn")
@@ -21,10 +16,6 @@ func spawn_wave():
 	new_droid.position = marker_1.global_position
 	get_tree().current_scene.add_child(new_byte)
 	get_tree().current_scene.add_child(new_droid) 
-
-
-
-
 
 func _on_survivor_rank_changed(rank_index: int) -> void:
 	if rank_index >= 0 and rank_index < spawn_intervals.size():

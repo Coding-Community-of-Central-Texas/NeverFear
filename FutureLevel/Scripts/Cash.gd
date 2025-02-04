@@ -5,8 +5,6 @@ signal add_cash
 var GRAVITY = 200
 var MAX_FALL_SPEED = 250.0# Maximum falling speed
 
-
-
 @onready var collision_shape_2d: CollisionShape2D = $CollisionShape2D
 @onready var ground_ray_cast_2d: RayCast2D = $GroundRayCast2D
 @onready var audio_stream_player_2d: AudioStreamPlayer2D = $AudioStreamPlayer2D
@@ -25,7 +23,6 @@ enum PowerUpType {
 var power_up_type: PowerUpType
 var power_up_value: float 
 
-
 func _on_ready(): 
 	%CashSpin.play("spin")
 	ground_ray_cast_2d.enabled = true
@@ -42,14 +39,11 @@ func randomize_power_up():
 		PowerUpType.HEALTH: 16,  
 		PowerUpType.LIVES: 5   
 	}
-
 	# Generate a random number between 0 and the total weight
 	var total_weight = 0
 	for weight in weights.values():
 		total_weight += weight
-
 	var random_number = randi() % total_weight
-
 	# Determine the power-up type based on the random number
 	var cumulative_weight = 0
 	for power_up in weights:
@@ -57,7 +51,6 @@ func randomize_power_up():
 		if random_number < cumulative_weight:
 			power_up_type = power_up
 			break
-
 	# Randomize the power-up value based on its type
 	match power_up_type:
 		PowerUpType.CASH:
@@ -83,8 +76,6 @@ func randomize_power_up():
 			%Star.visible = false
 			%Health.visible = false
 			%CashSpin.visible = false
-
-
 
 func _physics_process(delta: float):
 	if get_tree().current_scene.is_in_group("Legacy"):
@@ -119,25 +110,12 @@ func apply_power_up():
 			Global.player.health = min(Global.player.MAX_HEALTH, Global.player.health + power_up_value)
 		PowerUpType.LIVES:
 			Global.lives += power_up_value
-	
-	check_if_stats_boosted(original_speed, original_health, original_lives)
-
-func check_if_stats_boosted(original_speed, original_health, original_lives):
-	if power_up_type == PowerUpType.SPEED and Global.player.SPEED > original_speed:
-		print("Speed up")
-	elif power_up_type == PowerUpType.HEALTH and Global.player.health > original_health:
-		print("healthUp")
-	elif power_up_type == PowerUpType.LIVES and Global.lives < original_lives:
-		print("livesup")
 
 func _on_audio_stream_player_2d_finished() -> void:
 	queue_free()
 
-
 func _on_add_cash() -> void:
 	GameManager.add_cash(randi_range(1000, 10000))
-	
-
 
 func _on_queue_timer_timeout() -> void:
 	queue_free()

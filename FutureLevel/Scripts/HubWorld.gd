@@ -1,9 +1,6 @@
 extends Node2D
 
 @onready var scene_transition: AnimationPlayer = $SceneTransitionScreen/SceneTransition
-const HERO = preload("res://Scenes/Hero.tscn")
-
-
 
 func _ready() -> void:
 	Engine.time_scale = 1.0

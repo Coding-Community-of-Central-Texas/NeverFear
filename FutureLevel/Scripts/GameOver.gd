@@ -3,10 +3,9 @@ extends Node2D
 @onready var restart: TouchScreenButton = $CanvasLayer/ColorRect/Restart
 @onready var main_menu: TouchScreenButton = $CanvasLayer/ColorRect/MainMenu
 
-
 func _ready() -> void:
 	get_tree().paused = true
-	
+
 func _on_restart_pressed() -> void:
 	get_tree().paused = false
 	%AudioStreamPlayer2D.play()
@@ -15,9 +14,6 @@ func _on_restart_pressed() -> void:
 	restart.modulate = Color(1, 1, 1, 1)  # Reset to normal
 	Global.reset_game_state()
 	get_tree().reload_current_scene()
-
-
-
 
 func _on_back_to_main_menu_pressed() -> void:
 	get_tree().paused = false 

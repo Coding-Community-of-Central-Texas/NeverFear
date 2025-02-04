@@ -34,6 +34,7 @@ func point_switch():
 	if weak_point_2.health <= 0.0: 
 		weak_point_2_healthy = false
 		set_collision_layer_value(3, true)
+
 func _physics_process(delta: float) -> void:
 	if not is_on_floor():
 		velocity += get_gravity() * delta
@@ -56,8 +57,9 @@ func is_near_wall() -> bool:
 	return false 
 
 func take_damage():
-	boss_health -= 100
-	DamageNumbers.display_number(100, damage_numbers_origin.global_position, true)
+	var damage = randi_range(100, 600)
+	boss_health -= damage
+	DamageNumbers.display_number(damage, damage_numbers_origin.global_position, true)
 	%Robo.play_hurt()
 	%HealthBar.value = boss_health
 	if boss_health <= 0 and not die_executed:
@@ -91,8 +93,6 @@ func _on_attack_duration_timeout() -> void:
 	is_attacking = false
 	direction = 1  # Resume movement
 	start_attack.start()  # Restart the attack sequence
-
-
 
 func _on_die_timer_timeout() -> void:
 	const TROPHY = preload("res://Scenes/End.tscn")

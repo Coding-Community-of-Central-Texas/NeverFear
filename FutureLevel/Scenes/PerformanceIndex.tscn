@@ -28,6 +28,7 @@ script/source = "extends Control
 @onready var overall_cash: Label = %OverallCash
 @onready var home: Label = $CanvasLayer/HomeButton/Home
 @onready var http_request: HTTPRequest = $HTTPRequest
+@onready var restart: TouchScreenButton = $CanvasLayer/Restart
 
 func _process(_delta: float) -> void:
 	update_performance_page()
@@ -56,6 +57,10 @@ func _on_request_completed(_result, response_code, _headers, body):
 		push_error(\"Failed to parse response JSON\")
 
 func _on_restart_pressed() -> void:
+	%AudioStreamPlayer2D.play()
+	restart.modulate = Color(0.5, 0.5, 0)  # Set to red
+	await get_tree().create_timer(0.5).timeout  # Wait for 0.5 seconds
+	restart.modulate = Color(1, 1, 1)
 	GameManager.send_stats(http_request)
 "
 

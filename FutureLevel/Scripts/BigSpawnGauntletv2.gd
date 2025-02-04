@@ -11,7 +11,7 @@ enum CharacterType {
 
 @onready var timer: Timer = $Timer
 @onready var marker_1: Marker2D = $Marker1
-@export var spawn_intervals: Array = [6.5, 6.0, 5.0, 4.0, 2.0]
+@export var spawn_intervals: Array = [5.0, 4.0, 3.0, 2.0, 1.0]
 
 func _on_timer_timeout() -> void:
 	spawn_wave()

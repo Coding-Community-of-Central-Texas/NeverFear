@@ -3,9 +3,9 @@ extends CharacterBody2D
 signal kill
 
 var health = 80.0
-var knockback_strength = 475
+var knockback_strength = 250
 var knockback_duration = 0.1
-var knockback_timer = 0.0  # Keeps track of the knockback time
+var knockback_timer = 0.1  # Keeps track of the knockback time
 var knockback_velocity = Vector2.ZERO  # Stores knockback velocity
 
 @onready var robbie: Node2D = %Robbie
@@ -54,7 +54,6 @@ func _die():
 	new_Cash.global_position = global_position 
 	get_tree().current_scene.call_deferred("add_child", new_Cash)
 	queue_free()
-
 
 func pursue_player():
 	if Global.player:

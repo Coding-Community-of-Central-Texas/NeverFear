@@ -1,7 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://wh7raj0bl5ft"]
+[gd_scene load_steps=15 format=3 uid="uid://wh7raj0bl5ft"]
 
 [ext_resource type="Script" path="res://Scripts/BossBullet.gd" id="1_0fkei"]
 [ext_resource type="Texture2D" uid="uid://cf1o7yknimjyd" path="res://assets/Guns&Bullets/enemybullet.png" id="2_tpbri"]
+[ext_resource type="Texture2D" uid="uid://dlxc1yfemuohe" path="res://assets/etc/super_saiyan_spritesheet.png" id="3_q3822"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_n3gss"]
 atlas = ExtResource("2_tpbri")
@@ -41,6 +42,42 @@ animations = [{
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_epit2"]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_fx2rk"]
+atlas = ExtResource("3_q3822")
+region = Rect2(0, 644, 118, 161)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vdesh"]
+atlas = ExtResource("3_q3822")
+region = Rect2(118, 644, 118, 161)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_knq63"]
+atlas = ExtResource("3_q3822")
+region = Rect2(0, 483, 118, 161)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2n4qr"]
+atlas = ExtResource("3_q3822")
+region = Rect2(118, 483, 118, 161)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_5qd2b"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fx2rk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vdesh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_knq63")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2n4qr")
+}],
+"loop": true,
+"name": &"default",
+"speed": 15.0
+}]
+
 [node name="Area2D" type="Area2D"]
 collision_layer = 8
 collision_mask = 8
@@ -53,5 +90,22 @@ autoplay = "lava"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_epit2")
+
+[node name="Flames" type="AnimatedSprite2D" parent="."]
+position = Vector2(10.9968, 0.440002)
+rotation = 1.57802
+scale = Vector2(0.255426, 0.347866)
+sprite_frames = SubResource("SpriteFrames_5qd2b")
+autoplay = "default"
+frame_progress = 0.0366055
+
+[node name="Flames2" type="AnimatedSprite2D" parent="."]
+z_index = -1
+position = Vector2(3.39588, 1.03897)
+rotation = 1.57802
+scale = Vector2(0.255426, 0.280835)
+sprite_frames = SubResource("SpriteFrames_5qd2b")
+autoplay = "default"
+frame_progress = 0.147122
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
