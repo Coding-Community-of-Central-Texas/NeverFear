@@ -851,7 +851,8 @@ libraries = {
 autoplay = "PerformanceScreen"
 
 [node name="HTTPRequest" parent="." instance=ExtResource("17_6vdmp")]
-download_file = ""
+download_file = "res://config.cfg"
+body_size_limit = 1495
 
 [node name="MenuLayer" type="CanvasLayer" parent="."]
 layer = 2

@@ -109,8 +109,8 @@ wait_time = 0.15
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_b7egm")
-volume_db = 1.943
-pitch_scale = 2.97
+volume_db = -0.794
+pitch_scale = 1.92
 playback_type = 1
 
 [node name="AnimatedSprite" type="AnimatedSprite2D" parent="."]
