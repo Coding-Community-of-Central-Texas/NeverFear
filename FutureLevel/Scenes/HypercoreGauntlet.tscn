@@ -1,4 +1,4 @@
-[gd_scene load_steps=193 format=3 uid="uid://c8sbp2d4k2aou"]
+[gd_scene load_steps=194 format=3 uid="uid://c8sbp2d4k2aou"]
 
 [ext_resource type="Script" path="res://Scripts/HypercoreGauntlet.gd" id="1_aav37"]
 [ext_resource type="Script" path="res://addons/gaea/renderers/2D/tilemap_gaea_renderer.gd" id="2_bqeif"]
@@ -94,6 +94,7 @@
 [ext_resource type="Script" path="res://Scripts/Kills.gd" id="92_o11a1"]
 [ext_resource type="Texture2D" uid="uid://brastt74lxpni" path="res://assets/etc/ranks/overkill.png" id="93_4vd0a"]
 [ext_resource type="Texture2D" uid="uid://d1wlj0qisaufc" path="res://assets/Guns&Bullets/fire_30.png" id="94_juiig"]
+[ext_resource type="Texture2D" uid="uid://cjvpadkii8oj7" path="res://assets/2 Background/Overlay.png" id="95_ii3b3"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_w27gi"]
 noise_type = 4
@@ -782,7 +783,6 @@ chunk_size = Vector2i(6, 6)
 tile_size = Vector2i(32, 32)
 
 [node name="TileMap" type="TileMap" parent="."]
-modulate = Color(0.74978, 0.74978, 0.74978, 1)
 scale = Vector2(1, 1.01083)
 tile_set = SubResource("TileSet_tkxor")
 format = 2
@@ -892,6 +892,12 @@ libraries = {
 "": SubResource("AnimationLibrary_ukdey")
 }
 autoplay = "load"
+
+[node name="Overlay" type="Sprite2D" parent="DeathndSpawn"]
+self_modulate = Color(1, 2.162, 1, 0.098)
+position = Vector2(540.5, 548)
+scale = Vector2(0.607222, 0.911667)
+texture = ExtResource("95_ii3b3")
 
 [connection signal="playerdeath" from="Survivor" to="." method="_on_survivor_playerdeath"]
 [connection signal="scene_kill_updated" from="GameManager" to="Survivor" method="_on_game_manager_scene_kill_updated"]

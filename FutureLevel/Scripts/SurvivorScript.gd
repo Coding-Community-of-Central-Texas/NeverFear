@@ -1,6 +1,7 @@
 extends CharacterBody2D
 
 signal rank_changed(rank_index: int)
+signal playerdeath
 
 # Player properties
 var health: float = 100.0
@@ -46,9 +47,11 @@ func _die():
 	if is_dead:
 		return  # Ensure _die() only runs once
 	is_dead = true
+	emit_signal("playerdeath")
 	%AnimationPlayer.play("death")
 	timer_2.start()
 	audio_stream_player.play()
+	
 
 func update_shooting_rate():
 	# Stop and restart shooting if it's already ongoing
@@ -109,7 +112,7 @@ func _physics_process(delta: float) -> void:
 	handle_collisions(delta)
 
 func handle_collisions(delta: float):
-	const DAMAGE_RATE = 10.0
+	const DAMAGE_RATE = 5.0
 	var overlapping_mobs = %HurtBox.get_overlapping_bodies()
 	health_bar.value = health
 	
@@ -145,6 +148,7 @@ func flip_sprite() -> void:
 
 func _on_timer_2_timeout() -> void:
 	_game_over()
+	
 	GameManager.reset_scene_kills()
 
 func _game_over():

@@ -15,15 +15,47 @@ var total_cash: int = 0
 var current_level_time: String = "" 
 var current_kills: int = 0
 var game_cash: int = 0 
-
+var api_key: String
+var player_name: String
 # File path for save data
 const SAVE_PATH = "user://stat_data.json"
 
 # API Endpoint URL
 const API_URL: String = "https://osccct.org/api/endpoint.php"
 
+
 func _ready():
 	load_data()
+	load_api_key()
+
+func load_api_key():
+	var config = ConfigFile.new()
+	var user_config_path = "user://config.cfg"
+	var res_config_path = "res://config.cfg"
+
+	# If the config does not exist in `user://`, copy it from `res://`
+	if not FileAccess.file_exists(user_config_path):
+		if FileAccess.file_exists(res_config_path):
+			var file = FileAccess.open(res_config_path, FileAccess.READ)
+			var data = file.get_as_text()
+			file.close()
+
+			var new_file = FileAccess.open(user_config_path, FileAccess.WRITE)
+			new_file.store_string(data)
+			new_file.close()
+		else:
+			push_error("Config file not found in res://")
+			return
+	
+	# Load the config from `user://`
+	var err = config.load(user_config_path)
+	if err != OK:
+		push_error("Failed to load config file from user://")
+		return
+	
+	api_key = config.get_value("api", "key", "")
+	print("API Key Loaded: ", api_key)
+
 
 func _on_kill(amount: int) -> void:
 	total_kills += amount
@@ -101,9 +133,13 @@ func _on_tree_exiting():
 	save_data()
 
 func send_stats(http_request: HTTPRequest) -> void:
-	var headers = ["Content-Type: application/json"]
+	var headers = [
+		"Content-Type: application/json",
+		"X-API-KEY:" + api_key
+	]
 	
 	var payload = {
+		"player_name": player_name,
 		"total_kills": total_kills,
 		"quickest_time": quickest_time,
 		"longest_survival": longest_survival,

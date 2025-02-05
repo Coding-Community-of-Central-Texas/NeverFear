@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://btnf3drbkix5k"]
+[gd_scene load_steps=44 format=3 uid="uid://btnf3drbkix5k"]
 
 [ext_resource type="Texture2D" uid="uid://dcmt4rtiisn55" path="res://assets/Background/1.png" id="1_erotl"]
 [ext_resource type="FontFile" uid="uid://ckid4fla6wirc" path="res://assets/etc/Starzoom-Shavian.ttf" id="2_a7jdu"]
@@ -17,6 +17,13 @@
 [ext_resource type="Texture2D" uid="uid://dtey7mq3og40d" path="res://assets/etc/Money.png" id="14_gul7b"]
 [ext_resource type="PackedScene" uid="uid://bqcx6ju2n7a3t" path="res://Scenes/RestartButton.tscn" id="14_wagey"]
 [ext_resource type="PackedScene" uid="uid://dcxq7foaq7ww0" path="res://Scenes/HTTPRequest.tscn" id="17_6vdmp"]
+[ext_resource type="Script" path="res://Scripts/StatsBoard.gd" id="18_7bq7t"]
+[ext_resource type="Theme" uid="uid://dad7aygqrrpun" path="res://assets/Background/DialogTheme.tres" id="18_nm5hq"]
+[ext_resource type="Texture2D" uid="uid://bcypd57pmrt63" path="res://assets/Background/Hero.svg" id="19_fv5f2"]
+[ext_resource type="Texture2D" uid="uid://cemg4segoqhh5" path="res://addons/gaea/editor/clear.svg" id="20_ofdtm"]
+[ext_resource type="Texture2D" uid="uid://b2ans61yt43mf" path="res://assets/etc/Trophy.png" id="20_tdrak"]
+[ext_resource type="Texture2D" uid="uid://cvp6xuoc6u6l4" path="res://assets/etc/Icons_56.png" id="23_k004o"]
+[ext_resource type="Texture2D" uid="uid://dtmwp7wpf5hf" path="res://assets/etc/Icons_40.png" id="24_mx0lb"]
 
 [sub_resource type="GDScript" id="GDScript_ae00b"]
 script/source = "extends Control
@@ -27,14 +34,14 @@ script/source = "extends Control
 @onready var time_survived: Label = %LongestTimeSurvived
 @onready var overall_cash: Label = %OverallCash
 @onready var home: Label = $CanvasLayer/HomeButton/Home
-@onready var http_request: HTTPRequest = $HTTPRequest
 @onready var restart: TouchScreenButton = $CanvasLayer/Restart
+@onready var popup_panel: PopupPanel = $MenuLayer/PopupPanel
 
 func _process(_delta: float) -> void:
 	update_performance_page()
 
 func update_performance_page():
-	%OverallKills.text = \"Enemies Eliminated: %s\" % str(GameManager.total_kills)
+	%OverallKills.text = \"BOTS VAPERIZED: %s\" % str(GameManager.total_kills)
 	%FastestTime.text = \"FASTEST LEGACY RUN: %s\" % GameManager.quickest_time
 	%LongestTimeSurvived.text = \"LONGEST GAUNTLET RUN: %s\" % GameManager.longest_survival
 	%OverallCash.text = \"$BANK$: $ %s\" % GameManager.total_cash
@@ -46,7 +53,14 @@ func _on_home_button_pressed() -> void:
 	home_button.modulate = Color(1, 1, 1)  # Reset to normal
 	get_tree().change_scene_to_file(\"res://Scenes/HubWorld.tscn\")
 
-func _on_request_completed(_result, response_code, _headers, body):
+func _on_restart_pressed() -> void:
+	%AudioStreamPlayer2D.play()
+	restart.modulate = Color(0.5, 0.5, 0)  # Set to red
+	await get_tree().create_timer(0.5).timeout  # Wait for 0.5 seconds
+	restart.modulate = Color(1, 1, 1)
+	popup_panel.visible = true
+
+func _on_http_request_request_completed(result: int, response_code: int, headers: PackedStringArray, body: PackedByteArray) -> void:
 	print(\"Response Code: \", response_code)
 	var response_text = body.get_string_from_utf8()
 	var parsed_response = JSON.parse_string(response_text)
@@ -55,13 +69,6 @@ func _on_request_completed(_result, response_code, _headers, body):
 		print(\"Server Response: \", parsed_response)
 	else:
 		push_error(\"Failed to parse response JSON\")
-
-func _on_restart_pressed() -> void:
-	%AudioStreamPlayer2D.play()
-	restart.modulate = Color(0.5, 0.5, 0)  # Set to red
-	await get_tree().create_timer(0.5).timeout  # Wait for 0.5 seconds
-	restart.modulate = Color(1, 1, 1)
-	GameManager.send_stats(http_request)
 "
 
 [sub_resource type="Curve" id="Curve_id4cq"]
@@ -449,6 +456,63 @@ _data = {
 "RESET": SubResource("Animation_xtduc")
 }
 
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_7xixs"]
+content_margin_left = 139.0
+content_margin_top = 124.0
+content_margin_bottom = 4.0
+texture = ExtResource("19_fv5f2")
+texture_margin_left = 85.0
+texture_margin_top = 25.0
+texture_margin_right = 65.0
+texture_margin_bottom = 145.0
+expand_margin_left = 135.0
+expand_margin_top = 125.0
+expand_margin_right = 85.0
+expand_margin_bottom = 145.0
+modulate_color = Color(0.629675, 0.629675, 0.629675, 0.546)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ocqd5"]
+content_margin_left = 16.0
+content_margin_top = 3.0
+content_margin_right = 13.0
+content_margin_bottom = 3.0
+bg_color = Color(0.111197, 0.111197, 0.111197, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0, 0.539136, 0.505655, 1)
+border_blend = true
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+shadow_size = 11
+shadow_offset = Vector2(0, 7.365)
+anti_aliasing_size = 5.505
+
+[sub_resource type="Theme" id="Theme_m3ifo"]
+default_base_scale = 1.0
+default_font = ExtResource("2_a7jdu")
+default_font_size = 55
+LineEdit/colors/font_color = Color(1, 1, 1, 1)
+LineEdit/colors/font_outline_color = Color(0.69204, 0.692174, 0.0180117, 1)
+LineEdit/colors/font_placeholder_color = Color(1, 1, 1, 0.73)
+LineEdit/constants/caret_width = 3
+LineEdit/constants/minimum_character_width = 8
+LineEdit/font_sizes/font_size = 35
+LineEdit/icons/clear = ExtResource("20_ofdtm")
+LineEdit/styles/normal = SubResource("StyleBoxFlat_ocqd5")
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_oxr2d"]
+radius = 26.65
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ctscu"]
+size = Vector2(221.715, 50.895)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_s6mh0"]
+radius = 59.24
+
 [node name="PerformanceIndex" type="Control"]
 layout_mode = 3
 anchors_preset = 15
@@ -462,6 +526,7 @@ script = SubResource("GDScript_ae00b")
 follow_viewport_scale = 3.685
 
 [node name="TextureRect" type="TextureRect" parent="CanvasLayer"]
+self_modulate = Color(0.728822, 0.728822, 0.728822, 1)
 z_index = -4
 anchors_preset = 15
 anchor_right = 1.0
@@ -479,12 +544,12 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_colors/font_color = Color(14.004, 0.45, 0, 1)
+theme_override_colors/font_color = Color(0.582136, 0, 0.105005, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
 theme_override_constants/shadow_offset_x = -6
 theme_override_constants/shadow_offset_y = 3
-theme_override_constants/outline_size = 2
+theme_override_constants/outline_size = 3
 theme_override_fonts/font = ExtResource("2_a7jdu")
 theme_override_font_sizes/font_size = 40
 text = "PERFORMANCE INDEX"
@@ -503,7 +568,7 @@ anchor_right = 1.00185
 anchor_bottom = 0.413889
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_colors/font_color = Color(14.004, 0.45, 0, 1)
+theme_override_colors/font_color = Color(0.936368, 0.0852063, 0.0532708, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
 theme_override_constants/line_spacing = 10
@@ -512,8 +577,8 @@ theme_override_constants/shadow_offset_y = 4
 theme_override_constants/outline_size = 3
 theme_override_fonts/font = ExtResource("2_a7jdu")
 theme_override_font_sizes/font_size = 30
-text = "# OF ENEMIES 
-ELIMINATED:"
+text = "# OF BOTS 
+VAPERIZED:"
 autowrap_mode = 3
 justification_flags = 35
 metadata/_edit_use_anchors_ = true
@@ -528,7 +593,7 @@ anchor_right = 0.494444
 anchor_bottom = 0.427778
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_colors/font_color = Color(14.004, 0.45, 0, 1)
+theme_override_colors/font_color = Color(0.866526, 0.662188, 7.70092e-07, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
 theme_override_constants/line_spacing = 10
@@ -560,7 +625,7 @@ grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(0.837225, 0.974722)
 size_flags_horizontal = 4
-theme_override_colors/font_color = Color(14.004, 0.45, 0, 1)
+theme_override_colors/font_color = Color(0.11933, 2.09068e-07, 0.00635441, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
 theme_override_constants/line_spacing = 10
@@ -583,7 +648,7 @@ anchor_right = 0.515741
 anchor_bottom = 0.250926
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_colors/font_color = Color(14.004, 0.45, 0, 1)
+theme_override_colors/font_color = Color(0.322449, 0.491638, 0.187427, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
 theme_override_constants/line_spacing = 10
@@ -599,7 +664,7 @@ justification_flags = 35
 metadata/_edit_use_anchors_ = true
 
 [node name="style" type="Sprite2D" parent="CanvasLayer"]
-modulate = Color(0.65, 0.273, 0.273, 0.329412)
+modulate = Color(0.408927, 0.153965, 0.155154, 0.508)
 top_level = true
 z_index = -2
 position = Vector2(583.5, 493.5)
@@ -607,7 +672,7 @@ scale = Vector2(2.00174, 3.65124)
 texture = ExtResource("4_cx5d3")
 
 [node name="addition" type="Sprite2D" parent="CanvasLayer"]
-modulate = Color(1, 1, 1, 0.556863)
+modulate = Color(0.363, 0.363, 0.363, 1)
 top_level = true
 z_index = -1
 position = Vector2(573.5, 415)
@@ -615,7 +680,7 @@ scale = Vector2(1.98438, 4.12963)
 texture = ExtResource("5_37ixw")
 
 [node name="city" type="Sprite2D" parent="CanvasLayer"]
-modulate = Color(1, 0.1, 0.1, 0.329412)
+modulate = Color(0.236, 0, 0.002, 0.476)
 top_level = true
 z_index = -2
 position = Vector2(573, 459.5)
@@ -623,7 +688,7 @@ scale = Vector2(2.01042, 3.89198)
 texture = ExtResource("6_658f1")
 
 [node name="clouds" type="Sprite2D" parent="CanvasLayer"]
-modulate = Color(1, 0.739333, 0.32, 0.341176)
+modulate = Color(0.636622, 0.432544, 1.92523e-07, 0.741)
 top_level = true
 z_index = -2
 position = Vector2(554.129, 417.272)
@@ -728,13 +793,13 @@ anchor_left = 0.357143
 anchor_top = 0.297189
 anchor_right = 0.571881
 anchor_bottom = 0.441278
-offset_left = -43.0037
-offset_top = -10.2076
-offset_right = 499.996
-offset_bottom = 59.7924
+offset_left = -43.3946
+offset_top = -14.9188
+offset_right = 499.605
+offset_bottom = 55.0812
 grow_horizontal = 2
 grow_vertical = 2
-scale = Vector2(0.131634, 0.377456)
+scale = Vector2(0.1318, 0.537049)
 theme_override_colors/font_color = Color(14, 0.45, 0, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
@@ -749,25 +814,26 @@ vertical_alignment = 1
 metadata/_edit_use_anchors_ = true
 
 [node name="LeaderBoard" type="Label" parent="CanvasLayer/Restart"]
-offset_left = -118.0
-offset_top = 39.0
-offset_right = 1246.0
-offset_bottom = 215.0
+offset_left = -119.628
+offset_top = 43.186
+offset_right = 1291.37
+offset_bottom = 335.186
 rotation = -0.00158599
 scale = Vector2(0.154679, 0.420396)
 theme_override_colors/font_color = Color(1, 0.45098, 0, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/line_spacing = 8
 theme_override_constants/shadow_offset_x = -6
 theme_override_constants/shadow_offset_y = 4
 theme_override_constants/outline_size = 3
 theme_override_fonts/font = ExtResource("2_a7jdu")
 theme_override_font_sizes/font_size = 67
-text = "^Join the Leaderboards! ^
+text = "^TAP JOIN THE PROS^
+SEE YOUR RANK AT 
 https://osccct.org/leaderboard"
 horizontal_alignment = 1
 vertical_alignment = 1
-autowrap_mode = 3
 
 [node name="GameManager" parent="." instance=ExtResource("3_g0ec8")]
 
@@ -787,5 +853,109 @@ autoplay = "PerformanceScreen"
 [node name="HTTPRequest" parent="." instance=ExtResource("17_6vdmp")]
 download_file = ""
 
+[node name="MenuLayer" type="CanvasLayer" parent="."]
+layer = 2
+
+[node name="PopupPanel" type="PopupPanel" parent="MenuLayer"]
+title = "JOIN THE ELITE LEADERBOARD"
+initial_position = 1
+size = Vector2i(685, 228)
+unresizable = false
+borderless = false
+content_scale_mode = 2
+content_scale_aspect = 4
+theme = ExtResource("18_nm5hq")
+theme_override_styles/panel = SubResource("StyleBoxTexture_7xixs")
+
+[node name="SendName" type="LineEdit" parent="MenuLayer/PopupPanel"]
+unique_name_in_owner = true
+top_level = true
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -283.165
+offset_top = -85.565
+offset_right = 296.835
+offset_bottom = -35.565
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_m3ifo")
+theme_override_colors/font_color = Color(0.582217, 0.582313, 0.0103004, 1)
+theme_override_fonts/font = ExtResource("2_a7jdu")
+theme_override_font_sizes/font_size = 22
+placeholder_text = "ADD YOUR CODENAME..."
+right_icon = ExtResource("20_tdrak")
+script = ExtResource("18_7bq7t")
+
+[node name="UploadButton" type="TouchScreenButton" parent="MenuLayer/PopupPanel"]
+z_index = 1
+position = Vector2(159.455, 169.06)
+rotation = 0.139626
+scale = Vector2(1.88, 1.72)
+shape = SubResource("CircleShape2D_oxr2d")
+
+[node name="Upload" type="Sprite2D" parent="MenuLayer/PopupPanel"]
+position = Vector2(167.065, 167.17)
+rotation = 0.0349066
+scale = Vector2(3.405, 2.195)
+texture = ExtResource("23_k004o")
+
+[node name="Label" type="Label" parent="MenuLayer/PopupPanel/Upload"]
+offset_left = -19.905
+offset_top = -6.73
+offset_right = 159.73
+offset_bottom = 35.58
+rotation = -0.0436332
+scale = Vector2(0.165, 0.3)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 3
+theme_override_constants/shadow_offset_y = 7
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("2_a7jdu")
+theme_override_font_sizes/font_size = 41
+text = "UPLOAD"
+
+[node name="Sprite2D" type="Sprite2D" parent="MenuLayer/PopupPanel"]
+position = Vector2(620, 168.45)
+rotation = 0.226893
+scale = Vector2(1.845, 1.845)
+texture = ExtResource("24_mx0lb")
+
+[node name="Rani" type="Label" parent="MenuLayer/PopupPanel/Sprite2D"]
+top_level = true
+offset_left = 419.105
+offset_top = 153.47
+offset_right = 1030.29
+offset_bottom = 345.25
+rotation = 0.00872665
+scale = Vector2(0.64, 0.69)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 3
+theme_override_constants/shadow_offset_y = 7
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("2_a7jdu")
+theme_override_font_sizes/font_size = 41
+text = "RANDOMIZE"
+
+[node name="Randimize" type="TouchScreenButton" parent="MenuLayer/PopupPanel"]
+position = Vector2(522.775, 170.365)
+scale = Vector2(1.11, 1)
+shape = SubResource("RectangleShape2D_ctscu")
+
+[node name="Close" type="TouchScreenButton" parent="MenuLayer/PopupPanel"]
+z_index = 2
+position = Vector2(690.885, -2.855)
+shape = SubResource("CircleShape2D_s6mh0")
+
 [connection signal="pressed" from="CanvasLayer/HomeButton" to="." method="_on_home_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/Restart" to="." method="_on_restart_pressed"]
+[connection signal="request_completed" from="HTTPRequest" to="." method="_on_http_request_request_completed"]
+[connection signal="pressed" from="MenuLayer/PopupPanel/UploadButton" to="MenuLayer/PopupPanel/SendName" method="_on_upload_button_pressed"]
+[connection signal="pressed" from="MenuLayer/PopupPanel/Randimize" to="MenuLayer/PopupPanel/SendName" method="_on_randimize_pressed"]
+[connection signal="pressed" from="MenuLayer/PopupPanel/Close" to="MenuLayer/PopupPanel/SendName" method="_on_close_pressed"]

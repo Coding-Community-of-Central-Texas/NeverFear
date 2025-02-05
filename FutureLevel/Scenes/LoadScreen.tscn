@@ -17,8 +17,16 @@ autostart = true
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="Logo" type="Sprite2D" parent="CanvasLayer"]
-position = Vector2(541, 544)
-scale = Vector2(0.276367, 0.476562)
+position = Vector2(525, 385.5)
+scale = Vector2(0.189453, 0.300781)
 texture = ExtResource("1_8bp2i")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
