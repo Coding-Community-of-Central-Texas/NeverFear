@@ -3,16 +3,16 @@ extends CharacterBody2D
 signal kill
 
 var health = 10.0
-var knockback_strength = 320.0
-var knockback_duration = 0.1
-var knockback_timer = 0.0  # Keeps track of the knockback time
+var knockback_strength = 420.0
+var knockback_duration = 0.2
+var knockback_timer = 0.25  # Keeps track of the knockback time
 var knockback_velocity = Vector2.ZERO  # Stores knockback velocity
 
 @onready var byte: Node2D = %Byte
 @onready var collision_shape_2d: CollisionShape2D = $CollisionShape2D
 @onready var damage_numbers_origin: Node2D = $DamageNumbersOrigin
 
-
+var max_distance_from_player = 1000.0
 
 func _ready():
 	%Byte.play_walk()
@@ -24,9 +24,9 @@ func _physics_process(delta):
 	else:
 		var direction = (Global.player.global_position - global_position).normalized()
 		global_position.direction_to(Global.player.global_position)
-		velocity = direction * 400.0
+		velocity = direction * 60.0
 		move_and_slide()
-	
+	check_distance_from_player()
 	move_and_slide()
 
 
@@ -58,6 +58,15 @@ func _die():
 	get_tree().current_scene.call_deferred("add_child", new_Cash)
 	queue_free()
 
+func check_distance_from_player():
+	if Global.player:
+		var distance_to_player = global_position.distance_to(Global.player.global_position)
+		if distance_to_player > max_distance_from_player:
+			queue_free()
 
 func _on_kill() -> void:
 	GameManager._on_kill(1)
+
+
+func _on_queue_timer_timeout() -> void:
+	queue_free()

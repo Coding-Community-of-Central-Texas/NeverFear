@@ -11,8 +11,7 @@ func _ready():
 func _process(delta):
 	position += velocity * delta
 
-
-func _on_body_entered(body: CharacterBody2D) -> void:
+func _on_body_entered(body):
 	if body.is_in_group("player") and body.has_method("take_damage"):
-		body.take_damage()
+		body.take_damage(20)
 	queue_free()

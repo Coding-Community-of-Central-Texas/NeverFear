@@ -1,0 +1,115 @@
+[gd_scene load_steps=10 format=3 uid="uid://bjp0l20hey11o"]
+
+[ext_resource type="Texture2D" uid="uid://cywxp7avn6n57" path="res://assets/etc/Transporter.png" id="1_b4gm3"]
+[ext_resource type="Script" path="res://Scripts/MoveConvay.gd" id="2_p43xs"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_og1ef"]
+atlas = ExtResource("1_b4gm3")
+region = Rect2(0, 0, 96, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x66rq"]
+atlas = ExtResource("1_b4gm3")
+region = Rect2(96, 0, 96, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nmy0m"]
+atlas = ExtResource("1_b4gm3")
+region = Rect2(192, 0, 96, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cn65x"]
+atlas = ExtResource("1_b4gm3")
+region = Rect2(288, 0, 96, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_wwmhb"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_og1ef")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x66rq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nmy0m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cn65x")
+}],
+"loop": true,
+"name": &"belt",
+"speed": 10.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1dqtu"]
+size = Vector2(676.471, 16.4706)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hl41w"]
+size = Vector2(676.863, 20)
+
+[node name="BigDawg" type="AnimatableBody2D"]
+
+[node name="MainBelt" type="AnimatedSprite2D" parent="."]
+position = Vector2(-250, 41)
+scale = Vector2(2.55, 2.55)
+sprite_frames = SubResource("SpriteFrames_wwmhb")
+animation = &"belt"
+autoplay = "belt"
+frame_progress = 0.476767
+
+[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="MainBelt"]
+position = Vector2(96.8627, 0)
+sprite_frames = SubResource("SpriteFrames_wwmhb")
+animation = &"belt"
+autoplay = "belt"
+frame_progress = 0.0500543
+
+[node name="AnimatedSprite2D3" type="AnimatedSprite2D" parent="MainBelt"]
+position = Vector2(194.118, -2.98023e-07)
+sprite_frames = SubResource("SpriteFrames_wwmhb")
+animation = &"belt"
+autoplay = "belt"
+frame_progress = 0.334772
+
+[node name="AnimatedSprite2D4" type="AnimatedSprite2D" parent="MainBelt"]
+position = Vector2(291.529, 0)
+sprite_frames = SubResource("SpriteFrames_wwmhb")
+animation = &"belt"
+autoplay = "belt"
+frame_progress = 0.763838
+
+[node name="AnimatedSprite2D5" type="AnimatedSprite2D" parent="MainBelt"]
+position = Vector2(388.784, -2.98023e-07)
+sprite_frames = SubResource("SpriteFrames_wwmhb")
+animation = &"belt"
+autoplay = "belt"
+frame_progress = 0.19575
+
+[node name="AnimatedSprite2D6" type="AnimatedSprite2D" parent="MainBelt"]
+position = Vector2(486.824, 0)
+sprite_frames = SubResource("SpriteFrames_wwmhb")
+animation = &"belt"
+autoplay = "belt"
+frame_progress = 0.00593756
+
+[node name="AnimatedSprite2D7" type="AnimatedSprite2D" parent="MainBelt"]
+position = Vector2(584.078, 0)
+sprite_frames = SubResource("SpriteFrames_wwmhb")
+animation = &"belt"
+autoplay = "belt"
+frame_progress = 0.0823408
+
+[node name="Area2D" type="Area2D" parent="MainBelt"]
+script = ExtResource("2_p43xs")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MainBelt/Area2D"]
+position = Vector2(291.961, -14.1176)
+shape = SubResource("RectangleShape2D_1dqtu")
+debug_color = Color(0, 0.6, 0.7, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(495, 28)
+scale = Vector2(2.55, 2.55)
+shape = SubResource("RectangleShape2D_hl41w")
+debug_color = Color(0, 0.6, 0.7, 0.006)
+
+[connection signal="body_entered" from="MainBelt/Area2D" to="MainBelt/Area2D" method="_on_body_entered"]
+[connection signal="body_exited" from="MainBelt/Area2D" to="MainBelt/Area2D" method="_on_body_exited"]

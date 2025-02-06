@@ -1,0 +1,70 @@
+[gd_resource type="Theme" load_steps=5 format=3 uid="uid://dad7aygqrrpun"]
+
+[ext_resource type="FontFile" uid="uid://ckid4fla6wirc" path="res://assets/etc/Starzoom-Shavian.ttf" id="1_ih42e"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_as1pp"]
+bg_color = Color(0.270464, 0.290701, 0.626571, 1)
+border_width_top = 3
+border_width_right = 5
+border_width_bottom = 8
+border_color = Color(0.651056, 0.643149, 0, 1)
+corner_radius_top_left = 30
+corner_radius_top_right = 30
+corner_radius_bottom_right = 25
+corner_radius_bottom_left = 25
+expand_margin_top = 40.0
+expand_margin_right = 15.0
+expand_margin_bottom = 20.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_frime"]
+content_margin_left = 8.0
+content_margin_top = 8.0
+content_margin_right = 8.0
+content_margin_bottom = 8.0
+bg_color = Color(0.222737, 0.214894, 0.447626, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 2
+border_color = Color(0.897882, 0.808055, 0.148547, 1)
+border_blend = true
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+corner_detail = 4
+shadow_color = Color(0, 0, 0, 0.687)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_62ry3"]
+bg_color = Color(0.502372, 0.0197477, 0.0126923, 1)
+border_width_left = 6
+border_width_top = 3
+border_width_right = 5
+border_width_bottom = 7
+border_color = Color(0.644, 0.434, 0, 0.871)
+corner_radius_top_left = 40
+corner_radius_top_right = 30
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+corner_detail = 15
+expand_margin_left = 10.0
+expand_margin_top = 45.0
+expand_margin_right = 20.0
+expand_margin_bottom = 14.0
+shadow_color = Color(0, 0, 0, 0.741)
+shadow_size = 10
+shadow_offset = Vector2(-0.335, 7.175)
+anti_aliasing_size = 2.175
+
+[resource]
+default_font = ExtResource("1_ih42e")
+default_font_size = 35
+AcceptDialog/constants/buttons_min_height = -60
+AcceptDialog/constants/buttons_min_width = 20
+AcceptDialog/constants/buttons_separation = 21
+AcceptDialog/font_sizes/title_font_size = 20
+AcceptDialog/fonts/title_font = ExtResource("1_ih42e")
+AcceptDialog/styles/embedded_border = SubResource("StyleBoxFlat_as1pp")
+AcceptDialog/styles/panel = SubResource("StyleBoxFlat_frime")
+PopupPanel/constants/title_outline_size = 10
+PopupPanel/styles/embedded_border = SubResource("StyleBoxFlat_62ry3")

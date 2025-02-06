@@ -3,31 +3,31 @@ extends CharacterBody2D
 signal kill
 
 var health = 80.0
-var knockback_strength = 0.5
+var knockback_strength = 100.0
 var knockback_duration = 0.1
-var knockback_timer = 0.0  # Keeps track of the knockback time
+var knockback_timer = 0.01  # Keeps track of the knockback time
 var knockback_velocity = Vector2.ZERO  # Stores knockback velocity
 
 @onready var robbie: Node2D = %Tank
 @onready var damage_numbers_origin: Node2D = $DamageNumberOrigin
 
-var move_speed = 260.0  # Movement speed
+var move_speed = 90.0  # Movement speed
 var is_pursuing = false  # Whether the enemy is pursuing the player
 var stop_distance = 200.0
+var max_distance_from_player = 1000.0  # Maximum distance from player before queue_free
 
 func _ready():
 	%Tank.play_move()
 	rotation = 0
 
 func _physics_process(delta):
-
 	if knockback_timer > 0:
 		velocity = knockback_velocity
 		knockback_timer -= delta # decrease knockback time 
 	else:
 		pursue_player()
+	check_distance_from_player()
 	move_and_slide()
-
 
 func take_damage():
 	health -= 20.0
@@ -55,7 +55,6 @@ func _die():
 	get_tree().current_scene.call_deferred("add_child", new_Cash)
 	queue_free()
 
-
 func pursue_player():
 	if Global.player:
 		var distance_to_player = global_position.distance_to(Global.player.global_position)  # Get the distance
@@ -67,10 +66,14 @@ func pursue_player():
 		else:
 			velocity = Vector2.ZERO  # Stop moving if within stop distance
 
+func check_distance_from_player():
+	if Global.player:
+		var distance_to_player = global_position.distance_to(Global.player.global_position)
+		if distance_to_player > max_distance_from_player:
+			queue_free()
 
 func _on_kill() -> void:
 	GameManager._on_kill(1)
-
 
 func _on_queue_timer_timeout() -> void:
 	queue_free()

@@ -168,15 +168,15 @@ shape = SubResource("RectangleShape2D_yl8pi")
 
 [node name="Story" type="Label" parent="MenuBox/LegacyButton/LegacyProtocol"]
 z_index = 2
-anchors_preset = -1
-anchor_left = 0.180075
-anchor_top = 0.23122
-anchor_right = 0.75083
-anchor_bottom = 0.416479
-offset_left = -257.208
-offset_top = -213.157
-offset_right = -51.2078
-offset_bottom = -162.157
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -245.726
+offset_top = -222.037
+offset_right = -39.7256
+offset_bottom = -171.037
+grow_horizontal = 2
+grow_vertical = 2
 scale = Vector2(2.54483, 9.14698)
 size_flags_horizontal = 4
 theme_override_colors/font_color = Color(0.984314, 0.333333, 0.0588235, 1)
@@ -192,7 +192,6 @@ text = "LEGACY"
 horizontal_alignment = 1
 vertical_alignment = 1
 justification_flags = 35
-metadata/_edit_use_anchors_ = true
 
 [node name="Gauntlet" type="Sprite2D" parent="MenuBox"]
 self_modulate = Color(1, 1, 0, 1)
@@ -214,15 +213,15 @@ shape_visible = false
 
 [node name="Survival" type="Label" parent="MenuBox/Gauntlet/HypercoreGauntlet"]
 z_index = 1
-anchors_preset = -1
-anchor_left = 0.757857
-anchor_top = 0.0892686
-anchor_right = 1.4719
-anchor_bottom = 0.568733
-offset_left = -230.398
-offset_top = -97.9087
-offset_right = 44.6021
-offset_bottom = -46.9087
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -228.617
+offset_top = -87.03
+offset_right = 46.3836
+offset_bottom = -36.03
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(1.82482, 3.73137)
@@ -238,7 +237,6 @@ theme_override_font_sizes/font_size = 50
 text = "GAUNTLET"
 horizontal_alignment = 1
 vertical_alignment = 1
-metadata/_edit_use_anchors_ = true
 
 [node name="Back2" type="Sprite2D" parent="MenuBox/Gauntlet"]
 modulate = Color(0.752661, 0.752661, 0, 1)

@@ -11,8 +11,8 @@ config_version=5
 [application]
 
 config/name="NeverFear"
-config/description="NeverFear is an extremly fun and addictive game deployed and devloped by the Open-Source Coding Community of Central Texas. With the main contributer being Stephen Hairston the founder and Director of the organization. "
-run/main_scene="res://Scenes/MainMenu.tscn"
+config/description="NeverFear is an extremly fun and addictive game deployed and devloped by the Open-Source Coding Community of Central Texas. With the main contributer being Stephen Hairston the founder and 2024 Director of the organization. "
+run/main_scene="res://Scenes/LoadScreen.tscn"
 config/features=PackedStringArray("4.3", "Mobile")
 config/icon="res://assets/Background/NeverFearIcon.svg"
 
@@ -21,11 +21,14 @@ config/icon="res://assets/Background/NeverFearIcon.svg"
 Global="*res://Singletons/Global.gd"
 GameManager="*res://Singletons/GameManager.gd"
 DamageNumbers="*res://Singletons/DamageNumbers.gd"
+ScreenSetting="*res://Singletons/ScreenSetting.tscn"
 
 [display]
 
 window/size/viewport_width=1080
 window/size/viewport_height=1080
+window/size/mode=3
+window/subwindows/embed_subwindows=false
 window/stretch/mode="viewport"
 window/stretch/aspect="ignore"
 window/handheld/orientation=6

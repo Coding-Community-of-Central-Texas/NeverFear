@@ -1,14 +1,15 @@
-
 extends CharacterBody2D
+
 signal rank_changed(rank_index: int)
 signal playerdeath
+
 # Player properties
 var health: float = 100.0
 const MAX_HEALTH = 100
 const VELOCITY = 1000
-@export var SPEED: float = 600.0
-@export var acceleration: float = 2000.0
-@export var deceleration: float = 6000.0
+@export var SPEED: float = 500.0
+@export var acceleration: float = 1200
+@export var deceleration: float = 1000
 @onready var shadow: Sprite2D = $AnimatedSprite2D/Shadow
 @onready var rank_1: Sprite2D = $Rank1
 @onready var rank_2: Sprite2D = $Rank2
@@ -16,8 +17,6 @@ const VELOCITY = 1000
 @onready var rank_4: Sprite2D = $Rank4
 @onready var rank_5: Sprite2D = $Rank5
 @onready var gun: Area2D = $Gun
-
-
 
 # Animation setup
 @onready var animation_player: AnimationPlayer = %AnimationPlayer
@@ -28,18 +27,18 @@ const VELOCITY = 1000
 
 var is_dead: bool = false
 var current_kills: int = 0
-@export var rank_thresholds: Array = [25, 100, 150, 200, 350]  # Thresholds for rank-ups
-@export var fire_rates: Array = [0.15, 0.12, 0.10, 0.08, 0.05]  # Rate of fire per rank
+@export var rank_thresholds: Array = [50, 300, 400, 600, 700]  # Thresholds for rank-ups
+@export var fire_rates: Array = [0.20, 0.15, 0.10, 0.08, 0.05]  # Rate of fire per rank
 
 func _ready() -> void:
 	# Initialize the player's properties
 	Global.player = self
 	GameManager.connect("scene_kill_updated", Callable(self, "_on_game_manager_scene_kill_updated"))
 
-func take_damage():
+func take_damage(amount: int):
 	if is_dead:
 		return  # Ignore damage if the player is already dead
-	health -= 4
+	health -= amount
 	health_bar.value = health
 	if health <= 0:
 		_die()
@@ -48,14 +47,11 @@ func _die():
 	if is_dead:
 		return  # Ensure _die() only runs once
 	is_dead = true
-	if %AnimationPlayer.current_animation != "death":
-		%AnimationPlayer.stop()
-	%AnimationPlayer.play("death")
 	emit_signal("playerdeath")
-	# Stop movement (optional, but recommended)
-	velocity = Vector2.ZERO
+	%AnimationPlayer.play("death")
 	timer_2.start()
 	audio_stream_player.play()
+	
 
 func update_shooting_rate():
 	# Stop and restart shooting if it's already ongoing
@@ -72,7 +68,6 @@ func rank_up():
 			emit_signal("rank_changed", i)
 			return
 	
-
 	# If kills exceed all thresholds, display the max rank
 	_update_rank_display(rank_thresholds.size())
 	emit_signal("rank_changed", rank_thresholds.size())
@@ -98,7 +93,6 @@ func _physics_process(delta: float) -> void:
 		Input.get_action_strength("move_right") - Input.get_action_strength("move_left"),
 		Input.get_action_strength("move_down") - Input.get_action_strength("move_up")
 	)
-
 	# Determine the dominant axis
 	var direction = Vector2.ZERO
 	if raw_input.length() > 0:  # Only process if there is any input
@@ -106,22 +100,19 @@ func _physics_process(delta: float) -> void:
 			direction.x = raw_input.x
 		else:  # Vertical dominance
 			direction.y = raw_input.y
-
 		# Normalize direction for diagonal movement
 		if raw_input.length() > 0.5:  # Adjust diagonal sensitivity threshold if needed
 			direction = raw_input.normalized()
-
 	# Calculate target velocity
 	var target_velocity = direction * SPEED
-
 	# Smoothly accelerate or decelerate
 	velocity = velocity.move_toward(target_velocity, acceleration * delta)
 	move_and_slide()
 	flip_sprite()
 	handle_collisions(delta)
-	
+
 func handle_collisions(delta: float):
-	const DAMAGE_RATE = 2.0
+	const DAMAGE_RATE = 5.0
 	var overlapping_mobs = %HurtBox.get_overlapping_bodies()
 	health_bar.value = health
 	
@@ -130,7 +121,6 @@ func handle_collisions(delta: float):
 		health_bar.value = health
 	if health <= 0:
 		_die()
-		
 
 # Function to handle the player animation based on movement
 func handle_player_animation() -> void:
@@ -148,22 +138,23 @@ func flip_sprite() -> void:
 	if velocity.x < -3:
 		animated_sprite_2d.flip_h = true
 		shadow.position = Vector2(5, 34)
+		%SuperSayain.position = Vector2(19.6, 36.8)
+		%SuperSayain4.position = Vector2(19.2, 33.7)
 	elif velocity.x > 3:
 		animated_sprite_2d.flip_h = false
 		shadow.position = Vector2(-9.5, 34)
-
-
+		%SuperSayain.position = Vector2(-5.0, 32.6)
+		%SuperSayain4.position = Vector2(-3.8, 28.8)
 
 func _on_timer_2_timeout() -> void:
 	_game_over()
+	
 	GameManager.reset_scene_kills()
-
 
 func _game_over():
 	const GAMEOVER = preload("res://Scenes/GameOver.tscn")
 	var new_gameover = GAMEOVER.instantiate()
 	add_child(new_gameover)
-
 
 func _on_spawn_timer_timeout() -> void:
 	const SPAWN = preload("res://Scenes/SpawnCircle.tscn")
@@ -175,8 +166,6 @@ func _on_spawn_timer_timeout() -> void:
 	add_child(new_big)
 	add_child(new_spawn)
 
-
 func _on_game_manager_scene_kill_updated(kills: int) -> void:
-	print("ranking up")
 	current_kills = kills
 	rank_up()

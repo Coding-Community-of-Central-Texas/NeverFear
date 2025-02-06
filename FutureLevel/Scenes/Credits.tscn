@@ -167,18 +167,13 @@ _data = {
 "rollcredits": SubResource("Animation_38a7b")
 }
 
-[node name="Control" type="Control"]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="Credits" type="Node2D"]
 script = ExtResource("1_8kx13")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="TextureRect" type="TextureRect" parent="CanvasLayer"]
+self_modulate = Color(0.435192, 0.435192, 0.435192, 1)
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -209,14 +204,14 @@ theme_override_constants/shadow_offset_x = -6
 theme_override_constants/shadow_offset_y = 6
 theme_override_constants/outline_size = 3
 theme_override_constants/shadow_outline_size = 3
-theme_override_font_sizes/font_size = 21
-text = "\"NeverFear\" Developed and designed by Stephen H. and the Open-Source Coding Communit of Central Texas. 
+theme_override_font_sizes/font_size = 25
+text = "\"NeverFear\" Developed and designed by Stephen H. and the Open-Source Coding Community of Central Texas. 
 www.osccct.org
 
 \"I must thank God that I can live in a time that I am able to follow my passions and in a place like this.  I am truely greatful to all the online gameing community for the endless amount of resources and knowlege that made this possible and to everyone that made this project possible thank you. Thank you, please enjoy!\" 
 -Stephen H.
  
-Music: DavidKBD
+Music: DavidKBD, Charlie T.
 Art: Craftpix.net, BDDragon, itch.io, OpenArt.ai
 SoundSFX:  Luis Zuno, uppbeat.io
 Licences: MIT and Creative Commons Zero

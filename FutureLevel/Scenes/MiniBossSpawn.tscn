@@ -3,35 +3,36 @@
 [ext_resource type="Script" path="res://Scripts/MiniSpawner.gd" id="1_gqxth"]
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_w3xj1"]
-a = Vector2(-987, -713)
-b = Vector2(-970, 668)
+a = Vector2(-3724, -562)
+b = Vector2(-4016, 778)
 
 [sub_resource type="Curve2D" id="Curve2D_0jxci"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, -573.767, -658.256, 0, 0, 0, 0, 284.92, -668.507, 0, 0, 0, 0, -74.8755, 595.522, 0, 0, 0, 0, 339.631, 602.698, 0, 0, 0, 0, 339.631, -584.444, 0, 0, 0, 0, -629.406, -693.111)
+"points": PackedVector2Array(0, 0, 0, 0, -1338.4, -11.106, 0, 0, 0, 0, -347.322, -7.35188, 0, 0, 0, 0, 136.883, -38.6365, 0, 0, 0, 0, 324.794, -676.709, 0, 0, 0, 0, -629.406, -693.111, 0, 0, 0, 0, -1334.62, -674.34, 0, 0, 0, 0, -1338.4, -11.106)
 }
-point_count = 6
+point_count = 7
 
 [node name="MiniBoss" type="Area2D"]
 collision_layer = 0
 script = ExtResource("1_gqxth")
 
 [node name="Timer" type="Timer" parent="."]
-wait_time = 0.334
+wait_time = 1.932
 one_shot = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("SegmentShape2D_w3xj1")
 
 [node name="Path2D" type="Path2D" parent="."]
-position = Vector2(105.745, -3.90314)
-scale = Vector2(1.07839, 0.975452)
+position = Vector2(-67.3937, -379.25)
+scale = Vector2(1.58817, 1.59823)
 curve = SubResource("Curve2D_0jxci")
 
 [node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
 unique_name_in_owner = true
-position = Vector2(-573.767, -658.256)
-rotation = -0.0119375
+position = Vector2(-59.3058, -25.9607)
+rotation = -0.0645206
+progress = 1279.7
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_body_exited"]

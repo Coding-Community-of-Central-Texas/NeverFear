@@ -1,0 +1,60 @@
+[gd_scene load_steps=5 format=3 uid="uid://c842jhh50kqui"]
+
+[ext_resource type="Texture2D" uid="uid://r4yabe1kewtl" path="res://assets/etc/Icons_34.png" id="1_a71mh"]
+[ext_resource type="Script" path="res://Scripts/SettingsButton.gd" id="1_kyeej"]
+[ext_resource type="FontFile" uid="uid://ckid4fla6wirc" path="res://assets/etc/Starzoom-Shavian.ttf" id="2_5p8it"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_yhqgm"]
+
+[node name="CreditsSettings" type="Panel"]
+self_modulate = Color(1, 1, 1, 0)
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -0.259949
+offset_top = -4.31995
+offset_right = 0.259949
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_vertical = 8
+script = ExtResource("1_kyeej")
+
+[node name="Icons34" type="Sprite2D" parent="."]
+self_modulate = Color(0.986752, 0.986752, 0.986752, 1)
+show_behind_parent = true
+position = Vector2(-23.7399, -97.68)
+scale = Vector2(6.88291, 5.59331)
+texture = ExtResource("1_a71mh")
+
+[node name="Settingsbutton" type="TouchScreenButton" parent="Icons34"]
+position = Vector2(1.32111, 0.72316)
+rotation = 1.53996
+scale = Vector2(1.70995, 2.57264)
+skew = 0.0280093
+shape = SubResource("CircleShape2D_yhqgm")
+
+[node name="Settings" type="Label" parent="Icons34"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -18.8874
+offset_top = -12.515
+offset_right = 274.113
+offset_bottom = 60.485
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.119779, 0.270752)
+theme_override_colors/font_color = Color(0.311549, 0.227017, 0.519254, 1)
+theme_override_colors/font_shadow_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 8
+theme_override_fonts/font = ExtResource("2_5p8it")
+theme_override_font_sizes/font_size = 50
+text = "Settings"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[connection signal="pressed" from="Icons34/Settingsbutton" to="." method="_on_credits_pressed"]

@@ -1,0 +1,36 @@
+[gd_scene load_steps=4 format=3 uid="uid://bbcjsyub6565j"]
+
+[ext_resource type="Texture2D" uid="uid://dm5e8dvxsdivl" path="res://assets/etc/smoke3_18.png" id="1_uwtqu"]
+
+[sub_resource type="Curve" id="Curve_3qcs5"]
+min_value = 0.2
+max_value = 1.02
+_data = [Vector2(0, 0.38022), 0.0, 0.0, 0, 0, Vector2(0.19457, 0.461319), 0.0, 0.0, 0, 0, Vector2(0.561086, 0.605495), 0.497857, 0.497857, 0, 0, Vector2(1, 1.02), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="Gradient" id="Gradient_31667"]
+offsets = PackedFloat32Array(0.0508982, 0.199396, 0.80829, 0.979275)
+colors = PackedColorArray(0.197937, 0.197937, 0.197937, 1, 0.61, 0.61, 0.61, 1, 1, 1, 1, 1, 1, 1, 1, 0.180392)
+
+[node name="DestructionSomke" type="Node2D"]
+
+[node name="smokestack" type="CPUParticles2D" parent="."]
+position = Vector2(-12.6658, -0.150792)
+rotation = 1.54688
+amount = 15
+lifetime = 3.99
+speed_scale = 0.57
+randomness = 0.56
+local_coords = true
+texture = ExtResource("1_uwtqu")
+direction = Vector2(-1, 0)
+spread = 1.35
+gravity = Vector2(0, 25)
+initial_velocity_min = 267.01
+initial_velocity_max = 382.19
+angular_velocity_max = 60.0
+scale_amount_min = 1.25
+scale_amount_max = 2.05
+scale_amount_curve = SubResource("Curve_3qcs5")
+color = Color(1, 1, 1, 0.733333)
+color_ramp = SubResource("Gradient_31667")

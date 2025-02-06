@@ -36,7 +36,7 @@ position = Vector2(-0.99998, -0.00635644)
 scale = Vector2(0.605062, 0.535031)
 texture = ExtResource("2_qpgtf")
 
-[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+[node name="Trail" type="CPUParticles2D" parent="."]
 position = Vector2(9.9998, 0.0635644)
 amount = 20
 lifetime = 1.08

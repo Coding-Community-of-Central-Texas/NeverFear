@@ -1,0 +1,388 @@
+[gd_scene load_steps=19 format=3 uid="uid://65xehuevf8h7"]
+
+[ext_resource type="Script" path="res://Scripts/Hammer.gd" id="1_femfq"]
+[ext_resource type="Texture2D" uid="uid://bi4rkixlbhp17" path="res://assets/etc/Hammer.png" id="1_njfb8"]
+[ext_resource type="AudioStream" uid="uid://bdvlvmg1yhcfj" path="res://assets/FutrueSFX/Negative Short.wav" id="3_flaku"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f03dy"]
+atlas = ExtResource("1_njfb8")
+region = Rect2(0, 0, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q81l5"]
+atlas = ExtResource("1_njfb8")
+region = Rect2(32, 0, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ojpox"]
+atlas = ExtResource("1_njfb8")
+region = Rect2(64, 0, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qctlp"]
+atlas = ExtResource("1_njfb8")
+region = Rect2(96, 0, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3cqhk"]
+atlas = ExtResource("1_njfb8")
+region = Rect2(128, 0, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xj3q3"]
+atlas = ExtResource("1_njfb8")
+region = Rect2(160, 0, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u0wb4"]
+atlas = ExtResource("1_njfb8")
+region = Rect2(192, 0, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j7qly"]
+atlas = ExtResource("1_njfb8")
+region = Rect2(224, 0, 32, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ew0pc"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f03dy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q81l5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ojpox")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qctlp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3cqhk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xj3q3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u0wb4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j7qly")
+}],
+"loop": false,
+"name": &"ham",
+"speed": 12.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0njma"]
+size = Vector2(63, 44.1926)
+
+[sub_resource type="Animation" id="Animation_ahytp"]
+resource_name = "hammer"
+length = 1.9
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("HammerPys/CollisionShape2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0666667, 0.133333, 0.4, 0.5, 0.566667, 0.6, 0.633333, 1.66667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, -36), Vector2(1, 18), Vector2(1, 15.92), Vector2(1, 15.915), Vector2(1, -4.24), Vector2(1, -6), Vector2(0, -20), Vector2(0, -36), Vector2(0, -36)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:sprite_frames")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [SubResource("SpriteFrames_ew0pc")]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AnimatedSprite2D:animation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"ham"]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("AnimatedSprite2D:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.0333333, 0.0666667, 0.1, 0.133333, 0.5, 0.566667, 0.6, 0.633333),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 4, 5, 6, 7]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Area2D/Hurt:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.0333333, 0.1, 0.166666, 0.433333, 0.533333, 0.6, 0.633333, 0.666667, 1.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, -31.6721), Vector2(0, -36), Vector2(1, 18), Vector2(1, 15.92), Vector2(1, 15.915), Vector2(1, -4.24), Vector2(1, -6), Vector2(0, -20), Vector2(0, -28.8952), Vector2(0, -28.3286)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("AudioStreamPlayer2D:playing")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.933333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("AudioStreamPlayer2D:volume_db")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0.133333, 0.4, 0.433333, 0.866667),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [-45.244, 1.793, 1.741, -61.002]
+}
+
+[sub_resource type="Animation" id="Animation_tsd2r"]
+resource_name = "hammer_2"
+length = 1.3
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("HammerPys/CollisionShape2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0666667, 0.133333, 0.4, 0.5, 0.566667, 0.6, 0.633333, 1.26667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, -36), Vector2(1, 18), Vector2(1, 15.92), Vector2(1, 15.915), Vector2(1, -4.24), Vector2(1, -6), Vector2(0, -20), Vector2(0, -36), Vector2(0, -36)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:sprite_frames")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [SubResource("SpriteFrames_ew0pc")]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AnimatedSprite2D:animation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"ham"]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("AnimatedSprite2D:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.0333333, 0.0666667, 0.1, 0.133333, 0.5, 0.566667, 0.6, 0.633333),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 4, 5, 6, 7]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Area2D/Hurt:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0.0333333, 0.1, 0.166666, 0.433333, 0.533333, 0.6, 0.633333, 0.666667, 1.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, -36), Vector2(1, 18), Vector2(1, 15.92), Vector2(1, 15.915), Vector2(1, -4.24), Vector2(1, -6), Vector2(0, -20), Vector2(0, -36), Vector2(0, -36)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("AudioStreamPlayer2D:playing")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.933333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("AudioStreamPlayer2D:volume_db")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0.133333, 0.4, 0.433333, 0.866667),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [-45.244, 1.793, 1.741, -61.002]
+}
+
+[sub_resource type="Animation" id="Animation_dgaa5"]
+resource_name = "hammer_3"
+length = 2.2
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("HammerPys/CollisionShape2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0666667, 0.133333, 0.4, 0.666667, 0.733334, 0.766667, 0.8, 2.03333),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, -36), Vector2(1, 18), Vector2(1, 15.92), Vector2(1, 15.915), Vector2(1, -4.24), Vector2(1, -6), Vector2(0, -20), Vector2(0, -36), Vector2(0, -36)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:sprite_frames")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [SubResource("SpriteFrames_ew0pc")]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AnimatedSprite2D:animation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"ham"]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("AnimatedSprite2D:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.0333333, 0.0666667, 0.1, 0.133333, 0.7, 0.766667, 0.833333, 0.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 4, 5, 6, 7]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Area2D/Hurt:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0.0333333, 0.1, 0.166666, 0.433333, 0.7, 0.766667, 0.8, 0.833334, 2.06667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, -36), Vector2(1, 18), Vector2(1, 15.92), Vector2(1, 15.915), Vector2(1, -4.24), Vector2(1, -6), Vector2(0, -20), Vector2(0, -36), Vector2(0, -36)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("AudioStreamPlayer2D:playing")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.933333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("AudioStreamPlayer2D:volume_db")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0.133333, 0.4, 0.433333, 0.866667),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [-45.244, 1.793, 1.741, -61.002]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_v74f2"]
+_data = {
+"hammer": SubResource("Animation_ahytp"),
+"hammer_2": SubResource("Animation_tsd2r"),
+"hammer_3": SubResource("Animation_dgaa5")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kbkft"]
+size = Vector2(70.8955, 41.8145)
+
+[node name="Hammer" type="Node2D"]
+scale = Vector2(1.34, 1.765)
+script = ExtResource("1_femfq")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -10.5618)
+scale = Vector2(2.07, 1.5113)
+sprite_frames = SubResource("SpriteFrames_ew0pc")
+animation = &"ham"
+
+[node name="HammerPys" type="AnimatableBody2D" parent="."]
+modulate = Color(1, 1, 1, 0.552)
+collision_layer = 9
+collision_mask = 9
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HammerPys"]
+position = Vector2(0, -36)
+shape = SubResource("RectangleShape2D_0njma")
+debug_color = Color(0, 0.6, 0.7, 0.135)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_v74f2")
+}
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="Hurt" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, -31.6721)
+shape = SubResource("RectangleShape2D_kbkft")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_flaku")
+volume_db = -47.0449
+pitch_scale = 0.51
+max_distance = 1570.0
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

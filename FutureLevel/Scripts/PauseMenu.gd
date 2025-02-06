@@ -4,6 +4,7 @@ extends Control
 @onready var continuebutton: Label = $Panel/ContinueButton/Continue
 @onready var home: Label = $Panel/Homebutton/Home
 @onready var restart: Label = $Panel/Restartbutton/Restart
+@onready var credits: Sprite2D = $Panel/Credits
 
 func _ready() -> void:
 	get_tree().paused = true
@@ -16,7 +17,6 @@ func _on_continue_game_pressed() -> void:
 	continuebutton.modulate = Color(1, 1, 1, 1)  # Reset to normal
 	queue_free()
 
-
 func _on_restart_pressed() -> void:
 	get_tree().paused = false
 	%AudioStreamPlayer2D.play()
@@ -27,9 +27,6 @@ func _on_restart_pressed() -> void:
 	GameManager.reset_scene_kills()
 	get_tree().reload_current_scene()
 
-
-
-
 func _on_home_pressed() -> void:
 	get_tree().paused = false
 	%AudioStreamPlayer2D.play()
@@ -37,4 +34,13 @@ func _on_home_pressed() -> void:
 	await get_tree().create_timer(0.2).timeout  # Wait for 0.1 seconds
 	home.modulate = Color(1, 1, 1, 1)  # Reset to normal
 	GameManager.reset_scene_kills()
-	get_tree().change_scene_to_file("res://Scenes/MainMenu.tscn")
+	Global.reset_game_state()
+	get_tree().change_scene_to_file("res://Scenes/HubWorld.tscn")
+
+func _on_credits_pressed() -> void:
+	get_tree().paused = false
+	%AudioStreamPlayer2D.play()
+	credits.modulate = Color(0.5, 0.5, 0, 0.7)  # Set to red
+	await get_tree().create_timer(0.2).timeout  # Wait for 0.1 seconds
+	credits.modulate = Color(1, 1, 1, 1)  # Reset to normal
+	get_tree().change_scene_to_file("res://Scenes/Credits.tscn")

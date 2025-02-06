@@ -25,7 +25,7 @@ func _physics_process(delta):
 		
 func _on_body_entered(body: CharacterBody2D) -> void:
 	if body.is_in_group("player") and body.has_method("take_damage"):
-		body.take_damage()
+		body.take_damage(30)
 	queue_free()
 
 func set_direction(direction: Vector2):

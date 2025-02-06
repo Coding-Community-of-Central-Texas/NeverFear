@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://yx0sn8qvxhu4"]
+
+[ext_resource type="Script" path="res://Singletons/ScreenSetting.gd" id="1_n6rlf"]
+
+[node name="ScreenSetting" type="Node"]
+script = ExtResource("1_n6rlf")

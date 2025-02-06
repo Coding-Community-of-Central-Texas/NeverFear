@@ -38,7 +38,7 @@ texture = ExtResource("4_r1v46")
 
 [node name="QueueTimer" type="Timer" parent="."]
 process_callback = 0
-wait_time = 230.285
+wait_time = 21.823
 autostart = true
 
 [node name="DamageNumbersOrigin" type="Node2D" parent="."]
