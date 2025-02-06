@@ -219,6 +219,7 @@ Licences: MIT and Creative Commons Zero
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 3
+metadata/_edit_use_anchors_ = true
 
 [node name="HomeButton" type="TouchScreenButton" parent="CanvasLayer"]
 self_modulate = Color(1, 1, 0, 1)

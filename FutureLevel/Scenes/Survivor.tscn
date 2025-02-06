@@ -166,7 +166,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"run",
-"speed": 12.0
+"speed": 15.0
 }]
 
 [sub_resource type="Animation" id="Animation_i8mf6"]
@@ -358,11 +358,11 @@ _data = {
 "walk": SubResource("Animation_pqmon")
 }
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_xqfdh"]
-radius = 15.5322
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0pc6t"]
+size = Vector2(20, 29)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_630u5"]
-radius = 25.887
+radius = 21.3496
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_rmf2d"]
 atlas = ExtResource("19_d3tlq")
@@ -430,6 +430,9 @@ scale = Vector2(2, 2)
 disable_mode = 2
 collision_layer = 137
 collision_mask = 33
+floor_stop_on_slope = false
+floor_constant_speed = true
+safe_margin = 0.02
 script = ExtResource("1_dqedt")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -451,8 +454,8 @@ scale = Vector2(0.174045, 0.25881)
 texture = ExtResource("10_e0fqp")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-5, 9)
-shape = SubResource("CircleShape2D_xqfdh")
+position = Vector2(-5, 8)
+shape = SubResource("RectangleShape2D_0pc6t")
 debug_color = Color(0.320333, 0.62, 0, 0)
 
 [node name="Gun" parent="." instance=ExtResource("7_3segn")]
@@ -467,6 +470,10 @@ offset_left = -21.0
 offset_top = -17.0
 offset_right = 11.0
 offset_bottom = -14.0
+max_value = 200.0
+step = 5.0
+value = 200.0
+rounded = true
 metadata/_edit_use_anchors_ = true
 
 [node name="Health" type="Sprite2D" parent="HealthBar"]

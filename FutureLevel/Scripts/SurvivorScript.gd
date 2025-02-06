@@ -4,12 +4,12 @@ signal rank_changed(rank_index: int)
 signal playerdeath
 
 # Player properties
-var health: float = 100.0
-const MAX_HEALTH = 100
-const VELOCITY = 1000
+var health: float = 150.0
+const MAX_HEALTH = 200
+const VELOCITY = 500
 @export var SPEED: float = 500.0
-@export var acceleration: float = 1200
-@export var deceleration: float = 1000
+@export var acceleration: float = 2000
+@export var deceleration: float = 4000
 @onready var shadow: Sprite2D = $AnimatedSprite2D/Shadow
 @onready var rank_1: Sprite2D = $Rank1
 @onready var rank_2: Sprite2D = $Rank2
@@ -40,6 +40,12 @@ func take_damage(amount: int):
 		return  # Ignore damage if the player is already dead
 	health -= amount
 	health_bar.value = health
+	await get_tree().create_timer(0.2).timeout
+	health_bar.indeterminate = true
+	animated_sprite_2d.self_modulate = Color(20, 0, 0)
+	await get_tree().create_timer(0.2).timeout
+	animated_sprite_2d.self_modulate = Color(0, 0, 0)
+	health_bar.indeterminate = false 
 	if health <= 0:
 		_die()
 
@@ -48,7 +54,7 @@ func _die():
 		return  # Ensure _die() only runs once
 	is_dead = true
 	emit_signal("playerdeath")
-	%AnimationPlayer.play("death")
+	animated_sprite_2d.play("death")
 	timer_2.start()
 	audio_stream_player.play()
 	

@@ -37,29 +37,25 @@ shadow_color = Color(0, 0, 0, 0.687)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_62ry3"]
 bg_color = Color(0.502372, 0.0197477, 0.0126923, 1)
-border_width_left = 6
-border_width_top = 3
-border_width_right = 5
-border_width_bottom = 7
-border_color = Color(0.644, 0.434, 0, 0.871)
-corner_radius_top_left = 40
+border_width_left = 9
+border_width_top = 5
+border_width_right = 9
+border_width_bottom = 9
+border_color = Color(0.839, 0.586, 0, 0.979)
+corner_radius_top_left = 30
 corner_radius_top_right = 30
-corner_radius_bottom_right = 5
-corner_radius_bottom_left = 5
-corner_detail = 15
+corner_detail = 1
 expand_margin_left = 10.0
 expand_margin_top = 45.0
 expand_margin_right = 20.0
 expand_margin_bottom = 14.0
-shadow_color = Color(0, 0, 0, 0.741)
-shadow_size = 10
-shadow_offset = Vector2(-0.335, 7.175)
-anti_aliasing_size = 2.175
+shadow_color = Color(0.409, 0.44, 0, 0.27)
+shadow_size = 88
 
 [resource]
 default_font = ExtResource("1_ih42e")
 default_font_size = 35
-AcceptDialog/constants/buttons_min_height = -60
+AcceptDialog/constants/buttons_min_height = 0
 AcceptDialog/constants/buttons_min_width = 20
 AcceptDialog/constants/buttons_separation = 21
 AcceptDialog/font_sizes/title_font_size = 20

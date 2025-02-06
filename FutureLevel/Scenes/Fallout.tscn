@@ -4,6 +4,7 @@
 
 [node name="Fallout" type="Node2D"]
 position = Vector2(-15, 0)
+scale = Vector2(0.91, 0.91)
 
 [node name="DropPlat" parent="." instance=ExtResource("1_4k2qq")]
 position = Vector2(-269, 0)

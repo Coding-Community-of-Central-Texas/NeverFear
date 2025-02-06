@@ -3,7 +3,27 @@
 [ext_resource type="Texture2D" uid="uid://s0314e7iecn4" path="res://assets/2 Background/OSCCCTLogo.png" id="1_8bp2i"]
 [ext_resource type="Script" path="res://Scripts/LoadScreen.gd" id="1_qx27v"]
 [ext_resource type="PackedScene" uid="uid://yx0sn8qvxhu4" path="res://Singletons/ScreenSetting.tscn" id="3_rpvwg"]
-[ext_resource type="FontFile" uid="uid://ckid4fla6wirc" path="res://assets/etc/Starzoom-Shavian.ttf" id="4_bqnoj"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fcx53"]
+content_margin_left = 34.0
+content_margin_top = 20.0
+content_margin_right = 34.0
+content_margin_bottom = 20.0
+bg_color = Color(0.10748, 0.10748, 0.10748, 1)
+skew = Vector2(0.22, 0)
+border_width_left = 15
+border_width_top = 15
+border_width_right = 15
+border_width_bottom = 15
+border_color = Color(0.877079, 0.768496, 0, 0.952)
+corner_radius_top_left = 170
+corner_radius_top_right = 30
+corner_radius_bottom_right = 170
+corner_radius_bottom_left = 30
+corner_detail = 16
+shadow_color = Color(0.539219, 0.417546, 0, 0.287)
+shadow_size = 60
+anti_aliasing_size = 5.182
 
 [node name="LoadScreen" type="Node"]
 script = ExtResource("1_qx27v")
@@ -16,32 +36,46 @@ autostart = true
 [node name="ScreenSetting" parent="." instance=ExtResource("3_rpvwg")]
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+follow_viewport_enabled = true
 
 [node name="Logo" type="Sprite2D" parent="CanvasLayer"]
-position = Vector2(525, 385.5)
-scale = Vector2(0.189453, 0.300781)
+position = Vector2(516, 271)
+scale = Vector2(0.137695, 0.210503)
 texture = ExtResource("1_8bp2i")
 
 [node name="Label" type="Label" parent="CanvasLayer"]
-anchors_preset = 8
+anchors_preset = 7
 anchor_left = 0.5
-anchor_top = 0.5
+anchor_top = 1.0
 anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -317.0
-offset_top = 137.0
-offset_right = 1436.0
-offset_bottom = 350.0
+anchor_bottom = 1.0
+offset_left = -461.0
+offset_top = -492.0
+offset_right = 745.0
 grow_horizontal = 2
-grow_vertical = 2
-scale = Vector2(0.357187, 0.5911)
-theme_override_fonts/font = ExtResource("4_bqnoj")
-theme_override_font_sizes/font_size = 50
-text = "NeverFear
-Executive Producer: Stephen H. 
+grow_vertical = 0
+scale = Vector2(0.768475, 0.805668)
+size_flags_vertical = 1
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0.396597, 0.00290535, 1.68458e-07, 0.509)
+theme_override_colors/font_outline_color = Color(0.877, 0.061, 0.036, 0.914)
+theme_override_constants/line_spacing = 4
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_offset_y = 0
+theme_override_constants/outline_size = 10
+theme_override_constants/shadow_outline_size = 26
+theme_override_font_sizes/font_size = 38
+theme_override_styles/normal = SubResource("StyleBoxFlat_fcx53")
+text = "APP DEVELOPED BY
+OPEN-SOURCE CODING COMMUNITY OF CENTRAL TEXAS
+EXECUTIVE PRODUCER: STEPHEN HAIRSTON
+
+CONTACT
 https://www.osccct.org
-https://github.com/Coding-Community-of-Central-Texas"
+https://github.com/Coding-Community-of-Central-Texas
+contact@osccct.org"
 horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="ColorRect" type="ColorRect" parent="."]
 anchors_preset = 15
@@ -49,6 +83,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0, 0, 0, 1)
+color = Color(0.000113828, 0.000113828, 0.000113828, 1)
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

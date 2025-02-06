@@ -1,4 +1,4 @@
-[gd_scene load_steps=44 format=3 uid="uid://btnf3drbkix5k"]
+[gd_scene load_steps=46 format=3 uid="uid://btnf3drbkix5k"]
 
 [ext_resource type="Texture2D" uid="uid://dcmt4rtiisn55" path="res://assets/Background/1.png" id="1_erotl"]
 [ext_resource type="FontFile" uid="uid://ckid4fla6wirc" path="res://assets/etc/Starzoom-Shavian.ttf" id="2_a7jdu"]
@@ -469,46 +469,63 @@ expand_margin_left = 135.0
 expand_margin_top = 125.0
 expand_margin_right = 85.0
 expand_margin_bottom = 145.0
-modulate_color = Color(0.629675, 0.629675, 0.629675, 0.546)
+modulate_color = Color(1, 1, 1, 0.416)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ocqd5"]
-content_margin_left = 16.0
-content_margin_top = 3.0
-content_margin_right = 13.0
-content_margin_bottom = 3.0
-bg_color = Color(0.111197, 0.111197, 0.111197, 1)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-border_color = Color(0, 0.539136, 0.505655, 1)
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4uo1c"]
+bg_color = Color(0.212305, 0.212305, 0.212305, 0.999)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.229937, 0.571779, 0.212694, 1)
+expand_margin_left = 7.0
+expand_margin_top = 7.0
+expand_margin_right = 7.0
+expand_margin_bottom = 7.0
+shadow_color = Color(0.347, 0.56, 0.246, 0.708)
+shadow_size = 14
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_er4m1"]
+bg_color = Color(0.197937, 0.197937, 0.197937, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.164848, 0.895069, 1, 1)
 border_blend = true
-corner_radius_top_left = 2
-corner_radius_top_right = 2
-corner_radius_bottom_right = 2
-corner_radius_bottom_left = 2
-shadow_size = 11
-shadow_offset = Vector2(0, 7.365)
-anti_aliasing_size = 5.505
+corner_radius_top_left = 1
+corner_radius_top_right = 1
+corner_radius_bottom_right = 1
+corner_radius_bottom_left = 1
+corner_detail = 13
+shadow_color = Color(1.34766e-06, 0.523251, 0.639717, 0.6)
+shadow_size = 4
 
 [sub_resource type="Theme" id="Theme_m3ifo"]
 default_base_scale = 1.0
 default_font = ExtResource("2_a7jdu")
-default_font_size = 55
+default_font_size = 15
+LineEdit/colors/caret_color = Color(0.200042, 5.09223e-05, 0.720791, 1)
 LineEdit/colors/font_color = Color(1, 1, 1, 1)
 LineEdit/colors/font_outline_color = Color(0.69204, 0.692174, 0.0180117, 1)
-LineEdit/colors/font_placeholder_color = Color(1, 1, 1, 0.73)
-LineEdit/constants/caret_width = 3
-LineEdit/constants/minimum_character_width = 8
-LineEdit/font_sizes/font_size = 35
+LineEdit/colors/font_placeholder_color = Color(0.427, 0.427, 0.427, 0.849)
+LineEdit/colors/selection_color = Color(0.332797, 0.528619, 0.986939, 1)
+LineEdit/constants/caret_width = 4
+LineEdit/constants/minimum_character_width = 4
+LineEdit/font_sizes/font_size = 12
 LineEdit/icons/clear = ExtResource("20_ofdtm")
-LineEdit/styles/normal = SubResource("StyleBoxFlat_ocqd5")
+LineEdit/styles/focus = SubResource("StyleBoxFlat_4uo1c")
+LineEdit/styles/normal = SubResource("StyleBoxFlat_er4m1")
+LineEdit/styles/read_only = null
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_oxr2d"]
 radius = 26.65
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ctscu"]
 size = Vector2(221.715, 50.895)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vv718"]
+size = Vector2(550, 50)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_s6mh0"]
 radius = 59.24
@@ -758,33 +775,33 @@ shape = SubResource("RectangleShape2D_ee6lp")
 [node name="Home" type="Label" parent="CanvasLayer/HomeButton"]
 z_index = 4
 anchors_preset = -1
-anchor_left = 0.357143
-anchor_top = 0.297189
-anchor_right = 0.571881
-anchor_bottom = 0.441278
-offset_left = 11.1504
-offset_top = 1.82152
-offset_right = -12.2276
-offset_bottom = -21.5479
+anchor_left = 0.33427
+anchor_top = 0.282253
+anchor_right = 0.620908
+anchor_bottom = 0.473685
+offset_left = -4.59521
+offset_top = -0.00012207
+offset_right = -35.8019
+offset_bottom = -31.0482
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(1.10437, 1.33385)
-theme_override_colors/font_color = Color(14, 0.45, 0, 1)
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
-theme_override_constants/shadow_offset_x = -6
-theme_override_constants/shadow_offset_y = 4
-theme_override_constants/outline_size = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0.805263, 0.0232689, 9.62615e-08, 1)
+theme_override_constants/shadow_offset_x = 5
+theme_override_constants/shadow_offset_y = -3
+theme_override_constants/outline_size = 8
 theme_override_fonts/font = ExtResource("2_a7jdu")
-theme_override_font_sizes/font_size = 69
+theme_override_font_sizes/font_size = 92
 text = "HOME"
 horizontal_alignment = 1
 vertical_alignment = 1
 metadata/_edit_use_anchors_ = true
 
 [node name="Restart" parent="CanvasLayer" instance=ExtResource("14_wagey")]
-position = Vector2(733, 627)
-scale = Vector2(2.55792, 1.27356)
+position = Vector2(733.18, 632.3)
+scale = Vector2(3.418, 1.394)
 
 [node name="Home2" type="Label" parent="CanvasLayer/Restart"]
 z_index = 4
@@ -793,44 +810,45 @@ anchor_left = 0.357143
 anchor_top = 0.297189
 anchor_right = 0.571881
 anchor_bottom = 0.441278
-offset_left = -43.3946
+offset_left = -43.3948
 offset_top = -14.9188
-offset_right = 499.605
-offset_bottom = 55.0812
+offset_right = 350.605
+offset_bottom = 36.0812
 grow_horizontal = 2
 grow_vertical = 2
-scale = Vector2(0.1318, 0.537049)
-theme_override_colors/font_color = Color(14, 0.45, 0, 1)
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
-theme_override_constants/shadow_offset_x = -6
-theme_override_constants/shadow_offset_y = 4
-theme_override_constants/outline_size = 3
+scale = Vector2(0.175, 0.77)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0.805263, 0.0232689, 9.62615e-08, 1)
+theme_override_constants/shadow_offset_x = 4
+theme_override_constants/shadow_offset_y = -1
+theme_override_constants/outline_size = 7
 theme_override_fonts/font = ExtResource("2_a7jdu")
-theme_override_font_sizes/font_size = 69
+theme_override_font_sizes/font_size = 50
 text = "LEADERBOARD"
 horizontal_alignment = 1
 vertical_alignment = 1
 metadata/_edit_use_anchors_ = true
 
 [node name="LeaderBoard" type="Label" parent="CanvasLayer/Restart"]
-offset_left = -119.628
-offset_top = 43.186
-offset_right = 1291.37
-offset_bottom = 335.186
+offset_left = -71.613
+offset_top = 35.856
+offset_right = 772.387
+offset_bottom = 183.856
 rotation = -0.00158599
 scale = Vector2(0.154679, 0.420396)
-theme_override_colors/font_color = Color(1, 0.45098, 0, 1)
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0.805263, 0.0232689, 9.62615e-08, 1)
 theme_override_constants/line_spacing = 8
-theme_override_constants/shadow_offset_x = -6
-theme_override_constants/shadow_offset_y = 4
-theme_override_constants/outline_size = 3
+theme_override_constants/shadow_offset_x = 1
+theme_override_constants/shadow_offset_y = -1
+theme_override_constants/outline_size = 5
 theme_override_fonts/font = ExtResource("2_a7jdu")
-theme_override_font_sizes/font_size = 67
-text = "^TAP JOIN THE PROS^
-SEE YOUR RANK AT 
+theme_override_font_sizes/font_size = 43
+text = "TAP TO JOIN
+
+RANKING CAN BE FOUND AT 
 https://osccct.org/leaderboard"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -861,6 +879,8 @@ layer = 2
 title = "JOIN THE ELITE LEADERBOARD"
 initial_position = 1
 size = Vector2i(685, 228)
+visible = true
+transient_to_focused = true
 unresizable = false
 borderless = false
 content_scale_mode = 2
@@ -868,7 +888,7 @@ content_scale_aspect = 4
 theme = ExtResource("18_nm5hq")
 theme_override_styles/panel = SubResource("StyleBoxTexture_7xixs")
 
-[node name="SendName" type="LineEdit" parent="MenuLayer/PopupPanel"]
+[node name="SendName" type="LineEdit" parent="MenuLayer/PopupPanel" node_paths=PackedStringArray("shortcut_context")]
 unique_name_in_owner = true
 top_level = true
 anchors_preset = 8
@@ -882,20 +902,39 @@ offset_right = 296.835
 offset_bottom = -35.565
 grow_horizontal = 2
 grow_vertical = 2
+focus_next = NodePath("../../..")
+shortcut_context = NodePath("..")
 theme = SubResource("Theme_m3ifo")
-theme_override_colors/font_color = Color(0.582217, 0.582313, 0.0103004, 1)
+theme_override_colors/clear_button_color = Color(0.813258, 0.813258, 0.813258, 1)
+theme_override_colors/font_placeholder_color = Color(0.628, 0.581, 0.577, 0.767)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0.561448, 0.561544, 0.00979037, 1)
+theme_override_constants/outline_size = 3
 theme_override_fonts/font = ExtResource("2_a7jdu")
-theme_override_font_sizes/font_size = 22
+theme_override_font_sizes/font_size = 16
 placeholder_text = "ADD YOUR CODENAME..."
+max_length = 30
+expand_to_text_length = true
 right_icon = ExtResource("20_tdrak")
+draw_control_chars = true
 script = ExtResource("18_7bq7t")
 
-[node name="UploadButton" type="TouchScreenButton" parent="MenuLayer/PopupPanel"]
+[node name="UploadButton" type="TouchScreenButton" parent="MenuLayer/PopupPanel/SendName"]
 z_index = 1
-position = Vector2(159.455, 169.06)
+position = Vector2(100.12, 140.625)
 rotation = 0.139626
 scale = Vector2(1.88, 1.72)
 shape = SubResource("CircleShape2D_oxr2d")
+
+[node name="Randimize" type="TouchScreenButton" parent="MenuLayer/PopupPanel/SendName"]
+position = Vector2(463.44, 141.93)
+scale = Vector2(1.11, 1)
+shape = SubResource("RectangleShape2D_ctscu")
+
+[node name="FillText" type="TouchScreenButton" parent="MenuLayer/PopupPanel/SendName"]
+z_index = 2
+position = Vector2(285, 25)
+shape = SubResource("RectangleShape2D_vv718")
 
 [node name="Upload" type="Sprite2D" parent="MenuLayer/PopupPanel"]
 position = Vector2(167.065, 167.17)
@@ -944,11 +983,6 @@ theme_override_fonts/font = ExtResource("2_a7jdu")
 theme_override_font_sizes/font_size = 41
 text = "RANDOMIZE"
 
-[node name="Randimize" type="TouchScreenButton" parent="MenuLayer/PopupPanel"]
-position = Vector2(522.775, 170.365)
-scale = Vector2(1.11, 1)
-shape = SubResource("RectangleShape2D_ctscu")
-
 [node name="Close" type="TouchScreenButton" parent="MenuLayer/PopupPanel"]
 z_index = 2
 position = Vector2(690.885, -2.855)
@@ -957,6 +991,8 @@ shape = SubResource("CircleShape2D_s6mh0")
 [connection signal="pressed" from="CanvasLayer/HomeButton" to="." method="_on_home_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/Restart" to="." method="_on_restart_pressed"]
 [connection signal="request_completed" from="HTTPRequest" to="." method="_on_http_request_request_completed"]
-[connection signal="pressed" from="MenuLayer/PopupPanel/UploadButton" to="MenuLayer/PopupPanel/SendName" method="_on_upload_button_pressed"]
-[connection signal="pressed" from="MenuLayer/PopupPanel/Randimize" to="MenuLayer/PopupPanel/SendName" method="_on_randimize_pressed"]
+[connection signal="pressed" from="MenuLayer/PopupPanel/SendName/UploadButton" to="MenuLayer/PopupPanel/SendName" method="_on_upload_button_pressed"]
+[connection signal="pressed" from="MenuLayer/PopupPanel/SendName/Randimize" to="MenuLayer/PopupPanel/SendName" method="_on_randimize_pressed"]
+[connection signal="pressed" from="MenuLayer/PopupPanel/SendName/FillText" to="MenuLayer/PopupPanel/SendName" method="_on_text_pressed"]
+[connection signal="pressed" from="MenuLayer/PopupPanel/SendName/FillText" to="MenuLayer/PopupPanel/SendName" method="_on_fill_text_pressed"]
 [connection signal="pressed" from="MenuLayer/PopupPanel/Close" to="MenuLayer/PopupPanel/SendName" method="_on_close_pressed"]

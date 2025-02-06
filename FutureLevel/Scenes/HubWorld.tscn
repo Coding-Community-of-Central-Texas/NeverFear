@@ -908,7 +908,8 @@ size = Vector2(30, 80.5)
 
 [sub_resource type="Animation" id="Animation_0t33p"]
 resource_name = "Enter"
-length = 25.0
+length = 35.0
+loop_mode = 2
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -916,10 +917,10 @@ tracks/0/path = NodePath("SceneTransitionScreen/ColorRect:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.6, 1.5),
-"transitions": PackedFloat32Array(2, 2, 1),
+"times": PackedFloat32Array(0, 1.96667),
+"transitions": PackedFloat32Array(2, 1),
 "update": 0,
-"values": [Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 0)]
+"values": [Color(0, 0, 0, 1), Color(0, 0, 0, 0)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -940,7 +941,7 @@ tracks/2/path = NodePath("GameTitle/NeverFear:scale")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(1.56667, 2.3, 3.3),
+"times": PackedFloat32Array(2.53334, 3.26667, 4.26667),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
 "values": [Vector2(1e-05, 1e-05), Vector2(1e-05, 1e-05), Vector2(1, 1)]
@@ -949,13 +950,13 @@ tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
 tracks/3/path = NodePath("GameTitle/NeverFear/ColorBurst25:scale")
-tracks/3/interp = 1
+tracks/3/interp = 2
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(1.26667, 1.86667, 2.33333, 3.1, 3.8, 4.5, 5.13333, 5.43333, 5.73333, 6.03333, 6.23333, 6.53333, 6.83333, 7.13333, 7.3, 7.6, 7.8, 8.1, 8.4, 8.7, 8.93333, 9.23333, 9.53333, 9.83333, 10.0333, 10.6, 10.9, 11.2, 11.5, 11.7, 12, 12.3, 12.6, 12.7667, 13.0667, 13.2667, 13.5667, 13.8667, 14.1667, 14.4, 14.7, 15, 15.3, 15.5, 16.2, 16.5, 16.8, 17.1, 17.3, 17.6, 17.9, 18.2, 18.3667, 18.6667, 18.8667, 19.1667, 19.4667, 19.7667, 20, 20.3, 20.6, 20.9, 21.1, 21.5333, 21.8333, 22.1333, 22.4333, 22.6333, 22.9333, 23.2333, 23.5333, 23.7, 24, 24.2, 24.5),
-"transitions": PackedFloat32Array(4.28709, 1, 1, 0.233258, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(1.26667, 2.6, 3.3, 3.56667, 3.8, 4.5, 5.13333, 5.43333, 5.73333, 6.03333, 6.23333, 6.53333, 6.83333, 7.13333, 7.3, 7.6, 7.8, 8.1, 8.4, 8.7, 8.93333, 9.23333, 9.53333, 9.83333, 10.0333, 10.6, 10.9, 11.2, 11.5, 11.7, 12, 12.3, 12.6, 12.7667, 13.0667, 13.2667, 13.5667, 13.8667, 14.1667, 14.4, 14.7, 15, 15.3, 15.5, 16.2, 16.5, 16.8, 17.1, 17.3, 17.6, 17.9, 18.2, 18.3667, 18.6667, 18.8667, 19.1667, 19.4667, 19.7667, 20, 20.3, 20.6, 20.9, 21.1, 21.5333, 21.8333, 22.1333, 22.4333, 22.6333, 22.9333, 23.2333, 23.5333, 23.7, 24, 24.2, 24.6667, 25.1333, 25.8667, 26.3, 26.7667, 27.0667, 27.3667, 27.6, 27.9, 28.2, 28.5, 28.7, 29.4, 29.7, 30, 30.3, 30.5, 30.8, 31.1, 31.4, 31.5667, 31.8667, 32.0667, 32.3667, 32.6667, 32.9667, 33.2, 33.5, 33.8, 34.1, 34.3, 34.7333, 35.0333),
+"transitions": PackedFloat32Array(4.28709, 1, 1, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 0,
-"values": [Vector2(0.556, 0.191), Vector2(0.531, 0.191), Vector2(3.211, 1.157), Vector2(2.811, 0.547), Vector2(40, 20), Vector2(3.206, 0.631), Vector2(2.781, 0.547), Vector2(3.206, 0.631), Vector2(2.946, 0.58), Vector2(3.091, 0.609), Vector2(2.781, 0.547), Vector2(3.206, 0.631), Vector2(2.946, 0.58), Vector2(3.091, 0.609), Vector2(2.946, 0.58), Vector2(3.091, 0.609), Vector2(2.781, 0.547), Vector2(3.206, 0.631), Vector2(2.946, 0.58), Vector2(3.091, 0.609), Vector2(2.781, 0.547), Vector2(3.206, 0.631), Vector2(2.946, 0.58), Vector2(3.091, 0.609), Vector2(2.781, 0.547), Vector2(2.781, 0.547), Vector2(3.206, 0.631), Vector2(2.946, 0.58), Vector2(3.091, 0.609), Vector2(2.781, 0.547), Vector2(3.206, 0.631), Vector2(2.946, 0.58), Vector2(3.091, 0.609), Vector2(2.946, 0.58), Vector2(3.091, 0.609), Vector2(2.781, 0.547), Vector2(3.206, 0.631), Vector2(2.946, 0.58), Vector2(3.091, 0.609), Vector2(2.781, 0.547), Vector2(3.206, 0.631), Vector2(2.946, 0.58), Vector2(3.091, 0.609), Vector2(2.781, 0.547), Vector2(2.781, 0.547), Vector2(3.206, 0.631), Vector2(2.946, 0.58), Vector2(3.091, 0.609), Vector2(2.781, 0.547), Vector2(3.206, 0.631), Vector2(2.946, 0.58), Vector2(3.091, 0.609), Vector2(2.946, 0.58), Vector2(3.091, 0.609), Vector2(2.781, 0.547), Vector2(3.206, 0.631), Vector2(2.946, 0.58), Vector2(3.091, 0.609), Vector2(2.781, 0.547), Vector2(3.206, 0.631), Vector2(2.946, 0.58), Vector2(3.091, 0.609), Vector2(2.781, 0.547), Vector2(2.781, 0.547), Vector2(3.206, 0.631), Vector2(2.946, 0.58), Vector2(3.091, 0.609), Vector2(2.781, 0.547), Vector2(3.206, 0.631), Vector2(2.946, 0.58), Vector2(3.091, 0.609), Vector2(2.946, 0.58), Vector2(3.091, 0.609), Vector2(2.781, 0.547), Vector2(3.206, 0.631)]
+"values": [Vector2(0.556, 0.191), Vector2(0.531, 0.191), Vector2(0.531, 0.191), Vector2(0.066, 0.117), Vector2(40, 20), Vector2(2.526, 0.631), Vector2(2.781, 0.547), Vector2(3.206, 0.631), Vector2(2.946, 0.58), Vector2(3.091, 0.609), Vector2(2.781, 0.547), Vector2(3.206, 0.631), Vector2(2.946, 0.58), Vector2(3.091, 0.609), Vector2(2.946, 0.58), Vector2(3.091, 0.609), Vector2(2.781, 0.547), Vector2(3.206, 0.631), Vector2(2.946, 0.58), Vector2(3.091, 0.609), Vector2(2.781, 0.547), Vector2(3.206, 0.631), Vector2(2.946, 0.58), Vector2(3.091, 0.609), Vector2(2.781, 0.547), Vector2(2.781, 0.547), Vector2(3.206, 0.631), Vector2(2.946, 0.58), Vector2(3.091, 0.609), Vector2(2.781, 0.547), Vector2(3.206, 0.631), Vector2(2.946, 0.58), Vector2(3.091, 0.609), Vector2(2.946, 0.58), Vector2(3.091, 0.609), Vector2(2.781, 0.547), Vector2(3.206, 0.631), Vector2(2.946, 0.58), Vector2(3.091, 0.609), Vector2(2.781, 0.547), Vector2(3.206, 0.631), Vector2(2.946, 0.58), Vector2(3.091, 0.609), Vector2(2.781, 0.547), Vector2(2.781, 0.547), Vector2(3.206, 0.631), Vector2(2.946, 0.58), Vector2(3.091, 0.609), Vector2(2.781, 0.547), Vector2(3.206, 0.631), Vector2(2.946, 0.58), Vector2(3.091, 0.609), Vector2(2.946, 0.58), Vector2(3.091, 0.609), Vector2(2.781, 0.547), Vector2(3.206, 0.631), Vector2(2.946, 0.58), Vector2(3.091, 0.609), Vector2(2.781, 0.547), Vector2(3.206, 0.631), Vector2(2.946, 0.58), Vector2(3.091, 0.609), Vector2(2.781, 0.547), Vector2(2.781, 0.547), Vector2(3.206, 0.631), Vector2(2.946, 0.58), Vector2(3.091, 0.609), Vector2(2.781, 0.547), Vector2(3.206, 0.631), Vector2(2.946, 0.58), Vector2(3.091, 0.609), Vector2(2.946, 0.58), Vector2(3.091, 0.609), Vector2(2.781, 0.547), Vector2(3.206, 0.631), Vector2(2.946, 0.58), Vector2(3.091, 0.609), Vector2(2.781, 0.547), Vector2(3.206, 0.631), Vector2(2.946, 0.58), Vector2(3.091, 0.609), Vector2(2.781, 0.547), Vector2(3.206, 0.631), Vector2(2.946, 0.58), Vector2(3.091, 0.609), Vector2(2.781, 0.547), Vector2(2.781, 0.547), Vector2(3.206, 0.631), Vector2(2.946, 0.58), Vector2(3.091, 0.609), Vector2(2.781, 0.547), Vector2(3.206, 0.631), Vector2(2.946, 0.58), Vector2(3.091, 0.609), Vector2(2.946, 0.58), Vector2(3.091, 0.609), Vector2(2.781, 0.547), Vector2(3.206, 0.631), Vector2(2.946, 0.58), Vector2(3.091, 0.609), Vector2(2.781, 0.547), Vector2(3.206, 0.631), Vector2(2.946, 0.58), Vector2(3.091, 0.609), Vector2(2.781, 0.547), Vector2(2.781, 0.547), Vector2(3.206, 0.631)]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
@@ -964,10 +965,82 @@ tracks/4/path = NodePath("GameTitle/NeverFear:position")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"times": PackedFloat32Array(1.63333, 2.46667, 3.2),
+"times": PackedFloat32Array(2.6, 3.43334, 4.16667, 10.3333, 35),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(690, -18), Vector2(690, -17.975), Vector2(690, -200), Vector2(690, -173.845), Vector2(690, -170.82)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("GameTitle/NeverFear/ColorBurst26:scale")
+tracks/5/interp = 2
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(1.16667, 2.66667, 3.26666, 3.6, 3.83333, 4, 4.46667, 4.63336, 4.8, 5.13336, 5.3, 5.73337, 5.9, 6.20004, 6.36667, 6.70004, 6.86667, 7.30003, 7.46667, 7.83336, 8, 8.43336, 8.6, 8.93334, 9.38333, 9.80003, 9.98333, 10.4, 10.4833, 10.9, 11.0833, 11.5, 11.55, 11.9667, 12.05, 12.4667, 12.65, 13.0667, 13.1833, 13.6, 13.7833, 14.2, 14.4, 14.9833, 15.4, 15.5833, 16, 16.0833, 16.5, 16.6833, 17.1, 17.1834, 17.5667, 17.6834, 18.0667, 18.2834, 18.6667, 18.8167, 19.2, 19.4167, 19.8, 20, 20.35, 20.6333, 20.95, 21.3333, 21.45, 21.8333, 22.05, 22.4333, 22.5167, 22.9, 23.0167, 23.4, 24.8, 25.45, 25.8667, 26.3333, 26.8, 26.9833, 27.4, 27.6, 28.1833, 28.6, 28.7833, 29.2, 29.2833, 29.7, 29.8833, 30.3, 30.3834, 30.7667, 30.8834, 31.2667, 31.4834, 31.8667, 32.0167, 32.4, 32.6167, 33, 33.2, 33.55, 33.8333, 34.15, 34.5333, 34.65, 35.0333),
+"transitions": PackedFloat32Array(4.28709, 1, 1, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0.961, 0.261), Vector2(0.531, 0.191), Vector2(0.531, 0.191), Vector2(0.176, 0.242), Vector2(60, 30), Vector2(2.781, 0.547), Vector2(3.206, 0.631), Vector2(0.656, 0.58), Vector2(3.091, 0.609), Vector2(2.781, 0.547), Vector2(3.206, 0.631), Vector2(2.946, 0.58), Vector2(3.091, 0.609), Vector2(2.946, 0.58), Vector2(3.091, 0.609), Vector2(2.781, 0.547), Vector2(3.206, 0.631), Vector2(2.946, 0.58), Vector2(3.091, 0.609), Vector2(2.781, 0.547), Vector2(3.206, 0.631), Vector2(2.946, 0.58), Vector2(3.091, 0.609), Vector2(2.781, 0.547), Vector2(2.781, 0.547), Vector2(3.206, 0.631), Vector2(2.946, 0.58), Vector2(3.091, 0.609), Vector2(2.781, 0.547), Vector2(3.206, 0.631), Vector2(2.946, 0.58), Vector2(3.091, 0.609), Vector2(2.946, 0.58), Vector2(3.091, 0.609), Vector2(2.781, 0.547), Vector2(3.206, 0.631), Vector2(2.946, 0.58), Vector2(3.091, 0.609), Vector2(2.781, 0.547), Vector2(3.206, 0.631), Vector2(2.946, 0.58), Vector2(3.091, 0.609), Vector2(2.781, 0.547), Vector2(2.781, 0.547), Vector2(3.206, 0.631), Vector2(2.946, 0.58), Vector2(3.091, 0.609), Vector2(2.781, 0.547), Vector2(3.206, 0.631), Vector2(2.946, 0.58), Vector2(3.091, 0.609), Vector2(2.946, 0.58), Vector2(3.091, 0.609), Vector2(2.781, 0.547), Vector2(3.206, 0.631), Vector2(2.946, 0.58), Vector2(3.091, 0.609), Vector2(2.781, 0.547), Vector2(3.206, 0.631), Vector2(2.946, 0.58), Vector2(3.091, 0.609), Vector2(2.781, 0.547), Vector2(2.781, 0.547), Vector2(3.206, 0.631), Vector2(2.946, 0.58), Vector2(3.091, 0.609), Vector2(2.781, 0.547), Vector2(3.206, 0.631), Vector2(2.946, 0.58), Vector2(3.091, 0.609), Vector2(2.946, 0.58), Vector2(3.091, 0.609), Vector2(2.781, 0.547), Vector2(3.206, 0.631), Vector2(3.206, 0.631), Vector2(2.946, 0.58), Vector2(3.091, 0.609), Vector2(2.781, 0.547), Vector2(3.206, 0.631), Vector2(2.946, 0.58), Vector2(3.091, 0.609), Vector2(2.781, 0.547), Vector2(2.781, 0.547), Vector2(3.206, 0.631), Vector2(2.946, 0.58), Vector2(3.091, 0.609), Vector2(2.781, 0.547), Vector2(3.206, 0.631), Vector2(2.946, 0.58), Vector2(3.091, 0.609), Vector2(2.946, 0.58), Vector2(3.091, 0.609), Vector2(2.781, 0.547), Vector2(3.206, 0.631), Vector2(2.946, 0.58), Vector2(3.091, 0.609), Vector2(2.781, 0.547), Vector2(3.206, 0.631), Vector2(2.946, 0.58), Vector2(3.091, 0.609), Vector2(2.781, 0.547), Vector2(2.781, 0.547), Vector2(3.206, 0.631), Vector2(2.946, 0.58), Vector2(3.091, 0.609), Vector2(2.781, 0.547), Vector2(3.206, 0.631)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("GameTitle/NeverFear/Title:theme_override_colors/font_color")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(4.16667, 5.03333, 5.33333),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [Vector2(690, -18), Vector2(690, -17.975), Vector2(690, -276)]
+"values": [Color(0, 0, 0, 0.194), Color(0, 0, 0, 0.611), Color(0, 0, 0, 1)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("GameTitle/NeverFear/Title:theme_override_colors/font_shadow_color")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(4.16667, 5.03333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 0.597, 0.566, 0.26), Color(0.999999, 0.438738, 0.414502, 0.557)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("GameTitle/NeverFear/Title:theme_override_colors/font_outline_color")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(4.16667, 5.03333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0.815, 0.052, 0.03, 0.433), Color(0.815, 0.052, 0.03, 1)]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("GameTitle/NeverFear/Title:theme_override_constants/shadow_outline_size")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(4.2, 5.03333, 5.33333, 6.83333, 8, 9.73333, 10.9, 12.1, 13.2667, 14.7333, 15.9, 17.6333, 18.8, 20, 21.1667, 22.3333, 23.5, 25.2333, 26.4, 27.6, 28.7667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [10, 80, 28, 0, 30, 0, 30, 0, 30, 0, 30, 0, 30, 0, 30, 0, 30, 0, 30, 0, 30]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("GameTitle/NeverFear/Title:theme_override_constants/outline_size")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(6.83333, 8, 9.73333, 10.9, 12.1, 13.2667, 14.7333, 15.9, 17.6333, 18.8, 20, 21.1667, 22.3333, 23.5, 25.2333, 26.4, 27.6, 28.7667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [8, 15, 8, 15, 8, 15, 8, 15, 8, 15, 8, 15, 8, 15, 8, 15, 8, 15]
 }
 
 [sub_resource type="Animation" id="Animation_mpyw3"]
@@ -1011,26 +1084,86 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("GameTitle/NeverFear/ColorBurst25:scale")
+tracks/3/path = NodePath("GameTitle/NeverFear:position")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(2.7207, 0.402344)]
+"values": [Vector2(690, -18)]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("GameTitle/NeverFear:position")
+tracks/4/path = NodePath("GameTitle/NeverFear/ColorBurst26:scale")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(690, -18)]
+"values": [Vector2(3.206, 0.631)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("GameTitle/NeverFear/Title:theme_override_colors/font_color")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 0.194)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("GameTitle/NeverFear/Title:theme_override_colors/font_shadow_color")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 0.597, 0.566, 0.26)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("GameTitle/NeverFear/Title:theme_override_colors/font_outline_color")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.815, 0.052, 0.03, 0.433)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("GameTitle/NeverFear/Title:theme_override_constants/shadow_outline_size")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [10]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("GameTitle/NeverFear/Title:theme_override_constants/outline_size")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [8]
 }
 
 [sub_resource type="Animation" id="Animation_tkdve"]
@@ -1445,7 +1578,9 @@ scale = Vector2(-0.045, -0.045)
 [node name="Lightrays8" type="Sprite2D" parent="GameTitle/NeverFear"]
 self_modulate = Color(1, 1, 1, 0)
 z_index = -2
-position = Vector2(25, 265)
+position = Vector2(36, 265)
+rotation = -0.00760287
+scale = Vector2(1.04297, 1)
 texture = ExtResource("93_1ejjv")
 
 [node name="Flare3" type="Sprite2D" parent="GameTitle/NeverFear"]
@@ -1456,10 +1591,17 @@ scale = Vector2(4.085, 2.375)
 texture = ExtResource("94_xosn5")
 
 [node name="ColorBurst25" type="Sprite2D" parent="GameTitle/NeverFear"]
-self_modulate = Color(0.959039, 0, 0.254834, 1)
+self_modulate = Color(0.586, 0, 0.141, 0.865)
 z_index = -1
 position = Vector2(5.99921, 0.999695)
-scale = Vector2(2.7207, 0.402344)
+scale = Vector2(0.56349, 0.191)
+texture = ExtResource("91_puagk")
+
+[node name="ColorBurst26" type="Sprite2D" parent="GameTitle/NeverFear"]
+self_modulate = Color(2.703, 1.622, 0, 0.649)
+z_index = -2
+position = Vector2(5.99921, 0.999695)
+scale = Vector2(3.206, 0.631)
 texture = ExtResource("91_puagk")
 
 [node name="Title" type="Label" parent="GameTitle/NeverFear"]
@@ -1468,14 +1610,14 @@ offset_top = -79.0003
 offset_right = 258.499
 offset_bottom = 18.9997
 scale = Vector2(1.34851, 1.61497)
-theme_override_colors/font_color = Color(0.00542385, 0.265459, 0.712974, 0.957)
-theme_override_colors/font_shadow_color = Color(0, 0.471, 0.462, 0.984)
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/line_spacing = 9
-theme_override_constants/shadow_offset_x = -5
-theme_override_constants/shadow_offset_y = 2
-theme_override_constants/outline_size = 10
-theme_override_constants/shadow_outline_size = 8
+theme_override_colors/font_color = Color(0, 0, 0, 0.194)
+theme_override_colors/font_shadow_color = Color(1, 0.597, 0.566, 0.26)
+theme_override_colors/font_outline_color = Color(0.815, 0.052, 0.03, 0.433)
+theme_override_constants/line_spacing = 20
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_offset_y = 0
+theme_override_constants/outline_size = 8
+theme_override_constants/shadow_outline_size = 10
 theme_override_fonts/font = ExtResource("82_gf70t")
 theme_override_font_sizes/font_size = 97
 text = "NEVERFEAR"
