@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://b0kr4yg6fgfci"]
+[gd_scene load_steps=18 format=3 uid="uid://b0kr4yg6fgfci"]
 
 [ext_resource type="Script" path="res://Scripts/PauseMenu.gd" id="1_gfvbg"]
 [ext_resource type="Texture2D" uid="uid://dhit27os2eis3" path="res://assets/Background/FinalMenu1.svg" id="1_nv4xp"]
@@ -99,6 +99,57 @@ size = Vector2(500, 300)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ctl43"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_os3di"]
+radius = 8.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xl13v"]
+content_margin_left = 2.0
+content_margin_top = 2.0
+content_margin_right = 2.0
+content_margin_bottom = 2.0
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.00566115, 0.00566115, 0.00566114, 1)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+expand_margin_left = 2.0
+expand_margin_top = 2.0
+expand_margin_right = 2.0
+expand_margin_bottom = 2.0
+shadow_color = Color(0.178, 0.573, 0.302, 0.514)
+shadow_size = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hccw8"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.707, 0.652, 0.654, 0.86)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+expand_margin_left = 2.0
+expand_margin_top = 2.0
+expand_margin_right = 2.0
+expand_margin_bottom = 2.0
+shadow_color = Color(1.622, 0.462, 0.462, 0.254)
+shadow_size = 5
+
+[sub_resource type="InputEventScreenTouch" id="InputEventScreenTouch_2ch10"]
+index = 1
+pressed = true
+
+[sub_resource type="Shortcut" id="Shortcut_b0fgo"]
+events = [SubResource("InputEventScreenTouch_2ch10")]
 
 [node name="PauseMenu" type="Control"]
 process_mode = 3
@@ -243,7 +294,7 @@ shape = SubResource("RectangleShape2D_ctl43")
 [node name="Credits" type="Sprite2D" parent="Panel"]
 self_modulate = Color(0.986752, 0.986752, 0.986752, 1)
 show_behind_parent = true
-position = Vector2(147, 476)
+position = Vector2(151, 587)
 scale = Vector2(2.285, 2.17917)
 texture = ExtResource("5_bjb6w")
 
@@ -277,6 +328,62 @@ text = "Credits"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="SFX" type="CheckButton" parent="Panel"]
+layout_mode = 0
+anchor_left = 0.658065
+anchor_top = 0.758843
+anchor_right = 1.00084
+anchor_bottom = 0.816407
+offset_left = -1.52588e-05
+offset_right = -14.26
+offset_bottom = -4.80502
+scale = Vector2(1.155, 1.155)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 3
+theme_override_constants/h_separation = 4
+theme_override_fonts/font = ExtResource("2_16qji")
+theme_override_font_sizes/font_size = 26
+theme_override_styles/pressed = SubResource("StyleBoxFlat_xl13v")
+theme_override_styles/normal = SubResource("StyleBoxFlat_hccw8")
+theme_override_constants/check_v_offset = 0
+button_pressed = true
+action_mode = 0
+shortcut = SubResource("Shortcut_b0fgo")
+text = "SFX
+"
+expand_icon = true
+metadata/_edit_use_anchors_ = true
+
+[node name="Music" type="CheckButton" parent="Panel"]
+layout_mode = 0
+anchor_left = -0.148387
+anchor_top = 0.762058
+anchor_right = 0.339694
+anchor_bottom = 0.819623
+offset_top = -3.05176e-05
+offset_right = -20.305
+offset_bottom = -4.80499
+scale = Vector2(1.155, 1.155)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0.99997, 0.9942, 0.993203, 1)
+theme_override_constants/outline_size = 3
+theme_override_constants/h_separation = 4
+theme_override_fonts/font = ExtResource("2_16qji")
+theme_override_font_sizes/font_size = 26
+theme_override_styles/pressed = SubResource("StyleBoxFlat_xl13v")
+theme_override_styles/normal = SubResource("StyleBoxFlat_hccw8")
+theme_override_constants/check_v_offset = 0
+button_pressed = true
+action_mode = 0
+shortcut = SubResource("Shortcut_b0fgo")
+text = "Music
+"
+expand_icon = true
+metadata/_edit_use_anchors_ = true
+
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 unique_name_in_owner = true
 stream = ExtResource("4_84h4p")
@@ -287,3 +394,5 @@ pitch_scale = 1.4
 [connection signal="pressed" from="Panel/Restartbutton/RestartTouch" to="." method="_on_restart_pressed"]
 [connection signal="pressed" from="Panel/Homebutton/HomeTouch" to="." method="_on_home_pressed"]
 [connection signal="pressed" from="Panel/Credits/Credits" to="." method="_on_credits_pressed"]
+[connection signal="toggled" from="Panel/SFX" to="." method="_on_sfx_toggled"]
+[connection signal="toggled" from="Panel/Music" to="." method="_on_music_toggled"]

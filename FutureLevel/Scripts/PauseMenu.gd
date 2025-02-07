@@ -5,6 +5,8 @@ extends Control
 @onready var home: Label = $Panel/Homebutton/Home
 @onready var restart: Label = $Panel/Restartbutton/Restart
 @onready var credits: Sprite2D = $Panel/Credits
+@onready var sfx: CheckButton = $Panel/SFX
+@onready var music: CheckButton = $Panel/Music
 
 func _ready() -> void:
 	get_tree().paused = true
@@ -44,3 +46,19 @@ func _on_credits_pressed() -> void:
 	await get_tree().create_timer(0.2).timeout  # Wait for 0.1 seconds
 	credits.modulate = Color(1, 1, 1, 1)  # Reset to normal
 	get_tree().change_scene_to_file("res://Scenes/Credits.tscn")
+
+func _on_sfx_toggled(toggled_on: bool) -> void:
+	if sfx.toggled:
+		sfx.toggled_on = true
+		AudioServer.set_bus_mute(1, false)
+	else:
+		sfx.toggled_on = false
+		AudioServer.set_bus_mute(1, true)
+
+func _on_music_toggled(toggled_on: bool) -> void:
+	if music.toggled:
+		music.toggled_on = true
+		AudioServer.set_bus_mute(2, false)
+	else:
+		music.toggled_on = false
+		AudioServer.set_bus_mute(2, true)

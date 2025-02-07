@@ -57,12 +57,13 @@ func _on_text_submitted(new_text: String) -> void:
 	_on_close_pressed()
 
 func _on_close_pressed() -> void:
+	DisplayServer.virtual_keyboard_hide()
 	name_input.virtual_keyboard_enabled = false
-	popup_panel.popup_hide
+	popup_panel.visible = false
 
 func _on_fill_text_pressed() -> void:
-	name_input.grab_focus()
-	
+	name_input.grab_focus() 
+
 func _input(event):
 	if event is InputEventKey and event.pressed:
 		if event.keycode == KEY_ENTER:
@@ -70,4 +71,4 @@ func _input(event):
 		elif event.keycode == KEY_ESCAPE:  # Android back button
 			DisplayServer.virtual_keyboard_hide()
 			name_input.virtual_keyboard_enabled = false
-			popup_panel.hide()
+			popup_panel.visible = false

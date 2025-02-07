@@ -1,4 +1,4 @@
-[gd_resource type="AudioBusLayout" load_steps=11 format=3 uid="uid://ch4nkhhef6nap"]
+[gd_resource type="AudioBusLayout" load_steps=13 format=3 uid="uid://ch4nkhhef6nap"]
 
 [sub_resource type="AudioEffectDelay" id="AudioEffectDelay_pprf0"]
 resource_name = "Delay"
@@ -42,6 +42,12 @@ soft_clip_ratio = 11.3
 [sub_resource type="AudioEffectHardLimiter" id="AudioEffectHardLimiter_axf5s"]
 resource_name = "HardLimiter"
 
+[sub_resource type="AudioEffectStereoEnhance" id="AudioEffectStereoEnhance_312go"]
+resource_name = "StereoEnhance"
+
+[sub_resource type="AudioEffectReverb" id="AudioEffectReverb_t5grl"]
+resource_name = "Reverb"
+
 [resource]
 bus/0/volume_db = -8.00903
 bus/0/effect/0/effect = SubResource("AudioEffectDelay_pprf0")
@@ -70,3 +76,7 @@ bus/1/effect/2/effect = SubResource("AudioEffectLimiter_npsd0")
 bus/1/effect/2/enabled = false
 bus/1/effect/3/effect = SubResource("AudioEffectHardLimiter_axf5s")
 bus/1/effect/3/enabled = false
+bus/1/effect/4/effect = SubResource("AudioEffectStereoEnhance_312go")
+bus/1/effect/4/enabled = true
+bus/1/effect/5/effect = SubResource("AudioEffectReverb_t5grl")
+bus/1/effect/5/enabled = true
