@@ -46,15 +46,13 @@ scale = Vector2(0.137695, 0.210503)
 texture = ExtResource("1_8bp2i")
 
 [node name="Label" type="Label" parent="CanvasLayer"]
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -489.0
-offset_top = -543.0
-offset_right = 903.0
-offset_bottom = -130.0
+anchors_preset = -1
+anchor_left = 0.0472222
+anchor_top = 0.497222
+anchor_right = 0.960091
+anchor_bottom = 0.83331
+offset_right = 406.102
+offset_bottom = 50.025
 grow_horizontal = 2
 grow_vertical = 0
 scale = Vector2(0.70826, 0.878874)
@@ -62,13 +60,13 @@ size_flags_vertical = 1
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_shadow_color = Color(0.228325, 0.200515, 0, 0.378)
 theme_override_colors/font_outline_color = Color(0.877, 0.061, 0.036, 0.914)
-theme_override_constants/line_spacing = 1
+theme_override_constants/line_spacing = 5
 theme_override_constants/shadow_offset_x = 0
 theme_override_constants/shadow_offset_y = 0
 theme_override_constants/outline_size = 5
 theme_override_constants/shadow_outline_size = 18
 theme_override_fonts/font = ExtResource("4_wqqy5")
-theme_override_font_sizes/font_size = 37
+theme_override_font_sizes/font_size = 40
 theme_override_styles/normal = SubResource("StyleBoxFlat_fcx53")
 text = "APP DEVELOPED BY
 OPEN-SOURCE CODING COMMUNITY OF CENTRAL TEXAS
@@ -81,6 +79,7 @@ GITHUB: Coding-Community-of-Central-Texas
 "
 horizontal_alignment = 1
 vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
 
 [node name="ColorRect" type="ColorRect" parent="."]
 anchors_preset = 15

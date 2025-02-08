@@ -6,7 +6,7 @@
 [ext_resource type="AudioStream" uid="uid://dd18n226docax" path="res://assets/FutrueSFX/DavidKBD - Eternity Pack - 06 - God of darkness - loop.ogg" id="4_3m1f7"]
 [ext_resource type="AudioStream" uid="uid://bd5t17ta1iu13" path="res://assets/FutrueSFX/DavidKBD - Pink Bloom Pack - 01 - Pink Bloom.ogg" id="5_f3ilo"]
 [ext_resource type="AudioStream" uid="uid://c6tl0bmpj4kth" path="res://assets/FutrueSFX/DavidKBD - Pink Bloom Pack - 02 - Portal to Underworld.ogg" id="6_4nfip"]
-[ext_resource type="AudioStream" uid="uid://ddkgskoqvher2" path="res://assets/FutrueSFX/DavidKBD - Pink Bloom Pack - 09 - Lightyear City.ogg" id="7_u5oi0"]
+[ext_resource type="AudioStream" uid="uid://3ilnqa2g2ei0" path="res://assets/FutrueSFX/cell-theme-made-with-Voicemod.mp3" id="8_05nta"]
 [ext_resource type="AudioStream" uid="uid://c3ppdmdonxpdj" path="res://assets/FutrueSFX/dub ssteppy short.wav" id="8_t0xe0"]
 
 [sub_resource type="AudioStreamPlaylist" id="AudioStreamPlaylist_ek2e1"]
@@ -18,8 +18,8 @@ stream_1 = ExtResource("3_m3ghm")
 stream_2 = ExtResource("4_3m1f7")
 stream_3 = ExtResource("5_f3ilo")
 stream_4 = ExtResource("6_4nfip")
-stream_5 = ExtResource("7_u5oi0")
-stream_6 = ExtResource("8_t0xe0")
+stream_5 = ExtResource("8_t0xe0")
+stream_6 = ExtResource("8_05nta")
 
 [node name="GameManager" type="Node"]
 script = ExtResource("1_t61qt")

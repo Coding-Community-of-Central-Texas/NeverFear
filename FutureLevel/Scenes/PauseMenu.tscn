@@ -329,6 +329,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="SFX" type="CheckButton" parent="Panel"]
+visible = false
 layout_mode = 0
 anchor_left = 0.658065
 anchor_top = 0.758843
@@ -357,6 +358,7 @@ expand_icon = true
 metadata/_edit_use_anchors_ = true
 
 [node name="Music" type="CheckButton" parent="Panel"]
+visible = false
 layout_mode = 0
 anchor_left = -0.148387
 anchor_top = 0.762058

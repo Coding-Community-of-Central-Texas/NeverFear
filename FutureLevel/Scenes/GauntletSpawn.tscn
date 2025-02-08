@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://cule8xvwt1ral"]
 
-[ext_resource type="Script" path="res://Scenes/GauntletSpawner.gd" id="1_lofiq"]
+[ext_resource type="Script" path="res://Scripts/GauntletSpawner.gd" id="1_lofiq"]
 
 [node name="GauntletSpawn" type="Marker2D"]
 position = Vector2(200, -53)
