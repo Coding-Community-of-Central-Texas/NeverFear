@@ -12,7 +12,7 @@ var knockback_velocity = Vector2.ZERO  # Stores knockback velocity
 @onready var collision_shape_2d: CollisionShape2D = $CollisionShape2D
 @onready var damage_numbers_origin: Node2D = $DamageNumbersOrigin
 
-var max_distance_from_player = 1000.0
+var max_distance_from_player = 1100.0
 
 func _ready():
 	%Byte.play_walk()

@@ -460,7 +460,7 @@ debug_color = Color(0.320333, 0.62, 0, 0)
 
 [node name="Gun" parent="." instance=ExtResource("7_3segn")]
 show_behind_parent = true
-position = Vector2(-6.66667, 1.33333)
+position = Vector2(-4, 3)
 rate_of_fire = 0.2
 
 [node name="HealthBar" parent="." instance=ExtResource("6_pjeyg")]
@@ -470,9 +470,9 @@ offset_left = -21.0
 offset_top = -17.0
 offset_right = 11.0
 offset_bottom = -14.0
-max_value = 200.0
-step = 5.0
-value = 200.0
+max_value = 500.0
+step = 0.5
+value = 500.0
 rounded = true
 metadata/_edit_use_anchors_ = true
 
@@ -484,7 +484,7 @@ texture = ExtResource("9_bjhe2")
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(1.15, 1.15)
 script = ExtResource("10_opkhv")
-portrait_zoom = Vector2(1.15, 1.15)
+portrait_zoom = Vector2(1.15, 1.2)
 
 [node name="HurtBox" type="Area2D" parent="."]
 unique_name_in_owner = true
@@ -510,46 +510,23 @@ wait_time = 200.964
 autostart = true
 
 [node name="GauntletSpawn" parent="." instance=ExtResource("11_dc7s1")]
-position = Vector2(374.5, 1.5)
-
-[node name="GauntletSpawn" parent="GauntletSpawn" instance=ExtResource("11_dc7s1")]
-position = Vector2(40, -87.5)
-
-[node name="GauntletSpawn2" parent="GauntletSpawn" instance=ExtResource("11_dc7s1")]
-position = Vector2(44, -197)
-
-[node name="GauntletSpawn4" parent="." instance=ExtResource("11_dc7s1")]
-position = Vector2(-62.5, 367.5)
-rotation = -1.4829
-
-[node name="GauntletSpawn4" parent="GauntletSpawn4" instance=ExtResource("11_dc7s1")]
-position = Vector2(43.6853, 245.111)
-rotation = -1.4829
-
-[node name="GauntletSpawn5" parent="GauntletSpawn4" instance=ExtResource("11_dc7s1")]
-position = Vector2(124.018, 399.154)
-rotation = -2.9658
-
-[node name="GauntletSpawn3" parent="." instance=ExtResource("11_dc7s1")]
-position = Vector2(-318, 210.5)
-
-[node name="GauntletSpawn3" parent="GauntletSpawn3" instance=ExtResource("11_dc7s1")]
-position = Vector2(-107, -36.5)
-
-[node name="GauntletSpawn4" parent="GauntletSpawn3" instance=ExtResource("11_dc7s1")]
-position = Vector2(-102, -172)
-
-[node name="GauntletSpawn2" parent="." instance=ExtResource("11_dc7s1")]
-position = Vector2(1, -397)
-rotation = -1.47059
+position = Vector2(81.5, 0.5)
 
 [node name="GauntletBigSpawn" parent="." instance=ExtResource("12_kcvup")]
-position = Vector2(314.5, -333.5)
-rotation = -0.82512
+position = Vector2(0.500015, -391.5)
+rotation = -1.63224
 
 [node name="GauntletBigSpawn3" parent="." instance=ExtResource("12_kcvup")]
-position = Vector2(-368.5, -262)
-rotation = 0.591119
+position = Vector2(61, 354)
+rotation = 1.28784
+
+[node name="GauntletBigSpawn4" parent="." instance=ExtResource("12_kcvup")]
+position = Vector2(-405, -198)
+rotation = -0.0085988
+
+[node name="GauntletBigSpawn5" parent="." instance=ExtResource("12_kcvup")]
+position = Vector2(403, -39)
+rotation = -0.0085988
 
 [node name="Rank1" type="Sprite2D" parent="."]
 visible = false
@@ -603,15 +580,10 @@ sprite_frames = SubResource("SpriteFrames_l1v2x")
 autoplay = "default"
 frame_progress = 0.72374
 
-[node name="GauntletSpawn5" parent="." instance=ExtResource("11_dc7s1")]
-position = Vector2(102.5, -362.5)
-rotation = -1.47059
-
-[node name="GauntletSpawn6" parent="." instance=ExtResource("11_dc7s1")]
-position = Vector2(-188.5, -347.5)
-rotation = -1.47059
-
 [connection signal="rank_changed" from="." to="GauntletSpawn" method="_on_survivor_rank_changed"]
 [connection signal="rank_changed" from="." to="GauntletBigSpawn" method="_on_survivor_rank_changed"]
+[connection signal="rank_changed" from="." to="GauntletBigSpawn3" method="_on_survivor_rank_changed"]
+[connection signal="rank_changed" from="." to="GauntletBigSpawn4" method="_on_survivor_rank_changed"]
+[connection signal="rank_changed" from="." to="GauntletBigSpawn5" method="_on_survivor_rank_changed"]
 [connection signal="timeout" from="Timer2" to="." method="_on_timer_2_timeout"]
 [connection signal="timeout" from="SpawnTimer" to="." method="_on_spawn_timer_timeout"]

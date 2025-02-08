@@ -2,7 +2,7 @@ extends Marker2D
 
 @onready var timer: Timer = $Timer
 @onready var marker_1: Marker2D = $Marker1
-@export var spawn_intervals: Array = [2.0, 1.5, 1.0, 0.8, 0.5]
+@export var spawn_intervals: Array = [2.0, 1.0, 0.9, 0.7, 0.2]
 
 func _on_timer_timeout() -> void:
 	spawn_wave()

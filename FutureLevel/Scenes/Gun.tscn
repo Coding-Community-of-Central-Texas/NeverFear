@@ -88,20 +88,20 @@ script = ExtResource("1_5s5d3")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 unique_name_in_owner = true
-position = Vector2(0, 1)
 shape = SubResource("CircleShape2D_tnu2p")
 debug_color = Color(0, 0.595, 0.7, 0)
 
 [node name="gunpivot" type="Marker2D" parent="."]
 
 [node name="Rifle" type="Sprite2D" parent="gunpivot"]
-position = Vector2(7, 1)
-scale = Vector2(0.810345, 0.681818)
+self_modulate = Color(0.720467, 0.720468, 0.720467, 1)
+position = Vector2(6.5, 2)
+scale = Vector2(0.931035, 0.727273)
 texture = ExtResource("1_i4qsf")
 
 [node name="shootingpoint" type="Marker2D" parent="gunpivot/Rifle"]
 unique_name_in_owner = true
-position = Vector2(11.1064, -2.93333)
+position = Vector2(11.9118, -2.93333)
 
 [node name="Timer" type="Timer" parent="."]
 process_callback = 0
@@ -116,7 +116,7 @@ playback_type = 1
 [node name="AnimatedSprite" type="AnimatedSprite2D" parent="."]
 unique_name_in_owner = true
 z_index = 1
-position = Vector2(44.9636, -0.536489)
+position = Vector2(49, -5)
 rotation = 0.764125
 scale = Vector2(0.843447, 0.778987)
 sprite_frames = SubResource("SpriteFrames_jee0v")
@@ -128,7 +128,7 @@ flip_v = true
 [node name="Muzzleflash" type="CPUParticles2D" parent="."]
 unique_name_in_owner = true
 show_behind_parent = true
-position = Vector2(27, -1)
+position = Vector2(28, 0)
 rotation = 1.5708
 scale = Vector2(0.3, 0.3)
 emitting = false

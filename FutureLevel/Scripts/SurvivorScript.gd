@@ -4,11 +4,11 @@ signal rank_changed(rank_index: int)
 signal playerdeath
 
 # Player properties
-var health: float = 150.0
-const MAX_HEALTH = 200
-const VELOCITY = 500
+var health: float = 500.0
+const MAX_HEALTH = 500
+const VELOCITY = 1000
 @export var SPEED: float = 500.0
-@export var acceleration: float = 2000
+@export var acceleration: float = 2200
 @export var deceleration: float = 4000
 @onready var shadow: Sprite2D = $AnimatedSprite2D/Shadow
 @onready var rank_1: Sprite2D = $Rank1
@@ -27,7 +27,7 @@ const VELOCITY = 500
 
 var is_dead: bool = false
 var current_kills: int = 0
-@export var rank_thresholds: Array = [50, 300, 400, 600, 700]  # Thresholds for rank-ups
+@export var rank_thresholds: Array = [50, 300, 400, 500, 600]  # Thresholds for rank-ups
 @export var fire_rates: Array = [0.20, 0.15, 0.10, 0.08, 0.05]  # Rate of fire per rank
 
 func _ready() -> void:
@@ -42,9 +42,9 @@ func take_damage(amount: int):
 	health_bar.value = health
 	await get_tree().create_timer(0.2).timeout
 	health_bar.indeterminate = true
-	animated_sprite_2d.self_modulate = Color(20, 0, 0)
+	animated_sprite_2d.self_modulate = Color(10, 0, 0)
 	await get_tree().create_timer(0.2).timeout
-	animated_sprite_2d.self_modulate = Color(0, 0, 0)
+	animated_sprite_2d.self_modulate = Color(1, 1, 1)
 	health_bar.indeterminate = false 
 	if health <= 0:
 		_die()
@@ -118,7 +118,7 @@ func _physics_process(delta: float) -> void:
 	handle_collisions(delta)
 
 func handle_collisions(delta: float):
-	const DAMAGE_RATE = 5.0
+	const DAMAGE_RATE = 10.0
 	var overlapping_mobs = %HurtBox.get_overlapping_bodies()
 	health_bar.value = health
 	
@@ -143,10 +143,12 @@ func handle_player_animation() -> void:
 func flip_sprite() -> void:
 	if velocity.x < -3:
 		animated_sprite_2d.flip_h = true
+		gun.position = Vector2(4, 3)
 		shadow.position = Vector2(5, 34)
 		%SuperSayain.position = Vector2(19.6, 36.8)
 		%SuperSayain4.position = Vector2(19.2, 33.7)
 	elif velocity.x > 3:
+		gun.position = Vector2(-4, 3)
 		animated_sprite_2d.flip_h = false
 		shadow.position = Vector2(-9.5, 34)
 		%SuperSayain.position = Vector2(-5.0, 32.6)

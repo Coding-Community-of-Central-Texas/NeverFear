@@ -26,7 +26,6 @@ const API_URL: String = "https://osccct.org/api/endpoint.php"
 func _ready():
 	load_data()
 
-
 func _on_kill(amount: int) -> void:
 	total_kills += amount
 	current_kills += amount  # Increment current scene kills

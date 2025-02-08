@@ -346,7 +346,7 @@ _data = {
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kbkft"]
-size = Vector2(70.8955, 44.6473)
+size = Vector2(70.8955, 48.6133)
 
 [node name="Hammer" type="Node2D"]
 scale = Vector2(1.34, 1.765)
@@ -376,7 +376,7 @@ libraries = {
 [node name="Area2D" type="Area2D" parent="."]
 
 [node name="Hurt" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(0, -30.2557)
+position = Vector2(0, -28.2727)
 shape = SubResource("RectangleShape2D_kbkft")
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]

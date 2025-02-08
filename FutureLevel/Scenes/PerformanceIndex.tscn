@@ -992,6 +992,6 @@ shape = SubResource("CircleShape2D_s6mh0")
 [connection signal="request_completed" from="HTTPRequest" to="." method="_on_http_request_request_completed"]
 [connection signal="pressed" from="MenuLayer/PopupPanel/SendName/UploadButton" to="MenuLayer/PopupPanel/SendName" method="_on_upload_button_pressed"]
 [connection signal="pressed" from="MenuLayer/PopupPanel/SendName/Randimize" to="MenuLayer/PopupPanel/SendName" method="_on_randimize_pressed"]
-[connection signal="pressed" from="MenuLayer/PopupPanel/SendName/FillText" to="MenuLayer/PopupPanel/SendName" method="_on_fill_text_pressed"]
 [connection signal="pressed" from="MenuLayer/PopupPanel/SendName/FillText" to="MenuLayer/PopupPanel/SendName" method="_on_text_pressed"]
+[connection signal="pressed" from="MenuLayer/PopupPanel/SendName/FillText" to="MenuLayer/PopupPanel/SendName" method="_on_fill_text_pressed"]
 [connection signal="pressed" from="MenuLayer/PopupPanel/Close" to="MenuLayer/PopupPanel/SendName" method="_on_close_pressed"]
