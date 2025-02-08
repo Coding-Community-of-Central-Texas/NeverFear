@@ -9,10 +9,6 @@ var checkpoint_position: Vector2 = Vector2(353.993, -306.008)
 var hub_world_position: Vector2 = Vector2(144.501, -387.5)
 var returning_from_game: bool = false  # Flag to track return state
 
-func _ready() -> void:
-	enter_hub_world()
-	reset_game_state()
-
 # Call this function when entering the Hub World
 func enter_hub_world():
 	returning_from_game = true

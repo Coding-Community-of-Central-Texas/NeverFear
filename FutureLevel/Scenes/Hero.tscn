@@ -345,6 +345,18 @@ tracks/2/keys = {
 "update": 0,
 "values": [Vector2(0, 0)]
 }
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../Gun:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(2, -4.66667)]
+}
 
 [sub_resource type="Animation" id="Animation_ndcye"]
 resource_name = "Runleft"
@@ -437,6 +449,18 @@ tracks/2/keys = {
 "update": 0,
 "values": [Vector2(0, 0), Vector2(0, 0)]
 }
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../Gun:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [Vector2(2, -4.66667)]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_vhrnj"]
 _data = {
@@ -474,9 +498,6 @@ animations = [{
 "texture": SubResource("AtlasTexture_bwgh6")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_a2p8e")
-}, {
-"duration": 1.0,
 "texture": SubResource("AtlasTexture_md3it")
 }, {
 "duration": 1.0,
@@ -505,9 +526,7 @@ script = ExtResource("1_43ipw")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(-14.6667, -29.3333)
 sprite_frames = SubResource("SpriteFrames_100ny")
-animation = &"gunrun"
-frame = 4
-frame_progress = 1.0
+animation = &"gunidle"
 centered = false
 
 [node name="WalknJumpR" type="Marker2D" parent="AnimatedSprite2D"]
@@ -581,7 +600,7 @@ position = Vector2(17.3334, 22)
 scale = Vector2(0.854257, 0.72)
 sprite_frames = SubResource("SpriteFrames_wb5xw")
 autoplay = "default"
-frame_progress = 0.1504
+frame_progress = 0.727503
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 unique_name_in_owner = true
@@ -592,20 +611,21 @@ debug_color = Color(0, 0.6, 0.701961, 0)
 [node name="Camera" type="Camera2D" parent="."]
 unique_name_in_owner = true
 zoom = Vector2(1.15, 1.81)
-limit_bottom = 669
+limit_bottom = 550
 limit_smoothed = true
 position_smoothing_enabled = true
-position_smoothing_speed = 25.0
+position_smoothing_speed = 20.0
 script = ExtResource("12_ofnp4")
 
 [node name="Gun" parent="." instance=ExtResource("10_0uu0a")]
 show_behind_parent = true
-position = Vector2(8, -1)
+position = Vector2(2, -4.66667)
 
 [node name="Gun2" parent="." instance=ExtResource("10_0uu0a")]
 unique_name_in_owner = true
 visible = false
-position = Vector2(-0.666667, 3.33333)
+z_index = -1
+position = Vector2(4, -3.33333)
 collision_mask = 0
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
@@ -620,6 +640,7 @@ pitch_scale = 2.15
 attenuation = 2.46229
 
 [node name="Timer" type="Timer" parent="."]
+process_callback = 0
 wait_time = 0.898
 one_shot = true
 
