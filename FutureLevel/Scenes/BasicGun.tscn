@@ -16,6 +16,7 @@ position = Vector2(0, 1)
 shape = SubResource("CircleShape2D_wrg8w")
 
 [node name="Timer" type="Timer" parent="."]
+process_callback = 0
 wait_time = 0.42
 
 [node name="GunPiviot" type="Marker2D" parent="."]

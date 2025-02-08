@@ -18,6 +18,8 @@ shape = SubResource("CircleShape2D_wrg8w")
 debug_color = Color(0, 0.595, 0.7, 0)
 
 [node name="Timer" type="Timer" parent="."]
+process_callback = 0
+wait_time = 0.5
 
 [node name="GunPiviot" type="Marker2D" parent="."]
 

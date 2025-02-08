@@ -50,7 +50,7 @@ func take_damage(amount: int):
 	await get_tree().create_timer(0.2).timeout  # Wait for 0.1 seconds
 	
 	# Apply knockback
-	var knockback_force = Vector2(-120, -120)  
+	var knockback_force = Vector2(-180, -180)  
 	velocity += knockback_force
 	
 	self.modulate = Color(1, 1, 1)  # Reset to normal
@@ -71,7 +71,6 @@ func _die():
 		Engine.time_scale = 0.6
 		if not audio_stream_player_2d_2.is_playing():
 			audio_stream_player_2d_2.play()
-
 
 func _physics_process(delta: float) -> void:
 	if is_dead:

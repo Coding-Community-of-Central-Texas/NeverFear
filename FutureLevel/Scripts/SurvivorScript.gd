@@ -42,9 +42,9 @@ func take_damage(amount: int):
 	health_bar.value = health
 	await get_tree().create_timer(0.2).timeout
 	health_bar.indeterminate = true
-	animated_sprite_2d.self_modulate = Color(20, 0, 0)
+	animated_sprite_2d.self_modulate = Color(10, 0, 0)
 	await get_tree().create_timer(0.2).timeout
-	animated_sprite_2d.self_modulate = Color(0, 0, 0)
+	animated_sprite_2d.self_modulate = Color(1, 1, 1)
 	health_bar.indeterminate = false 
 	if health <= 0:
 		_die()

@@ -1651,7 +1651,7 @@ position = Vector2(517, 932)
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 position = Vector2(103.501, -78.5)
 stream = ExtResource("105_r350c")
-volume_db = 5.332
+volume_db = 0.517
 autoplay = true
 max_distance = 6710.0
 
