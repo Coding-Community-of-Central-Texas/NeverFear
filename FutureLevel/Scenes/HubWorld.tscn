@@ -1335,9 +1335,9 @@ shape = SubResource("RectangleShape2D_s5nso")
 visible = false
 self_modulate = Color(0.770684, 0.797137, 0.539711, 1)
 z_index = -1
-position = Vector2(19.501, 2.49996)
+position = Vector2(0.143099, 2.40852)
 rotation = 1.57552
-scale = Vector2(0.423745, 0.389427)
+scale = Vector2(0.423745, 0.465045)
 texture = ExtResource("93_1ejjv")
 
 [node name="Gauntlet" type="Label" parent="."]

@@ -13,7 +13,7 @@ var knockback_velocity = Vector2.ZERO  # Stores knockback velocity
 var move_speed = 45.0  # Movement speed
 var is_pursuing = false  # Whether the enemy is pursuing the player
 var stop_distance = 200.0
-var max_distance_from_player = 1000.0
+var max_distance_from_player = 1200.0
 
 func _ready():
 	%Robbie.play_walk()

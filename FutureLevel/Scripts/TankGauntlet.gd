@@ -14,7 +14,7 @@ var knockback_velocity = Vector2.ZERO  # Stores knockback velocity
 var move_speed = 90.0  # Movement speed
 var is_pursuing = false  # Whether the enemy is pursuing the player
 var stop_distance = 200.0
-var max_distance_from_player = 1000.0  # Maximum distance from player before queue_free
+var max_distance_from_player = 1200.0  # Maximum distance from player before queue_free
 
 func _ready():
 	%Tank.play_move()

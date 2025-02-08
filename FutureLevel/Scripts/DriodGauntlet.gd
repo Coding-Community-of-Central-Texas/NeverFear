@@ -3,7 +3,7 @@ extends CharacterBody2D
 signal kill
 
 var health = 15.0
-var knockback_strength = 400.0
+var knockback_strength = 300.0
 var knockback_duration = 0.3
 var knockback_timer = 0.2  # Keeps track of the knockback time
 var knockback_velocity = Vector2.ZERO  # Stores knockback velocity
@@ -12,7 +12,7 @@ var knockback_velocity = Vector2.ZERO  # Stores knockback velocity
 @onready var collision_shape_2d: CollisionShape2D = $CollisionShape2D
 @onready var damage_numbers_origin: Node2D = $DamageNumbersOrigin
 
-var max_distance_from_player = 1000.0
+var max_distance_from_player = 1200.0
 
 func _ready():
 	%Driod.play_walk()

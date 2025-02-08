@@ -4,11 +4,11 @@ signal rank_changed(rank_index: int)
 signal playerdeath
 
 # Player properties
-var health: float = 150.0
-const MAX_HEALTH = 200
-const VELOCITY = 500
+var health: float = 500.0
+const MAX_HEALTH = 500
+const VELOCITY = 1000
 @export var SPEED: float = 500.0
-@export var acceleration: float = 2000
+@export var acceleration: float = 2200
 @export var deceleration: float = 4000
 @onready var shadow: Sprite2D = $AnimatedSprite2D/Shadow
 @onready var rank_1: Sprite2D = $Rank1
@@ -27,7 +27,7 @@ const VELOCITY = 500
 
 var is_dead: bool = false
 var current_kills: int = 0
-@export var rank_thresholds: Array = [50, 300, 400, 600, 700]  # Thresholds for rank-ups
+@export var rank_thresholds: Array = [50, 300, 400, 500, 600]  # Thresholds for rank-ups
 @export var fire_rates: Array = [0.20, 0.15, 0.10, 0.08, 0.05]  # Rate of fire per rank
 
 func _ready() -> void:
@@ -118,7 +118,7 @@ func _physics_process(delta: float) -> void:
 	handle_collisions(delta)
 
 func handle_collisions(delta: float):
-	const DAMAGE_RATE = 5.0
+	const DAMAGE_RATE = 10.0
 	var overlapping_mobs = %HurtBox.get_overlapping_bodies()
 	health_bar.value = health
 	
