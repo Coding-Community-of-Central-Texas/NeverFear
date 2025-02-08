@@ -506,8 +506,6 @@ script = ExtResource("1_43ipw")
 position = Vector2(-14.6667, -29.3333)
 sprite_frames = SubResource("SpriteFrames_100ny")
 animation = &"gunrun"
-frame = 4
-frame_progress = 1.0
 centered = false
 
 [node name="WalknJumpR" type="Marker2D" parent="AnimatedSprite2D"]
@@ -600,7 +598,8 @@ script = ExtResource("12_ofnp4")
 
 [node name="Gun" parent="." instance=ExtResource("10_0uu0a")]
 show_behind_parent = true
-position = Vector2(2, 0)
+z_index = -1
+position = Vector2(6.66667, -2)
 
 [node name="Gun2" parent="." instance=ExtResource("10_0uu0a")]
 unique_name_in_owner = true
@@ -637,10 +636,10 @@ debug_color = Color(0.847059, 0.372549, 0.156863, 0)
 
 [node name="HealthBar" parent="." instance=ExtResource("12_i3t22")]
 show_behind_parent = true
-offset_left = -16.6667
-offset_top = -25.0
-offset_right = 18.3333
-offset_bottom = -22.0
+offset_left = -12.0
+offset_top = -22.0
+offset_right = 23.0
+offset_bottom = -19.0
 
 [node name="Health" type="Sprite2D" parent="HealthBar"]
 position = Vector2(-4.667, 1.4)

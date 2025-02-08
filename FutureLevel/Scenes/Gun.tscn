@@ -1,11 +1,10 @@
-[gd_scene load_steps=18 format=3 uid="uid://daeuuspwxjeag"]
+[gd_scene load_steps=17 format=3 uid="uid://daeuuspwxjeag"]
 
 [ext_resource type="Script" path="res://Scripts/Gun.gd" id="1_5s5d3"]
-[ext_resource type="Texture2D" uid="uid://bs3fuoigoro7j" path="res://assets/Guns&Bullets/Pistol.png" id="2_3nxu2"]
+[ext_resource type="Texture2D" uid="uid://c8mqnh8i65mot" path="res://assets/Guns&Bullets/4_1.png" id="1_i4qsf"]
 [ext_resource type="AudioStream" uid="uid://cm6khs2aq378r" path="res://assets/FutrueSFX/Gun Laser SingleShot.wav" id="3_b7egm"]
 [ext_resource type="Texture2D" uid="uid://b5j4crk6t517p" path="res://assets/Guns&Bullets/blasteffect.png" id="4_ikfiu"]
 [ext_resource type="Texture2D" uid="uid://cyjwvkdglc8m8" path="res://assets/Guns&Bullets/muzzle_flash_7.png" id="5_dnixp"]
-[ext_resource type="Texture2D" uid="uid://cdyk5xw2l6psk" path="res://assets/3 Cyborg/Cyborg_attack2.png" id="6_fl32n"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_tnu2p"]
 radius = 264.0
@@ -96,9 +95,9 @@ debug_color = Color(0, 0.595, 0.7, 0)
 
 [node name="Rifle" type="Sprite2D" parent="gunpivot"]
 self_modulate = Color(0.720467, 0.720468, 0.720467, 1)
-position = Vector2(14, -2)
-scale = Vector2(0.5, 0.483766)
-texture = ExtResource("2_3nxu2")
+position = Vector2(6.5, 2)
+scale = Vector2(0.931035, 0.727273)
+texture = ExtResource("1_i4qsf")
 
 [node name="shootingpoint" type="Marker2D" parent="gunpivot/Rifle"]
 unique_name_in_owner = true
@@ -129,7 +128,7 @@ flip_v = true
 [node name="Muzzleflash" type="CPUParticles2D" parent="."]
 unique_name_in_owner = true
 show_behind_parent = true
-position = Vector2(31, -4)
+position = Vector2(28, 0)
 rotation = 1.5708
 scale = Vector2(0.3, 0.3)
 emitting = false
@@ -147,12 +146,5 @@ scale_curve_x = SubResource("Curve_fkgf3")
 scale_curve_y = SubResource("Curve_wqnjr")
 color = Color(67.567, 35.675, 0, 1)
 color_ramp = SubResource("Gradient_vuq11")
-
-[node name="CyborgAttack2" type="Sprite2D" parent="."]
-position = Vector2(7, -5.96046e-08)
-scale = Vector2(1.07143, 1.16667)
-texture = ExtResource("6_fl32n")
-region_enabled = true
-region_rect = Rect2(356.251, 17.746, 14.2693, 9.2262)
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

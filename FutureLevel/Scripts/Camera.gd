@@ -1,6 +1,6 @@
 extends Camera2D
 
-@export var landscape_zoom: Vector2 = Vector2(1.15, 1.81)
+@export var landscape_zoom: Vector2 = Vector2(1.15, 1.80)
 @export var portrait_zoom: Vector2 = Vector2(1.5, 1)
 
 func _ready():

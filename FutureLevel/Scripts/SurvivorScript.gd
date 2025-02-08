@@ -143,10 +143,12 @@ func handle_player_animation() -> void:
 func flip_sprite() -> void:
 	if velocity.x < -3:
 		animated_sprite_2d.flip_h = true
+		gun.position = Vector2(4, 3)
 		shadow.position = Vector2(5, 34)
 		%SuperSayain.position = Vector2(19.6, 36.8)
 		%SuperSayain4.position = Vector2(19.2, 33.7)
 	elif velocity.x > 3:
+		gun.position = Vector2(-4, 3)
 		animated_sprite_2d.flip_h = false
 		shadow.position = Vector2(-9.5, 34)
 		%SuperSayain.position = Vector2(-5.0, 32.6)

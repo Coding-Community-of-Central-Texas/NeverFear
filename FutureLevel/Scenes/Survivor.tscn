@@ -460,7 +460,7 @@ debug_color = Color(0.320333, 0.62, 0, 0)
 
 [node name="Gun" parent="." instance=ExtResource("7_3segn")]
 show_behind_parent = true
-position = Vector2(-6.66667, 1.33333)
+position = Vector2(-4, 3)
 rate_of_fire = 0.2
 
 [node name="HealthBar" parent="." instance=ExtResource("6_pjeyg")]
@@ -484,7 +484,7 @@ texture = ExtResource("9_bjhe2")
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(1.15, 1.15)
 script = ExtResource("10_opkhv")
-portrait_zoom = Vector2(1.15, 1.15)
+portrait_zoom = Vector2(1.15, 1.2)
 
 [node name="HurtBox" type="Area2D" parent="."]
 unique_name_in_owner = true
