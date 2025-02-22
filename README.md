@@ -45,6 +45,12 @@ Developed by the Open-Source Coding Community of Central Texas' (OSCCCT). Is a f
   >New Abilities & Power-Ups
   >User Customization
 
+⚙️Register as tester 
+
+(∩^o^)⊃━☆ | Web link: https://play.google.com/apps/testing/com.osccct.neverfear  
+
+ᕦ(ò_óˇ)ᕤ Android link: https://play.google.com/store/apps/details?id=com.osccct.neverfear
+
 🌟 How to Contribute
 We welcome contributions from the open-source community! Here's how you can help:<br>
 
