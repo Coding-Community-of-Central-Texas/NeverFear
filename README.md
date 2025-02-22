@@ -1,23 +1,42 @@
-NeverFear
-Welcome to the Open-Source Coding Community of Central Texas' (OSCCCT) mobile 2D platformer/survial game! 🎮✨
+NeverFear 
 
-🌌 Overview
-This project is a mobile-friendly 2D platformer set in a vibrant cyberpunk universe. It features:
+Developed by the Open-Source Coding Community of Central Texas' (OSCCCT). Is a fast paced platformer & survival game! 🎮✨
 
-Cool animations that bring the world and characters to life.
-Engaging and fun mechanics designed to challenge and entertain.
-A thrilling Survival Mode for endless gameplay excitement.
-🚀 Features
-Cyberpunk Aesthetic: Immerse yourself in a futuristic world of neon lights and gritty vibes.
-Smooth Animations: Enjoy detailed character movements and fluid gameplay.
-Dynamic Mechanics: Experience unique abilities, obstacles, and power-ups.
-Survival Mode: Test your skills by lasting as long as possible against waves of challenges.
-🛠️ Tech Stack
-Game Engine: Godot
-Languages: GDscript
-Target Platforms: Mobile (Android)
+🌌 Overview: This game is a speed run platformer & endless survival set in a nightmare dimension. The Hero must combat the most intense fears imagined by mankindo in order to defeat the mysterious family known only as "They" who rule all of DreamSpace.... With a cruel shadowy fist They have plunged all of humanity into wakeless nightmare being tormented by demonic tormentors! The ONLY hope humanity has of regaining their freedom is the awesome power of their savior. The Heroᕦ(ò_óˇ)ᕤ must blaze🔥 through the waves of tormentors BY BLASTING THEM TO SMITHEREENS! Leaving only ash and smoke in the wake of the epicly righteous justice. The Hero will take down each overlord family member. The Hero must take their names to use as a key and plunge deeper into every nightmare of Dreamspace. Will The Hero fail? Will The Hero quit? Is there anyone else that can help save the world? all of humanity is broken of this demented curse.  
+
+⭐First release features:
+
+🚀 Features Cyberpunk Aesthetic: Immerse yourself in a futuristic world of neon lights and gritty vibes.
+
+(ง •_•)งSmooth Animations: Enjoy detailed character movements and fluid gameplay. 
+
+⚙️Dynamic Mechanics: Experience unique abilities, obstacles, and power-ups. 
+
+ᕦ(ò_óˇ)ᕤSurvival Mode: Test your skills by lasting as long as possible against waves of exploding automatons. 
+
+🛠️ Tech Stack Game Engine: 
+ Languages Used
+  >GDScript 
+  >Python 
+  >Java
+ Build Tools: 
+  >Gradle
+ APIs and Integrations:
+  >REST API 
+  >Authentication Services
+  >Leaderboards
+🔴Platform: Mobile & PC
+💥Game Genre: Fast Paced Platformer and Wave Survival
+➡️Planned Features:
+  >Multiplayer
+  >New Characters 
+  >New Weapons
+  >New Maps
+  >New Abilities & Power-Ups
+  >User Customization
+
 🌟 How to Contribute
-We welcome contributions from the open-source community! Here's how you can help:
+We welcome contributions from the open-source community! Here's how you can help:<br>
 
 Fork the repository.
 Create a new branch (git checkout -b feature/YourFeatureName).
