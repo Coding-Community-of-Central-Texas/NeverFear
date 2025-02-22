@@ -14,20 +14,30 @@ Developed by the Open-Source Coding Community of Central Texas' (OSCCCT). Is a f
 
 ᕦ(ò_óˇ)ᕤSurvival Mode: Test your skills by lasting as long as possible against waves of exploding automatons. 
 
-🛠️ Tech Stack Game Engine: 
- Languages Used
-  >GDScript 
-  >Python 
-  >Java
- Build Tools: 
-  >Gradle
+🛠️ Tech Stack Game Engine:
+
+ Languages Used:
+ 
+  -GDScript 
+  -Python 
+  -Java
+  
+ Build Tools:
+ 
+  -Gradle
+  
  APIs and Integrations:
-  >REST API 
-  >Authentication Services
-  >Leaderboards
+ 
+  -REST API 
+  -Authentication Services
+  -Leaderboards
+  
 🔴Platform: Mobile & PC
+
 💥Game Genre: Fast Paced Platformer and Wave Survival
+
 ➡️Planned Features:
+
   >Multiplayer
   >New Characters 
   >New Weapons
@@ -39,14 +49,19 @@ Developed by the Open-Source Coding Community of Central Texas' (OSCCCT). Is a f
 We welcome contributions from the open-source community! Here's how you can help:<br>
 
 Fork the repository.
+
 Create a new branch (git checkout -b feature/YourFeatureName).
+
 Commit your changes (git commit -m 'Add your message here').
+
 Push the branch (git push origin feature/YourFeatureName).
+
 Open a Pull Request.
-Check out our CONTRIBUTING.md for detailed guidelines.
+
+
 
 🎮 Play the Game
-Download the game (link coming soon) or run it locally:
+Be an early tester or run it locally:
 
 Clone the repository:
 bash
@@ -54,12 +69,15 @@ Copy code
 git clone https://github.com/Coding-Community-of-Central-Texas/NeverFear.git
 Open it in your game engine or IDE of choice.
 Build and run the project for your desired platform.
+
 📜 License
 This project is licensed under the MIT License.
 
 🖤 Acknowledgments
-Thanks to the Open-Source Coding Community of Central Texas for bringing this project to life! And a huge thank you to all contributors. You rock!
+Thanks to the Open-Source Coding Community of Central Texas for bringing this project to life! And a huge thank you to all contributors. 
+
+Executive Producer: Stephen Hairston
 
 📬 Contact
-Have questions or suggestions? Reach us at osccct@proton.me
+Have questions or suggestions? Reach us at contact@osccct.org
 
