@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://dt87is5ehp8xl"]
+[gd_scene load_steps=10 format=3 uid="uid://dt87is5ehp8xl"]
 
 [ext_resource type="Texture2D" uid="uid://s0314e7iecn4" path="res://assets/2 Background/OSCCCTLogo.png" id="1_8bp2i"]
 [ext_resource type="Script" path="res://Scripts/LoadScreen.gd" id="1_qx27v"]
@@ -6,26 +6,45 @@
 [ext_resource type="FontFile" uid="uid://ckid4fla6wirc" path="res://assets/etc/Starzoom-Shavian.ttf" id="4_wqqy5"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fcx53"]
-content_margin_left = 5.0
-content_margin_top = 20.0
-content_margin_right = 5.0
-content_margin_bottom = 20.0
-bg_color = Color(0.10748, 0.10748, 0.10748, 1)
-skew = Vector2(0.23, 0)
-border_width_left = 15
-border_width_top = 15
-border_width_right = 15
-border_width_bottom = 15
-border_color = Color(0.787287, 0.688779, 0, 0.497)
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 40
+border_width_top = 20
+border_width_right = 40
+border_width_bottom = 20
+border_color = Color(0.772867, 0.676512, 1.15514e-06, 1)
 border_blend = true
-corner_radius_top_left = 170
-corner_radius_top_right = 30
-corner_radius_bottom_right = 170
-corner_radius_bottom_left = 30
-corner_detail = 16
-shadow_color = Color(0.539, 0.418, 0, 0.319)
-shadow_size = 155
-anti_aliasing_size = 4.097
+corner_detail = 20
+expand_margin_left = 5.0
+expand_margin_top = 15.0
+expand_margin_right = 5.0
+expand_margin_bottom = 15.0
+shadow_color = Color(0.052, 0, 0.935, 0.443)
+shadow_size = 25
+anti_aliasing = false
+anti_aliasing_size = 4.306
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kp4hb"]
+bg_color = Color(0, 0, 0, 1)
+border_color = Color(0.561, 0.561, 0.561, 1)
+corner_radius_top_left = 520
+corner_radius_top_right = 520
+corner_radius_bottom_right = 520
+corner_radius_bottom_left = 520
+corner_detail = 20
+expand_margin_left = 20.0
+expand_margin_top = 20.0
+expand_margin_right = 20.0
+expand_margin_bottom = 20.0
+shadow_color = Color(0, 0, 0, 0.606)
+shadow_size = 777
+
+[sub_resource type="Theme" id="Theme_5ygjs"]
+Label/styles/normal = SubResource("StyleBoxFlat_kp4hb")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_g0afn"]
+
+[sub_resource type="Theme" id="Theme_wj80p"]
+RichTextLabel/styles/background = SubResource("StyleBoxFlat_g0afn")
 
 [node name="LoadScreen" type="Node"]
 script = ExtResource("1_qx27v")
@@ -40,46 +59,67 @@ autostart = true
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 follow_viewport_enabled = true
 
-[node name="Logo" type="Sprite2D" parent="CanvasLayer"]
-position = Vector2(516, 271)
-scale = Vector2(0.137695, 0.210503)
-texture = ExtResource("1_8bp2i")
-
-[node name="Label" type="Label" parent="CanvasLayer"]
+[node name="OpenCred" type="Label" parent="CanvasLayer"]
+z_index = 1
 anchors_preset = -1
-anchor_left = 0.0472222
-anchor_top = 0.497222
-anchor_right = 0.960091
-anchor_bottom = 0.83331
+anchor_left = 0.0425926
+anchor_top = 0.55463
+anchor_right = 0.955461
+anchor_bottom = 0.911062
 offset_right = 406.102
-offset_bottom = 50.025
+offset_bottom = 53.0532
 grow_horizontal = 2
 grow_vertical = 0
 scale = Vector2(0.70826, 0.878874)
-size_flags_vertical = 1
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_colors/font_shadow_color = Color(0.228325, 0.200515, 0, 0.378)
-theme_override_colors/font_outline_color = Color(0.877, 0.061, 0.036, 0.914)
-theme_override_constants/line_spacing = 5
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme_override_colors/font_color = Color(0.772549, 0.678431, 0, 1)
+theme_override_colors/font_shadow_color = Color(0.084, 0, 0.719, 0.822)
+theme_override_colors/font_outline_color = Color(0.877, 0.061, 0.036, 1)
+theme_override_constants/line_spacing = 10
 theme_override_constants/shadow_offset_x = 0
 theme_override_constants/shadow_offset_y = 0
-theme_override_constants/outline_size = 5
-theme_override_constants/shadow_outline_size = 18
+theme_override_constants/outline_size = 10
+theme_override_constants/shadow_outline_size = 21
 theme_override_fonts/font = ExtResource("4_wqqy5")
 theme_override_font_sizes/font_size = 40
 theme_override_styles/normal = SubResource("StyleBoxFlat_fcx53")
-text = "APP DEVELOPED BY
-OPEN-SOURCE CODING COMMUNITY OF CENTRAL TEXAS
+text = "GAME PRODUCED BY:
+THE OPEN-SOURCE CODING COMMUNITY OF CENTRAL TEXAS
 EXECUTIVE PRODUCER: STEPHEN HAIRSTON
 
-CONTACT
+CONTACT:
 https://www.osccct.org
 contact@osccct.org
 GITHUB: Coding-Community-of-Central-Texas
 "
 horizontal_alignment = 1
 vertical_alignment = 1
+justification_flags = 130
 metadata/_edit_use_anchors_ = true
+
+[node name="LogoBg" type="Label" parent="CanvasLayer"]
+show_behind_parent = true
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -234.0
+offset_top = 77.0
+offset_right = 233.0
+offset_bottom = -558.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 1
+theme = SubResource("Theme_5ygjs")
+metadata/_edit_use_anchors_ = true
+
+[node name="Logo" type="Sprite2D" parent="CanvasLayer/LogoBg"]
+position = Vector2(237, 215)
+scale = Vector2(0.150835, 0.198634)
+texture = ExtResource("1_8bp2i")
+region_enabled = true
+region_rect = Rect2(995.993, 359.802, 2095.31, 1611.78)
 
 [node name="ColorRect" type="ColorRect" parent="."]
 anchors_preset = 15
@@ -87,6 +127,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.000113828, 0.000113828, 0.000113828, 1)
+theme = SubResource("Theme_wj80p")
+color = Color(0.165656, 0.165656, 0.165656, 1)
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

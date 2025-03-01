@@ -2388,6 +2388,7 @@ grow_vertical = 0
 [node name="Jump" parent="Buttons/Jump" instance=ExtResource("93_hmujq")]
 position = Vector2(108, 176.264)
 scale = Vector2(6.26548, 4.58)
+visibility_mode = 1
 
 [node name="LifeCounter" parent="Buttons" instance=ExtResource("94_7l5pt")]
 anchors_preset = -1

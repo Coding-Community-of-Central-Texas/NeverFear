@@ -104,7 +104,6 @@ func _on_tree_exiting():
 func send_stats(http_request: HTTPRequest) -> void:
 	var headers = [
 		"Content-Type: application/json",
-		"X-API-KEY:" + api_key
 	]
 	
 	var payload = {
@@ -122,3 +121,13 @@ func send_stats(http_request: HTTPRequest) -> void:
 		push_error("Failed to send data! Error code: " + str(error))
 	else:
 		print("API request sent successfully.")
+
+func _on_http_request_request_completed(result: int, response_code: int, headers: PackedStringArray, body: PackedByteArray) -> void:
+	print("Response Code: ", response_code)
+	var response_text = body.get_string_from_utf8()
+	var parsed_response = JSON.parse_string(response_text)
+
+	if parsed_response is Dictionary:
+		print("Server Response: ", parsed_response)
+	else:
+		push_error("Failed to parse response JSON")
