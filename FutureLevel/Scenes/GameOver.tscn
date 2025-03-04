@@ -1,8 +1,7 @@
-[gd_scene load_steps=23 format=3 uid="uid://8o5ihpf0h8ej"]
+[gd_scene load_steps=22 format=3 uid="uid://8o5ihpf0h8ej"]
 
 [ext_resource type="Script" path="res://Scripts/GameOver.gd" id="1_r0wvx"]
 [ext_resource type="AudioStream" uid="uid://bpcayivn7waop" path="res://assets/FutrueSFX/DavidKBD - Eternity Pack - 05 - Evil soul inside - loop.ogg" id="2_ypdy7"]
-[ext_resource type="FontFile" uid="uid://ckid4fla6wirc" path="res://assets/etc/Starzoom-Shavian.ttf" id="2_yq4vp"]
 [ext_resource type="Texture2D" uid="uid://bv7fu6os82paq" path="res://assets/buttonsprites/UIbutton.png" id="4_ssp7s"]
 [ext_resource type="AudioStream" uid="uid://dbnystp0y1gke" path="res://assets/FutrueSFX/PickUp.wav" id="5_r0rrm"]
 [ext_resource type="Texture2D" uid="uid://050tdjf5b57n" path="res://assets/3 Cyborg/Cyborg_death.png" id="6_q5oov"]
@@ -322,7 +321,7 @@ tracks/4/keys = {
 }
 tracks/5/type = "value"
 tracks/5/imported = false
-tracks/5/enabled = true
+tracks/5/enabled = false
 tracks/5/path = NodePath("MissionFail:position")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
@@ -334,7 +333,7 @@ tracks/5/keys = {
 }
 tracks/6/type = "value"
 tracks/6/imported = false
-tracks/6/enabled = true
+tracks/6/enabled = false
 tracks/6/path = NodePath("MissionFail:scale")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
@@ -346,7 +345,7 @@ tracks/6/keys = {
 }
 tracks/7/type = "value"
 tracks/7/imported = false
-tracks/7/enabled = true
+tracks/7/enabled = false
 tracks/7/path = NodePath("MissionFail:rotation")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
@@ -358,7 +357,7 @@ tracks/7/keys = {
 }
 tracks/8/type = "value"
 tracks/8/imported = false
-tracks/8/enabled = true
+tracks/8/enabled = false
 tracks/8/path = NodePath("MissionFail:self_modulate")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
@@ -375,26 +374,26 @@ tracks/9/path = NodePath("MissionFail:text")
 tracks/9/interp = 1
 tracks/9/loop_wrap = true
 tracks/9/keys = {
-"times": PackedFloat32Array(0.266667, 3.7, 3.73333, 4.7, 4.796, 5.1, 5.43333, 5.8, 6.1, 6.26667, 6.56667, 6.93333, 7.26667, 7.66667, 8.13333),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0.266667, 3.7),
+"transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": ["MISSION FAILED!", "MISSION FAILED!", "MISSION ", "MISSION ", "MISSION.", "MISSION..", "MISSION...", "MISSION.", "MISSION..", "MISSION ", "MISSION..", "MISSION...", "MISSION.", "MISSION..", "MISSION "]
+"values": ["mission failed!", "mission failed!"]
 }
 tracks/10/type = "value"
 tracks/10/imported = false
-tracks/10/enabled = true
+tracks/10/enabled = false
 tracks/10/path = NodePath("Fail:text")
 tracks/10/interp = 1
 tracks/10/loop_wrap = true
 tracks/10/keys = {
-"times": PackedFloat32Array(3.73333),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 3.6963),
+"transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": ["                      FAILED!"]
+"values": ["                      failed!", "                      failed!"]
 }
 tracks/11/type = "value"
 tracks/11/imported = false
-tracks/11/enabled = true
+tracks/11/enabled = false
 tracks/11/path = NodePath("Fail:rotation")
 tracks/11/interp = 1
 tracks/11/loop_wrap = true
@@ -406,7 +405,7 @@ tracks/11/keys = {
 }
 tracks/12/type = "value"
 tracks/12/imported = false
-tracks/12/enabled = true
+tracks/12/enabled = false
 tracks/12/path = NodePath("MissionFail:layout_mode")
 tracks/12/interp = 1
 tracks/12/loop_wrap = true
@@ -418,7 +417,7 @@ tracks/12/keys = {
 }
 tracks/13/type = "value"
 tracks/13/imported = false
-tracks/13/enabled = true
+tracks/13/enabled = false
 tracks/13/path = NodePath("Fail:position")
 tracks/13/interp = 1
 tracks/13/loop_wrap = true
@@ -430,7 +429,7 @@ tracks/13/keys = {
 }
 tracks/14/type = "value"
 tracks/14/imported = false
-tracks/14/enabled = true
+tracks/14/enabled = false
 tracks/14/path = NodePath("Fail:visible")
 tracks/14/interp = 1
 tracks/14/loop_wrap = true
@@ -442,7 +441,7 @@ tracks/14/keys = {
 }
 tracks/15/type = "value"
 tracks/15/imported = false
-tracks/15/enabled = true
+tracks/15/enabled = false
 tracks/15/path = NodePath("Fail:scale")
 tracks/15/interp = 1
 tracks/15/loop_wrap = true
@@ -471,7 +470,7 @@ tracks/17/path = NodePath("MainMenu:modulate")
 tracks/17/interp = 1
 tracks/17/loop_wrap = true
 tracks/17/keys = {
-"times": PackedFloat32Array(0, 3.03333, 3.76667, 4.36667),
+"times": PackedFloat32Array(0, 2.13333, 3, 3.93333),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 0.222), Color(1, 1, 1, 1)]
@@ -483,7 +482,7 @@ tracks/18/path = NodePath("Restart:modulate")
 tracks/18/interp = 1
 tracks/18/loop_wrap = true
 tracks/18/keys = {
-"times": PackedFloat32Array(0, 2.96667, 3.73333, 4.4),
+"times": PackedFloat32Array(0, 2.1, 2.93333, 3.96667),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 0.157), Color(1, 1, 1, 1)]
@@ -605,14 +604,14 @@ color = Color(0, 0, 0, 1)
 self_modulate = Color(7.567, 100, 100, 1)
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.114165
-anchor_top = 0.263146
-anchor_right = 0.918119
-anchor_bottom = 0.333008
-offset_left = -0.000175476
-offset_top = -520.223
-offset_right = -0.000244141
-offset_bottom = -571.151
+anchor_left = 0.141897
+anchor_top = 0.241873
+anchor_right = 0.945851
+anchor_bottom = 0.311735
+offset_left = -16.8334
+offset_top = 248.955
+offset_right = -16.8334
+offset_bottom = 228.027
 grow_horizontal = 2
 grow_vertical = 2
 rotation = -0.340339
@@ -624,7 +623,6 @@ theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/shadow_offset_x = -3
 theme_override_constants/shadow_offset_y = 3
 theme_override_constants/outline_size = 7
-theme_override_fonts/font = ExtResource("2_yq4vp")
 theme_override_font_sizes/font_size = 50
 text = "MISSION FAILED!"
 metadata/_edit_use_anchors_ = true
@@ -638,10 +636,10 @@ anchor_left = 0.499453
 anchor_top = -1.10186
 anchor_right = 0.499453
 anchor_bottom = -1.10186
-offset_left = -241.169
-offset_top = 1973.31
-offset_right = 252.83
-offset_bottom = 2025.35
+offset_left = -241.168
+offset_top = 2967.84
+offset_right = 499.832
+offset_bottom = 3048.84
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(2.08, 1.999)
@@ -652,7 +650,6 @@ theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/shadow_offset_x = -3
 theme_override_constants/shadow_offset_y = 3
 theme_override_constants/outline_size = 7
-theme_override_fonts/font = ExtResource("2_yq4vp")
 theme_override_font_sizes/font_size = 50
 text = "                      FAILED!"
 
@@ -671,20 +668,19 @@ texture = ExtResource("4_ssp7s")
 [node name="Label2" type="Label" parent="CanvasLayer/ColorRect/Restart"]
 z_index = 1
 texture_filter = 6
-offset_left = -41.8947
-offset_top = -12.6081
-offset_right = 371.105
-offset_bottom = 88.3919
+offset_left = -42.4424
+offset_top = -25.8466
+offset_right = 370.557
+offset_bottom = 134.153
 scale = Vector2(0.162557, 0.319859)
-theme_override_colors/font_color = Color(14, 0.45, 0, 1)
+theme_override_colors/font_color = Color(0.541324, 0.0229951, 0.0121656, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
 theme_override_constants/shadow_offset_x = -11
 theme_override_constants/shadow_offset_y = 9
-theme_override_constants/outline_size = 7
-theme_override_fonts/font = ExtResource("2_yq4vp")
+theme_override_constants/outline_size = 14
 theme_override_font_sizes/font_size = 100
-text = "RETRY"
+text = "retry"
 horizontal_alignment = 1
 autowrap_mode = 2
 metadata/_edit_use_anchors_ = true
@@ -705,20 +701,19 @@ texture = ExtResource("4_ssp7s")
 [node name="Label3" type="Label" parent="CanvasLayer/ColorRect/MainMenu"]
 z_index = 1
 texture_filter = 6
-offset_left = -34.015
-offset_top = -14.7797
-offset_right = 305.985
-offset_bottom = 86.2203
+offset_left = -33.1785
+offset_top = -26.9889
+offset_right = 306.821
+offset_bottom = 133.011
 scale = Vector2(0.175803, 0.330221)
-theme_override_colors/font_color = Color(14, 0.45, 0, 1)
+theme_override_colors/font_color = Color(0.541324, 0.0229951, 0.0121656, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
 theme_override_constants/shadow_offset_x = -11
 theme_override_constants/shadow_offset_y = 9
-theme_override_constants/outline_size = 6
-theme_override_fonts/font = ExtResource("2_yq4vp")
+theme_override_constants/outline_size = 14
 theme_override_font_sizes/font_size = 100
-text = "HOME"
+text = "Home"
 horizontal_alignment = 1
 autowrap_mode = 2
 metadata/_edit_use_anchors_ = true
@@ -727,7 +722,6 @@ metadata/_edit_use_anchors_ = true
 libraries = {
 "": SubResource("AnimationLibrary_frrq6")
 }
-autoplay = "gameover"
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="CanvasLayer/ColorRect"]
 unique_name_in_owner = true

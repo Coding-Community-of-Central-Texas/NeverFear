@@ -1,4 +1,4 @@
-[gd_scene load_steps=217 format=3 uid="uid://h4x4k7a7p168"]
+[gd_scene load_steps=216 format=3 uid="uid://h4x4k7a7p168"]
 
 [ext_resource type="Texture2D" uid="uid://la502iaoukma" path="res://assets/1 Tiles/IndustrialTile_02.png" id="1_frcqt"]
 [ext_resource type="Script" path="res://Scripts/HubWorld.gd" id="1_xr35x"]
@@ -82,7 +82,6 @@
 [ext_resource type="Texture2D" uid="uid://c7jfd3b4uiebb" path="res://assets/1 Tiles/IndustrialTile_10.png" id="79_8p7s1"]
 [ext_resource type="Texture2D" uid="uid://ds46eo7qowcw8" path="res://assets/1 Tiles/IndustrialTile_11.png" id="80_1fe8o"]
 [ext_resource type="Texture2D" uid="uid://bmiyl0s8mp43g" path="res://assets/2 Background/Upscale.png" id="81_axvne"]
-[ext_resource type="FontFile" uid="uid://ckid4fla6wirc" path="res://assets/etc/Starzoom-Shavian.ttf" id="82_gf70t"]
 [ext_resource type="PackedScene" uid="uid://csqktr6ixyato" path="res://Scenes/Hero.tscn" id="83_hhacw"]
 [ext_resource type="Texture2D" uid="uid://35dyx2vgd6cm" path="res://assets/etc/Star.png" id="85_rmrcr"]
 [ext_resource type="PackedScene" uid="uid://bjwjnne7i3x33" path="res://Scenes/Killzone.tscn" id="85_s3rr4"]
@@ -988,10 +987,10 @@ tracks/6/path = NodePath("GameTitle/NeverFear/Title:theme_override_colors/font_c
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
-"times": PackedFloat32Array(4.16667, 5.03333, 5.33333),
+"times": PackedFloat32Array(4.16667, 5.03333, 5.53333),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [Color(0, 0, 0, 0.194), Color(0, 0, 0, 0.611), Color(0, 0, 0, 1)]
+"values": [Color(0, 0, 0, 0.194), Color(0, 0, 0, 0.611), Color(0.0681646, 0, 0.512976, 1)]
 }
 tracks/7/type = "value"
 tracks/7/imported = false
@@ -1000,10 +999,10 @@ tracks/7/path = NodePath("GameTitle/NeverFear/Title:theme_override_colors/font_s
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/keys = {
-"times": PackedFloat32Array(4.16667, 5.03333),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(4.16667, 5.03333, 6.1),
+"transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [Color(1, 0.597, 0.566, 0.26), Color(0.999999, 0.438738, 0.414502, 0.557)]
+"values": [Color(1, 0.597, 0.566, 0.26), Color(0.999999, 0.438738, 0.414502, 0.557), Color(0.999999, 0.438738, 0.414502, 0.557)]
 }
 tracks/8/type = "value"
 tracks/8/imported = false
@@ -1012,10 +1011,10 @@ tracks/8/path = NodePath("GameTitle/NeverFear/Title:theme_override_colors/font_o
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/keys = {
-"times": PackedFloat32Array(4.16667, 5.03333),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(4.16667, 5.03333, 6.1),
+"transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [Color(0.815, 0.052, 0.03, 0.433), Color(0.815, 0.052, 0.03, 1)]
+"values": [Color(0.815, 0.052, 0.03, 0.433), Color(0.815, 0.052, 0.03, 1), Color(0.591574, 0.619201, 3.85046e-07, 1)]
 }
 tracks/9/type = "value"
 tracks/9/imported = false
@@ -1215,10 +1214,10 @@ scale = Vector2(0.503418, 0.367932)
 texture = ExtResource("81_axvne")
 
 [node name="Practice" type="Label" parent="."]
-offset_left = -1030.0
-offset_top = -204.0
-offset_right = -372.0
-offset_bottom = -37.0
+offset_left = -1219.5
+offset_top = -215.5
+offset_right = -342.499
+offset_bottom = -48.5
 scale = Vector2(0.828593, 0.846823)
 theme_override_colors/font_color = Color(1, 0.87451, 0, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
@@ -1226,33 +1225,28 @@ theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/shadow_offset_x = 3
 theme_override_constants/shadow_offset_y = 15
 theme_override_constants/outline_size = 24
-theme_override_fonts/font = ExtResource("82_gf70t")
 theme_override_font_sizes/font_size = 81
-text = "Practice Zone
-                     				< < <"
+text = "///Practice zone///"
 
 [node name="Legacy" type="Label" parent="."]
-z_index = -1
-offset_left = 1158.5
-offset_top = -53.5
-offset_right = 1501.5
-offset_bottom = -2.50006
+offset_left = 1191.0
+offset_top = -73.0
+offset_right = 1401.0
 scale = Vector2(0.828593, 0.846823)
-theme_override_colors/font_color = Color(4.57242e-07, 0.695661, 0.137411, 1)
+theme_override_colors/font_color = Color(0.398151, 0.0191169, 4.81308e-08, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
 theme_override_constants/shadow_offset_x = -7
 theme_override_constants/shadow_offset_y = 6
-theme_override_constants/outline_size = 10
-theme_override_fonts/font = ExtResource("82_gf70t")
+theme_override_constants/outline_size = 4
 theme_override_font_sizes/font_size = 45
-text = "Legacy  >  >  >"
+text = "Legacy "
 
 [node name="Star" type="Sprite2D" parent="Legacy"]
 self_modulate = Color(1, 1, 1, 0.686)
 visibility_layer = 2
 z_index = -1
-position = Vector2(-26.5498, 18.8941)
+position = Vector2(-26.551, 37.7883)
 scale = Vector2(1.33841, 1.23757)
 texture = ExtResource("85_rmrcr")
 
@@ -1283,20 +1277,20 @@ shape = SubResource("WorldBoundaryShape2D_odear")
 [node name="BorderR" type="TextureRect" parent="."]
 modulate = Color(0, 0, 0, 1)
 z_index = -1
-offset_left = 1658.0
-offset_top = -534.0
-offset_right = 1792.0
-offset_bottom = 58.0
+offset_left = -1043.0
+offset_top = 393.0
+offset_right = -308.0
+offset_bottom = 569.0
 scale = Vector2(4.18743, 1.95731)
 texture = SubResource("CanvasTexture_lnrvt")
 
 [node name="BorderR3" type="TextureRect" parent="."]
-modulate = Color(0, 0, 0, 1)
+modulate = Color(0, 0, 0, 0.935)
 z_index = 1
-offset_left = 1527.0
-offset_top = -1096.0
-offset_right = 1854.0
-offset_bottom = -234.0
+offset_left = 1531.0
+offset_top = -1067.0
+offset_right = 1855.0
+offset_bottom = -166.0
 scale = Vector2(4.18743, 1.95731)
 texture = SubResource("CanvasTexture_lnrvt")
 
@@ -1328,7 +1322,7 @@ collision_mask = 8
 script = ExtResource("86_wbc52")
 
 [node name="NextMission" type="CollisionShape2D" parent="LegacyPass"]
-position = Vector2(8.50098, -2.50003)
+position = Vector2(-8.49902, -1.50003)
 shape = SubResource("RectangleShape2D_s5nso")
 
 [node name="Lightrays8" type="Sprite2D" parent="LegacyPass"]
@@ -1341,25 +1335,24 @@ scale = Vector2(0.423745, 0.465045)
 texture = ExtResource("93_1ejjv")
 
 [node name="Gauntlet" type="Label" parent="."]
-offset_left = 1116.5
-offset_top = -167.5
-offset_right = 1510.5
-offset_bottom = -116.5
+offset_left = 1167.5
+offset_top = -187.5
+offset_right = 1561.5
+offset_bottom = -114.5
 scale = Vector2(0.828593, 0.846823)
-theme_override_colors/font_color = Color(0.727341, 0.0372796, 0.0206727, 1)
+theme_override_colors/font_color = Color(0.451815, 0.0128653, 0.00713192, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
 theme_override_constants/shadow_offset_x = -8
 theme_override_constants/shadow_offset_y = 7
-theme_override_constants/outline_size = 14
-theme_override_fonts/font = ExtResource("82_gf70t")
+theme_override_constants/outline_size = 5
 theme_override_font_sizes/font_size = 45
-text = "Gauntlet  >  >  >"
+text = "Gauntlet  "
 metadata/_edit_use_anchors_ = true
 
 [node name="Overkill" type="Sprite2D" parent="Gauntlet"]
 self_modulate = Color(1, 1, 1, 0.519)
-position = Vector2(-22.9293, 22.4368)
+position = Vector2(-30.1715, 40.1501)
 scale = Vector2(1.32, 1.23)
 texture = ExtResource("89_djsyt")
 
@@ -1385,27 +1378,25 @@ scale_amount_max = 0.3
 scale_amount_curve = SubResource("Curve_i1mgp")
 
 [node name="Datavault" type="Label" parent="."]
-self_modulate = Color(0, 0, 26.487, 1)
 z_index = -1
-offset_left = 1077.5
-offset_top = -283.5
-offset_right = 1516.5
+offset_left = 1114.5
+offset_top = -305.5
+offset_right = 1553.5
 offset_bottom = -232.5
 scale = Vector2(0.828593, 0.846823)
-theme_override_colors/font_color = Color(0.968627, 0.32549, 0.0509804, 1)
+theme_override_colors/font_color = Color(0.398151, 0.0191169, 4.81308e-08, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
 theme_override_constants/shadow_offset_x = -8
 theme_override_constants/shadow_offset_y = 7
-theme_override_constants/outline_size = 14
-theme_override_fonts/font = ExtResource("82_gf70t")
+theme_override_constants/outline_size = 4
 theme_override_font_sizes/font_size = 45
-text = "Data Vault  >  >  >"
+text = "Data vault "
 metadata/_edit_use_anchors_ = true
 
 [node name="Trophy" type="Sprite2D" parent="Datavault"]
 self_modulate = Color(1, 1, 1, 0.421)
-position = Vector2(-32.5854, 22.4368)
+position = Vector2(-33.7921, 42.5119)
 scale = Vector2(1.18, 1.454)
 texture = ExtResource("91_ooiwe")
 
@@ -1434,7 +1425,7 @@ collision_mask = 8
 script = ExtResource("87_2x6u5")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="GauntletPass"]
-position = Vector2(29.501, -0.50003)
+position = Vector2(9.501, 1.49997)
 shape = SubResource("RectangleShape2D_s5nso")
 
 [node name="PlayerStats" type="Area2D" parent="."]
@@ -1444,7 +1435,7 @@ collision_mask = 8
 script = ExtResource("88_52oqi")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerStats"]
-position = Vector2(30.001, 0.99997)
+position = Vector2(9.001, -2.99811e-05)
 shape = SubResource("RectangleShape2D_s5nso")
 
 [node name="LeDoors" type="Area2D" parent="."]
@@ -1602,7 +1593,7 @@ texture = ExtResource("94_xosn5")
 self_modulate = Color(0.586, 0, 0.141, 0.865)
 z_index = -1
 position = Vector2(5.99921, 0.999695)
-scale = Vector2(0.56349, 0.191)
+scale = Vector2(0.557512, 0.191)
 texture = ExtResource("91_puagk")
 
 [node name="ColorBurst26" type="Sprite2D" parent="GameTitle/NeverFear"]
@@ -1613,11 +1604,11 @@ scale = Vector2(3.206, 0.631)
 texture = ExtResource("91_puagk")
 
 [node name="Title" type="Label" parent="GameTitle/NeverFear"]
-offset_left = -390.501
-offset_top = -79.0003
-offset_right = 258.499
-offset_bottom = 18.9997
-scale = Vector2(1.34851, 1.61497)
+offset_left = -322.0
+offset_top = -132.2
+offset_right = 327.0
+offset_bottom = 23.8
+scale = Vector2(1.12016, 1.5402)
 theme_override_colors/font_color = Color(0, 0, 0, 0.194)
 theme_override_colors/font_shadow_color = Color(1, 0.597, 0.566, 0.26)
 theme_override_colors/font_outline_color = Color(0.815, 0.052, 0.03, 0.433)
@@ -1626,9 +1617,8 @@ theme_override_constants/shadow_offset_x = 0
 theme_override_constants/shadow_offset_y = 0
 theme_override_constants/outline_size = 8
 theme_override_constants/shadow_outline_size = 10
-theme_override_fonts/font = ExtResource("82_gf70t")
 theme_override_font_sizes/font_size = 97
-text = "NEVERFEAR"
+text = "Neverfear"
 metadata/_edit_use_anchors_ = true
 
 [node name="Buttons" type="CanvasLayer" parent="."]
@@ -1659,7 +1649,7 @@ position = Vector2(517, 932)
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 position = Vector2(103.501, -78.5)
 stream = ExtResource("105_r350c")
-volume_db = 0.517
+volume_db = -4.232
 autoplay = true
 max_distance = 6710.0
 

@@ -1,8 +1,7 @@
-[gd_scene load_steps=47 format=3 uid="uid://btnf3drbkix5k"]
+[gd_scene load_steps=46 format=3 uid="uid://btnf3drbkix5k"]
 
 [ext_resource type="Texture2D" uid="uid://dcmt4rtiisn55" path="res://assets/Background/1.png" id="1_erotl"]
 [ext_resource type="FontFile" uid="uid://daex80h1eaujl" path="res://assets/etc/StarJedi-DGRW.ttf" id="2_1grku"]
-[ext_resource type="FontFile" uid="uid://ckid4fla6wirc" path="res://assets/etc/Starzoom-Shavian.ttf" id="2_a7jdu"]
 [ext_resource type="Texture2D" uid="uid://bv7fu6os82paq" path="res://assets/buttonsprites/UIbutton.png" id="3_erunh"]
 [ext_resource type="PackedScene" uid="uid://cijayc3peexw" path="res://Singletons/GameManager.tscn" id="3_g0ec8"]
 [ext_resource type="Texture2D" uid="uid://dc7ixn8hk14hw" path="res://assets/Background/2.png" id="4_cx5d3"]
@@ -42,10 +41,10 @@ func _process(_delta: float) -> void:
 	update_performance_page()
 
 func update_performance_page():
-	%OverallKills.text = \"BOTS VAPERIZED: %s\" % str(GameManager.total_kills)
-	%FastestTime.text = \"FASTEST LEGACY RUN: %s\" % GameManager.quickest_time
-	%LongestTimeSurvived.text = \"LONGEST GAUNTLET RUN: %s\" % GameManager.longest_survival
-	%OverallCash.text = \"$BANK$: $ %s\" % GameManager.total_cash
+	%OverallKills.text = \"enemies eliminated: %s\" % str(GameManager.total_kills)
+	%FastestTime.text = \"quickest legacy dash: %s\" % GameManager.quickest_time
+	%LongestTimeSurvived.text = \"longest gauntlet survival: %s\" % GameManager.longest_survival
+	%OverallCash.text = \"BANK:  %s\" % GameManager.total_cash
 
 func _on_home_button_pressed() -> void:
 	%AudioStreamPlayer2D.play()
@@ -119,7 +118,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ee6lp"]
-size = Vector2(600, 300)
+size = Vector2(608.995, 317.785)
 
 [sub_resource type="Animation" id="Animation_25s1s"]
 resource_name = "PerformanceScreen"
@@ -494,7 +493,6 @@ shadow_size = 4
 
 [sub_resource type="Theme" id="Theme_m3ifo"]
 default_base_scale = 1.0
-default_font = ExtResource("2_a7jdu")
 default_font_size = 15
 LineEdit/colors/caret_color = Color(0.200042, 5.09223e-05, 0.720791, 1)
 LineEdit/colors/font_color = Color(1, 1, 1, 1)
@@ -510,10 +508,10 @@ LineEdit/styles/normal = SubResource("StyleBoxFlat_er4m1")
 LineEdit/styles/read_only = null
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_oxr2d"]
-radius = 26.65
+radius = 31.41
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ctscu"]
-size = Vector2(221.715, 50.895)
+size = Vector2(240.785, 66.455)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vv718"]
 size = Vector2(550, 50)
@@ -534,7 +532,7 @@ script = SubResource("GDScript_ae00b")
 follow_viewport_scale = 3.685
 
 [node name="TextureRect" type="TextureRect" parent="CanvasLayer"]
-self_modulate = Color(0.728822, 0.728822, 0.728822, 1)
+self_modulate = Color(0.525101, 0.525101, 0.525101, 1)
 z_index = -4
 anchors_preset = 15
 anchor_right = 1.0
@@ -559,8 +557,8 @@ theme_override_constants/shadow_offset_x = -6
 theme_override_constants/shadow_offset_y = 3
 theme_override_constants/outline_size = 3
 theme_override_fonts/font = ExtResource("2_1grku")
-theme_override_font_sizes/font_size = 40
-text = "PERFoRMANCE index"
+theme_override_font_sizes/font_size = 44
+text = "user data vault"
 horizontal_alignment = 1
 autowrap_mode = 3
 justification_flags = 35
@@ -570,23 +568,23 @@ metadata/_edit_use_anchors_ = true
 unique_name_in_owner = true
 z_index = 1
 anchors_preset = -1
-anchor_left = 0.567593
-anchor_top = 0.381481
-anchor_right = 1.00185
-anchor_bottom = 0.413889
+anchor_left = 0.486111
+anchor_top = 0.352778
+anchor_right = 0.920368
+anchor_bottom = 0.437963
+offset_right = -6.10352e-05
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_colors/font_color = Color(0.936368, 0.0852063, 0.0532708, 1)
+theme_override_colors/font_color = Color(0.600084, 0.0288369, 0.0152562, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
-theme_override_constants/line_spacing = 10
+theme_override_constants/line_spacing = -6
 theme_override_constants/shadow_offset_x = -6
 theme_override_constants/shadow_offset_y = 4
 theme_override_constants/outline_size = 3
-theme_override_fonts/font = ExtResource("2_a7jdu")
 theme_override_font_sizes/font_size = 30
-text = "# OF BOTS 
-VAPERIZED:"
+text = "tormentors
+destroyed:"
 autowrap_mode = 3
 justification_flags = 35
 metadata/_edit_use_anchors_ = true
@@ -596,22 +594,23 @@ unique_name_in_owner = true
 z_index = 1
 anchors_preset = -1
 anchor_left = 0.0935185
-anchor_top = 0.367593
+anchor_top = 0.35463
 anchor_right = 0.494444
-anchor_bottom = 0.427778
+anchor_bottom = 0.440741
+offset_top = 14.0001
+offset_bottom = -14.0001
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_colors/font_color = Color(0.866526, 0.662188, 7.70092e-07, 1)
+theme_override_colors/font_color = Color(0.600084, 0.0288369, 0.0152562, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
-theme_override_constants/line_spacing = 10
+theme_override_constants/line_spacing = -5
 theme_override_constants/shadow_offset_x = -6
 theme_override_constants/shadow_offset_y = 4
 theme_override_constants/outline_size = 3
-theme_override_fonts/font = ExtResource("2_a7jdu")
 theme_override_font_sizes/font_size = 30
-text = "FASTEST LEGACY 
-RUN:"
+text = "quickest LEGACY 
+dash:"
 vertical_alignment = 1
 autowrap_mode = 3
 justification_flags = 35
@@ -621,29 +620,28 @@ metadata/_edit_use_anchors_ = true
 unique_name_in_owner = true
 z_index = 1
 anchors_preset = -1
-anchor_left = 0.558333
-anchor_top = 0.187963
-anchor_right = 1.0002
-anchor_bottom = 0.255502
-offset_left = 0.000366211
-offset_top = 15.0001
-offset_right = 92.7803
-offset_bottom = 7.05765
+anchor_left = 0.490741
+anchor_top = 0.190741
+anchor_right = 0.932608
+anchor_bottom = 0.275578
+offset_top = 1.52588e-05
+offset_right = 92.7814
+offset_bottom = 2.37616
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(0.837225, 0.974722)
 size_flags_horizontal = 4
-theme_override_colors/font_color = Color(0.11933, 2.09068e-07, 0.00635441, 1)
+theme_override_colors/font_color = Color(0.600084, 0.0288369, 0.0152562, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
-theme_override_constants/line_spacing = 10
-theme_override_constants/shadow_offset_x = -6
-theme_override_constants/shadow_offset_y = 4
+theme_override_constants/line_spacing = -4
+theme_override_constants/shadow_offset_x = -4
+theme_override_constants/shadow_offset_y = 3
 theme_override_constants/outline_size = 3
-theme_override_fonts/font = ExtResource("2_a7jdu")
+theme_override_constants/shadow_outline_size = 0
 theme_override_font_sizes/font_size = 30
-text = "BEST GAUNTLET 
-TIME:"
+text = "longest gauntlet 
+survival:"
 metadata/_edit_use_anchors_ = true
 
 [node name="OverallCash" type="Label" parent="CanvasLayer"]
@@ -656,52 +654,50 @@ anchor_right = 0.515741
 anchor_bottom = 0.250926
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_colors/font_color = Color(0.322449, 0.491638, 0.187427, 1)
+theme_override_colors/font_color = Color(0.600084, 0.0288369, 0.0152562, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
 theme_override_constants/line_spacing = 10
 theme_override_constants/shadow_offset_x = -6
 theme_override_constants/shadow_offset_y = 4
 theme_override_constants/outline_size = 3
-theme_override_fonts/font = ExtResource("2_a7jdu")
 theme_override_font_sizes/font_size = 30
-text = "$BANK$: "
+text = "lifetime cash: "
 vertical_alignment = 1
 autowrap_mode = 3
 justification_flags = 35
 metadata/_edit_use_anchors_ = true
 
 [node name="style" type="Sprite2D" parent="CanvasLayer"]
-modulate = Color(0.408927, 0.153965, 0.155154, 0.508)
+self_modulate = Color(0.212305, 0.212305, 0.212305, 1)
 top_level = true
-z_index = -2
-position = Vector2(583.5, 493.5)
-scale = Vector2(2.00174, 3.65124)
+z_index = -3
+position = Vector2(581.501, 705.5)
+scale = Vector2(2.00868, 2.3426)
 texture = ExtResource("4_cx5d3")
 
 [node name="addition" type="Sprite2D" parent="CanvasLayer"]
-modulate = Color(0.363, 0.363, 0.363, 1)
+self_modulate = Color(0.0885598, 0.0885599, 0.0885599, 0.545098)
 top_level = true
-z_index = -1
-position = Vector2(573.5, 415)
-scale = Vector2(1.98438, 4.12963)
+z_index = -2
+position = Vector2(710, 613)
+scale = Vector2(1.66407, 3.10803)
 texture = ExtResource("5_37ixw")
 
 [node name="city" type="Sprite2D" parent="CanvasLayer"]
-modulate = Color(0.236, 0, 0.002, 0.476)
+self_modulate = Color(0.299547, 0.299547, 0.299547, 1)
 top_level = true
-z_index = -2
-position = Vector2(573, 459.5)
+z_index = -4
+position = Vector2(538, 536)
 scale = Vector2(2.01042, 3.89198)
 texture = ExtResource("6_658f1")
 
 [node name="clouds" type="Sprite2D" parent="CanvasLayer"]
-modulate = Color(0.636622, 0.432544, 1.92523e-07, 0.741)
-top_level = true
-z_index = -2
-position = Vector2(554.129, 417.272)
+self_modulate = Color(0.397104, 0.213035, 0.58996, 1)
+z_index = -1
+position = Vector2(474, 561)
 rotation = 0.0005793
-scale = Vector2(2.40836, 2.5498)
+scale = Vector2(2.63271, 3.44613)
 texture = ExtResource("7_xy8b8")
 
 [node name="Star" type="Sprite2D" parent="CanvasLayer"]
@@ -715,13 +711,13 @@ scale = Vector2(0.369913, 0.398474)
 texture = ExtResource("10_8ltut")
 
 [node name="Clock" type="Sprite2D" parent="CanvasLayer"]
-position = Vector2(564.671, 212.757)
+position = Vector2(546, 266)
 scale = Vector2(0.1, 0.1)
 texture = ExtResource("11_w0vdt")
 
 [node name="Overkill" type="Sprite2D" parent="CanvasLayer"]
 self_modulate = Color(1, 1, 1, 0)
-position = Vector2(565.158, 419.818)
+position = Vector2(572, 446)
 scale = Vector2(2.5724, 1.82386)
 texture = ExtResource("12_mi1w0")
 
@@ -756,93 +752,89 @@ frame_progress = 0.917033
 
 [node name="HomeButton" type="TouchScreenButton" parent="CanvasLayer"]
 unique_name_in_owner = true
-self_modulate = Color(1, 1, 0, 1)
+self_modulate = Color(0.177894, 0.37524, 0, 1)
 z_index = -1
-position = Vector2(22, 557)
-scale = Vector2(0.371528, 0.308642)
+position = Vector2(-56, 543)
+scale = Vector2(0.579284, 0.626615)
 texture_normal = ExtResource("3_erunh")
 shape = SubResource("RectangleShape2D_ee6lp")
+shape_visible = false
 
 [node name="Home" type="Label" parent="CanvasLayer/HomeButton"]
 z_index = 4
 anchors_preset = -1
-anchor_left = 0.33427
-anchor_top = 0.282253
-anchor_right = 0.620908
-anchor_bottom = 0.473685
-offset_left = -4.59521
-offset_top = -0.00012207
-offset_right = -35.8019
-offset_bottom = -31.0482
+anchor_left = 0.316826
+anchor_top = 0.216666
+anchor_right = 0.603285
+anchor_bottom = 0.491358
+offset_left = 4.43759
+offset_top = -11.1337
+offset_right = 4.43756
+offset_bottom = -11.1337
 grow_horizontal = 2
 grow_vertical = 2
-scale = Vector2(1.10437, 1.33385)
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_colors/font_shadow_color = Color(1, 1, 1, 1)
-theme_override_colors/font_outline_color = Color(0.805263, 0.0232689, 9.62615e-08, 1)
-theme_override_constants/shadow_offset_x = 5
-theme_override_constants/shadow_offset_y = -3
-theme_override_constants/outline_size = 8
-theme_override_fonts/font = ExtResource("2_a7jdu")
-theme_override_font_sizes/font_size = 92
-text = "HOME"
+theme_override_colors/font_color = Color(0.150911, 0.000117054, 0.468135, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0.715533, 0.695002, 0, 1)
+theme_override_constants/outline_size = 30
+theme_override_constants/shadow_outline_size = 47
+theme_override_font_sizes/font_size = 111
+text = "home"
 horizontal_alignment = 1
 vertical_alignment = 1
 metadata/_edit_use_anchors_ = true
 
 [node name="Restart" parent="CanvasLayer" instance=ExtResource("14_wagey")]
-position = Vector2(733.18, 632.3)
-scale = Vector2(3.418, 1.394)
+modulate = Color(0.176471, 0.376471, 0, 1)
+position = Vector2(814, 687)
+scale = Vector2(5.798, 2.574)
+shape_visible = false
 
-[node name="Home2" type="Label" parent="CanvasLayer/Restart"]
-z_index = 4
+[node name="LeaderBoard" type="Label" parent="CanvasLayer"]
 anchors_preset = -1
-anchor_left = 0.357143
-anchor_top = 0.297189
-anchor_right = 0.571881
-anchor_bottom = 0.441278
-offset_left = -43.3948
-offset_top = -14.9188
-offset_right = 350.605
-offset_bottom = 36.0812
-grow_horizontal = 2
-grow_vertical = 2
-scale = Vector2(0.175, 0.77)
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_colors/font_shadow_color = Color(1, 1, 1, 1)
-theme_override_colors/font_outline_color = Color(0.805263, 0.0232689, 9.62615e-08, 1)
-theme_override_constants/shadow_offset_x = 4
-theme_override_constants/shadow_offset_y = -1
-theme_override_constants/outline_size = 7
-theme_override_fonts/font = ExtResource("2_a7jdu")
-theme_override_font_sizes/font_size = 50
-text = "LEADERBOARD"
+anchor_left = 0.467593
+anchor_top = 0.681481
+anchor_right = 0.958226
+anchor_bottom = 0.853992
+offset_right = 324.116
+offset_bottom = 13.6881
+rotation = -0.00158599
+scale = Vector2(0.619401, 0.93576)
+theme_override_colors/font_color = Color(0.0863024, 5.77569e-07, 0.474985, 1)
+theme_override_colors/font_shadow_color = Color(0.351563, 0.351563, 0.351563, 1)
+theme_override_colors/font_outline_color = Color(0.64669, 0.662459, 3.85046e-07, 1)
+theme_override_constants/line_spacing = 8
+theme_override_constants/outline_size = 10
+theme_override_constants/shadow_outline_size = 20
+theme_override_font_sizes/font_size = 43
+text = "top 50 worldwide posted at
+https://osccct.org/leaderboard"
 horizontal_alignment = 1
 vertical_alignment = 1
 metadata/_edit_use_anchors_ = true
 
-[node name="LeaderBoard" type="Label" parent="CanvasLayer/Restart"]
-offset_left = -71.613
-offset_top = 35.856
-offset_right = 772.387
-offset_bottom = 183.856
-rotation = -0.00158599
-scale = Vector2(0.154679, 0.420396)
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_colors/font_shadow_color = Color(1, 1, 1, 1)
-theme_override_colors/font_outline_color = Color(0.805263, 0.0232689, 9.62615e-08, 1)
-theme_override_constants/line_spacing = 8
-theme_override_constants/shadow_offset_x = 1
-theme_override_constants/shadow_offset_y = -1
-theme_override_constants/outline_size = 5
-theme_override_fonts/font = ExtResource("2_a7jdu")
-theme_override_font_sizes/font_size = 43
-text = "TAP TO JOIN
-
-RANKING CAN BE FOUND AT 
-https://osccct.org/leaderboard"
+[node name="Home3" type="Label" parent="CanvasLayer"]
+z_index = 4
+anchors_preset = -1
+anchor_left = 0.530556
+anchor_top = 0.538888
+anchor_right = 0.882241
+anchor_bottom = 0.725121
+offset_right = 530.18
+offset_bottom = 95.5355
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.417385, 0.677971)
+theme_override_colors/font_color = Color(0.150911, 0.000117054, 0.468135, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0.715533, 0.695002, 0, 1)
+theme_override_constants/outline_size = 30
+theme_override_constants/shadow_outline_size = 51
+theme_override_font_sizes/font_size = 111
+text = "leaderboard"
 horizontal_alignment = 1
 vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
 
 [node name="GameManager" parent="." instance=ExtResource("3_g0ec8")]
 
@@ -867,7 +859,7 @@ body_size_limit = 1495
 layer = 2
 
 [node name="PopupPanel" type="PopupPanel" parent="MenuLayer"]
-title = "JOIN THE ELITE LEADERBOARD"
+title = "join THE Elite LEADerboards"
 initial_position = 1
 size = Vector2i(685, 228)
 transient_to_focused = true
@@ -900,9 +892,8 @@ theme_override_colors/font_placeholder_color = Color(0.628, 0.581, 0.577, 0.767)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_colors/font_color = Color(0.561448, 0.561544, 0.00979037, 1)
 theme_override_constants/outline_size = 3
-theme_override_fonts/font = ExtResource("2_a7jdu")
 theme_override_font_sizes/font_size = 16
-placeholder_text = "ADD YOUR CODENAME..."
+placeholder_text = "add your alias..."
 max_length = 30
 expand_to_text_length = true
 right_icon = ExtResource("20_tdrak")
@@ -927,51 +918,47 @@ position = Vector2(285, 25)
 shape = SubResource("RectangleShape2D_vv718")
 
 [node name="Upload" type="Sprite2D" parent="MenuLayer/PopupPanel"]
-position = Vector2(167.065, 167.17)
+position = Vector2(168.895, 163.025)
 rotation = 0.0349066
-scale = Vector2(3.405, 2.195)
+scale = Vector2(5.015, 3.233)
 texture = ExtResource("23_k004o")
 
 [node name="Label" type="Label" parent="MenuLayer/PopupPanel/Upload"]
-offset_left = -19.905
+offset_left = -17.4
 offset_top = -6.73
-offset_right = 159.73
-offset_bottom = 35.58
+offset_right = 165.6
+offset_bottom = 60.27
 rotation = -0.0436332
 scale = Vector2(0.165, 0.3)
 theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/shadow_offset_x = 3
-theme_override_constants/shadow_offset_y = 7
-theme_override_constants/outline_size = 2
-theme_override_fonts/font = ExtResource("2_a7jdu")
+theme_override_colors/font_shadow_color = Color(0.323761, 0.0941834, 0.0947007, 1)
+theme_override_colors/font_outline_color = Color(0.219608, 0.25098, 0.658824, 1)
+theme_override_constants/outline_size = 5
+theme_override_constants/shadow_outline_size = 35
 theme_override_font_sizes/font_size = 41
-text = "UPLOAD"
+text = "uPLoAD"
 
 [node name="Sprite2D" type="Sprite2D" parent="MenuLayer/PopupPanel"]
-position = Vector2(620, 168.45)
-rotation = 0.226893
-scale = Vector2(1.845, 1.845)
+position = Vector2(600, 156.7)
+rotation = -0.349066
+scale = Vector2(3.305, 3.305)
 texture = ExtResource("24_mx0lb")
 
 [node name="Rani" type="Label" parent="MenuLayer/PopupPanel/Sprite2D"]
 top_level = true
-offset_left = 419.105
-offset_top = 153.47
-offset_right = 1030.29
-offset_bottom = 345.25
+offset_left = 380.625
+offset_top = 143.12
+offset_right = 991.81
+offset_bottom = 334.9
 rotation = 0.00872665
-scale = Vector2(0.64, 0.69)
+scale = Vector2(0.805, 0.868)
 theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/shadow_offset_x = 3
-theme_override_constants/shadow_offset_y = 7
-theme_override_constants/outline_size = 2
-theme_override_fonts/font = ExtResource("2_a7jdu")
+theme_override_colors/font_shadow_color = Color(0.323761, 0.0941834, 0.0947007, 1)
+theme_override_colors/font_outline_color = Color(0.219608, 0.25098, 0.658824, 1)
+theme_override_constants/outline_size = 14
+theme_override_constants/shadow_outline_size = 43
 theme_override_font_sizes/font_size = 41
-text = "RANDOMIZE"
+text = "randomize"
 
 [node name="Close" type="TouchScreenButton" parent="MenuLayer/PopupPanel"]
 z_index = 2

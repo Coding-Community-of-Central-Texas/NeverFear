@@ -39,15 +39,16 @@ action = "jump"
 script = ExtResource("1_u2pio")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+self_modulate = Color(0.0475577, 0.0475576, 0.0475576, 0.859)
 z_index = 1
-position = Vector2(0.855802, 0.571428)
-scale = Vector2(0.105, 0.095)
+position = Vector2(-1.38956, -1.66336)
+scale = Vector2(0.119033, 0.108967)
 sprite_frames = SubResource("SpriteFrames_rubr5")
 animation = &"jump"
 
 [node name="Jumpbutton" type="Sprite2D" parent="."]
-position = Vector2(0.855802, 0.571428)
-scale = Vector2(0.105, 0.095)
+position = Vector2(-1.99365, -1.85676)
+scale = Vector2(0.120591, 0.110585)
 texture = ExtResource("1_43kw5")
 region_enabled = true
 region_rect = Rect2(0, 323.774, 320, 316.226)

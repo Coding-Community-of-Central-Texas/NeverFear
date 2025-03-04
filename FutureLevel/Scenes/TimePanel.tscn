@@ -1,7 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://fsxm1bfx6ihb"]
+[gd_scene load_steps=3 format=3 uid="uid://fsxm1bfx6ihb"]
 
 [ext_resource type="Script" path="res://Scripts/TimePanel.gd" id="1_4vdq7"]
-[ext_resource type="FontFile" uid="uid://ckid4fla6wirc" path="res://assets/etc/Starzoom-Shavian.ttf" id="2_lcrqh"]
 [ext_resource type="Texture2D" uid="uid://bbofee6bwlhcn" path="res://assets/etc/Clock.png" id="3_sfdqy"]
 
 [node name="TimePanel" type="Panel"]
@@ -23,7 +22,6 @@ offset_right = 51.0
 offset_bottom = 47.0
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 7
-theme_override_fonts/font = ExtResource("2_lcrqh")
 theme_override_font_sizes/font_size = 25
 text = "00:"
 horizontal_alignment = 2
@@ -36,7 +34,6 @@ offset_right = 103.0
 offset_bottom = 36.0
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 7
-theme_override_fonts/font = ExtResource("2_lcrqh")
 theme_override_font_sizes/font_size = 25
 text = "00."
 
@@ -48,10 +45,9 @@ offset_right = 149.0
 offset_bottom = 31.0
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 7
-theme_override_fonts/font = ExtResource("2_lcrqh")
 theme_override_font_sizes/font_size = 25
 text = "000"
 
 [node name="Clock" type="Sprite2D" parent="."]
-position = Vector2(-16, 10)
+position = Vector2(-16, 20)
 texture = ExtResource("3_sfdqy")

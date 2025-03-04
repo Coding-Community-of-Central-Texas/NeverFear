@@ -1,4 +1,4 @@
-[gd_scene load_steps=263 format=3 uid="uid://vmdnus7gyna4"]
+[gd_scene load_steps=270 format=3 uid="uid://vmdnus7gyna4"]
 
 [ext_resource type="Script" path="res://Scripts/LegacyProtocol.gd" id="1_aq02g"]
 [ext_resource type="Texture2D" uid="uid://c72vebtk3dx07" path="res://assets/1 Tiles/IndustrialTile_09.png" id="3_ledwt"]
@@ -108,7 +108,6 @@
 [ext_resource type="Texture2D" uid="uid://bnhfvq2i6dbp8" path="res://assets/etc/Icons_25.png" id="96_obt1p"]
 [ext_resource type="PackedScene" uid="uid://fsxm1bfx6ihb" path="res://Scenes/TimePanel.tscn" id="97_86uxg"]
 [ext_resource type="Script" path="res://Scripts/MoneyCount.gd" id="97_b7kug"]
-[ext_resource type="FontFile" uid="uid://ckid4fla6wirc" path="res://assets/etc/Starzoom-Shavian.ttf" id="97_tvle3"]
 [ext_resource type="Texture2D" uid="uid://ql70ode1roo" path="res://assets/city 1/3.png" id="99_6cglh"]
 [ext_resource type="PackedScene" uid="uid://bpcrood65pxvy" path="res://Scenes/PauseButton.tscn" id="99_ec2gt"]
 [ext_resource type="PackedScene" uid="uid://2e2ccqhb4ij6" path="res://Scenes/CheckFlag.tscn" id="99_vjxur"]
@@ -120,6 +119,7 @@
 [ext_resource type="PackedScene" uid="uid://d2u5kjqvm0jcd" path="res://Scenes/BigSpawn.tscn" id="105_1jfro"]
 [ext_resource type="PackedScene" uid="uid://cp0mkjt4kb621" path="res://Scenes/MiniBossSpawn.tscn" id="106_614e6"]
 [ext_resource type="PackedScene" uid="uid://cijayc3peexw" path="res://Singletons/GameManager.tscn" id="106_jtjrs"]
+[ext_resource type="Texture2D" uid="uid://dtey7mq3og40d" path="res://assets/etc/Money.png" id="108_qd40d"]
 [ext_resource type="PackedScene" uid="uid://bygt3a6360eme" path="res://Scenes/LegacyControl.tscn" id="113_84fyj"]
 [ext_resource type="PackedScene" uid="uid://dorufdk5325u3" path="res://Scenes/BossSpawn.tscn" id="114_rstwu"]
 [ext_resource type="PackedScene" uid="uid://cu36yuh2cmfj" path="res://Scenes/PickUp.tscn" id="115_2otky"]
@@ -1071,6 +1071,56 @@ pattern_14 = SubResource("TileMapPattern_xu88m")
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_nq6s1"]
 distance = -15.8755
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_25ham"]
+atlas = ExtResource("108_qd40d")
+region = Rect2(0, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8iky2"]
+atlas = ExtResource("108_qd40d")
+region = Rect2(24, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xclbc"]
+atlas = ExtResource("108_qd40d")
+region = Rect2(48, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xgeam"]
+atlas = ExtResource("108_qd40d")
+region = Rect2(72, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s17q3"]
+atlas = ExtResource("108_qd40d")
+region = Rect2(96, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mv8vo"]
+atlas = ExtResource("108_qd40d")
+region = Rect2(120, 0, 24, 24)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ad20w"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_25ham")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8iky2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xclbc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xgeam")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s17q3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mv8vo")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
 
 [sub_resource type="Animation" id="Animation_aal22"]
 length = 0.001
@@ -2401,12 +2451,12 @@ offset_bottom = 5.88005
 scale = Vector2(1.08, 0.879999)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 5
-theme_override_fonts/font = ExtResource("97_tvle3")
 theme_override_font_sizes/font_size = 25
+text = "Lives:"
 metadata/_edit_use_anchors_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="Buttons/LifeCounter"]
-position = Vector2(-17.5926, 10.2273)
+position = Vector2(-18.5185, 18.1818)
 texture = ExtResource("96_obt1p")
 
 [node name="TimePanel" parent="Buttons" instance=ExtResource("97_86uxg")]
@@ -2446,10 +2496,16 @@ scale = Vector2(1.28, 1.04)
 theme_override_colors/font_color = Color(0.242792, 0.747165, 0.362575, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 7
-theme_override_fonts/font = ExtResource("97_tvle3")
 theme_override_font_sizes/font_size = 25
-text = "$ 0 "
+text = " 0 "
 metadata/_edit_use_anchors_ = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Buttons/MoneyCount"]
+position = Vector2(-50, 71)
+scale = Vector2(1.66667, 1.5)
+sprite_frames = SubResource("SpriteFrames_ad20w")
+autoplay = "default"
+frame_progress = 0.755306
 
 [node name="PauseButton" parent="Buttons" instance=ExtResource("99_ec2gt")]
 position = Vector2(547, 976)
