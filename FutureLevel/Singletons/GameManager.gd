@@ -15,13 +15,14 @@ var total_cash: int = 0
 var current_level_time: String = "" 
 var current_kills: int = 0
 var game_cash: int = 0 
-var api_key: String = "LEADERBOARD_KEY"
+
 var player_name: String
 # File path for save data
 const SAVE_PATH = "user://stat_data.json"
 
 # API Endpoint URL
-const API_URL: String = "https://osccct.org/api/endpoint.php"
+const API_URL: String = "https://neverfearendpoint-469126233982.us-south1.run.app"
+const API_KEY: String = "LEADERBOARD_KEY"
 
 func _ready():
 	load_data()
@@ -104,6 +105,7 @@ func _on_tree_exiting():
 func send_stats(http_request: HTTPRequest) -> void:
 	var headers = [
 		"Content-Type: application/json",
+		"x-api-key: " + API_KEY  # Add API key in the header
 	]
 	
 	var payload = {

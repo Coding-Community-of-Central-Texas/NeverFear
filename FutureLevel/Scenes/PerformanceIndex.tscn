@@ -1,6 +1,7 @@
-[gd_scene load_steps=46 format=3 uid="uid://btnf3drbkix5k"]
+[gd_scene load_steps=47 format=3 uid="uid://btnf3drbkix5k"]
 
 [ext_resource type="Texture2D" uid="uid://dcmt4rtiisn55" path="res://assets/Background/1.png" id="1_erotl"]
+[ext_resource type="FontFile" uid="uid://daex80h1eaujl" path="res://assets/etc/StarJedi-DGRW.ttf" id="2_1grku"]
 [ext_resource type="FontFile" uid="uid://ckid4fla6wirc" path="res://assets/etc/Starzoom-Shavian.ttf" id="2_a7jdu"]
 [ext_resource type="Texture2D" uid="uid://bv7fu6os82paq" path="res://assets/buttonsprites/UIbutton.png" id="3_erunh"]
 [ext_resource type="PackedScene" uid="uid://cijayc3peexw" path="res://Singletons/GameManager.tscn" id="3_g0ec8"]
@@ -557,9 +558,9 @@ theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
 theme_override_constants/shadow_offset_x = -6
 theme_override_constants/shadow_offset_y = 3
 theme_override_constants/outline_size = 3
-theme_override_fonts/font = ExtResource("2_a7jdu")
+theme_override_fonts/font = ExtResource("2_1grku")
 theme_override_font_sizes/font_size = 40
-text = "PERFORMANCE INDEX"
+text = "PERFoRMANCE index"
 horizontal_alignment = 1
 autowrap_mode = 3
 justification_flags = 35
@@ -981,6 +982,6 @@ shape = SubResource("CircleShape2D_s6mh0")
 [connection signal="pressed" from="CanvasLayer/Restart" to="." method="_on_restart_pressed"]
 [connection signal="pressed" from="MenuLayer/PopupPanel/SendName/UploadButton" to="MenuLayer/PopupPanel/SendName" method="_on_upload_button_pressed"]
 [connection signal="pressed" from="MenuLayer/PopupPanel/SendName/Randimize" to="MenuLayer/PopupPanel/SendName" method="_on_randimize_pressed"]
-[connection signal="pressed" from="MenuLayer/PopupPanel/SendName/FillText" to="MenuLayer/PopupPanel/SendName" method="_on_text_pressed"]
 [connection signal="pressed" from="MenuLayer/PopupPanel/SendName/FillText" to="MenuLayer/PopupPanel/SendName" method="_on_fill_text_pressed"]
+[connection signal="pressed" from="MenuLayer/PopupPanel/SendName/FillText" to="MenuLayer/PopupPanel/SendName" method="_on_text_pressed"]
 [connection signal="pressed" from="MenuLayer/PopupPanel/Close" to="MenuLayer/PopupPanel/SendName" method="_on_close_pressed"]
