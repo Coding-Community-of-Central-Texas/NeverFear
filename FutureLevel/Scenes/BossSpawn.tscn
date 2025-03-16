@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://dorufdk5325u3"]
 
-[ext_resource type="Script" path="res://Scripts/BossSpawn.gd" id="1_6gm1h"]
+[ext_resource type="Script" uid="uid://cdmbr71es5522" path="res://Scripts/BossSpawn.gd" id="1_6gm1h"]
 [ext_resource type="AudioStream" uid="uid://d1ifvbfu44tl1" path="res://assets/FutrueSFX/Roar.wav" id="2_rq1h1"]
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_20hbk"]

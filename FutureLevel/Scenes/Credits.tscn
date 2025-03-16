@@ -1,6 +1,6 @@
 [gd_scene load_steps=10 format=3 uid="uid://d1ly636rhenqx"]
 
-[ext_resource type="Script" path="res://Scripts/Credits.gd" id="1_8kx13"]
+[ext_resource type="Script" uid="uid://d0gmwu6i2pffw" path="res://Scripts/Credits.gd" id="1_8kx13"]
 [ext_resource type="Texture2D" uid="uid://bv7fu6os82paq" path="res://assets/buttonsprites/UIbutton.png" id="3_4j024"]
 [ext_resource type="Texture2D" uid="uid://dcmt4rtiisn55" path="res://assets/Background/1.png" id="5_31scm"]
 [ext_resource type="PackedScene" uid="uid://cijayc3peexw" path="res://Singletons/GameManager.tscn" id="6_kygu5"]
@@ -162,8 +162,8 @@ tracks/5/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_shxe1"]
 _data = {
-"RESET": SubResource("Animation_ckmp4"),
-"rollcredits": SubResource("Animation_38a7b")
+&"RESET": SubResource("Animation_ckmp4"),
+&"rollcredits": SubResource("Animation_38a7b")
 }
 
 [node name="Credits" type="Node2D"]

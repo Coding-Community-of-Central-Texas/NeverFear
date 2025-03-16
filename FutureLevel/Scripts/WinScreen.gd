@@ -9,9 +9,9 @@ extends CanvasLayer
 @onready var restart: Sprite2D = $Win/Restart
 
 func _process(_delta):
-	run_time.text = "RUN TIME: %s" % Global.legacy.level_time()
-	enimies_killed.text = "ENEMIES VAPORIZED: %d" % GameManager.current_kills
-	cash_collected.text = "CASH COLLECTED: $ %s" % GameManager.game_cash
+	run_time.text = "run time: %s" % Global.legacy.level_time()
+	enimies_killed.text = "bots vaporized: %d" % GameManager.current_kills
+	cash_collected.text = "cash collected: $ %s" % GameManager.game_cash
 
 func _on_stats_link_pressed() -> void:
 	audio_stream_player_2d.play()

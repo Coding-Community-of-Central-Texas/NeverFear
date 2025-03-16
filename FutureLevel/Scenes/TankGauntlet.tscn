@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://cwmvvt10vc37t"]
 
-[ext_resource type="Script" path="res://Scripts/TankGauntlet.gd" id="1_f62gq"]
+[ext_resource type="Script" uid="uid://cj40i03tcg74b" path="res://Scripts/TankGauntlet.gd" id="1_f62gq"]
 [ext_resource type="PackedScene" uid="uid://7rfkwwydbnmb" path="res://Scenes/Tank.tscn" id="2_hbva3"]
 [ext_resource type="PackedScene" uid="uid://c2txtdlp7v66l" path="res://Scenes/BasicGun.tscn" id="3_747a0"]
 [ext_resource type="Texture2D" uid="uid://dkp57y2x4axvt" path="res://assets/etc/shadow.png" id="4_iwgws"]

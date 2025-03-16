@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://b0oeqk6jov218"]
 
-[ext_resource type="Script" path="res://Scripts/BigSpawnGauntletv2.gd" id="1_7i4oh"]
+[ext_resource type="Script" uid="uid://b8q8q0akemvtx" path="res://Scripts/BigSpawnGauntletv2.gd" id="1_7i4oh"]
 
 [node name="GauntletBigSpawn" type="Marker2D"]
 position = Vector2(199, -2.5)

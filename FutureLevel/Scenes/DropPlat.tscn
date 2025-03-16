@@ -1,6 +1,6 @@
 [gd_scene load_steps=16 format=3 uid="uid://bjy4p1k6qgxm8"]
 
-[ext_resource type="Script" path="res://Scripts/DropPlatFix.gd" id="1_a81pg"]
+[ext_resource type="Script" uid="uid://btq230y6yq2s5" path="res://Scripts/DropPlatFix.gd" id="1_a81pg"]
 [ext_resource type="Texture2D" uid="uid://dpnldt7qfxni8" path="res://assets/etc/Platform.png" id="2_q2ta0"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_uo4r8"]
@@ -261,8 +261,8 @@ tracks/7/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_i43n8"]
 _data = {
-"RESET": SubResource("Animation_uxxk0"),
-"end": SubResource("Animation_v7m23")
+&"RESET": SubResource("Animation_uxxk0"),
+&"end": SubResource("Animation_v7m23")
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_q3aqr"]

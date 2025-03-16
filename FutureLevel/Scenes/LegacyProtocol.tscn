@@ -1,6 +1,6 @@
 [gd_scene load_steps=270 format=3 uid="uid://vmdnus7gyna4"]
 
-[ext_resource type="Script" path="res://Scripts/LegacyProtocol.gd" id="1_aq02g"]
+[ext_resource type="Script" uid="uid://b68w7012wmwjv" path="res://Scripts/LegacyProtocol.gd" id="1_aq02g"]
 [ext_resource type="Texture2D" uid="uid://c72vebtk3dx07" path="res://assets/1 Tiles/IndustrialTile_09.png" id="3_ledwt"]
 [ext_resource type="Texture2D" uid="uid://c7jfd3b4uiebb" path="res://assets/1 Tiles/IndustrialTile_10.png" id="4_d5lhw"]
 [ext_resource type="Texture2D" uid="uid://ds46eo7qowcw8" path="res://assets/1 Tiles/IndustrialTile_11.png" id="5_6y1p0"]
@@ -107,7 +107,7 @@
 [ext_resource type="Texture2D" uid="uid://1sjjrx2qufrj" path="res://assets/2 Background/Pipes.png" id="96_0kd3w"]
 [ext_resource type="Texture2D" uid="uid://bnhfvq2i6dbp8" path="res://assets/etc/Icons_25.png" id="96_obt1p"]
 [ext_resource type="PackedScene" uid="uid://fsxm1bfx6ihb" path="res://Scenes/TimePanel.tscn" id="97_86uxg"]
-[ext_resource type="Script" path="res://Scripts/MoneyCount.gd" id="97_b7kug"]
+[ext_resource type="Script" uid="uid://djny6a1o64f1p" path="res://Scripts/MoneyCount.gd" id="97_b7kug"]
 [ext_resource type="Texture2D" uid="uid://ql70ode1roo" path="res://assets/city 1/3.png" id="99_6cglh"]
 [ext_resource type="PackedScene" uid="uid://bpcrood65pxvy" path="res://Scenes/PauseButton.tscn" id="99_ec2gt"]
 [ext_resource type="PackedScene" uid="uid://2e2ccqhb4ij6" path="res://Scenes/CheckFlag.tscn" id="99_vjxur"]
@@ -123,13 +123,13 @@
 [ext_resource type="PackedScene" uid="uid://bygt3a6360eme" path="res://Scenes/LegacyControl.tscn" id="113_84fyj"]
 [ext_resource type="PackedScene" uid="uid://dorufdk5325u3" path="res://Scenes/BossSpawn.tscn" id="114_rstwu"]
 [ext_resource type="PackedScene" uid="uid://cu36yuh2cmfj" path="res://Scenes/PickUp.tscn" id="115_2otky"]
-[ext_resource type="Script" path="res://Scripts/GunPickUp.gd" id="116_rrq72"]
+[ext_resource type="Script" uid="uid://dw6udtdycfbec" path="res://Scripts/GunPickUp.gd" id="116_rrq72"]
 [ext_resource type="PackedScene" uid="uid://cimhq6uapolif" path="res://Scenes/Fire.tscn" id="117_brvrh"]
 [ext_resource type="PackedScene" uid="uid://dtuqhypetdr3c" path="res://Scenes/Doorv2.tscn" id="119_2xs3b"]
 [ext_resource type="Texture2D" uid="uid://00s18hlgmpih" path="res://assets/etc/color_burst_25.png" id="123_4m2p7"]
-[ext_resource type="Script" path="res://Scripts/SetBackground.gd" id="127_vmawy"]
+[ext_resource type="Script" uid="uid://c2ioybuyuo4d7" path="res://Scripts/SetBackground.gd" id="127_vmawy"]
 [ext_resource type="Texture2D" uid="uid://bfkq0dn281svy" path="res://assets/etc/Entry.png" id="130_kelqa"]
-[ext_resource type="Script" path="res://Scripts/FrontDoor.gd" id="131_bbx3h"]
+[ext_resource type="Script" uid="uid://1gfsd080567h" path="res://Scripts/FrontDoor.gd" id="131_bbx3h"]
 [ext_resource type="PackedScene" uid="uid://65xehuevf8h7" path="res://Scenes/Hammer.tscn" id="131_r6jtf"]
 [ext_resource type="PackedScene" uid="uid://bjp0l20hey11o" path="res://Scenes/Converbelt.tscn" id="134_4m4e6"]
 [ext_resource type="PackedScene" uid="uid://bn1nfimv3nu8a" path="res://Scenes/Fallout.tscn" id="135_f2jvr"]
@@ -1275,8 +1275,8 @@ tracks/5/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_dgn4u"]
 _data = {
-"RESET": SubResource("Animation_aal22"),
-"move": SubResource("Animation_v55cb")
+&"RESET": SubResource("Animation_aal22"),
+&"move": SubResource("Animation_v55cb")
 }
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jqxsy"]
@@ -1582,8 +1582,8 @@ tracks/9/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_kq1kp"]
 _data = {
-"RESET": SubResource("Animation_0g2rx"),
-"cars": SubResource("Animation_n3q6t")
+&"RESET": SubResource("Animation_0g2rx"),
+&"cars": SubResource("Animation_n3q6t")
 }
 
 [sub_resource type="Animation" id="Animation_idg03"]
@@ -1619,8 +1619,8 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_g20u8"]
 _data = {
-"RESET": SubResource("Animation_idg03"),
-"start": SubResource("Animation_qfcvm")
+&"RESET": SubResource("Animation_idg03"),
+&"start": SubResource("Animation_qfcvm")
 }
 
 [node name="LegacyProtocol" type="Node2D" groups=["Legacy"]]

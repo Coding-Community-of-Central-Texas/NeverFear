@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://fsxm1bfx6ihb"]
 
-[ext_resource type="Script" path="res://Scripts/TimePanel.gd" id="1_4vdq7"]
+[ext_resource type="Script" uid="uid://dhqqgfh182cai" path="res://Scripts/TimePanel.gd" id="1_4vdq7"]
 [ext_resource type="Texture2D" uid="uid://bbofee6bwlhcn" path="res://assets/etc/Clock.png" id="3_sfdqy"]
 
 [node name="TimePanel" type="Panel"]

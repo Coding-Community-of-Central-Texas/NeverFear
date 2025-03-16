@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://cr16l7y5x5fys"]
 
 [ext_resource type="Texture2D" uid="uid://bcypd57pmrt63" path="res://assets/Background/Hero.svg" id="1_ykjtl"]
-[ext_resource type="Script" path="res://Scripts/WinScreen.gd" id="2_1sl55"]
+[ext_resource type="Script" uid="uid://dx6yg8arw0ugk" path="res://Scripts/WinScreen.gd" id="2_1sl55"]
 [ext_resource type="Texture2D" uid="uid://bv7fu6os82paq" path="res://assets/buttonsprites/UIbutton.png" id="4_hj3s0"]
 [ext_resource type="AudioStream" uid="uid://dbnystp0y1gke" path="res://assets/FutrueSFX/PickUp.wav" id="5_els2m"]
 

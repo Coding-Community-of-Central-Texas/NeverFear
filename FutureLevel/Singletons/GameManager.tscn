@@ -1,6 +1,6 @@
 [gd_scene load_steps=10 format=3 uid="uid://cijayc3peexw"]
 
-[ext_resource type="Script" path="res://Singletons/GameManager.gd" id="1_t61qt"]
+[ext_resource type="Script" uid="uid://dxjoxqkow3ser" path="res://Singletons/GameManager.gd" id="1_t61qt"]
 [ext_resource type="AudioStream" uid="uid://b3ebqxxcgi3x1" path="res://assets/FutrueSFX/DavidKBD - Eternity Pack - 02 - Agony Space-deep - oneshoot.ogg" id="2_8be7v"]
 [ext_resource type="AudioStream" uid="uid://bpcayivn7waop" path="res://assets/FutrueSFX/DavidKBD - Eternity Pack - 05 - Evil soul inside - loop.ogg" id="3_m3ghm"]
 [ext_resource type="AudioStream" uid="uid://dd18n226docax" path="res://assets/FutrueSFX/DavidKBD - Eternity Pack - 06 - God of darkness - loop.ogg" id="4_3m1f7"]

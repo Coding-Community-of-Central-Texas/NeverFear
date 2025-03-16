@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://bpcrood65pxvy"]
 
 [ext_resource type="Texture2D" uid="uid://r4yabe1kewtl" path="res://assets/etc/Icons_34.png" id="1_1ah3y"]
-[ext_resource type="Script" path="res://Scripts/PauseButton.gd" id="2_ny8u6"]
+[ext_resource type="Script" uid="uid://32oihgl1ha6n" path="res://Scripts/PauseButton.gd" id="2_ny8u6"]
 [ext_resource type="Texture2D" uid="uid://c8fbdi8gxy03r" path="res://assets/etc/uncheckd.png" id="3_cpkma"]
 [ext_resource type="AudioStream" uid="uid://dbnystp0y1gke" path="res://assets/FutrueSFX/PickUp.wav" id="4_5mu5q"]
 

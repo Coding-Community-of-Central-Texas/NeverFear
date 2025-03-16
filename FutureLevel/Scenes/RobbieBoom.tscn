@@ -1,6 +1,6 @@
 [gd_scene load_steps=20 format=3 uid="uid://bcq6mw46qd5xs"]
 
-[ext_resource type="Script" path="res://Scripts/RobbieBoom.gd" id="1_hd2ls"]
+[ext_resource type="Script" uid="uid://dtcquy2gae14b" path="res://Scripts/RobbieBoom.gd" id="1_hd2ls"]
 [ext_resource type="Texture2D" uid="uid://coutsd2rj5gso" path="res://assets/Guns&Bullets/Robbieboom.png" id="2_vomud"]
 [ext_resource type="AudioStream" uid="uid://dxfrttasqhqia" path="res://assets/FutrueSFX/Explosion Long 02.wav" id="3_xnipk"]
 [ext_resource type="Texture2D" uid="uid://ddbpbs2mo4tn8" path="res://assets/Guns&Bullets/dingbats-327.png" id="4_6r557"]
@@ -98,7 +98,7 @@ animations = [{
 }]
 
 [sub_resource type="Curve" id="Curve_tevec"]
-max_value = 0.55
+_limits = [0.0, 0.55, 0.0, 1.0]
 _data = [Vector2(0, 0), 0.0, 1.75323, 0, 0, Vector2(0.415042, 0.55), 0.0, 0.0, 0, 0, Vector2(0.877437, 0.55), 0.0386253, 0.0386253, 0, 0, Vector2(0.924791, 0), -0.267403, 0.0, 0, 0]
 point_count = 4
 

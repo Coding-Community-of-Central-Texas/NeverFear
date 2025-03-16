@@ -1,6 +1,6 @@
 [gd_scene load_steps=32 format=3 uid="uid://dr3tcip76rdmv"]
 
-[ext_resource type="Script" path="res://Scripts/Robo.gd" id="1_n30qb"]
+[ext_resource type="Script" uid="uid://bo8rmfhohoaoi" path="res://Scripts/Robo.gd" id="1_n30qb"]
 [ext_resource type="Texture2D" uid="uid://bhsi7cghh2ykk" path="res://assets/Enemies/RoboRet.png" id="2_44qum"]
 [ext_resource type="Texture2D" uid="uid://bwmcmb0hqc4j5" path="res://assets/Guns&Bullets/impact.png" id="3_y6870"]
 [ext_resource type="PackedScene" uid="uid://7nrxkwybkljg" path="res://Scenes/BigBoom.tscn" id="4_o1jao"]
@@ -321,10 +321,10 @@ tracks/3/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_fl1x7"]
 _data = {
-"RESET": SubResource("Animation_pwu1u"),
-"attack": SubResource("Animation_f4omt"),
-"hurt": SubResource("Animation_kyxfu"),
-"walk": SubResource("Animation_xlfcn")
+&"RESET": SubResource("Animation_pwu1u"),
+&"attack": SubResource("Animation_f4omt"),
+&"hurt": SubResource("Animation_kyxfu"),
+&"walk": SubResource("Animation_xlfcn")
 }
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_apig7"]

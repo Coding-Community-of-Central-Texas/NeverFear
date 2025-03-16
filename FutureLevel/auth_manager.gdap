@@ -1,0 +1,4 @@
+[config]
+name="AuthManager"
+binary_type="local"
+binary="AuthManager.class"

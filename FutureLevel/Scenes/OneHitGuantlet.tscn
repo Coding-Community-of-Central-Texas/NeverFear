@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://dlmwrma7sd51s"]
 
-[ext_resource type="Script" path="res://Scripts/OneHitGauntlet.gd" id="1_hf14j"]
+[ext_resource type="Script" uid="uid://b0tgygkelq0vk" path="res://Scripts/OneHitGauntlet.gd" id="1_hf14j"]
 [ext_resource type="PackedScene" uid="uid://dyimxg6mdgoab" path="res://Scenes/Byte.tscn" id="2_g3ocj"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_cnpoq"]

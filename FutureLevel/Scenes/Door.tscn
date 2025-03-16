@@ -1,8 +1,10 @@
 [gd_scene load_steps=13 format=3 uid="uid://bnog7ctirydt7"]
 
-[ext_resource type="Script" path="res://Scripts/Door.gd" id="1_hgaju"]
 [ext_resource type="Texture2D" uid="uid://bfkq0dn281svy" path="res://assets/etc/Entry.png" id="2_acl2p"]
 [ext_resource type="AudioStream" uid="uid://cu4ww1fxb7vca" path="res://assets/FutrueSFX/OpenDoor.wav" id="3_h71nb"]
+
+[sub_resource type="Resource" id="Resource_mw28t"]
+metadata/__load_path__ = "res://Scripts/Door.gd"
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_2r0v5"]
 atlas = ExtResource("2_acl2p")
@@ -67,7 +69,7 @@ size = Vector2(23, 41.5)
 
 [node name="Door" type="Node2D"]
 scale = Vector2(1.37333, 1.72)
-script = ExtResource("1_hgaju")
+script = SubResource("Resource_mw28t")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 unique_name_in_owner = true

@@ -3,8 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://dm5e8dvxsdivl" path="res://assets/etc/smoke3_18.png" id="1_uwtqu"]
 
 [sub_resource type="Curve" id="Curve_3qcs5"]
-min_value = 0.2
-max_value = 1.02
+_limits = [0.2, 1.02, 0.0, 1.0]
 _data = [Vector2(0, 0.38022), 0.0, 0.0, 0, 0, Vector2(0.19457, 0.461319), 0.0, 0.0, 0, 0, Vector2(0.561086, 0.605495), 0.497857, 0.497857, 0, 0, Vector2(1, 1.02), 0.0, 0.0, 0, 0]
 point_count = 4
 

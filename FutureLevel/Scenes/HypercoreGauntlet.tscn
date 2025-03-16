@@ -1,13 +1,13 @@
 [gd_scene load_steps=191 format=3 uid="uid://c8sbp2d4k2aou"]
 
-[ext_resource type="Script" path="res://Scripts/HypercoreGauntlet.gd" id="1_aav37"]
-[ext_resource type="Script" path="res://addons/gaea/renderers/2D/tilemap_gaea_renderer.gd" id="2_bqeif"]
-[ext_resource type="Script" path="res://addons/gaea/generators/2D/noise_generator/noise_generator.gd" id="3_iryc7"]
-[ext_resource type="Script" path="res://addons/gaea/modifiers/2D/modifier_2d.gd" id="4_8em6s"]
-[ext_resource type="Script" path="res://addons/gaea/generators/2D/noise_generator/noise_generator_settings.gd" id="5_suek0"]
-[ext_resource type="Script" path="res://addons/gaea/generators/2D/noise_generator/noise_generator_data.gd" id="6_v2o4m"]
+[ext_resource type="Script" uid="uid://cmwo16o6i0s75" path="res://Scripts/HypercoreGauntlet.gd" id="1_aav37"]
+[ext_resource type="Script" uid="uid://drjj2j2k4q1h2" path="res://addons/gaea/renderers/2D/tilemap_gaea_renderer.gd" id="2_bqeif"]
+[ext_resource type="Script" uid="uid://b2dpsg8b0p0y0" path="res://addons/gaea/generators/2D/noise_generator/noise_generator.gd" id="3_iryc7"]
+[ext_resource type="Script" uid="uid://bpy1iocyuiojc" path="res://addons/gaea/modifiers/2D/modifier_2d.gd" id="4_8em6s"]
+[ext_resource type="Script" uid="uid://bo7rctlpxpvta" path="res://addons/gaea/generators/2D/noise_generator/noise_generator_settings.gd" id="5_suek0"]
+[ext_resource type="Script" uid="uid://cvaeybnn0neyy" path="res://addons/gaea/generators/2D/noise_generator/noise_generator_data.gd" id="6_v2o4m"]
 [ext_resource type="Texture2D" uid="uid://dvdnnc6kgs44h" path="res://assets/1 Tiles/Box8.png" id="7_2riic"]
-[ext_resource type="Script" path="res://addons/gaea/tile_info/tilemap_tile_info.gd" id="7_of22h"]
+[ext_resource type="Script" uid="uid://bbxrcfq33qgrr" path="res://addons/gaea/tile_info/tilemap_tile_info.gd" id="7_of22h"]
 [ext_resource type="Texture2D" uid="uid://cu0yrtlk87m0n" path="res://assets/1 Tiles/Fence1.png" id="8_c7nh4"]
 [ext_resource type="Texture2D" uid="uid://cx0stqbakkhl0" path="res://assets/1 Tiles/IndustrialTile_07.png" id="9_5qj31"]
 [ext_resource type="Texture2D" uid="uid://ewx0u37tbmg2" path="res://assets/1 Tiles/IndustrialTile_08.png" id="10_hy83t"]
@@ -85,12 +85,12 @@
 [ext_resource type="Texture2D" uid="uid://c7nw8oj5k54fx" path="res://assets/1 Tiles/IndustrialTile_05.png" id="82_ejyhe"]
 [ext_resource type="Texture2D" uid="uid://du0amabk2v8a8" path="res://assets/1 Tiles/IndustrialTile_06.png" id="83_cdau2"]
 [ext_resource type="PackedScene" uid="uid://bsltfx5uw5yvq" path="res://Scenes/Survivor.tscn" id="84_7tc6j"]
-[ext_resource type="Script" path="res://addons/gaea/others/chunk_loader_2d.gd" id="85_07p6e"]
+[ext_resource type="Script" uid="uid://njy3mbawr1ug" path="res://addons/gaea/others/chunk_loader_2d.gd" id="85_07p6e"]
 [ext_resource type="PackedScene" uid="uid://cijayc3peexw" path="res://Singletons/GameManager.tscn" id="87_esuwa"]
 [ext_resource type="PackedScene" uid="uid://bpcrood65pxvy" path="res://Scenes/PauseButton.tscn" id="88_b882s"]
 [ext_resource type="PackedScene" uid="uid://bnvfoqqwf8ub" path="res://Scenes/SurvivorControl.tscn" id="89_4jwms"]
 [ext_resource type="PackedScene" uid="uid://fsxm1bfx6ihb" path="res://Scenes/TimePanel.tscn" id="90_xpk53"]
-[ext_resource type="Script" path="res://Scripts/Kills.gd" id="92_o11a1"]
+[ext_resource type="Script" uid="uid://b3vkuo260umhc" path="res://Scripts/Kills.gd" id="92_o11a1"]
 [ext_resource type="Texture2D" uid="uid://brastt74lxpni" path="res://assets/etc/ranks/overkill.png" id="93_4vd0a"]
 [ext_resource type="Texture2D" uid="uid://d1wlj0qisaufc" path="res://assets/Guns&Bullets/fire_30.png" id="94_juiig"]
 
@@ -693,8 +693,7 @@ sources/75 = SubResource("TileSetAtlasSource_llo5o")
 sources/76 = SubResource("TileSetAtlasSource_g3xb1")
 
 [sub_resource type="Curve" id="Curve_wuajb"]
-min_value = -0.4
-max_value = 0.85
+_limits = [-0.4, 0.85, 0.0, 1.0]
 _data = [Vector2(0.0331492, -0.14088), 0.0, 0.0, 0, 0, Vector2(0.171271, 0.335649), 3.52712, 3.52712, 0, 0, Vector2(0.350829, 0.710515), 0.538803, 0.538803, 0, 0, Vector2(1, 0.85), 0.0, 0.0, 0, 0]
 point_count = 4
 
@@ -744,8 +743,8 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ukdey"]
 _data = {
-"RESET": SubResource("Animation_4r3fk"),
-"load": SubResource("Animation_l2rq5")
+&"RESET": SubResource("Animation_4r3fk"),
+&"load": SubResource("Animation_l2rq5")
 }
 
 [node name="HypercoreGauntlet" type="Node2D"]

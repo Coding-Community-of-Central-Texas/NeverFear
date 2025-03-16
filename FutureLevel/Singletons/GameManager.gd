@@ -15,17 +15,20 @@ var total_cash: int = 0
 var current_level_time: String = "" 
 var current_kills: int = 0
 var game_cash: int = 0 
-
+var api_key: String 
 var player_name: String
 # File path for save data
 const SAVE_PATH = "user://stat_data.json"
 
 # API Endpoint URL
 const API_URL: String = "https://neverfearendpoint-469126233982.us-south1.run.app"
-const API_KEY: String = "LEADERBOARD_KEY"
+var API_KEY: String
 
 func _ready():
 	load_data()
+	if Engine.has_singleton("SecretFetcher"):
+		var fetcher = Engine.get_singleton("SecretFetcher")
+		API_KEY = fetcher.getApiKey()
 
 func _on_kill(amount: int) -> void:
 	total_kills += amount

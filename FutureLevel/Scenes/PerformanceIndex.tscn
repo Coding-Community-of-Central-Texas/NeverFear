@@ -17,7 +17,7 @@
 [ext_resource type="Texture2D" uid="uid://dtey7mq3og40d" path="res://assets/etc/Money.png" id="14_gul7b"]
 [ext_resource type="PackedScene" uid="uid://bqcx6ju2n7a3t" path="res://Scenes/RestartButton.tscn" id="14_wagey"]
 [ext_resource type="PackedScene" uid="uid://dcxq7foaq7ww0" path="res://Scenes/HTTPRequest.tscn" id="17_6vdmp"]
-[ext_resource type="Script" path="res://Scripts/StatsBoard.gd" id="18_7bq7t"]
+[ext_resource type="Script" uid="uid://cbh2mjwjrends" path="res://Scripts/StatsBoard.gd" id="18_7bq7t"]
 [ext_resource type="Theme" uid="uid://dad7aygqrrpun" path="res://assets/Background/DialogTheme.tres" id="18_nm5hq"]
 [ext_resource type="Texture2D" uid="uid://bcypd57pmrt63" path="res://assets/Background/Hero.svg" id="19_fv5f2"]
 [ext_resource type="Texture2D" uid="uid://cemg4segoqhh5" path="res://addons/gaea/editor/clear.svg" id="20_ofdtm"]
@@ -62,8 +62,7 @@ func _on_restart_pressed() -> void:
 "
 
 [sub_resource type="Curve" id="Curve_id4cq"]
-min_value = -0.4
-max_value = 0.85
+_limits = [-0.4, 0.85, 0.0, 1.0]
 _data = [Vector2(0.0331492, -0.14088), 0.0, 0.0, 0, 0, Vector2(0.171271, 0.335649), 3.52712, 3.52712, 0, 0, Vector2(0.350829, 0.710515), 0.538803, 0.538803, 0, 0, Vector2(1, 0.85), 0.0, 0.0, 0, 0]
 point_count = 4
 
@@ -442,8 +441,8 @@ tracks/12/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_t37ra"]
 _data = {
-"PerformanceScreen": SubResource("Animation_25s1s"),
-"RESET": SubResource("Animation_xtduc")
+&"PerformanceScreen": SubResource("Animation_25s1s"),
+&"RESET": SubResource("Animation_xtduc")
 }
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_7xixs"]
@@ -752,7 +751,7 @@ frame_progress = 0.917033
 
 [node name="HomeButton" type="TouchScreenButton" parent="CanvasLayer"]
 unique_name_in_owner = true
-self_modulate = Color(0.177894, 0.37524, 0, 1)
+self_modulate = Color(0.178, 0.375, 0, 0.773)
 z_index = -1
 position = Vector2(-56, 543)
 scale = Vector2(0.579284, 0.626615)
@@ -773,9 +772,9 @@ offset_right = 4.43756
 offset_bottom = -11.1337
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_colors/font_color = Color(0.150911, 0.000117054, 0.468135, 1)
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-theme_override_colors/font_outline_color = Color(0.715533, 0.695002, 0, 1)
+theme_override_colors/font_color = Color(0.26044, 0.000326038, 0.746403, 1)
+theme_override_colors/font_shadow_color = Color(0.577008, 0.577008, 0.577008, 1)
+theme_override_colors/font_outline_color = Color(0.921506, 0.895487, 0, 1)
 theme_override_constants/outline_size = 30
 theme_override_constants/shadow_outline_size = 47
 theme_override_font_sizes/font_size = 111
@@ -785,7 +784,7 @@ vertical_alignment = 1
 metadata/_edit_use_anchors_ = true
 
 [node name="Restart" parent="CanvasLayer" instance=ExtResource("14_wagey")]
-modulate = Color(0.176471, 0.376471, 0, 1)
+modulate = Color(0.176, 0.376, 0, 0.821)
 position = Vector2(814, 687)
 scale = Vector2(5.798, 2.574)
 shape_visible = false
@@ -800,9 +799,9 @@ offset_right = 324.116
 offset_bottom = 13.6881
 rotation = -0.00158599
 scale = Vector2(0.619401, 0.93576)
-theme_override_colors/font_color = Color(0.0863024, 5.77569e-07, 0.474985, 1)
-theme_override_colors/font_shadow_color = Color(0.351563, 0.351563, 0.351563, 1)
-theme_override_colors/font_outline_color = Color(0.64669, 0.662459, 3.85046e-07, 1)
+theme_override_colors/font_color = Color(0.26044, 0.000326038, 0.746403, 1)
+theme_override_colors/font_shadow_color = Color(0.577008, 0.577008, 0.577008, 1)
+theme_override_colors/font_outline_color = Color(0.921506, 0.895487, 0, 1)
 theme_override_constants/line_spacing = 8
 theme_override_constants/outline_size = 10
 theme_override_constants/shadow_outline_size = 20
@@ -825,9 +824,9 @@ offset_bottom = 95.5355
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(0.417385, 0.677971)
-theme_override_colors/font_color = Color(0.150911, 0.000117054, 0.468135, 1)
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-theme_override_colors/font_outline_color = Color(0.715533, 0.695002, 0, 1)
+theme_override_colors/font_color = Color(0.26044, 0.000326038, 0.746403, 1)
+theme_override_colors/font_shadow_color = Color(0.577008, 0.577008, 0.577008, 1)
+theme_override_colors/font_outline_color = Color(0.921506, 0.895487, 0, 1)
 theme_override_constants/outline_size = 30
 theme_override_constants/shadow_outline_size = 51
 theme_override_font_sizes/font_size = 111

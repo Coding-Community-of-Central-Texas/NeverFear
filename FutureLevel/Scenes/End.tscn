@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://bp7nqo4n6tglk"]
 
-[ext_resource type="Script" path="res://Scripts/End.gd" id="1_fbf3r"]
+[ext_resource type="Script" uid="uid://ds68vd5k2318c" path="res://Scripts/End.gd" id="1_fbf3r"]
 [ext_resource type="Texture2D" uid="uid://b2ans61yt43mf" path="res://assets/etc/Trophy.png" id="3_e3upx"]
 [ext_resource type="AudioStream" uid="uid://ddautlqi8racq" path="res://assets/FutrueSFX/win_sound.mp3" id="4_nxyhu"]
 

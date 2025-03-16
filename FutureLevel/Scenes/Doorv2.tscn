@@ -1,6 +1,6 @@
 [gd_scene load_steps=13 format=3 uid="uid://dtuqhypetdr3c"]
 
-[ext_resource type="Script" path="res://Scripts/Door2.gd" id="1_xtj2h"]
+[ext_resource type="Script" uid="uid://uc475yoblpuf" path="res://Scripts/Door2.gd" id="1_xtj2h"]
 [ext_resource type="Texture2D" uid="uid://bfkq0dn281svy" path="res://assets/etc/Entry.png" id="2_6x77t"]
 [ext_resource type="AudioStream" uid="uid://cu4ww1fxb7vca" path="res://assets/FutrueSFX/OpenDoor.wav" id="3_xruwe"]
 

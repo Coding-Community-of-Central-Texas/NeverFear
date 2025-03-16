@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://d0sfba78inyln"]
 
-[ext_resource type="Script" path="res://Scripts/TankLegacy.gd" id="1_qq3r5"]
+[ext_resource type="Script" uid="uid://1sg8lkddgji8" path="res://Scripts/TankLegacy.gd" id="1_qq3r5"]
 [ext_resource type="PackedScene" uid="uid://7rfkwwydbnmb" path="res://Scenes/Tank.tscn" id="2_8kpeu"]
 [ext_resource type="PackedScene" uid="uid://c2txtdlp7v66l" path="res://Scenes/BasicGun.tscn" id="3_axuio"]
 

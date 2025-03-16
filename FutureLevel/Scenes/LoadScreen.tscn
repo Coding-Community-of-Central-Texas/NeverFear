@@ -1,6 +1,6 @@
 [gd_scene load_steps=103 format=3 uid="uid://dt87is5ehp8xl"]
 
-[ext_resource type="Script" path="res://Scripts/LoadScreen.gd" id="1_qx27v"]
+[ext_resource type="Script" uid="uid://c6jwak2ikggob" path="res://Scripts/LoadScreen.gd" id="1_qx27v"]
 [ext_resource type="PackedScene" uid="uid://yx0sn8qvxhu4" path="res://Singletons/ScreenSetting.tscn" id="3_rpvwg"]
 [ext_resource type="Texture2D" uid="uid://cc3w4ndckwrh1" path="res://assets/2 Background/theOSCCCT.png" id="4_5a8gl"]
 
@@ -760,8 +760,8 @@ tracks/2/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_4nui4"]
 _data = {
-"RESET": SubResource("Animation_6odws"),
-"logo": SubResource("Animation_1n2mb")
+&"RESET": SubResource("Animation_6odws"),
+&"logo": SubResource("Animation_1n2mb")
 }
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_g0afn"]
@@ -844,7 +844,7 @@ frame = 47
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer"]
 libraries = {
-"": SubResource("AnimationLibrary_4nui4")
+&"": SubResource("AnimationLibrary_4nui4")
 }
 autoplay = "logo"
 speed_scale = 4.0

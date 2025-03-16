@@ -370,8 +370,8 @@ tracks/11/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_714bw"]
 _data = {
-"RESET": SubResource("Animation_pvlvs"),
-"randombooms": SubResource("Animation_eg0s7")
+&"RESET": SubResource("Animation_pvlvs"),
+&"randombooms": SubResource("Animation_eg0s7")
 }
 
 [node name="Explosions" type="Node2D"]

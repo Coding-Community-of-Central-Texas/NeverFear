@@ -1,6 +1,6 @@
 [gd_scene load_steps=19 format=3 uid="uid://65xehuevf8h7"]
 
-[ext_resource type="Script" path="res://Scripts/Hammer.gd" id="1_femfq"]
+[ext_resource type="Script" uid="uid://cj2p5jv4nkj5f" path="res://Scripts/Hammer.gd" id="1_femfq"]
 [ext_resource type="Texture2D" uid="uid://bi4rkixlbhp17" path="res://assets/etc/Hammer.png" id="1_njfb8"]
 [ext_resource type="AudioStream" uid="uid://bdvlvmg1yhcfj" path="res://assets/FutrueSFX/Negative Short.wav" id="3_flaku"]
 
@@ -340,9 +340,9 @@ tracks/6/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_v74f2"]
 _data = {
-"hammer": SubResource("Animation_ahytp"),
-"hammer_2": SubResource("Animation_tsd2r"),
-"hammer_3": SubResource("Animation_dgaa5")
+&"hammer": SubResource("Animation_ahytp"),
+&"hammer_2": SubResource("Animation_tsd2r"),
+&"hammer_3": SubResource("Animation_dgaa5")
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kbkft"]

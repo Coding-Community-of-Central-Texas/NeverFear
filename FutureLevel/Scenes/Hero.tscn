@@ -1,6 +1,6 @@
 [gd_scene load_steps=68 format=3 uid="uid://csqktr6ixyato"]
 
-[ext_resource type="Script" path="res://Scripts/Hero.gd" id="1_43ipw"]
+[ext_resource type="Script" uid="uid://xcdf6rvj86fc" path="res://Scripts/Hero.gd" id="1_43ipw"]
 [ext_resource type="Texture2D" uid="uid://050tdjf5b57n" path="res://assets/3 Cyborg/Cyborg_death.png" id="2_2ior6"]
 [ext_resource type="Texture2D" uid="uid://huv5y4v78n8o" path="res://assets/3 Cyborg/Cyborg_doublejump.png" id="2_a50ia"]
 [ext_resource type="Texture2D" uid="uid://b8he4ug50vnxx" path="res://assets/Guns&Bullets/Idle1.png" id="2_vptny"]
@@ -15,7 +15,7 @@
 [ext_resource type="Texture2D" uid="uid://dtmoad6blffsk" path="res://assets/etc/flare_3.png" id="11_x6ujp"]
 [ext_resource type="PackedScene" uid="uid://v1wqgbnfesbp" path="res://Scenes/HealthBar.tscn" id="12_i3t22"]
 [ext_resource type="Texture2D" uid="uid://c1t7ic4fo0him" path="res://assets/etc/health.png" id="12_j60bv"]
-[ext_resource type="Script" path="res://Scripts/Camera.gd" id="12_ofnp4"]
+[ext_resource type="Script" uid="uid://cn3u05daqaxkx" path="res://Scripts/Camera.gd" id="12_ofnp4"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_strd3"]
 atlas = ExtResource("2_2ior6")
@@ -284,22 +284,22 @@ animations = [{
 }]
 
 [sub_resource type="Curve" id="Curve_1v7rp"]
-max_value = 0.5
+_limits = [0.0, 0.5, 0.0, 1.0]
 _data = [Vector2(0, 0.0352113), 0.0, 0.0, 0, 0, Vector2(0.113122, 0.428571), 0.110389, 0.110389, 0, 0, Vector2(0.597285, 0), -0.811504, 0.0, 0, 0]
 point_count = 3
 
 [sub_resource type="Curve" id="Curve_224pu"]
-max_value = 0.5
+_limits = [0.0, 0.5, 0.0, 1.0]
 _data = [Vector2(0, 0.0316901), 0.0, 0.0, 0, 0, Vector2(0.0723982, 0.39011), 0.0, 0.0, 0, 0, Vector2(0.20362, 0.0274725), -0.223074, -0.223074, 0, 0, Vector2(0.51532, 0), 0.0, 0.0, 0, 0]
 point_count = 4
 
 [sub_resource type="Curve" id="Curve_2txmc"]
-max_value = 0.6
+_limits = [0.0, 0.6, 0.0, 1.0]
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.0135747, 0.6), 0.0, 0.0, 0, 0, Vector2(0.122172, 0), 0.0, 0.0, 0, 0]
 point_count = 3
 
 [sub_resource type="Curve" id="Curve_rlbob"]
-max_value = 0.6
+_limits = [0.0, 0.6, 0.0, 1.0]
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.0226244, 0.6), 0.0, 0.0, 0, 0, Vector2(0.0995475, 0), 0.0, 0.0, 0, 0]
 point_count = 3
 
@@ -440,13 +440,13 @@ tracks/2/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_vhrnj"]
 _data = {
-"IdleRigt ": SubResource("Animation_dl5oi"),
-"RESET": SubResource("Animation_h7kvo"),
-"Runleft": SubResource("Animation_ndcye"),
-"SpeedRight": SubResource("Animation_8bytw"),
-"idleshockL": SubResource("Animation_dp88d"),
-"leftface": SubResource("Animation_305b1"),
-"rightface": SubResource("Animation_v77dw")
+&"IdleRigt ": SubResource("Animation_dl5oi"),
+&"RESET": SubResource("Animation_h7kvo"),
+&"Runleft": SubResource("Animation_ndcye"),
+&"SpeedRight": SubResource("Animation_8bytw"),
+&"idleshockL": SubResource("Animation_dp88d"),
+&"leftface": SubResource("Animation_305b1"),
+&"rightface": SubResource("Animation_v77dw")
 }
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_bwgh6"]

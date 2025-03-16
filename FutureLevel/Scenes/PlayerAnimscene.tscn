@@ -1,6 +1,6 @@
 [gd_scene load_steps=25 format=3 uid="uid://bfvnnircytto7"]
 
-[ext_resource type="Script" path="res://Scripts/PlayerAnime.gd" id="1_5c3mw"]
+[ext_resource type="Script" uid="uid://c7ntx0f262xcg" path="res://Scripts/PlayerAnime.gd" id="1_5c3mw"]
 [ext_resource type="Texture2D" uid="uid://xpfpovn5uxaw" path="res://assets/3 Cyborg/Cyborg_run.png" id="1_8toqc"]
 [ext_resource type="Texture2D" uid="uid://c8mqnh8i65mot" path="res://assets/Guns&Bullets/4_1.png" id="1_83adv"]
 [ext_resource type="Texture2D" uid="uid://bo7sscl6biwig" path="res://assets/Guns&Bullets/Run1.png" id="2_lp0sw"]
@@ -647,14 +647,13 @@ tracks/10/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_464tr"]
 _data = {
-"RESET": SubResource("Animation_v3hft"),
-"runleft": SubResource("Animation_r1xu1"),
-"runright": SubResource("Animation_kdwvx")
+&"RESET": SubResource("Animation_v3hft"),
+&"runleft": SubResource("Animation_r1xu1"),
+&"runright": SubResource("Animation_kdwvx")
 }
 
 [sub_resource type="Curve" id="Curve_p7mgv"]
-min_value = -0.4
-max_value = 0.2
+_limits = [-0.4, 0.2, 0.0, 1.0]
 _data = [Vector2(0, 0.030986), 0.0, 0.0, 0, 0, Vector2(0.0612813, 0.149296), 0.0, 0.0, 0, 0, Vector2(0.303621, -0.0323943), -0.834296, -0.834296, 0, 0, Vector2(0.571031, -0.138028), 0.0, 0.0, 0, 0]
 point_count = 4
 

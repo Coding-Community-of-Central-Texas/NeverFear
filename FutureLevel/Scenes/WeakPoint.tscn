@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=3 uid="uid://cxo3uqnx4k0b0"]
 
-[ext_resource type="Script" path="res://Scripts/WeakPoint.gd" id="1_53qx6"]
+[ext_resource type="Script" uid="uid://xcvbrx2ulk17" path="res://Scripts/WeakPoint.gd" id="1_53qx6"]
 [ext_resource type="Texture2D" uid="uid://bikcw1c25kkp" path="res://assets/1 Tiles/IndustrialTile_04.png" id="2_sw4mw"]
 [ext_resource type="PackedScene" uid="uid://v1wqgbnfesbp" path="res://Scenes/HealthBar.tscn" id="3_dx3cl"]
 
@@ -166,9 +166,9 @@ tracks/2/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_n0m3t"]
 _data = {
-"RESET": SubResource("Animation_6wn8k"),
-"die": SubResource("Animation_1kesj"),
-"hurt": SubResource("Animation_qsmru")
+&"RESET": SubResource("Animation_6wn8k"),
+&"die": SubResource("Animation_1kesj"),
+&"hurt": SubResource("Animation_qsmru")
 }
 
 [node name="WeakPoint1" type="CharacterBody2D" groups=["enemy"]]

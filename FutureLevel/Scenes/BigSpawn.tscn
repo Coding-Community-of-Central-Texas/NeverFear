@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://d2u5kjqvm0jcd"]
 
-[ext_resource type="Script" path="res://Scripts/BigSpawn.gd" id="1_gdgou"]
+[ext_resource type="Script" uid="uid://blemkljuik8wm" path="res://Scripts/BigSpawn.gd" id="1_gdgou"]
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_20hbk"]
 a = Vector2(-1295, -608)

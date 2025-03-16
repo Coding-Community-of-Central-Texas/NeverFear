@@ -1,7 +1,7 @@
 [gd_scene load_steps=17 format=3 uid="uid://bcuaf3fm014qf"]
 
 [ext_resource type="Texture2D" uid="uid://cf1o7yknimjyd" path="res://assets/Guns&Bullets/enemybullet.png" id="1_j6ltc"]
-[ext_resource type="Script" path="res://Scripts/EnemyBullet.gd" id="1_yti00"]
+[ext_resource type="Script" uid="uid://bc3pvelfdulhi" path="res://Scripts/EnemyBullet.gd" id="1_yti00"]
 [ext_resource type="Texture2D" uid="uid://dvwivx33k03h5" path="res://assets/Guns&Bullets/spirowires_1.png" id="3_exen8"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4hj3s"]
@@ -77,12 +77,12 @@ animations = [{
 radius = 7.0
 
 [sub_resource type="Curve" id="Curve_1omsg"]
-max_value = 0.5
+_limits = [0.0, 0.5, 0.0, 1.0]
 _data = [Vector2(0, 0.123391), 0.0, 0.0, 0, 0, Vector2(0.461326, 0.203594), 0.0, 0.0, 0, 0, Vector2(0.961326, 0.0885193), 0.0, 0.0, 0, 0]
 point_count = 3
 
 [sub_resource type="Curve" id="Curve_xiw3y"]
-max_value = 0.5
+_limits = [0.0, 0.5, 0.0, 1.0]
 _data = [Vector2(0.00552486, 0.119903), 0.0, 0.0, 0, 0, Vector2(0.461326, 0.203594), 0.0, 0.0, 0, 0, Vector2(0.955801, 0.0920064), 0.0, 0.0, 0, 0]
 point_count = 3
 
