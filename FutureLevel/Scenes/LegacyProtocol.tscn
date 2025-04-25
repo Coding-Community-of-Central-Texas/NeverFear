@@ -2425,20 +2425,19 @@ collision_layer = 9
 
 [node name="Jump" type="HBoxContainer" parent="Buttons"]
 anchors_preset = -1
-anchor_left = 0.782
-anchor_top = 0.673
-anchor_right = 0.987
-anchor_bottom = 1.0
-offset_left = 0.135925
-offset_top = -0.104034
-offset_right = -0.0240479
+anchor_left = 0.669
+anchor_top = 0.62
+anchor_right = 0.991
+anchor_bottom = 0.912
+offset_left = -0.52002
+offset_top = 0.400024
+offset_right = 2.71997
+offset_bottom = 0.039917
 grow_horizontal = 0
 grow_vertical = 0
 
 [node name="Jump" parent="Buttons/Jump" instance=ExtResource("93_hmujq")]
-position = Vector2(108, 176.264)
-scale = Vector2(6.26548, 4.58)
-visibility_mode = 1
+layout_mode = 2
 
 [node name="LifeCounter" parent="Buttons" instance=ExtResource("94_7l5pt")]
 anchors_preset = -1
@@ -2508,7 +2507,10 @@ autoplay = "default"
 frame_progress = 0.755306
 
 [node name="PauseButton" parent="Buttons" instance=ExtResource("99_ec2gt")]
-position = Vector2(547, 976)
+offset_left = 483.0
+offset_top = 909.92
+offset_right = 483.0
+offset_bottom = 909.92
 
 [node name="Platforms" type="Node" parent="."]
 
@@ -2682,7 +2684,7 @@ position = Vector2(25648, -104)
 rotation = 2.12854e-05
 
 [node name="ByteSpawnerA6" parent="Spawner" instance=ExtResource("103_0k21k")]
-position = Vector2(1874, -420)
+position = Vector2(1785, -405)
 rotation = 2.12854e-05
 scale = Vector2(1.00006, 0.992097)
 
@@ -2774,7 +2776,7 @@ script = ExtResource("116_rrq72")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="PickUpGun"]
 libraries = {
-"": SubResource("AnimationLibrary_dgn4u")
+&"": SubResource("AnimationLibrary_dgn4u")
 }
 autoplay = "move"
 
@@ -2882,7 +2884,7 @@ flip_h = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Cars"]
 libraries = {
-"": SubResource("AnimationLibrary_kq1kp")
+&"": SubResource("AnimationLibrary_kq1kp")
 }
 autoplay = "cars"
 
@@ -2898,7 +2900,7 @@ color = Color(0, 0, 0, 1)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Start"]
 libraries = {
-"": SubResource("AnimationLibrary_g20u8")
+&"": SubResource("AnimationLibrary_g20u8")
 }
 autoplay = "start"
 

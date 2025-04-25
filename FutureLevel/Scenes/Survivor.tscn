@@ -442,7 +442,7 @@ animation = &"idle"
 [node name="AnimationPlayer" type="AnimationPlayer" parent="AnimatedSprite2D"]
 unique_name_in_owner = true
 libraries = {
-"": SubResource("AnimationLibrary_2oiib")
+&"": SubResource("AnimationLibrary_2oiib")
 }
 
 [node name="Shadow" type="Sprite2D" parent="AnimatedSprite2D"]

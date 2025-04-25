@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d15blugj5tuii"
-path="res://.godot/imported/Copy of (0301)GenuineLLCLogo(Static) (Logo) (1).png-4f24314fd791defd56bb481ce7463d6e.ctex"
+uid="uid://b2y3r8720naq2"
+path="res://.godot/imported/PauseButton.png-d8578a2488a9ad029dc4ed43c1bbf621.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/2 Background/Copy of (0301)GenuineLLCLogo(Static) (Logo) (1).png"
-dest_files=["res://.godot/imported/Copy of (0301)GenuineLLCLogo(Static) (Logo) (1).png-4f24314fd791defd56bb481ce7463d6e.ctex"]
+source_file="res://assets/buttonsprites/PauseButton.png"
+dest_files=["res://.godot/imported/PauseButton.png-d8578a2488a9ad029dc4ed43c1bbf621.ctex"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dfw562n0cgm3w"
-path="res://.godot/imported/arrowbutton.png-7723cd4c60780902b00352e0bce65fcf.ctex"
+uid="uid://dr6cxafqstjbd"
+path="res://.godot/imported/Round_Genuine_Logo.png-890e6762b6157cbeb248cf9c1c71adcd.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/buttonsprites/arrowbutton.png"
-dest_files=["res://.godot/imported/arrowbutton.png-7723cd4c60780902b00352e0bce65fcf.ctex"]
+source_file="res://assets/2 Background/Round_Genuine_Logo.png"
+dest_files=["res://.godot/imported/Round_Genuine_Logo.png-890e6762b6157cbeb248cf9c1c71adcd.ctex"]
 
 [params]
 

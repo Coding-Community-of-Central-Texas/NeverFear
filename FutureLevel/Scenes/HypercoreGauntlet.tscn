@@ -797,7 +797,10 @@ offset_bottom = 138.0
 [node name="PauseButton" parent="CanvasLayer" instance=ExtResource("88_b882s")]
 top_level = true
 z_index = 2
-position = Vector2(104, 62)
+offset_left = 104.0
+offset_top = 62.0
+offset_right = 104.0
+offset_bottom = 62.0
 
 [node name="Kills" type="Label" parent="CanvasLayer"]
 anchors_preset = 1
@@ -825,10 +828,10 @@ texture = ExtResource("93_4vd0a")
 position = Vector2(5.76956, 0.0996585)
 scale = Vector2(0.1, 0.1)
 amount = 20
+texture = ExtResource("94_juiig")
 lifetime = 0.93
 speed_scale = 1.29
 local_coords = true
-texture = ExtResource("94_juiig")
 emission_shape = 5
 emission_points = PackedVector2Array(-120, 0, 0, 0)
 emission_normals = PackedVector2Array()
@@ -869,7 +872,7 @@ texture = SubResource("CanvasTexture_gihud")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="DeathndSpawn"]
 libraries = {
-"": SubResource("AnimationLibrary_ukdey")
+&"": SubResource("AnimationLibrary_ukdey")
 }
 autoplay = "load"
 

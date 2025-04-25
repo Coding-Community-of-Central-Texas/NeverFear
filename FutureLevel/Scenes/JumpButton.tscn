@@ -1,57 +1,33 @@
-[gd_scene load_steps=7 format=3 uid="uid://d2y4fvw54o8rg"]
+[gd_scene load_steps=4 format=3 uid="uid://d2y4fvw54o8rg"]
 
-[ext_resource type="Texture2D" uid="uid://dq5dremwhip46" path="res://assets/buttonsprites/jumpbutton.png" id="1_43kw5"]
-[ext_resource type="Script" uid="uid://bqmbn1e1svur3" path="res://Scripts/JumpButton.gd" id="1_u2pio"]
+[ext_resource type="Texture2D" uid="uid://bcan3ugkqkvmi" path="res://assets/buttonsprites/Jump.png" id="1_18tym"]
+[ext_resource type="Texture2D" uid="uid://cjg3ur7h147f4" path="res://assets/buttonsprites/JumpPressed.png" id="2_asjsy"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ndicd"]
-size = Vector2(40, 40)
+[sub_resource type="CircleShape2D" id="CircleShape2D_2lid4"]
+radius = 258.43
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_og5vo"]
-atlas = ExtResource("1_43kw5")
-region = Rect2(0, 0, 320, 320)
+[node name="JumpButtonControl" type="Control"]
+layout_mode = 3
+anchor_left = 0.608
+anchor_top = 0.645
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 0.359985
+offset_top = 0.399963
+grow_horizontal = 0
+grow_vertical = 0
+metadata/_edit_use_anchors_ = true
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_htn3s"]
-atlas = ExtResource("1_43kw5")
-region = Rect2(0, 320, 320, 320)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_rubr5"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_og5vo")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_htn3s")
-}],
-"loop": false,
-"name": &"jump",
-"speed": 1.0
-}]
-
-[node name="Jump" type="TouchScreenButton"]
-modulate = Color(1, 0.71, 0.71, 0.482)
-position = Vector2(-166, -151)
-scale = Vector2(8.02548, 7.54)
-shape = SubResource("RectangleShape2D_ndicd")
-shape_visible = false
+[node name="Jump" type="TouchScreenButton" parent="."]
+z_index = 1
+position = Vector2(87.0001, 61.0001)
+scale = Vector2(0.32, 0.306)
+texture_normal = ExtResource("1_18tym")
+texture_pressed = ExtResource("2_asjsy")
+shape = SubResource("CircleShape2D_2lid4")
 passby_press = true
 action = "jump"
-script = ExtResource("1_u2pio")
+visibility_mode = 1
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-self_modulate = Color(0.0475577, 0.0475576, 0.0475576, 0.859)
-z_index = 1
-position = Vector2(-1.38956, -1.66336)
-scale = Vector2(0.119033, 0.108967)
-sprite_frames = SubResource("SpriteFrames_rubr5")
-animation = &"jump"
-
-[node name="Jumpbutton" type="Sprite2D" parent="."]
-position = Vector2(-1.99365, -1.85676)
-scale = Vector2(0.120591, 0.110585)
-texture = ExtResource("1_43kw5")
-region_enabled = true
-region_rect = Rect2(0, 323.774, 320, 316.226)
-
-[connection signal="pressed" from="." to="." method="_on_pressed"]
-[connection signal="released" from="." to="." method="_on_released"]
+[connection signal="pressed" from="Jump" to="Jump" method="_on_pressed"]
+[connection signal="released" from="Jump" to="Jump" method="_on_released"]

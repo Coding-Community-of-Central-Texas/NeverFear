@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dq5dremwhip46"
-path="res://.godot/imported/jumpbutton.png-80a252cc73fd67705b136a6957257615.ctex"
+uid="uid://cjg3ur7h147f4"
+path="res://.godot/imported/JumpPressed.png-29e056b3f30ef8fc51eb7e32cd3be6df.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/buttonsprites/jumpbutton.png"
-dest_files=["res://.godot/imported/jumpbutton.png-80a252cc73fd67705b136a6957257615.ctex"]
+source_file="res://assets/buttonsprites/JumpPressed.png"
+dest_files=["res://.godot/imported/JumpPressed.png-29e056b3f30ef8fc51eb7e32cd3be6df.ctex"]
 
 [params]
 

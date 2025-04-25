@@ -609,9 +609,9 @@ anchor_top = 0.241873
 anchor_right = 0.945851
 anchor_bottom = 0.311735
 offset_left = -16.8335
-offset_top = 248.955
+offset_top = -489.186
 offset_right = -16.8335
-offset_bottom = 228.027
+offset_bottom = -510.114
 grow_horizontal = 2
 grow_vertical = 2
 rotation = -0.340339
@@ -736,7 +736,7 @@ pitch_scale = 1.6
 visible = false
 modulate = Color(1, 1, 1, 0.027)
 z_index = 3
-position = Vector2(315.442, 774.576)
+position = Vector2(317.119, 856.891)
 scale = Vector2(1.11859, 2.69887)
 texture = ExtResource("6_q5oov")
 region_enabled = true
@@ -762,9 +762,8 @@ region_rect = Rect2(451.44, 235.9, 281.56, 101.2)
 
 [node name="Lightrays8" type="Sprite2D" parent="CanvasLayer/ColorRect"]
 self_modulate = Color(0.643, 0.643, 0.643, 0.232)
-z_index = 3
-position = Vector2(311.526, 655.052)
-scale = Vector2(0.425, 0.924718)
+position = Vector2(311.526, 709.803)
+scale = Vector2(0.425, 0.964635)
 texture = ExtResource("7_78ycr")
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="CanvasLayer/ColorRect/Lightrays8"]

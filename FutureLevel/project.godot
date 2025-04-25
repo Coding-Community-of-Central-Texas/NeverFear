@@ -14,10 +14,10 @@ config/name="NeverFear"
 config/description="NeverFear is an extremly fun and addictive game deployed and devloped by the Open-Source Coding Community of Central Texas. With the main contributer being Stephen Hairston the founder and 2024 Director of the organization. "
 run/main_scene="res://Scenes/LoadScreen.tscn"
 config/features=PackedStringArray("4.4", "Mobile")
-boot_splash/bg_color=Color(0.355314, 0.355314, 0.355314, 1)
-boot_splash/image="res://assets/2 Background/Copy of (0301)GenuineLLCLogo(Static) (Logo) (1).png"
+boot_splash/bg_color=Color(0, 0, 0, 1)
+boot_splash/image="uid://dr6cxafqstjbd"
 config/icon="res://assets/Background/NeverFearIcon.svg"
-boot_splash/minimum_display_time=80
+boot_splash/minimum_display_time=75
 
 [autoload]
 

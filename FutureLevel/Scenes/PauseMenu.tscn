@@ -150,21 +150,13 @@ pressed = true
 [sub_resource type="Shortcut" id="Shortcut_b0fgo"]
 events = [SubResource("InputEventScreenTouch_2ch10")]
 
-[node name="PauseMenu" type="Control"]
+[node name="PauseMenu" type="CanvasLayer"]
 process_mode = 3
-physics_interpolation_mode = 0
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
 script = ExtResource("1_gfvbg")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 modulate = Color(1, 1, 1, 0)
 self_modulate = Color(1, 1, 1, 0.545098)
-layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.200521
 anchor_top = 0.00154321
@@ -180,14 +172,13 @@ metadata/_edit_use_anchors_ = true
 unique_name_in_owner = true
 root_node = NodePath("../..")
 libraries = {
-"": SubResource("AnimationLibrary_a43k7")
+&"": SubResource("AnimationLibrary_a43k7")
 }
 autoplay = "onpause"
 
 [node name="Panel" type="Panel" parent="."]
 modulate = Color(1, 1, 1, 0)
 self_modulate = Color(1, 1, 1, 0.0156863)
-layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.324074
 anchor_top = 0.280556
@@ -336,9 +327,9 @@ offset_left = -1.52588e-05
 offset_right = -14.26
 offset_bottom = -4.80502
 scale = Vector2(1.155, 1.155)
-theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
-theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 3
 theme_override_constants/h_separation = 4
 theme_override_font_sizes/font_size = 26
@@ -364,9 +355,9 @@ offset_top = -3.05176e-05
 offset_right = -20.305
 offset_bottom = -4.80499
 scale = Vector2(1.155, 1.155)
-theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
-theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(0.99997, 0.9942, 0.993203, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 3
 theme_override_constants/h_separation = 4
 theme_override_font_sizes/font_size = 26
