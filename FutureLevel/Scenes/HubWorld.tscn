@@ -1284,11 +1284,11 @@ scale = Vector2(4.18743, 1.95731)
 texture = SubResource("CanvasTexture_lnrvt")
 
 [node name="BorderR3" type="TextureRect" parent="."]
-modulate = Color(0, 0, 0, 0.935)
+modulate = Color(0, 0, 0, 1)
 z_index = 1
-offset_left = 1531.0
+offset_left = 1527.0
 offset_top = -1067.0
-offset_right = 1855.0
+offset_right = 1853.0
 offset_bottom = -166.0
 scale = Vector2(4.18743, 1.95731)
 texture = SubResource("CanvasTexture_lnrvt")
@@ -1623,16 +1623,15 @@ metadata/_edit_use_anchors_ = true
 [node name="Buttons" type="CanvasLayer" parent="."]
 
 [node name="Jump" type="HBoxContainer" parent="Buttons"]
-modulate = Color(1, 1, 1, 0.348)
 anchors_preset = -1
-anchor_left = 0.658
-anchor_top = 0.612
-anchor_right = 1.0
-anchor_bottom = 0.935
-offset_left = -30.64
-offset_top = 21.04
-offset_right = -33.0
-offset_bottom = 21.2
+anchor_left = 0.63
+anchor_top = 0.631
+anchor_right = 0.969
+anchor_bottom = 0.955
+offset_left = -0.400085
+offset_top = 0.519897
+offset_right = 0.47998
+offset_bottom = -0.400024
 grow_horizontal = 0
 grow_vertical = 0
 metadata/_edit_use_anchors_ = true

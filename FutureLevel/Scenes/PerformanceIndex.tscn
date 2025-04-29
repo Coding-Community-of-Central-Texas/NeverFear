@@ -1,8 +1,7 @@
-[gd_scene load_steps=46 format=3 uid="uid://btnf3drbkix5k"]
+[gd_scene load_steps=49 format=3 uid="uid://btnf3drbkix5k"]
 
 [ext_resource type="Texture2D" uid="uid://dcmt4rtiisn55" path="res://assets/Background/1.png" id="1_erotl"]
 [ext_resource type="FontFile" uid="uid://daex80h1eaujl" path="res://assets/etc/StarJedi-DGRW.ttf" id="2_1grku"]
-[ext_resource type="Texture2D" uid="uid://bv7fu6os82paq" path="res://assets/buttonsprites/UIbutton.png" id="3_erunh"]
 [ext_resource type="PackedScene" uid="uid://cijayc3peexw" path="res://Singletons/GameManager.tscn" id="3_g0ec8"]
 [ext_resource type="Texture2D" uid="uid://dc7ixn8hk14hw" path="res://assets/Background/2.png" id="4_cx5d3"]
 [ext_resource type="Texture2D" uid="uid://d1jeejko1y8sn" path="res://assets/Background/3.png" id="5_37ixw"]
@@ -13,10 +12,14 @@
 [ext_resource type="AudioStream" uid="uid://dbnystp0y1gke" path="res://assets/FutrueSFX/PickUp.wav" id="10_vq1oj"]
 [ext_resource type="Texture2D" uid="uid://bbofee6bwlhcn" path="res://assets/etc/Clock.png" id="11_w0vdt"]
 [ext_resource type="Texture2D" uid="uid://brastt74lxpni" path="res://assets/etc/ranks/overkill.png" id="12_mi1w0"]
+[ext_resource type="Texture2D" uid="uid://d2aqtjhpuq1w2" path="res://assets/buttonsprites/HomeButton.png" id="13_5xkyf"]
 [ext_resource type="Texture2D" uid="uid://d1wlj0qisaufc" path="res://assets/Guns&Bullets/fire_30.png" id="13_i6et3"]
+[ext_resource type="Texture2D" uid="uid://c5hopxqu5fvrh" path="res://assets/buttonsprites/PressedHome.png" id="14_7vdrj"]
 [ext_resource type="Texture2D" uid="uid://dtey7mq3og40d" path="res://assets/etc/Money.png" id="14_gul7b"]
 [ext_resource type="PackedScene" uid="uid://bqcx6ju2n7a3t" path="res://Scenes/RestartButton.tscn" id="14_wagey"]
+[ext_resource type="Texture2D" uid="uid://cy4ymrf61u7uw" path="res://assets/buttonsprites/Leaderboard.png" id="16_6dvy4"]
 [ext_resource type="PackedScene" uid="uid://dcxq7foaq7ww0" path="res://Scenes/HTTPRequest.tscn" id="17_6vdmp"]
+[ext_resource type="Texture2D" uid="uid://b2ahbj34wn43l" path="res://assets/buttonsprites/Leaderboardpressed.png" id="17_42r4y"]
 [ext_resource type="Script" uid="uid://cbh2mjwjrends" path="res://Scripts/StatsBoard.gd" id="18_7bq7t"]
 [ext_resource type="Theme" uid="uid://dad7aygqrrpun" path="res://assets/Background/DialogTheme.tres" id="18_nm5hq"]
 [ext_resource type="Texture2D" uid="uid://bcypd57pmrt63" path="res://assets/Background/Hero.svg" id="19_fv5f2"]
@@ -33,7 +36,6 @@ script/source = "extends Control
 @onready var best_run: Label = %FastestTime
 @onready var time_survived: Label = %LongestTimeSurvived
 @onready var overall_cash: Label = %OverallCash
-@onready var home: Label = $CanvasLayer/HomeButton/Home
 @onready var restart: TouchScreenButton = $CanvasLayer/Restart
 @onready var popup_panel: PopupPanel = $MenuLayer/PopupPanel
 
@@ -41,23 +43,22 @@ func _process(_delta: float) -> void:
 	update_performance_page()
 
 func update_performance_page():
-	%OverallKills.text = \"enemies eliminated: %s\" % str(GameManager.total_kills)
-	%FastestTime.text = \"quickest legacy dash: %s\" % GameManager.quickest_time
-	%LongestTimeSurvived.text = \"longest gauntlet survival: %s\" % GameManager.longest_survival
+	%OverallKills.text = \"enemies 
+	eliminated: %s\" % str(GameManager.total_kills)
+	%FastestTime.text = \"best legacy 
+	completion: %s\" % GameManager.quickest_time
+	%LongestTimeSurvived.text = \"best gauntlet 
+	survival: %s\" % GameManager.longest_survival
 	%OverallCash.text = \"BANK:  %s\" % GameManager.total_cash
 
 func _on_home_button_pressed() -> void:
 	%AudioStreamPlayer2D.play()
-	home_button.modulate = Color(0.5, 0.5, 0)  # Set to red
 	await get_tree().create_timer(0.5).timeout  # Wait for 0.5 seconds
-	home_button.modulate = Color(1, 1, 1)  # Reset to normal
 	get_tree().change_scene_to_file(\"res://Scenes/HubWorld.tscn\")
 
 func _on_restart_pressed() -> void:
 	%AudioStreamPlayer2D.play()
-	restart.modulate = Color(0.5, 0.5, 0)  # Set to red
 	await get_tree().create_timer(0.5).timeout  # Wait for 0.5 seconds
-	restart.modulate = Color(1, 1, 1)
 	popup_panel.visible = true
 "
 
@@ -567,11 +568,14 @@ metadata/_edit_use_anchors_ = true
 unique_name_in_owner = true
 z_index = 1
 anchors_preset = -1
-anchor_left = 0.486111
-anchor_top = 0.352778
-anchor_right = 0.920368
+anchor_left = 0.528
+anchor_top = 0.352
+anchor_right = 0.962
 anchor_bottom = 0.437963
-offset_right = -6.10352e-05
+offset_left = -0.23999
+offset_top = -0.160034
+offset_right = 0.0374756
+offset_bottom = -1.00006
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(0.600084, 0.0288369, 0.0152562, 1)
@@ -593,11 +597,12 @@ unique_name_in_owner = true
 z_index = 1
 anchors_preset = -1
 anchor_left = 0.0935185
-anchor_top = 0.35463
-anchor_right = 0.494444
-anchor_bottom = 0.440741
+anchor_top = 0.341667
+anchor_right = 0.494
+anchor_bottom = 0.453
 offset_top = 14.0001
-offset_bottom = -14.0001
+offset_right = 0.47998
+offset_bottom = -0.239685
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(0.600084, 0.0288369, 0.0152562, 1)
@@ -619,13 +624,14 @@ metadata/_edit_use_anchors_ = true
 unique_name_in_owner = true
 z_index = 1
 anchors_preset = -1
-anchor_left = 0.490741
+anchor_left = 0.523
 anchor_top = 0.190741
-anchor_right = 0.932608
-anchor_bottom = 0.275578
-offset_top = 1.52588e-05
-offset_right = 92.7814
-offset_bottom = 2.37616
+anchor_right = 0.965
+anchor_bottom = 0.279
+offset_left = 0.159973
+offset_top = 3.99971
+offset_right = 92.7977
+offset_bottom = 2.68008
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(0.837225, 0.974722)
@@ -671,7 +677,7 @@ metadata/_edit_use_anchors_ = true
 self_modulate = Color(0.212305, 0.212305, 0.212305, 1)
 top_level = true
 z_index = -3
-position = Vector2(581.501, 705.5)
+position = Vector2(573, 707)
 scale = Vector2(2.00868, 2.3426)
 texture = ExtResource("4_cx5d3")
 
@@ -687,7 +693,7 @@ texture = ExtResource("5_37ixw")
 self_modulate = Color(0.299547, 0.299547, 0.299547, 1)
 top_level = true
 z_index = -4
-position = Vector2(538, 536)
+position = Vector2(541, 535)
 scale = Vector2(2.01042, 3.89198)
 texture = ExtResource("6_658f1")
 
@@ -710,13 +716,13 @@ scale = Vector2(0.369913, 0.398474)
 texture = ExtResource("10_8ltut")
 
 [node name="Clock" type="Sprite2D" parent="CanvasLayer"]
-position = Vector2(546, 266)
+position = Vector2(521, 236)
 scale = Vector2(0.1, 0.1)
 texture = ExtResource("11_w0vdt")
 
 [node name="Overkill" type="Sprite2D" parent="CanvasLayer"]
 self_modulate = Color(1, 1, 1, 0)
-position = Vector2(572, 446)
+position = Vector2(524, 425)
 scale = Vector2(2.5724, 1.82386)
 texture = ExtResource("12_mi1w0")
 
@@ -725,10 +731,10 @@ position = Vector2(5.76956, 0.0996585)
 scale = Vector2(0.1, 0.1)
 emitting = false
 amount = 20
+texture = ExtResource("13_i6et3")
 lifetime = 0.93
 speed_scale = 1.29
 local_coords = true
-texture = ExtResource("13_i6et3")
 emission_shape = 5
 emission_points = PackedVector2Array(-120, 0, 0, 0)
 emission_normals = PackedVector2Array()
@@ -751,89 +757,20 @@ frame_progress = 0.917033
 
 [node name="HomeButton" type="TouchScreenButton" parent="CanvasLayer"]
 unique_name_in_owner = true
-self_modulate = Color(0.178, 0.375, 0, 0.773)
 z_index = -1
-position = Vector2(-56, 543)
-scale = Vector2(0.579284, 0.626615)
-texture_normal = ExtResource("3_erunh")
+position = Vector2(22, 497)
+scale = Vector2(0.95, 0.786)
+texture_normal = ExtResource("13_5xkyf")
+texture_pressed = ExtResource("14_7vdrj")
 shape = SubResource("RectangleShape2D_ee6lp")
 shape_visible = false
 
-[node name="Home" type="Label" parent="CanvasLayer/HomeButton"]
-z_index = 4
-anchors_preset = -1
-anchor_left = 0.316826
-anchor_top = 0.216666
-anchor_right = 0.603285
-anchor_bottom = 0.491358
-offset_left = 4.43759
-offset_top = -11.1337
-offset_right = 4.43756
-offset_bottom = -11.1337
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_colors/font_color = Color(0.26044, 0.000326038, 0.746403, 1)
-theme_override_colors/font_shadow_color = Color(0.577008, 0.577008, 0.577008, 1)
-theme_override_colors/font_outline_color = Color(0.921506, 0.895487, 0, 1)
-theme_override_constants/outline_size = 30
-theme_override_constants/shadow_outline_size = 47
-theme_override_font_sizes/font_size = 111
-text = "home"
-horizontal_alignment = 1
-vertical_alignment = 1
-metadata/_edit_use_anchors_ = true
-
 [node name="Restart" parent="CanvasLayer" instance=ExtResource("14_wagey")]
-modulate = Color(0.176, 0.376, 0, 0.821)
-position = Vector2(814, 687)
-scale = Vector2(5.798, 2.574)
+position = Vector2(497, 497)
+scale = Vector2(0.97, 0.794)
+texture_normal = ExtResource("16_6dvy4")
+texture_pressed = ExtResource("17_42r4y")
 shape_visible = false
-
-[node name="LeaderBoard" type="Label" parent="CanvasLayer"]
-anchors_preset = -1
-anchor_left = 0.467593
-anchor_top = 0.681481
-anchor_right = 0.958226
-anchor_bottom = 0.853992
-offset_right = 324.116
-offset_bottom = 13.6881
-rotation = -0.00158599
-scale = Vector2(0.619401, 0.93576)
-theme_override_colors/font_color = Color(0.26044, 0.000326038, 0.746403, 1)
-theme_override_colors/font_shadow_color = Color(0.577008, 0.577008, 0.577008, 1)
-theme_override_colors/font_outline_color = Color(0.921506, 0.895487, 0, 1)
-theme_override_constants/line_spacing = 8
-theme_override_constants/outline_size = 10
-theme_override_constants/shadow_outline_size = 20
-theme_override_font_sizes/font_size = 43
-text = "top 50 worldwide posted at
-https://osccct.org/leaderboard"
-horizontal_alignment = 1
-vertical_alignment = 1
-metadata/_edit_use_anchors_ = true
-
-[node name="Home3" type="Label" parent="CanvasLayer"]
-z_index = 4
-anchors_preset = -1
-anchor_left = 0.530556
-anchor_top = 0.538888
-anchor_right = 0.882241
-anchor_bottom = 0.725121
-offset_right = 530.18
-offset_bottom = 95.5355
-grow_horizontal = 2
-grow_vertical = 2
-scale = Vector2(0.417385, 0.677971)
-theme_override_colors/font_color = Color(0.26044, 0.000326038, 0.746403, 1)
-theme_override_colors/font_shadow_color = Color(0.577008, 0.577008, 0.577008, 1)
-theme_override_colors/font_outline_color = Color(0.921506, 0.895487, 0, 1)
-theme_override_constants/outline_size = 30
-theme_override_constants/shadow_outline_size = 51
-theme_override_font_sizes/font_size = 111
-text = "leaderboard"
-horizontal_alignment = 1
-vertical_alignment = 1
-metadata/_edit_use_anchors_ = true
 
 [node name="GameManager" parent="." instance=ExtResource("3_g0ec8")]
 
@@ -846,7 +783,7 @@ pitch_scale = 1.4
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_t37ra")
+&"": SubResource("AnimationLibrary_t37ra")
 }
 autoplay = "PerformanceScreen"
 
@@ -968,6 +905,6 @@ shape = SubResource("CircleShape2D_s6mh0")
 [connection signal="pressed" from="CanvasLayer/Restart" to="." method="_on_restart_pressed"]
 [connection signal="pressed" from="MenuLayer/PopupPanel/SendName/UploadButton" to="MenuLayer/PopupPanel/SendName" method="_on_upload_button_pressed"]
 [connection signal="pressed" from="MenuLayer/PopupPanel/SendName/Randimize" to="MenuLayer/PopupPanel/SendName" method="_on_randimize_pressed"]
-[connection signal="pressed" from="MenuLayer/PopupPanel/SendName/FillText" to="MenuLayer/PopupPanel/SendName" method="_on_fill_text_pressed"]
 [connection signal="pressed" from="MenuLayer/PopupPanel/SendName/FillText" to="MenuLayer/PopupPanel/SendName" method="_on_text_pressed"]
+[connection signal="pressed" from="MenuLayer/PopupPanel/SendName/FillText" to="MenuLayer/PopupPanel/SendName" method="_on_fill_text_pressed"]
 [connection signal="pressed" from="MenuLayer/PopupPanel/Close" to="MenuLayer/PopupPanel/SendName" method="_on_close_pressed"]

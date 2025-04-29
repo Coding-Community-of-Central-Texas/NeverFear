@@ -1,4 +1,4 @@
-[gd_scene load_steps=68 format=3 uid="uid://csqktr6ixyato"]
+[gd_scene load_steps=67 format=3 uid="uid://csqktr6ixyato"]
 
 [ext_resource type="Script" uid="uid://xcdf6rvj86fc" path="res://Scripts/Hero.gd" id="1_43ipw"]
 [ext_resource type="Texture2D" uid="uid://050tdjf5b57n" path="res://assets/3 Cyborg/Cyborg_death.png" id="2_2ior6"]
@@ -453,10 +453,6 @@ _data = {
 atlas = ExtResource("11_6s631")
 region = Rect2(756, 0, 63, 75)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_a2p8e"]
-atlas = ExtResource("11_6s631")
-region = Rect2(693, 0, 63, 75)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_md3it"]
 atlas = ExtResource("11_6s631")
 region = Rect2(621, 0, 69, 80)
@@ -468,19 +464,16 @@ animations = [{
 "texture": SubResource("AtlasTexture_bwgh6")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_a2p8e")
+"texture": SubResource("AtlasTexture_md3it")
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_bwgh6")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_a2p8e")
-}, {
-"duration": 1.0,
 "texture": SubResource("AtlasTexture_md3it")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_a2p8e")
+"texture": SubResource("AtlasTexture_bwgh6")
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_md3it")
@@ -521,11 +514,11 @@ position = Vector2(15.3334, 40)
 scale = Vector2(0.5, 0.5)
 emitting = false
 amount = 1
+texture = ExtResource("10_o76pr")
 lifetime = 0.25
 one_shot = true
 speed_scale = 2.45
 explosiveness = 1.0
-texture = ExtResource("10_o76pr")
 direction = Vector2(0, 1)
 spread = 0.0
 gravity = Vector2(0, 0)
@@ -547,10 +540,10 @@ position = Vector2(14, 42)
 rotation = 1.58028
 emitting = false
 amount = 1
+texture = ExtResource("11_x6ujp")
 lifetime = 0.5
 one_shot = true
 speed_scale = 2.0
-texture = ExtResource("11_x6ujp")
 direction = Vector2(0, 0)
 spread = 0.0
 gravity = Vector2(0, 0)
@@ -569,17 +562,25 @@ color = Color(9.729, 23.783, 59.459, 1)
 [node name="AnimationPlayer" type="AnimationPlayer" parent="AnimatedSprite2D"]
 unique_name_in_owner = true
 libraries = {
-"": SubResource("AnimationLibrary_vhrnj")
+&"": SubResource("AnimationLibrary_vhrnj")
 }
 
 [node name="SuperSayain" type="AnimatedSprite2D" parent="AnimatedSprite2D"]
 visible = false
-z_index = -1
-position = Vector2(17.3334, 22)
-scale = Vector2(0.854257, 0.72)
+position = Vector2(19, 14.7104)
+scale = Vector2(0.956522, 0.907834)
 sprite_frames = SubResource("SpriteFrames_wb5xw")
 autoplay = "default"
-frame_progress = 0.1504
+frame_progress = 0.143923
+
+[node name="Super" type="AnimatedSprite2D" parent="AnimatedSprite2D/SuperSayain"]
+position = Vector2(-0.15465, 38.127)
+rotation = 3.13473
+scale = Vector2(0.924027, 0.147635)
+skew = 0.000680804
+sprite_frames = SubResource("SpriteFrames_wb5xw")
+autoplay = "default"
+frame_progress = 0.595497
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 unique_name_in_owner = true

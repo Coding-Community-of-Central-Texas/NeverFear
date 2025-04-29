@@ -8,46 +8,48 @@ self_modulate = Color(1, 1, 1, 0)
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -79.0
-offset_top = 17.0
-offset_right = 89.0
-offset_bottom = 75.0
+offset_left = -80.0
+offset_top = 16.0
+offset_right = 88.0
+offset_bottom = 74.0
 grow_horizontal = 2
 size_flags_vertical = 0
 script = ExtResource("1_4vdq7")
 
 [node name="Minutes" type="Label" parent="."]
 layout_mode = 0
-offset_right = 51.0
-offset_bottom = 47.0
+offset_left = 12.0
+offset_right = 77.0
+offset_bottom = 57.0
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 7
-theme_override_font_sizes/font_size = 25
+theme_override_font_sizes/font_size = 35
 text = "00:"
 horizontal_alignment = 2
 
 [node name="Seconds" type="Label" parent="."]
 layout_mode = 0
-offset_left = 52.0
+offset_left = 78.0
 offset_top = 1.0
-offset_right = 103.0
-offset_bottom = 36.0
+offset_right = 143.0
+offset_bottom = 58.0
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 7
-theme_override_font_sizes/font_size = 25
+theme_override_font_sizes/font_size = 35
 text = "00."
 
 [node name="Msec" type="Label" parent="."]
 layout_mode = 0
-offset_left = 99.0
+offset_left = 144.0
 offset_top = 1.0
-offset_right = 149.0
-offset_bottom = 31.0
+offset_right = 222.0
+offset_bottom = 58.0
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 7
-theme_override_font_sizes/font_size = 25
+theme_override_font_sizes/font_size = 35
 text = "000"
 
 [node name="Clock" type="Sprite2D" parent="."]
-position = Vector2(-16, 20)
+position = Vector2(-17, 32)
+scale = Vector2(1.375, 1.3125)
 texture = ExtResource("3_sfdqy")

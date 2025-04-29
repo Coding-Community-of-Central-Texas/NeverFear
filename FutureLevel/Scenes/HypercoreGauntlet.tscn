@@ -780,7 +780,8 @@ slide_on_ceiling = false
 script = ExtResource("85_07p6e")
 generator = NodePath("../NoiseGenerator")
 actor = NodePath("../Survivor")
-loading_radius = Vector2i(3, 3)
+loading_radius = Vector2i(3, 4)
+update_rate = 1
 
 [node name="GameManager" parent="." instance=ExtResource("87_esuwa")]
 process_mode = 3

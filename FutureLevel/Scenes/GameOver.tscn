@@ -1,16 +1,22 @@
-[gd_scene load_steps=22 format=3 uid="uid://8o5ihpf0h8ej"]
+[gd_scene load_steps=26 format=3 uid="uid://8o5ihpf0h8ej"]
 
 [ext_resource type="Script" uid="uid://cyon84jya7dr8" path="res://Scripts/GameOver.gd" id="1_r0wvx"]
 [ext_resource type="AudioStream" uid="uid://bpcayivn7waop" path="res://assets/FutrueSFX/DavidKBD - Eternity Pack - 05 - Evil soul inside - loop.ogg" id="2_ypdy7"]
-[ext_resource type="Texture2D" uid="uid://bv7fu6os82paq" path="res://assets/buttonsprites/UIbutton.png" id="4_ssp7s"]
+[ext_resource type="Texture2D" uid="uid://b4f16n2iqhv24" path="res://assets/buttonsprites/Retry.png" id="3_w0gmt"]
+[ext_resource type="Texture2D" uid="uid://bw6msqhgcjj88" path="res://assets/buttonsprites/RetryPress.png" id="4_6wu1n"]
+[ext_resource type="Texture2D" uid="uid://d2aqtjhpuq1w2" path="res://assets/buttonsprites/HomeButton.png" id="5_aa261"]
 [ext_resource type="AudioStream" uid="uid://dbnystp0y1gke" path="res://assets/FutrueSFX/PickUp.wav" id="5_r0rrm"]
+[ext_resource type="Texture2D" uid="uid://c5hopxqu5fvrh" path="res://assets/buttonsprites/PressedHome.png" id="6_bdvmp"]
 [ext_resource type="Texture2D" uid="uid://050tdjf5b57n" path="res://assets/3 Cyborg/Cyborg_death.png" id="6_q5oov"]
 [ext_resource type="Texture2D" uid="uid://cf1o7yknimjyd" path="res://assets/Guns&Bullets/enemybullet.png" id="6_xxxhg"]
 [ext_resource type="Texture2D" uid="uid://csikad8cdh0ti" path="res://assets/etc/lightrays_8.png" id="7_78ycr"]
 [ext_resource type="Texture2D" uid="uid://dkp57y2x4axvt" path="res://assets/etc/shadow.png" id="8_g2vhn"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5ywbh"]
+size = Vector2(450, 300)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_u1hko"]
-size = Vector2(90, 40)
+size = Vector2(420, 300)
 
 [sub_resource type="Animation" id="Animation_0sdvk"]
 length = 0.001
@@ -609,9 +615,9 @@ anchor_top = 0.241873
 anchor_right = 0.945851
 anchor_bottom = 0.311735
 offset_left = -16.8335
-offset_top = -489.186
+offset_top = 757.842
 offset_right = -16.8335
-offset_bottom = -510.114
+offset_bottom = 736.914
 grow_horizontal = 2
 grow_vertical = 2
 rotation = -0.340339
@@ -655,68 +661,20 @@ text = "                      FAILED!"
 
 [node name="Restart" type="TouchScreenButton" parent="CanvasLayer/ColorRect"]
 modulate = Color(1, 1, 1, 0)
-position = Vector2(170.025, 707.104)
-scale = Vector2(2.04254, 2.14059)
-shape = SubResource("RectangleShape2D_u1hko")
-
-[node name="UIbutton" type="Sprite2D" parent="CanvasLayer/ColorRect/Restart"]
-modulate = Color(1, 1, 0, 1)
-position = Vector2(-2.95424, 23.6137)
-scale = Vector2(0.142968, 0.241212)
-texture = ExtResource("4_ssp7s")
-
-[node name="Label2" type="Label" parent="CanvasLayer/ColorRect/Restart"]
-z_index = 1
-texture_filter = 6
-offset_left = -42.4424
-offset_top = -25.8466
-offset_right = 370.557
-offset_bottom = 134.153
-scale = Vector2(0.162557, 0.319859)
-theme_override_colors/font_color = Color(0.541324, 0.0229951, 0.0121656, 1)
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
-theme_override_constants/shadow_offset_x = -11
-theme_override_constants/shadow_offset_y = 9
-theme_override_constants/outline_size = 14
-theme_override_font_sizes/font_size = 100
-text = "retry"
-horizontal_alignment = 1
-autowrap_mode = 2
-metadata/_edit_use_anchors_ = true
+position = Vector2(64.8781, 464.206)
+scale = Vector2(0.378082, 0.966195)
+texture_normal = ExtResource("3_w0gmt")
+texture_pressed = ExtResource("4_6wu1n")
+shape = SubResource("RectangleShape2D_5ywbh")
 
 [node name="MainMenu" type="TouchScreenButton" parent="CanvasLayer/ColorRect"]
 modulate = Color(1, 1, 1, 0)
 z_index = 3
-position = Vector2(466.451, 709.803)
-scale = Vector2(2.006, 2.1)
+position = Vector2(369.134, 457.458)
+scale = Vector2(0.387031, 0.993184)
+texture_normal = ExtResource("5_aa261")
+texture_pressed = ExtResource("6_bdvmp")
 shape = SubResource("RectangleShape2D_u1hko")
-
-[node name="UIbutton2" type="Sprite2D" parent="CanvasLayer/ColorRect/MainMenu"]
-modulate = Color(1, 1, 0, 1)
-position = Vector2(0, 21.9097)
-scale = Vector2(0.14845, 0.232757)
-texture = ExtResource("4_ssp7s")
-
-[node name="Label3" type="Label" parent="CanvasLayer/ColorRect/MainMenu"]
-z_index = 1
-texture_filter = 6
-offset_left = -33.1785
-offset_top = -26.9889
-offset_right = 306.821
-offset_bottom = 133.011
-scale = Vector2(0.175803, 0.330221)
-theme_override_colors/font_color = Color(0.541324, 0.0229951, 0.0121656, 1)
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
-theme_override_constants/shadow_offset_x = -11
-theme_override_constants/shadow_offset_y = 9
-theme_override_constants/outline_size = 14
-theme_override_font_sizes/font_size = 100
-text = "Home"
-horizontal_alignment = 1
-autowrap_mode = 2
-metadata/_edit_use_anchors_ = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer/ColorRect"]
 libraries = {
