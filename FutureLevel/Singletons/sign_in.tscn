@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://bp5breoig1whw"]
+
+[ext_resource type="Script" uid="uid://wwwkrh2ervn3" path="res://addons/GodotPlayGameServices/scripts/sign_in/sign_in_client.gd" id="1_cs3ey"]
+
+[node name="SignIn" type="Node"]
+script = ExtResource("1_cs3ey")

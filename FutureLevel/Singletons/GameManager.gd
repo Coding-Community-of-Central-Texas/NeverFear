@@ -26,9 +26,7 @@ var API_KEY: String
 
 func _ready():
 	load_data()
-	if Engine.has_singleton("SecretFetcher"):
-		var fetcher = Engine.get_singleton("SecretFetcher")
-		API_KEY = fetcher.getApiKey()
+	GodotPlayGameServices.initialize()
 
 func _on_kill(amount: int) -> void:
 	total_kills += amount
@@ -36,6 +34,8 @@ func _on_kill(amount: int) -> void:
 	# Emit a signal for the current scene's kills
 	emit_signal("scene_kill_updated", current_kills)
 	save_data()  # Save updated stats
+
+
 
 func reset_scene_kills() -> void:
 	# Reset scene-specific kill counter

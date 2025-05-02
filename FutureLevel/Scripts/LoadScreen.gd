@@ -1,13 +1,11 @@
 extends Node
 
-var gpgs
+var plugin 
 
-func _ready():
-	gpgs = Engine.get_singleton("GodotPlayGamesServices")
-	if gpgs:
-		gpgs.sign_in()
-	else:
-		print("Google Play Services plugin not found!")
+func _enter_tree() -> void:
+	plugin = Engine.get_singleton("SignIn")
+	plugin.sign_in()
+
 
 func _on_timer_timeout() -> void:
 	get_tree().change_scene_to_file("res://Scenes/HubWorld.tscn")

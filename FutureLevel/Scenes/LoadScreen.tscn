@@ -23,19 +23,20 @@ anti_aliasing = false
 anti_aliasing_size = 4.306
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kp4hb"]
-bg_color = Color(0, 0, 0, 1)
-border_color = Color(0.561, 0.561, 0.561, 1)
+bg_color = Color(0, 0, 0, 0.482353)
+border_color = Color(0.442911, 0.442911, 0.442911, 1)
+border_blend = true
 corner_radius_top_left = 520
 corner_radius_top_right = 520
 corner_radius_bottom_right = 520
 corner_radius_bottom_left = 520
-corner_detail = 20
-expand_margin_left = 20.0
-expand_margin_top = 20.0
-expand_margin_right = 20.0
-expand_margin_bottom = 20.0
+corner_detail = 1
+expand_margin_left = 9.0
+expand_margin_top = 9.0
+expand_margin_right = 9.0
+expand_margin_bottom = 9.0
 shadow_color = Color(0, 0, 0, 0.606)
-shadow_size = 777
+shadow_size = 382
 
 [sub_resource type="Theme" id="Theme_5ygjs"]
 Label/styles/normal = SubResource("StyleBoxFlat_kp4hb")
@@ -773,7 +774,7 @@ RichTextLabel/styles/background = SubResource("StyleBoxFlat_g0afn")
 script = ExtResource("1_qx27v")
 
 [node name="Timer" type="Timer" parent="."]
-wait_time = 3.9
+wait_time = 4.502
 one_shot = true
 autostart = true
 
@@ -786,7 +787,7 @@ follow_viewport_enabled = true
 z_index = 1
 anchors_preset = -1
 anchor_left = 0.0305556
-anchor_top = 0.541667
+anchor_top = 0.597222
 anchor_right = 0.987037
 anchor_bottom = 0.95463
 offset_left = -12.0
@@ -821,20 +822,17 @@ metadata/_edit_use_anchors_ = true
 
 [node name="LogoBg" type="Label" parent="CanvasLayer"]
 show_behind_parent = true
-anchors_preset = -1
-anchor_left = 0.275
-anchor_top = 0.0648148
-anchor_right = 0.715741
-anchor_bottom = 0.483333
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_vertical = 1
 theme = SubResource("Theme_5ygjs")
-metadata/_edit_use_anchors_ = true
 
 [node name="Logo" type="AnimatedSprite2D" parent="CanvasLayer/LogoBg"]
-position = Vector2(238, 220.5)
-scale = Vector2(1.211, 1.11)
+position = Vector2(535, 419)
+scale = Vector2(1.82, 1.474)
 sprite_frames = SubResource("SpriteFrames_nwajf")
 frame = 47
 
