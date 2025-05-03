@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://ddnk6tm7wiywl"]
+
+[ext_resource type="Script" uid="uid://c6kg8gkkw180q" path="res://addons/GodotPlayGameServices/scripts/achievements/achievement.gd" id="1_1jee0"]
+
+[node name="AchievementManager" type="Node"]
+script = ExtResource("1_1jee0")
