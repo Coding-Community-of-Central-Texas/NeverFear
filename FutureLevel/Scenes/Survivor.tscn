@@ -1,6 +1,6 @@
 [gd_scene load_steps=53 format=3 uid="uid://bsltfx5uw5yvq"]
 
-[ext_resource type="Script" path="res://Scripts/SurvivorScript.gd" id="1_dqedt"]
+[ext_resource type="Script" uid="uid://cpg5jnf7mf6go" path="res://Scripts/SurvivorScript.gd" id="1_dqedt"]
 [ext_resource type="Texture2D" uid="uid://050tdjf5b57n" path="res://assets/3 Cyborg/Cyborg_death.png" id="2_cknjt"]
 [ext_resource type="Texture2D" uid="uid://mw6jnqwrtdvx" path="res://assets/3 Cyborg/Cyborg_idle.png" id="2_tdahw"]
 [ext_resource type="Texture2D" uid="uid://xqornd2ewtdu" path="res://assets/3 Cyborg/Cyborg_hurt.png" id="3_6b4fo"]
@@ -10,7 +10,7 @@
 [ext_resource type="AudioStream" uid="uid://dnjr7q6plu8wi" path="res://assets/FutrueSFX/PlayerDie.wav" id="8_x70f2"]
 [ext_resource type="Texture2D" uid="uid://c1t7ic4fo0him" path="res://assets/etc/health.png" id="9_bjhe2"]
 [ext_resource type="Texture2D" uid="uid://dkp57y2x4axvt" path="res://assets/etc/shadow.png" id="10_e0fqp"]
-[ext_resource type="Script" path="res://Scripts/GauntletCamera.gd" id="10_opkhv"]
+[ext_resource type="Script" uid="uid://d16x2r07n3icb" path="res://Scripts/GauntletCamera.gd" id="10_opkhv"]
 [ext_resource type="PackedScene" uid="uid://cule8xvwt1ral" path="res://Scenes/GauntletSpawn.tscn" id="11_dc7s1"]
 [ext_resource type="PackedScene" uid="uid://b0oeqk6jov218" path="res://Scenes/GauntletBigSpawn.tscn" id="12_kcvup"]
 [ext_resource type="Texture2D" uid="uid://bw01rrado42yn" path="res://assets/etc/ranks/rank1.png" id="13_s40jq"]
@@ -352,10 +352,10 @@ tracks/3/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_2oiib"]
 _data = {
-"RESET": SubResource("Animation_i8mf6"),
-"death": SubResource("Animation_xrceq"),
-"idle": SubResource("Animation_234nm"),
-"walk": SubResource("Animation_pqmon")
+&"RESET": SubResource("Animation_i8mf6"),
+&"death": SubResource("Animation_xrceq"),
+&"idle": SubResource("Animation_234nm"),
+&"walk": SubResource("Animation_pqmon")
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0pc6t"]
@@ -442,7 +442,7 @@ animation = &"idle"
 [node name="AnimationPlayer" type="AnimationPlayer" parent="AnimatedSprite2D"]
 unique_name_in_owner = true
 libraries = {
-"": SubResource("AnimationLibrary_2oiib")
+&"": SubResource("AnimationLibrary_2oiib")
 }
 
 [node name="Shadow" type="Sprite2D" parent="AnimatedSprite2D"]
@@ -578,7 +578,7 @@ position = Vector2(-5.09091, 32.6957)
 scale = Vector2(1.13405, 0.965704)
 sprite_frames = SubResource("SpriteFrames_l1v2x")
 autoplay = "default"
-frame_progress = 0.72374
+frame_progress = 0.857799
 
 [connection signal="rank_changed" from="." to="GauntletSpawn" method="_on_survivor_rank_changed"]
 [connection signal="rank_changed" from="." to="GauntletBigSpawn" method="_on_survivor_rank_changed"]

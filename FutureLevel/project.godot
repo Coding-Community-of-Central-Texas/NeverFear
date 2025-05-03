@@ -13,8 +13,11 @@ config_version=5
 config/name="NeverFear"
 config/description="NeverFear is an extremly fun and addictive game deployed and devloped by the Open-Source Coding Community of Central Texas. With the main contributer being Stephen Hairston the founder and 2024 Director of the organization. "
 run/main_scene="res://Scenes/LoadScreen.tscn"
-config/features=PackedStringArray("4.3", "Mobile")
+config/features=PackedStringArray("4.4", "Mobile")
+boot_splash/bg_color=Color(0, 0, 0, 1)
+boot_splash/image="uid://dr6cxafqstjbd"
 config/icon="res://assets/Background/NeverFearIcon.svg"
+boot_splash/minimum_display_time=75
 
 [autoload]
 
@@ -22,6 +25,8 @@ Global="*res://Singletons/Global.gd"
 GameManager="*res://Singletons/GameManager.gd"
 DamageNumbers="*res://Singletons/DamageNumbers.gd"
 ScreenSetting="*res://Singletons/ScreenSetting.tscn"
+GodotPlayGameServices="*res://addons/GodotPlayGameServices/scripts/autoloads/godot_play_game_services.gd"
+SignIn="*res://Singletons/sign_in.tscn"
 
 [display]
 
@@ -34,11 +39,15 @@ window/handheld/orientation=6
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/gaea/plugin.cfg", "res://addons/virtual_joystick/plugin.cfg")
+enabled=PackedStringArray("res://addons/GodotPlayGameServices/plugin.cfg", "res://addons/gaea/plugin.cfg", "res://addons/virtual_joystick/plugin.cfg")
 
 [global_group]
 
 enemy="enemies"
+
+[gui]
+
+theme/custom_font="res://assets/etc/StarJedi-DGRW.ttf"
 
 [input]
 

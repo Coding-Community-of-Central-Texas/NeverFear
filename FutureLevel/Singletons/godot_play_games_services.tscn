@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://c25ejbkqi5vln"]
+
+[ext_resource type="Script" uid="uid://c7cn3h1qo4xh1" path="res://addons/GodotPlayGameServices/scripts/autoloads/godot_play_game_services.gd" id="1_oae3l"]
+
+[node name="GodotPlayGamesServices" type="Node"]
+script = ExtResource("1_oae3l")

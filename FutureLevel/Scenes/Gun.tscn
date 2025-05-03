@@ -1,6 +1,6 @@
 [gd_scene load_steps=17 format=3 uid="uid://daeuuspwxjeag"]
 
-[ext_resource type="Script" path="res://Scripts/Gun.gd" id="1_5s5d3"]
+[ext_resource type="Script" uid="uid://xc1frujt3e7y" path="res://Scripts/Gun.gd" id="1_5s5d3"]
 [ext_resource type="Texture2D" uid="uid://c8mqnh8i65mot" path="res://assets/Guns&Bullets/4_1.png" id="1_i4qsf"]
 [ext_resource type="AudioStream" uid="uid://cm6khs2aq378r" path="res://assets/FutrueSFX/Gun Laser SingleShot.wav" id="3_b7egm"]
 [ext_resource type="Texture2D" uid="uid://b5j4crk6t517p" path="res://assets/Guns&Bullets/blasteffect.png" id="4_ikfiu"]
@@ -66,14 +66,12 @@ animations = [{
 }]
 
 [sub_resource type="Curve" id="Curve_fkgf3"]
-min_value = 0.39
-max_value = 0.81
+_limits = [0.39, 0.81, 0.0, 1.0]
 _data = [Vector2(0.0110497, -0.21), 0.0, 0.00291309, 0, 0, Vector2(0.132597, 0.760204), 0.0, 0.0, 0, 0, Vector2(0.146409, -0.172918), 0.0, 0.0, 0, 0, Vector2(0.28453, 0.801212), 0.0, 0.0, 0, 0, Vector2(0.309392, -0.193004), 0.0, 0.0, 0, 0, Vector2(0.466851, -0.198026), 0.0, 0.0, 0, 0, Vector2(0.486188, 0.783637), 0.0, 0.0, 0, 0, Vector2(0.563536, -0.21), 0.0, 0.0, 0, 0, Vector2(0.654696, 0.77485), -0.831097, -0.831097, 0, 0, Vector2(0.69337, 0.319185), 0.0, 0.0, 0, 0, Vector2(0.740332, -0.193004), 0.0, 0.0, 0, 0, Vector2(0.856354, 0.777779), 0.0, 0.0, 0, 0, Vector2(0.89779, -0.193004), 0.0, 0.0, 0, 0]
 point_count = 13
 
 [sub_resource type="Curve" id="Curve_wqnjr"]
-min_value = 0.39
-max_value = 1.21
+_limits = [0.39, 1.21, 0.0, 1.0]
 _data = [Vector2(0.0220995, 0.0576502), 0.0, 11.866, 0, 0, Vector2(0.0607735, 0.821116), 0.0, 0.0, 0, 0, Vector2(0.146409, 0.064206), 0.0, 0.0, 0, 0, Vector2(0.212707, 0.832554), 0.0, 0.0, 0, 0, Vector2(0.267956, 0.0674839), 0.0, 0.0, 0, 0, Vector2(0.372928, 0.786803), 0.0, 0.0, 0, 0, Vector2(0.400552, 0.0609281), 0.0, 0.0, 0, 0, Vector2(0.486188, 0.718176), 0.0, 0.0, 0, 0, Vector2(0.494475, 0.0773176), 0.0, 0.0, 0, 0, Vector2(0.616022, 0.689582), 0.0, 0.0, 0, 0, Vector2(0.618785, 0.0805955), 0.0, 0.0, 0, 0, Vector2(0.734807, 0.678144), 0.0, 0.0, 0, 0, Vector2(0.754144, 0.0609281), 0.0, 0.0, 0, 0, Vector2(0.895028, 0.552328), 0.0, 0.0, 0, 0, Vector2(0.900553, 0.0674839), 0.0, 0.0, 0, 0]
 point_count = 15
 

@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://cyik2prp6rqk4"]
 
-[ext_resource type="Script" path="res://Scripts/CheckpointCounter.gd" id="1_5wshh"]
+[ext_resource type="Script" uid="uid://djdltt6bbbxwf" path="res://Scripts/CheckpointCounter.gd" id="1_5wshh"]
 
 [node name="LifeCounter" type="Label"]
 offset_right = 70.0

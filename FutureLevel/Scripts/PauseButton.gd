@@ -11,4 +11,4 @@ func _on_touch_screen_button_pressed() -> void:
 	await get_tree().create_timer(0.2).timeout  # Wait for 0.1 seconds
 	modulate = Color(1, 1, 1, 1)  # Reset to normal
 	var new_pause = PAUSE_MENU.instantiate()
-	get_parent().add_child(new_pause)
+	get_tree().current_scene.add_child(new_pause)

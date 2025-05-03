@@ -1,6 +1,6 @@
 [gd_scene load_steps=13 format=3 uid="uid://ic8tr3bc3h4g"]
 
-[ext_resource type="Script" path="res://Scripts/Boom.gd" id="1_4kubd"]
+[ext_resource type="Script" uid="uid://b2nlagv4weued" path="res://Scripts/Boom.gd" id="1_4kubd"]
 [ext_resource type="Texture2D" uid="uid://1lk673etjjd" path="res://assets/Guns&Bullets/Sprites.png" id="1_m7l1p"]
 [ext_resource type="AudioStream" uid="uid://no2v132ef6sx" path="res://assets/FutrueSFX/Explosion Short 15.wav" id="3_7enx4"]
 

@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://cw04ojq7qrhnq"]
 
-[ext_resource type="Script" path="res://Scripts/BigSpawnGauntlet.gd" id="1_n1gul"]
+[ext_resource type="Script" uid="uid://cmw0870ectr3h" path="res://Scripts/BigSpawnGauntlet.gd" id="1_n1gul"]
 
 [sub_resource type="Curve2D" id="Curve2D_dwh3c"]
 _data = {

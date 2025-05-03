@@ -1,6 +1,6 @@
-[gd_scene load_steps=68 format=3 uid="uid://csqktr6ixyato"]
+[gd_scene load_steps=67 format=3 uid="uid://csqktr6ixyato"]
 
-[ext_resource type="Script" path="res://Scripts/Hero.gd" id="1_43ipw"]
+[ext_resource type="Script" uid="uid://xcdf6rvj86fc" path="res://Scripts/Hero.gd" id="1_43ipw"]
 [ext_resource type="Texture2D" uid="uid://050tdjf5b57n" path="res://assets/3 Cyborg/Cyborg_death.png" id="2_2ior6"]
 [ext_resource type="Texture2D" uid="uid://huv5y4v78n8o" path="res://assets/3 Cyborg/Cyborg_doublejump.png" id="2_a50ia"]
 [ext_resource type="Texture2D" uid="uid://b8he4ug50vnxx" path="res://assets/Guns&Bullets/Idle1.png" id="2_vptny"]
@@ -15,7 +15,7 @@
 [ext_resource type="Texture2D" uid="uid://dtmoad6blffsk" path="res://assets/etc/flare_3.png" id="11_x6ujp"]
 [ext_resource type="PackedScene" uid="uid://v1wqgbnfesbp" path="res://Scenes/HealthBar.tscn" id="12_i3t22"]
 [ext_resource type="Texture2D" uid="uid://c1t7ic4fo0him" path="res://assets/etc/health.png" id="12_j60bv"]
-[ext_resource type="Script" path="res://Scripts/Camera.gd" id="12_ofnp4"]
+[ext_resource type="Script" uid="uid://cn3u05daqaxkx" path="res://Scripts/Camera.gd" id="12_ofnp4"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_strd3"]
 atlas = ExtResource("2_2ior6")
@@ -284,22 +284,22 @@ animations = [{
 }]
 
 [sub_resource type="Curve" id="Curve_1v7rp"]
-max_value = 0.5
-_data = [Vector2(0, 0.0352113), 0.0, 0.0, 0, 0, Vector2(0.113122, 0.428571), 0.110389, 0.110389, 0, 0, Vector2(0.597285, 0), -0.811504, 0.0, 0, 0]
+_limits = [0.0, 0.5, 0.0, 1.0]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.155738, 0.494382), 0.0884378, 0.0884378, 0, 0, Vector2(0.278689, 0.00561798), -0.228465, 0.0, 0, 0]
 point_count = 3
 
 [sub_resource type="Curve" id="Curve_224pu"]
-max_value = 0.5
-_data = [Vector2(0, 0.0316901), 0.0, 0.0, 0, 0, Vector2(0.0723982, 0.39011), 0.0, 0.0, 0, 0, Vector2(0.20362, 0.0274725), -0.223074, -0.223074, 0, 0, Vector2(0.51532, 0), 0.0, 0.0, 0, 0]
-point_count = 4
+_limits = [0.0, 0.5, 0.0, 1.0]
+_data = [Vector2(0, 0.0842697), 0.0, -0.203766, 0, 0, Vector2(0.180328, 0), 0.0, 0.0, 0, 0]
+point_count = 2
 
 [sub_resource type="Curve" id="Curve_2txmc"]
-max_value = 0.6
+_limits = [0.0, 0.6, 0.0, 1.0]
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.0135747, 0.6), 0.0, 0.0, 0, 0, Vector2(0.122172, 0), 0.0, 0.0, 0, 0]
 point_count = 3
 
 [sub_resource type="Curve" id="Curve_rlbob"]
-max_value = 0.6
+_limits = [0.0, 0.6, 0.0, 1.0]
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.0226244, 0.6), 0.0, 0.0, 0, 0, Vector2(0.0995475, 0), 0.0, 0.0, 0, 0]
 point_count = 3
 
@@ -440,22 +440,18 @@ tracks/2/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_vhrnj"]
 _data = {
-"IdleRigt ": SubResource("Animation_dl5oi"),
-"RESET": SubResource("Animation_h7kvo"),
-"Runleft": SubResource("Animation_ndcye"),
-"SpeedRight": SubResource("Animation_8bytw"),
-"idleshockL": SubResource("Animation_dp88d"),
-"leftface": SubResource("Animation_305b1"),
-"rightface": SubResource("Animation_v77dw")
+&"IdleRigt ": SubResource("Animation_dl5oi"),
+&"RESET": SubResource("Animation_h7kvo"),
+&"Runleft": SubResource("Animation_ndcye"),
+&"SpeedRight": SubResource("Animation_8bytw"),
+&"idleshockL": SubResource("Animation_dp88d"),
+&"leftface": SubResource("Animation_305b1"),
+&"rightface": SubResource("Animation_v77dw")
 }
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_bwgh6"]
 atlas = ExtResource("11_6s631")
 region = Rect2(756, 0, 63, 75)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_a2p8e"]
-atlas = ExtResource("11_6s631")
-region = Rect2(693, 0, 63, 75)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_md3it"]
 atlas = ExtResource("11_6s631")
@@ -468,19 +464,16 @@ animations = [{
 "texture": SubResource("AtlasTexture_bwgh6")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_a2p8e")
+"texture": SubResource("AtlasTexture_md3it")
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_bwgh6")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_a2p8e")
-}, {
-"duration": 1.0,
 "texture": SubResource("AtlasTexture_md3it")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_a2p8e")
+"texture": SubResource("AtlasTexture_bwgh6")
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_md3it")
@@ -517,28 +510,26 @@ position = Vector2(26, 47.3333)
 [node name="JumpEffect" type="CPUParticles2D" parent="AnimatedSprite2D"]
 unique_name_in_owner = true
 show_behind_parent = true
-position = Vector2(15.3334, 40)
+position = Vector2(15.3334, 44)
 scale = Vector2(0.5, 0.5)
 emitting = false
 amount = 1
-lifetime = 0.25
-one_shot = true
-speed_scale = 2.45
-explosiveness = 1.0
 texture = ExtResource("10_o76pr")
+lifetime = 0.6
+one_shot = true
+speed_scale = 1.2
+explosiveness = 1.0
 direction = Vector2(0, 1)
 spread = 0.0
 gravity = Vector2(0, 0)
-initial_velocity_min = 601.65
-initial_velocity_max = 601.65
-linear_accel_min = 10.47
-linear_accel_max = 10.47
+initial_velocity_min = 296.1
+initial_velocity_max = 296.1
 scale_amount_min = 0.4
 scale_amount_max = 0.5
 split_scale = true
 scale_curve_x = SubResource("Curve_1v7rp")
 scale_curve_y = SubResource("Curve_224pu")
-color = Color(26.487, 12.973, 1, 1)
+color = Color(0.42906, 0.597439, 0.959075, 1)
 
 [node name="JumpEffect2" type="CPUParticles2D" parent="AnimatedSprite2D"]
 unique_name_in_owner = true
@@ -547,10 +538,10 @@ position = Vector2(14, 42)
 rotation = 1.58028
 emitting = false
 amount = 1
+texture = ExtResource("11_x6ujp")
 lifetime = 0.5
 one_shot = true
 speed_scale = 2.0
-texture = ExtResource("11_x6ujp")
 direction = Vector2(0, 0)
 spread = 0.0
 gravity = Vector2(0, 0)
@@ -569,17 +560,25 @@ color = Color(9.729, 23.783, 59.459, 1)
 [node name="AnimationPlayer" type="AnimationPlayer" parent="AnimatedSprite2D"]
 unique_name_in_owner = true
 libraries = {
-"": SubResource("AnimationLibrary_vhrnj")
+&"": SubResource("AnimationLibrary_vhrnj")
 }
 
 [node name="SuperSayain" type="AnimatedSprite2D" parent="AnimatedSprite2D"]
 visible = false
-z_index = -1
-position = Vector2(17.3334, 22)
-scale = Vector2(0.854257, 0.72)
+position = Vector2(19, 14.7104)
+scale = Vector2(0.956522, 0.907834)
 sprite_frames = SubResource("SpriteFrames_wb5xw")
 autoplay = "default"
-frame_progress = 0.1504
+frame_progress = 0.143923
+
+[node name="Super" type="AnimatedSprite2D" parent="AnimatedSprite2D/SuperSayain"]
+position = Vector2(-0.15465, 38.127)
+rotation = 3.13473
+scale = Vector2(0.924027, 0.147635)
+skew = 0.000680804
+sprite_frames = SubResource("SpriteFrames_wb5xw")
+autoplay = "default"
+frame_progress = 0.595497
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 unique_name_in_owner = true
@@ -610,14 +609,14 @@ collision_mask = 0
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("9_weta3")
-volume_db = -2.616
-pitch_scale = 4.0
+volume_db = 1.005
+pitch_scale = 1.65
+max_distance = 689.0
 
 [node name="AudioStreamPlayer2D2" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("10_qhkyu")
-volume_db = -10.741
-pitch_scale = 2.15
-attenuation = 2.46229
+volume_db = 0.999
+pitch_scale = 1.4
 
 [node name="Timer" type="Timer" parent="."]
 process_callback = 0

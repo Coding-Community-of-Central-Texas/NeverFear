@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://c2txtdlp7v66l"]
 
-[ext_resource type="Script" path="res://Scripts/BasicGun.gd" id="1_6fwh3"]
+[ext_resource type="Script" uid="uid://6eq7ekhvpsd6" path="res://Scripts/BasicGun.gd" id="1_6fwh3"]
 [ext_resource type="AudioStream" uid="uid://gauoua60vry" path="res://assets/FutrueSFX/Missile Launcher.wav" id="3_76c1p"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_wrg8w"]

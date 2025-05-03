@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://bq8ujsbmayllg"]
 
-[ext_resource type="Script" path="res://Scripts/ThreeHitter.gd" id="1_hrt73"]
+[ext_resource type="Script" uid="uid://s4qvber8i57c" path="res://Scripts/ThreeHitter.gd" id="1_hrt73"]
 [ext_resource type="PackedScene" uid="uid://dwskcd6nh751f" path="res://Scenes/Robbie.tscn" id="1_wl1r3"]
 [ext_resource type="PackedScene" uid="uid://ck5iyeqefbgyc" path="res://Scenes/EnemyGun.tscn" id="4_sfktj"]
 

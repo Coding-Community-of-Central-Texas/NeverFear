@@ -1,6 +1,6 @@
 [gd_scene load_steps=18 format=3 uid="uid://d3m3pthstoelx"]
 
-[ext_resource type="Script" path="res://Scripts/Cash.gd" id="1_wjjbo"]
+[ext_resource type="Script" uid="uid://ciqridq1cdl00" path="res://Scripts/Cash.gd" id="1_wjjbo"]
 [ext_resource type="Texture2D" uid="uid://dtey7mq3og40d" path="res://assets/etc/Money.png" id="2_kau2e"]
 [ext_resource type="AudioStream" uid="uid://dbnystp0y1gke" path="res://assets/FutrueSFX/PickUp.wav" id="3_jwobk"]
 [ext_resource type="Texture2D" uid="uid://c1t7ic4fo0him" path="res://assets/etc/health.png" id="4_irqxg"]
@@ -286,8 +286,8 @@ tracks/8/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_6fdu0"]
 _data = {
-"RESET": SubResource("Animation_mhxhs"),
-"heart": SubResource("Animation_5ogcs")
+&"RESET": SubResource("Animation_mhxhs"),
+&"heart": SubResource("Animation_5ogcs")
 }
 
 [node name="Cash" type="Area2D"]

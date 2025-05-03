@@ -1,13 +1,13 @@
-[gd_scene load_steps=192 format=3 uid="uid://c8sbp2d4k2aou"]
+[gd_scene load_steps=191 format=3 uid="uid://c8sbp2d4k2aou"]
 
-[ext_resource type="Script" path="res://Scripts/HypercoreGauntlet.gd" id="1_aav37"]
-[ext_resource type="Script" path="res://addons/gaea/renderers/2D/tilemap_gaea_renderer.gd" id="2_bqeif"]
-[ext_resource type="Script" path="res://addons/gaea/generators/2D/noise_generator/noise_generator.gd" id="3_iryc7"]
-[ext_resource type="Script" path="res://addons/gaea/modifiers/2D/modifier_2d.gd" id="4_8em6s"]
-[ext_resource type="Script" path="res://addons/gaea/generators/2D/noise_generator/noise_generator_settings.gd" id="5_suek0"]
-[ext_resource type="Script" path="res://addons/gaea/generators/2D/noise_generator/noise_generator_data.gd" id="6_v2o4m"]
+[ext_resource type="Script" uid="uid://cmwo16o6i0s75" path="res://Scripts/HypercoreGauntlet.gd" id="1_aav37"]
+[ext_resource type="Script" uid="uid://drjj2j2k4q1h2" path="res://addons/gaea/renderers/2D/tilemap_gaea_renderer.gd" id="2_bqeif"]
+[ext_resource type="Script" uid="uid://b2dpsg8b0p0y0" path="res://addons/gaea/generators/2D/noise_generator/noise_generator.gd" id="3_iryc7"]
+[ext_resource type="Script" uid="uid://bpy1iocyuiojc" path="res://addons/gaea/modifiers/2D/modifier_2d.gd" id="4_8em6s"]
+[ext_resource type="Script" uid="uid://bo7rctlpxpvta" path="res://addons/gaea/generators/2D/noise_generator/noise_generator_settings.gd" id="5_suek0"]
+[ext_resource type="Script" uid="uid://cvaeybnn0neyy" path="res://addons/gaea/generators/2D/noise_generator/noise_generator_data.gd" id="6_v2o4m"]
 [ext_resource type="Texture2D" uid="uid://dvdnnc6kgs44h" path="res://assets/1 Tiles/Box8.png" id="7_2riic"]
-[ext_resource type="Script" path="res://addons/gaea/tile_info/tilemap_tile_info.gd" id="7_of22h"]
+[ext_resource type="Script" uid="uid://bbxrcfq33qgrr" path="res://addons/gaea/tile_info/tilemap_tile_info.gd" id="7_of22h"]
 [ext_resource type="Texture2D" uid="uid://cu0yrtlk87m0n" path="res://assets/1 Tiles/Fence1.png" id="8_c7nh4"]
 [ext_resource type="Texture2D" uid="uid://cx0stqbakkhl0" path="res://assets/1 Tiles/IndustrialTile_07.png" id="9_5qj31"]
 [ext_resource type="Texture2D" uid="uid://ewx0u37tbmg2" path="res://assets/1 Tiles/IndustrialTile_08.png" id="10_hy83t"]
@@ -85,13 +85,12 @@
 [ext_resource type="Texture2D" uid="uid://c7nw8oj5k54fx" path="res://assets/1 Tiles/IndustrialTile_05.png" id="82_ejyhe"]
 [ext_resource type="Texture2D" uid="uid://du0amabk2v8a8" path="res://assets/1 Tiles/IndustrialTile_06.png" id="83_cdau2"]
 [ext_resource type="PackedScene" uid="uid://bsltfx5uw5yvq" path="res://Scenes/Survivor.tscn" id="84_7tc6j"]
-[ext_resource type="Script" path="res://addons/gaea/others/chunk_loader_2d.gd" id="85_07p6e"]
+[ext_resource type="Script" uid="uid://njy3mbawr1ug" path="res://addons/gaea/others/chunk_loader_2d.gd" id="85_07p6e"]
 [ext_resource type="PackedScene" uid="uid://cijayc3peexw" path="res://Singletons/GameManager.tscn" id="87_esuwa"]
 [ext_resource type="PackedScene" uid="uid://bpcrood65pxvy" path="res://Scenes/PauseButton.tscn" id="88_b882s"]
 [ext_resource type="PackedScene" uid="uid://bnvfoqqwf8ub" path="res://Scenes/SurvivorControl.tscn" id="89_4jwms"]
 [ext_resource type="PackedScene" uid="uid://fsxm1bfx6ihb" path="res://Scenes/TimePanel.tscn" id="90_xpk53"]
-[ext_resource type="FontFile" uid="uid://ckid4fla6wirc" path="res://assets/etc/Starzoom-Shavian.ttf" id="91_swk3f"]
-[ext_resource type="Script" path="res://Scripts/Kills.gd" id="92_o11a1"]
+[ext_resource type="Script" uid="uid://b3vkuo260umhc" path="res://Scripts/Kills.gd" id="92_o11a1"]
 [ext_resource type="Texture2D" uid="uid://brastt74lxpni" path="res://assets/etc/ranks/overkill.png" id="93_4vd0a"]
 [ext_resource type="Texture2D" uid="uid://d1wlj0qisaufc" path="res://assets/Guns&Bullets/fire_30.png" id="94_juiig"]
 
@@ -694,8 +693,7 @@ sources/75 = SubResource("TileSetAtlasSource_llo5o")
 sources/76 = SubResource("TileSetAtlasSource_g3xb1")
 
 [sub_resource type="Curve" id="Curve_wuajb"]
-min_value = -0.4
-max_value = 0.85
+_limits = [-0.4, 0.85, 0.0, 1.0]
 _data = [Vector2(0.0331492, -0.14088), 0.0, 0.0, 0, 0, Vector2(0.171271, 0.335649), 3.52712, 3.52712, 0, 0, Vector2(0.350829, 0.710515), 0.538803, 0.538803, 0, 0, Vector2(1, 0.85), 0.0, 0.0, 0, 0]
 point_count = 4
 
@@ -745,8 +743,8 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ukdey"]
 _data = {
-"RESET": SubResource("Animation_4r3fk"),
-"load": SubResource("Animation_l2rq5")
+&"RESET": SubResource("Animation_4r3fk"),
+&"load": SubResource("Animation_l2rq5")
 }
 
 [node name="HypercoreGauntlet" type="Node2D"]
@@ -782,7 +780,8 @@ slide_on_ceiling = false
 script = ExtResource("85_07p6e")
 generator = NodePath("../NoiseGenerator")
 actor = NodePath("../Survivor")
-loading_radius = Vector2i(3, 3)
+loading_radius = Vector2i(3, 4)
+update_rate = 1
 
 [node name="GameManager" parent="." instance=ExtResource("87_esuwa")]
 process_mode = 3
@@ -791,36 +790,38 @@ process_mode = 3
 
 [node name="TimePanel" parent="CanvasLayer" instance=ExtResource("90_xpk53")]
 unique_name_in_owner = true
-offset_left = -49.0
-offset_top = 80.0
-offset_right = 119.0
-offset_bottom = 138.0
+offset_left = -75.0
+offset_top = 77.0
+offset_right = 93.0
+offset_bottom = 135.0
 
 [node name="PauseButton" parent="CanvasLayer" instance=ExtResource("88_b882s")]
 top_level = true
 z_index = 2
-position = Vector2(104, 62)
+offset_left = 104.0
+offset_top = 62.0
+offset_right = 104.0
+offset_bottom = 62.0
 
 [node name="Kills" type="Label" parent="CanvasLayer"]
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
 offset_left = -218.0
-offset_top = 75.0
-offset_right = -73.9999
-offset_bottom = 126.0
+offset_top = 83.0
+offset_right = -59.9999
+offset_bottom = 164.0
 grow_horizontal = 0
 scale = Vector2(0.642329, 0.679219)
 theme_override_colors/font_color = Color(0.613989, 0.0261515, 0.0145188, 1)
 theme_override_colors/font_outline_color = Color(0.99558, 0.99558, 0.99558, 1)
 theme_override_constants/outline_size = 9
-theme_override_fonts/font = ExtResource("91_swk3f")
 theme_override_font_sizes/font_size = 50
 text = "Kills:"
 script = ExtResource("92_o11a1")
 
 [node name="Overkill" type="Sprite2D" parent="CanvasLayer/Kills"]
-position = Vector2(-28.0231, 23.5565)
+position = Vector2(-28.0232, 44.1684)
 scale = Vector2(1.64774, 1.21582)
 texture = ExtResource("93_4vd0a")
 
@@ -828,10 +829,10 @@ texture = ExtResource("93_4vd0a")
 position = Vector2(5.76956, 0.0996585)
 scale = Vector2(0.1, 0.1)
 amount = 20
+texture = ExtResource("94_juiig")
 lifetime = 0.93
 speed_scale = 1.29
 local_coords = true
-texture = ExtResource("94_juiig")
 emission_shape = 5
 emission_points = PackedVector2Array(-120, 0, 0, 0)
 emission_normals = PackedVector2Array()
@@ -852,8 +853,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
 
 [node name="SurvivalControl" parent="Control" instance=ExtResource("89_4jwms")]
 
@@ -872,7 +871,7 @@ texture = SubResource("CanvasTexture_gihud")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="DeathndSpawn"]
 libraries = {
-"": SubResource("AnimationLibrary_ukdey")
+&"": SubResource("AnimationLibrary_ukdey")
 }
 autoplay = "load"
 

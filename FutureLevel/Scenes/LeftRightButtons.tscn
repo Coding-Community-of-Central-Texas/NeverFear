@@ -1,6 +1,6 @@
 [gd_scene load_steps=11 format=3 uid="uid://bdh1ta442ljwu"]
 
-[ext_resource type="Script" path="res://Scripts/LeftRightButtons.gd" id="1_bb2x5"]
+[ext_resource type="Script" uid="uid://dco87nfoogu1h" path="res://Scripts/LeftRightButtons.gd" id="1_bb2x5"]
 [ext_resource type="Texture2D" uid="uid://dfw562n0cgm3w" path="res://assets/buttonsprites/arrowbutton.png" id="1_lpaks"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uolew"]

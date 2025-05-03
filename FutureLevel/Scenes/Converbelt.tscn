@@ -1,7 +1,7 @@
 [gd_scene load_steps=10 format=3 uid="uid://bjp0l20hey11o"]
 
 [ext_resource type="Texture2D" uid="uid://cywxp7avn6n57" path="res://assets/etc/Transporter.png" id="1_b4gm3"]
-[ext_resource type="Script" path="res://Scripts/MoveConvay.gd" id="2_p43xs"]
+[ext_resource type="Script" uid="uid://c1w14ty8a1w76" path="res://Scripts/MoveConvay.gd" id="2_p43xs"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_og1ef"]
 atlas = ExtResource("1_b4gm3")

@@ -1,9 +1,8 @@
-[gd_scene load_steps=24 format=3 uid="uid://b8aq7pak842g0"]
+[gd_scene load_steps=27 format=3 uid="uid://b8aq7pak842g0"]
 
-[ext_resource type="Script" path="res://Scripts/MainMenu.gd" id="1_ole10"]
+[ext_resource type="Script" uid="uid://dh8qeeoch6frg" path="res://Scripts/MainMenu.gd" id="1_ole10"]
 [ext_resource type="Texture2D" uid="uid://bcypd57pmrt63" path="res://assets/Background/Hero.svg" id="2_fschk"]
 [ext_resource type="Texture2D" uid="uid://dhit27os2eis3" path="res://assets/Background/FinalMenu1.svg" id="3_v1tbm"]
-[ext_resource type="FontFile" uid="uid://ckid4fla6wirc" path="res://assets/etc/Starzoom-Shavian.ttf" id="4_5gcgg"]
 [ext_resource type="PackedScene" uid="uid://cijayc3peexw" path="res://Singletons/GameManager.tscn" id="5_8jy63"]
 [ext_resource type="Texture2D" uid="uid://bv7fu6os82paq" path="res://assets/buttonsprites/UIbutton.png" id="5_ksm5j"]
 [ext_resource type="Texture2D" uid="uid://brastt74lxpni" path="res://assets/etc/ranks/overkill.png" id="5_ujj2x"]
@@ -14,27 +13,38 @@
 [ext_resource type="Texture2D" uid="uid://dtmoad6blffsk" path="res://assets/etc/flare_3.png" id="10_daf4p"]
 [ext_resource type="Texture2D" uid="uid://b2ans61yt43mf" path="res://assets/etc/Trophy.png" id="13_8ftns"]
 
+[sub_resource type="Resource" id="Resource_rrcx7"]
+metadata/__load_path__ = "res://assets/etc/Starzoom-Shavian.ttf"
+
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_o5ej8"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_de1g5"]
 size = Vector2(560, 360)
+
+[sub_resource type="Resource" id="Resource_fh7cp"]
+metadata/__load_path__ = "res://assets/etc/Starzoom-Shavian.ttf"
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_fcqq0"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yl8pi"]
 size = Vector2(800, 500)
 
+[sub_resource type="Resource" id="Resource_8e205"]
+metadata/__load_path__ = "res://assets/etc/Starzoom-Shavian.ttf"
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dfg3l"]
 size = Vector2(600, 300)
 
+[sub_resource type="Resource" id="Resource_7467j"]
+metadata/__load_path__ = "res://assets/etc/Starzoom-Shavian.ttf"
+
 [sub_resource type="Curve" id="Curve_stlyn"]
-min_value = -0.4
-max_value = 0.85
+_limits = [-0.4, 0.85, 0.0, 1.0]
 _data = [Vector2(0.0331492, -0.14088), 0.0, 0.0, 0, 0, Vector2(0.171271, 0.335649), 3.52712, 3.52712, 0, 0, Vector2(0.350829, 0.710515), 0.538803, 0.538803, 0, 0, Vector2(1, 0.85), 0.0, 0.0, 0, 0]
 point_count = 4
 
 [sub_resource type="Curve" id="Curve_tljel"]
-max_value = 0.7
+_limits = [0.0, 0.7, 0.0, 1.0]
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.086351, 0.300704), 0.621793, 0.621793, 0, 0, Vector2(0.381616, 0.0049296), -0.171263, 0.0, 0, 0]
 point_count = 3
 
@@ -46,8 +56,8 @@ length = 0.001
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_fvkqm"]
 _data = {
-"HomeAnimation": SubResource("Animation_u05n2"),
-"RESET": SubResource("Animation_4e3u6")
+&"HomeAnimation": SubResource("Animation_u05n2"),
+&"RESET": SubResource("Animation_4e3u6")
 }
 
 [node name="MainMenu" type="CanvasLayer"]
@@ -81,7 +91,7 @@ theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_shadow_color = Color(1, 1, 1, 1)
 theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
 theme_override_constants/outline_size = 3
-theme_override_fonts/font = ExtResource("4_5gcgg")
+theme_override_fonts/font = SubResource("Resource_rrcx7")
 theme_override_font_sizes/font_size = 15
 text = "Credits"
 horizontal_alignment = 1
@@ -134,7 +144,7 @@ theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
 theme_override_constants/shadow_offset_x = -5
 theme_override_constants/shadow_offset_y = 3
 theme_override_constants/outline_size = 4
-theme_override_fonts/font = ExtResource("4_5gcgg")
+theme_override_fonts/font = SubResource("Resource_fh7cp")
 theme_override_font_sizes/font_size = 50
 text = "DATA VAULT"
 horizontal_alignment = 1
@@ -186,7 +196,7 @@ theme_override_constants/shadow_offset_x = -6
 theme_override_constants/shadow_offset_y = 3
 theme_override_constants/outline_size = 3
 theme_override_constants/shadow_outline_size = 3
-theme_override_fonts/font = ExtResource("4_5gcgg")
+theme_override_fonts/font = SubResource("Resource_8e205")
 theme_override_font_sizes/font_size = 50
 text = "LEGACY"
 horizontal_alignment = 1
@@ -232,7 +242,7 @@ theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
 theme_override_constants/shadow_offset_x = -6
 theme_override_constants/shadow_offset_y = 2
 theme_override_constants/outline_size = 3
-theme_override_fonts/font = ExtResource("4_5gcgg")
+theme_override_fonts/font = SubResource("Resource_7467j")
 theme_override_font_sizes/font_size = 50
 text = "GAUNTLET"
 horizontal_alignment = 1

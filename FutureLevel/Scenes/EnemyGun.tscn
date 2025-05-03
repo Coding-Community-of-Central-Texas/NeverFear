@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://ck5iyeqefbgyc"]
 
-[ext_resource type="Script" path="res://Scripts/EnemyGun.gd" id="1_tq7np"]
+[ext_resource type="Script" uid="uid://cfkdkoygndieu" path="res://Scripts/EnemyGun.gd" id="1_tq7np"]
 [ext_resource type="Texture2D" uid="uid://dganlwkd4d2te" path="res://assets/Guns&Bullets/RobbieGun.png" id="2_t8l87"]
 [ext_resource type="AudioStream" uid="uid://gauoua60vry" path="res://assets/FutrueSFX/Missile Launcher.wav" id="3_fjluh"]
 

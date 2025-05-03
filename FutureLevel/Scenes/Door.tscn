@@ -1,6 +1,5 @@
-[gd_scene load_steps=13 format=3 uid="uid://bnog7ctirydt7"]
+[gd_scene load_steps=12 format=3 uid="uid://dt5epnhittnfd"]
 
-[ext_resource type="Script" path="res://Scripts/Door.gd" id="1_hgaju"]
 [ext_resource type="Texture2D" uid="uid://bfkq0dn281svy" path="res://assets/etc/Entry.png" id="2_acl2p"]
 [ext_resource type="AudioStream" uid="uid://cu4ww1fxb7vca" path="res://assets/FutrueSFX/OpenDoor.wav" id="3_h71nb"]
 
@@ -67,7 +66,6 @@ size = Vector2(23, 41.5)
 
 [node name="Door" type="Node2D"]
 scale = Vector2(1.37333, 1.72)
-script = ExtResource("1_hgaju")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 unique_name_in_owner = true

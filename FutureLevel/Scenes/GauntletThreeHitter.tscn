@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://bhlqatei3k7dl"]
 
-[ext_resource type="Script" path="res://Scripts/GuantThreeHitter.gd" id="1_3djek"]
+[ext_resource type="Script" uid="uid://cyexbxwxtl1mk" path="res://Scripts/GuantThreeHitter.gd" id="1_3djek"]
 [ext_resource type="PackedScene" uid="uid://dwskcd6nh751f" path="res://Scenes/Robbie.tscn" id="2_xinxc"]
 [ext_resource type="PackedScene" uid="uid://ck5iyeqefbgyc" path="res://Scenes/EnemyGun.tscn" id="3_yuh7s"]
 [ext_resource type="Texture2D" uid="uid://dkp57y2x4axvt" path="res://assets/etc/shadow.png" id="4_r1v46"]

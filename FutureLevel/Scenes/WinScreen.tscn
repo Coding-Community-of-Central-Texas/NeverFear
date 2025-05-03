@@ -1,23 +1,25 @@
-[gd_scene load_steps=8 format=3 uid="uid://cr16l7y5x5fys"]
+[gd_scene load_steps=10 format=3 uid="uid://cr16l7y5x5fys"]
 
 [ext_resource type="Texture2D" uid="uid://bcypd57pmrt63" path="res://assets/Background/Hero.svg" id="1_ykjtl"]
-[ext_resource type="Script" path="res://Scripts/WinScreen.gd" id="2_1sl55"]
-[ext_resource type="FontFile" uid="uid://ckid4fla6wirc" path="res://assets/etc/Starzoom-Shavian.ttf" id="3_c5ymd"]
-[ext_resource type="Texture2D" uid="uid://bv7fu6os82paq" path="res://assets/buttonsprites/UIbutton.png" id="4_hj3s0"]
+[ext_resource type="Script" uid="uid://dx6yg8arw0ugk" path="res://Scripts/WinScreen.gd" id="2_1sl55"]
+[ext_resource type="Texture2D" uid="uid://b4f16n2iqhv24" path="res://assets/buttonsprites/Retry.png" id="3_vlss6"]
+[ext_resource type="Texture2D" uid="uid://bbhuuoyx4y3uv" path="res://assets/buttonsprites/PressRetry.png" id="4_mbyi4"]
+[ext_resource type="Texture2D" uid="uid://d2aqtjhpuq1w2" path="res://assets/buttonsprites/HomeButton.png" id="5_auqbb"]
 [ext_resource type="AudioStream" uid="uid://dbnystp0y1gke" path="res://assets/FutrueSFX/PickUp.wav" id="5_els2m"]
+[ext_resource type="Texture2D" uid="uid://c5hopxqu5fvrh" path="res://assets/buttonsprites/PressedHome.png" id="6_c6q05"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_mg0hu"]
-size = Vector2(900, 500)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_77plb"]
+size = Vector2(350, 150)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_1wfes"]
-size = Vector2(550, 250)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yqulb"]
+size = Vector2(350, 150)
 
 [node name="Winner" type="CanvasLayer"]
 layer = 3
 script = ExtResource("2_1sl55")
 
 [node name="Win" type="TextureRect" parent="."]
-self_modulate = Color(0.262932, 0.262932, 0.262932, 1)
+self_modulate = Color(0.351563, 0.351563, 0.351563, 1)
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -28,24 +30,23 @@ texture = ExtResource("1_ykjtl")
 [node name="YouWin" type="Label" parent="Win"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.172222
-anchor_top = 0.0824074
-anchor_right = 0.812549
-anchor_bottom = 0.229651
+anchor_left = 0.062037
+anchor_top = 0.0564815
+anchor_right = 0.946808
+anchor_bottom = 0.241688
 offset_right = -297.553
 offset_bottom = -89.0233
 grow_horizontal = 2
 rotation = 0.00282774
-scale = Vector2(1.75635, 2.24382)
-theme_override_colors/font_color = Color(100, 0, 0, 1)
-theme_override_colors/font_shadow_color = Color(0.747639, 0.878767, 0.0401129, 1)
+scale = Vector2(1.46871, 2.06151)
+theme_override_colors/font_color = Color(0, 0, 76.795, 1)
+theme_override_colors/font_shadow_color = Color(0.636266, 0.835387, 1, 1)
 theme_override_colors/font_outline_color = Color(0.787759, 0.787759, 0.787759, 1)
 theme_override_constants/shadow_offset_x = -1
 theme_override_constants/shadow_offset_y = 2
 theme_override_constants/outline_size = 2
-theme_override_fonts/font = ExtResource("3_c5ymd")
 theme_override_font_sizes/font_size = 69
-text = "VICTORY!!"
+text = "Stage complete"
 horizontal_alignment = 1
 metadata/_edit_use_anchors_ = true
 
@@ -59,49 +60,14 @@ anchor_bottom = 0.344148
 offset_right = -22.56
 offset_bottom = -12.68
 scale = Vector2(1.059, 1.056)
-theme_override_colors/font_color = Color(97.838, 0, 0, 1)
-theme_override_colors/font_shadow_color = Color(0.747639, 0.878767, 0.0401129, 1)
+theme_override_colors/font_color = Color(0, 0, 67.403, 1)
+theme_override_colors/font_shadow_color = Color(0.68004, 0.822569, 0.999938, 1)
 theme_override_colors/font_outline_color = Color(0.787759, 0.787759, 0.787759, 1)
 theme_override_constants/shadow_offset_x = -1
 theme_override_constants/shadow_offset_y = 2
 theme_override_constants/outline_size = 2
-theme_override_fonts/font = ExtResource("3_c5ymd")
 theme_override_font_sizes/font_size = 40
-text = "RUN TIME:"
-metadata/_edit_use_anchors_ = true
-
-[node name="DataVault" type="Sprite2D" parent="Win"]
-self_modulate = Color(1, 1, 0, 1)
-position = Vector2(523, 747)
-scale = Vector2(0.749477, 0.453407)
-texture = ExtResource("4_hj3s0")
-region_enabled = true
-region_rect = Rect2(256.327, 111.147, 584.771, 266.448)
-
-[node name="StatsLink" type="TouchScreenButton" parent="Win/DataVault"]
-position = Vector2(-13.2574, -1.89007)
-rotation = 3.13132
-scale = Vector2(0.561073, -0.420907)
-skew = 0.00613165
-shape = SubResource("RectangleShape2D_mg0hu")
-shape_visible = false
-
-[node name="Label" type="Label" parent="Win/DataVault/StatsLink"]
-offset_left = 394.373
-offset_top = -179.072
-offset_right = 792.373
-offset_bottom = -110.072
-scale = Vector2(-2.09846, 5.36982)
-theme_override_colors/font_color = Color(47.027, 0, 0, 1)
-theme_override_colors/font_shadow_color = Color(0.0202373, 0.440257, 0.493826, 1)
-theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
-theme_override_constants/shadow_offset_x = -2
-theme_override_constants/shadow_offset_y = 4
-theme_override_constants/outline_size = 3
-theme_override_fonts/font = ExtResource("3_c5ymd")
-theme_override_font_sizes/font_size = 60
-text = "DATA VAULT"
-horizontal_alignment = 1
+text = "Run Time:"
 metadata/_edit_use_anchors_ = true
 
 [node name="EnimiesKilled" type="Label" parent="Win"]
@@ -114,70 +80,51 @@ anchor_bottom = 0.463333
 offset_right = -0.880005
 offset_bottom = -10.4
 scale = Vector2(1.001, 1)
-theme_override_colors/font_color = Color(100, 0, 0, 1)
-theme_override_colors/font_shadow_color = Color(0.747639, 0.878767, 0.0401129, 1)
+theme_override_colors/font_color = Color(0, 0, 42.541, 1)
+theme_override_colors/font_shadow_color = Color(0.625267, 0.838406, 1, 1)
 theme_override_colors/font_outline_color = Color(0.787759, 0.787759, 0.787759, 1)
 theme_override_constants/shadow_offset_x = -1
 theme_override_constants/shadow_offset_y = 2
 theme_override_constants/outline_size = 2
-theme_override_fonts/font = ExtResource("3_c5ymd")
 theme_override_font_sizes/font_size = 40
-text = "ENEMIES ELIMINATED: "
+text = "enemies eliminated: "
 metadata/_edit_use_anchors_ = true
 
 [node name="CashCollected" type="Label" parent="Win"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.275926
-anchor_top = 0.547222
+anchor_top = 0.532407
 anchor_right = 0.739148
-anchor_bottom = 0.588704
+anchor_bottom = 0.595185
 offset_right = -3.28009
 offset_bottom = -3.80005
 scale = Vector2(1.007, 1.082)
-theme_override_colors/font_color = Color(100, 0, 0, 1)
-theme_override_colors/font_shadow_color = Color(0.747639, 0.878767, 0.0401129, 1)
+theme_override_colors/font_color = Color(0, 0, 64.088, 0.998)
+theme_override_colors/font_shadow_color = Color(0.661613, 0.82812, 1, 1)
 theme_override_colors/font_outline_color = Color(0.787759, 0.787759, 0.787759, 1)
 theme_override_constants/shadow_offset_x = -1
 theme_override_constants/shadow_offset_y = 2
 theme_override_constants/outline_size = 2
-theme_override_fonts/font = ExtResource("3_c5ymd")
 theme_override_font_sizes/font_size = 40
-text = "CASH COLLECTED:"
+text = "CaSH picked-up:"
 metadata/_edit_use_anchors_ = true
 
-[node name="Restart" type="Sprite2D" parent="Win"]
-self_modulate = Color(1, 1, 0, 1)
-position = Vector2(518, 902)
-scale = Vector2(0.720918, 0.407834)
-texture = ExtResource("4_hj3s0")
-region_enabled = true
-region_rect = Rect2(252.961, 109.427, 577.698, 266.448)
+[node name="Restart2" type="TouchScreenButton" parent="Win"]
+position = Vector2(224, 552)
+scale = Vector2(1.096, 0.816)
+texture_normal = ExtResource("3_vlss6")
+texture_pressed = ExtResource("4_mbyi4")
+shape = SubResource("RectangleShape2D_77plb")
 
-[node name="Label" type="Label" parent="Win/Restart"]
-anchors_preset = -1
-anchor_left = 0.274022
-anchor_top = 0.251115
-anchor_right = 0.74201
-anchor_bottom = 0.82114
-offset_left = -323.178
-offset_top = -142.808
-offset_right = -345.207
-offset_bottom = -211.434
-scale = Vector2(1.33807, 2.25091)
-theme_override_colors/font_color = Color(49.729, 0, 0, 1)
-theme_override_colors/font_shadow_color = Color(0.0202373, 0.440257, 0.493826, 1)
-theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
-theme_override_constants/shadow_offset_x = -2
-theme_override_constants/shadow_offset_y = 4
-theme_override_constants/outline_size = 3
-theme_override_fonts/font = ExtResource("3_c5ymd")
-theme_override_font_sizes/font_size = 60
-text = "Replay"
-metadata/_edit_use_anchors_ = true
-
-[node name="Restart" type="TouchScreenButton" parent="Win/Restart"]
-shape = SubResource("RectangleShape2D_1wfes")
+[node name="StatsLink" type="TouchScreenButton" parent="Win"]
+position = Vector2(775, 701)
+rotation = 3.13586
+scale = Vector2(1.08636, -0.866296)
+skew = -0.00168335
+texture_normal = ExtResource("5_auqbb")
+texture_pressed = ExtResource("6_c6q05")
+shape = SubResource("RectangleShape2D_yqulb")
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 unique_name_in_owner = true
@@ -185,6 +132,6 @@ stream = ExtResource("5_els2m")
 volume_db = 2.1
 pitch_scale = 1.4
 
-[connection signal="pressed" from="Win/DataVault/StatsLink" to="." method="_on_stats_link_pressed"]
-[connection signal="pressed" from="Win/DataVault/StatsLink" to="Win" method="_on_stats_link_pressed"]
-[connection signal="pressed" from="Win/Restart/Restart" to="." method="_on_restart_pressed"]
+[connection signal="pressed" from="Win/Restart2" to="." method="_on_restart_pressed"]
+[connection signal="pressed" from="Win/StatsLink" to="." method="_on_stats_link_pressed"]
+[connection signal="pressed" from="Win/StatsLink" to="Win" method="_on_stats_link_pressed"]

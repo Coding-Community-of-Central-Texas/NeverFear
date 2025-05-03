@@ -15,16 +15,18 @@ var total_cash: int = 0
 var current_level_time: String = "" 
 var current_kills: int = 0
 var game_cash: int = 0 
-var api_key: String = "LEADERBOARD_KEY"
+var api_key: String 
 var player_name: String
 # File path for save data
 const SAVE_PATH = "user://stat_data.json"
 
 # API Endpoint URL
-const API_URL: String = "https://osccct.org/api/endpoint.php"
+const API_URL: String = "https://neverfearendpoint-469126233982.us-south1.run.app"
+var API_KEY: String
 
 func _ready():
 	load_data()
+	GodotPlayGameServices.initialize()
 
 func _on_kill(amount: int) -> void:
 	total_kills += amount
@@ -32,6 +34,8 @@ func _on_kill(amount: int) -> void:
 	# Emit a signal for the current scene's kills
 	emit_signal("scene_kill_updated", current_kills)
 	save_data()  # Save updated stats
+
+
 
 func reset_scene_kills() -> void:
 	# Reset scene-specific kill counter
@@ -104,7 +108,7 @@ func _on_tree_exiting():
 func send_stats(http_request: HTTPRequest) -> void:
 	var headers = [
 		"Content-Type: application/json",
-		"X-API-KEY:" + api_key
+		"x-api-key: " + API_KEY  # Add API key in the header
 	]
 	
 	var payload = {
@@ -122,3 +126,13 @@ func send_stats(http_request: HTTPRequest) -> void:
 		push_error("Failed to send data! Error code: " + str(error))
 	else:
 		print("API request sent successfully.")
+
+func _on_http_request_request_completed(result: int, response_code: int, headers: PackedStringArray, body: PackedByteArray) -> void:
+	print("Response Code: ", response_code)
+	var response_text = body.get_string_from_utf8()
+	var parsed_response = JSON.parse_string(response_text)
+
+	if parsed_response is Dictionary:
+		print("Server Response: ", parsed_response)
+	else:
+		push_error("Failed to parse response JSON")

@@ -1,6 +1,6 @@
 [gd_scene load_steps=26 format=3 uid="uid://dyimxg6mdgoab"]
 
-[ext_resource type="Script" path="res://Scripts/Byte.gd" id="1_7tij2"]
+[ext_resource type="Script" uid="uid://b6gv1ya2srmfj" path="res://Scripts/Byte.gd" id="1_7tij2"]
 [ext_resource type="Texture2D" uid="uid://dmcxsi374a5lk" path="res://assets/Enemies/Byter.png" id="3_iq4lm"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_t72yc"]
@@ -301,9 +301,9 @@ tracks/3/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_mpxbx"]
 _data = {
-"RESET": SubResource("Animation_0vqvj"),
-"hurt": SubResource("Animation_6iau7"),
-"walk": SubResource("Animation_2u5fn")
+&"RESET": SubResource("Animation_0vqvj"),
+&"hurt": SubResource("Animation_6iau7"),
+&"walk": SubResource("Animation_2u5fn")
 }
 
 [node name="Byte" type="Node2D"]

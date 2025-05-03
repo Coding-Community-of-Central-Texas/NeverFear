@@ -1,8 +1,9 @@
-[gd_scene load_steps=15 format=3 uid="uid://wh7raj0bl5ft"]
+[gd_scene load_steps=16 format=3 uid="uid://wh7raj0bl5ft"]
 
-[ext_resource type="Script" path="res://Scripts/BossBullet.gd" id="1_0fkei"]
+[ext_resource type="Script" uid="uid://df02dgsfp3eed" path="res://Scripts/BossBullet.gd" id="1_0fkei"]
 [ext_resource type="Texture2D" uid="uid://cf1o7yknimjyd" path="res://assets/Guns&Bullets/enemybullet.png" id="2_tpbri"]
 [ext_resource type="Texture2D" uid="uid://dlxc1yfemuohe" path="res://assets/etc/super_saiyan_spritesheet.png" id="3_q3822"]
+[ext_resource type="Texture2D" uid="uid://d1wlj0qisaufc" path="res://assets/Guns&Bullets/fire_30.png" id="4_850xg"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_n3gss"]
 atlas = ExtResource("2_tpbri")
@@ -92,6 +93,7 @@ autoplay = "lava"
 shape = SubResource("CircleShape2D_epit2")
 
 [node name="Flames" type="AnimatedSprite2D" parent="."]
+visible = false
 position = Vector2(10.9968, 0.440002)
 rotation = 1.57802
 scale = Vector2(0.255426, 0.347866)
@@ -100,6 +102,7 @@ autoplay = "default"
 frame_progress = 0.0366055
 
 [node name="Flames2" type="AnimatedSprite2D" parent="."]
+visible = false
 z_index = -1
 position = Vector2(3.39588, 1.03897)
 rotation = 1.57802
@@ -107,5 +110,23 @@ scale = Vector2(0.255426, 0.280835)
 sprite_frames = SubResource("SpriteFrames_5qd2b")
 autoplay = "default"
 frame_progress = 0.147122
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+position = Vector2(10, -1)
+scale = Vector2(0.62, 0.69)
+amount = 10
+texture = ExtResource("4_850xg")
+lifetime = 0.12
+speed_scale = 0.9
+randomness = 0.4
+direction = Vector2(2, 0)
+spread = 13.21
+gravity = Vector2(13.06, 0)
+initial_velocity_min = 223.4
+initial_velocity_max = 223.4
+angle_min = 275.6
+angle_max = 275.6
+scale_amount_min = 0.01
+scale_amount_max = 0.09
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

@@ -1,8 +1,7 @@
-[gd_scene load_steps=11 format=3 uid="uid://d1ly636rhenqx"]
+[gd_scene load_steps=10 format=3 uid="uid://d1ly636rhenqx"]
 
-[ext_resource type="Script" path="res://Scripts/Credits.gd" id="1_8kx13"]
-[ext_resource type="FontFile" uid="uid://ckid4fla6wirc" path="res://assets/etc/Starzoom-Shavian.ttf" id="2_ca8ye"]
-[ext_resource type="Texture2D" uid="uid://bv7fu6os82paq" path="res://assets/buttonsprites/UIbutton.png" id="3_4j024"]
+[ext_resource type="Script" uid="uid://d0gmwu6i2pffw" path="res://Scripts/Credits.gd" id="1_8kx13"]
+[ext_resource type="Texture2D" uid="uid://d2aqtjhpuq1w2" path="res://assets/buttonsprites/HomeButton.png" id="3_iynit"]
 [ext_resource type="Texture2D" uid="uid://dcmt4rtiisn55" path="res://assets/Background/1.png" id="5_31scm"]
 [ext_resource type="PackedScene" uid="uid://cijayc3peexw" path="res://Singletons/GameManager.tscn" id="6_kygu5"]
 [ext_resource type="AudioStream" uid="uid://dbnystp0y1gke" path="res://assets/FutrueSFX/PickUp.wav" id="7_jjscb"]
@@ -98,7 +97,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 3),
 "transitions": PackedFloat32Array(0.203063, 0.34151),
 "update": 0,
-"values": [Vector2(30, 854), Vector2(30, 43)]
+"values": [Vector2(30, 854), Vector2(32, 123)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -114,7 +113,7 @@ tracks/1/keys = {
 }
 tracks/2/type = "value"
 tracks/2/imported = false
-tracks/2/enabled = true
+tracks/2/enabled = false
 tracks/2/path = NodePath("CanvasLayer/Title:anchors_preset")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
@@ -155,16 +154,16 @@ tracks/5/path = NodePath("CanvasLayer/Title:position")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
-"times": PackedFloat32Array(0, 0.833333, 2.66667),
+"times": PackedFloat32Array(0, 0.833333, 3),
 "transitions": PackedFloat32Array(1, 0.378929, 1),
 "update": 0,
-"values": [Vector2(1005, 126), Vector2(879.74, 126), Vector2(437, 126)]
+"values": [Vector2(1005, 126), Vector2(879.74, 126), Vector2(435, 58)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_shxe1"]
 _data = {
-"RESET": SubResource("Animation_ckmp4"),
-"rollcredits": SubResource("Animation_38a7b")
+&"RESET": SubResource("Animation_ckmp4"),
+&"rollcredits": SubResource("Animation_38a7b")
 }
 
 [node name="Credits" type="Node2D"]
@@ -188,33 +187,33 @@ stretch_mode = 6
 [node name="Label" type="Label" parent="CanvasLayer"]
 anchors_preset = -1
 anchor_left = 0.028
-anchor_top = 0.04
+anchor_top = 0.0400003
 anchor_right = 0.974
-anchor_bottom = 0.94
+anchor_bottom = 0.710371
 offset_left = -0.240002
-offset_top = -0.200001
+offset_top = -0.200325
 offset_right = 0.0799561
-offset_bottom = -0.200073
+offset_bottom = -0.200378
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_colors/font_shadow_color = Color(0.281187, 0.281187, 0.281187, 1)
-theme_override_colors/font_outline_color = Color(0, 0.67451, 0.713726, 1)
-theme_override_constants/line_spacing = 0
-theme_override_constants/shadow_offset_x = -6
-theme_override_constants/shadow_offset_y = 6
-theme_override_constants/outline_size = 3
-theme_override_constants/shadow_outline_size = 3
+theme_override_colors/font_shadow_color = Color(0.00351917, 0.00351917, 0.00351916, 1)
+theme_override_colors/font_outline_color = Color(0.0568199, 0.063445, 0.465215, 1)
+theme_override_constants/line_spacing = -5
+theme_override_constants/shadow_offset_x = -1
+theme_override_constants/shadow_offset_y = 3
+theme_override_constants/outline_size = 13
+theme_override_constants/shadow_outline_size = 12
 theme_override_font_sizes/font_size = 25
-text = "\"NeverFear\" Developed and designed by Stephen H. and the Open-Source Coding Community of Central Texas. 
+text = "\"NeverFear\" Developed and designed by Stephen H. and the open-Source Coding Community of Central Texas. 
 www.osccct.org
 
-\"I must thank God that I can live in a time that I am able to follow my passions and in a place like this.  I am truely greatful to all the online gameing community for the endless amount of resources and knowlege that made this possible and to everyone that made this project possible thank you. Thank you, please enjoy!\" 
+\"i must thank God that i can live in a time that i am able to follow my passions and in a place like this.  i am truely greatful to all the online gameing community for the endless amount of resources and knowlege that made this possible and to everyone that contributed to this project thank you! please enjoy!\" 
 -Stephen H.
  
 Music: DavidKBD, Charlie T.
-Art: Craftpix.net, BDDragon, itch.io, OpenArt.ai
-SoundSFX:  Luis Zuno, uppbeat.io
-Licences: MIT and Creative Commons Zero
+Art: Craftpix.net, BDDragon, itch.io, openart.ai
+SoundSFX:  Luis zuno, uppbeat.io
+Licences: mit and Creative Commons zero
 "
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -222,38 +221,11 @@ autowrap_mode = 3
 metadata/_edit_use_anchors_ = true
 
 [node name="HomeButton" type="TouchScreenButton" parent="CanvasLayer"]
-self_modulate = Color(1, 1, 0, 1)
-position = Vector2(258, 746.707)
-scale = Vector2(0.510416, 0.384259)
-texture_normal = ExtResource("3_4j024")
+position = Vector2(347, 789)
+scale = Vector2(0.809036, 0.446707)
+texture_normal = ExtResource("3_iynit")
+texture_pressed = ExtResource("3_iynit")
 shape = SubResource("RectangleShape2D_31v2l")
-
-[node name="Home" type="Label" parent="CanvasLayer/HomeButton"]
-z_index = 4
-anchors_preset = -1
-anchor_left = 0.302544
-anchor_top = 0.270411
-anchor_right = 0.642412
-anchor_bottom = 0.444774
-offset_left = 10.0001
-offset_top = 2.49997
-offset_right = -303.528
-offset_bottom = -84.4872
-grow_horizontal = 2
-grow_vertical = 2
-scale = Vector2(3.99518, 3.64475)
-theme_override_colors/font_shadow_color = Color(0.1496, 0.173947, 0.88, 1)
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/shadow_offset_x = 2
-theme_override_constants/shadow_offset_y = 2
-theme_override_constants/outline_size = 5
-theme_override_constants/shadow_outline_size = 3
-theme_override_fonts/font = ExtResource("2_ca8ye")
-theme_override_font_sizes/font_size = 30
-text = "HOME"
-horizontal_alignment = 1
-vertical_alignment = 1
-metadata/_edit_use_anchors_ = true
 
 [node name="Title" type="Label" parent="CanvasLayer"]
 anchors_preset = -1
@@ -263,18 +235,17 @@ anchor_right = 0.812087
 anchor_bottom = 0.180528
 offset_left = 190.0
 offset_top = 40.0
-offset_right = -221.054
-offset_bottom = -17.9698
+offset_right = -219.054
+offset_bottom = 12.0298
 grow_horizontal = 2
 scale = Vector2(2.87696, 2.13666)
 pivot_offset = Vector2(104.972, 26.2091)
 theme_override_colors/font_shadow_color = Color(0.1496, 0.173947, 0.88, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/shadow_offset_x = -6
-theme_override_constants/shadow_offset_y = 5
+theme_override_constants/shadow_offset_x = -2
+theme_override_constants/shadow_offset_y = 2
 theme_override_constants/outline_size = 5
 theme_override_constants/shadow_outline_size = 3
-theme_override_fonts/font = ExtResource("2_ca8ye")
 theme_override_font_sizes/font_size = 50
 text = "Credits"
 horizontal_alignment = 1
@@ -291,7 +262,7 @@ pitch_scale = 1.4
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_shxe1")
+&"": SubResource("AnimationLibrary_shxe1")
 }
 autoplay = "rollcredits"
 

@@ -1,6 +1,6 @@
-[gd_scene load_steps=263 format=3 uid="uid://vmdnus7gyna4"]
+[gd_scene load_steps=270 format=3 uid="uid://vmdnus7gyna4"]
 
-[ext_resource type="Script" path="res://Scripts/LegacyProtocol.gd" id="1_aq02g"]
+[ext_resource type="Script" uid="uid://b68w7012wmwjv" path="res://Scripts/LegacyProtocol.gd" id="1_aq02g"]
 [ext_resource type="Texture2D" uid="uid://c72vebtk3dx07" path="res://assets/1 Tiles/IndustrialTile_09.png" id="3_ledwt"]
 [ext_resource type="Texture2D" uid="uid://c7jfd3b4uiebb" path="res://assets/1 Tiles/IndustrialTile_10.png" id="4_d5lhw"]
 [ext_resource type="Texture2D" uid="uid://ds46eo7qowcw8" path="res://assets/1 Tiles/IndustrialTile_11.png" id="5_6y1p0"]
@@ -107,8 +107,7 @@
 [ext_resource type="Texture2D" uid="uid://1sjjrx2qufrj" path="res://assets/2 Background/Pipes.png" id="96_0kd3w"]
 [ext_resource type="Texture2D" uid="uid://bnhfvq2i6dbp8" path="res://assets/etc/Icons_25.png" id="96_obt1p"]
 [ext_resource type="PackedScene" uid="uid://fsxm1bfx6ihb" path="res://Scenes/TimePanel.tscn" id="97_86uxg"]
-[ext_resource type="Script" path="res://Scripts/MoneyCount.gd" id="97_b7kug"]
-[ext_resource type="FontFile" uid="uid://ckid4fla6wirc" path="res://assets/etc/Starzoom-Shavian.ttf" id="97_tvle3"]
+[ext_resource type="Script" uid="uid://djny6a1o64f1p" path="res://Scripts/MoneyCount.gd" id="97_b7kug"]
 [ext_resource type="Texture2D" uid="uid://ql70ode1roo" path="res://assets/city 1/3.png" id="99_6cglh"]
 [ext_resource type="PackedScene" uid="uid://bpcrood65pxvy" path="res://Scenes/PauseButton.tscn" id="99_ec2gt"]
 [ext_resource type="PackedScene" uid="uid://2e2ccqhb4ij6" path="res://Scenes/CheckFlag.tscn" id="99_vjxur"]
@@ -120,16 +119,17 @@
 [ext_resource type="PackedScene" uid="uid://d2u5kjqvm0jcd" path="res://Scenes/BigSpawn.tscn" id="105_1jfro"]
 [ext_resource type="PackedScene" uid="uid://cp0mkjt4kb621" path="res://Scenes/MiniBossSpawn.tscn" id="106_614e6"]
 [ext_resource type="PackedScene" uid="uid://cijayc3peexw" path="res://Singletons/GameManager.tscn" id="106_jtjrs"]
+[ext_resource type="Texture2D" uid="uid://dtey7mq3og40d" path="res://assets/etc/Money.png" id="108_qd40d"]
 [ext_resource type="PackedScene" uid="uid://bygt3a6360eme" path="res://Scenes/LegacyControl.tscn" id="113_84fyj"]
 [ext_resource type="PackedScene" uid="uid://dorufdk5325u3" path="res://Scenes/BossSpawn.tscn" id="114_rstwu"]
 [ext_resource type="PackedScene" uid="uid://cu36yuh2cmfj" path="res://Scenes/PickUp.tscn" id="115_2otky"]
-[ext_resource type="Script" path="res://Scripts/GunPickUp.gd" id="116_rrq72"]
+[ext_resource type="Script" uid="uid://dw6udtdycfbec" path="res://Scripts/GunPickUp.gd" id="116_rrq72"]
 [ext_resource type="PackedScene" uid="uid://cimhq6uapolif" path="res://Scenes/Fire.tscn" id="117_brvrh"]
 [ext_resource type="PackedScene" uid="uid://dtuqhypetdr3c" path="res://Scenes/Doorv2.tscn" id="119_2xs3b"]
 [ext_resource type="Texture2D" uid="uid://00s18hlgmpih" path="res://assets/etc/color_burst_25.png" id="123_4m2p7"]
-[ext_resource type="Script" path="res://Scripts/SetBackground.gd" id="127_vmawy"]
+[ext_resource type="Script" uid="uid://c2ioybuyuo4d7" path="res://Scripts/SetBackground.gd" id="127_vmawy"]
 [ext_resource type="Texture2D" uid="uid://bfkq0dn281svy" path="res://assets/etc/Entry.png" id="130_kelqa"]
-[ext_resource type="Script" path="res://Scripts/FrontDoor.gd" id="131_bbx3h"]
+[ext_resource type="Script" uid="uid://1gfsd080567h" path="res://Scripts/FrontDoor.gd" id="131_bbx3h"]
 [ext_resource type="PackedScene" uid="uid://65xehuevf8h7" path="res://Scenes/Hammer.tscn" id="131_r6jtf"]
 [ext_resource type="PackedScene" uid="uid://bjp0l20hey11o" path="res://Scenes/Converbelt.tscn" id="134_4m4e6"]
 [ext_resource type="PackedScene" uid="uid://bn1nfimv3nu8a" path="res://Scenes/Fallout.tscn" id="135_f2jvr"]
@@ -1072,6 +1072,56 @@ pattern_14 = SubResource("TileMapPattern_xu88m")
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_nq6s1"]
 distance = -15.8755
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_25ham"]
+atlas = ExtResource("108_qd40d")
+region = Rect2(0, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8iky2"]
+atlas = ExtResource("108_qd40d")
+region = Rect2(24, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xclbc"]
+atlas = ExtResource("108_qd40d")
+region = Rect2(48, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xgeam"]
+atlas = ExtResource("108_qd40d")
+region = Rect2(72, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s17q3"]
+atlas = ExtResource("108_qd40d")
+region = Rect2(96, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mv8vo"]
+atlas = ExtResource("108_qd40d")
+region = Rect2(120, 0, 24, 24)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ad20w"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_25ham")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8iky2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xclbc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xgeam")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s17q3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mv8vo")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
 [sub_resource type="Animation" id="Animation_aal22"]
 length = 0.001
 tracks/0/type = "value"
@@ -1225,8 +1275,8 @@ tracks/5/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_dgn4u"]
 _data = {
-"RESET": SubResource("Animation_aal22"),
-"move": SubResource("Animation_v55cb")
+&"RESET": SubResource("Animation_aal22"),
+&"move": SubResource("Animation_v55cb")
 }
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jqxsy"]
@@ -1532,8 +1582,8 @@ tracks/9/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_kq1kp"]
 _data = {
-"RESET": SubResource("Animation_0g2rx"),
-"cars": SubResource("Animation_n3q6t")
+&"RESET": SubResource("Animation_0g2rx"),
+&"cars": SubResource("Animation_n3q6t")
 }
 
 [sub_resource type="Animation" id="Animation_idg03"]
@@ -1569,8 +1619,8 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_g20u8"]
 _data = {
-"RESET": SubResource("Animation_idg03"),
-"start": SubResource("Animation_qfcvm")
+&"RESET": SubResource("Animation_idg03"),
+&"start": SubResource("Animation_qfcvm")
 }
 
 [node name="LegacyProtocol" type="Node2D" groups=["Legacy"]]
@@ -2375,50 +2425,53 @@ collision_layer = 9
 
 [node name="Jump" type="HBoxContainer" parent="Buttons"]
 anchors_preset = -1
-anchor_left = 0.782
-anchor_top = 0.673
-anchor_right = 0.987
-anchor_bottom = 1.0
-offset_left = 0.135925
-offset_top = -0.104034
-offset_right = -0.0240479
+anchor_left = 0.669
+anchor_top = 0.62
+anchor_right = 0.991
+anchor_bottom = 0.912
+offset_left = -0.52002
+offset_top = 0.400024
+offset_right = 2.71997
+offset_bottom = 0.039917
 grow_horizontal = 0
 grow_vertical = 0
 
 [node name="Jump" parent="Buttons/Jump" instance=ExtResource("93_hmujq")]
-position = Vector2(108, 176.264)
-scale = Vector2(6.26548, 4.58)
+layout_mode = 2
 
 [node name="LifeCounter" parent="Buttons" instance=ExtResource("94_7l5pt")]
 anchors_preset = -1
 anchor_left = 0.0740741
 anchor_top = 0.062963
-anchor_right = 0.230074
-anchor_bottom = 0.102889
-offset_right = -12.48
-offset_bottom = 5.88005
+anchor_right = 0.283
+anchor_bottom = 0.118
+offset_left = -4.00002
+offset_top = 4.99996
+offset_right = -20.64
+offset_bottom = 13.56
 scale = Vector2(1.08, 0.879999)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 5
-theme_override_fonts/font = ExtResource("97_tvle3")
-theme_override_font_sizes/font_size = 25
+theme_override_font_sizes/font_size = 35
+text = "Lives:"
 metadata/_edit_use_anchors_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="Buttons/LifeCounter"]
-position = Vector2(-17.5926, 10.2273)
+position = Vector2(-28.7037, 29.5455)
+scale = Vector2(1.22338, 1.38779)
 texture = ExtResource("96_obt1p")
 
 [node name="TimePanel" parent="Buttons" instance=ExtResource("97_86uxg")]
 unique_name_in_owner = true
 anchors_preset = -1
-anchor_left = 0.427778
-anchor_top = 0.0509259
-anchor_right = 0.576852
-anchor_bottom = 0.10463
-offset_left = -20.0002
-offset_top = 11.0
-offset_right = -20.0002
-offset_bottom = 11.0
+anchor_left = 0.403
+anchor_top = 0.064
+anchor_right = 0.613
+anchor_bottom = 0.113
+offset_left = -0.240021
+offset_top = -0.120003
+offset_right = -0.0400391
+offset_bottom = -0.0400085
 
 [node name="MoneyCount" type="Panel" parent="Buttons"]
 self_modulate = Color(1, 1, 1, 0)
@@ -2435,23 +2488,32 @@ script = ExtResource("97_b7kug")
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = -1
-anchor_left = -0.158273
-anchor_top = 0.79661
-anchor_right = 0.596835
-anchor_bottom = 1.8895
-offset_right = -45.92
-offset_bottom = -2.48
+anchor_left = -0.0359712
+anchor_top = 0.864407
+anchor_right = 0.967302
+anchor_bottom = 2.1922
+offset_right = -60.91
+offset_bottom = -3.34
 scale = Vector2(1.28, 1.04)
 theme_override_colors/font_color = Color(0.242792, 0.747165, 0.362575, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 7
-theme_override_fonts/font = ExtResource("97_tvle3")
-theme_override_font_sizes/font_size = 25
-text = "$ 0 "
+theme_override_font_sizes/font_size = 35
+text = " 0 "
 metadata/_edit_use_anchors_ = true
 
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Buttons/MoneyCount"]
+position = Vector2(-26, 80)
+scale = Vector2(2.875, 2.70833)
+sprite_frames = SubResource("SpriteFrames_ad20w")
+autoplay = "default"
+frame_progress = 0.755306
+
 [node name="PauseButton" parent="Buttons" instance=ExtResource("99_ec2gt")]
-position = Vector2(547, 976)
+offset_left = 483.0
+offset_top = 909.92
+offset_right = 483.0
+offset_bottom = 909.92
 
 [node name="Platforms" type="Node" parent="."]
 
@@ -2625,7 +2687,7 @@ position = Vector2(25648, -104)
 rotation = 2.12854e-05
 
 [node name="ByteSpawnerA6" parent="Spawner" instance=ExtResource("103_0k21k")]
-position = Vector2(1874, -420)
+position = Vector2(1785, -405)
 rotation = 2.12854e-05
 scale = Vector2(1.00006, 0.992097)
 
@@ -2717,7 +2779,7 @@ script = ExtResource("116_rrq72")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="PickUpGun"]
 libraries = {
-"": SubResource("AnimationLibrary_dgn4u")
+&"": SubResource("AnimationLibrary_dgn4u")
 }
 autoplay = "move"
 
@@ -2825,13 +2887,14 @@ flip_h = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Cars"]
 libraries = {
-"": SubResource("AnimationLibrary_kq1kp")
+&"": SubResource("AnimationLibrary_kq1kp")
 }
 autoplay = "cars"
 
 [node name="Start" type="CanvasLayer" parent="."]
 
 [node name="ColorRect" type="ColorRect" parent="Start"]
+visible = false
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -2841,7 +2904,7 @@ color = Color(0, 0, 0, 1)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Start"]
 libraries = {
-"": SubResource("AnimationLibrary_g20u8")
+&"": SubResource("AnimationLibrary_g20u8")
 }
 autoplay = "start"
 

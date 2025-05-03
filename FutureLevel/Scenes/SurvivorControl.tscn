@@ -5,7 +5,6 @@
 [node name="SurvivalControl" type="CanvasLayer"]
 
 [node name="Virtual Joystick" parent="." instance=ExtResource("1_niblt")]
-modulate = Color(0.960784, 0, 0.247059, 0.909804)
 anchors_preset = -1
 anchor_top = 0.192593
 anchor_right = 1.0

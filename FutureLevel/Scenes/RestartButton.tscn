@@ -1,6 +1,4 @@
-[gd_scene load_steps=3 format=3 uid="uid://bqcx6ju2n7a3t"]
-
-[ext_resource type="Texture2D" uid="uid://bv7fu6os82paq" path="res://assets/buttonsprites/UIbutton.png" id="2_s1k3x"]
+[gd_scene load_steps=2 format=3 uid="uid://bqcx6ju2n7a3t"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_u1hko"]
 size = Vector2(100.8, 56)
@@ -15,4 +13,3 @@ modulate = Color(1, 1, 0, 1)
 show_behind_parent = true
 position = Vector2(-2.95424, 23.6137)
 scale = Vector2(0.142968, 0.241212)
-texture = ExtResource("2_s1k3x")
