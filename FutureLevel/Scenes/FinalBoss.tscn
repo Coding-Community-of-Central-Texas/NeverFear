@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://dcmrsrfl6ctr5"]
+[gd_scene load_steps=7 format=3 uid="uid://dcmrsrfl6ctr5"]
 
 [ext_resource type="Script" uid="uid://cmmhvr4d17ddq" path="res://Scripts/BossScript.gd" id="1_lc6rt"]
 [ext_resource type="PackedScene" uid="uid://dr3tcip76rdmv" path="res://Scenes/Robo.tscn" id="2_p1iq0"]
@@ -8,12 +8,6 @@
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_piomw"]
 size = Vector2(75, 173.611)
-
-[sub_resource type="Resource" id="Resource_5s3oe"]
-metadata/__load_path__ = "res://assets/etc/Starzoom-Shavian.ttf"
-
-[sub_resource type="Resource" id="Resource_qbbcy"]
-metadata/__load_path__ = "res://assets/etc/Starzoom-Shavian.ttf"
 
 [node name="FinalBoss" type="CharacterBody2D" groups=["enemy"]]
 scale = Vector2(1.28, 1.44)
@@ -52,38 +46,35 @@ one_shot = true
 
 [node name="HealthBar" parent="CanvasLayer" instance=ExtResource("4_f425b")]
 unique_name_in_owner = true
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -342.0
-offset_top = 101.0
-offset_right = -52.0
-offset_bottom = 128.0
+anchors_preset = -1
+anchor_left = 0.197222
+anchor_top = 0.134259
+anchor_right = 0.809444
+anchor_bottom = 0.170259
+offset_left = 0.0
+offset_right = -371.2
+offset_bottom = -11.88
 grow_horizontal = 2
 scale = Vector2(2.28, 1.44)
-theme_override_fonts/font = SubResource("Resource_5s3oe")
 max_value = 100000.0
 value = 100000.0
-show_percentage = true
+metadata/_edit_use_anchors_ = true
 
 [node name="Label" type="Label" parent="CanvasLayer"]
 z_index = 1
 anchors_preset = -1
-anchor_left = 0.412326
-anchor_top = 0.0910494
-anchor_right = 0.55816
-anchor_bottom = 0.131173
-offset_left = -25.3121
-offset_top = 51.6667
-offset_right = -25.3121
-offset_bottom = 51.6667
+anchor_left = 0.388889
+anchor_top = 0.166667
+anchor_right = 0.609582
+anchor_bottom = 0.212821
+offset_right = -80.8483
+offset_bottom = -6.51346
 grow_horizontal = 2
 grow_vertical = 0
 scale = Vector2(1.51332, 1.15031)
 theme_override_colors/font_color = Color(92.432, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 17
-theme_override_fonts/font = SubResource("Resource_qbbcy")
 theme_override_font_sizes/font_size = 25
 text = "Ro-Boss"
 horizontal_alignment = 1
@@ -111,7 +102,7 @@ position = Vector2(56.25, -27.7778)
 [node name="DamageNumbersOrigin" type="Node2D" parent="."]
 position = Vector2(-58.5938, -36.1111)
 
-[connection signal="timeout" from="StartAttack" to="." method="_on_start_attack_timeout"]
 [connection signal="timeout" from="StartAttack" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="StartAttack" to="." method="_on_start_attack_timeout"]
 [connection signal="timeout" from="AttackDuration" to="." method="_on_attack_duration_timeout"]
 [connection signal="timeout" from="DieTimer" to="." method="_on_die_timer_timeout"]

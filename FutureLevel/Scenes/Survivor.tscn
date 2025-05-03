@@ -565,6 +565,7 @@ frame_progress = 0.63671
 offset = Vector2(0, 7.6)
 
 [node name="Rank5" type="Sprite2D" parent="."]
+visible = false
 z_index = 1
 position = Vector2(-6.5, -31.5)
 scale = Vector2(0.6875, 0.71875)
@@ -577,7 +578,7 @@ position = Vector2(-5.09091, 32.6957)
 scale = Vector2(1.13405, 0.965704)
 sprite_frames = SubResource("SpriteFrames_l1v2x")
 autoplay = "default"
-frame_progress = 0.461531
+frame_progress = 0.857799
 
 [connection signal="rank_changed" from="." to="GauntletSpawn" method="_on_survivor_rank_changed"]
 [connection signal="rank_changed" from="." to="GauntletBigSpawn" method="_on_survivor_rank_changed"]

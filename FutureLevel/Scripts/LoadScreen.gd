@@ -1,10 +1,13 @@
 extends Node
 
-var plugin 
+@onready var gps = GodotPlayGameServices
 
-func _enter_tree() -> void:
-	plugin = Engine.get_singleton("SignIn")
-	plugin.sign_in()
+func _ready():
+	if gps:
+		print("Google Play Services autoload present.")
+		SignIn.sign_in()
+	else:
+		print("Google Play Services autoload NOT found.")
 
 
 func _on_timer_timeout() -> void:

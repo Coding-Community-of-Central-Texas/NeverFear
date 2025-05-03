@@ -790,10 +790,10 @@ process_mode = 3
 
 [node name="TimePanel" parent="CanvasLayer" instance=ExtResource("90_xpk53")]
 unique_name_in_owner = true
-offset_left = -49.0
-offset_top = 80.0
-offset_right = 119.0
-offset_bottom = 138.0
+offset_left = -75.0
+offset_top = 77.0
+offset_right = 93.0
+offset_bottom = 135.0
 
 [node name="PauseButton" parent="CanvasLayer" instance=ExtResource("88_b882s")]
 top_level = true
@@ -808,9 +808,9 @@ anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
 offset_left = -218.0
-offset_top = 75.0
-offset_right = -73.9999
-offset_bottom = 126.0
+offset_top = 83.0
+offset_right = -59.9999
+offset_bottom = 164.0
 grow_horizontal = 0
 scale = Vector2(0.642329, 0.679219)
 theme_override_colors/font_color = Color(0.613989, 0.0261515, 0.0145188, 1)
@@ -853,8 +853,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
 
 [node name="SurvivalControl" parent="Control" instance=ExtResource("89_4jwms")]
 

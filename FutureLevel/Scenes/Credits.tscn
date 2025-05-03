@@ -1,7 +1,7 @@
 [gd_scene load_steps=10 format=3 uid="uid://d1ly636rhenqx"]
 
 [ext_resource type="Script" uid="uid://d0gmwu6i2pffw" path="res://Scripts/Credits.gd" id="1_8kx13"]
-[ext_resource type="Texture2D" uid="uid://bv7fu6os82paq" path="res://assets/buttonsprites/UIbutton.png" id="3_4j024"]
+[ext_resource type="Texture2D" uid="uid://d2aqtjhpuq1w2" path="res://assets/buttonsprites/HomeButton.png" id="3_iynit"]
 [ext_resource type="Texture2D" uid="uid://dcmt4rtiisn55" path="res://assets/Background/1.png" id="5_31scm"]
 [ext_resource type="PackedScene" uid="uid://cijayc3peexw" path="res://Singletons/GameManager.tscn" id="6_kygu5"]
 [ext_resource type="AudioStream" uid="uid://dbnystp0y1gke" path="res://assets/FutrueSFX/PickUp.wav" id="7_jjscb"]
@@ -191,9 +191,9 @@ anchor_top = 0.0400003
 anchor_right = 0.974
 anchor_bottom = 0.710371
 offset_left = -0.240002
-offset_top = -0.200367
+offset_top = -0.200325
 offset_right = 0.0799561
-offset_bottom = -0.200439
+offset_bottom = -0.200378
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_shadow_color = Color(0.00351917, 0.00351917, 0.00351916, 1)
@@ -221,37 +221,11 @@ autowrap_mode = 3
 metadata/_edit_use_anchors_ = true
 
 [node name="HomeButton" type="TouchScreenButton" parent="CanvasLayer"]
-self_modulate = Color(1, 1, 0, 1)
-position = Vector2(98, 802)
+position = Vector2(347, 789)
 scale = Vector2(0.809036, 0.446707)
-texture_normal = ExtResource("3_4j024")
+texture_normal = ExtResource("3_iynit")
+texture_pressed = ExtResource("3_iynit")
 shape = SubResource("RectangleShape2D_31v2l")
-
-[node name="Home" type="Label" parent="CanvasLayer/HomeButton"]
-z_index = 4
-anchors_preset = -1
-anchor_left = 0.302544
-anchor_top = 0.270411
-anchor_right = 0.642412
-anchor_bottom = 0.444774
-offset_left = 22.2808
-offset_top = -31.9557
-offset_right = -283.247
-offset_bottom = -95.9429
-grow_horizontal = 2
-grow_vertical = 2
-scale = Vector2(3.99518, 3.64475)
-theme_override_colors/font_shadow_color = Color(0.1496, 0.173947, 0.88, 1)
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/shadow_offset_x = 2
-theme_override_constants/shadow_offset_y = 2
-theme_override_constants/outline_size = 5
-theme_override_constants/shadow_outline_size = 3
-theme_override_font_sizes/font_size = 30
-text = "Home"
-horizontal_alignment = 1
-vertical_alignment = 1
-metadata/_edit_use_anchors_ = true
 
 [node name="Title" type="Label" parent="CanvasLayer"]
 anchors_preset = -1
@@ -288,7 +262,7 @@ pitch_scale = 1.4
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_shxe1")
+&"": SubResource("AnimationLibrary_shxe1")
 }
 autoplay = "rollcredits"
 
