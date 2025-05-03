@@ -93,3 +93,13 @@ func show_achievements() -> void:
 func unlock_achievement(achievement_id: String) -> void:
 	if GodotPlayGameServices.android_plugin:
 		GodotPlayGameServices.android_plugin.unlockAchievement(achievement_id)
+
+## Immediately unlocks the given achievement for the signed-in player. If the
+## achievement is secret, it will be revealed to the player.
+##
+## This method emits the [signal achievement_unlocked] signal with the
+## achievement ID.
+##
+## [param achievement_id]: The ID of the achievement to unlock.
+func unlock_achievement_by_id(achievement_id: String) -> void:
+	achievement_unlocked.emit(true,achievement_id)

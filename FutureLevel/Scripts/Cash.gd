@@ -1,7 +1,5 @@
 extends Area2D
 
-signal add_cash
-
 var GRAVITY = 200
 var MAX_FALL_SPEED = 250.0# Maximum falling speed
 
@@ -54,6 +52,7 @@ func randomize_power_up():
 	# Randomize the power-up value based on its type
 	match power_up_type:
 		PowerUpType.CASH:
+			power_up_value = randi_range(1000, 10000)
 			%CashSpin.visible = true
 			%Star.visible = false
 			%Health.visible = false
@@ -93,10 +92,14 @@ func _on_body_entered(body):
 		if audio_stream_player_2d.stream != null:
 			audio_stream_player_2d.play()
 		visible = false
-		if power_up_type == PowerUpType.CASH:
-			emit_signal("add_cash")  
-		else:
-			apply_power_up() 
+		match power_up_type:
+			PowerUpType.CASH:
+				GameManager.emit_signal("cash_collected", power_up_value)
+			PowerUpType.LIVES:
+				GameManager.emit_signal("life_collected")
+				apply_power_up() # Apply other power-ups if needed
+			_:
+				apply_power_up() 
 
 func apply_power_up():
 	var original_speed = Global.player.SPEED
@@ -113,9 +116,6 @@ func apply_power_up():
 
 func _on_audio_stream_player_2d_finished() -> void:
 	queue_free()
-
-func _on_add_cash() -> void:
-	GameManager.add_cash(randi_range(1000, 10000))
 
 func _on_queue_timer_timeout() -> void:
 	queue_free()

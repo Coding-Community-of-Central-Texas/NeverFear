@@ -157,7 +157,7 @@ func flip_sprite() -> void:
 func _on_timer_2_timeout() -> void:
 	_game_over()
 	
-	GameManager.reset_scene_kills()
+	GameManager.reset_scene_stats()
 
 func _game_over():
 	const GAMEOVER = preload("res://Scenes/GameOver.tscn")

@@ -16,15 +16,15 @@ var direction : Vector2 = Vector2.ZERO
 @onready var audio_stream_player_2d_2: AudioStreamPlayer2D = $AudioStreamPlayer2D2
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 @onready var collision_shape_2d: CollisionShape2D = $CollisionShape2D
-@onready var audio_stream_player_2d: AudioStreamPlayer2D = $AudioStreamPlayer2D
+@onready var audio_stream_player_2d: AudioStreamPlayer2D = $AudioStreamPlayer2d
 @onready var timer: Timer = $Timer
 @onready var gun: Area2D = $Gun
 @onready var health_bar: ProgressBar = $HealthBar
 @export var rate_of_fire: float = 0.15
 @onready var jump_effect: CPUParticles2D = %JumpEffect
-@onready var walkn_jump_r: Marker2D = $AnimatedSprite2D/WalknJumpR
-@onready var walkn_jump_l: Marker2D = $AnimatedSprite2D/WalknJumpL
-@onready var super_sayain: AnimatedSprite2D = $AnimatedSprite2D/SuperSayain
+@onready var walkn_jump_r: Marker2D = $AnimatedSprite2d/WalknJumpR
+@onready var walkn_jump_l: Marker2D = $AnimatedSprite2d/WalknJumpL
+@onready var super_sayain: AnimatedSprite2D = $AnimatedSprite2d/SuperSayain
 @onready var jump_effect_2: CPUParticles2D = %JumpEffect2
 
 var can_double_jump = false
@@ -122,6 +122,7 @@ func handle_jumping(delta: float) -> void:
 			animated_sprite_2d.play("gunjump")
 			_trigger_jump_effect()
 			audio_stream_player_2d.play()
+			GameManager.emit_signal("player_jumped")
 		elif can_double_jump:
 			velocity.y = DOUBLE_JUMP_VELOCITY
 			can_double_jump = false
@@ -129,6 +130,7 @@ func handle_jumping(delta: float) -> void:
 			animated_sprite_2d.play("doublejump")
 			_trigger_doublejump_effect()
 			audio_stream_player_2d.play()
+			GameManager.emit_signal("player_double_jumped")
 
 	if Input.is_action_just_released("jump") and velocity.y <0:
 		velocity.y *= 0.5

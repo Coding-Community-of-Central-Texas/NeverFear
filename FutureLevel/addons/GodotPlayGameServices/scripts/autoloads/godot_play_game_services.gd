@@ -1,6 +1,9 @@
 extends Node
-## Main Autoload of the plugin, which contains a reference to the android plugin itself.
-##
+## Main Autoload of the plugin, which contains a reference to the android plugin itself.##
+
+var achievements_client : AchievementsClient
+
+
 ## This Autoload contains the entrypoint to the android code, but you don't need
 ## to use it directly. Some autoloads exposing the plugin functionality, as a wrapper
 ## for GDScript code, are also loaded with the plugin.[br]
@@ -35,14 +38,19 @@ var json_marshaller := JsonMarshaller.new()
 ## [PlayGamesPluginError.PLUGIN_NOT_FOUND] otherwise.
 func initialize() -> PlayGamesPluginError:
 	var plugin_name := "GodotPlayGameServices"
-	
+
 	if not android_plugin:
 		if Engine.has_singleton(plugin_name):
 			print("GodotPlayGameServices plugin initialized successfully.")
-			
+
 			android_plugin = Engine.get_singleton(plugin_name)
 			android_plugin.initialize()
-			
+			#initialize the achievements
+			achievements_client = AchievementsClient.new()
+			if achievements_client.initialize():
+				print("Achievements client initialized successfully")
+				achievements_client.get_all_achievements()
+
 			android_plugin.imageStored.connect(func(file_path: String):
 				image_stored.emit(file_path)
 			)
@@ -50,7 +58,15 @@ func initialize() -> PlayGamesPluginError:
 		else:
 			printerr("GodotPlayGameServices not found. Google Play Games Services will not work.")
 	
+
 	return PlayGamesPluginError.PLUGIN_NOT_FOUND
+
+func unlock_achievement(id:String) -> void:
+	if achievements_client:
+		achievements_client.unlock_achievement(id)
+	else:
+		printerr("Achievements client not found")
+
 
 ## Displays the given image in the given texture rectangle.[br]
 ## [br]
@@ -62,3 +78,6 @@ func display_image_in_texture_rect(texture_rect: TextureRect, file_path: String)
 		texture_rect.texture = ImageTexture.create_from_image(image)
 	else:
 		print("File %s does not exist." % file_path)
+
+
+
