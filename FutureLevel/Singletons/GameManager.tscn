@@ -31,5 +31,4 @@ autoplay = true
 mix_target = 2
 bus = &"Music"
 
-[connection signal="kill" from="." to="." method="_on_kill"]
 [connection signal="tree_exiting" from="." to="." method="_on_tree_exiting"]

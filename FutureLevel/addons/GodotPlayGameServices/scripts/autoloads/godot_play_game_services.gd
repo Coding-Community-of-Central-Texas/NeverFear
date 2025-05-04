@@ -78,6 +78,3 @@ func display_image_in_texture_rect(texture_rect: TextureRect, file_path: String)
 		texture_rect.texture = ImageTexture.create_from_image(image)
 	else:
 		print("File %s does not exist." % file_path)
-
-
-

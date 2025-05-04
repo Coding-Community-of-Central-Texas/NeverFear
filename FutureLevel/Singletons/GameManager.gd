@@ -9,6 +9,8 @@ signal enemy_killed(enemy_type)
 signal life_collected()
 
 var achievements_client
+var autosave_timer
+
 
 # Achievement IDs
 const ACHIEVEMENT_SHARP_SHOOTER = "CgkI_v7o0NMNEAIQAg"
@@ -57,10 +59,9 @@ const SAVE_PATH: String = "user://stat_data.json"
 const API_URL: String = "https://neverfearendpoint-469126233982.us-south1.run.app"
 var API_KEY: String
 
-@onready var autosave_timer: Timer = Timer.new()
 
 func load_game_data():
-	if GodotPlayGameServices.is_initialized():
+	if GodotPlayGameServices.initialize():
 		achievements_client = GodotPlayGameServices.achievements
 
 func _init():
@@ -72,6 +73,7 @@ func _init():
 	self.connect("life_collected", Callable(self, "_on_life_collected"))
 	
 	# Set up autosave timer
+	autosave_timer = Timer.new()
 	autosave_timer.wait_time = 60 # Save every 60 seconds
 	autosave_timer.autostart = true
 	autosave_timer.connect("timeout", Callable(self, "save_data"))
@@ -273,5 +275,4 @@ func reach_survival_gauntlet_rank(rank: int):
 	if rank >= 3:
 		unlock_achievement(ACHIEVEMENT_MY_STRENGTH_IS_GROWING)
 	if rank >= 4:
-		unlock_achievement(ACHIEVEMENT_FURTHER_BEYOND")
-
+		unlock_achievement(ACHIEVEMENT_FURTHER_BEYOND)
