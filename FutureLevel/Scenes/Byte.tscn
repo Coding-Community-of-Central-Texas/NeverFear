@@ -319,5 +319,5 @@ animation = &"walk"
 unique_name_in_owner = true
 root_node = NodePath("../..")
 libraries = {
-"": SubResource("AnimationLibrary_mpxbx")
+&"": SubResource("AnimationLibrary_mpxbx")
 }

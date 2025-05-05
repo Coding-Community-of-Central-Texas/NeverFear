@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://65xehuevf8h7"]
+[gd_scene load_steps=20 format=3 uid="uid://65xehuevf8h7"]
 
 [ext_resource type="Script" uid="uid://cj2p5jv4nkj5f" path="res://Scripts/Hammer.gd" id="1_femfq"]
 [ext_resource type="Texture2D" uid="uid://bi4rkixlbhp17" path="res://assets/etc/Hammer.png" id="1_njfb8"]
@@ -69,7 +69,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0njma"]
-size = Vector2(63, 47.898)
+size = Vector2(63.5896, 121.344)
 
 [sub_resource type="Animation" id="Animation_ahytp"]
 resource_name = "hammer"
@@ -82,10 +82,10 @@ tracks/0/path = NodePath("HammerPys/CollisionShape2D:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.0666667, 0.133333, 0.4, 0.5, 0.566667, 0.6, 0.633333, 1.66667),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.06, 0.132957, 0.402614, 0.491842, 0.565836, 0.707295, 1.22743),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
 "update": 0,
-"values": [Vector2(0, -36), Vector2(1, 18), Vector2(1, 15.92), Vector2(1, 15.915), Vector2(1, -4.24), Vector2(1, -6), Vector2(0, -20), Vector2(0, -36), Vector2(0, -36)]
+"values": [Vector2(1.49254, -71.9547), Vector2(0.746269, -23.796), Vector2(0.746269, -22.6629), Vector2(0, -23.796), Vector2(0, -23.796), Vector2(0.746269, -23.2295), Vector2(2.23881, -67.4221), Vector2(1.58391, -71.3997)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -171,10 +171,10 @@ tracks/0/path = NodePath("HammerPys/CollisionShape2D:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.0666667, 0.133333, 0.4, 0.5, 0.566667, 0.6, 0.633333, 1.26667),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.06, 0.132957, 0.402614, 0.491842, 0.565836, 0.707295, 1.22743),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
 "update": 0,
-"values": [Vector2(0, -36), Vector2(1, 18), Vector2(1, 15.92), Vector2(1, 15.915), Vector2(1, -4.24), Vector2(1, -6), Vector2(0, -20), Vector2(0, -36), Vector2(0, -36)]
+"values": [Vector2(1.49254, -71.9547), Vector2(0.746269, -23.796), Vector2(0.746269, -22.6629), Vector2(0, -23.796), Vector2(0, -23.796), Vector2(0.746269, -23.2295), Vector2(2.23881, -67.4221), Vector2(1.58391, -71.3997)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -260,10 +260,10 @@ tracks/0/path = NodePath("HammerPys/CollisionShape2D:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.0666667, 0.133333, 0.4, 0.666667, 0.733334, 0.766667, 0.8, 2.03333),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.06, 0.132957, 0.402614, 0.491842, 0.565836, 0.707295, 1.22743),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
 "update": 0,
-"values": [Vector2(0, -36), Vector2(1, 18), Vector2(1, 15.92), Vector2(1, 15.915), Vector2(1, -4.24), Vector2(1, -6), Vector2(0, -20), Vector2(0, -36), Vector2(0, -36)]
+"values": [Vector2(1.49254, -71.9547), Vector2(0.746269, -23.796), Vector2(0.746269, -22.6629), Vector2(0, -23.796), Vector2(0, -23.796), Vector2(0.746269, -23.2295), Vector2(2.23881, -67.4221), Vector2(1.58391, -71.3997)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -338,8 +338,24 @@ tracks/6/keys = {
 "values": [-45.244, 1.793, 1.741, -61.002]
 }
 
+[sub_resource type="Animation" id="Animation_ivw37"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("HammerPys/CollisionShape2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1.49254, -71.9547)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_v74f2"]
 _data = {
+&"RESET": SubResource("Animation_ivw37"),
 &"hammer": SubResource("Animation_ahytp"),
 &"hammer_2": SubResource("Animation_tsd2r"),
 &"hammer_3": SubResource("Animation_dgaa5")
@@ -357,6 +373,7 @@ position = Vector2(0, -10.5618)
 scale = Vector2(2.07, 1.5113)
 sprite_frames = SubResource("SpriteFrames_ew0pc")
 animation = &"ham"
+frame = 7
 
 [node name="HammerPys" type="AnimatableBody2D" parent="."]
 modulate = Color(1, 1, 1, 0.552)
@@ -364,24 +381,25 @@ collision_layer = 9
 collision_mask = 9
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HammerPys"]
-position = Vector2(0, -34.1473)
+position = Vector2(1.49254, -71.9547)
 shape = SubResource("RectangleShape2D_0njma")
 debug_color = Color(0, 0.6, 0.7, 0.135)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_v74f2")
+&"": SubResource("AnimationLibrary_v74f2")
 }
 
 [node name="Area2D" type="Area2D" parent="."]
 
 [node name="Hurt" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(0, -28.2727)
+position = Vector2(0, -36)
 shape = SubResource("RectangleShape2D_kbkft")
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+position = Vector2(0, 1.13314)
 stream = ExtResource("3_flaku")
-volume_db = -47.0449
+volume_db = -54.9585
 pitch_scale = 0.51
 max_distance = 1570.0
 

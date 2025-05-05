@@ -4,8 +4,27 @@ signal kill
 signal cash
 signal scene_kill_updated(kills: int)
 signal send_data
+signal player_jumped()
+signal player_double_jumped()
+signal life_collected()
 
+var achievements_client
 var http_request = "res://Scenes/HTTPRequest.tscn"
+
+const ACHIEVEMENT_SHARP_SHOOTER = "CgkI_v7o0NMNEAIQAg"
+const ACHIEVEMENT_JUMP = "CgkI_v7o0NMNEAIQAw"
+const ACHIEVEMENT_DOUBLE_JUMP_II = "CgkI_v7o0NMNEAIQBA"
+const ACHIEVEMENT_COMPLETE_LEGACY_STAGE_1 = "CgkI_v7o0NMNEAIQBQ"
+const ACHIEVEMENT_NO_DEATHS = "CgkI_v7o0NMNEAIQBg"
+const ACHIEVEMENT_CAT_LOVER = "CgkI_v7o0NMNEAIQBw"
+const ACHIEVEMENT_STACKS_ON_STACKS = "CgkI_v7o0NMNEAIQCA"
+const ACHIEVEMENT_PRETTY_QUICK_FELLA = "CgkI_v7o0NMNEAIQCQ"
+const ACHIEVEMENT_WHOA_FAST_GUY = "CgkI_v7o0NMNEAIQCg"
+const ACHIEVEMENT_ZZOOOMM = "CgkI_v7o0NMNEAIQCw"
+const ACHIEVEMENT_25_ELIMINATIONS = "CgkI_v7o0NMNEAIQDA"
+const ACHIEVEMENT_HYPERCORE_UNDERTAKER = "CgkI_v7o0NMNEAIQDQ"
+const ACHIEVEMENT_MY_STRENGTH_IS_GROWING = "CgkI_v7o0NMNEAIQDg"
+const ACHIEVEMENT_FURTHER_BEYOND = "CgkI_v7o0NMNEAIQDw"
 
 # Stats
 var total_kills: int = 0
@@ -19,10 +38,28 @@ var api_key: String
 var player_name: String
 # File path for save data
 const SAVE_PATH = "user://stat_data.json"
+var deaths_in_legacy_protocol: int = 0
+var lives_collected_in_playthrough: int = 0
+var current_level: String = ""
+
+var sharp_shooter_unlocked = false
+var jump_unlocked = false
+var double_jump_unlocked = false
+var stacks_on_stacks_unlocked = false
+var eliminations_25_unlocked = false
+var hypercore_undertaker_unlocked = false
+
 
 # API Endpoint URL
 const API_URL: String = "https://neverfearendpoint-469126233982.us-south1.run.app"
 var API_KEY: String
+
+func _init():
+	# Connect signals to handlers
+	self.connect("player_jumped", Callable(self, "_on_player_jumped"))
+	self.connect("player_double_jumped", Callable(self, "_on_player_double_jumped"))
+	self.connect("cash", Callable(self, "_on_cash_collected"))
+	self.connect("life_collected", Callable(self, "_on_life_collected"))
 
 func _ready():
 	load_data()
@@ -33,9 +70,20 @@ func _on_kill(amount: int) -> void:
 	current_kills += amount  # Increment current scene kills
 	# Emit a signal for the current scene's kills
 	emit_signal("scene_kill_updated", current_kills)
-	save_data()  # Save updated stats
-
-
+	
+	# Check for total kill achievements
+	if total_kills >= 1 and not sharp_shooter_unlocked:
+		AchievementsClient.unlock_achievement(ACHIEVEMENT_SHARP_SHOOTER)
+		sharp_shooter_unlocked = true
+		AchievementsClient.reveal_achievement(ACHIEVEMENT_SHARP_SHOOTER)
+	if total_kills >= 25 and not eliminations_25_unlocked:
+		AchievementsClient.unlock_achievement(ACHIEVEMENT_25_ELIMINATIONS)
+		eliminations_25_unlocked = true
+		AchievementsClient.reveal_achievement(ACHIEVEMENT_25_ELIMINATIONS)
+	if total_kills >= 300 and not hypercore_undertaker_unlocked:
+		AchievementsClient.unlock_achievement(ACHIEVEMENT_HYPERCORE_UNDERTAKER)
+		hypercore_undertaker_unlocked = true
+		AchievementsClient.reveal_achievement(ACHIEVEMENT_HYPERCORE_UNDERTAKER)
 
 func reset_scene_kills() -> void:
 	# Reset scene-specific kill counter
@@ -45,6 +93,29 @@ func reset_scene_kills() -> void:
 func add_cash(amount: int):
 	game_cash += amount
 	total_cash += amount
+	if total_cash >= 1000000 and not stacks_on_stacks_unlocked:
+		unlock_achievement(ACHIEVEMENT_STACKS_ON_STACKS)
+		
+		stacks_on_stacks_unlocked = true
+		AchievementsClient.reveal_achievement(ACHIEVEMENT_STACKS_ON_STACKS)
+
+func unlock_achievement(achievement_id: String):
+	if achievements_client != null:
+		var result = achievements_client.unlock(achievement_id)
+		if result != OK:
+			print("Error unlocking achievement ", achievement_id, ": ", result)
+
+func _on_player_jumped():
+	if not jump_unlocked:
+		unlock_achievement(ACHIEVEMENT_JUMP)
+		jump_unlocked = true
+		save_data()
+
+func _on_player_double_jumped():
+	if not double_jump_unlocked:
+		unlock_achievement(ACHIEVEMENT_DOUBLE_JUMP_II)
+		double_jump_unlocked = true
+		save_data()
 
 # Update the quickest time
 func update_quickest_time(time: String):

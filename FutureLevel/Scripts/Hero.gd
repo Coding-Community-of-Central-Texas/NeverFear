@@ -122,6 +122,7 @@ func handle_jumping(delta: float) -> void:
 			animated_sprite_2d.play("gunjump")
 			_trigger_jump_effect()
 			audio_stream_player_2d.play()
+			GameManager.emit_signal("player_jumped")
 		elif can_double_jump:
 			velocity.y = DOUBLE_JUMP_VELOCITY
 			can_double_jump = false
@@ -129,6 +130,7 @@ func handle_jumping(delta: float) -> void:
 			animated_sprite_2d.play("doublejump")
 			_trigger_doublejump_effect()
 			audio_stream_player_2d.play()
+			GameManager.emit_signal("player_double_jumped")
 
 	if Input.is_action_just_released("jump") and velocity.y <0:
 		velocity.y *= 0.5
