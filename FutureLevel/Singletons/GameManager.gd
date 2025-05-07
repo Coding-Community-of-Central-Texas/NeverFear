@@ -8,8 +8,9 @@ signal player_jumped()
 signal player_double_jumped()
 signal life_collected()
 
-var achievements_client
+
 var http_request = "res://Scenes/HTTPRequest.tscn"
+@onready var gps = GodotPlayGameServices
 
 const ACHIEVEMENT_SHARP_SHOOTER = "CgkI_v7o0NMNEAIQAg"
 const ACHIEVEMENT_JUMP = "CgkI_v7o0NMNEAIQAw"
@@ -62,8 +63,10 @@ func _init():
 	self.connect("life_collected", Callable(self, "_on_life_collected"))
 
 func _ready():
-	load_data()
-	GodotPlayGameServices.initialize()
+	print("Starting Google Play Services initialization...")
+	var result = GodotPlayGameServices.initialize()
+	print("Initialize result: ", result)
+	
 
 func _on_kill(amount: int) -> void:
 	total_kills += amount
@@ -75,15 +78,14 @@ func _on_kill(amount: int) -> void:
 	if total_kills >= 1 and not sharp_shooter_unlocked:
 		AchievementsClient.unlock_achievement(ACHIEVEMENT_SHARP_SHOOTER)
 		sharp_shooter_unlocked = true
-		AchievementsClient.reveal_achievement(ACHIEVEMENT_SHARP_SHOOTER)
+
 	if total_kills >= 25 and not eliminations_25_unlocked:
 		AchievementsClient.unlock_achievement(ACHIEVEMENT_25_ELIMINATIONS)
 		eliminations_25_unlocked = true
-		AchievementsClient.reveal_achievement(ACHIEVEMENT_25_ELIMINATIONS)
+
 	if total_kills >= 300 and not hypercore_undertaker_unlocked:
 		AchievementsClient.unlock_achievement(ACHIEVEMENT_HYPERCORE_UNDERTAKER)
 		hypercore_undertaker_unlocked = true
-		AchievementsClient.reveal_achievement(ACHIEVEMENT_HYPERCORE_UNDERTAKER)
 
 func reset_scene_kills() -> void:
 	# Reset scene-specific kill counter
@@ -94,26 +96,20 @@ func add_cash(amount: int):
 	game_cash += amount
 	total_cash += amount
 	if total_cash >= 1000000 and not stacks_on_stacks_unlocked:
-		unlock_achievement(ACHIEVEMENT_STACKS_ON_STACKS)
-		
+		AchievementsClient.unlock_achievement(ACHIEVEMENT_STACKS_ON_STACKS)
 		stacks_on_stacks_unlocked = true
-		AchievementsClient.reveal_achievement(ACHIEVEMENT_STACKS_ON_STACKS)
 
-func unlock_achievement(achievement_id: String):
-	if achievements_client != null:
-		var result = achievements_client.unlock(achievement_id)
-		if result != OK:
-			print("Error unlocking achievement ", achievement_id, ": ", result)
+
 
 func _on_player_jumped():
 	if not jump_unlocked:
-		unlock_achievement(ACHIEVEMENT_JUMP)
+		AchievementsClient.unlock_achievement(ACHIEVEMENT_JUMP)
 		jump_unlocked = true
 		save_data()
 
 func _on_player_double_jumped():
 	if not double_jump_unlocked:
-		unlock_achievement(ACHIEVEMENT_DOUBLE_JUMP_II)
+		AchievementsClient.unlock_achievement(ACHIEVEMENT_DOUBLE_JUMP_II)
 		double_jump_unlocked = true
 		save_data()
 
@@ -207,3 +203,12 @@ func _on_http_request_request_completed(result: int, response_code: int, headers
 		print("Server Response: ", parsed_response)
 	else:
 		push_error("Failed to parse response JSON")
+
+func _on_achievement_unlocked(is_unlocked: bool, achievement_id: String):
+	print("Achievement %s unlocked: %s" % [achievement_id, is_unlocked])
+
+func _on_achievements_loaded(achievements: Array):
+	print("Loaded %d achievements" % achievements.size())
+
+func _on_achievement_revealed(is_revealed: bool, achievement_id: String):
+	print("Achievement %s revealed: %s" % [achievement_id, is_revealed])

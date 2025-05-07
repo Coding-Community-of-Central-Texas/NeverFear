@@ -1624,7 +1624,6 @@ _data = {
 }
 
 [node name="LegacyProtocol" type="Node2D" groups=["Legacy"]]
-rotation = 2.12854e-05
 script = ExtResource("1_aq02g")
 
 [node name="TileMap" type="TileMap" parent="."]
@@ -2451,6 +2450,7 @@ shape = SubResource("WorldBoundaryShape2D_nq6s1")
 
 [node name="Hero" parent="." instance=ExtResource("91_munkx")]
 position = Vector2(313.994, -295.007)
+scale = Vector2(1.705, 1.705)
 collision_layer = 9
 
 [node name="Buttons" type="CanvasLayer" parent="."]

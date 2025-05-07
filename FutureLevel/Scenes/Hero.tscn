@@ -490,7 +490,6 @@ size = Vector2(16, 30.6667)
 radius = 15.5635
 
 [node name="Hero" type="CharacterBody2D" groups=["player"]]
-scale = Vector2(1.5, 1.5)
 collision_layer = 169
 collision_mask = 41
 script = ExtResource("1_43ipw")
@@ -602,6 +601,7 @@ position = Vector2(6.66667, -2)
 
 [node name="Gun2" parent="." instance=ExtResource("10_0uu0a")]
 unique_name_in_owner = true
+visible = false
 position = Vector2(4, 1.33333)
 collision_mask = 0
 
