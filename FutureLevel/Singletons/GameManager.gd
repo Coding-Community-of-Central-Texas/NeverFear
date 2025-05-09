@@ -10,7 +10,6 @@ signal life_collected()
 
 
 var http_request = "res://Scenes/HTTPRequest.tscn"
-@onready var gps = GodotPlayGameServices
 
 const ACHIEVEMENT_SHARP_SHOOTER = "CgkI_v7o0NMNEAIQAg"
 const ACHIEVEMENT_JUMP = "CgkI_v7o0NMNEAIQAw"
@@ -62,11 +61,6 @@ func _init():
 	self.connect("cash", Callable(self, "_on_cash_collected"))
 	self.connect("life_collected", Callable(self, "_on_life_collected"))
 
-func _ready():
-	print("Starting Google Play Services initialization...")
-	var result = GodotPlayGameServices.initialize()
-	print("Initialize result: ", result)
-	
 
 func _on_kill(amount: int) -> void:
 	total_kills += amount
@@ -76,15 +70,15 @@ func _on_kill(amount: int) -> void:
 	
 	# Check for total kill achievements
 	if total_kills >= 1 and not sharp_shooter_unlocked:
-		AchievementsClient.unlock_achievement(ACHIEVEMENT_SHARP_SHOOTER)
+		PlayService.player_kill()
 		sharp_shooter_unlocked = true
 
 	if total_kills >= 25 and not eliminations_25_unlocked:
-		AchievementsClient.unlock_achievement(ACHIEVEMENT_25_ELIMINATIONS)
+		PlayService.unlock_achievement(ACHIEVEMENT_25_ELIMINATIONS)
 		eliminations_25_unlocked = true
 
 	if total_kills >= 300 and not hypercore_undertaker_unlocked:
-		AchievementsClient.unlock_achievement(ACHIEVEMENT_HYPERCORE_UNDERTAKER)
+		PlayService.unlock_achievement(ACHIEVEMENT_HYPERCORE_UNDERTAKER)
 		hypercore_undertaker_unlocked = true
 
 func reset_scene_kills() -> void:
@@ -95,21 +89,21 @@ func reset_scene_kills() -> void:
 func add_cash(amount: int):
 	game_cash += amount
 	total_cash += amount
-	if total_cash >= 1000000 and not stacks_on_stacks_unlocked:
-		AchievementsClient.unlock_achievement(ACHIEVEMENT_STACKS_ON_STACKS)
+	if total_cash >= 696969 and not stacks_on_stacks_unlocked:
+		PlayService.unlock_achievement(ACHIEVEMENT_STACKS_ON_STACKS)
 		stacks_on_stacks_unlocked = true
 
 
 
 func _on_player_jumped():
 	if not jump_unlocked:
-		AchievementsClient.unlock_achievement(ACHIEVEMENT_JUMP)
+		PlayService.player_jumped()
 		jump_unlocked = true
-		save_data()
+		
 
 func _on_player_double_jumped():
 	if not double_jump_unlocked:
-		AchievementsClient.unlock_achievement(ACHIEVEMENT_DOUBLE_JUMP_II)
+		PlayService.unlock_achievement(ACHIEVEMENT_DOUBLE_JUMP_II)
 		double_jump_unlocked = true
 		save_data()
 

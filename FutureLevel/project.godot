@@ -25,9 +25,7 @@ Global="*res://Singletons/Global.gd"
 GameManager="*res://Singletons/GameManager.gd"
 DamageNumbers="*res://Singletons/DamageNumbers.gd"
 ScreenSetting="*res://Singletons/ScreenSetting.tscn"
-GodotPlayGameServices="*res://addons/GodotPlayGameServices/scripts/autoloads/godot_play_game_services.gd"
-SignIn="*res://Singletons/sign_in.tscn"
-AchievementsClient="*res://addons/GodotPlayGameServices/scripts/achievements/achievements_client.gd"
+PlayService="*res://Singletons/playservice.gd"
 
 [display]
 
@@ -40,7 +38,7 @@ window/handheld/orientation=6
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/GodotPlayGameServices/plugin.cfg", "res://addons/gaea/plugin.cfg", "res://addons/virtual_joystick/plugin.cfg")
+enabled=PackedStringArray("res://addons/gaea/plugin.cfg", "res://addons/virtual_joystick/plugin.cfg")
 
 [global_group]
 
