@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://5d1u10j1kr3i"
-path="res://.godot/imported/dingbats-305.png-6d453347fc9ebec01a3ba025bc5de4af.ctex"
+uid="uid://b6rvpg4t65ofh"
+path="res://.godot/imported/bomb.png-817bd207a18ad6cb97c6b35a8b30f0b0.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Guns&Bullets/dingbats-305.png"
-dest_files=["res://.godot/imported/dingbats-305.png-6d453347fc9ebec01a3ba025bc5de4af.ctex"]
+source_file="res://assets/Guns&Bullets/bomb.png"
+dest_files=["res://.godot/imported/bomb.png-817bd207a18ad6cb97c6b35a8b30f0b0.ctex"]
 
 [params]
 

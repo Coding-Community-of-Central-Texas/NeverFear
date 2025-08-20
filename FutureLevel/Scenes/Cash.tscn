@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://d3m3pthstoelx"]
+[gd_scene load_steps=19 format=3 uid="uid://d3m3pthstoelx"]
 
 [ext_resource type="Script" uid="uid://ciqridq1cdl00" path="res://Scripts/Cash.gd" id="1_wjjbo"]
 [ext_resource type="Texture2D" uid="uid://dtey7mq3og40d" path="res://assets/etc/Money.png" id="2_kau2e"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://c1t7ic4fo0him" path="res://assets/etc/health.png" id="4_irqxg"]
 [ext_resource type="Texture2D" uid="uid://bnhfvq2i6dbp8" path="res://assets/etc/Icons_25.png" id="5_k002h"]
 [ext_resource type="Texture2D" uid="uid://35dyx2vgd6cm" path="res://assets/etc/Star.png" id="6_skr7e"]
+[ext_resource type="PackedScene" uid="uid://cjahbfftehrqo" path="res://Scenes/buffs.tscn" id="7_c73t5"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_h05mr"]
 atlas = ExtResource("2_kau2e")
@@ -336,7 +337,7 @@ texture = ExtResource("6_skr7e")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_6fdu0")
+&"": SubResource("AnimationLibrary_6fdu0")
 }
 autoplay = "heart"
 
@@ -344,6 +345,9 @@ autoplay = "heart"
 process_callback = 0
 wait_time = 10.006
 autostart = true
+
+[node name="Buffs" parent="." instance=ExtResource("7_c73t5")]
+unique_name_in_owner = true
 
 [connection signal="add_cash" from="." to="." method="_on_add_cash"]
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

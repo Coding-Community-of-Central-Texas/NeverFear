@@ -335,7 +335,6 @@ point_count = 11
 
 [node name="Tank" type="Node2D"]
 position = Vector2(16, -9)
-scale = Vector2(0.453813, 0.460758)
 script = ExtResource("1_xawmx")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -347,7 +346,7 @@ animation = &"hurt"
 [node name="AnimationPlayer" type="AnimationPlayer" parent="AnimatedSprite2D"]
 unique_name_in_owner = true
 libraries = {
-"": SubResource("AnimationLibrary_j5120")
+&"": SubResource("AnimationLibrary_j5120")
 }
 
 [node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="."]

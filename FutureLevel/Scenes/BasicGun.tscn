@@ -4,7 +4,7 @@
 [ext_resource type="AudioStream" uid="uid://gauoua60vry" path="res://assets/FutrueSFX/Missile Launcher.wav" id="3_76c1p"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_wrg8w"]
-radius = 314.002
+radius = 623.013
 
 [node name="BasicGun" type="Area2D"]
 collision_layer = 0
@@ -14,10 +14,11 @@ script = ExtResource("1_6fwh3")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 1)
 shape = SubResource("CircleShape2D_wrg8w")
+debug_color = Color(0, 0.6, 0.7, 0.011)
 
 [node name="Timer" type="Timer" parent="."]
 process_callback = 0
-wait_time = 0.42
+wait_time = 2.0
 
 [node name="GunPiviot" type="Marker2D" parent="."]
 

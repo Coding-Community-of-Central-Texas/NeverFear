@@ -17,6 +17,7 @@ script = ExtResource("1_3djek")
 
 [node name="Robbie" parent="." instance=ExtResource("2_xinxc")]
 unique_name_in_owner = true
+scale = Vector2(0.388928, 0.377349)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-2.5, -1.5)
@@ -26,7 +27,9 @@ debug_color = Color(3.46541e-06, 0.690906, 0.804784, 0.42)
 [node name="EnemyGun" parent="." instance=ExtResource("3_yuh7s")]
 unique_name_in_owner = true
 show_behind_parent = true
+z_index = 1
 position = Vector2(-1, 0)
+scale = Vector2(0.866084, 0.734989)
 rate_of_fire = 0.5
 
 [node name="Shadow" type="Sprite2D" parent="."]

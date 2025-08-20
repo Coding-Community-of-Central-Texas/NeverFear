@@ -3,7 +3,7 @@ extends CharacterBody2D
 signal kill
 
 var health = 80.0
-var knockback_strength = 250
+var knockback_strength = 190
 var knockback_duration = 0.1
 var knockback_timer = 0.1  # Keeps track of the knockback time
 var knockback_velocity = Vector2.ZERO  # Stores knockback velocity

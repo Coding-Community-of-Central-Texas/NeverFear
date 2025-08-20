@@ -12,6 +12,7 @@ var MAX_FALL_SPEED = 250.0# Maximum falling speed
 
 var pickup_song: AudioStream = preload("res://assets/FutrueSFX/PickUp.wav")
 var velocity = Vector2.ZERO
+var buffs = global_position
 
 enum PowerUpType {
 	CASH,
@@ -28,15 +29,15 @@ func _on_ready():
 	ground_ray_cast_2d.enabled = true
 	audio_stream_player_2d.stream = pickup_song
 	animation_player.play("moveUpnDown")
-	
+	buffs.position = %Buffs.global_position
 	randomize_power_up()
 
 func randomize_power_up():
 	# Define weighted probabilities for each power-up type
 	var weights = {
-		PowerUpType.CASH: 59,
-		PowerUpType.SPEED: 15,  
-		PowerUpType.HEALTH: 21,  
+		PowerUpType.CASH: 80,
+		PowerUpType.SPEED: 5,  
+		PowerUpType.HEALTH: 10,  
 		PowerUpType.LIVES: 5   
 	}
 	# Generate a random number between 0 and the total weight
@@ -94,6 +95,7 @@ func _on_body_entered(body):
 			audio_stream_player_2d.play()
 		visible = false
 		if power_up_type == PowerUpType.CASH:
+			%Buffs.emit_cash_up()
 			emit_signal("add_cash")  
 		else:
 			apply_power_up() 
@@ -106,10 +108,13 @@ func apply_power_up():
 	match power_up_type:
 		PowerUpType.SPEED:
 			Global.player.SPEED += power_up_value
+			%Buffs.emit_speed_up()
 		PowerUpType.HEALTH:
 			Global.player.health = min(Global.player.MAX_HEALTH, Global.player.health + power_up_value)
+			%Buffs.emit_health_up()
 		PowerUpType.LIVES:
 			Global.lives += power_up_value
+			%Buffs.emit_lives_up()
 
 func _on_audio_stream_player_2d_finished() -> void:
 	queue_free()

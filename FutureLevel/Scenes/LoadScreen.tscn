@@ -1,26 +1,8 @@
-[gd_scene load_steps=103 format=3 uid="uid://dt87is5ehp8xl"]
+[gd_scene load_steps=102 format=3 uid="uid://dt87is5ehp8xl"]
 
 [ext_resource type="Script" uid="uid://c6jwak2ikggob" path="res://Scripts/LoadScreen.gd" id="1_qx27v"]
 [ext_resource type="PackedScene" uid="uid://yx0sn8qvxhu4" path="res://Singletons/ScreenSetting.tscn" id="3_rpvwg"]
 [ext_resource type="Texture2D" uid="uid://cc3w4ndckwrh1" path="res://assets/2 Background/theOSCCCT.png" id="4_5a8gl"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fcx53"]
-bg_color = Color(0, 0, 0, 1)
-border_width_left = 40
-border_width_top = 20
-border_width_right = 40
-border_width_bottom = 20
-border_color = Color(0.666485, 0.582512, 0, 1)
-border_blend = true
-corner_detail = 12
-expand_margin_left = 5.0
-expand_margin_top = 15.0
-expand_margin_right = 5.0
-expand_margin_bottom = 15.0
-shadow_color = Color(0.0156863, 0, 0.545098, 0.945098)
-shadow_size = 35
-anti_aliasing = false
-anti_aliasing_size = 4.306
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kp4hb"]
 bg_color = Color(0, 0, 0, 0.482353)
@@ -783,43 +765,6 @@ autostart = true
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 follow_viewport_enabled = true
 
-[node name="OpenCred" type="Label" parent="CanvasLayer"]
-z_index = 1
-anchors_preset = -1
-anchor_left = 0.0305556
-anchor_top = 0.597222
-anchor_right = 0.987037
-anchor_bottom = 0.95463
-offset_left = -12.0
-offset_top = 4.0
-offset_right = -12.0
-offset_bottom = 4.0
-grow_horizontal = 2
-grow_vertical = 0
-size_flags_horizontal = 0
-size_flags_vertical = 0
-theme_override_colors/font_color = Color(0.832371, 0.731449, 7.70092e-07, 1)
-theme_override_colors/font_shadow_color = Color(0.0470588, 0, 0.509804, 1)
-theme_override_colors/font_outline_color = Color(0.387942, 0.00926579, 0.00515644, 1)
-theme_override_constants/line_spacing = -10
-theme_override_constants/shadow_offset_x = 0
-theme_override_constants/shadow_offset_y = 0
-theme_override_constants/outline_size = 16
-theme_override_constants/shadow_outline_size = 42
-theme_override_font_sizes/font_size = 32
-theme_override_styles/normal = SubResource("StyleBoxFlat_fcx53")
-text = "open-source coding community of central texas
-
-and
-
-genuine llc.
-
-executive producer: 
-stephen h."
-horizontal_alignment = 1
-justification_flags = 130
-metadata/_edit_use_anchors_ = true
-
 [node name="LogoBg" type="Label" parent="CanvasLayer"]
 show_behind_parent = true
 anchors_preset = 15
@@ -831,7 +776,7 @@ size_flags_vertical = 1
 theme = SubResource("Theme_5ygjs")
 
 [node name="Logo" type="AnimatedSprite2D" parent="CanvasLayer/LogoBg"]
-position = Vector2(535, 419)
+position = Vector2(544, 535)
 scale = Vector2(1.82, 1.474)
 sprite_frames = SubResource("SpriteFrames_nwajf")
 frame = 47

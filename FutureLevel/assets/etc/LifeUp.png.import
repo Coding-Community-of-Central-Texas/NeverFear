@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ciamkaf732fdg"
-path="res://.godot/imported/21.png-8de1cfc7a72a895cc3d00801ebab3d4f.ctex"
+uid="uid://dg3hjj5v5ibcc"
+path="res://.godot/imported/LifeUp.png-1a621ecd8694c78c19b3939a40802da4.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Guns&Bullets/21.png"
-dest_files=["res://.godot/imported/21.png-8de1cfc7a72a895cc3d00801ebab3d4f.ctex"]
+source_file="res://assets/etc/LifeUp.png"
+dest_files=["res://.godot/imported/LifeUp.png-1a621ecd8694c78c19b3939a40802da4.ctex"]
 
 [params]
 

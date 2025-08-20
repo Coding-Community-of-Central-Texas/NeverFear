@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cqwasas7u3ah1"
-path="res://.godot/imported/PlasmaBul.png-38b93387bafb2bf76085f07fdb616e2e.ctex"
+uid="uid://c200lfuro2fg8"
+path="res://.godot/imported/Explosion.png-e7311bfa48ffa3f0025577029bf9937f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Guns&Bullets/PlasmaBul.png"
-dest_files=["res://.godot/imported/PlasmaBul.png-38b93387bafb2bf76085f07fdb616e2e.ctex"]
+source_file="res://assets/Guns&Bullets/Explosion.png"
+dest_files=["res://.godot/imported/Explosion.png-e7311bfa48ffa3f0025577029bf9937f.ctex"]
 
 [params]
 

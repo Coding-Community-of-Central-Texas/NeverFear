@@ -48,8 +48,6 @@ func stream_pattern():
 		spawn_bullet(bullet_position, Vector2(-bullet_speed, 0))  # Stream moves horizontally
 	stream_direction *= -1  # Reverse direction for the next wave
 
-
-
 func spawn_bullet(position: Vector2, velocity: Vector2):
 	# Spawn and configure a bullet
 	var bullet = bullet_scene.instantiate()

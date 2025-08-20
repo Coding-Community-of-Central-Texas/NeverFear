@@ -17,7 +17,7 @@ func _on_stats_link_pressed() -> void:
 	await get_tree().create_timer(0.2).timeout  # Wait for 0.1 seconds
 	Engine.time_scale = 1.0
 	Global.reset_game_state()
-	get_tree().change_scene_to_file("res://Scenes/PerformanceIndex.tscn")
+	get_tree().change_scene_to_file("res://Scenes/HubWorld.tscn")
 
 func _on_restart_pressed() -> void:
 	audio_stream_player_2d.play()

@@ -59,7 +59,8 @@ func _on_home_button_pressed() -> void:
 func _on_restart_pressed() -> void:
 	%AudioStreamPlayer2D.play()
 	await get_tree().create_timer(0.5).timeout  # Wait for 0.5 seconds
-	popup_panel.visible = true
+	PlayService.show_win_leaderboard(\"CgkI_v7o0NMNEAIQEg\")
+	popup_panel.visible = false
 "
 
 [sub_resource type="Curve" id="Curve_id4cq"]

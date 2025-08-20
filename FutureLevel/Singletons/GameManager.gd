@@ -70,15 +70,14 @@ func _on_kill(amount: int) -> void:
 	
 	# Check for total kill achievements
 	if total_kills >= 1 and not sharp_shooter_unlocked:
-		PlayService.player_kill()
 		sharp_shooter_unlocked = true
 
 	if total_kills >= 25 and not eliminations_25_unlocked:
-		PlayService.unlock_achievement(ACHIEVEMENT_25_ELIMINATIONS)
+		#PlayService.unlock_achievement(ACHIEVEMENT_25_ELIMINATIONS)
 		eliminations_25_unlocked = true
 
 	if total_kills >= 300 and not hypercore_undertaker_unlocked:
-		PlayService.unlock_achievement(ACHIEVEMENT_HYPERCORE_UNDERTAKER)
+		#PlayService.unlock_achievement(ACHIEVEMENT_HYPERCORE_UNDERTAKER)
 		hypercore_undertaker_unlocked = true
 
 func reset_scene_kills() -> void:
@@ -89,23 +88,21 @@ func reset_scene_kills() -> void:
 func add_cash(amount: int):
 	game_cash += amount
 	total_cash += amount
-	if total_cash >= 696969 and not stacks_on_stacks_unlocked:
-		PlayService.unlock_achievement(ACHIEVEMENT_STACKS_ON_STACKS)
-		stacks_on_stacks_unlocked = true
+	#if total_cash >= 696969 and not stacks_on_stacks_unlocked:
+		#PlayService.unlock_achievement(ACHIEVEMENT_STACKS_ON_STACKS)
+		#stacks_on_stacks_unlocked = true
+
+#func _on_player_jumped():
+	#if not jump_unlocked:
+		#PlayService.on_achievement_shown(true)
+		#jump_unlocked = true
 
 
-
-func _on_player_jumped():
-	if not jump_unlocked:
-		PlayService.player_jumped()
-		jump_unlocked = true
-		
-
-func _on_player_double_jumped():
-	if not double_jump_unlocked:
-		PlayService.unlock_achievement(ACHIEVEMENT_DOUBLE_JUMP_II)
-		double_jump_unlocked = true
-		save_data()
+#"func _on_player_double_jumped():
+#	if not double_jump_unlocked:
+#		PlayService.unlock_achievement(ACHIEVEMENT_DOUBLE_JUMP_II)
+#		double_jump_unlocked = true
+#		save_data()"
 
 # Update the quickest time
 func update_quickest_time(time: String):

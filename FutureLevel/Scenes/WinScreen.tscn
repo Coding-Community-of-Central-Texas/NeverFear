@@ -39,8 +39,8 @@ offset_bottom = -89.0233
 grow_horizontal = 2
 rotation = 0.00282774
 scale = Vector2(1.46871, 2.06151)
-theme_override_colors/font_color = Color(0, 0, 76.795, 1)
-theme_override_colors/font_shadow_color = Color(0.636266, 0.835387, 1, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0.561722, 0.519182, 0.547149, 1)
 theme_override_colors/font_outline_color = Color(0.787759, 0.787759, 0.787759, 1)
 theme_override_constants/shadow_offset_x = -1
 theme_override_constants/shadow_offset_y = 2
@@ -60,8 +60,8 @@ anchor_bottom = 0.344148
 offset_right = -22.56
 offset_bottom = -12.68
 scale = Vector2(1.059, 1.056)
-theme_override_colors/font_color = Color(0, 0, 67.403, 1)
-theme_override_colors/font_shadow_color = Color(0.68004, 0.822569, 0.999938, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0.492395, 0.485642, 0.467325, 1)
 theme_override_colors/font_outline_color = Color(0.787759, 0.787759, 0.787759, 1)
 theme_override_constants/shadow_offset_x = -1
 theme_override_constants/shadow_offset_y = 2
@@ -80,8 +80,8 @@ anchor_bottom = 0.463333
 offset_right = -0.880005
 offset_bottom = -10.4
 scale = Vector2(1.001, 1)
-theme_override_colors/font_color = Color(0, 0, 42.541, 1)
-theme_override_colors/font_shadow_color = Color(0.625267, 0.838406, 1, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0.388485, 0.384334, 0.385369, 1)
 theme_override_colors/font_outline_color = Color(0.787759, 0.787759, 0.787759, 1)
 theme_override_constants/shadow_offset_x = -1
 theme_override_constants/shadow_offset_y = 2
@@ -100,8 +100,8 @@ anchor_bottom = 0.595185
 offset_right = -3.28009
 offset_bottom = -3.80005
 scale = Vector2(1.007, 1.082)
-theme_override_colors/font_color = Color(0, 0, 64.088, 0.998)
-theme_override_colors/font_shadow_color = Color(0.661613, 0.82812, 1, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 0.998)
+theme_override_colors/font_shadow_color = Color(0.451081, 0.428893, 0.434525, 1)
 theme_override_colors/font_outline_color = Color(0.787759, 0.787759, 0.787759, 1)
 theme_override_constants/shadow_offset_x = -1
 theme_override_constants/shadow_offset_y = 2
@@ -110,21 +110,26 @@ theme_override_font_sizes/font_size = 40
 text = "CaSH picked-up:"
 metadata/_edit_use_anchors_ = true
 
-[node name="Restart2" type="TouchScreenButton" parent="Win"]
+[node name="CanvasLayer" type="CanvasLayer" parent="Win"]
+layer = 4
+
+[node name="Restart2" type="TouchScreenButton" parent="Win/CanvasLayer"]
 position = Vector2(224, 552)
 scale = Vector2(1.096, 0.816)
 texture_normal = ExtResource("3_vlss6")
 texture_pressed = ExtResource("4_mbyi4")
 shape = SubResource("RectangleShape2D_77plb")
 
-[node name="StatsLink" type="TouchScreenButton" parent="Win"]
+[node name="StatsLink" type="TouchScreenButton" parent="Win/CanvasLayer"]
+z_index = 3
 position = Vector2(775, 701)
 rotation = 3.13586
 scale = Vector2(1.08636, -0.866296)
-skew = -0.00168335
+skew = -0.00168324
 texture_normal = ExtResource("5_auqbb")
 texture_pressed = ExtResource("6_c6q05")
 shape = SubResource("RectangleShape2D_yqulb")
+passby_press = true
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 unique_name_in_owner = true
@@ -132,6 +137,6 @@ stream = ExtResource("5_els2m")
 volume_db = 2.1
 pitch_scale = 1.4
 
-[connection signal="pressed" from="Win/Restart2" to="." method="_on_restart_pressed"]
-[connection signal="pressed" from="Win/StatsLink" to="." method="_on_stats_link_pressed"]
-[connection signal="pressed" from="Win/StatsLink" to="Win" method="_on_stats_link_pressed"]
+[connection signal="pressed" from="Win/CanvasLayer/Restart2" to="." method="_on_restart_pressed"]
+[connection signal="pressed" from="Win/CanvasLayer/StatsLink" to="." method="_on_stats_link_pressed"]
+[connection signal="pressed" from="Win/CanvasLayer/StatsLink" to="Win" method="_on_stats_link_pressed"]

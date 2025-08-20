@@ -1,9 +1,11 @@
-[gd_scene load_steps=32 format=3 uid="uid://dr3tcip76rdmv"]
+[gd_scene load_steps=43 format=3 uid="uid://dr3tcip76rdmv"]
 
 [ext_resource type="Script" uid="uid://bo8rmfhohoaoi" path="res://Scripts/Robo.gd" id="1_n30qb"]
 [ext_resource type="Texture2D" uid="uid://bhsi7cghh2ykk" path="res://assets/Enemies/RoboRet.png" id="2_44qum"]
 [ext_resource type="Texture2D" uid="uid://bwmcmb0hqc4j5" path="res://assets/Guns&Bullets/impact.png" id="3_y6870"]
 [ext_resource type="PackedScene" uid="uid://7nrxkwybkljg" path="res://Scenes/BigBoom.tscn" id="4_o1jao"]
+[ext_resource type="Texture2D" uid="uid://bwg802cjb5lxt" path="res://assets/Enemies/RoBoss.png" id="5_py6do"]
+[ext_resource type="Texture2D" uid="uid://1imxhw66404d" path="res://assets/Guns&Bullets/01.png" id="6_fn8rc"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8c3bv"]
 atlas = ExtResource("2_44qum")
@@ -391,7 +393,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"impact1",
-"speed": 10.0
+"speed": 20.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -423,7 +425,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"impact2",
-"speed": 15.0
+"speed": 20.0
 }]
 
 [sub_resource type="Curve2D" id="Curve2D_frwfj"]
@@ -432,10 +434,75 @@ _data = {
 }
 point_count = 10
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_fn8rc"]
+atlas = ExtResource("5_py6do")
+region = Rect2(0, 30, 1920, 1050)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_aekaj"]
+atlas = ExtResource("5_py6do")
+region = Rect2(0, 40, 1920, 1040)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qh4g8"]
+atlas = ExtResource("5_py6do")
+region = Rect2(0, 65, 1920, 1015)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bv8i5"]
+atlas = ExtResource("5_py6do")
+region = Rect2(0, 20, 1920, 1060)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r4x02"]
+atlas = ExtResource("5_py6do")
+region = Rect2(0, 10, 1920, 1070)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sdy47"]
+atlas = ExtResource("5_py6do")
+region = Rect2(0, 0, 1920, 1080)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pme2p"]
+atlas = ExtResource("5_py6do")
+region = Rect2(0, 50, 1920, 1030)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0lx0v"]
+atlas = ExtResource("5_py6do")
+region = Rect2(0, 60, 1920, 1020)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_aekaj"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fn8rc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aekaj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qh4g8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bv8i5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r4x02")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sdy47")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pme2p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0lx0v")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 5.0
+}]
+
 [node name="Robo" type="Node2D"]
 script = ExtResource("1_n30qb")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+visible = false
 position = Vector2(13, -5)
 scale = Vector2(0.67, 0.67)
 sprite_frames = SubResource("SpriteFrames_ggnj3")
@@ -444,7 +511,7 @@ animation = &"walk"
 [node name="AnimationPlayer" type="AnimationPlayer" parent="AnimatedSprite2D"]
 unique_name_in_owner = true
 libraries = {
-"": SubResource("AnimationLibrary_fl1x7")
+&"": SubResource("AnimationLibrary_fl1x7")
 }
 
 [node name="Impacts" type="AnimatedSprite2D" parent="."]
@@ -457,7 +524,6 @@ frame = 8
 frame_progress = 1.0
 
 [node name="Path2D" type="Path2D" parent="."]
-visible = false
 curve = SubResource("Curve2D_frwfj")
 
 [node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
@@ -468,3 +534,33 @@ progress = 417.678
 
 [node name="BigBoom" parent="." instance=ExtResource("4_o1jao")]
 unique_name_in_owner = true
+
+[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="."]
+position = Vector2(2, -71)
+scale = Vector2(0.413021, 0.410185)
+sprite_frames = SubResource("SpriteFrames_aekaj")
+animation = &"walk"
+autoplay = "walk"
+frame_progress = 0.940634
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="AnimatedSprite2D2"]
+z_index = -1
+position = Vector2(-4.84237, 414.447)
+scale = Vector2(2.42119, 2.43792)
+amount = 12
+texture = ExtResource("6_fn8rc")
+lifetime = 0.11
+explosiveness = 1.0
+local_coords = true
+emission_shape = 5
+emission_points = PackedVector2Array(36.33, 0, 0, 0, -34.135, 0)
+emission_normals = PackedVector2Array()
+emission_colors = PackedColorArray()
+direction = Vector2(0, 1)
+spread = 2.37
+gravity = Vector2(0, 0)
+initial_velocity_min = 105.26
+initial_velocity_max = 105.26
+angle_min = 90.3
+angle_max = 94.8
+scale_amount_max = 1.3

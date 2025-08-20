@@ -584,8 +584,8 @@ script = ExtResource("1_r0wvx")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("2_ypdy7")
-volume_db = -4.491
-pitch_scale = 0.91
+volume_db = 7.89
+pitch_scale = 1.05
 autoplay = true
 bus = &"Music"
 playback_type = 1
@@ -615,9 +615,9 @@ anchor_top = 0.241873
 anchor_right = 0.945851
 anchor_bottom = 0.311735
 offset_left = -16.8335
-offset_top = 757.842
+offset_top = 248.955
 offset_right = -16.8335
-offset_bottom = 736.914
+offset_bottom = 228.027
 grow_horizontal = 2
 grow_vertical = 2
 rotation = -0.340339

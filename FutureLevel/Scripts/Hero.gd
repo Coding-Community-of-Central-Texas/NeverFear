@@ -26,6 +26,8 @@ var direction : Vector2 = Vector2.ZERO
 @onready var walkn_jump_l: Marker2D = $AnimatedSprite2D/WalknJumpL
 @onready var super_sayain: AnimatedSprite2D = $AnimatedSprite2D/SuperSayain
 @onready var jump_effect_2: CPUParticles2D = %JumpEffect2
+@onready var grenade_scene: PackedScene = preload("res://Scenes/granade.tscn")
+@onready var marker_2d: Marker2D = $Gun/Marker2D
 
 var can_double_jump = false
 var coyote_time_remaining = 0.0  # Keeps track of the coyote time
@@ -46,17 +48,19 @@ func take_damage(amount: int):
 	if is_dead:
 		return
 	health -= amount
-	self.modulate = Color(80, 0, 0)  # Set to red
+	animated_sprite_2d.modulate = Color(80, 0, 0)  # Set to red
 	await get_tree().create_timer(0.2).timeout  # Wait for 0.1 seconds
 	
 	# Apply knockback
 	var knockback_force = Vector2(-180, -180)  
 	velocity += knockback_force
 	
-	self.modulate = Color(1, 1, 1)  # Reset to normal
+	animated_sprite_2d.modulate = Color(1, 1, 1)  # Reset to normal
 	health_bar.health = health
 	if health <= 0.0:
+		velocity = Vector2.ZERO
 		_die()
+
 
 func _die():
 	if is_dead:
@@ -109,7 +113,8 @@ func _physics_process(delta: float) -> void:
 func _on_speed_increase() -> void:
 	# Make the particle node visible and emit particles
 	super_sayain.visible = true 
-	await get_tree().create_timer(3.0).timeout
+	%Buffs.emit_speed_up()
+	await get_tree().create_timer(1.0).timeout
 	super_sayain.visible = false 
 
 func handle_jumping(delta: float) -> void:
@@ -122,7 +127,7 @@ func handle_jumping(delta: float) -> void:
 			animated_sprite_2d.play("gunjump")
 			_trigger_jump_effect()
 			audio_stream_player_2d.play()
-			GameManager.emit_signal("player_jumped")
+#			GameManager.emit_signal("player_jumped")
 		elif can_double_jump:
 			velocity.y = DOUBLE_JUMP_VELOCITY
 			can_double_jump = false
@@ -130,7 +135,7 @@ func handle_jumping(delta: float) -> void:
 			animated_sprite_2d.play("doublejump")
 			_trigger_doublejump_effect()
 			audio_stream_player_2d.play()
-			GameManager.emit_signal("player_double_jumped")
+#			GameManager.emit_signal("player_double_jumped")
 
 	if Input.is_action_just_released("jump") and velocity.y <0:
 		velocity.y *= 0.5
@@ -209,3 +214,11 @@ func _on_game_over():
 func _on_pick_up_gun_picked_up() -> void:
 	%Gun2.set_collision_mask_value(3, true)
 	%Gun2.visible = true
+
+func _on_special_pressed() -> void:
+	var grenade = grenade_scene.instantiate()
+	get_tree().current_scene.add_child(grenade)
+	grenade.global_position = marker_2d.global_position
+	var direction = Vector2(1, -0.6).normalized()
+	grenade.throw(direction, 600.0)
+	print("grenade thrown")

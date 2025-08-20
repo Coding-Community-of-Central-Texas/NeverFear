@@ -19,7 +19,7 @@ var weak_point_2_healthy = true
 
 @onready var bullet_hell_scene = preload("res://Scenes/BulletHell1.tscn")
 
-var move_speed = 150.0  # Movement speed
+var move_speed = 170.0  # Movement speed
 var direction = 1  # 1 for right, -1 for left
 var is_attacking = false  # Whether the boss is currently attacking
 
