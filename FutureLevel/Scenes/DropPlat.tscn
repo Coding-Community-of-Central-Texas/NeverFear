@@ -283,7 +283,7 @@ animation = &"end"
 [node name="AnimationPlayer" type="AnimationPlayer" parent="AnimatedSprite2D"]
 unique_name_in_owner = true
 libraries = {
-"": SubResource("AnimationLibrary_i43n8")
+&"": SubResource("AnimationLibrary_i43n8")
 }
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

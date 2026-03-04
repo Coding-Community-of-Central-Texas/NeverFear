@@ -2379,15 +2379,12 @@ collision_layer = 9
 [node name="Buttons" type="CanvasLayer" parent="."]
 
 [node name="Jump" type="HBoxContainer" parent="Buttons"]
-anchors_preset = -1
-anchor_left = 0.669
-anchor_top = 0.62
-anchor_right = 0.991
-anchor_bottom = 0.912
-offset_left = -0.52002
-offset_top = 0.400024
-offset_right = 2.71997
-offset_bottom = 0.039917
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -3.23999
 grow_horizontal = 0
 grow_vertical = 0
 
@@ -2465,10 +2462,10 @@ autoplay = "default"
 frame_progress = 0.755306
 
 [node name="PauseButton" parent="Buttons" instance=ExtResource("99_ec2gt")]
-offset_left = 76.0
-offset_top = 10.0
-offset_right = 66.32
-offset_bottom = 5.48
+offset_left = 512.0
+offset_top = 922.0
+offset_right = 502.32
+offset_bottom = 917.48
 
 [node name="Platforms" type="Node" parent="."]
 
@@ -2642,7 +2639,7 @@ position = Vector2(25648, -104)
 rotation = 2.12854e-05
 
 [node name="ByteSpawnerA6" parent="Spawner" instance=ExtResource("103_0k21k")]
-position = Vector2(1785, -405)
+position = Vector2(1743, -372)
 rotation = 2.12854e-05
 scale = Vector2(1.00006, 0.992097)
 
@@ -2849,7 +2846,6 @@ autoplay = "cars"
 [node name="Start" type="CanvasLayer" parent="."]
 
 [node name="ColorRect" type="ColorRect" parent="Start"]
-visible = false
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0

@@ -30,8 +30,8 @@ func _physics_process(delta):
 	move_and_slide()
 
 
-func take_damage():
-	health -= 15.0
+func take_damage(damage):
+	health -= damage + 10
 	%Robbie.play_hurt()
 	DamageNumbers.display_number(15, damage_numbers_origin.global_position, true)
 	var knockback_direction = (global_position - Global.player.global_position).normalized()

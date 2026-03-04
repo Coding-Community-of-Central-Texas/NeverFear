@@ -193,7 +193,7 @@ texture = ExtResource("2_sw4mw")
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 unique_name_in_owner = true
 libraries = {
-"": SubResource("AnimationLibrary_n0m3t")
+&"": SubResource("AnimationLibrary_n0m3t")
 }
 
 [node name="HealthBar" parent="." instance=ExtResource("3_dx3cl")]

@@ -3,8 +3,6 @@
 [ext_resource type="Script" uid="uid://byfnjeoda7ugk" path="res://Scripts/GauntletSpawner.gd" id="1_lofiq"]
 
 [node name="GauntletSpawn" type="Marker2D"]
-position = Vector2(200, -53)
-scale = Vector2(0.9, 0.9)
 script = ExtResource("1_lofiq")
 
 [node name="Timer" type="Timer" parent="."]
@@ -13,45 +11,45 @@ wait_time = 2.0
 autostart = true
 
 [node name="Marker1" type="Marker2D" parent="."]
-position = Vector2(197, 19)
+position = Vector2(345, 6)
 
 [node name="Marker2" type="Marker2D" parent="."]
-position = Vector2(295, -195)
+position = Vector2(250, -240)
 
 [node name="Marker3" type="Marker2D" parent="."]
-position = Vector2(194, 174)
+position = Vector2(309, 152)
 
 [node name="Marker4" type="Marker2D" parent="."]
-position = Vector2(92, 329)
+position = Vector2(184, 299)
 
 [node name="Marker5" type="Marker2D" parent="."]
 position = Vector2(-170, 339)
 
 [node name="Marker6" type="Marker2D" parent="."]
-position = Vector2(70, -323)
+position = Vector2(138, -335)
 
 [node name="Marker7" type="Marker2D" parent="."]
-position = Vector2(-233, -374)
+position = Vector2(-135, -326)
 
 [node name="Marker8" type="Marker2D" parent="."]
-position = Vector2(-466, 275)
+position = Vector2(-337, 134)
 
 [node name="Marker12" type="Marker2D" parent="."]
-position = Vector2(-299, 361)
+position = Vector2(-286, 254)
 
 [node name="Marker9" type="Marker2D" parent="."]
-position = Vector2(-517, 76)
+position = Vector2(-367, 4)
 
 [node name="Marker10" type="Marker2D" parent="."]
-position = Vector2(-439, -123)
+position = Vector2(-316, -172)
 
 [node name="Marker11" type="Marker2D" parent="."]
-position = Vector2(-382, -314)
+position = Vector2(329, -96)
 
 [node name="Marker13" type="Marker2D" parent="."]
-position = Vector2(-102, -317)
+position = Vector2(7, -378)
 
 [node name="Marker14" type="Marker2D" parent="."]
-position = Vector2(-31, 300)
+position = Vector2(3, 355)
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

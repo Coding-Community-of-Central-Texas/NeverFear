@@ -56,9 +56,9 @@ func is_near_wall() -> bool:
 		return left_wall_ray.is_colliding()
 	return false 
 
-func take_damage():
-	var damage = randi_range(100, 600)
-	boss_health -= damage
+func take_damage(damage):
+	var doubledamage = randi_range(100, 600) + damage
+	boss_health -= doubledamage
 	DamageNumbers.display_number(damage, damage_numbers_origin.global_position, true)
 	%Robo.play_hurt()
 	%HealthBar.value = boss_health

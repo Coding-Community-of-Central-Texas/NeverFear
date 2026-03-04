@@ -30,8 +30,8 @@ func _physics_process(delta):
 	move_and_slide()
 
 
-func take_damage():
-	health -= 5.0
+func take_damage(damage):
+	health -= damage
 	%Driod.play_die()
 	DamageNumbers.display_number(5, damage_numbers_origin.global_position, true)
 	

@@ -73,7 +73,7 @@ func _on_kill(amount: int) -> void:
 		sharp_shooter_unlocked = true
 
 	if total_kills >= 25 and not eliminations_25_unlocked:
-		#PlayService.unlock_achievement(ACHIEVEMENT_25_ELIMINATIONS)
+		#PlayGames.unlock_ach(ACHIEVEMENT_25_ELIMINATIONS)
 		eliminations_25_unlocked = true
 
 	if total_kills >= 300 and not hypercore_undertaker_unlocked:

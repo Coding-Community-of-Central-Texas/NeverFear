@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://b76aujla7si6n"]
+
+[ext_resource type="Script" uid="uid://c7mj1l4nbq0rc" path="res://Singletons/PlayGames.gd" id="1_dugu5"]
+
+[node name="PlayGames" type="Node"]
+script = ExtResource("1_dugu5")

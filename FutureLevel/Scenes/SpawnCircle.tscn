@@ -16,7 +16,7 @@ script = ExtResource("1_hge4p")
 
 [node name="PathFollow2D" type="PathFollow2D" parent="."]
 unique_name_in_owner = true
-position = Vector2(-623.609, 900.642)
+position = Vector2(-623.6089, 900.6416)
 rotation = 3.11647
 progress = 4458.0
 rotates = false

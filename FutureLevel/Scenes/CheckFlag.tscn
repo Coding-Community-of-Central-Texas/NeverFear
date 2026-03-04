@@ -140,7 +140,7 @@ pitch_scale = 3.05
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 unique_name_in_owner = true
 libraries = {
-"": SubResource("AnimationLibrary_urma1")
+&"": SubResource("AnimationLibrary_urma1")
 }
 autoplay = "RESET"
 

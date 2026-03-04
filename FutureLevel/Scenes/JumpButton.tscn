@@ -8,23 +8,23 @@ radius = 258.43
 
 [node name="JumpButtonControl" type="Control"]
 layout_mode = 3
-anchor_left = 0.608
-anchor_top = 0.645
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 0.359985
-offset_top = 0.399963
 grow_horizontal = 0
 grow_vertical = 0
-metadata/_edit_use_anchors_ = true
 
 [node name="Jump" type="TouchScreenButton" parent="."]
+self_modulate = Color(1, 1, 1, 0.498)
 z_index = 1
-position = Vector2(87.0001, 61.0001)
-scale = Vector2(0.32, 0.306)
+position = Vector2(-354, -334)
+scale = Vector2(0.353, 0.33)
 texture_normal = ExtResource("1_18tym")
 texture_pressed = ExtResource("2_asjsy")
 shape = SubResource("CircleShape2D_2lid4")
+shape_visible = false
 passby_press = true
 action = "jump"
 visibility_mode = 1

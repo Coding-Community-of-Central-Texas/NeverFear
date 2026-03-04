@@ -96,27 +96,6 @@ _data = {
 &"onpause": SubResource("Animation_73y8l")
 }
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xl13v"]
-content_margin_left = 2.0
-content_margin_top = 2.0
-content_margin_right = 2.0
-content_margin_bottom = 2.0
-border_width_left = 3
-border_width_top = 3
-border_width_right = 3
-border_width_bottom = 3
-border_color = Color(0.00566115, 0.00566115, 0.00566114, 1)
-corner_radius_top_left = 6
-corner_radius_top_right = 6
-corner_radius_bottom_right = 6
-corner_radius_bottom_left = 6
-expand_margin_left = 2.0
-expand_margin_top = 2.0
-expand_margin_right = 2.0
-expand_margin_bottom = 2.0
-shadow_color = Color(0.178, 0.573, 0.302, 0.514)
-shadow_size = 5
-
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hccw8"]
 content_margin_left = 4.0
 content_margin_top = 4.0
@@ -137,6 +116,27 @@ expand_margin_top = 2.0
 expand_margin_right = 2.0
 expand_margin_bottom = 2.0
 shadow_color = Color(1.622, 0.462, 0.462, 0.254)
+shadow_size = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xl13v"]
+content_margin_left = 2.0
+content_margin_top = 2.0
+content_margin_right = 2.0
+content_margin_bottom = 2.0
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.00566115, 0.00566115, 0.00566114, 1)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+expand_margin_left = 2.0
+expand_margin_top = 2.0
+expand_margin_right = 2.0
+expand_margin_bottom = 2.0
+shadow_color = Color(0.178, 0.573, 0.302, 0.514)
 shadow_size = 5
 
 [sub_resource type="InputEventScreenTouch" id="InputEventScreenTouch_2ch10"]
@@ -208,14 +208,14 @@ offset_left = -1.52588e-05
 offset_right = -14.26
 offset_bottom = -4.80502
 scale = Vector2(1.155, 1.155)
-theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
 theme_override_constants/outline_size = 3
 theme_override_constants/h_separation = 4
 theme_override_font_sizes/font_size = 26
-theme_override_styles/pressed = SubResource("StyleBoxFlat_xl13v")
 theme_override_styles/normal = SubResource("StyleBoxFlat_hccw8")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_xl13v")
 theme_override_constants/check_v_offset = 0
 button_pressed = true
 action_mode = 0
@@ -236,14 +236,14 @@ offset_top = -3.05176e-05
 offset_right = -20.305
 offset_bottom = -4.80499
 scale = Vector2(1.155, 1.155)
-theme_override_colors/font_outline_color = Color(0.99997, 0.9942, 0.993203, 1)
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0.99997, 0.9942, 0.993203, 1)
 theme_override_constants/outline_size = 3
 theme_override_constants/h_separation = 4
 theme_override_font_sizes/font_size = 26
-theme_override_styles/pressed = SubResource("StyleBoxFlat_xl13v")
 theme_override_styles/normal = SubResource("StyleBoxFlat_hccw8")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_xl13v")
 theme_override_constants/check_v_offset = 0
 button_pressed = true
 action_mode = 0

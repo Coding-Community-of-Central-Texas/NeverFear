@@ -53,9 +53,9 @@ func _check_attack(delta):
 func try_attack_player():
 	buff_byte.play_attack()
 
-func take_damage():
-	health -= 5.0
-	DamageNumbers.display_number(5, damage_numbers_origin.global_position, true)
+func take_damage(damage):
+	health -= damage
+	DamageNumbers.display_number(damage, damage_numbers_origin.global_position, true)
 	buff_byte.modulate = Color(80, 0, 0)  # Set to red
 	await get_tree().create_timer(0.2).timeout
 	buff_byte.modulate = Color(1, 1, 1)

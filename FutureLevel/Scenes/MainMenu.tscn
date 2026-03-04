@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://b8aq7pak842g0"]
+[gd_scene load_steps=23 format=3 uid="uid://b8aq7pak842g0"]
 
 [ext_resource type="Script" uid="uid://dh8qeeoch6frg" path="res://Scripts/MainMenu.gd" id="1_ole10"]
 [ext_resource type="Texture2D" uid="uid://bcypd57pmrt63" path="res://assets/Background/Hero.svg" id="2_fschk"]
@@ -13,30 +13,18 @@
 [ext_resource type="Texture2D" uid="uid://dtmoad6blffsk" path="res://assets/etc/flare_3.png" id="10_daf4p"]
 [ext_resource type="Texture2D" uid="uid://b2ans61yt43mf" path="res://assets/etc/Trophy.png" id="13_8ftns"]
 
-[sub_resource type="Resource" id="Resource_rrcx7"]
-metadata/__load_path__ = "res://assets/etc/Starzoom-Shavian.ttf"
-
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_o5ej8"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_de1g5"]
 size = Vector2(560, 360)
-
-[sub_resource type="Resource" id="Resource_fh7cp"]
-metadata/__load_path__ = "res://assets/etc/Starzoom-Shavian.ttf"
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_fcqq0"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yl8pi"]
 size = Vector2(800, 500)
 
-[sub_resource type="Resource" id="Resource_8e205"]
-metadata/__load_path__ = "res://assets/etc/Starzoom-Shavian.ttf"
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dfg3l"]
 size = Vector2(600, 300)
-
-[sub_resource type="Resource" id="Resource_7467j"]
-metadata/__load_path__ = "res://assets/etc/Starzoom-Shavian.ttf"
 
 [sub_resource type="Curve" id="Curve_stlyn"]
 _limits = [-0.4, 0.85, 0.0, 1.0]
@@ -91,7 +79,6 @@ theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_shadow_color = Color(1, 1, 1, 1)
 theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
 theme_override_constants/outline_size = 3
-theme_override_fonts/font = SubResource("Resource_rrcx7")
 theme_override_font_sizes/font_size = 15
 text = "Credits"
 horizontal_alignment = 1
@@ -144,7 +131,6 @@ theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
 theme_override_constants/shadow_offset_x = -5
 theme_override_constants/shadow_offset_y = 3
 theme_override_constants/outline_size = 4
-theme_override_fonts/font = SubResource("Resource_fh7cp")
 theme_override_font_sizes/font_size = 50
 text = "DATA VAULT"
 horizontal_alignment = 1
@@ -196,7 +182,6 @@ theme_override_constants/shadow_offset_x = -6
 theme_override_constants/shadow_offset_y = 3
 theme_override_constants/outline_size = 3
 theme_override_constants/shadow_outline_size = 3
-theme_override_fonts/font = SubResource("Resource_8e205")
 theme_override_font_sizes/font_size = 50
 text = "LEGACY"
 horizontal_alignment = 1
@@ -242,7 +227,6 @@ theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
 theme_override_constants/shadow_offset_x = -6
 theme_override_constants/shadow_offset_y = 2
 theme_override_constants/outline_size = 3
-theme_override_fonts/font = SubResource("Resource_7467j")
 theme_override_font_sizes/font_size = 50
 text = "GAUNTLET"
 horizontal_alignment = 1
@@ -265,10 +249,10 @@ texture = ExtResource("5_ujj2x")
 position = Vector2(5.76956, 0.0996585)
 scale = Vector2(0.1, 0.1)
 amount = 20
+texture = ExtResource("8_116gb")
 lifetime = 0.93
 speed_scale = 1.29
 local_coords = true
-texture = ExtResource("8_116gb")
 emission_shape = 5
 emission_points = PackedVector2Array(-120, 0, 0, 0)
 emission_normals = PackedVector2Array()
@@ -292,9 +276,9 @@ texture = ExtResource("9_g7gmw")
 [node name="CPUParticles2D" type="CPUParticles2D" parent="MenuBox/Star"]
 position = Vector2(-8.11945, -0.98463)
 amount = 1
+texture = ExtResource("10_daf4p")
 speed_scale = 1.2
 local_coords = true
-texture = ExtResource("10_daf4p")
 emission_shape = 5
 emission_points = PackedVector2Array(15, 0, 0, 0, 2, 10)
 emission_normals = PackedVector2Array()
@@ -331,7 +315,7 @@ texture = SubResource("CanvasTexture_fcqq0")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_fvkqm")
+&"": SubResource("AnimationLibrary_fvkqm")
 }
 
 [node name="Trophy" type="Sprite2D" parent="."]
@@ -342,9 +326,9 @@ texture = ExtResource("13_8ftns")
 [node name="CPUParticles2D" type="CPUParticles2D" parent="Trophy"]
 position = Vector2(-3.99999, 1.90735e-06)
 amount = 1
+texture = ExtResource("10_daf4p")
 speed_scale = 1.2
 local_coords = true
-texture = ExtResource("10_daf4p")
 emission_shape = 5
 emission_points = PackedVector2Array(15, 0, 0, 0, 2, 10)
 emission_normals = PackedVector2Array()

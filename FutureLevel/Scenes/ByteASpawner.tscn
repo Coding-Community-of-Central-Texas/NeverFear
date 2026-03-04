@@ -31,7 +31,7 @@ curve = SubResource("Curve2D_0jxci")
 [node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
 unique_name_in_owner = true
 position = Vector2(-878.852, -1028.34)
-rotation = 0.313616
+rotation = 0.31361622
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_body_exited"]

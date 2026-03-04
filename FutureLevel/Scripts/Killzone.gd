@@ -4,11 +4,11 @@ extends Area2D
 
 
 func _on_body_entered(body):
-	Engine.time_scale = 0.5
 	if body.is_in_group("player"):
+		Engine.time_scale = 0.5
 		body._die()
-	timer.start()
-	print("you Died")
+		timer.start()
+		print("you Died")
 
 
 func _on_timer_timeout():

@@ -52,8 +52,8 @@ func _check_attack(delta):
 func try_attack_player():
 	buff_byte.play_attack()
 
-func take_damage():
-	health -= 5.0
+func take_damage(damage):
+	health -= damage
 	%Byte.play_hurt()
 	DamageNumbers.display_number(5, damage_numbers_origin.global_position, true)
 	

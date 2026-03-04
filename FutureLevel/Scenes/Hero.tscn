@@ -1,4 +1,4 @@
-[gd_scene load_steps=69 format=3 uid="uid://csqktr6ixyato"]
+[gd_scene load_steps=71 format=3 uid="uid://csqktr6ixyato"]
 
 [ext_resource type="Script" uid="uid://xcdf6rvj86fc" path="res://Scripts/Hero.gd" id="1_43ipw"]
 [ext_resource type="Texture2D" uid="uid://050tdjf5b57n" path="res://assets/3 Cyborg/Cyborg_death.png" id="2_2ior6"]
@@ -17,8 +17,10 @@
 [ext_resource type="Texture2D" uid="uid://c1t7ic4fo0him" path="res://assets/etc/health.png" id="12_j60bv"]
 [ext_resource type="Script" uid="uid://cn3u05daqaxkx" path="res://Scripts/Camera.gd" id="12_ofnp4"]
 [ext_resource type="PackedScene" uid="uid://cjahbfftehrqo" path="res://Scenes/buffs.tscn" id="17_tp07l"]
+[ext_resource type="Script" uid="uid://dd3faq8fp5mjs" path="res://Scripts/grenade_cooldown.gd" id="18_7vyrj"]
 [ext_resource type="Texture2D" uid="uid://bcan3ugkqkvmi" path="res://assets/buttonsprites/Jump.png" id="18_63cat"]
 [ext_resource type="Texture2D" uid="uid://cjg3ur7h147f4" path="res://assets/buttonsprites/JumpPressed.png" id="19_c3r7n"]
+[ext_resource type="Script" uid="uid://hru7e6g3oh6v" path="res://Scripts/grenadeability.gd" id="20_c3r7n"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_strd3"]
 atlas = ExtResource("2_2ior6")
@@ -470,10 +472,10 @@ animations = [{
 size = Vector2(16, 30.6667)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_x6iwv"]
-radius = 15.5635
+radius = 23.6667
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_7vyrj"]
-radius = 272.56
+radius = 266.0
 
 [node name="Hero" type="CharacterBody2D" groups=["player"]]
 collision_layer = 169
@@ -620,7 +622,7 @@ collision_mask = 4
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
 position = Vector2(3.33333, 2)
 shape = SubResource("CircleShape2D_x6iwv")
-debug_color = Color(0.847059, 0.372549, 0.156863, 0)
+debug_color = Color(0.993625, 0, 0.245305, 0)
 
 [node name="HealthBar" parent="." instance=ExtResource("12_i3t22")]
 show_behind_parent = true
@@ -637,16 +639,41 @@ texture = ExtResource("12_j60bv")
 [node name="Buffs" parent="." instance=ExtResource("17_tp07l")]
 unique_name_in_owner = true
 
-[node name="special" type="TouchScreenButton" parent="."]
-visible = false
-self_modulate = Color(0.89, 0, 0.085, 0.79)
-position = Vector2(68, 127)
-scale = Vector2(0.106, 0.095)
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+script = ExtResource("18_7vyrj")
+
+[node name="special" type="TouchScreenButton" parent="CanvasLayer"]
+self_modulate = Color(6.63, 1.105, 1, 0.524)
+position = Vector2(617, 893)
+scale = Vector2(0.191, 0.176)
 texture_normal = ExtResource("18_63cat")
 texture_pressed = ExtResource("19_c3r7n")
 shape = SubResource("CircleShape2D_7vyrj")
+shape_visible = false
 passby_press = true
 action = "special"
 
+[node name="Timer" type="Timer" parent="CanvasLayer"]
+one_shot = true
+
+[node name="Specialholder" type="Sprite2D" parent="CanvasLayer"]
+visible = false
+self_modulate = Color(1.657, 0, 0, 0.513)
+z_index = -1
+position = Vector2(713, 981)
+scale = Vector2(0.188, 0.17)
+texture = ExtResource("18_63cat")
+
+[node name="GrenadeAbility" type="Node2D" parent="."]
+script = ExtResource("20_c3r7n")
+
+[node name="TossHand" type="Marker2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(19, -12)
+rotation = -0.412682
+
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
-[connection signal="pressed" from="special" to="." method="_on_special_pressed"]
+[connection signal="pressed" from="CanvasLayer/special" to="." method="_on_special_pressed"]
+[connection signal="pressed" from="CanvasLayer/special" to="CanvasLayer" method="_on_special_pressed"]
+[connection signal="released" from="CanvasLayer/special" to="CanvasLayer" method="_on_special_released"]
+[connection signal="timeout" from="CanvasLayer/Timer" to="CanvasLayer" method="_on_timer_timeout"]

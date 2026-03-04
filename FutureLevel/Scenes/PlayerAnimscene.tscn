@@ -687,7 +687,7 @@ flip_h = true
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 root_node = NodePath("../AnimatedSprite2D")
 libraries = {
-"": SubResource("AnimationLibrary_464tr")
+&"": SubResource("AnimationLibrary_464tr")
 }
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="."]
@@ -695,13 +695,13 @@ z_index = 1
 position = Vector2(21, 39)
 scale = Vector2(0.6, 0.58)
 amount = 21
+texture = ExtResource("4_w0iul")
 lifetime = 1.55
 one_shot = true
 speed_scale = 1.7
 explosiveness = 1.0
 lifetime_randomness = 0.24
 local_coords = true
-texture = ExtResource("4_w0iul")
 emission_shape = 5
 emission_points = PackedVector2Array(3.935, 0, -10.685, 0)
 emission_normals = PackedVector2Array()

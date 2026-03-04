@@ -23,7 +23,6 @@ colors = PackedColorArray(90.811, 51.351, 0, 1, 15.135, 0.54, 0.12, 0.991, 0.089
 
 [node name="Bullet" type="Area2D"]
 top_level = true
-rotation = -0.00635648
 collision_layer = 0
 collision_mask = 4
 script = ExtResource("1_x7n78")
@@ -39,10 +38,10 @@ texture = ExtResource("2_qpgtf")
 [node name="Trail" type="CPUParticles2D" parent="."]
 position = Vector2(9.9998, 0.0635644)
 amount = 20
+texture = ExtResource("3_22a64")
 lifetime = 1.08
 speed_scale = 2.47
 local_coords = true
-texture = ExtResource("3_22a64")
 emission_shape = 1
 emission_sphere_radius = 3.12
 direction = Vector2(-1, 0)

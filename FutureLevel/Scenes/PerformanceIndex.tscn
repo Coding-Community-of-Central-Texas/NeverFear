@@ -59,7 +59,7 @@ func _on_home_button_pressed() -> void:
 func _on_restart_pressed() -> void:
 	%AudioStreamPlayer2D.play()
 	await get_tree().create_timer(0.5).timeout  # Wait for 0.5 seconds
-	PlayService.show_win_leaderboard(\"CgkI_v7o0NMNEAIQEg\")
+	get_tree().change_scene_to_file(\"res://Singletons/GPGS.tscn\")
 	popup_panel.visible = false
 "
 
@@ -824,10 +824,10 @@ grow_vertical = 2
 focus_next = NodePath("../../..")
 shortcut_context = NodePath("..")
 theme = SubResource("Theme_m3ifo")
-theme_override_colors/clear_button_color = Color(0.813258, 0.813258, 0.813258, 1)
-theme_override_colors/font_placeholder_color = Color(0.628, 0.581, 0.577, 0.767)
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_colors/font_color = Color(0.561448, 0.561544, 0.00979037, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_colors/font_placeholder_color = Color(0.628, 0.581, 0.577, 0.767)
+theme_override_colors/clear_button_color = Color(0.813258, 0.813258, 0.813258, 1)
 theme_override_constants/outline_size = 3
 theme_override_font_sizes/font_size = 16
 placeholder_text = "add your alias..."
