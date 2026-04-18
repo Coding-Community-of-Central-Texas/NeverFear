@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=3 uid="uid://c0t8aeiemcj1h"]
+
+[ext_resource type="Texture2D" uid="uid://bcan3ugkqkvmi" path="res://assets/buttonsprites/Jump.png" id="1_f8oc4"]
+[ext_resource type="Texture2D" uid="uid://cjg3ur7h147f4" path="res://assets/buttonsprites/JumpPressed.png" id="2_xfc3e"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_0dugi"]
+radius = 272.56
+
+[node name="SpecialAttack" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="special" type="TouchScreenButton" parent="."]
+self_modulate = Color(0.89, 0, 0.085, 0.79)
+position = Vector2(674, 859)
+scale = Vector2(0.195, 0.191)
+texture_normal = ExtResource("1_f8oc4")
+texture_pressed = ExtResource("2_xfc3e")
+shape = SubResource("CircleShape2D_0dugi")
+passby_press = true
+action = "special"

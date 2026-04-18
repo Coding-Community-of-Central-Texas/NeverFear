@@ -6,9 +6,9 @@ const MAX_HEALTH = 100.0
 var previous_speed: float = SPEED
 const JUMP_VELOCITY = -1100.0
 const DOUBLE_JUMP_VELOCITY = -1300.0
-const GRAVITY = 4000.0  # Custom gravity value
-const COYOTE_TIME = 0.2  # Time to allow jumping after falling
-const MAX_FALL_SPEED = 3500.0  # Limit the maximum fall speed
+const GRAVITY = 4000.0  
+const COYOTE_TIME = 0.2  
+const MAX_FALL_SPEED = 3500.0  
 var direction : Vector2 = Vector2.ZERO
 @export var acceleration: float = 4000.0
 @export var deceleration: float = 7000.0
@@ -26,9 +26,16 @@ var direction : Vector2 = Vector2.ZERO
 @onready var walkn_jump_l: Marker2D = $AnimatedSprite2D/WalknJumpL
 @onready var super_sayain: AnimatedSprite2D = $AnimatedSprite2D/SuperSayain
 @onready var jump_effect_2: CPUParticles2D = %JumpEffect2
+@onready var marker_2d: Marker2D = $Gun/Marker2D
+@onready var grenade_ability: Node = $GrenadeAbility
+@onready var toss_hand: Marker2D = $TossHand
+
+@export var throw_force: float = 500.0
+@export_range(0.0, 1.0, 0.01) var lob_elevation: float = 0.35  
+var facing_dir: Vector2 = Vector2.RIGHT  
 
 var can_double_jump = false
-var coyote_time_remaining = 0.0  # Keeps track of the coyote time
+var coyote_time_remaining = 0.0  
 var is_double_jumping = false
 var is_dead = false
 var jump_effect_visible = false 
@@ -41,22 +48,29 @@ func _ready() -> void:
 		position = Global.checkpoint_position
 	else: 
 		position = Vector2(353.993, -306.008)
+	if is_instance_valid(grenade_ability):
+		if grenade_ability.has_signal("cooldown_started"):
+			grenade_ability.connect("cooldown_started", Callable(self, "_on_grenade_cd_start"))
+		if grenade_ability.has_signal("cooldown_ready"):
+			grenade_ability.connect("cooldown_ready", Callable(self, "_on_grenade_cd_ready"))
 
 func take_damage(amount: int):
 	if is_dead:
 		return
 	health -= amount
-	self.modulate = Color(80, 0, 0)  # Set to red
+	animated_sprite_2d.modulate = Color(80, 0, 0)  # Set to red
 	await get_tree().create_timer(0.2).timeout  # Wait for 0.1 seconds
 	
 	# Apply knockback
 	var knockback_force = Vector2(-180, -180)  
 	velocity += knockback_force
 	
-	self.modulate = Color(1, 1, 1)  # Reset to normal
+	animated_sprite_2d.modulate = Color(1, 1, 1)  # Reset to normal
 	health_bar.health = health
 	if health <= 0.0:
+		velocity = Vector2.ZERO
 		_die()
+
 
 func _die():
 	if is_dead:
@@ -109,7 +123,8 @@ func _physics_process(delta: float) -> void:
 func _on_speed_increase() -> void:
 	# Make the particle node visible and emit particles
 	super_sayain.visible = true 
-	await get_tree().create_timer(3.0).timeout
+	%Buffs.emit_speed_up()
+	await get_tree().create_timer(1.0).timeout
 	super_sayain.visible = false 
 
 func handle_jumping(delta: float) -> void:
@@ -122,6 +137,7 @@ func handle_jumping(delta: float) -> void:
 			animated_sprite_2d.play("gunjump")
 			_trigger_jump_effect()
 			audio_stream_player_2d.play()
+#			GameManager.emit_signal("player_jumped")
 		elif can_double_jump:
 			velocity.y = DOUBLE_JUMP_VELOCITY
 			can_double_jump = false
@@ -129,6 +145,7 @@ func handle_jumping(delta: float) -> void:
 			animated_sprite_2d.play("doublejump")
 			_trigger_doublejump_effect()
 			audio_stream_player_2d.play()
+#			GameManager.emit_signal("player_double_jumped")
 
 	if Input.is_action_just_released("jump") and velocity.y <0:
 		velocity.y *= 0.5
@@ -207,3 +224,35 @@ func _on_game_over():
 func _on_pick_up_gun_picked_up() -> void:
 	%Gun2.set_collision_mask_value(3, true)
 	%Gun2.visible = true
+
+# Optional: call this from your movement code when you compute facing
+func update_facing(dir: Vector2) -> void:
+	if dir.length() > 0.01:
+		facing_dir = dir.normalized()
+
+func _get_aim_dir() -> Vector2:
+	# Primary: right/aim stick (map these in Input Map or your on-screen joystick)
+	var aim: Vector2 = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
+	if aim.length() > 0.01:
+		return (aim + Vector2(0, -lob_elevation)).normalized()
+
+	# Secondary: use last movement vector to refresh facing
+	var move: Vector2 = Input.get_vector("move_left", "move_right", "move_up", "move_down")
+	if move.length() > 0.01:
+		facing_dir = move.normalized()
+		return (facing_dir + Vector2(0, -lob_elevation)).normalized()
+
+	# Fallback: just use stored facing
+	var dir := (facing_dir + Vector2(0, -lob_elevation))
+	if dir.length() <= 0.001:
+		dir = Vector2.RIGHT + Vector2(0, -lob_elevation)  # final safeguard
+	return dir.normalized()
+
+func _on_special_pressed() -> void:
+	if Input.is_action_pressed("special"):
+		var grenade_scene: PackedScene = preload("res://Scenes/granade.tscn")
+		var g: RigidBody2D = grenade_scene.instantiate()
+		g.global_position = %TossHand.global_position # or a hand/socket node
+		get_tree().current_scene.add_child(g)
+		var dir := _get_aim_dir()
+		g.throw(dir, throw_force)

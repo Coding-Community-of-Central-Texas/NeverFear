@@ -5,19 +5,20 @@
 [ext_resource type="PackedScene" uid="uid://ck5iyeqefbgyc" path="res://Scenes/EnemyGun.tscn" id="4_sfktj"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_s5lme"]
-size = Vector2(31, 39)
+size = Vector2(31, 66)
 
 [node name="ThreeHitter" type="CharacterBody2D" groups=["enemy"]]
-scale = Vector2(1.5, 1.5)
 collision_layer = 4
 collision_mask = 5
 script = ExtResource("1_hrt73")
 
 [node name="Robbie" parent="." instance=ExtResource("1_wl1r3")]
 unique_name_in_owner = true
+position = Vector2(-4, -14)
+scale = Vector2(0.613984, 0.569452)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-2.5, -1.5)
+position = Vector2(-2.5, -15)
 shape = SubResource("RectangleShape2D_s5lme")
 debug_color = Color(3.46541e-06, 0.690906, 0.804784, 0.42)
 
@@ -33,7 +34,9 @@ collide_with_areas = true
 
 [node name="EnemyGun" parent="." instance=ExtResource("4_sfktj")]
 show_behind_parent = true
-position = Vector2(-1, 0)
+z_index = 1
+position = Vector2(-5, -14)
+scale = Vector2(1.09154, 1.06269)
 
 [node name="LeftWallRay" type="RayCast2D" parent="."]
 target_position = Vector2(-40, 0)

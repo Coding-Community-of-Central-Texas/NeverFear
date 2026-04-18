@@ -29,8 +29,8 @@ func _physics_process(delta):
 	check_distance_from_player()
 	move_and_slide()
 
-func take_damage():
-	health -= 20.0
+func take_damage(damage):
+	health -= damage + 15
 	%Tank.play_hurt()
 	DamageNumbers.display_number(20, damage_numbers_origin.global_position, true)
 	

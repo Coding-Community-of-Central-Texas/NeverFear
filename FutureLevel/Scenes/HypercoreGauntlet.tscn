@@ -110,33 +110,22 @@ domain_warp_fractal_octaves = 1
 domain_warp_fractal_lacunarity = 7.505
 domain_warp_fractal_gain = 2.08
 
-[sub_resource type="Resource" id="Resource_38klk"]
+[sub_resource type="Resource" id="Resource_qcm71"]
 script = ExtResource("7_of22h")
-type = 0
-tilemap_layer = 0
 source_id = 6
-atlas_coord = Vector2i(0, 0)
-alternative_tile = 0
-id = ""
-layer = 0
+metadata/_custom_type_script = "uid://bbxrcfq33qgrr"
 
 [sub_resource type="Resource" id="Resource_n3j3f"]
 resource_name = "maintile"
 script = ExtResource("6_v2o4m")
 title = "maintile"
-tile = SubResource("Resource_38klk")
-min = -0.671
-max = 0.873
+tile = SubResource("Resource_qcm71")
+min = -0.755
+max = 0.5760000000000001
 
 [sub_resource type="Resource" id="Resource_n5vwr"]
 script = ExtResource("7_of22h")
-type = 0
-tilemap_layer = 0
 source_id = 5
-atlas_coord = Vector2i(0, 0)
-alternative_tile = 0
-id = ""
-layer = 0
 
 [sub_resource type="Resource" id="Resource_mdxcw"]
 resource_name = "tiletwo"
@@ -148,13 +137,7 @@ max = 0.068
 
 [sub_resource type="Resource" id="Resource_23xs0"]
 script = ExtResource("7_of22h")
-type = 0
-tilemap_layer = 0
 source_id = 76
-atlas_coord = Vector2i(0, 0)
-alternative_tile = 0
-id = ""
-layer = 0
 
 [sub_resource type="Resource" id="Resource_j83ah"]
 resource_name = "tile3"
@@ -166,13 +149,7 @@ max = 0.352
 
 [sub_resource type="Resource" id="Resource_rukxb"]
 script = ExtResource("7_of22h")
-type = 0
-tilemap_layer = 0
 source_id = 71
-atlas_coord = Vector2i(0, 0)
-alternative_tile = 0
-id = ""
-layer = 0
 
 [sub_resource type="Resource" id="Resource_j4d1a"]
 resource_name = "tile4"
@@ -184,13 +161,7 @@ max = -0.071
 
 [sub_resource type="Resource" id="Resource_pql13"]
 script = ExtResource("7_of22h")
-type = 0
-tilemap_layer = 0
 source_id = 56
-atlas_coord = Vector2i(0, 0)
-alternative_tile = 0
-id = ""
-layer = 0
 
 [sub_resource type="Resource" id="Resource_o3pw8"]
 resource_name = "tile5"
@@ -202,13 +173,7 @@ max = 0.224
 
 [sub_resource type="Resource" id="Resource_pb2ay"]
 script = ExtResource("7_of22h")
-type = 0
-tilemap_layer = 0
 source_id = 29
-atlas_coord = Vector2i(0, 0)
-alternative_tile = 0
-id = ""
-layer = 0
 
 [sub_resource type="Resource" id="Resource_5g500"]
 resource_name = "65x"
@@ -224,8 +189,6 @@ script = ExtResource("5_suek0")
 tiles = Array[ExtResource("6_v2o4m")]([SubResource("Resource_n3j3f"), SubResource("Resource_mdxcw"), SubResource("Resource_j83ah"), SubResource("Resource_j4d1a"), SubResource("Resource_o3pw8"), SubResource("Resource_5g500")])
 noise = SubResource("FastNoiseLite_w27gi")
 infinite = true
-falloff_enabled = false
-modifiers = Array[ExtResource("4_8em6s")]([])
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_n0xg0"]
 texture = ExtResource("7_2riic")
@@ -760,7 +723,7 @@ generator = NodePath("../NoiseGenerator")
 [node name="NoiseGenerator" type="Node" parent="."]
 script = ExtResource("3_iryc7")
 settings = SubResource("Resource_ka20b")
-chunk_size = Vector2i(6, 6)
+chunk_size = Vector2i(12, 12)
 tile_size = Vector2i(32, 32)
 
 [node name="TileMap" type="TileMap" parent="."]
@@ -774,6 +737,7 @@ layer_0/tile_data = PackedInt32Array(0, 5, 0, 65536, 71, 0, 131072, 6, 0, 196608
 light_mask = 2
 visibility_layer = 2
 position = Vector2(581, 245)
+scale = Vector2(1.53903, 1.4992)
 slide_on_ceiling = false
 
 [node name="ChunkLoader2D" type="Node2D" parent="." node_paths=PackedStringArray("generator", "actor")]

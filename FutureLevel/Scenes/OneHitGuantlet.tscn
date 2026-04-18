@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://dlmwrma7sd51s"]
+[gd_scene load_steps=5 format=3 uid="uid://dlmwrma7sd51s"]
 
 [ext_resource type="Script" uid="uid://b0tgygkelq0vk" path="res://Scripts/OneHitGauntlet.gd" id="1_hf14j"]
 [ext_resource type="PackedScene" uid="uid://dyimxg6mdgoab" path="res://Scenes/Byte.tscn" id="2_g3ocj"]
+[ext_resource type="PackedScene" uid="uid://mgnw4coxg0q4" path="res://Scenes/buff_byte.tscn" id="3_u55pg"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_cnpoq"]
 radius = 18.0
@@ -14,6 +15,7 @@ script = ExtResource("1_hf14j")
 
 [node name="Byte" parent="." instance=ExtResource("2_g3ocj")]
 unique_name_in_owner = true
+visible = false
 position = Vector2(-1, 0)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -26,6 +28,10 @@ position = Vector2(0, -22)
 process_callback = 0
 wait_time = 11.277
 autostart = true
+
+[node name="BuffByte" parent="." instance=ExtResource("3_u55pg")]
+position = Vector2(4, -6)
+scale = Vector2(0.451783, 0.410667)
 
 [connection signal="kill" from="." to="." method="_on_kill"]
 [connection signal="timeout" from="QueueTimer" to="." method="_on_queue_timer_timeout"]

@@ -44,15 +44,15 @@ func _physics_process(_delta):
 		move_and_slide()
 
 
-func take_damage():
-	health -= 5.0
+func take_damage(damage):
+	health -= damage
 	%Robbie.play_hurt()
 	
 	var knockback_direction = (global_position - Global.player.global_position).normalized()
 	knockback_velocity = knockback_direction * knockback_strength
 	knockback_timer = knockback_duration
 	
-	if health == 0.0:
+	if health <= 0.0:
 		emit_signal("kill")
 		_die()
 

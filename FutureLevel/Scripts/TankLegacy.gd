@@ -2,7 +2,7 @@ extends CharacterBody2D
 
 signal kill
 
-var health = 70.0
+var health = 90.0
 var knockback_strength = 20.0
 var knockback_duration = 0.2
 var knockback_timer = 0.0  # Keeps track of the knockback time
@@ -46,8 +46,8 @@ func _physics_process(_delta):
 		handle_flip()
 
 
-func take_damage():
-	health -= 10.0
+func take_damage(damage):
+	health -= damage
 	%Tank.play_hurt()
 	DamageNumbers.display_number(10, damage_numbers_origin.global_position, true)
 	
@@ -55,7 +55,7 @@ func take_damage():
 	knockback_velocity = knockback_direction * knockback_strength
 	knockback_timer = knockback_duration
 	
-	if health == 0.0:
+	if health <= 0.0:
 		_die()
 
 func _die():

@@ -1,9 +1,10 @@
 extends Node2D
 
 @onready var animated_sprite_2d_2: AnimatedSprite2D = $AnimatedSprite2D2
+@onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 
 func play_walk():
-	%AnimationPlayer.play("walk")
+	animated_sprite_2d.play("walk")
 
 func play_hurt():
 	self.modulate = Color(1, 0, 0)  # Set to red

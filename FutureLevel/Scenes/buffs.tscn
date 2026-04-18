@@ -1,0 +1,94 @@
+[gd_scene load_steps=10 format=3 uid="uid://cjahbfftehrqo"]
+
+[ext_resource type="Script" uid="uid://bk5kaeok3plal" path="res://Scripts/buffs.gd" id="1_4d14o"]
+[ext_resource type="Texture2D" uid="uid://72r8l53ib08i" path="res://assets/etc/CashUp.png" id="2_7boqd"]
+[ext_resource type="Texture2D" uid="uid://bmhrqb5ev7v3j" path="res://assets/etc/SPEEDUP.png" id="3_fvtuc"]
+[ext_resource type="Texture2D" uid="uid://dg3hjj5v5ibcc" path="res://assets/etc/LifeUp.png" id="4_qloh6"]
+[ext_resource type="Texture2D" uid="uid://dqawytios2uxu" path="res://assets/etc/HealthUp.png" id="5_jc2hb"]
+
+[sub_resource type="Curve" id="Curve_11qig"]
+_data = [Vector2(0, 0.258427), 0.0, 0.0, 0, 0, Vector2(0.278689, 0.977528), 1.22649, 1.22649, 0, 0, Vector2(1, 0.606742), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Curve" id="Curve_34qwu"]
+_data = [Vector2(0, 0.247191), 0.0, 0.0, 0, 0, Vector2(0.262295, 0.685393), 0.0, 0.0, 0, 0, Vector2(0.868852, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Curve" id="Curve_xut8t"]
+_data = [Vector2(0, 0.0786518), 0.0, 0.0, 0, 0, Vector2(0.213115, 0.707865), 0.0, 0.0, 0, 0, Vector2(0.360656, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Curve" id="Curve_yva81"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.237705, 0.573034), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[node name="Buffs" type="Node2D"]
+z_index = 2
+script = ExtResource("1_4d14o")
+
+[node name="CashUp" type="CPUParticles2D" parent="."]
+emitting = false
+amount = 1
+texture = ExtResource("2_7boqd")
+lifetime = 0.22
+one_shot = true
+speed_scale = 0.55
+explosiveness = 1.0
+emission_shape = 2
+emission_sphere_radius = 5.4
+direction = Vector2(0, -1)
+spread = 20.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 263.89
+initial_velocity_max = 263.89
+scale_amount_min = 1.43
+scale_amount_max = 1.43
+scale_amount_curve = SubResource("Curve_11qig")
+
+[node name="SpeedUp" type="CPUParticles2D" parent="."]
+emitting = false
+amount = 1
+texture = ExtResource("3_fvtuc")
+lifetime = 0.2
+one_shot = true
+speed_scale = 0.3
+explosiveness = 1.0
+direction = Vector2(0, -1)
+spread = 7.5
+gravity = Vector2(0, 0)
+initial_velocity_min = 236.11
+initial_velocity_max = 236.11
+scale_amount_min = 0.3
+scale_amount_max = 0.65
+scale_amount_curve = SubResource("Curve_34qwu")
+
+[node name="LivesUp" type="CPUParticles2D" parent="."]
+emitting = false
+amount = 1
+texture = ExtResource("4_qloh6")
+lifetime = 0.4
+one_shot = true
+preprocess = 1.21
+speed_scale = 0.3
+explosiveness = 1.0
+direction = Vector2(0, -1)
+spread = 12.5
+gravity = Vector2(0, 0)
+initial_velocity_min = 166.67
+initial_velocity_max = 166.67
+scale_amount_curve = SubResource("Curve_xut8t")
+
+[node name="HealthUp" type="CPUParticles2D" parent="."]
+emitting = false
+amount = 1
+texture = ExtResource("5_jc2hb")
+lifetime = 0.47
+one_shot = true
+speed_scale = 0.4
+explosiveness = 1.0
+direction = Vector2(0, -1)
+spread = 17.5
+gravity = Vector2(0, 0)
+initial_velocity_min = 166.67
+initial_velocity_max = 166.67
+scale_amount_curve = SubResource("Curve_yva81")
