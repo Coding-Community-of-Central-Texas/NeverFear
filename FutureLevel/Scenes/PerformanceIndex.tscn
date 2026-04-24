@@ -58,8 +58,10 @@ func _on_home_button_pressed() -> void:
 
 func _on_restart_pressed() -> void:
 	%AudioStreamPlayer2D.play()
+	GameManager.submit_best_legacy_protocol_time()
 	await get_tree().create_timer(0.5).timeout  # Wait for 0.5 seconds
-	get_tree().change_scene_to_file(\"res://Singletons/GPGS.tscn\")
+	if playgames.is_available() and playgames.is_signed_in():
+		playgames.show_leaderboard(GameManager.LEADERBOARD_LEGACY_PROTOCOL_BEST_TIME)
 	popup_panel.visible = false
 "
 

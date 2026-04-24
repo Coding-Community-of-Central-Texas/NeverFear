@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://b0kr4yg6fgfci"]
+[gd_scene load_steps=20 format=3 uid="uid://b0kr4yg6fgfci"]
 
 [ext_resource type="Script" uid="uid://e85obve04lf7" path="res://Scripts/PauseMenu.gd" id="1_gfvbg"]
 [ext_resource type="Texture2D" uid="uid://b410kchim4fil" path="res://assets/buttonsprites/PauseMenu.png" id="2_mys0b"]
@@ -8,9 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://cid0oenj245s0" path="res://assets/buttonsprites/ContinuePressed.png" id="5_pmvjn"]
 [ext_resource type="Texture2D" uid="uid://bw6msqhgcjj88" path="res://assets/buttonsprites/RetryPress.png" id="6_pmvjn"]
 [ext_resource type="Texture2D" uid="uid://d2aqtjhpuq1w2" path="res://assets/buttonsprites/HomeButton.png" id="8_n6ygf"]
-[ext_resource type="Texture2D" uid="uid://csxc60w3pc2ua" path="res://assets/buttonsprites/BlankButton.png" id="9_1363l"]
 [ext_resource type="Texture2D" uid="uid://c5hopxqu5fvrh" path="res://assets/buttonsprites/PressedHome.png" id="9_dhr51"]
-[ext_resource type="Texture2D" uid="uid://b4517vw2nyikq" path="res://assets/buttonsprites/blankButtonpress.png" id="10_h171x"]
 
 [sub_resource type="Animation" id="Animation_r58bc"]
 length = 0.001
@@ -155,9 +153,6 @@ size = Vector2(375, 190)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ctl43"]
 size = Vector2(370.66, 141.965)
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_os3di"]
-radius = 102.29
-
 [node name="PauseMenu" type="CanvasLayer"]
 process_mode = 3
 script = ExtResource("1_gfvbg")
@@ -277,38 +272,6 @@ texture_pressed = ExtResource("9_dhr51")
 shape = SubResource("RectangleShape2D_ctl43")
 shape_visible = false
 
-[node name="Credits2" type="TouchScreenButton" parent="Panel"]
-unique_name_in_owner = true
-position = Vector2(217, 714)
-rotation = -0.0130763
-scale = Vector2(0.667132, 0.650282)
-skew = 0.028962
-texture_normal = ExtResource("9_1363l")
-texture_pressed = ExtResource("10_h171x")
-shape = SubResource("CircleShape2D_os3di")
-shape_visible = false
-
-[node name="Credits2" type="Label" parent="Panel/Credits2"]
-anchors_preset = -1
-anchor_left = 0.274
-anchor_top = 0.347
-anchor_right = 0.707
-anchor_bottom = 0.664183
-offset_left = 8.11032
-offset_top = 0.701599
-offset_right = 12.6104
-offset_bottom = -10.89
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_colors/font_shadow_color = Color(1, 1, 1, 1)
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 8
-theme_override_font_sizes/font_size = 38
-text = "Credits"
-horizontal_alignment = 1
-vertical_alignment = 1
-metadata/_edit_use_anchors_ = true
-
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 unique_name_in_owner = true
 stream = ExtResource("4_84h4p")
@@ -320,4 +283,3 @@ pitch_scale = 1.4
 [connection signal="pressed" from="Panel/ContiueTouch" to="." method="_on_continue_game_pressed"]
 [connection signal="pressed" from="Panel/RestartTouch" to="." method="_on_restart_pressed"]
 [connection signal="pressed" from="Panel/HomeTouch" to="." method="_on_home_pressed"]
-[connection signal="pressed" from="Panel/Credits2" to="." method="_on_credits_pressed"]

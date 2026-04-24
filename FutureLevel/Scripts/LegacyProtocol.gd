@@ -6,6 +6,7 @@ extends Node2D
 func _ready():
 	Global.legacy = self
 	Engine.time_scale = 1.0
+	GameManager.start_legacy_protocol_run()
 
 func complete_level():
 	# Call stop() on the timer and get the formatted time

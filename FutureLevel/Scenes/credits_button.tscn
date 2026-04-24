@@ -1,0 +1,37 @@
+[gd_scene load_steps=4 format=3 uid="uid://cu5h5dme02d7x"]
+
+[ext_resource type="Texture2D" uid="uid://csxc60w3pc2ua" path="res://assets/buttonsprites/BlankButton.png" id="1_jdtsu"]
+[ext_resource type="Texture2D" uid="uid://b4517vw2nyikq" path="res://assets/buttonsprites/blankButtonpress.png" id="2_io6cx"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_os3di"]
+radius = 102.29
+
+[node name="Credits2" type="TouchScreenButton"]
+rotation = -0.0130763
+scale = Vector2(0.667132, 0.650282)
+skew = 0.028962
+texture_normal = ExtResource("1_jdtsu")
+texture_pressed = ExtResource("2_io6cx")
+shape = SubResource("CircleShape2D_os3di")
+shape_visible = false
+
+[node name="Credits2" type="Label" parent="."]
+anchors_preset = -1
+anchor_left = 0.274
+anchor_top = 0.347
+anchor_right = 0.707
+anchor_bottom = 0.664183
+offset_left = 8.11032
+offset_top = 0.701599
+offset_right = 12.6104
+offset_bottom = -10.89
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_shadow_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 8
+theme_override_font_sizes/font_size = 38
+text = "Credits"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true

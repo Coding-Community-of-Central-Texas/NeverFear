@@ -114,6 +114,7 @@ func apply_power_up():
 			%Buffs.emit_health_up()
 		PowerUpType.LIVES:
 			Global.lives += power_up_value
+			GameManager.check_lives_achievement()
 			%Buffs.emit_lives_up()
 
 func _on_audio_stream_player_2d_finished() -> void:

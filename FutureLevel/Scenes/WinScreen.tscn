@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://cr16l7y5x5fys"]
+[gd_scene load_steps=11 format=3 uid="uid://cr16l7y5x5fys"]
 
 [ext_resource type="Texture2D" uid="uid://bcypd57pmrt63" path="res://assets/Background/Hero.svg" id="1_ykjtl"]
 [ext_resource type="Script" uid="uid://dx6yg8arw0ugk" path="res://Scripts/WinScreen.gd" id="2_1sl55"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://d2aqtjhpuq1w2" path="res://assets/buttonsprites/HomeButton.png" id="5_auqbb"]
 [ext_resource type="AudioStream" uid="uid://dbnystp0y1gke" path="res://assets/FutrueSFX/PickUp.wav" id="5_els2m"]
 [ext_resource type="Texture2D" uid="uid://c5hopxqu5fvrh" path="res://assets/buttonsprites/PressedHome.png" id="6_c6q05"]
+[ext_resource type="PackedScene" uid="uid://cu5h5dme02d7x" path="res://Scenes/credits_button.tscn" id="8_mbyi4"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_77plb"]
 size = Vector2(350, 150)
@@ -137,6 +138,10 @@ stream = ExtResource("5_els2m")
 volume_db = 2.1
 pitch_scale = 1.4
 
+[node name="Credits2" parent="." instance=ExtResource("8_mbyi4")]
+position = Vector2(809, 824)
+
 [connection signal="pressed" from="Win/CanvasLayer/Restart2" to="." method="_on_restart_pressed"]
 [connection signal="pressed" from="Win/CanvasLayer/StatsLink" to="." method="_on_stats_link_pressed"]
 [connection signal="pressed" from="Win/CanvasLayer/StatsLink" to="Win" method="_on_stats_link_pressed"]
+[connection signal="pressed" from="Credits2" to="." method="_on_credits_2_pressed"]

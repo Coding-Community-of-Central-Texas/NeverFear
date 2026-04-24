@@ -30,12 +30,6 @@ func _on_home_pressed() -> void:
 	Global.reset_game_state()
 	get_tree().change_scene_to_file("res://Scenes/HubWorld.tscn")
 
-func _on_credits_pressed() -> void:
-	get_tree().paused = false
-	%AudioStreamPlayer2D.play()
-	await get_tree().create_timer(0.2).timeout  # Wait for 0.1 seconds
-	get_tree().change_scene_to_file("res://Scenes/Credits.tscn")
-
 func _on_sfx_toggled(toggled_on: bool) -> void:
 	if sfx.toggled:
 		sfx.toggled_on = true

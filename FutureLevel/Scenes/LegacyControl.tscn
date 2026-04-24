@@ -5,8 +5,10 @@
 [node name="LegacyControl" type="CanvasLayer"]
 
 [node name="Virtual Joystick" parent="." instance=ExtResource("1_as08j")]
-offset_left = 25.0
-offset_right = 325.0
+offset_left = 11.0
+offset_top = -310.0
+offset_right = 311.0
+offset_bottom = -10.0
 joystick_mode = 1
 visibility_mode = 1
 action_left = "move_left"

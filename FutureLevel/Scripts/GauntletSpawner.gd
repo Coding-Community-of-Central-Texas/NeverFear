@@ -25,6 +25,8 @@ extends Marker2D
 	preload("res://Scenes/OneHitGuantlet.tscn"),
 ]
 
+@export var spawn_spread: float = 16.0
+
 var spawn_markers: Array[Marker2D] = []
 var current_rank: int = 0
 
@@ -33,7 +35,11 @@ func _ready() -> void:
 		marker_1, marker_2, marker_3, marker_4, marker_5, marker_6, marker_7,
 		marker_8, marker_9, marker_10, marker_11, marker_12, marker_13, marker_14
 	]
+
+	randomize()
+
 	if timer.is_stopped():
+		timer.wait_time = spawn_intervals[clamp(current_rank, 0, spawn_intervals.size() - 1)]
 		timer.start()
 
 func _on_timer_timeout() -> void:
@@ -46,21 +52,38 @@ func spawn_wave() -> void:
 	var rank_index: int = clamp(current_rank, 0, max_enemies_per_wave.size() - 1)
 	var enemy_count: int = max_enemies_per_wave[rank_index]
 
+	# Use a shuffled copy so markers are spread out first before reusing any.
+	var available_markers: Array[Marker2D] = spawn_markers.duplicate()
+	available_markers.shuffle()
+
 	for i in range(enemy_count):
-		# Ensure typed values; avoid Variant inference.
 		var enemy_scene: PackedScene = enemy_scenes[randi() % enemy_scenes.size()]
 		var enemy: Node2D = enemy_scene.instantiate() as Node2D
 
-		# Parent first, then place using global coords.
+		if enemy == null:
+			continue
+
+		var spawn_marker: Marker2D
+
+		if i < available_markers.size():
+			spawn_marker = available_markers[i]
+		else:
+			spawn_marker = spawn_markers[randi() % spawn_markers.size()]
+
+		var spawn_offset := Vector2(
+			randf_range(-spawn_spread, spawn_spread),
+			randf_range(-spawn_spread, spawn_spread)
+		)
+
+		var spawn_pos: Vector2 = spawn_marker.global_position + spawn_offset
+
 		get_tree().current_scene.add_child(enemy)
+		enemy.global_position = spawn_pos
 
-		var spawn_marker: Marker2D = spawn_markers[randi() % spawn_markers.size()]
-		enemy.global_position = spawn_marker.global_position
-
-		# Reset motion safely to prevent pooling drift.
 		if enemy is CharacterBody2D:
-			(enemy as CharacterBody2D).velocity = Vector2.ZERO
+			var body := enemy as CharacterBody2D
+			body.velocity = Vector2.ZERO
 
 func _on_survivor_rank_changed(rank_index: int) -> void:
 	current_rank = clamp(rank_index, 0, spawn_intervals.size() - 1)
-	timer.wait_time = float(spawn_intervals[current_rank])
+	timer.wait_time = spawn_intervals[current_rank]

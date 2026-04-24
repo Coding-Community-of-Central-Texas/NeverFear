@@ -9,23 +9,6 @@ var checkpoint_position: Vector2 = Vector2(353.993, -306.008)
 var hub_world_position: Vector2 = Vector2(144.501, -387.5)
 var returning_from_game: bool = false  # Flag to track return state
 
-const ACHIEVEMENTS = {
-	"SharpShooter": "CgkI_v7o0NMNEAIQAg",
-	"Jump": "CgkI_v7o0NMNEAIQAw",
-	"DoubleJumpII": "CgkI_v7o0NMNEAIQBA",
-	"CompleteLegacyStage1": "CgkI_v7o0NMNEAIQBQ",
-	"NoDeaths": "CgkI_v7o0NMNEAIQBg",
-	"CatLover3": "CgkI_v7o0NMNEAIQBw",
-	"STACKSONSTACKS": "CgkI_v7o0NMNEAIQCA",
-	"PrettyQuickFella": "CgkI_v7o0NMNEAIQCQ",
-	"WHOAThatsFastMyGuy": "CgkI_v7o0NMNEAIQCg",
-	"ZZOOOMMBreakingTheSoundBarrierAndTheLawsOfPhysicsNeverLookedSoGood": "CgkI_v7o0NMNEAIQCw",
-	"25Eliminations": "CgkI_v7o0NMNEAIQDA",
-	"HypercoreUndertaker": "CgkI_v7o0NMNEAIQDQ",
-	"MYSTRENGTHISGROWING": "CgkI_v7o0NMNEAIQDg",
-	"THISISTOGOFURTHERBEYOND": "CgkI_v7o0NMNEAIQDw"
-}
-
 
 # Call this function when entering the Hub World
 func enter_hub_world():
