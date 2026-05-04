@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://7a3snnup0bk0" path="res://assets/buttonsprites/Gleaming Green Jump Button Icon - Pressed.png" id="2_asjsy"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_2lid4"]
-radius = 258.43
+radius = 798.87
 
 [node name="JumpButtonControl" type="Control"]
 layout_mode = 3
@@ -24,7 +24,6 @@ scale = Vector2(0.11549995, 0.09650002)
 texture_normal = ExtResource("1_18tym")
 texture_pressed = ExtResource("2_asjsy")
 shape = SubResource("CircleShape2D_2lid4")
-shape_visible = false
 passby_press = true
 action = "jump"
 visibility_mode = 1

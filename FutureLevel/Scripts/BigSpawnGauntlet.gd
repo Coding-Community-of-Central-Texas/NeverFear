@@ -11,13 +11,29 @@ enum CharacterType {
 @onready var big_timer: Timer = $BigTimer
 @onready var queue_free_timer: Timer = $QueueFreeTimer
 
+var spawning_enabled: bool = false
+
 func _ready() -> void:
-	big_timer.start()
+	add_to_group("gauntlet_spawner")
+	big_timer.stop()
 
 func _on_timer_timeout() -> void:
 	spawn_wave()
 
+func start_wave(_wave_number: int) -> void:
+	spawning_enabled = true
+	big_timer.stop()
+	spawn_wave()
+	big_timer.start()
+
+func stop_spawning() -> void:
+	spawning_enabled = false
+	big_timer.stop()
+
 func spawn_wave():
+	if not spawning_enabled:
+		return
+
 	# Randomly select the characters to spawn
 	var spawn_list = [
 		get_random_character(CharacterType.ROBBIE, CharacterType.TANK)

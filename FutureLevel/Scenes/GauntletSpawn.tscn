@@ -8,7 +8,6 @@ script = ExtResource("1_lofiq")
 [node name="Timer" type="Timer" parent="."]
 process_callback = 0
 wait_time = 2.0
-autostart = true
 
 [node name="Marker1" type="Marker2D" parent="."]
 position = Vector2(345, 6)
