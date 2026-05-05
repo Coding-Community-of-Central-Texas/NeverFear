@@ -204,16 +204,16 @@ theme_override_constants/shadow_offset_y = 3
 theme_override_constants/outline_size = 13
 theme_override_constants/shadow_outline_size = 12
 theme_override_font_sizes/font_size = 25
-text = "\"NeverFear\" Developed and designed by Stephen H. and the open-Source Coding Community of Central Texas. 
+text = "\"neverfear\" developed and designed by stephen h. and the open-source coding community of central texas. 
 www.osccct.org
 
-\"i must thank God that i can live in a time that i am able to follow my passions and in a place like this.  i am truely greatful to all the online gameing community for the endless amount of resources and knowlege that made this possible and to everyone that contributed to this project thank you! please enjoy!\" 
--Stephen H.
+\"i must thank god that i can live in a time that i am able to follow my passions and in a place like this.  i am truly grateful to all the online gaming community for the endless amount of resources and knowledge that made this possible and to everyone that contributed to this project thank you! please enjoy!\" 
+-stephen h.
  
-Music: DavidKBD, Charlie T.
-Art: Craftpix.net, BDDragon, itch.io, openart.ai
-SoundSFX:  Luis zuno, uppbeat.io
-Licences: mit and Creative Commons zero
+music: davidkbd, charlie t.
+art: craftpix.net, bddragon, itch.io, openart.ai
+soundsfx:  luis zuno, uppbeat.io
+licences: mit and creative commons zero
 "
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -247,7 +247,7 @@ theme_override_constants/shadow_offset_y = 2
 theme_override_constants/outline_size = 5
 theme_override_constants/shadow_outline_size = 3
 theme_override_font_sizes/font_size = 50
-text = "Credits"
+text = "credits"
 horizontal_alignment = 1
 vertical_alignment = 1
 metadata/_edit_use_anchors_ = true

@@ -49,7 +49,7 @@ func update_performance_page():
 	completion: %s\" % GameManager.quickest_time
 	%LongestTimeSurvived.text = \"best gauntlet 
 	survival: %s\" % GameManager.longest_survival
-	%OverallCash.text = \"BANK:  %s\" % GameManager.total_cash
+	%OverallCash.text = \"bank:  %s\" % GameManager.total_cash
 
 func _on_home_button_pressed() -> void:
 	%AudioStreamPlayer2D.play()
@@ -616,7 +616,7 @@ theme_override_constants/shadow_offset_x = -6
 theme_override_constants/shadow_offset_y = 4
 theme_override_constants/outline_size = 3
 theme_override_font_sizes/font_size = 30
-text = "quickest LEGACY 
+text = "quickest legacy 
 dash:"
 vertical_alignment = 1
 autowrap_mode = 3
@@ -798,7 +798,7 @@ body_size_limit = 1495
 layer = 2
 
 [node name="PopupPanel" type="PopupPanel" parent="MenuLayer"]
-title = "join THE Elite LEADerboards"
+title = "join the elite leaderboards"
 initial_position = 1
 size = Vector2i(685, 228)
 transient_to_focused = true
@@ -875,7 +875,7 @@ theme_override_colors/font_outline_color = Color(0.219608, 0.25098, 0.658824, 1)
 theme_override_constants/outline_size = 5
 theme_override_constants/shadow_outline_size = 35
 theme_override_font_sizes/font_size = 41
-text = "uPLoAD"
+text = "upload"
 
 [node name="Sprite2D" type="Sprite2D" parent="MenuLayer/PopupPanel"]
 position = Vector2(600, 156.7)

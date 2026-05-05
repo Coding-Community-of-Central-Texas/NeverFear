@@ -630,7 +630,7 @@ theme_override_constants/shadow_offset_x = -3
 theme_override_constants/shadow_offset_y = 3
 theme_override_constants/outline_size = 7
 theme_override_font_sizes/font_size = 50
-text = "MISSION FAILED!"
+text = "mission failed!"
 metadata/_edit_use_anchors_ = true
 
 [node name="Fail" type="Label" parent="CanvasLayer/ColorRect"]
@@ -657,7 +657,7 @@ theme_override_constants/shadow_offset_x = -3
 theme_override_constants/shadow_offset_y = 3
 theme_override_constants/outline_size = 7
 theme_override_font_sizes/font_size = 50
-text = "                      FAILED!"
+text = "                      failed!"
 
 [node name="Restart" type="TouchScreenButton" parent="CanvasLayer/ColorRect"]
 modulate = Color(1, 1, 1, 0)

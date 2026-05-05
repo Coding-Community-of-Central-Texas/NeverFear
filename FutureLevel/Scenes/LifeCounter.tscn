@@ -7,5 +7,5 @@ offset_right = 70.0
 offset_bottom = 23.0
 scale = Vector2(1.52, 1.48)
 size_flags_horizontal = 0
-text = "LIVES"
+text = "lives"
 script = ExtResource("1_5wshh")

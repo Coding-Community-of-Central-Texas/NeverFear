@@ -781,7 +781,7 @@ theme_override_colors/font_color = Color(0.613989, 0.0261515, 0.0145188, 1)
 theme_override_colors/font_outline_color = Color(0.99558, 0.99558, 0.99558, 1)
 theme_override_constants/outline_size = 9
 theme_override_font_sizes/font_size = 50
-text = "Kills:"
+text = "kills:"
 script = ExtResource("92_o11a1")
 
 [node name="Overkill" type="Sprite2D" parent="CanvasLayer/Kills"]

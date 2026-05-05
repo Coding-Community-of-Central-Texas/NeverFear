@@ -1,6 +1,7 @@
 extends Node
 
 signal cash
+signal game_cash_changed(current_cash: int)
 signal kill
 signal scene_kill_updated(kills: int)
 signal player_jumped()
@@ -158,13 +159,24 @@ func reset_scene_kills() -> void:
 	# Reset scene-specific kill counter
 	current_kills = 0
 	game_cash = 0
+	emit_signal("game_cash_changed", game_cash)
 
 func add_cash(amount: int):
 	game_cash += amount
 	total_cash += amount
+	emit_signal("game_cash_changed", game_cash)
 	if total_cash >= 696969 and not stacks_on_stacks_unlocked:
 		playgames.unlock_achievement(ACHIEVEMENT_STACKS_ON_STACKS)
 		stacks_on_stacks_unlocked = true
+
+func spend_game_cash(amount: int) -> bool:
+	if amount <= 0:
+		return true
+	if game_cash < amount:
+		return false
+	game_cash -= amount
+	emit_signal("game_cash_changed", game_cash)
+	return true
 
 # Update the quickest time
 func update_quickest_time(time: String):

@@ -2405,7 +2405,7 @@ scale = Vector2(1.08, 0.879999)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 5
 theme_override_font_sizes/font_size = 35
-text = "Lives:"
+text = "lives:"
 metadata/_edit_use_anchors_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="Buttons/LifeCounter"]
