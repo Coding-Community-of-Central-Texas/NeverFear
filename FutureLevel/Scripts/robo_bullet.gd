@@ -11,7 +11,7 @@ func _ready():
 
 func _physics_process(delta):
 	const RANGE = 678.0
-	const SPEED = 220.0
+	const SPEED = 180.0
 	
 	var displacement = velocity * delta
 	position += displacement
@@ -24,7 +24,7 @@ func _physics_process(delta):
 	if travelled_distance > RANGE:
 		queue_free()
 
-func _on_body_entered(body: CharacterBody2D) -> void:
+func _on_body_entered(body) -> void:
 	if body.is_in_group("player") and body.has_method("take_damage"):
 		body.take_damage(10)
 		queue_free()

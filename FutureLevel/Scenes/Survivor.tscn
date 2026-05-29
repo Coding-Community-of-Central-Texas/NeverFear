@@ -1,4 +1,4 @@
-[gd_scene load_steps=53 format=3 uid="uid://bsltfx5uw5yvq"]
+[gd_scene format=3 uid="uid://bsltfx5uw5yvq"]
 
 [ext_resource type="Script" uid="uid://cpg5jnf7mf6go" path="res://Scripts/SurvivorScript.gd" id="1_dqedt"]
 [ext_resource type="Texture2D" uid="uid://050tdjf5b57n" path="res://assets/3 Cyborg/Cyborg_death.png" id="2_cknjt"]
@@ -425,7 +425,7 @@ animations = [{
 "speed": 20.0
 }]
 
-[node name="Survivor" type="CharacterBody2D" groups=["player"]]
+[node name="Survivor" type="CharacterBody2D" unique_id=84687298 groups=["player"]]
 disable_mode = 2
 collision_layer = 137
 collision_mask = 33
@@ -434,17 +434,15 @@ floor_constant_speed = true
 safe_margin = 0.02
 script = ExtResource("1_dqedt")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=395516377]
 sprite_frames = SubResource("SpriteFrames_38a1o")
 animation = &"idle"
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="AnimatedSprite2D"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="AnimatedSprite2D" unique_id=1344520617]
 unique_name_in_owner = true
-libraries = {
-&"": SubResource("AnimationLibrary_2oiib")
-}
+libraries/ = SubResource("AnimationLibrary_2oiib")
 
-[node name="Shadow" type="Sprite2D" parent="AnimatedSprite2D"]
+[node name="Shadow" type="Sprite2D" parent="AnimatedSprite2D" unique_id=1315356959]
 modulate = Color(0.0901961, 0.0901961, 0.0901961, 0.556863)
 self_modulate = Color(0.909804, 0.909804, 0.909804, 1)
 show_behind_parent = true
@@ -452,17 +450,17 @@ position = Vector2(-10, 34)
 scale = Vector2(0.174045, 0.25881)
 texture = ExtResource("10_e0fqp")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1105735676]
 position = Vector2(-5, 8)
 shape = SubResource("RectangleShape2D_0pc6t")
 debug_color = Color(0.320333, 0.62, 0, 0)
 
-[node name="Gun" parent="." instance=ExtResource("7_3segn")]
+[node name="Gun" parent="." unique_id=283951019 instance=ExtResource("7_3segn")]
 show_behind_parent = true
 position = Vector2(-4, 3)
 rate_of_fire = 0.2
 
-[node name="HealthBar" parent="." instance=ExtResource("6_pjeyg")]
+[node name="HealthBar" parent="." unique_id=730106075 instance=ExtResource("6_pjeyg")]
 unique_name_in_owner = true
 z_index = 2
 offset_left = -21.0
@@ -475,83 +473,83 @@ value = 500.0
 rounded = true
 metadata/_edit_use_anchors_ = true
 
-[node name="Health" type="Sprite2D" parent="HealthBar"]
+[node name="Health" type="Sprite2D" parent="HealthBar" unique_id=1178720390]
 position = Vector2(-5, 1.5)
 scale = Vector2(0.3, 0.3)
 texture = ExtResource("9_bjhe2")
 
-[node name="Camera2D" type="Camera2D" parent="."]
+[node name="Camera2D" type="Camera2D" parent="." unique_id=2020151665]
 zoom = Vector2(1.15, 1.15)
 script = ExtResource("10_opkhv")
 portrait_zoom = Vector2(1.15, 1.2)
 
-[node name="HurtBox" type="Area2D" parent="."]
+[node name="HurtBox" type="Area2D" parent="." unique_id=1977030382]
 unique_name_in_owner = true
 collision_layer = 4
 collision_mask = 4
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox" unique_id=1725130346]
 position = Vector2(-5.33333, 8.66667)
 shape = SubResource("CircleShape2D_630u5")
 debug_color = Color(1, 0.0166667, 0, 0)
 
-[node name="Timer2" type="Timer" parent="."]
+[node name="Timer2" type="Timer" parent="." unique_id=90363119]
 process_callback = 0
 wait_time = 0.999
 one_shot = true
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=567740065]
 stream = ExtResource("8_x70f2")
 pitch_scale = 0.54
 
-[node name="SpawnTimer" type="Timer" parent="."]
+[node name="SpawnTimer" type="Timer" parent="." unique_id=588795827]
 wait_time = 200.964
 autostart = true
 
-[node name="GauntletSpawn" parent="." instance=ExtResource("11_dc7s1")]
+[node name="GauntletSpawn" parent="." unique_id=1812981480 instance=ExtResource("11_dc7s1")]
 position = Vector2(4, 6)
 
-[node name="GauntletBigSpawn" parent="." instance=ExtResource("12_kcvup")]
+[node name="GauntletBigSpawn" parent="." unique_id=297335833 instance=ExtResource("12_kcvup")]
 position = Vector2(0.500015, -391.5)
 rotation = -1.63224
 
-[node name="GauntletBigSpawn3" parent="." instance=ExtResource("12_kcvup")]
+[node name="GauntletBigSpawn3" parent="." unique_id=2109498095 instance=ExtResource("12_kcvup")]
 position = Vector2(61, 354)
 rotation = 1.28784
 
-[node name="GauntletBigSpawn4" parent="." instance=ExtResource("12_kcvup")]
+[node name="GauntletBigSpawn4" parent="." unique_id=1244445519 instance=ExtResource("12_kcvup")]
 position = Vector2(-405, -198)
 rotation = -0.0085988
 
-[node name="GauntletBigSpawn5" parent="." instance=ExtResource("12_kcvup")]
+[node name="GauntletBigSpawn5" parent="." unique_id=1197242003 instance=ExtResource("12_kcvup")]
 position = Vector2(403, -39)
 rotation = -0.0085988
 
-[node name="Rank1" type="Sprite2D" parent="."]
+[node name="Rank1" type="Sprite2D" parent="." unique_id=1709174807]
 visible = false
 position = Vector2(-7, -24.5)
 scale = Vector2(0.640625, 0.71875)
 texture = ExtResource("13_s40jq")
 
-[node name="Rank2" type="Sprite2D" parent="."]
+[node name="Rank2" type="Sprite2D" parent="." unique_id=1642406356]
 visible = false
 position = Vector2(-7, -27)
 scale = Vector2(0.632813, 0.679688)
 texture = ExtResource("14_hs66e")
 
-[node name="Rank3" type="Sprite2D" parent="."]
+[node name="Rank3" type="Sprite2D" parent="." unique_id=1066325637]
 visible = false
 position = Vector2(-7, -29.5)
 scale = Vector2(0.65625, 0.734375)
 texture = ExtResource("15_8rmoa")
 
-[node name="Rank4" type="Sprite2D" parent="."]
+[node name="Rank4" type="Sprite2D" parent="." unique_id=72751765]
 visible = false
 position = Vector2(-7, -29.5)
 scale = Vector2(0.648438, 0.710938)
 texture = ExtResource("16_lm2s2")
 
-[node name="SuperSayain4" type="AnimatedSprite2D" parent="Rank4"]
+[node name="SuperSayain4" type="AnimatedSprite2D" parent="Rank4" unique_id=1313879189]
 unique_name_in_owner = true
 self_modulate = Color(1, 1, 1, 0.535)
 show_behind_parent = true
@@ -560,24 +558,26 @@ scale = Vector2(0.686134, 0.677086)
 sprite_frames = SubResource("SpriteFrames_l1v2x")
 animation = &"partfour"
 autoplay = "partfour"
-frame_progress = 0.63671
+frame_progress = 0.4493388
 offset = Vector2(0, 7.6)
 
-[node name="Rank5" type="Sprite2D" parent="."]
-visible = false
+[node name="Rank5" type="Sprite2D" parent="." unique_id=1177646289]
 z_index = 1
 position = Vector2(-6.5, -31.5)
 scale = Vector2(0.6875, 0.71875)
 texture = ExtResource("17_8c2if")
 
-[node name="SuperSayain" type="AnimatedSprite2D" parent="Rank5"]
+[node name="SuperSayain5" type="AnimatedSprite2D" parent="Rank5" unique_id=2133789928]
 unique_name_in_owner = true
-z_index = -2
-position = Vector2(-5.09091, 32.6957)
-scale = Vector2(1.13405, 0.965704)
+self_modulate = Color(1, 1, 1, 0.535)
+show_behind_parent = true
+position = Vector2(-4.363638, 31.304302)
+scale = Vector2(0.64714956, 0.66972685)
 sprite_frames = SubResource("SpriteFrames_l1v2x")
-autoplay = "default"
-frame_progress = 0.857799
+animation = &"partfour"
+autoplay = "partfour"
+frame_progress = 0.9025853
+offset = Vector2(0, 7.6)
 
 [connection signal="rank_changed" from="." to="GauntletSpawn" method="_on_survivor_rank_changed"]
 [connection signal="rank_changed" from="." to="GauntletBigSpawn" method="_on_survivor_rank_changed"]

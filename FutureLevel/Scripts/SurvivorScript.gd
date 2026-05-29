@@ -24,11 +24,20 @@ const DEADZONE: float = 0.15  # small pad for sticks/float rounding
 @onready var rank_5: Sprite2D = $Rank5
 @onready var gun: Area2D = $Gun
 
+const SECOND_GUN_SCENE := preload("res://Scenes/Gun.tscn")
+const ORBITING_PLASMA_BALL_SCENE := preload("res://Scenes/OrbitingPlasmaBall.tscn")
+const PRIMARY_GUN_LEFT_POSITION := Vector2(4, 3)
+const PRIMARY_GUN_RIGHT_POSITION := Vector2(-4, 3)
+const SECOND_GUN_LEFT_POSITION := Vector2(4, 5)
+const SECOND_GUN_RIGHT_POSITION := Vector2(-4, 5)
+const PLASMA_BALL_START_ANGLES := [-PI * 0.5, PI * 0.5, PI, 0.0]
 const ACHIEVEMENT_MY_STRENGTH_IS_GROWING = "CgkI_v7o0NMNEAIQDg"
 const ACHIEVEMENT_FURTHER_BEYOND = "CgkI_v7o0NMNEAIQDw"
 
 var rank_3_achievement_sent := false
 var rank_4_achievement_sent = false
+var second_gun: Area2D = null
+var orbiting_plasma_balls: Array[Area2D] = []
 
 # Animation setup
 @onready var animation_player: AnimationPlayer = %AnimationPlayer
@@ -93,10 +102,85 @@ func _die():
 	timer_2.start()
 
 func update_shooting_rate():
-	if gun.has_method("stop_shooting"):
-		gun.call("stop_shooting")
-	if gun.has_method("_physics_process(_delta: float)"):
-		gun.call("_physics_process(_delta: float)")
+	for equipped_gun in _get_equipped_guns():
+		if equipped_gun.has_method("stop_shooting"):
+			equipped_gun.call("stop_shooting")
+
+func equip_second_gun() -> bool:
+	if has_second_gun():
+		return false
+
+	var new_gun := SECOND_GUN_SCENE.instantiate() as Area2D
+	if new_gun == null:
+		return false
+
+	new_gun.name = "Gun2"
+	new_gun.visible = true
+	new_gun.show_behind_parent = gun.show_behind_parent
+	new_gun.z_index = 1
+	new_gun.collision_mask = gun.collision_mask
+	new_gun.set("rate_of_fire", gun.get("rate_of_fire"))
+	add_child(new_gun)
+
+	second_gun = new_gun
+	_position_equipped_guns()
+	update_shooting_rate()
+	return true
+
+func has_second_gun() -> bool:
+	return second_gun != null and is_instance_valid(second_gun)
+
+func equip_orbiting_plasma_ball() -> bool:
+	var current_tier := get_orbiting_plasma_ball_count()
+	if current_tier >= PLASMA_BALL_START_ANGLES.size():
+		return false
+
+	var new_plasma_ball := ORBITING_PLASMA_BALL_SCENE.instantiate() as Area2D
+	if new_plasma_ball == null:
+		return false
+
+	new_plasma_ball.name = "OrbitingPlasmaBall%d" % (current_tier + 1)
+	new_plasma_ball.z_index = 3
+	if new_plasma_ball.has_method("set_orbit_angle"):
+		new_plasma_ball.call("set_orbit_angle", float(PLASMA_BALL_START_ANGLES[current_tier]))
+	add_child(new_plasma_ball)
+
+	orbiting_plasma_balls.append(new_plasma_ball)
+	_sync_orbiting_plasma_balls()
+	return true
+
+func has_orbiting_plasma_ball() -> bool:
+	return get_orbiting_plasma_ball_count() > 0
+
+func can_equip_orbiting_plasma_ball() -> bool:
+	return get_orbiting_plasma_ball_count() < PLASMA_BALL_START_ANGLES.size()
+
+func get_orbiting_plasma_ball_count() -> int:
+	return _get_valid_orbiting_plasma_balls().size()
+
+func _get_valid_orbiting_plasma_balls() -> Array[Area2D]:
+	var valid_plasma_balls: Array[Area2D] = []
+	for plasma_ball in orbiting_plasma_balls:
+		if plasma_ball != null and is_instance_valid(plasma_ball):
+			valid_plasma_balls.append(plasma_ball)
+
+	orbiting_plasma_balls = valid_plasma_balls
+	return orbiting_plasma_balls
+
+func _sync_orbiting_plasma_balls() -> void:
+	var valid_plasma_balls := _get_valid_orbiting_plasma_balls()
+	for index in range(valid_plasma_balls.size()):
+		var plasma_ball := valid_plasma_balls[index]
+		if plasma_ball.has_method("set_orbit_angle"):
+			plasma_ball.call("set_orbit_angle", float(PLASMA_BALL_START_ANGLES[index]))
+
+func _get_equipped_guns() -> Array[Area2D]:
+	var equipped_guns: Array[Area2D] = []
+	if gun != null and is_instance_valid(gun):
+		equipped_guns.append(gun)
+	if has_second_gun():
+		equipped_guns.append(second_gun)
+	return equipped_guns
 
 func rank_up():
 	for i in range(rank_thresholds.size()):
@@ -139,7 +223,8 @@ func _update_rank_display(rank_index: int) -> void:
 	if rank_index >= fire_rates.size():
 		rank_index = fire_rates.size() - 1
 
-	gun.rate_of_fire = fire_rates[rank_index]
+	for equipped_gun in _get_equipped_guns():
+		equipped_gun.set("rate_of_fire", fire_rates[rank_index])
 	update_shooting_rate()
 
 	rank_1.visible = rank_index == 0
@@ -202,16 +287,26 @@ func handle_player_animation() -> void:
 func flip_sprite() -> void:
 	if velocity.x < -3:
 		animated_sprite_2d.flip_h = true
-		gun.position = Vector2(4, 3)
+		_position_equipped_guns()
 		shadow.position = Vector2(5, 34)
 		%SuperSayain.position = Vector2(19.6, 36.8)
 		%SuperSayain4.position = Vector2(19.2, 33.7)
 	elif velocity.x > 3:
-		gun.position = Vector2(-4, 3)
 		animated_sprite_2d.flip_h = false
+		_position_equipped_guns()
 		shadow.position = Vector2(-9.5, 34)
 		%SuperSayain.position = Vector2(-5.0, 32.6)
 		%SuperSayain4.position = Vector2(-3.8, 28.8)
+
+func _position_equipped_guns() -> void:
+	if animated_sprite_2d.flip_h:
+		gun.position = PRIMARY_GUN_LEFT_POSITION
+		if has_second_gun():
+			second_gun.position = SECOND_GUN_LEFT_POSITION
+	else:
+		gun.position = PRIMARY_GUN_RIGHT_POSITION
+		if has_second_gun():
+			second_gun.position = SECOND_GUN_RIGHT_POSITION
 
 func _on_timer_2_timeout() -> void:
 	_show_game_over_ad()

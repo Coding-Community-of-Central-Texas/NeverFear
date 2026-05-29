@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://dsglj5geja4i"]
+[gd_scene format=3 uid="uid://dsglj5geja4i"]
 
 [ext_resource type="Script" uid="uid://bc3pvelfdulhi" path="res://Scripts/EnemyBullet.gd" id="1_8gd20"]
 [ext_resource type="Texture2D" uid="uid://c7hfyqlfijc8q" path="res://assets/Guns&Bullets/ATGM.png" id="2_jb6or"]
@@ -111,19 +111,19 @@ animations = [{
 "speed": 15.0
 }]
 
-[node name="TankBullet" type="Area2D"]
+[node name="TankBullet" type="Area2D" unique_id=919926155]
 collision_layer = 8
 collision_mask = 8
 script = ExtResource("1_8gd20")
 
-[node name="Missile" type="Sprite2D" parent="."]
+[node name="Missile" type="Sprite2D" parent="." unique_id=1761422739]
 position = Vector2(18, 0)
 scale = Vector2(0.0658882, 0.0886369)
 texture = ExtResource("2_jb6or")
 region_enabled = true
 region_rect = Rect2(653, 482, 614, 116)
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Missile"]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Missile" unique_id=1866469407]
 unique_name_in_owner = true
 position = Vector2(-379.431, -2.68983e-06)
 rotation = -3.14159
@@ -133,7 +133,7 @@ animation = &"shoot"
 autoplay = "shoot"
 frame_progress = 0.394824
 
-[node name="CPUParticles2D" type="CPUParticles2D" parent="Missile"]
+[node name="CPUParticles2D" type="CPUParticles2D" parent="Missile" unique_id=1573345913]
 show_behind_parent = true
 position = Vector2(101.035, 10.8337)
 rotation = 0.0236997
@@ -156,14 +156,14 @@ scale_amount_curve = SubResource("Curve_ylm13")
 color = Color(1, 1, 1, 0.615686)
 color_ramp = SubResource("Gradient_xi4jx")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1595982343]
 position = Vector2(37, -2.84217e-14)
 rotation = -0.00273338
 scale = Vector2(2.93355, 0.823488)
 shape = SubResource("CircleShape2D_x6wp8")
 debug_color = Color(0, 0.595, 0.7, 0)
 
-[node name="Explosion" type="AnimatedSprite2D" parent="."]
+[node name="Explosion" type="AnimatedSprite2D" parent="." unique_id=390443778]
 unique_name_in_owner = true
 position = Vector2(25, -0.999999)
 scale = Vector2(3.84256, 2.97505)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://7rfkwwydbnmb"]
+[gd_scene format=3 uid="uid://7rfkwwydbnmb"]
 
 [ext_resource type="Texture2D" uid="uid://dnw7akb1ljmh2" path="res://assets/Enemies/GolfBot/Attack.png" id="1_s1u1l"]
 [ext_resource type="Script" uid="uid://bsacrfvsnybns" path="res://Scripts/Tank.gd" id="1_xawmx"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://jggg7oeuaspo" path="res://assets/Enemies/GolfBot/Hurt.png" id="3_bqlyk"]
 [ext_resource type="Texture2D" uid="uid://dxl2oauxmr4ak" path="res://assets/Enemies/GolfBot/Walk.png" id="4_3qwlk"]
 [ext_resource type="Texture2D" uid="uid://b2alp73hqohbg" path="res://assets/Guns&Bullets/impact two.png" id="6_iy7qo"]
+[ext_resource type="Texture2D" uid="uid://bao4kpslhsnx3" path="res://assets/Enemies/MissileTank/Walk.png" id="6_nf4gg"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qalvl"]
 atlas = ExtResource("1_s1u1l")
@@ -62,6 +63,30 @@ region = Rect2(96, 0, 48, 48)
 [sub_resource type="AtlasTexture" id="AtlasTexture_0r3yr"]
 atlas = ExtResource("4_3qwlk")
 region = Rect2(144, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kvoy7"]
+atlas = ExtResource("6_nf4gg")
+region = Rect2(0, 0, 72, 72)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_abwyb"]
+atlas = ExtResource("6_nf4gg")
+region = Rect2(72, 0, 72, 72)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d3564"]
+atlas = ExtResource("6_nf4gg")
+region = Rect2(144, 0, 72, 72)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lmn0b"]
+atlas = ExtResource("6_nf4gg")
+region = Rect2(216, 0, 72, 72)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u4g1s"]
+atlas = ExtResource("6_nf4gg")
+region = Rect2(288, 0, 72, 72)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fd0hd"]
+atlas = ExtResource("6_nf4gg")
+region = Rect2(360, 0, 72, 72)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_otiv8"]
 animations = [{
@@ -122,6 +147,24 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_0r3yr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kvoy7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_abwyb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d3564")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lmn0b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u4g1s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fd0hd")
 }],
 "loop": false,
 "name": &"move",
@@ -333,34 +376,33 @@ _data = {
 }
 point_count = 11
 
-[node name="Tank" type="Node2D"]
+[node name="Tank" type="Node2D" unique_id=1807423771]
 position = Vector2(16, -9)
 script = ExtResource("1_xawmx")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=829633390]
 position = Vector2(-28.6462, 10.8517)
 scale = Vector2(4.99125, 4.48083)
 sprite_frames = SubResource("SpriteFrames_otiv8")
 animation = &"hurt"
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="AnimatedSprite2D"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="AnimatedSprite2D" unique_id=1604700298]
 unique_name_in_owner = true
-libraries = {
-&"": SubResource("AnimationLibrary_j5120")
-}
+libraries/ = SubResource("AnimationLibrary_j5120")
 
-[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="."]
+[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="." unique_id=133131145]
 position = Vector2(-28.2887, 7.84533)
 scale = Vector2(-0.876412, 0.776952)
 sprite_frames = SubResource("SpriteFrames_y5egs")
 animation = &"impact"
-frame = 7
-frame_progress = 1.0
+autoplay = "impact"
+frame = 6
+frame_progress = 0.35884055
 
-[node name="Path2D" type="Path2D" parent="."]
+[node name="Path2D" type="Path2D" parent="." unique_id=1936359345]
 curve = SubResource("Curve2D_bykuh")
 
-[node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D" unique_id=429076011]
 unique_name_in_owner = true
 position = Vector2(-28.19975, 12.638759)
 rotation = 1.4584574

@@ -4,6 +4,9 @@ signal add_cash
 
 var GRAVITY = 200
 var MAX_FALL_SPEED = 250.0# Maximum falling speed
+@export var magnet_radius: float = 220.0
+@export var magnet_min_speed: float = 180.0
+@export var magnet_max_speed: float = 820.0
 
 @onready var collision_shape_2d: CollisionShape2D = $CollisionShape2D
 @onready var ground_ray_cast_2d: RayCast2D = $GroundRayCast2D
@@ -12,7 +15,9 @@ var MAX_FALL_SPEED = 250.0# Maximum falling speed
 
 var pickup_song: AudioStream = preload("res://assets/FutrueSFX/PickUp.wav")
 var velocity = Vector2.ZERO
-var buffs = global_position
+var is_collected := false
+var is_magnetized := false
+var has_randomized_power_up := false
 
 enum PowerUpType {
 	CASH,
@@ -21,18 +26,21 @@ enum PowerUpType {
 	LIVES
 }
 
-var power_up_type: PowerUpType
-var power_up_value: float 
+var power_up_type: PowerUpType = PowerUpType.CASH
+var power_up_value: float = 0.0
 
-func _on_ready(): 
+func _ready() -> void:
 	%CashSpin.play("spin")
 	ground_ray_cast_2d.enabled = true
 	audio_stream_player_2d.stream = pickup_song
-	animation_player.play("moveUpnDown")
-	buffs.position = %Buffs.global_position
-	randomize_power_up()
+	animation_player.play("heart")
+	if not has_randomized_power_up:
+		randomize_power_up()
+	_apply_power_up_visuals()
 
-func randomize_power_up():
+func randomize_power_up() -> void:
+	has_randomized_power_up = true
+	power_up_value = 0.0
 	# Define weighted probabilities for each power-up type
 	var weights = {
 		PowerUpType.CASH: 80,
@@ -55,30 +63,27 @@ func randomize_power_up():
 	# Randomize the power-up value based on its type
 	match power_up_type:
 		PowerUpType.CASH:
-			%CashSpin.visible = true
-			%Star.visible = false
-			%Health.visible = false
-			%Heart.visible = false
+			pass
 		PowerUpType.SPEED:
 			power_up_value = randi_range(15, 40)
-			%Star.visible = true
-			%Health.visible = false
-			%Heart.visible = false
-			%CashSpin.visible = false
 		PowerUpType.HEALTH:
 			power_up_value = randi_range(10, 60)  
-			%Health.visible = true
-			%Star.visible = false
-			%Heart.visible = false
-			%CashSpin.visible = false
 		PowerUpType.LIVES:
 			power_up_value = randi_range(1, 2)   
-			%Heart.visible = true 
-			%Star.visible = false
-			%Health.visible = false
-			%CashSpin.visible = false
+	if is_node_ready():
+		_apply_power_up_visuals()
+
+func _apply_power_up_visuals() -> void:
+	%CashSpin.visible = power_up_type == PowerUpType.CASH
+	%Star.visible = power_up_type == PowerUpType.SPEED
+	%Health.visible = power_up_type == PowerUpType.HEALTH
+	%Heart.visible = power_up_type == PowerUpType.LIVES
 
 func _physics_process(delta: float):
+	if is_collected:
+		return
+	if _apply_magnet_pull(delta):
+		return
 	if get_tree().current_scene.is_in_group("Legacy"):
 		if !ground_ray_cast_2d.is_colliding():
 			velocity.y += GRAVITY * delta
@@ -86,11 +91,33 @@ func _physics_process(delta: float):
 			position += velocity * delta
 		else:
 			velocity.y = 0  # Stop falling when the ray detects the ground
-	else:
-		pass
+
+func _apply_magnet_pull(delta: float) -> bool:
+	var player := _get_player()
+	if player == null or magnet_radius <= 0.0:
+		return false
+
+	var distance_to_player := global_position.distance_to(player.global_position)
+	if not is_magnetized and distance_to_player > magnet_radius:
+		return false
+	is_magnetized = true
+
+	var pull_percent: float = 1.0 - clampf(distance_to_player / magnet_radius, 0.0, 1.0)
+	var pull_speed: float = lerpf(magnet_min_speed, magnet_max_speed, pull_percent)
+	global_position = global_position.move_toward(player.global_position, pull_speed * delta)
+	return true
+
+func _get_player() -> Node2D:
+	if Global.player is Node2D and is_instance_valid(Global.player):
+		return Global.player
+	return null
 
 func _on_body_entered(body):
+	if is_collected:
+		return
 	if body.is_in_group("player"):
+		is_collected = true
+		collision_shape_2d.set_deferred("disabled", true)
 		if audio_stream_player_2d.stream != null:
 			audio_stream_player_2d.play()
 		visible = false

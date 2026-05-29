@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://d2nfpi7sbxqk0"]
+
+[ext_resource type="Script" path="res://Scripts/OrbitingPlasmaBall.gd" id="1_orbit_script"]
+[ext_resource type="PackedScene" uid="uid://in7hy5se4c4r" path="res://Scenes/plasmaball.tscn" id="2_plasma_visual"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_plasma_hit"]
+radius = 18.0
+
+[node name="OrbitingPlasmaBall" type="Area2D"]
+collision_layer = 0
+collision_mask = 4
+script = ExtResource("1_orbit_script")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_plasma_hit")
+debug_color = Color(0.2, 0.75, 1, 0.22)
+
+[node name="Plasmaball" parent="." instance=ExtResource("2_plasma_visual")]
+scale = Vector2(2.2, 2.2)
