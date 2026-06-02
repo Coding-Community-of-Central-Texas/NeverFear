@@ -14,16 +14,6 @@ var direction : Vector2 = Vector2.ZERO
 @export var acceleration: float = 4000.0
 @export var deceleration: float = 7000.0
 
-# AdMob interstitial test ad unit
-#const TEST_INTERSTITIAL_ANDROID := "ca-app-pub-3940256099942544/1033173712"
-# Replace later with your real interstitial unit:
-const REAL_INTERSTITIAL_ANDROID := "ca-app-pub-9308215462399709/5241273291"
-
-var interstitial_ad: InterstitialAd = null
-var interstitial_ad_load_callback := InterstitialAdLoadCallback.new()
-var full_screen_callback := FullScreenContentCallback.new()
-var game_over_ad_pending := false
-
 @onready var audio_stream_player_2d_2: AudioStreamPlayer2D = $AudioStreamPlayer2D2
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 @onready var collision_shape_2d: CollisionShape2D = $CollisionShape2D
@@ -68,61 +58,10 @@ func _ready() -> void:
 		if grenade_ability.has_signal("cooldown_ready"):
 			grenade_ability.connect("cooldown_ready", Callable(self, "_on_grenade_cd_ready"))
 
-	MobileAds.initialize()
-	_setup_interstitial_callbacks()
-
-	interstitial_ad_load_callback.on_ad_failed_to_load = _on_interstitial_ad_failed_to_load
-	interstitial_ad_load_callback.on_ad_loaded = _on_interstitial_ad_loaded
-
-	_load_interstitial()
-
-func _setup_interstitial_callbacks() -> void:
-	full_screen_callback.on_ad_dismissed_full_screen_content = func() -> void:
-		print("Interstitial dismissed")
-		_cleanup_interstitial()
-		_show_game_over_screen()
-		_load_interstitial()
-
-	full_screen_callback.on_ad_failed_to_show_full_screen_content = func(ad_error: AdError) -> void:
-		print("Failed to show interstitial: ", ad_error.message)
-		_cleanup_interstitial()
-		_show_game_over_screen()
-		_load_interstitial()
-
-	full_screen_callback.on_ad_showed_full_screen_content = func() -> void:
-		print("Interstitial showed")
-
-func _load_interstitial() -> void:
-	if interstitial_ad:
-		interstitial_ad.destroy()
-		interstitial_ad = null
-
-	InterstitialAdLoader.new().load(
-		REAL_INTERSTITIAL_ANDROID,
-		AdRequest.new(),
-		interstitial_ad_load_callback
-	)
-
-func _on_interstitial_ad_failed_to_load(ad_error: LoadAdError) -> void:
-	print("Interstitial failed to load: ", ad_error.message)
-
-func _on_interstitial_ad_loaded(ad: InterstitialAd) -> void:
-	print("Interstitial loaded")
-	interstitial_ad = ad
-	interstitial_ad.full_screen_content_callback = full_screen_callback
+	Ads.prepare_game_over_ad()
 
 func _show_game_over_ad() -> void:
-	if interstitial_ad != null:
-		game_over_ad_pending = true
-		interstitial_ad.show()
-	else:
-		print("No interstitial ready, opening game over normally")
-		_show_game_over_screen()
-
-func _cleanup_interstitial() -> void:
-	if interstitial_ad:
-		interstitial_ad.destroy()
-		interstitial_ad = null
+	Ads.show_game_over_interstitial(Callable(self, "_show_game_over_screen"))
 
 func take_damage(amount: int):
 	if is_dead:
@@ -289,7 +228,6 @@ func _on_timer_timeout() -> void:
 		_respawn()
 
 func _show_game_over_screen() -> void:
-	game_over_ad_pending = false
 	Engine.time_scale = 1.0
 
 	const GAMEOVER = preload("res://Scenes/GameOver.tscn") 

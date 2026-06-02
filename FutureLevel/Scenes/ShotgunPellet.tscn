@@ -1,0 +1,43 @@
+[gd_scene load_steps=5 format=3]
+
+[ext_resource type="Script" path="res://Scripts/ShotgunPellet.gd" id="1_pellet"]
+[ext_resource type="Texture2D" uid="uid://1imxhw66404d" path="res://assets/Guns&Bullets/01.png" id="2_plasma"]
+[ext_resource type="Texture2D" uid="uid://uko5x07l6fyc" path="res://assets/Guns&Bullets/lines_8.png" id="3_trail"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_pellet"]
+radius = 4.0
+
+[node name="ShotgunPellet" type="Area2D"]
+top_level = true
+collision_layer = 0
+collision_mask = 4
+script = ExtResource("1_pellet")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_pellet")
+
+[node name="plasma" type="Sprite2D" parent="."]
+self_modulate = Color(0.78, 0.46, 1, 1)
+position = Vector2(-0.5, 0)
+scale = Vector2(0.34, 0.34)
+texture = ExtResource("2_plasma")
+
+[node name="Trail" type="CPUParticles2D" parent="."]
+position = Vector2(6, 0)
+amount = 14
+texture = ExtResource("3_trail")
+lifetime = 0.42
+speed_scale = 1.5
+local_coords = true
+emission_shape = 1
+emission_sphere_radius = 2.0
+direction = Vector2(-1, 0)
+spread = 8.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 70.0
+initial_velocity_max = 120.0
+scale_amount_min = 0.0
+scale_amount_max = 0.42
+color = Color(0.62, 0.24, 1.8, 0.92)
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

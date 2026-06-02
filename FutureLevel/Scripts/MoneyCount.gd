@@ -5,4 +5,4 @@ extends Panel
 
 
 func _process(_delta: float) -> void:
-	%Money.text = " %06d" % GameManager.game_cash
+	%Money.text = " %s" % GameManager.format_cash(GameManager.game_cash)

@@ -25,11 +25,14 @@ const DEADZONE: float = 0.15  # small pad for sticks/float rounding
 @onready var gun: Area2D = $Gun
 
 const SECOND_GUN_SCENE := preload("res://Scenes/Gun.tscn")
+const LASER_SNIPER_SCENE := preload("res://Scenes/LaserSniper.tscn")
 const ORBITING_PLASMA_BALL_SCENE := preload("res://Scenes/OrbitingPlasmaBall.tscn")
 const PRIMARY_GUN_LEFT_POSITION := Vector2(4, 3)
 const PRIMARY_GUN_RIGHT_POSITION := Vector2(-4, 3)
 const SECOND_GUN_LEFT_POSITION := Vector2(4, 5)
 const SECOND_GUN_RIGHT_POSITION := Vector2(-4, 5)
+const LASER_SNIPER_LEFT_POSITION := Vector2(4, -3)
+const LASER_SNIPER_RIGHT_POSITION := Vector2(-4, -3)
 const PLASMA_BALL_START_ANGLES := [-PI * 0.5, PI * 0.5, PI, 0.0]
 const ACHIEVEMENT_MY_STRENGTH_IS_GROWING = "CgkI_v7o0NMNEAIQDg"
 const ACHIEVEMENT_FURTHER_BEYOND = "CgkI_v7o0NMNEAIQDw"
@@ -37,41 +40,33 @@ const ACHIEVEMENT_FURTHER_BEYOND = "CgkI_v7o0NMNEAIQDw"
 var rank_3_achievement_sent := false
 var rank_4_achievement_sent = false
 var second_gun: Area2D = null
+var laser_sniper: Area2D = null
 var orbiting_plasma_balls: Array[Area2D] = []
 
 # Animation setup
-@onready var animation_player: AnimationPlayer = %AnimationPlayer
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
+@onready var animation_player: AnimationPlayer = $AnimatedSprite2D/AnimationPlayer
 @onready var health_bar: ProgressBar = %HealthBar
 @onready var timer_2: Timer = $Timer2
 @onready var audio_stream_player: AudioStreamPlayer = $AudioStreamPlayer
 
+const SHOTGUN_SCENE := preload("res://Scenes/Shotgun.tscn")
 var is_dead: bool = false
 var current_kills: int = 0
 @export var rank_thresholds: Array = [50, 300, 400, 500, 600]
 @export var fire_rates: Array = [0.20, 0.15, 0.10, 0.08, 0.05]
-
-# Interstitial ad test unit
-#const TEST_INTERSTITIAL_ANDROID := "ca-app-pub-3940256099942544/1033173712"
-# Replace later with your real interstitial ad unit:
-const REAL_INTERSTITIAL_ANDROID := "ca-app-pub-9308215462399709/5241273291"
-
-var interstitial_ad: InterstitialAd = null
-var interstitial_ad_load_callback := InterstitialAdLoadCallback.new()
-var interstitial_full_screen_callback := FullScreenContentCallback.new()
+var shotgun: Area2D = null
+var shotgun_equipped := false
+var laser_sniper_equipped := false
 
 func _ready() -> void:
 	Global.player = self
+	shotgun = get_node_or_null("Shotgun") as Area2D
+	_set_shotgun_enabled(false)
 	GameManager.connect("scene_kill_updated", Callable(self, "_on_game_manager_scene_kill_updated"))
 	rank_changed.connect(Callable(self, "_on_rank_changed"))
 
-	MobileAds.initialize()
-	_setup_interstitial_callbacks()
-
-	interstitial_ad_load_callback.on_ad_failed_to_load = _on_interstitial_ad_failed_to_load
-	interstitial_ad_load_callback.on_ad_loaded = _on_interstitial_ad_loaded
-
-	_load_interstitial_game_over_ad()
+	Ads.prepare_game_over_ad()
 
 func take_damage(amount: int):
 	if is_dead:
@@ -105,6 +100,10 @@ func update_shooting_rate():
 	for equipped_gun in _get_equipped_guns():
 		if equipped_gun.has_method("stop_shooting"):
 			equipped_gun.call("stop_shooting")
+	if has_shotgun() and shotgun.has_method("stop_shooting"):
+		shotgun.call("stop_shooting")
+	if has_laser_sniper() and laser_sniper.has_method("stop_shooting"):
+		laser_sniper.call("stop_shooting")
 
 func equip_second_gun() -> bool:
 	if has_second_gun():
@@ -129,6 +128,72 @@ func equip_second_gun() -> bool:
 
 func has_second_gun() -> bool:
 	return second_gun != null and is_instance_valid(second_gun)
+
+func equip_shotgun() -> bool:
+	if has_shotgun():
+		return false
+
+	if shotgun == null or not is_instance_valid(shotgun):
+		shotgun = SHOTGUN_SCENE.instantiate() as Area2D
+		if shotgun == null:
+			return false
+
+		shotgun.name = "Shotgun"
+		shotgun.z_index = -1
+		add_child(shotgun)
+
+	shotgun_equipped = true
+	_set_shotgun_enabled(true)
+	_position_equipped_guns()
+	return true
+
+func has_shotgun() -> bool:
+	return shotgun_equipped and shotgun != null and is_instance_valid(shotgun)
+
+func _set_shotgun_enabled(is_enabled: bool) -> void:
+	if shotgun == null or not is_instance_valid(shotgun):
+		return
+
+	if not is_enabled and shotgun.has_method("stop_shooting"):
+		shotgun.call("stop_shooting")
+
+	shotgun.visible = is_enabled
+	shotgun.monitoring = is_enabled
+	shotgun.monitorable = is_enabled
+	shotgun.process_mode = Node.PROCESS_MODE_INHERIT if is_enabled else Node.PROCESS_MODE_DISABLED
+
+func equip_laser_sniper() -> bool:
+	if has_laser_sniper():
+		return false
+
+	if laser_sniper == null or not is_instance_valid(laser_sniper):
+		laser_sniper = LASER_SNIPER_SCENE.instantiate() as Area2D
+		if laser_sniper == null:
+			return false
+
+		laser_sniper.name = "LaserSniper"
+		laser_sniper.z_index = 2
+		add_child(laser_sniper)
+
+	laser_sniper_equipped = true
+	_set_laser_sniper_enabled(true)
+	_position_equipped_guns()
+	return true
+
+func has_laser_sniper() -> bool:
+	return laser_sniper_equipped and laser_sniper != null and is_instance_valid(laser_sniper)
+
+func _set_laser_sniper_enabled(is_enabled: bool) -> void:
+	if laser_sniper == null or not is_instance_valid(laser_sniper):
+		return
+
+	if not is_enabled and laser_sniper.has_method("stop_shooting"):
+		laser_sniper.call("stop_shooting")
+
+	laser_sniper.visible = is_enabled
+	laser_sniper.monitoring = is_enabled
+	laser_sniper.monitorable = is_enabled
+	laser_sniper.process_mode = Node.PROCESS_MODE_INHERIT if is_enabled else Node.PROCESS_MODE_DISABLED
 
 func equip_orbiting_plasma_ball() -> bool:
 	var current_tier := get_orbiting_plasma_ball_count()
@@ -278,24 +343,26 @@ func handle_collisions(delta: float):
 
 func handle_player_animation() -> void:
 	if velocity.length() > 0:
-		if animation_player.current_animation != "walk":
-			animation_player.play("walk")
+		_play_player_animation("walk")
 	else:
-		if animation_player.current_animation != "idle":
-			animation_player.play("idle")
+		_play_player_animation("idle")
+
+func _play_player_animation(animation_name: StringName) -> void:
+	if animation_player == null or not animation_player.has_animation(animation_name):
+		return
+	if animation_player.current_animation != animation_name:
+		animation_player.play(animation_name)
 
 func flip_sprite() -> void:
 	if velocity.x < -3:
 		animated_sprite_2d.flip_h = true
 		_position_equipped_guns()
 		shadow.position = Vector2(5, 34)
-		%SuperSayain.position = Vector2(19.6, 36.8)
 		%SuperSayain4.position = Vector2(19.2, 33.7)
 	elif velocity.x > 3:
 		animated_sprite_2d.flip_h = false
 		_position_equipped_guns()
 		shadow.position = Vector2(-9.5, 34)
-		%SuperSayain.position = Vector2(-5.0, 32.6)
 		%SuperSayain4.position = Vector2(-3.8, 28.8)
 
 func _position_equipped_guns() -> void:
@@ -303,10 +370,18 @@ func _position_equipped_guns() -> void:
 		gun.position = PRIMARY_GUN_LEFT_POSITION
 		if has_second_gun():
 			second_gun.position = SECOND_GUN_LEFT_POSITION
+		if has_shotgun():
+			shotgun.position = PRIMARY_GUN_LEFT_POSITION
+		if has_laser_sniper():
+			laser_sniper.position = LASER_SNIPER_LEFT_POSITION
 	else:
 		gun.position = PRIMARY_GUN_RIGHT_POSITION
 		if has_second_gun():
 			second_gun.position = SECOND_GUN_RIGHT_POSITION
+		if has_shotgun():
+			shotgun.position = PRIMARY_GUN_RIGHT_POSITION
+		if has_laser_sniper():
+			laser_sniper.position = LASER_SNIPER_RIGHT_POSITION
 
 func _on_timer_2_timeout() -> void:
 	_show_game_over_ad()
@@ -319,52 +394,7 @@ func _game_over():
 	add_child(new_gameover)
 
 func _show_game_over_ad() -> void:
-	if interstitial_ad != null:
-		interstitial_ad.show()
-	else:
-		print("No interstitial ad ready, opening game over")
-		_game_over()
-		_load_interstitial_game_over_ad()
-
-func _setup_interstitial_callbacks() -> void:
-	interstitial_full_screen_callback.on_ad_dismissed_full_screen_content = func() -> void:
-		print("Interstitial dismissed")
-		_cleanup_interstitial_ad()
-		_game_over()
-		_load_interstitial_game_over_ad()
-
-	interstitial_full_screen_callback.on_ad_failed_to_show_full_screen_content = func(ad_error: AdError) -> void:
-		print("Interstitial failed to show: ", ad_error.message)
-		_cleanup_interstitial_ad()
-		_game_over()
-		_load_interstitial_game_over_ad()
-
-	interstitial_full_screen_callback.on_ad_showed_full_screen_content = func() -> void:
-		print("Interstitial showed")
-
-func _load_interstitial_game_over_ad() -> void:
-	if interstitial_ad:
-		interstitial_ad.destroy()
-		interstitial_ad = null
-
-	InterstitialAdLoader.new().load(
-		REAL_INTERSTITIAL_ANDROID,
-		AdRequest.new(),
-		interstitial_ad_load_callback
-	)
-
-func _on_interstitial_ad_failed_to_load(ad_error: LoadAdError) -> void:
-	print("Interstitial ad failed to load: ", ad_error.message)
-
-func _on_interstitial_ad_loaded(ad: InterstitialAd) -> void:
-	print("Interstitial ad loaded")
-	interstitial_ad = ad
-	interstitial_ad.full_screen_content_callback = interstitial_full_screen_callback
-
-func _cleanup_interstitial_ad() -> void:
-	if interstitial_ad:
-		interstitial_ad.destroy()
-		interstitial_ad = null
+	Ads.show_game_over_interstitial(Callable(self, "_game_over"))
 
 func _on_spawn_timer_timeout() -> void:
 	const SPAWN = preload("res://Scenes/SpawnCircle.tscn")

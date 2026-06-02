@@ -43,7 +43,7 @@ func setup(current_wave: int, current_cash: int, item_states: Array[Dictionary])
 
 func refresh(current_cash: int, item_states: Array[Dictionary]) -> void:
 	_ensure_item_nodes()
-	cash_label.text = "cash %06d" % current_cash
+	cash_label.text = "cash %s" % GameManager.format_cash(current_cash)
 
 	for item_state in item_states:
 		var item_id := String(item_state.get("id", ""))
@@ -101,6 +101,24 @@ func _cache_item_nodes() -> void:
 			%SecondGunPurchaseButton,
 			%SecondGunActionLabel,
 			%SecondGunPurchaseTouch
+		),
+		"shotgun": _make_item_node_set(
+			%ShotgunShopRow,
+			%ShotgunTitle,
+			%ShotgunBadgeLabel,
+			%ShotgunDescription,
+			%ShotgunPurchaseButton,
+			%ShotgunActionLabel,
+			%ShotgunPurchaseTouch
+		),
+		"laser_sniper": _make_item_node_set(
+			%LaserSniperShopRow,
+			%LaserSniperTitle,
+			%LaserSniperBadgeLabel,
+			%LaserSniperDescription,
+			%LaserSniperPurchaseButton,
+			%LaserSniperActionLabel,
+			%LaserSniperPurchaseTouch
 		),
 		"plasma_ball": _make_item_node_set(
 			%LifeShopRow,

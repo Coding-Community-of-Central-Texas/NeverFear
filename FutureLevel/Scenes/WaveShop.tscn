@@ -8,6 +8,8 @@
 [ext_resource type="Texture2D" uid="uid://c8mqnh8i65mot" path="res://assets/Guns&Bullets/4_1.png" id="6_00wco"]
 [ext_resource type="Texture2D" uid="uid://iwcx0xwoe57s" path="res://assets/Guns&Bullets/Stylish 2D Digital Plasma Ball.png" id="7_ag5kn"]
 [ext_resource type="Texture2D" uid="uid://b6rvpg4t65ofh" path="res://assets/Guns&Bullets/bomb.png" id="7_hod5s"]
+[ext_resource type="Texture2D" uid="uid://cq3yy8e5v7fyw" path="res://assets/Guns&Bullets/Shotgun.png" id="8_shotgun"]
+[ext_resource type="Texture2D" uid="uid://bkwq8ai5sjx7n" path="res://assets/Guns&Bullets/LaserSniper.png" id="9_laser_sniper"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_shop_panel"]
 bg_color = Color(0.025, 0.075, 0.095, 0.95)
@@ -94,9 +96,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -390.0
-offset_top = -421.0
+offset_top = -470.0
 offset_right = 390.0
-offset_bottom = 421.0
+offset_bottom = 470.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
@@ -531,6 +533,248 @@ shape_visible = false
 passby_press = true
 
 [node name="SecondGunActionLabel" type="Label" parent="ShopRoot/ShopPanel/Margins/Content/ItemList/SecondGunShopRow/Margins/Row/SecondGunPurchaseButton" unique_id=87809410]
+unique_name_in_owner = true
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 16.0
+offset_top = 8.0
+offset_right = -16.0
+offset_bottom = -16.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.13333334, 0.32941177, 0.05882353, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/shadow_offset_x = -2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 3
+theme_override_font_sizes/font_size = 19
+text = "buy"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ShotgunShopRow" type="PanelContainer" parent="ShopRoot/ShopPanel/Margins/Content/ItemList" unique_id=369756167]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(704, 92)
+layout_mode = 2
+size_flags_horizontal = 4
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_item_row")
+
+[node name="Margins" type="MarginContainer" parent="ShopRoot/ShopPanel/Margins/Content/ItemList/ShotgunShopRow" unique_id=927454172]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 18
+theme_override_constants/margin_top = 9
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 9
+
+[node name="Row" type="HBoxContainer" parent="ShopRoot/ShopPanel/Margins/Content/ItemList/ShotgunShopRow/Margins" unique_id=1921277011]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 14
+alignment = 1
+
+[node name="Badge" type="PanelContainer" parent="ShopRoot/ShopPanel/Margins/Content/ItemList/ShotgunShopRow/Margins/Row" unique_id=190199200]
+custom_minimum_size = Vector2(58, 58)
+layout_mode = 2
+size_flags_vertical = 4
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_badge")
+
+[node name="ShotgunBadgeLabel" type="Label" parent="ShopRoot/ShopPanel/Margins/Content/ItemList/ShotgunShopRow/Margins/Row/Badge" unique_id=2129803702]
+unique_name_in_owner = true
+z_index = 1
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.82, 0.06, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = -2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 3
+theme_override_font_sizes/font_size = 16
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Sprite2D" type="Sprite2D" parent="ShopRoot/ShopPanel/Margins/Content/ItemList/ShotgunShopRow/Margins/Row/Badge" unique_id=297725724]
+position = Vector2(30, 32)
+rotation = 0.7734947
+scale = Vector2(1.45, 1.45)
+texture = ExtResource("8_shotgun")
+
+[node name="TextStack" type="VBoxContainer" parent="ShopRoot/ShopPanel/Margins/Content/ItemList/ShotgunShopRow/Margins/Row" unique_id=1520863680]
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+theme_override_constants/separation = 3
+
+[node name="ShotgunTitle" type="Label" parent="ShopRoot/ShopPanel/Margins/Content/ItemList/ShotgunShopRow/Margins/Row/TextStack" unique_id=1761070989]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.98039216, 0.8039216, 0.05882353, 0.7058824)
+theme_override_colors/font_shadow_color = Color(0, 0.58431375, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/shadow_offset_x = -2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 3
+theme_override_font_sizes/font_size = 24
+text = "shotgun"
+
+[node name="ShotgunDescription" type="Label" parent="ShopRoot/ShopPanel/Margins/Content/ItemList/ShotgunShopRow/Margins/Row/TextStack" unique_id=1019000934]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.78, 0.9, 0.96, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = -2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 2
+theme_override_font_sizes/font_size = 14
+text = "equip a close-range spread weapon"
+clip_text = true
+
+[node name="ShotgunPurchaseButton" type="Control" parent="ShopRoot/ShopPanel/Margins/Content/ItemList/ShotgunShopRow/Margins/Row" unique_id=1748026461]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(198, 74)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 4
+mouse_filter = 2
+
+[node name="ShotgunPurchaseTouch" type="TouchScreenButton" parent="ShopRoot/ShopPanel/Margins/Content/ItemList/ShotgunShopRow/Margins/Row/ShotgunPurchaseButton" unique_id=452438484]
+unique_name_in_owner = true
+position = Vector2(31.000004, 5.9999743)
+scale = Vector2(0.13220021, 0.23228359)
+texture_normal = ExtResource("2_purchase_normal")
+texture_pressed = ExtResource("3_purchase_pressed")
+shape = SubResource("RectangleShape2D_purchase")
+shape_visible = false
+passby_press = true
+
+[node name="ShotgunActionLabel" type="Label" parent="ShopRoot/ShopPanel/Margins/Content/ItemList/ShotgunShopRow/Margins/Row/ShotgunPurchaseButton" unique_id=1385184835]
+unique_name_in_owner = true
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 16.0
+offset_top = 8.0
+offset_right = -16.0
+offset_bottom = -16.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.13333334, 0.32941177, 0.05882353, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/shadow_offset_x = -2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 3
+theme_override_font_sizes/font_size = 19
+text = "buy"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="LaserSniperShopRow" type="PanelContainer" parent="ShopRoot/ShopPanel/Margins/Content/ItemList" unique_id=200995504]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(704, 92)
+layout_mode = 2
+size_flags_horizontal = 4
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_item_row")
+
+[node name="Margins" type="MarginContainer" parent="ShopRoot/ShopPanel/Margins/Content/ItemList/LaserSniperShopRow" unique_id=1890903491]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 18
+theme_override_constants/margin_top = 9
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 9
+
+[node name="Row" type="HBoxContainer" parent="ShopRoot/ShopPanel/Margins/Content/ItemList/LaserSniperShopRow/Margins" unique_id=1256384739]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 14
+alignment = 1
+
+[node name="Badge" type="PanelContainer" parent="ShopRoot/ShopPanel/Margins/Content/ItemList/LaserSniperShopRow/Margins/Row" unique_id=1992277900]
+custom_minimum_size = Vector2(58, 58)
+layout_mode = 2
+size_flags_vertical = 4
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_badge")
+
+[node name="LaserSniperBadgeLabel" type="Label" parent="ShopRoot/ShopPanel/Margins/Content/ItemList/LaserSniperShopRow/Margins/Row/Badge" unique_id=474805339]
+unique_name_in_owner = true
+z_index = 1
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.82, 0.06, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = -2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 3
+theme_override_font_sizes/font_size = 16
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Sprite2D" type="Sprite2D" parent="ShopRoot/ShopPanel/Margins/Content/ItemList/LaserSniperShopRow/Margins/Row/Badge" unique_id=640536191]
+position = Vector2(30, 32)
+rotation = 0.77831995
+scale = Vector2(1.5287697, 1.5333871)
+texture = ExtResource("9_laser_sniper")
+
+[node name="TextStack" type="VBoxContainer" parent="ShopRoot/ShopPanel/Margins/Content/ItemList/LaserSniperShopRow/Margins/Row" unique_id=380051323]
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+theme_override_constants/separation = 3
+
+[node name="LaserSniperTitle" type="Label" parent="ShopRoot/ShopPanel/Margins/Content/ItemList/LaserSniperShopRow/Margins/Row/TextStack" unique_id=1992875829]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.98039216, 0.8039216, 0.05882353, 0.7058824)
+theme_override_colors/font_shadow_color = Color(0, 0.58431375, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/shadow_offset_x = -2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 3
+theme_override_font_sizes/font_size = 24
+text = "laser sniper"
+
+[node name="LaserSniperDescription" type="Label" parent="ShopRoot/ShopPanel/Margins/Content/ItemList/LaserSniperShopRow/Margins/Row/TextStack" unique_id=1448921790]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.78, 0.9, 0.96, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = -2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 2
+theme_override_font_sizes/font_size = 14
+text = "long-range piercing laser blast"
+clip_text = true
+
+[node name="LaserSniperPurchaseButton" type="Control" parent="ShopRoot/ShopPanel/Margins/Content/ItemList/LaserSniperShopRow/Margins/Row" unique_id=3615249]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(198, 74)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 4
+mouse_filter = 2
+
+[node name="LaserSniperPurchaseTouch" type="TouchScreenButton" parent="ShopRoot/ShopPanel/Margins/Content/ItemList/LaserSniperShopRow/Margins/Row/LaserSniperPurchaseButton" unique_id=2002603450]
+unique_name_in_owner = true
+position = Vector2(31.000004, 5.9999743)
+scale = Vector2(0.13220021, 0.23228359)
+texture_normal = ExtResource("2_purchase_normal")
+texture_pressed = ExtResource("3_purchase_pressed")
+shape = SubResource("RectangleShape2D_purchase")
+shape_visible = false
+passby_press = true
+
+[node name="LaserSniperActionLabel" type="Label" parent="ShopRoot/ShopPanel/Margins/Content/ItemList/LaserSniperShopRow/Margins/Row/LaserSniperPurchaseButton" unique_id=28654146]
 unique_name_in_owner = true
 layout_mode = 0
 anchor_right = 1.0

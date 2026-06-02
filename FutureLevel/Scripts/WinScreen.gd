@@ -12,7 +12,7 @@ func _ready() -> void:
 func _process(_delta):
 	run_time.text = "run time: %s" % Global.legacy.level_time()
 	enimies_killed.text = "bots vaporized: %d" % GameManager.current_kills
-	cash_collected.text = "cash collected:  %s" % GameManager.game_cash
+	cash_collected.text = "cash collected:  %s" % GameManager.format_cash(GameManager.game_cash)
 
 func _on_stats_link_pressed() -> void:
 	audio_stream_player_2d.play()

@@ -112,11 +112,16 @@ func _is_point_inside_joystick_area(point: Vector2) -> bool:
 func _get_base_radius() -> Vector2:
 	return _base.size * _base.get_global_transform_with_canvas().get_scale() / 2
 
+func _get_base_scale() -> Vector2:
+	var scale: Vector2 = _base.get_global_transform_with_canvas().get_scale()
+	return Vector2(max(absf(scale.x), 0.001), max(absf(scale.y), 0.001))
+
 func _is_point_inside_base(point: Vector2) -> bool:
 	var _base_radius = _get_base_radius()
 	var center: Vector2 = _base.global_position + _base_radius
-	var vector: Vector2 = point - center
-	if vector.length_squared() <= _base_radius.x * _base_radius.x:
+	var vector: Vector2 = (point - center) / _get_base_scale()
+	var radius := minf(_base.size.x, _base.size.y) / 2.0
+	if vector.length_squared() <= radius * radius:
 		return true
 	else:
 		return false
@@ -124,24 +129,22 @@ func _is_point_inside_base(point: Vector2) -> bool:
 func _update_joystick(touch_position: Vector2) -> void:
 	var _base_radius: Vector2 = _get_base_radius()
 	var center: Vector2 = _base.global_position + _base_radius
-	var vector: Vector2 = touch_position - center
+	var base_scale: Vector2 = _get_base_scale()
+	# Keep input strength axis-neutral when mobile stretch scales X and Y differently.
+	var raw_vector: Vector2 = (touch_position - center) / base_scale
+	var vector: Vector2 = raw_vector.limit_length(clampzone_size)
+	var screen_vector: Vector2 = vector * base_scale
 
-	# Scale-aware clamp/deadzone
-	var base_scale: Vector2 = _base.get_global_transform_with_canvas().get_scale()
-	var s: float = float(base_scale.x)
-	var clamp_scaled: float = clampzone_size * s
-	var dead_scaled: float = deadzone_size * s
+	if joystick_mode == Joystick_mode.FOLLOWING and raw_vector.length() > clampzone_size:
+		_move_base(touch_position - screen_vector)
+		center = _base.global_position + _get_base_radius()
 
-	vector = vector.limit_length(clamp_scaled)
+	_move_tip(center + screen_vector)
 
-	if joystick_mode == Joystick_mode.FOLLOWING and touch_position.distance_to(center) > clamp_scaled:
-		_move_base(touch_position - vector)
-
-	_move_tip(center + vector)
-
-	if vector.length_squared() > dead_scaled * dead_scaled:
+	if vector.length_squared() > deadzone_size * deadzone_size:
 		is_pressed = true
-		output = (vector - (vector.normalized() * dead_scaled)) / (clamp_scaled - dead_scaled)
+		var usable_range := maxf(clampzone_size - deadzone_size, 0.001)
+		output = (vector - (vector.normalized() * deadzone_size)) / usable_range
 	else:
 		is_pressed = false
 		output = Vector2.ZERO

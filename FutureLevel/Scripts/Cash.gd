@@ -2,6 +2,9 @@ extends Area2D
 
 signal add_cash
 
+const DEFAULT_CASH_PICKUP_MIN := 1000
+const DEFAULT_CASH_PICKUP_MAX := 10000
+
 var GRAVITY = 200
 var MAX_FALL_SPEED = 250.0# Maximum falling speed
 @export var magnet_radius: float = 220.0
@@ -148,7 +151,14 @@ func _on_audio_stream_player_2d_finished() -> void:
 	queue_free()
 
 func _on_add_cash() -> void:
-	GameManager.add_cash(randi_range(1000, 10000))
+	GameManager.add_cash(_get_cash_pickup_amount())
+
+func _get_cash_pickup_amount() -> int:
+	var current_scene := get_tree().current_scene
+	if current_scene != null and current_scene.has_method("get_cash_pickup_amount"):
+		return int(current_scene.call("get_cash_pickup_amount"))
+
+	return randi_range(DEFAULT_CASH_PICKUP_MIN, DEFAULT_CASH_PICKUP_MAX)
 
 func _on_queue_timer_timeout() -> void:
 	queue_free()

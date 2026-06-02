@@ -9,8 +9,6 @@ signal player_double_jumped()
 signal life_collected()
 
 
-var http_request = "res://Scenes/HTTPRequest.tscn"
-
 const ACHIEVEMENT_SHARP_SHOOTER = "CgkI_v7o0NMNEAIQAg"
 const ACHIEVEMENT_JUMP = "CgkI_v7o0NMNEAIQAw"
 const ACHIEVEMENT_DOUBLE_JUMP_II = "CgkI_v7o0NMNEAIQBA"
@@ -28,6 +26,12 @@ const ACHIEVEMENT_FURTHER_BEYOND = "CgkI_v7o0NMNEAIQDw"
 const LEADERBOARD_LEGACY_PROTOCOL_BEST_TIME = "CgkI_v7o0NMNEAIQFA"
 const LEGACY_PROTOCOL_3_MIN_MS := 180000
 const LEGACY_PROTOCOL_2_5_MIN_MS := 150000
+const CASH_DENOMINATIONS := [
+	{"value": 1000000000000, "suffix": "T"},
+	{"value": 1000000000, "suffix": "B"},
+	{"value": 1000000, "suffix": "M"},
+	{"value": 1000, "suffix": "K"}
+]
 
 # Stats
 var total_kills: int = 0
@@ -37,8 +41,6 @@ var total_cash: int = 0
 var current_level_time: String = "" 
 var current_kills: int = 0
 var game_cash: int = 0 
-var api_key: String 
-var player_name: String
 # File path for save data
 const SAVE_PATH = "user://stat_data.json"
 var deaths_in_legacy_protocol: int = 0
@@ -58,10 +60,6 @@ var pretty_quick_fella_unlocked := false
 var rank_3_achievement_sent := false
 var whoa_fast_guy_unlocked := false
 
-
-# API Endpoint URL
-const API_URL: String = "https://neverfearendpoint-469126233982.us-south1.run.app"
-var API_KEY: String
 
 func _init():
 	# Connect signals to handlers
@@ -166,7 +164,8 @@ func add_cash(amount: int):
 	total_cash += amount
 	emit_signal("game_cash_changed", game_cash)
 	if total_cash >= 696969 and not stacks_on_stacks_unlocked:
-		playgames.unlock_achievement(ACHIEVEMENT_STACKS_ON_STACKS)
+		if playgames.is_available() and playgames.is_signed_in():
+			playgames.unlock_achievement(ACHIEVEMENT_STACKS_ON_STACKS)
 		stacks_on_stacks_unlocked = true
 
 func spend_game_cash(amount: int) -> bool:
@@ -177,6 +176,36 @@ func spend_game_cash(amount: int) -> bool:
 	game_cash -= amount
 	emit_signal("game_cash_changed", game_cash)
 	return true
+
+func format_cash(amount: int) -> String:
+	var sign := ""
+	var value: int = abs(amount)
+	if amount < 0:
+		sign = "-"
+
+	for denomination in CASH_DENOMINATIONS:
+		var denomination_value := int(denomination["value"])
+		if value < denomination_value:
+			continue
+
+		var scaled_value := float(value) / float(denomination_value)
+		var formatted_value := ""
+		if scaled_value >= 100.0:
+			formatted_value = "%d" % int(round(scaled_value))
+		elif scaled_value >= 10.0:
+			formatted_value = "%.1f" % scaled_value
+		else:
+			formatted_value = "%.2f" % scaled_value
+
+		if formatted_value.contains("."):
+			while formatted_value.ends_with("0"):
+				formatted_value = formatted_value.substr(0, formatted_value.length() - 1)
+			if formatted_value.ends_with("."):
+				formatted_value = formatted_value.substr(0, formatted_value.length() - 1)
+
+		return "%s%s%s" % [sign, formatted_value, String(denomination["suffix"])]
+
+	return "%s%d" % [sign, value]
 
 # Update the quickest time
 func update_quickest_time(time: String):

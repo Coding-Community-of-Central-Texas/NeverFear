@@ -7,6 +7,8 @@ var knockback_strength = 100.0
 var knockback_duration = 0.1
 var knockback_timer = 0.01  # Keeps track of the knockback time
 var knockback_velocity = Vector2.ZERO  # Stores knockback velocity
+var is_dying = false
+var death_explosion_delay = 0.18
 
 @onready var robbie: Node2D = %Tank
 @onready var damage_numbers_origin: Node2D = $DamageNumberOrigin
@@ -42,7 +44,12 @@ func take_damage(damage):
 		_die()
 
 func _die():
+	if is_dying:
+		return
+	is_dying = true
 	emit_signal("kill")
+	await get_tree().create_timer(death_explosion_delay).timeout
+
 	const BOOM = preload("res://Scenes/RobbieBoom.tscn")
 	var new_Boom = BOOM.instantiate()
 	new_Boom.global_position = global_position

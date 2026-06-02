@@ -30,6 +30,10 @@ func _physics_process(_delta):
 
 # Function to handle shooting
 func shoot():
+	var tank = get_parent().get_node_or_null("%Tank")
+	if tank and tank.has_method("play_attack"):
+		tank.play_attack()
+
 	const BULLET = preload("res://Scenes/TankBullet.tscn")
 	var new_bullet = BULLET.instantiate()
 	

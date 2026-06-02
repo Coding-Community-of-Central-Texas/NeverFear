@@ -6,24 +6,26 @@ const COUNTDOWN_VISIBLE_SECONDS: float = 10.0
 const AUTO_GRENADE_THROW_FORCE: float = 760.0
 const AUTO_GRENADE_SPAWN_OFFSET: float = 28.0
 const AUTO_GRENADE_SEQUENCE_DELAY: float = 0.35
+const CASH_PICKUP_MIN := 40000
+const CASH_PICKUP_MAX := 90000
 const AUTO_GRENADE_SCENE := preload("res://Scenes/granade.tscn")
 const WAVE_SHOP_SCENE := preload("res://Scenes/WaveShop.tscn")
 const AUTO_GRENADE_TIERS := [
 	{
 		"description": "nearest enemy every 9 sec",
-		"cost": 20000,
+		"cost": 2000000,
 		"cooldown": 9.0,
 		"grenades": 1
 	},
 	{
 		"description": "nearest enemy every 6 sec",
-		"cost": 30000,
+		"cost": 3000000,
 		"cooldown": 6.0,
 		"grenades": 1
 	},
 	{
 		"description": "two staggered grenades every 3 sec",
-		"cost": 45000,
+		"cost": 4500000,
 		"cooldown": 3.0,
 		"grenades": 2
 	}
@@ -31,19 +33,19 @@ const AUTO_GRENADE_TIERS := [
 const PLASMA_BALL_TIERS := [
 	{
 		"description": "top plasma ball (-Y start)",
-		"cost": 22000
+		"cost": 2200000
 	},
 	{
 		"description": "bottom plasma ball (+Y start)",
-		"cost": 22000
+		"cost": 2200000
 	},
 	{
 		"description": "left plasma ball (-X start)",
-		"cost": 22000
+		"cost": 2200000
 	},
 	{
 		"description": "right plasma ball (+X start)",
-		"cost": 22000
+		"cost": 2200000
 	}
 ]
 const SHOP_ITEMS := [
@@ -51,35 +53,49 @@ const SHOP_ITEMS := [
 		"id": "repair",
 		"title": "repair kit",
 		"description": "+175 health",
-		"cost": 6000,
+		"cost": 600000,
 		"badge": "+"
 	},
 	{
 		"id": "overclock",
 		"title": "overclock boots",
 		"description": "+40 move speed",
-		"cost": 8000,
+		"cost": 800000,
 		"badge": ">>"
 	},
 	{
 		"id": "second_gun",
 		"title": "second gun",
 		"description": "equip an extra rifle",
-		"cost": 30000,
+		"cost": 3000000,
 		"badge": "2x"
+	},
+	{
+		"id": "shotgun",
+		"title": "shotgun",
+		"description": "equip a close-range spread weapon",
+		"cost": 2800000,
+		"badge": "SG"
+	},
+	{
+		"id": "laser_sniper",
+		"title": "laser sniper",
+		"description": "long-range piercing laser blast",
+		"cost": 3600000,
+		"badge": "LS"
 	},
 	{
 		"id": "plasma_ball",
 		"title": "plasma orbit",
 		"description": "add synced orbiting plasma balls",
-		"cost": 22000,
+		"cost": 2200000,
 		"badge": "P"
 	},
 	{
 		"id": "auto_grenade",
 		"title": "grenade rig",
 		"description": "nearest enemy every 9 sec",
-		"cost": 20000,
+		"cost": 2000000,
 		"badge": "G"
 	}
 ]
@@ -247,7 +263,7 @@ func _get_shop_item_state(item: Dictionary) -> Dictionary:
 	var has_effect := _shop_item_has_effect(item_id)
 	var can_afford := GameManager.game_cash >= cost
 	var action_state := "buy"
-	var action_text := "buy\n%d" % cost
+	var action_text := "buy\n%s" % GameManager.format_cash(cost)
 	var plasma_ball_tier := 0
 	if item_id == "plasma_ball":
 		plasma_ball_tier = _get_plasma_ball_tier()
@@ -257,14 +273,14 @@ func _get_shop_item_state(item: Dictionary) -> Dictionary:
 		action_text = "max"
 	elif item_id == "auto_grenade" and auto_grenade_tier > 0:
 		action_state = "upgrade"
-		action_text = "upgrade\n%d" % cost
+		action_text = "upgrade\n%s" % GameManager.format_cash(cost)
 	elif item_id == "plasma_ball" and plasma_ball_tier >= PLASMA_BALL_TIERS.size():
 		action_state = "max"
 		action_text = "max"
 	elif item_id == "plasma_ball" and plasma_ball_tier > 0:
 		action_state = "upgrade"
-		action_text = "upgrade\n%d" % cost
-	elif item_id == "second_gun" and not has_effect:
+		action_text = "upgrade\n%s" % GameManager.format_cash(cost)
+	elif item_id in ["second_gun", "shotgun", "laser_sniper"] and not has_effect:
 		action_state = "equipped"
 		action_text = "equipped"
 	elif not has_effect:
@@ -299,14 +315,14 @@ func _on_shop_purchase_requested(item_id: String) -> void:
 	var cost := _get_shop_item_cost(item)
 
 	if not _shop_item_has_effect(item_id):
-		if item_id == "second_gun":
+		if item_id in ["second_gun", "shotgun", "laser_sniper"]:
 			shop_layer.set_feedback("%s already equipped" % item_title, WaveShop.FEEDBACK_WARNING)
 		else:
 			shop_layer.set_feedback("%s already maxed" % item_title, WaveShop.FEEDBACK_WARNING)
 		return
 
 	if not GameManager.spend_game_cash(cost):
-		shop_layer.set_feedback("need more cash for %s" % item_title, WaveShop.FEEDBACK_ERROR)
+		shop_layer.set_feedback("need %s for %s" % [GameManager.format_cash(cost), item_title], WaveShop.FEEDBACK_ERROR)
 		return
 
 	_apply_shop_item(item_id)
@@ -322,6 +338,10 @@ func _apply_shop_item(item_id: String) -> void:
 			Global.player.SPEED += 40.0
 		"second_gun":
 			_buy_second_gun()
+		"shotgun":
+			_buy_shotgun()
+		"laser_sniper":
+			_buy_laser_sniper()
 		"plasma_ball":
 			_buy_orbiting_plasma_ball()
 		"auto_grenade":
@@ -338,6 +358,10 @@ func _shop_item_has_effect(item_id: String) -> bool:
 			return true
 		"second_gun":
 			return Global.player.has_method("has_second_gun") and not Global.player.call("has_second_gun")
+		"shotgun":
+			return Global.player.has_method("has_shotgun") and not Global.player.call("has_shotgun")
+		"laser_sniper":
+			return Global.player.has_method("has_laser_sniper") and not Global.player.call("has_laser_sniper")
 		"plasma_ball":
 			return _get_plasma_ball_tier() < PLASMA_BALL_TIERS.size()
 		"auto_grenade":
@@ -379,6 +403,14 @@ func _get_shop_item_description(item: Dictionary) -> String:
 		if Global.player.has_method("has_second_gun") and Global.player.call("has_second_gun"):
 			return "extra rifle equipped"
 
+	if String(item["id"]) == "shotgun" and Global.player != null and is_instance_valid(Global.player):
+		if Global.player.has_method("has_shotgun") and Global.player.call("has_shotgun"):
+			return "shotgun equipped"
+
+	if String(item["id"]) == "laser_sniper" and Global.player != null and is_instance_valid(Global.player):
+		if Global.player.has_method("has_laser_sniper") and Global.player.call("has_laser_sniper"):
+			return "laser sniper equipped"
+
 	return String(item["description"])
 
 func _refresh_shop_cash() -> void:
@@ -388,6 +420,9 @@ func _refresh_shop_cash() -> void:
 func _on_game_cash_changed(_current_cash: int) -> void:
 	if shop_layer and is_instance_valid(shop_layer):
 		_refresh_shop_cash()
+
+func get_cash_pickup_amount() -> int:
+	return randi_range(CASH_PICKUP_MIN, CASH_PICKUP_MAX)
 
 func _upgrade_auto_grenade() -> void:
 	if auto_grenade_tier >= AUTO_GRENADE_TIERS.size():
@@ -405,6 +440,18 @@ func _buy_second_gun() -> void:
 		return
 	if Global.player.has_method("equip_second_gun"):
 		Global.player.call("equip_second_gun")
+
+func _buy_shotgun() -> void:
+	if Global.player == null or not is_instance_valid(Global.player):
+		return
+	if Global.player.has_method("equip_shotgun"):
+		Global.player.call("equip_shotgun")
+
+func _buy_laser_sniper() -> void:
+	if Global.player == null or not is_instance_valid(Global.player):
+		return
+	if Global.player.has_method("equip_laser_sniper"):
+		Global.player.call("equip_laser_sniper")
 
 func _buy_orbiting_plasma_ball() -> void:
 	if Global.player == null or not is_instance_valid(Global.player):

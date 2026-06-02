@@ -18,19 +18,20 @@ func _apply_magnet_pull(delta: float) -> bool:
 	if player == null or magnet_radius <= 0.0:
 		return false
 
-	var distance_to_player := global_position.distance_to(player.global_position)
+	var distance_to_player: float = global_position.distance_to(player.global_position)
 	if not is_magnetized and distance_to_player > magnet_radius:
 		return false
 	is_magnetized = true
 
-	var pull_percent := 1.0 - clamp(distance_to_player / magnet_radius, 0.0, 1.0)
-	var pull_speed := lerp(magnet_min_speed, magnet_max_speed, pull_percent)
+	var pull_percent: float = 1.0 - clampf(distance_to_player / magnet_radius, 0.0, 1.0)
+	var pull_speed: float = lerpf(magnet_min_speed, magnet_max_speed, pull_percent)
 	global_position = global_position.move_toward(player.global_position, pull_speed * delta)
 	return true
 
 func _get_player() -> Node2D:
-	if Global.player is Node2D and is_instance_valid(Global.player):
-		return Global.player
+	var player = Global.player
+	if player is Node2D and is_instance_valid(player):
+		return player
 	return null
 
 func _on_body_entered(body: Node2D) -> void:

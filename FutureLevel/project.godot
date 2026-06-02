@@ -32,6 +32,7 @@ buses/default_bus_layout="uid://ch4nkhhef6nap"
 Global="*res://Singletons/Global.gd"
 GameManager="*res://Singletons/GameManager.gd"
 DamageNumbers="*res://Singletons/DamageNumbers.gd"
+Ads="*res://Singletons/Ads.gd"
 ScreenSetting="*res://Singletons/ScreenSetting.tscn"
 playgames="*res://Singletons/PlayGames.gd"
 

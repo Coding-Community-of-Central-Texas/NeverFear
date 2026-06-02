@@ -49,13 +49,14 @@ func _physics_process(delta):
 	if travelled_distance > max_range:
 		missile_impact()
 
-func _on_body_entered(body: CharacterBody2D) -> void:
+func _on_body_entered(body: Node2D) -> void:
 	if is_exploding:
 		return
 
 	if body.is_in_group("player") and body.has_method("take_damage"):
 		body.take_damage(damage)
-		missile_impact()
+
+	missile_impact()
 
 func missile_impact():
 	if is_exploding:
