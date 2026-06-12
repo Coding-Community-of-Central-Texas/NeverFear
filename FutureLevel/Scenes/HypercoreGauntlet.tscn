@@ -1,6 +1,7 @@
-[gd_scene load_steps=191 format=3 uid="uid://c8sbp2d4k2aou"]
+[gd_scene load_steps=192 format=3 uid="uid://c8sbp2d4k2aou"]
 
 [ext_resource type="Script" uid="uid://cmwo16o6i0s75" path="res://Scripts/HypercoreGauntlet.gd" id="1_aav37"]
+[ext_resource type="Script" path="res://Scripts/SurvivalPoolManager.gd" id="2_pool"]
 [ext_resource type="Script" uid="uid://drjj2j2k4q1h2" path="res://addons/gaea/renderers/2D/tilemap_gaea_renderer.gd" id="2_bqeif"]
 [ext_resource type="Script" uid="uid://b2dpsg8b0p0y0" path="res://addons/gaea/generators/2D/noise_generator/noise_generator.gd" id="3_iryc7"]
 [ext_resource type="Script" uid="uid://bpy1iocyuiojc" path="res://addons/gaea/modifiers/2D/modifier_2d.gd" id="4_8em6s"]
@@ -712,6 +713,9 @@ _data = {
 
 [node name="HypercoreGauntlet" type="Node2D"]
 script = ExtResource("1_aav37")
+
+[node name="SurvivalPoolManager" type="Node" parent="."]
+script = ExtResource("2_pool")
 
 [node name="TilemapGaeaRenderer" type="Node" parent="." node_paths=PackedStringArray("tile_map", "generator")]
 script = ExtResource("2_bqeif")

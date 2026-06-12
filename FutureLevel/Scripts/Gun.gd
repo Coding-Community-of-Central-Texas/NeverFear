@@ -46,6 +46,13 @@ func _physics_process(_delta: float):
 func shoot():
 	%Muzzleflash.emitting = true 
 	const BULLET = preload("res://Scenes/Bullet.tscn")
+	var pool_manager := _get_pool_manager()
+	if pool_manager != null and pool_manager.has_method("spawn_player_bullet"):
+		var pooled_bullet: Node = pool_manager.call("spawn_player_bullet", shootingpoint.global_position, shootingpoint.global_rotation)
+		if pooled_bullet != null:
+			audio_stream_player.play()
+		return
+
 	var new_bullet = BULLET.instantiate()
 	new_bullet.global_position = shootingpoint.global_position
 	new_bullet.global_rotation = shootingpoint.global_rotation
@@ -55,3 +62,6 @@ func shoot():
 func stop_shooting():
 	shooting = false
 	timer.stop()
+
+func _get_pool_manager() -> Node:
+	return get_tree().get_first_node_in_group("survival_pool_manager")

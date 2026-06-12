@@ -41,9 +41,7 @@ func spawn_wave():
 	# Iterate through the spawn list and spawn characters
 	for character in spawn_list:
 		%PathFollow2D.progress_ratio = randf()  
-		var instance = character.instantiate()
-		instance.position = %PathFollow2D.position  
-		get_tree().current_scene.add_child(instance)
+		_spawn_enemy(character, %PathFollow2D.global_position)
 		# Optional: Adjust spacing if needed
 		%PathFollow2D.progress_ratio += 0.1
 		if %PathFollow2D.progress_ratio > 1.0:
@@ -56,3 +54,18 @@ func get_random_character(_type1: int, _type2: int) -> PackedScene:
 func _on_queue_free_timer_timeout() -> void:
 	print("quefree!")
 	queue_free()
+
+func _spawn_enemy(enemy_scene: PackedScene, spawn_pos: Vector2) -> Node2D:
+	var pool_manager := _get_pool_manager()
+	if pool_manager != null and pool_manager.has_method("spawn_enemy"):
+		return pool_manager.call("spawn_enemy", enemy_scene, spawn_pos) as Node2D
+
+	var instance := enemy_scene.instantiate() as Node2D
+	if instance == null:
+		return null
+	instance.global_position = spawn_pos
+	get_tree().current_scene.add_child(instance)
+	return instance
+
+func _get_pool_manager() -> Node:
+	return get_tree().get_first_node_in_group("survival_pool_manager")

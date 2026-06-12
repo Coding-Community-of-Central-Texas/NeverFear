@@ -118,6 +118,7 @@
 [ext_resource type="Texture2D" uid="uid://c7l270kncx6bc" path="res://assets/2 Background/Townsfolk/greenhair/Walk.png" id="116_5oi5d"]
 [ext_resource type="Texture2D" uid="uid://dhbjjjmdfq5q7" path="res://assets/2 Background/Townsfolk/redhat/Idle.png" id="117_floqj"]
 [ext_resource type="Texture2D" uid="uid://bda3pmjeqjn6d" path="res://assets/2 Background/Townsfolk/redhat/Walk.png" id="118_nousb"]
+[ext_resource type="Texture2D" uid="uid://b5mc8xu3cxcnt" path="res://assets/etc/SpeechBubble.png" id="119_02jd0"]
 
 [sub_resource type="TileMapPattern" id="TileMapPattern_avtng"]
 tile_data = PackedInt32Array(0, 65564, 268435456, 65536, 65564, 268435457, 1, 28, 268435456, 65537, 28, 268435457, 2, 27, 0, 65538, 27, 1, 3, 65563, 0, 65539, 65563, 1, 4, 27, 0, 65540, 27, 1, 5, 65563, 0, 65541, 65563, 1, 6, 27, 0, 65542, 27, 1, 7, 65563, 0, 65543, 65563, 1, 8, 28, 0, 65544, 28, 1, 9, 65564, 0, 65545, 65564, 1)
@@ -267,7 +268,9 @@ texture = ExtResource("18_tskia")
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_0kh81"]
 texture = ExtResource("19_vc62v")
 0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 1:0/0 = 0
+1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ry07t"]
 texture = ExtResource("20_ks16m")
@@ -1647,7 +1650,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"run",
-"speed": 5.0
+"speed": 10.0
 }]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_mmadk"]
@@ -1730,7 +1733,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"run",
-"speed": 5.0
+"speed": 10.0
 }]
 
 [node name="HubWorld" type="Node2D" unique_id=2083062185 groups=["Hub"]]
@@ -2186,41 +2189,64 @@ scale = Vector2(1.505, 1.505)
 [node name="Prison" type="Node" parent="." unique_id=320625450]
 
 [node name="questgiver" type="AnimatedSprite2D" parent="Prison" unique_id=894432522]
-position = Vector2(-865, -24)
+position = Vector2(-863.00006, -27.000002)
+scale = Vector2(1.205, 1.205)
 sprite_frames = SubResource("SpriteFrames_s0tdr")
 autoplay = "default"
 frame_progress = 0.6411717
 
 [node name="sitter" type="AnimatedSprite2D" parent="Prison" unique_id=1572412688]
-position = Vector2(-876, -199)
+position = Vector2(-880, -204.00002)
+scale = Vector2(1.205, 1.205)
 sprite_frames = SubResource("SpriteFrames_40afp")
 autoplay = "default"
 frame_progress = 0.16025282
 flip_h = true
 
 [node name="redhair" type="AnimatedSprite2D" parent="Prison" unique_id=187649562]
-position = Vector2(-883, -22)
+position = Vector2(-891.99994, -28)
+scale = Vector2(1.21, 1.21)
 sprite_frames = SubResource("SpriteFrames_uodya")
 autoplay = "default"
-frame_progress = 0.9520954
+frame_progress = 0.67772204
 
 [node name="musicman" type="AnimatedSprite2D" parent="Prison" unique_id=964419092]
-position = Vector2(-925, -199)
+position = Vector2(-925, -204)
+scale = Vector2(1.2, 1.2)
 sprite_frames = SubResource("SpriteFrames_g5lo2")
 autoplay = "default"
-frame_progress = 0.5480238
+frame_progress = 0.06914198
 
 [node name="greenhair" type="AnimatedSprite2D" parent="Prison" unique_id=2076000195]
-position = Vector2(-896, -198)
+position = Vector2(-897, -204.00002)
+scale = Vector2(1.2, 1.2)
 sprite_frames = SubResource("SpriteFrames_0ah2x")
 autoplay = "default"
-frame_progress = 0.7002675
+frame_progress = 0.92214376
 
 [node name="redhat" type="AnimatedSprite2D" parent="Prison" unique_id=2132801061]
-position = Vector2(-965, -199)
+position = Vector2(-965, -204)
+scale = Vector2(1.2, 1.2)
 sprite_frames = SubResource("SpriteFrames_2liac")
 autoplay = "default"
-frame_progress = 0.57385576
+frame_progress = 0.51756597
+
+[node name="speechbubble" type="Sprite2D" parent="Prison" unique_id=764404134]
+position = Vector2(-815, -65)
+scale = Vector2(0.34735882, 0.31408024)
+texture = ExtResource("119_02jd0")
+region_enabled = true
+region_rect = Rect2(781.86005, 388.20758, 349.37018, 296.20502)
+
+[node name="Label" type="Label" parent="Prison/speechbubble" unique_id=1548775784]
+offset_left = -109.39694
+offset_top = -54.12629
+offset_right = 197.60306
+offset_bottom = 26.87371
+theme_override_colors/font_color = Color(0.00069389754, 0.00069389766, 0.0006938976, 1)
+theme_override_font_sizes/font_size = 24
+text = "Defeat the Boss 
+to save us!"
 
 [connection signal="body_entered" from="LegacyPass" to="LegacyPass" method="_on_body_entered"]
 [connection signal="body_entered" from="GauntletPass" to="GauntletPass" method="_on_body_entered"]

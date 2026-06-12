@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://cjahbfftehrqo"]
+[gd_scene format=3 uid="uid://cjahbfftehrqo"]
 
 [ext_resource type="Script" uid="uid://bk5kaeok3plal" path="res://Scripts/buffs.gd" id="1_4d14o"]
 [ext_resource type="Texture2D" uid="uid://72r8l53ib08i" path="res://assets/etc/CashUp.png" id="2_7boqd"]
@@ -22,11 +22,11 @@ point_count = 3
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.237705, 0.573034), 0.0, 0.0, 0, 0]
 point_count = 2
 
-[node name="Buffs" type="Node2D"]
+[node name="Buffs" type="Node2D" unique_id=233235009]
 z_index = 2
 script = ExtResource("1_4d14o")
 
-[node name="CashUp" type="CPUParticles2D" parent="."]
+[node name="CashUp" type="CPUParticles2D" parent="." unique_id=211847600]
 emitting = false
 amount = 1
 texture = ExtResource("2_7boqd")
@@ -45,7 +45,7 @@ scale_amount_min = 1.43
 scale_amount_max = 1.43
 scale_amount_curve = SubResource("Curve_11qig")
 
-[node name="SpeedUp" type="CPUParticles2D" parent="."]
+[node name="SpeedUp" type="CPUParticles2D" parent="." unique_id=859077777]
 emitting = false
 amount = 1
 texture = ExtResource("3_fvtuc")
@@ -62,7 +62,7 @@ scale_amount_min = 0.3
 scale_amount_max = 0.65
 scale_amount_curve = SubResource("Curve_34qwu")
 
-[node name="LivesUp" type="CPUParticles2D" parent="."]
+[node name="LivesUp" type="CPUParticles2D" parent="." unique_id=1428441561]
 emitting = false
 amount = 1
 texture = ExtResource("4_qloh6")
@@ -78,7 +78,7 @@ initial_velocity_min = 166.67
 initial_velocity_max = 166.67
 scale_amount_curve = SubResource("Curve_xut8t")
 
-[node name="HealthUp" type="CPUParticles2D" parent="."]
+[node name="HealthUp" type="CPUParticles2D" parent="." unique_id=1537158841]
 emitting = false
 amount = 1
 texture = ExtResource("5_jc2hb")

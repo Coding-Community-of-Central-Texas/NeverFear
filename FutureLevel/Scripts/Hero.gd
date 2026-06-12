@@ -22,11 +22,9 @@ var direction : Vector2 = Vector2.ZERO
 @onready var gun: Area2D = $Gun
 @onready var health_bar: ProgressBar = $HealthBar
 @export var rate_of_fire: float = 0.15
-@onready var jump_effect: CPUParticles2D = %JumpEffect
 @onready var walkn_jump_r: Marker2D = $AnimatedSprite2D/WalknJumpR
 @onready var walkn_jump_l: Marker2D = $AnimatedSprite2D/WalknJumpL
 @onready var super_sayain: AnimatedSprite2D = $AnimatedSprite2D/SuperSayain
-@onready var jump_effect_2: CPUParticles2D = %JumpEffect2
 @onready var marker_2d: Marker2D = $Gun/Marker2D
 @onready var grenade_ability: Node = $GrenadeAbility
 @onready var toss_hand: Marker2D = $TossHand
@@ -146,14 +144,12 @@ func handle_jumping(delta: float) -> void:
 			velocity.y = JUMP_VELOCITY
 			can_double_jump = true
 			animated_sprite_2d.play("gunjump")
-			_trigger_jump_effect()
 			audio_stream_player_2d.play()
 		elif can_double_jump:
 			velocity.y = DOUBLE_JUMP_VELOCITY
 			can_double_jump = false
 			is_double_jumping = true
 			animated_sprite_2d.play("doublejump")
-			_trigger_doublejump_effect()
 			audio_stream_player_2d.play()
 			
 			if not double_jump_achievement_sent:
@@ -179,14 +175,6 @@ func handle_movement(delta: float) -> void:
 	elif velocity.x > target_velocity_x:
 		velocity.x -= deceleration * delta
 		velocity.x = max(velocity.x, target_velocity_x)
-
-func _trigger_jump_effect() -> void:
-	%JumpEffect.visible = true
-	%JumpEffect.emitting = true
-	%JumpEffect2.emitting = true
-	
-func _trigger_doublejump_effect() -> void:
-	%JumpEffect2.emitting = true 
 
 func handle_animation() -> void:
 	if health <= 0:
@@ -262,9 +250,17 @@ func _get_aim_dir() -> Vector2:
 
 func _on_special_pressed() -> void:
 	if Input.is_action_pressed("special"):
+		var dir := _get_aim_dir()
+		var pool_manager := get_tree().get_first_node_in_group("survival_pool_manager")
+		if pool_manager != null and pool_manager.has_method("spawn_grenade"):
+			pool_manager.call("spawn_grenade", %TossHand.global_position, dir, throw_force)
+			return
+
 		var grenade_scene: PackedScene = preload("res://Scenes/granade.tscn")
 		var g: RigidBody2D = grenade_scene.instantiate()
+		if g == null:
+			return
+
 		g.global_position = %TossHand.global_position
 		get_tree().current_scene.add_child(g)
-		var dir := _get_aim_dir()
 		g.throw(dir, throw_force)

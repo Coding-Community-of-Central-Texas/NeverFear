@@ -31,8 +31,8 @@ const PRIMARY_GUN_LEFT_POSITION := Vector2(4, 3)
 const PRIMARY_GUN_RIGHT_POSITION := Vector2(-4, 3)
 const SECOND_GUN_LEFT_POSITION := Vector2(4, 5)
 const SECOND_GUN_RIGHT_POSITION := Vector2(-4, 5)
-const LASER_SNIPER_LEFT_POSITION := Vector2(4, -3)
-const LASER_SNIPER_RIGHT_POSITION := Vector2(-4, -3)
+const LASER_SNIPER_LEFT_POSITION := Vector2(4, 7)
+const LASER_SNIPER_RIGHT_POSITION := Vector2(-4, 7)
 const PLASMA_BALL_START_ANGLES := [-PI * 0.5, PI * 0.5, PI, 0.0]
 const ACHIEVEMENT_MY_STRENGTH_IS_GROWING = "CgkI_v7o0NMNEAIQDg"
 const ACHIEVEMENT_FURTHER_BEYOND = "CgkI_v7o0NMNEAIQDw"
@@ -139,7 +139,7 @@ func equip_shotgun() -> bool:
 			return false
 
 		shotgun.name = "Shotgun"
-		shotgun.z_index = -1
+		shotgun.z_index = 0
 		add_child(shotgun)
 
 	shotgun_equipped = true
@@ -397,6 +397,12 @@ func _show_game_over_ad() -> void:
 	Ads.show_game_over_interstitial(Callable(self, "_game_over"))
 
 func _on_spawn_timer_timeout() -> void:
+	if _get_pool_manager() != null:
+		for spawner in get_tree().get_nodes_in_group("gauntlet_spawner"):
+			if spawner.has_method("spawn_wave"):
+				spawner.call("spawn_wave")
+		return
+
 	const SPAWN = preload("res://Scenes/SpawnCircle.tscn")
 	const BIGSPAWN = preload("res://Scenes/BigSpawnCircle.tscn")
 
@@ -408,6 +414,9 @@ func _on_spawn_timer_timeout() -> void:
 
 	add_child(new_big)
 	add_child(new_spawn)
+
+func _get_pool_manager() -> Node:
+	return get_tree().get_first_node_in_group("survival_pool_manager")
 
 func _on_game_manager_scene_kill_updated(kills: int) -> void:
 	current_kills = kills

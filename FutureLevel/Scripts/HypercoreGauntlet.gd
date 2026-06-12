@@ -10,6 +10,7 @@ const CASH_PICKUP_MIN := 40000
 const CASH_PICKUP_MAX := 90000
 const AUTO_GRENADE_SCENE := preload("res://Scenes/granade.tscn")
 const WAVE_SHOP_SCENE := preload("res://Scenes/WaveShop.tscn")
+const SHOP_OFFER_COUNT := 4
 const AUTO_GRENADE_TIERS := [
 	{
 		"description": "nearest enemy every 9 sec",
@@ -113,8 +114,10 @@ var wave_countdown_label: Label
 var auto_grenade_active: bool = false
 var auto_grenade_tier: int = 0
 var auto_grenade_timer: Timer
+var shop_offer_item_ids: Array[String] = []
 
 func _ready() -> void:
+	randomize()
 	Global.gauntlet = self
 	if not GameManager.game_cash_changed.is_connected(_on_game_cash_changed):
 		GameManager.game_cash_changed.connect(_on_game_cash_changed)
@@ -238,7 +241,10 @@ func _stop_gauntlet_spawners() -> void:
 func _despawn_enemies() -> void:
 	for enemy in get_tree().get_nodes_in_group("enemy"):
 		if is_instance_valid(enemy):
-			enemy.queue_free()
+			if enemy.has_method("deactivate"):
+				enemy.call("deactivate")
+			else:
+				enemy.queue_free()
 
 func _show_shop_screen() -> void:
 	if shop_layer and is_instance_valid(shop_layer):
@@ -247,15 +253,56 @@ func _show_shop_screen() -> void:
 	shop_layer = WAVE_SHOP_SCENE.instantiate() as WaveShop
 	add_child(shop_layer)
 	shop_layer.purchase_requested.connect(_on_shop_purchase_requested)
+	shop_layer.refresh_requested.connect(_on_shop_refresh_requested)
 	shop_layer.resume_requested.connect(_on_shop_resume_pressed)
-	shop_layer.setup(current_wave, GameManager.game_cash, _get_shop_item_states())
+	_reroll_shop_offer_items()
+	shop_layer.setup(current_wave, GameManager.game_cash, _get_shop_item_states(shop_offer_item_ids))
 
-func _get_shop_item_states() -> Array[Dictionary]:
+func _get_shop_item_states(item_ids: Array[String] = []) -> Array[Dictionary]:
 	var item_states: Array[Dictionary] = []
+	if not item_ids.is_empty():
+		for item_id in item_ids:
+			var item := _get_shop_item(item_id)
+			if not item.is_empty():
+				item_states.append(_get_shop_item_state(item))
+
+		return item_states
+
 	for item in SHOP_ITEMS:
 		item_states.append(_get_shop_item_state(item))
 
 	return item_states
+
+func _reroll_shop_offer_items() -> void:
+	shop_offer_item_ids = _get_random_shop_offer_item_ids()
+
+func _get_random_shop_offer_item_ids() -> Array[String]:
+	var available_items: Array[Dictionary] = []
+	var fallback_items: Array[Dictionary] = []
+
+	for item in SHOP_ITEMS:
+		var item_id := String(item["id"])
+		if _shop_item_has_effect(item_id):
+			available_items.append(item)
+		else:
+			fallback_items.append(item)
+
+	var selected_ids := _pick_random_shop_item_ids(available_items, SHOP_OFFER_COUNT)
+	if selected_ids.size() < SHOP_OFFER_COUNT:
+		selected_ids.append_array(_pick_random_shop_item_ids(fallback_items, SHOP_OFFER_COUNT - selected_ids.size()))
+
+	return selected_ids
+
+func _pick_random_shop_item_ids(items: Array[Dictionary], count: int) -> Array[String]:
+	var shuffled_items := items.duplicate()
+	shuffled_items.shuffle()
+
+	var selected_ids: Array[String] = []
+	var selected_count: int = min(count, shuffled_items.size())
+	for index in range(selected_count):
+		selected_ids.append(String(shuffled_items[index]["id"]))
+
+	return selected_ids
 
 func _get_shop_item_state(item: Dictionary) -> Dictionary:
 	var item_id := String(item["id"])
@@ -328,6 +375,14 @@ func _on_shop_purchase_requested(item_id: String) -> void:
 	_apply_shop_item(item_id)
 	shop_layer.set_feedback("%s purchased" % item_title, WaveShop.FEEDBACK_SUCCESS)
 	_refresh_shop_cash()
+
+func _on_shop_refresh_requested() -> void:
+	if not shop_layer or not is_instance_valid(shop_layer):
+		return
+
+	_reroll_shop_offer_items()
+	shop_layer.refresh(GameManager.game_cash, _get_shop_item_states(shop_offer_item_ids))
+	shop_layer.set_feedback("stock refreshed")
 
 func _apply_shop_item(item_id: String) -> void:
 	match item_id:
@@ -415,7 +470,7 @@ func _get_shop_item_description(item: Dictionary) -> String:
 
 func _refresh_shop_cash() -> void:
 	if shop_layer and is_instance_valid(shop_layer):
-		shop_layer.refresh(GameManager.game_cash, _get_shop_item_states())
+		shop_layer.refresh(GameManager.game_cash, _get_shop_item_states(shop_offer_item_ids))
 
 func _on_game_cash_changed(_current_cash: int) -> void:
 	if shop_layer and is_instance_valid(shop_layer):
@@ -522,8 +577,23 @@ func _throw_auto_grenade_sequence(grenade_count: int) -> void:
 		_throw_auto_grenade(direction, Vector2.ZERO)
 
 func _throw_auto_grenade(direction: Vector2, lateral_offset: Vector2) -> void:
+	var spawn_position := survivor.global_position + direction * AUTO_GRENADE_SPAWN_OFFSET + lateral_offset
+	var pool_manager := _get_pool_manager()
+	if pool_manager != null and pool_manager.has_method("spawn_grenade"):
+		pool_manager.call(
+			"spawn_grenade",
+			spawn_position,
+			direction,
+			AUTO_GRENADE_THROW_FORCE,
+			{"gravity_scale_override": 0.0}
+		)
+		return
+
 	var grenade := AUTO_GRENADE_SCENE.instantiate() as RigidBody2D
-	grenade.global_position = survivor.global_position + direction * AUTO_GRENADE_SPAWN_OFFSET + lateral_offset
+	if grenade == null:
+		return
+
+	grenade.global_position = spawn_position
 	grenade.set("gravity_scale_override", 0.0)
 	get_tree().current_scene.add_child(grenade)
 
@@ -556,10 +626,14 @@ func _on_shop_resume_pressed() -> void:
 	if shop_layer and is_instance_valid(shop_layer):
 		shop_layer.queue_free()
 		shop_layer = null
+	shop_offer_item_ids.clear()
 
 	current_wave += 1
 	get_tree().paused = false
 	_start_current_wave()
+
+func _get_pool_manager() -> Node:
+	return get_tree().get_first_node_in_group("survival_pool_manager")
 
 func _update_wave_hud() -> void:
 	if wave_hud_panel == null or not is_instance_valid(wave_hud_panel):

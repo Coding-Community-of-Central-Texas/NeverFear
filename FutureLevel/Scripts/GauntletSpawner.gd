@@ -74,10 +74,6 @@ func spawn_wave() -> void:
 
 	for i in range(enemy_count):
 		var enemy_scene: PackedScene = enemy_scenes[randi() % enemy_scenes.size()]
-		var enemy: Node2D = enemy_scene.instantiate() as Node2D
-
-		if enemy == null:
-			continue
 
 		var spawn_marker: Marker2D
 
@@ -93,12 +89,30 @@ func spawn_wave() -> void:
 
 		var spawn_pos: Vector2 = spawn_marker.global_position + spawn_offset
 
-		get_tree().current_scene.add_child(enemy)
-		enemy.global_position = spawn_pos
+		var enemy := _spawn_enemy(enemy_scene, spawn_pos)
+		if enemy == null:
+			continue
 
-		if enemy is CharacterBody2D:
-			var body := enemy as CharacterBody2D
-			body.velocity = Vector2.ZERO
+func _spawn_enemy(enemy_scene: PackedScene, spawn_pos: Vector2) -> Node2D:
+	var pool_manager := _get_pool_manager()
+	if pool_manager != null and pool_manager.has_method("spawn_enemy"):
+		return pool_manager.call("spawn_enemy", enemy_scene, spawn_pos) as Node2D
+
+	var enemy: Node2D = enemy_scene.instantiate() as Node2D
+	if enemy == null:
+		return null
+
+	get_tree().current_scene.add_child(enemy)
+	enemy.global_position = spawn_pos
+
+	if enemy is CharacterBody2D:
+		var body := enemy as CharacterBody2D
+		body.velocity = Vector2.ZERO
+
+	return enemy
+
+func _get_pool_manager() -> Node:
+	return get_tree().get_first_node_in_group("survival_pool_manager")
 
 func _apply_wave_settings() -> void:
 	if spawn_intervals.is_empty():

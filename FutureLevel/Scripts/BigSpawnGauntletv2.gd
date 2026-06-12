@@ -51,12 +51,11 @@ func spawn_wave():
 
 	# Iterate through the spawn list and spawn characters
 	for character in spawn_list:  
-		var instance = character.instantiate()
-		instance.position = marker_1.global_position + Vector2(
+		var spawn_pos: Vector2 = marker_1.global_position + Vector2(
 			randf_range(-spawn_spread, spawn_spread),
 			randf_range(-spawn_spread, spawn_spread)
 		)
-		get_tree().current_scene.add_child(instance)
+		_spawn_enemy(character, spawn_pos)
 		# Optional: Adjust spacing if needed
 
 func get_random_character(_type1: int, _type2: int) -> PackedScene:
@@ -84,3 +83,18 @@ func _get_enemy_count() -> int:
 
 func _on_survivor_rank_changed(_rank_index: int) -> void:
 	pass
+
+func _spawn_enemy(enemy_scene: PackedScene, spawn_pos: Vector2) -> Node2D:
+	var pool_manager := _get_pool_manager()
+	if pool_manager != null and pool_manager.has_method("spawn_enemy"):
+		return pool_manager.call("spawn_enemy", enemy_scene, spawn_pos) as Node2D
+
+	var instance := enemy_scene.instantiate() as Node2D
+	if instance == null:
+		return null
+	instance.global_position = spawn_pos
+	get_tree().current_scene.add_child(instance)
+	return instance
+
+func _get_pool_manager() -> Node:
+	return get_tree().get_first_node_in_group("survival_pool_manager")

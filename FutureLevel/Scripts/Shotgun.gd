@@ -43,18 +43,34 @@ func shoot() -> void:
 	if bullet_scene == null:
 		return
 
-	muzzle_flash.emitting = true
 	var pellets: int = maxi(1, pellet_count)
 	var base_rotation: float = shootingpoint.global_rotation
+	var pool_manager := _get_pool_manager()
 
 	for pellet_index in range(pellets):
+		var spread_offset: float = _get_pellet_angle_offset(pellet_index, pellets)
+		var cluster_offset: Vector2 = _get_cluster_offset()
+		var speed_multiplier: float = randf_range(0.92, 1.08)
+		var spawn_position := shootingpoint.global_position + cluster_offset
+
+		if pool_manager != null and pool_manager.has_method("spawn_shotgun_pellet"):
+			var pooled_pellet: Node = pool_manager.call(
+				"spawn_shotgun_pellet",
+				spawn_position,
+				base_rotation,
+				{
+					"spread_offset": spread_offset,
+					"speed_multiplier": speed_multiplier,
+				}
+			)
+			if pooled_pellet != null:
+				continue
+			continue
+
 		var new_bullet := bullet_scene.instantiate() as Area2D
 		if new_bullet == null:
 			continue
 
-		var spread_offset: float = _get_pellet_angle_offset(pellet_index, pellets)
-		var cluster_offset: Vector2 = _get_cluster_offset()
-		var speed_multiplier: float = randf_range(0.92, 1.08)
 		new_bullet.global_position = shootingpoint.global_position + cluster_offset
 		new_bullet.global_rotation = base_rotation
 
@@ -95,3 +111,6 @@ func _get_cluster_offset() -> Vector2:
 	var cluster_angle: float = randf_range(0.0, TAU)
 	var cluster_distance: float = randf_range(0.0, cluster_radius)
 	return Vector2.RIGHT.rotated(cluster_angle) * cluster_distance
+
+func _get_pool_manager() -> Node:
+	return get_tree().get_first_node_in_group("survival_pool_manager")

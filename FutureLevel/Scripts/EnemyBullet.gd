@@ -1,5 +1,7 @@
 extends Area2D
 
+signal request_pool_return(instance: Node)
+
 var travelled_distance = 0.0
 @onready var animated_sprite_2d: AnimatedSprite2D = %AnimatedSprite2D
 var velocity = Vector2.ZERO
@@ -17,6 +19,9 @@ var velocity = Vector2.ZERO
 var homing_timer = 0.0
 var is_homing = true
 var is_exploding = false
+var active := true
+var pooled := false
+var _lifecycle_id := 0
 
 func _ready():
 	%AnimatedSprite2D.play("shoot")
@@ -25,7 +30,73 @@ func _ready():
 	%Explosion.stop()
 	homing_timer = homing_duration
 
+func set_pooled(value: bool) -> void:
+	pooled = value
+
+func activate(spawn_position: Vector2, data: Dictionary = {}) -> void:
+	_lifecycle_id += 1
+	active = true
+	travelled_distance = 0.0
+	is_homing = true
+	is_exploding = false
+	homing_timer = homing_duration
+	visible = true
+	process_mode = Node.PROCESS_MODE_INHERIT
+	set_physics_process(true)
+	global_position = spawn_position
+	rotation = float(data.get("rotation", rotation))
+	set_deferred("monitoring", true)
+	set_deferred("monitorable", true)
+	if collision_shape_2d:
+		collision_shape_2d.set_deferred("disabled", false)
+	if missile:
+		missile.visible = true
+	if animated_sprite_2d:
+		animated_sprite_2d.visible = true
+		animated_sprite_2d.play("shoot")
+	if explosion:
+		explosion.visible = false
+		explosion.stop()
+
+	var direction: Vector2 = data.get("direction", Vector2.ZERO)
+	if direction != Vector2.ZERO:
+		set_direction(direction)
+	else:
+		velocity = Vector2.RIGHT.rotated(rotation) * missile_speed
+
+func deactivate(return_to_pool: bool = true) -> void:
+	if not active and return_to_pool:
+		return
+
+	_lifecycle_id += 1
+	active = false
+	travelled_distance = 0.0
+	is_homing = false
+	is_exploding = false
+	velocity = Vector2.ZERO
+	visible = false
+	set_deferred("monitoring", false)
+	set_deferred("monitorable", false)
+	set_physics_process(false)
+	process_mode = Node.PROCESS_MODE_DISABLED
+	if collision_shape_2d:
+		collision_shape_2d.set_deferred("disabled", true)
+	if animated_sprite_2d:
+		animated_sprite_2d.stop()
+	if explosion:
+		explosion.visible = false
+		explosion.stop()
+
+	if pooled:
+		if return_to_pool:
+			request_pool_return.emit(self)
+	elif return_to_pool:
+		queue_free()
+
 func _physics_process(delta):
+	if not active:
+		return
+
 	if is_exploding:
 		return
 
@@ -50,6 +121,9 @@ func _physics_process(delta):
 		missile_impact()
 
 func _on_body_entered(body: Node2D) -> void:
+	if not active:
+		return
+
 	if is_exploding:
 		return
 
@@ -59,7 +133,7 @@ func _on_body_entered(body: Node2D) -> void:
 	missile_impact()
 
 func missile_impact():
-	if is_exploding:
+	if not active or is_exploding:
 		return
 
 	is_exploding = true
@@ -71,8 +145,10 @@ func missile_impact():
 	%Explosion.visible = true
 	%Explosion.frame = 0
 	%Explosion.play("missile_impact")
+	var lifecycle_id := _lifecycle_id
 	await %Explosion.animation_finished
-	queue_free()
+	if lifecycle_id == _lifecycle_id:
+		deactivate()
 
 func set_direction(direction: Vector2):
 	velocity = direction.normalized() * missile_speed

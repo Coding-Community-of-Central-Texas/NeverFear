@@ -1,4 +1,4 @@
-[gd_scene load_steps=71 format=3 uid="uid://csqktr6ixyato"]
+[gd_scene format=3 uid="uid://csqktr6ixyato"]
 
 [ext_resource type="Script" uid="uid://xcdf6rvj86fc" path="res://Scripts/Hero.gd" id="1_43ipw"]
 [ext_resource type="Texture2D" uid="uid://050tdjf5b57n" path="res://assets/3 Cyborg/Cyborg_death.png" id="2_2ior6"]
@@ -9,17 +9,15 @@
 [ext_resource type="Texture2D" uid="uid://bo7sscl6biwig" path="res://assets/Guns&Bullets/Run1.png" id="4_nq80s"]
 [ext_resource type="AudioStream" uid="uid://ce5s2ggmqf78e" path="res://assets/FutrueSFX/Jump2.wav" id="9_weta3"]
 [ext_resource type="PackedScene" uid="uid://daeuuspwxjeag" path="res://Scenes/Gun.tscn" id="10_0uu0a"]
-[ext_resource type="Texture2D" uid="uid://00s18hlgmpih" path="res://assets/etc/color_burst_25.png" id="10_o76pr"]
 [ext_resource type="AudioStream" uid="uid://dnjr7q6plu8wi" path="res://assets/FutrueSFX/PlayerDie.wav" id="10_qhkyu"]
 [ext_resource type="Texture2D" uid="uid://dlxc1yfemuohe" path="res://assets/etc/super_saiyan_spritesheet.png" id="11_6s631"]
-[ext_resource type="Texture2D" uid="uid://dtmoad6blffsk" path="res://assets/etc/flare_3.png" id="11_x6ujp"]
 [ext_resource type="PackedScene" uid="uid://v1wqgbnfesbp" path="res://Scenes/HealthBar.tscn" id="12_i3t22"]
 [ext_resource type="Texture2D" uid="uid://c1t7ic4fo0him" path="res://assets/etc/health.png" id="12_j60bv"]
 [ext_resource type="Script" uid="uid://cn3u05daqaxkx" path="res://Scripts/Camera.gd" id="12_ofnp4"]
 [ext_resource type="PackedScene" uid="uid://cjahbfftehrqo" path="res://Scenes/buffs.tscn" id="17_tp07l"]
-[ext_resource type="Script" path="res://Scripts/grenade_cooldown.gd" id="18_7vyrj"]
+[ext_resource type="Script" uid="uid://dd3faq8fp5mjs" path="res://Scripts/grenade_cooldown.gd" id="18_7vyrj"]
 [ext_resource type="Texture2D" uid="uid://bxvmyj4hp8naa" path="res://assets/buttonsprites/Stylized Premium Game Control Button Icon.png" id="19_sqjyt"]
-[ext_resource type="Script" path="res://Scripts/grenadeability.gd" id="20_c3r7n"]
+[ext_resource type="Script" uid="uid://hru7e6g3oh6v" path="res://Scripts/grenadeability.gd" id="20_c3r7n"]
 [ext_resource type="Texture2D" uid="uid://74lima625vdj" path="res://assets/buttonsprites/Stylized Premium Game Control Button Icon - Copy.png" id="20_nhu3n"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_strd3"]
@@ -268,26 +266,6 @@ animations = [{
 "speed": 15.0
 }]
 
-[sub_resource type="Curve" id="Curve_1v7rp"]
-_limits = [0.0, 0.5, 0.0, 1.0]
-_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.155738, 0.494382), 0.0884378, 0.0884378, 0, 0, Vector2(0.278689, 0.00561798), -0.228465, 0.0, 0, 0]
-point_count = 3
-
-[sub_resource type="Curve" id="Curve_224pu"]
-_limits = [0.0, 0.5, 0.0, 1.0]
-_data = [Vector2(0, 0.0842697), 0.0, -0.203766, 0, 0, Vector2(0.180328, 0), 0.0, 0.0, 0, 0]
-point_count = 2
-
-[sub_resource type="Curve" id="Curve_2txmc"]
-_limits = [0.0, 0.6, 0.0, 1.0]
-_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.0135747, 0.6), 0.0, 0.0, 0, 0, Vector2(0.122172, 0), 0.0, 0.0, 0, 0]
-point_count = 3
-
-[sub_resource type="Curve" id="Curve_rlbob"]
-_limits = [0.0, 0.6, 0.0, 1.0]
-_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.0226244, 0.6), 0.0, 0.0, 0, 0, Vector2(0.0995475, 0), 0.0, 0.0, 0, 0]
-point_count = 3
-
 [sub_resource type="Animation" id="Animation_dl5oi"]
 resource_name = "IdleRigt "
 loop_mode = 1
@@ -477,12 +455,12 @@ radius = 23.6667
 [sub_resource type="CircleShape2D" id="CircleShape2D_7vyrj"]
 radius = 266.0
 
-[node name="Hero" type="CharacterBody2D" groups=["player"]]
+[node name="Hero" type="CharacterBody2D" unique_id=1387761801 groups=["player"]]
 collision_layer = 169
 collision_mask = 41
 script = ExtResource("1_43ipw")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1738957767]
 position = Vector2(-14.6667, -29.3333)
 sprite_frames = SubResource("SpriteFrames_100ny")
 animation = &"doublejump"
@@ -490,69 +468,17 @@ frame = 8
 frame_progress = 1.0
 centered = false
 
-[node name="WalknJumpR" type="Marker2D" parent="AnimatedSprite2D"]
+[node name="WalknJumpR" type="Marker2D" parent="AnimatedSprite2D" unique_id=444568624]
 position = Vector2(5.33337, 48)
 
-[node name="WalknJumpL" type="Marker2D" parent="AnimatedSprite2D"]
+[node name="WalknJumpL" type="Marker2D" parent="AnimatedSprite2D" unique_id=1080603861]
 position = Vector2(26, 47.3333)
 
-[node name="JumpEffect" type="CPUParticles2D" parent="AnimatedSprite2D"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="AnimatedSprite2D" unique_id=1038991566]
 unique_name_in_owner = true
-show_behind_parent = true
-position = Vector2(15.3334, 44)
-scale = Vector2(0.5, 0.5)
-emitting = false
-amount = 1
-texture = ExtResource("10_o76pr")
-lifetime = 0.6
-one_shot = true
-speed_scale = 1.2
-explosiveness = 1.0
-direction = Vector2(0, 1)
-spread = 0.0
-gravity = Vector2(0, 0)
-initial_velocity_min = 296.1
-initial_velocity_max = 296.1
-scale_amount_min = 0.4
-scale_amount_max = 0.5
-split_scale = true
-scale_curve_x = SubResource("Curve_1v7rp")
-scale_curve_y = SubResource("Curve_224pu")
-color = Color(0.42906, 0.597439, 0.959075, 1)
+libraries/ = SubResource("AnimationLibrary_vhrnj")
 
-[node name="JumpEffect2" type="CPUParticles2D" parent="AnimatedSprite2D"]
-unique_name_in_owner = true
-show_behind_parent = true
-position = Vector2(14, 42)
-rotation = 1.58028
-emitting = false
-amount = 1
-texture = ExtResource("11_x6ujp")
-lifetime = 0.5
-one_shot = true
-speed_scale = 2.0
-direction = Vector2(0, 0)
-spread = 0.0
-gravity = Vector2(0, 0)
-initial_velocity_min = 318.66
-initial_velocity_max = 318.66
-linear_accel_min = 10.47
-linear_accel_max = 10.47
-angle_min = 96.0
-angle_max = 96.0
-scale_amount_min = 0.6
-split_scale = true
-scale_curve_x = SubResource("Curve_2txmc")
-scale_curve_y = SubResource("Curve_rlbob")
-color = Color(9.729, 23.783, 59.459, 1)
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="AnimatedSprite2D"]
-unique_name_in_owner = true
-libraries = {
-&"": SubResource("AnimationLibrary_vhrnj")
-}
-
-[node name="SuperSayain" type="AnimatedSprite2D" parent="AnimatedSprite2D"]
+[node name="SuperSayain" type="AnimatedSprite2D" parent="AnimatedSprite2D" unique_id=42212942]
 visible = false
 position = Vector2(19, 14.7104)
 scale = Vector2(0.956522, 0.907834)
@@ -560,7 +486,7 @@ sprite_frames = SubResource("SpriteFrames_wb5xw")
 autoplay = "default"
 frame_progress = 0.143923
 
-[node name="Super" type="AnimatedSprite2D" parent="AnimatedSprite2D/SuperSayain"]
+[node name="Super" type="AnimatedSprite2D" parent="AnimatedSprite2D/SuperSayain" unique_id=682807167]
 position = Vector2(-0.15465, 38.127)
 rotation = 3.13473
 scale = Vector2(0.924027, 0.147635)
@@ -569,13 +495,13 @@ sprite_frames = SubResource("SpriteFrames_wb5xw")
 autoplay = "default"
 frame_progress = 0.595497
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=469502905]
 unique_name_in_owner = true
 position = Vector2(1.333, 3.33333)
 shape = SubResource("RectangleShape2D_0p44e")
 debug_color = Color(0, 0.6, 0.701961, 0)
 
-[node name="Camera" type="Camera2D" parent="."]
+[node name="Camera" type="Camera2D" parent="." unique_id=771491564]
 unique_name_in_owner = true
 zoom = Vector2(1.15, 1.81)
 limit_bottom = 550
@@ -584,65 +510,65 @@ position_smoothing_enabled = true
 position_smoothing_speed = 20.0
 script = ExtResource("12_ofnp4")
 
-[node name="Gun" parent="." instance=ExtResource("10_0uu0a")]
+[node name="Gun" parent="." unique_id=237381471 instance=ExtResource("10_0uu0a")]
 show_behind_parent = true
 z_index = -1
 position = Vector2(6.66667, -2)
 
-[node name="Marker2D" type="Marker2D" parent="Gun"]
+[node name="Marker2D" type="Marker2D" parent="Gun" unique_id=1453444076]
 position = Vector2(17.3333, 3)
 
-[node name="Gun2" parent="." instance=ExtResource("10_0uu0a")]
+[node name="Gun2" parent="." unique_id=951397490 instance=ExtResource("10_0uu0a")]
 unique_name_in_owner = true
 visible = false
 position = Vector2(4, 1.33333)
 collision_mask = 0
 
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=1595772161]
 stream = ExtResource("9_weta3")
 volume_db = 1.005
 pitch_scale = 1.65
 max_distance = 689.0
 
-[node name="AudioStreamPlayer2D2" type="AudioStreamPlayer2D" parent="."]
+[node name="AudioStreamPlayer2D2" type="AudioStreamPlayer2D" parent="." unique_id=1897442108]
 stream = ExtResource("10_qhkyu")
 volume_db = 0.999
 pitch_scale = 1.4
 
-[node name="Timer" type="Timer" parent="."]
+[node name="Timer" type="Timer" parent="." unique_id=106155071]
 process_callback = 0
 wait_time = 0.898
 one_shot = true
 
-[node name="HurtBox" type="Area2D" parent="."]
+[node name="HurtBox" type="Area2D" parent="." unique_id=638177926]
 unique_name_in_owner = true
 collision_layer = 0
 collision_mask = 4
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox" unique_id=1858216820]
 position = Vector2(3.33333, 2)
 shape = SubResource("CircleShape2D_x6iwv")
 debug_color = Color(0.993625, 0, 0.245305, 0)
 
-[node name="HealthBar" parent="." instance=ExtResource("12_i3t22")]
+[node name="HealthBar" parent="." unique_id=1426662597 instance=ExtResource("12_i3t22")]
 show_behind_parent = true
 offset_left = -12.0
 offset_top = -22.0
 offset_right = 23.0
 offset_bottom = -19.0
 
-[node name="Health" type="Sprite2D" parent="HealthBar"]
+[node name="Health" type="Sprite2D" parent="HealthBar" unique_id=1303211861]
 position = Vector2(-4.667, 1.4)
 scale = Vector2(0.3, 0.3)
 texture = ExtResource("12_j60bv")
 
-[node name="Buffs" parent="." instance=ExtResource("17_tp07l")]
+[node name="Buffs" parent="." unique_id=613775581 instance=ExtResource("17_tp07l")]
 unique_name_in_owner = true
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1546871750]
 script = ExtResource("18_7vyrj")
 
-[node name="special" type="TouchScreenButton" parent="CanvasLayer"]
+[node name="special" type="TouchScreenButton" parent="CanvasLayer" unique_id=818664812]
 self_modulate = Color(6.630303, 1.1135769, 0.98932624, 0.8901961)
 position = Vector2(600, 872.99994)
 scale = Vector2(0.096000016, 0.08450006)
@@ -653,10 +579,10 @@ shape_visible = false
 passby_press = true
 action = "special"
 
-[node name="Timer" type="Timer" parent="CanvasLayer"]
+[node name="Timer" type="Timer" parent="CanvasLayer" unique_id=776829147]
 one_shot = true
 
-[node name="Specialholder" type="Sprite2D" parent="CanvasLayer"]
+[node name="Specialholder" type="Sprite2D" parent="CanvasLayer" unique_id=1147248193]
 visible = false
 self_modulate = Color(0.49019608, 0.4627451, 0.43529412, 1)
 z_index = -1
@@ -664,10 +590,10 @@ position = Vector2(701, 959.99994)
 scale = Vector2(0.097, 0.087)
 texture = ExtResource("20_nhu3n")
 
-[node name="GrenadeAbility" type="Node2D" parent="."]
+[node name="GrenadeAbility" type="Node2D" parent="." unique_id=2083303804]
 script = ExtResource("20_c3r7n")
 
-[node name="TossHand" type="Marker2D" parent="."]
+[node name="TossHand" type="Marker2D" parent="." unique_id=1961041108]
 unique_name_in_owner = true
 position = Vector2(19, -12)
 rotation = -0.412682
