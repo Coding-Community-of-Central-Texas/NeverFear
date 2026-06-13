@@ -2232,8 +2232,8 @@ autoplay = "default"
 frame_progress = 0.51756597
 
 [node name="speechbubble" type="Sprite2D" parent="Prison" unique_id=764404134]
-position = Vector2(-815, -65)
-scale = Vector2(0.34735882, 0.31408024)
+position = Vector2(-763.30707, -95.25806)
+scale = Vector2(0.6435934, 0.51852655)
 texture = ExtResource("119_02jd0")
 region_enabled = true
 region_rect = Rect2(781.86005, 388.20758, 349.37018, 296.20502)

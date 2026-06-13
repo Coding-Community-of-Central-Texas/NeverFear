@@ -1,14 +1,14 @@
-[gd_scene load_steps=2 format=3 uid="uid://b0oeqk6jov218"]
+[gd_scene format=3 uid="uid://b0oeqk6jov218"]
 
 [ext_resource type="Script" uid="uid://b8q8q0akemvtx" path="res://Scripts/BigSpawnGauntletv2.gd" id="1_7i4oh"]
 
-[node name="GauntletBigSpawn" type="Marker2D"]
+[node name="GauntletBigSpawn" type="Marker2D" unique_id=1547373272]
 script = ExtResource("1_7i4oh")
 
-[node name="Timer" type="Timer" parent="."]
+[node name="Timer" type="Timer" parent="." unique_id=1545584976]
 wait_time = 5.0
 
-[node name="Marker1" type="Marker2D" parent="."]
-position = Vector2(-10, 97.5)
+[node name="Marker1" type="Marker2D" parent="." unique_id=1788153195]
+position = Vector2(0, 94)
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

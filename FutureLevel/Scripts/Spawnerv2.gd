@@ -27,8 +27,15 @@ func _spawn_enemy(enemy_scene: PackedScene, spawn_position: Vector2) -> Node2D:
 	if enemy == null:
 		return null
 
-	enemy.global_position = spawn_position
+	enemy.visible = false
+	enemy.process_mode = Node.PROCESS_MODE_DISABLED
 	get_tree().current_scene.add_child(enemy)
+	enemy.global_position = spawn_position
+	if enemy is CharacterBody2D:
+		var body := enemy as CharacterBody2D
+		body.velocity = Vector2.ZERO
+	enemy.process_mode = Node.PROCESS_MODE_INHERIT
+	enemy.visible = true
 	return enemy
 
 func _get_pool_manager() -> Node:

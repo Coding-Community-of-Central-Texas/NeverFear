@@ -256,13 +256,13 @@ func rank_up():
 				rank_3_achievement_sent = true
 				if playgames.is_available() and playgames.is_signed_in():
 					playgames.unlock_achievement(ACHIEVEMENT_MY_STRENGTH_IS_GROWING)
-					print("Rank 3 achievement unlock request sent")
+
 
 			if i >= 3 and not rank_4_achievement_sent:
 				rank_4_achievement_sent = true
 				if playgames.is_available() and playgames.is_signed_in():
 					playgames.unlock_achievement(ACHIEVEMENT_FURTHER_BEYOND)
-					print("Rank 4 achievement unlock request sent")
+
 
 			emit_signal("rank_changed", i)
 			return
@@ -274,13 +274,13 @@ func rank_up():
 		rank_3_achievement_sent = true
 		if playgames.is_available() and playgames.is_signed_in():
 			playgames.unlock_achievement(ACHIEVEMENT_MY_STRENGTH_IS_GROWING)
-			print("Rank 3 achievement unlock request sent")
+
 
 	if max_rank_index >= 3 and not rank_4_achievement_sent:
 		rank_4_achievement_sent = true
 		if playgames.is_available() and playgames.is_signed_in():
 			playgames.unlock_achievement(ACHIEVEMENT_FURTHER_BEYOND)
-			print("Rank 4 achievement unlock request sent")
+
 
 	emit_signal("rank_changed", max_rank_index)
 

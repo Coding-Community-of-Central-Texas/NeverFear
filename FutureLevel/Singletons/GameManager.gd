@@ -24,8 +24,11 @@ const ACHIEVEMENT_HYPERCORE_UNDERTAKER = "CgkI_v7o0NMNEAIQDQ"
 const ACHIEVEMENT_MY_STRENGTH_IS_GROWING = "CgkI_v7o0NMNEAIQDg"
 const ACHIEVEMENT_FURTHER_BEYOND = "CgkI_v7o0NMNEAIQDw"
 const LEADERBOARD_LEGACY_PROTOCOL_BEST_TIME = "CgkI_v7o0NMNEAIQFA"
+const LEVEL_HYPERCORE_GAUNTLET := "HypercoreGauntlet"
+const LEVEL_LEGACY_PROTOCOL := "LegacyProtocol"
 const LEGACY_PROTOCOL_3_MIN_MS := 180000
 const LEGACY_PROTOCOL_2_5_MIN_MS := 150000
+const LEGACY_PROTOCOL_2_MIN_MS := 120000
 const CASH_DENOMINATIONS := [
 	{"value": 1000000000000, "suffix": "T"},
 	{"value": 1000000000, "suffix": "B"},
@@ -59,6 +62,7 @@ var cat_lover_unlocked := false
 var pretty_quick_fella_unlocked := false
 var rank_3_achievement_sent := false
 var whoa_fast_guy_unlocked := false
+var zzoommm_unlocked := false
 
 
 func _init():
@@ -80,13 +84,15 @@ func _on_kill(amount: int) -> void:
 		if playgames.is_available() and playgames.is_signed_in():
 			playgames.unlock_achievement(ACHIEVEMENT_SHARP_SHOOTER)
 
-	if total_kills >= 25 and not eliminations_25_unlocked:
+	if current_level != LEVEL_HYPERCORE_GAUNTLET:
+		return
+
+	if current_kills >= 25 and not eliminations_25_unlocked:
 		eliminations_25_unlocked = true
 		if playgames.is_available() and playgames.is_signed_in():
 			playgames.unlock_achievement(ACHIEVEMENT_25_ELIMINATIONS)
 
-
-	if total_kills >= 300 and not hypercore_undertaker_unlocked:
+	if current_kills >= 300 and not hypercore_undertaker_unlocked:
 		hypercore_undertaker_unlocked = true
 		if playgames.is_available() and playgames.is_signed_in():
 			playgames.unlock_achievement(ACHIEVEMENT_HYPERCORE_UNDERTAKER)
@@ -116,11 +122,16 @@ func check_lives_achievement() -> void:
 		save_data()
 
 func start_legacy_protocol_run() -> void:
-	current_level = "LegacyProtocol"
+	current_level = LEVEL_LEGACY_PROTOCOL
 	deaths_in_legacy_protocol = 0
 
+func start_hypercore_gauntlet_run() -> void:
+	current_level = LEVEL_HYPERCORE_GAUNTLET
+	current_kills = 0
+	emit_signal("scene_kill_updated", current_kills)
+
 func register_player_death() -> void:
-	if current_level == "LegacyProtocol":
+	if current_level == LEVEL_LEGACY_PROTOCOL:
 		deaths_in_legacy_protocol += 1
 
 func check_legacy_protocol_speed_achievements(final_time: String) -> void:
@@ -144,6 +155,12 @@ func check_legacy_protocol_speed_achievements(final_time: String) -> void:
 		if playgames.is_available() and playgames.is_signed_in():
 			playgames.unlock_achievement(ACHIEVEMENT_WHOA_FAST_GUY)
 			print("Legacy Protocol under 2.5 minutes achievement unlock request sent")
+
+	if run_ms <= LEGACY_PROTOCOL_2_MIN_MS and not zzoommm_unlocked:
+		zzoommm_unlocked = true
+		if playgames.is_available() and playgames.is_signed_in():
+			playgames.unlock_achievement(ACHIEVEMENT_ZZOOOMM)
+			print("Legacy Protocol under 2 minutes achievement unlock request sent")
 
 func _on_rank_changed(rank_index: int) -> void:
 	if rank_index >= 2 and not rank_3_achievement_sent:
@@ -239,7 +256,8 @@ func save_data():
 		"total_cash": total_cash,
 		"complete_legacy_stage_1_unlocked": complete_legacy_stage_1_unlocked,
 		"cat_lover_unlocked": cat_lover_unlocked,
-		"whoa_fast_guy_unlocked": whoa_fast_guy_unlocked
+		"whoa_fast_guy_unlocked": whoa_fast_guy_unlocked,
+		"zzoommm_unlocked": zzoommm_unlocked
 	}
 	var save_file = FileAccess.open(SAVE_PATH, FileAccess.WRITE)
 	if save_file:
@@ -262,6 +280,7 @@ func load_data():
 				complete_legacy_stage_1_unlocked = data.get("complete_legacy_stage_1_unlocked", false)
 				cat_lover_unlocked = data.get("cat_lover_unlocked", false)
 				whoa_fast_guy_unlocked = data.get("whoa_fast_guy_unlocked", false)
+				zzoommm_unlocked = data.get("zzoommm_unlocked", false)
 				print("Game data loaded successfully")
 			else:
 				print("Error: Failed to parse save data")

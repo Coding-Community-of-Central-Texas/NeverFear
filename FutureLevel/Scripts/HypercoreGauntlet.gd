@@ -119,6 +119,7 @@ var shop_offer_item_ids: Array[String] = []
 func _ready() -> void:
 	randomize()
 	Global.gauntlet = self
+	GameManager.start_hypercore_gauntlet_run()
 	if not GameManager.game_cash_changed.is_connected(_on_game_cash_changed):
 		GameManager.game_cash_changed.connect(_on_game_cash_changed)
 	_setup_wave_timer()

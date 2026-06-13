@@ -63,8 +63,15 @@ func _spawn_enemy(enemy_scene: PackedScene, spawn_pos: Vector2) -> Node2D:
 	var instance := enemy_scene.instantiate() as Node2D
 	if instance == null:
 		return null
-	instance.global_position = spawn_pos
+	instance.visible = false
+	instance.process_mode = Node.PROCESS_MODE_DISABLED
 	get_tree().current_scene.add_child(instance)
+	instance.global_position = spawn_pos
+	if instance is CharacterBody2D:
+		var body := instance as CharacterBody2D
+		body.velocity = Vector2.ZERO
+	instance.process_mode = Node.PROCESS_MODE_INHERIT
+	instance.visible = true
 	return instance
 
 func _get_pool_manager() -> Node:

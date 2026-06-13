@@ -48,6 +48,8 @@ func get_instance(spawn_position: Vector2 = Vector2.ZERO, data: Dictionary = {})
 	if instance == null:
 		return null
 
+	_apply_basic_inactive_state(instance)
+
 	if instance.get_parent() == null:
 		add_child(instance)
 
@@ -95,6 +97,7 @@ func _create_instance() -> Node:
 
 	_created_count += 1
 	_prepare_pooled_instance(instance)
+	_apply_basic_inactive_state(instance)
 	add_child(instance)
 	return instance
 
