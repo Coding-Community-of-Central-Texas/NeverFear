@@ -111,6 +111,8 @@ func randomize_power_up() -> void:
 		PowerUpType.HEALTH: 10,  
 		PowerUpType.LIVES: 5   
 	}
+	if not _allows_speed_power_up_drops():
+		weights.erase(PowerUpType.SPEED)
 	# Generate a random number between 0 and the total weight
 	var total_weight = 0
 	for weight in weights.values():
@@ -244,6 +246,13 @@ func _get_cash_pickup_amount() -> int:
 		return int(current_scene.call("get_cash_pickup_amount"))
 
 	return randi_range(DEFAULT_CASH_PICKUP_MIN, DEFAULT_CASH_PICKUP_MAX)
+
+func _allows_speed_power_up_drops() -> bool:
+	var current_scene := get_tree().current_scene
+	if current_scene != null and current_scene.has_method("allows_speed_power_up_drops"):
+		return bool(current_scene.call("allows_speed_power_up_drops"))
+
+	return true
 
 func _on_queue_timer_timeout() -> void:
 	deactivate()

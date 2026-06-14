@@ -419,7 +419,7 @@ theme_override_constants/shadow_offset_x = -2
 theme_override_constants/shadow_offset_y = 2
 theme_override_constants/outline_size = 2
 theme_override_font_sizes/font_size = 14
-text = "plus 40 move speed"
+text = "plus 35 move speed"
 clip_text = true
 
 [node name="OverclockPurchaseButton" type="Control" parent="ShopRoot/ShopPanel/Margins/Content/ItemList/OverclockShopRow/Margins/Row" unique_id=1633970523]

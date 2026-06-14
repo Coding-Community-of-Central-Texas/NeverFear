@@ -60,7 +60,7 @@ const SHOP_ITEMS := [
 	{
 		"id": "overclock",
 		"title": "overclock boots",
-		"description": "+40 move speed",
+		"description": "+35 move speed",
 		"cost": 800000,
 		"badge": ">>"
 	},
@@ -391,7 +391,7 @@ func _apply_shop_item(item_id: String) -> void:
 			Global.player.health = min(Global.player.MAX_HEALTH, Global.player.health + 175.0)
 			Global.player.health_bar.value = Global.player.health
 		"overclock":
-			Global.player.SPEED += 40.0
+			Global.player.SPEED += 35.0
 		"second_gun":
 			_buy_second_gun()
 		"shotgun":
@@ -479,6 +479,9 @@ func _on_game_cash_changed(_current_cash: int) -> void:
 
 func get_cash_pickup_amount() -> int:
 	return randi_range(CASH_PICKUP_MIN, CASH_PICKUP_MAX)
+
+func allows_speed_power_up_drops() -> bool:
+	return false
 
 func _upgrade_auto_grenade() -> void:
 	if auto_grenade_tier >= AUTO_GRENADE_TIERS.size():
