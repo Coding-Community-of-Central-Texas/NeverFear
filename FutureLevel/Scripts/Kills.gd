@@ -5,4 +5,4 @@ func _process(_delta: float) -> void:
 	update_kills()
 
 func update_kills():
-	self.text = "Kills: %s" % str(GameManager.current_kills)
+	self.text = "kills: %s" % str(GameManager.current_kills)

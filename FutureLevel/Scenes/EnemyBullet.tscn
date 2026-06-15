@@ -1,8 +1,13 @@
-[gd_scene load_steps=17 format=3 uid="uid://bcuaf3fm014qf"]
+[gd_scene format=3 uid="uid://bcuaf3fm014qf"]
 
-[ext_resource type="Script" uid="uid://djiyuksojqjko" path="res://Scripts/robo_bullet.gd" id="1_701ao"]
+[ext_resource type="Script" path="res://Scripts/robo_bullet.gd" id="1_701ao"]
 [ext_resource type="Texture2D" uid="uid://cf1o7yknimjyd" path="res://assets/Guns&Bullets/enemybullet.png" id="1_j6ltc"]
-[ext_resource type="Texture2D" uid="uid://dvwivx33k03h5" path="res://assets/Guns&Bullets/spirowires_1.png" id="3_exen8"]
+[ext_resource type="Texture2D" uid="uid://c0d0nrfnavcco" path="res://assets/Guns&Bullets/RoboBulletanimation/plasma-ball-red-transparent-01.png" id="3_tk7gp"]
+[ext_resource type="Texture2D" uid="uid://cy5gmgao5xiyl" path="res://assets/Guns&Bullets/RoboBulletanimation/plasma-ball-red-transparent-02.png" id="4_dyyvu"]
+[ext_resource type="Texture2D" uid="uid://beb4ma3xqg23h" path="res://assets/Guns&Bullets/RoboBulletanimation/plasma-ball-red-transparent-03.png" id="5_n22y8"]
+[ext_resource type="Texture2D" uid="uid://c031ndr3beybm" path="res://assets/Guns&Bullets/RoboBulletanimation/plasma-ball-red-transparent-04.png" id="6_7r8em"]
+[ext_resource type="Texture2D" uid="uid://cpibtc43y2ddr" path="res://assets/Guns&Bullets/RoboBulletanimation/plasma-ball-red-transparent-05.png" id="7_kqyba"]
+[ext_resource type="Texture2D" uid="uid://fjlln8lipemk" path="res://assets/Guns&Bullets/RoboBulletanimation/plasma-ball-red-transparent-06.png" id="8_ejcpb"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4hj3s"]
 atlas = ExtResource("1_j6ltc")
@@ -19,22 +24,6 @@ region = Rect2(576, 160, 32, 32)
 [sub_resource type="AtlasTexture" id="AtlasTexture_0nx4v"]
 atlas = ExtResource("1_j6ltc")
 region = Rect2(608, 160, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_qnghl"]
-atlas = ExtResource("1_j6ltc")
-region = Rect2(352, 288, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_vo35j"]
-atlas = ExtResource("1_j6ltc")
-region = Rect2(384, 288, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_8jp5m"]
-atlas = ExtResource("1_j6ltc")
-region = Rect2(416, 288, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_qtmsn"]
-atlas = ExtResource("1_j6ltc")
-region = Rect2(448, 288, 32, 32)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_e5rb3"]
 animations = [{
@@ -57,16 +46,22 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_qnghl")
+"texture": ExtResource("3_tk7gp")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_vo35j")
+"texture": ExtResource("4_dyyvu")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_8jp5m")
+"texture": ExtResource("5_n22y8")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_qtmsn")
+"texture": ExtResource("6_7r8em")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_kqyba")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_ejcpb")
 }],
 "loop": true,
 "name": &"shoot",
@@ -76,54 +71,21 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_x6wp8"]
 radius = 7.0
 
-[sub_resource type="Curve" id="Curve_1omsg"]
-_limits = [0.0, 0.5, 0.0, 1.0]
-_data = [Vector2(0, 0.123391), 0.0, 0.0, 0, 0, Vector2(0.461326, 0.203594), 0.0, 0.0, 0, 0, Vector2(0.961326, 0.0885193), 0.0, 0.0, 0, 0]
-point_count = 3
-
-[sub_resource type="Curve" id="Curve_xiw3y"]
-_limits = [0.0, 0.5, 0.0, 1.0]
-_data = [Vector2(0.00552486, 0.119903), 0.0, 0.0, 0, 0, Vector2(0.461326, 0.203594), 0.0, 0.0, 0, 0, Vector2(0.955801, 0.0920064), 0.0, 0.0, 0, 0]
-point_count = 3
-
-[sub_resource type="Gradient" id="Gradient_y33nf"]
-offsets = PackedFloat32Array(0.0688623, 0.140719, 0.197605, 0.257485, 0.320359, 0.374251, 0.428144, 0.47006, 0.541916, 0.58982, 0.670659, 0.775449, 0.856287, 0.928144)
-colors = PackedColorArray(0.9, 0.9, 0.9, 1, 0, 0, 42.162, 1, 0, 96.757, 49.189, 1, 0.8, 1, 0, 1, 0.7575, 0.03, 1, 1, 0, 0, 21.081, 1, 0, 0.53, 0.141333, 1, 0, 60, 0, 1, 10.811, 0, 0, 1, 0.43, 0, 0, 1, 0.1716, 0.76986, 0.78, 1, 0, 0, 0, 1, 0, 0, 0.57, 1, 0, 0, 37.298, 1)
-
-[node name="EnemyBullet" type="Area2D"]
+[node name="EnemyBullet" type="Area2D" unique_id=1943244785]
 collision_layer = 8
 collision_mask = 8
 script = ExtResource("1_701ao")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=2064782714]
 unique_name_in_owner = true
-scale = Vector2(0.5, 0.5)
+scale = Vector2(0.019328913, 0.019060893)
 sprite_frames = SubResource("SpriteFrames_e5rb3")
 animation = &"shoot"
 autoplay = "shoot"
-frame_progress = 0.39015
+frame_progress = 0.14445645
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1277908093]
 shape = SubResource("CircleShape2D_x6wp8")
 debug_color = Color(0, 0.595, 0.7, 0)
-
-[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
-amount = 20
-texture = ExtResource("3_exen8")
-preprocess = 9.42
-local_coords = true
-direction = Vector2(0, 0)
-gravity = Vector2(0, 0)
-angular_velocity_min = -505.14
-angular_velocity_max = 535.28
-scale_amount_min = 0.1
-scale_amount_max = 0.3
-split_scale = true
-scale_curve_x = SubResource("Curve_1omsg")
-scale_curve_y = SubResource("Curve_xiw3y")
-color = Color(0.991441, 0.196927, 0.146441, 1)
-color_ramp = SubResource("Gradient_y33nf")
-hue_variation_min = -0.78
-hue_variation_max = 0.64
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

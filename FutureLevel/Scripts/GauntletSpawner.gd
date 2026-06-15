@@ -20,6 +20,7 @@ extends Marker2D
 
 @export var spawn_intervals: Array[float] = [2.0, 1.5, 1.2, 1.0, 0.8]
 @export var max_enemies_per_wave: Array[int] = [5, 7, 9, 11, 20]
+@export var extra_enemies_per_wave: int = 3
 @export var enemy_scenes: Array[PackedScene] = [
 	preload("res://Scenes/DriodGauntlet.tscn"),
 	preload("res://Scenes/OneHitGuantlet.tscn"),
@@ -28,29 +29,45 @@ extends Marker2D
 @export var spawn_spread: float = 16.0
 
 var spawn_markers: Array[Marker2D] = []
-var current_rank: int = 0
+var current_wave: int = 1
+var spawning_enabled: bool = false
 
 func _ready() -> void:
+	add_to_group("gauntlet_spawner")
+
 	spawn_markers = [
 		marker_1, marker_2, marker_3, marker_4, marker_5, marker_6, marker_7,
 		marker_8, marker_9, marker_10, marker_11, marker_12, marker_13, marker_14
 	]
 
 	randomize()
-
-	if timer.is_stopped():
-		timer.wait_time = spawn_intervals[clamp(current_rank, 0, spawn_intervals.size() - 1)]
-		timer.start()
+	_apply_wave_settings()
+	timer.stop()
 
 func _on_timer_timeout() -> void:
 	spawn_wave()
 
+func start_wave(wave_number: int) -> void:
+	current_wave = max(wave_number, 1)
+	spawning_enabled = true
+	_apply_wave_settings()
+	timer.stop()
+	spawn_wave()
+	timer.start()
+
+func stop_spawning() -> void:
+	spawning_enabled = false
+	timer.stop()
+
 func spawn_wave() -> void:
+	if not spawning_enabled:
+		return
+
 	if spawn_markers.is_empty() or enemy_scenes.is_empty():
 		return
 
-	var rank_index: int = clamp(current_rank, 0, max_enemies_per_wave.size() - 1)
-	var enemy_count: int = max_enemies_per_wave[rank_index]
+	var enemy_count: int = _get_enemy_count()
+	var spawn_data := _get_wave_spawn_data()
 
 	# Use a shuffled copy so markers are spread out first before reusing any.
 	var available_markers: Array[Marker2D] = spawn_markers.duplicate()
@@ -58,10 +75,6 @@ func spawn_wave() -> void:
 
 	for i in range(enemy_count):
 		var enemy_scene: PackedScene = enemy_scenes[randi() % enemy_scenes.size()]
-		var enemy: Node2D = enemy_scene.instantiate() as Node2D
-
-		if enemy == null:
-			continue
 
 		var spawn_marker: Marker2D
 
@@ -77,13 +90,68 @@ func spawn_wave() -> void:
 
 		var spawn_pos: Vector2 = spawn_marker.global_position + spawn_offset
 
-		get_tree().current_scene.add_child(enemy)
-		enemy.global_position = spawn_pos
+		var enemy := _spawn_enemy(enemy_scene, spawn_pos, spawn_data)
+		if enemy == null:
+			continue
 
-		if enemy is CharacterBody2D:
-			var body := enemy as CharacterBody2D
-			body.velocity = Vector2.ZERO
+func _spawn_enemy(enemy_scene: PackedScene, spawn_pos: Vector2, data: Dictionary = {}) -> Node2D:
+	var pool_manager := _get_pool_manager()
+	if pool_manager != null and pool_manager.has_method("spawn_enemy"):
+		return pool_manager.call("spawn_enemy", enemy_scene, spawn_pos, data) as Node2D
 
-func _on_survivor_rank_changed(rank_index: int) -> void:
-	current_rank = clamp(rank_index, 0, spawn_intervals.size() - 1)
-	timer.wait_time = spawn_intervals[current_rank]
+	var enemy: Node2D = enemy_scene.instantiate() as Node2D
+	if enemy == null:
+		return null
+
+	enemy.visible = false
+	enemy.process_mode = Node.PROCESS_MODE_DISABLED
+	get_tree().current_scene.add_child(enemy)
+	enemy.global_position = spawn_pos
+
+	if enemy is CharacterBody2D:
+		var body := enemy as CharacterBody2D
+		body.velocity = Vector2.ZERO
+
+	if enemy.has_method("apply_wave_scaling"):
+		enemy.call("apply_wave_scaling", data)
+
+	enemy.process_mode = Node.PROCESS_MODE_INHERIT
+	if enemy.has_method("start_spawn_timer"):
+		enemy.call("start_spawn_timer")
+	else:
+		enemy.visible = true
+	return enemy
+
+func _get_pool_manager() -> Node:
+	return get_tree().get_first_node_in_group("survival_pool_manager")
+
+func _get_wave_spawn_data() -> Dictionary:
+	var gauntlet_node = Global.gauntlet
+	if gauntlet_node is Node and is_instance_valid(gauntlet_node) and gauntlet_node.has_method("get_enemy_wave_scaling"):
+		var scaling = gauntlet_node.call("get_enemy_wave_scaling", current_wave)
+		if scaling is Dictionary:
+			return scaling
+	return {}
+
+func _apply_wave_settings() -> void:
+	if spawn_intervals.is_empty():
+		return
+
+	var wave_index: int = clamp(current_wave - 1, 0, spawn_intervals.size() - 1)
+	timer.wait_time = spawn_intervals[wave_index]
+
+func _get_enemy_count() -> int:
+	if max_enemies_per_wave.is_empty():
+		return 0
+
+	var wave_index: int = current_wave - 1
+
+	if wave_index < max_enemies_per_wave.size():
+		return max_enemies_per_wave[wave_index]
+
+	var last_enemy_count: int = max_enemies_per_wave[max_enemies_per_wave.size() - 1]
+	var extra_waves: int = wave_index - max_enemies_per_wave.size() + 1
+	return last_enemy_count + extra_waves * extra_enemies_per_wave
+
+func _on_survivor_rank_changed(_rank_index: int) -> void:
+	pass

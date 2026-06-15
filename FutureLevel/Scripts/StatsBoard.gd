@@ -2,7 +2,6 @@ extends LineEdit
 
 
 @onready var popup_panel: PopupPanel = $".."
-@onready var http_request: HTTPRequest = $"../../../HTTPRequest"
 @onready var upload: Sprite2D = $"../Upload"
 @onready var fill_text: TouchScreenButton = $FillText
 @onready var name_input: LineEdit = %SendName
@@ -16,13 +15,19 @@ var titles = ["Operative", "Sentinel", "Architect", "Overseer", "Technomancer", 
 
 func _ready() -> void:
 	name_input.focus_mode = Control.FOCUS_ALL
-	name_input.focus_entered.connect(_on_focus)  # Correct signal connection
+	var focus_callback := Callable(self, "_on_focus")
+	if not name_input.focus_entered.is_connected(focus_callback):
+		name_input.focus_entered.connect(focus_callback)
+
+	var submit_callback := Callable(self, "_on_text_submitted")
+	if not name_input.text_submitted.is_connected(submit_callback):
+		name_input.text_submitted.connect(submit_callback)
+
 	popup_panel.popup_window = true
 	popup_panel.transient = true
 
 func _on_focus() -> void:
 	virtual_keyboard_enabled = true
-	name_input.text_submitted.connect(_on_text_submitted)  # Handle Enter key
 
 func _on_randimize_pressed() -> void:
 	var random_choice = randi() % 3
@@ -40,8 +45,6 @@ func _on_randimize_pressed() -> void:
 		name_input.text = random_adjective + " " + random_proper_noun
 
 func _on_upload_button_pressed() -> void:
-	GameManager.player_name = name_input.text
-	GameManager.send_stats(http_request)
 	%AudioStreamPlayer2D.play()
 	upload.modulate = Color(0.5, 0.5, 0)
 	await get_tree().create_timer(0.5).timeout
@@ -49,11 +52,9 @@ func _on_upload_button_pressed() -> void:
 	await get_tree().create_timer(0.5).timeout
 	_on_close_pressed()
 
-func _on_text_submitted(new_text: String) -> void:
-	GameManager.player_name = new_text
+func _on_text_submitted(_new_text: String) -> void:
 	name_input.virtual_keyboard_enabled = false
 	DisplayServer.virtual_keyboard_hide()
-	GameManager.send_stats(http_request)
 	_on_close_pressed()
 
 func _on_close_pressed() -> void:

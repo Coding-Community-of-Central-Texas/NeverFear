@@ -1,35 +1,35 @@
-[gd_scene load_steps=5 format=3 uid="uid://dlmwrma7sd51s"]
+[gd_scene format=3 uid="uid://dlmwrma7sd51s"]
 
 [ext_resource type="Script" uid="uid://b0tgygkelq0vk" path="res://Scripts/OneHitGauntlet.gd" id="1_hf14j"]
 [ext_resource type="PackedScene" uid="uid://dyimxg6mdgoab" path="res://Scenes/Byte.tscn" id="2_g3ocj"]
 [ext_resource type="PackedScene" uid="uid://mgnw4coxg0q4" path="res://Scenes/buff_byte.tscn" id="3_u55pg"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_cnpoq"]
-radius = 18.0
+radius = 29.068884
 
-[node name="OneHit" type="CharacterBody2D" groups=["enemy"]]
+[node name="OneHit" type="CharacterBody2D" unique_id=273374850 groups=["enemy"]]
 collision_layer = 132
-collision_mask = 132
+collision_mask = 128
 motion_mode = 1
 script = ExtResource("1_hf14j")
 
-[node name="Byte" parent="." instance=ExtResource("2_g3ocj")]
+[node name="Byte" parent="." unique_id=574395745 instance=ExtResource("2_g3ocj")]
 unique_name_in_owner = true
 visible = false
 position = Vector2(-1, 0)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1114325846]
 shape = SubResource("CircleShape2D_cnpoq")
 
-[node name="DamageNumbersOrigin" type="Node2D" parent="."]
+[node name="DamageNumbersOrigin" type="Node2D" parent="." unique_id=930442518]
 position = Vector2(0, -22)
 
-[node name="QueueTimer" type="Timer" parent="."]
+[node name="QueueTimer" type="Timer" parent="." unique_id=1372511792]
 process_callback = 0
 wait_time = 11.277
 autostart = true
 
-[node name="BuffByte" parent="." instance=ExtResource("3_u55pg")]
+[node name="BuffByte" parent="." unique_id=64941056 instance=ExtResource("3_u55pg")]
 position = Vector2(4, -6)
 scale = Vector2(0.451783, 0.410667)
 

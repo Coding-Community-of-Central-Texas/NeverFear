@@ -1,0 +1,68 @@
+[gd_scene format=3 uid="uid://bbgq7f3wbimqc"]
+
+[ext_resource type="Script" uid="uid://cvsfwgmnla75j" path="res://Scripts/Shotgun.gd" id="1_8mgja"]
+[ext_resource type="Texture2D" uid="uid://cq3yy8e5v7fyw" path="res://assets/Guns&Bullets/Shotgun.png" id="2_shotgun"]
+[ext_resource type="AudioStream" uid="uid://cm6khs2aq378r" path="res://assets/FutrueSFX/Gun Laser SingleShot.wav" id="3_b7egm"]
+[ext_resource type="Texture2D" uid="uid://cyjwvkdglc8m8" path="res://assets/Guns&Bullets/muzzle_flash_7.png" id="4_flash"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_shotgun_range"]
+radius = 220.0
+
+[node name="Shotgun" type="Area2D" unique_id=358264337]
+position = Vector2(-4, 2)
+scale = Vector2(0.7780487, 0.66635776)
+collision_layer = 0
+collision_mask = 4
+script = ExtResource("1_8mgja")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=740103280]
+unique_name_in_owner = true
+shape = SubResource("CircleShape2D_shotgun_range")
+debug_color = Color(0, 0.595, 0.7, 0)
+
+[node name="gunpivot" type="Marker2D" parent="." unique_id=1100638582]
+
+[node name="ShotgunSprite" type="Sprite2D" parent="gunpivot" unique_id=1342613371]
+position = Vector2(7.711599, 3.0013912)
+rotation = 0.785398
+scale = Vector2(0.87735564, 0.87735546)
+texture = ExtResource("2_shotgun")
+
+[node name="shootingpoint" type="Marker2D" parent="gunpivot" unique_id=1184959103]
+unique_name_in_owner = true
+position = Vector2(26.990599, 3.0013907)
+
+[node name="Timer" type="Timer" parent="." unique_id=84449601]
+process_callback = 0
+wait_time = 1.8
+one_shot = true
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=681354741]
+stream = ExtResource("3_b7egm")
+volume_db = -0.794
+pitch_scale = 0.82
+playback_type = 1
+
+[node name="Muzzleflash" type="CPUParticles2D" parent="." unique_id=1129118644]
+unique_name_in_owner = true
+show_behind_parent = true
+position = Vector2(27, 0)
+rotation = 1.5708
+scale = Vector2(0.36, 0.36)
+emitting = false
+amount = 18
+texture = ExtResource("4_flash")
+lifetime = 0.45
+preprocess = 0.12
+speed_scale = 1.1
+local_coords = true
+direction = Vector2(0, -1)
+spread = 28.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 40.0
+initial_velocity_max = 120.0
+scale_amount_min = 0.12
+scale_amount_max = 0.3
+color = Color(2.8, 1.1, 4.4, 1)
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

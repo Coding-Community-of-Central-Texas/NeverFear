@@ -47,7 +47,7 @@ theme_override_constants/shadow_offset_x = -1
 theme_override_constants/shadow_offset_y = 2
 theme_override_constants/outline_size = 2
 theme_override_font_sizes/font_size = 69
-text = "Stage complete"
+text = "stage complete"
 horizontal_alignment = 1
 metadata/_edit_use_anchors_ = true
 
@@ -68,7 +68,7 @@ theme_override_constants/shadow_offset_x = -1
 theme_override_constants/shadow_offset_y = 2
 theme_override_constants/outline_size = 2
 theme_override_font_sizes/font_size = 40
-text = "Run Time:"
+text = "run time:"
 metadata/_edit_use_anchors_ = true
 
 [node name="EnimiesKilled" type="Label" parent="Win"]
@@ -108,7 +108,7 @@ theme_override_constants/shadow_offset_x = -1
 theme_override_constants/shadow_offset_y = 2
 theme_override_constants/outline_size = 2
 theme_override_font_sizes/font_size = 40
-text = "CaSH picked-up:"
+text = "cash picked-up:"
 metadata/_edit_use_anchors_ = true
 
 [node name="CanvasLayer" type="CanvasLayer" parent="Win"]

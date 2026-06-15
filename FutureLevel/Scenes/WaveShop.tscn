@@ -1,0 +1,1131 @@
+[gd_scene format=3 uid="uid://dwgkvdch127ty"]
+
+[ext_resource type="Script" uid="uid://27wtpqiwf6l1" path="res://Scripts/WaveShop.gd" id="1_wave_shop"]
+[ext_resource type="Texture2D" uid="uid://ja1ghmcvr6pe" path="res://assets/buttonsprites/ShopPurchaseButton.png" id="2_purchase_normal"]
+[ext_resource type="Texture2D" uid="uid://c1t7ic4fo0him" path="res://assets/etc/health.png" id="2_uk74v"]
+[ext_resource type="Texture2D" uid="uid://c81dqk3jbqyqh" path="res://assets/buttonsprites/ShopPurchaseButtonPressed.png" id="3_purchase_pressed"]
+[ext_resource type="Texture2D" uid="uid://bbofee6bwlhcn" path="res://assets/etc/Clock.png" id="5_y7ff1"]
+[ext_resource type="Texture2D" uid="uid://c8mqnh8i65mot" path="res://assets/Guns&Bullets/4_1.png" id="6_00wco"]
+[ext_resource type="Texture2D" uid="uid://iwcx0xwoe57s" path="res://assets/Guns&Bullets/Stylish 2D Digital Plasma Ball.png" id="7_ag5kn"]
+[ext_resource type="Texture2D" uid="uid://b6rvpg4t65ofh" path="res://assets/Guns&Bullets/bomb.png" id="7_hod5s"]
+[ext_resource type="Texture2D" uid="uid://cq3yy8e5v7fyw" path="res://assets/Guns&Bullets/Shotgun.png" id="8_shotgun"]
+[ext_resource type="Texture2D" uid="uid://bkwq8ai5sjx7n" path="res://assets/Guns&Bullets/LaserSniper.png" id="9_laser_sniper"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_shop_panel"]
+bg_color = Color(0.025, 0.075, 0.095, 0.95)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(1, 0.82, 0.06, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+shadow_color = Color(0, 0, 0, 0.72)
+shadow_size = 14
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cash_panel"]
+bg_color = Color(0, 0, 0, 0.36)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1, 0.82, 0.06, 0.9)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_item_row"]
+bg_color = Color(0.02, 0.026, 0.04, 0.9)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1, 0.82, 0.06, 0.58)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_badge"]
+bg_color = Color(0.04, 0.14, 0.17, 0.92)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1, 0.82, 0.06, 0.88)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_purchase"]
+size = Vector2(1000, 300)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_00wco"]
+size = Vector2(1000, 300)
+
+[node name="WaveShop" type="CanvasLayer" unique_id=1587413871]
+process_mode = 3
+script = ExtResource("1_wave_shop")
+
+[node name="ShopRoot" type="Control" parent="." unique_id=1313594807]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Backdrop" type="ColorRect" parent="ShopRoot" unique_id=1935268282]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.02, 0.025, 0.04, 0.82)
+
+[node name="ShopPanel" type="PanelContainer" parent="ShopRoot" unique_id=1388948049]
+layout_mode = 0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_shop_panel")
+
+[node name="Margins" type="MarginContainer" parent="ShopRoot/ShopPanel" unique_id=820358472]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 56
+theme_override_constants/margin_top = 48
+theme_override_constants/margin_right = 56
+theme_override_constants/margin_bottom = 44
+
+[node name="Content" type="VBoxContainer" parent="ShopRoot/ShopPanel/Margins" unique_id=747359135]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 16
+
+[node name="Header" type="HBoxContainer" parent="ShopRoot/ShopPanel/Margins/Content" unique_id=166481775]
+custom_minimum_size = Vector2(0, 110)
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+theme_override_constants/separation = 22
+
+[node name="TitleStack" type="VBoxContainer" parent="ShopRoot/ShopPanel/Margins/Content/Header" unique_id=302682968]
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+theme_override_constants/separation = 0
+
+[node name="WaveTitleLabel" type="Label" parent="ShopRoot/ShopPanel/Margins/Content/Header/TitleStack" unique_id=385027054]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.5568628, 0.46666667, 0.17254902, 0.5803922)
+theme_override_colors/font_shadow_color = Color(0, 0, 0.9647059, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/shadow_offset_x = -2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 4
+theme_override_font_sizes/font_size = 44
+text = "wave 1 clear"
+
+[node name="SubtitleLabel" type="Label" parent="ShopRoot/ShopPanel/Margins/Content/Header/TitleStack" unique_id=437546866]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.78, 0.9, 0.96, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = -2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 2
+theme_override_font_sizes/font_size = 22
+text = "upgrade station"
+
+[node name="CashPanel" type="PanelContainer" parent="ShopRoot/ShopPanel/Margins/Content/Header" unique_id=50253066]
+custom_minimum_size = Vector2(300, 84)
+layout_mode = 2
+size_flags_vertical = 4
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_cash_panel")
+
+[node name="CashLabel" type="Label" parent="ShopRoot/ShopPanel/Margins/Content/Header/CashPanel" unique_id=565421692]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.27421963, 0.61392295, 0.044680387, 0.77254903)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = -2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 3
+theme_override_font_sizes/font_size = 24
+text = "cash 000000"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="RefreshButton" type="Control" parent="ShopRoot/ShopPanel/Margins/Content/Header"]
+custom_minimum_size = Vector2(220, 84)
+layout_mode = 2
+size_flags_vertical = 4
+mouse_filter = 2
+
+[node name="RefreshTouch" type="TouchScreenButton" parent="ShopRoot/ShopPanel/Margins/Content/Header/RefreshButton"]
+unique_name_in_owner = true
+position = Vector2(15, 7)
+scale = Vector2(0.19, 0.24)
+texture_normal = ExtResource("2_purchase_normal")
+texture_pressed = ExtResource("3_purchase_pressed")
+shape = SubResource("RectangleShape2D_00wco")
+shape_visible = false
+passby_press = true
+
+[node name="RefreshLabel" type="Label" parent="ShopRoot/ShopPanel/Margins/Content/Header/RefreshButton"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 12.0
+offset_top = 5.0
+offset_right = -12.0
+offset_bottom = -10.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.13333334, 0.32941177, 0.05882353, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/shadow_offset_x = -2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 3
+theme_override_font_sizes/font_size = 22
+text = "refresh"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Separator" type="ColorRect" parent="ShopRoot/ShopPanel/Margins/Content" unique_id=110953397]
+custom_minimum_size = Vector2(0, 3)
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+color = Color(1, 0.82, 0.06, 0.55)
+
+[node name="ItemList" type="VBoxContainer" parent="ShopRoot/ShopPanel/Margins/Content" unique_id=1268135842]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_filter = 2
+theme_override_constants/separation = 14
+
+[node name="RepairShopRow" type="PanelContainer" parent="ShopRoot/ShopPanel/Margins/Content/ItemList" unique_id=762751572]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(704, 92)
+layout_mode = 2
+size_flags_horizontal = 4
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_item_row")
+
+[node name="Margins" type="MarginContainer" parent="ShopRoot/ShopPanel/Margins/Content/ItemList/RepairShopRow" unique_id=1839813561]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 18
+theme_override_constants/margin_top = 9
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 9
+
+[node name="Row" type="HBoxContainer" parent="ShopRoot/ShopPanel/Margins/Content/ItemList/RepairShopRow/Margins" unique_id=1578823891]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 14
+alignment = 1
+
+[node name="Badge" type="PanelContainer" parent="ShopRoot/ShopPanel/Margins/Content/ItemList/RepairShopRow/Margins/Row" unique_id=1787832144]
+custom_minimum_size = Vector2(58, 58)
+layout_mode = 2
+size_flags_vertical = 4
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_badge")
+
+[node name="RepairBadgeLabel" type="Label" parent="ShopRoot/ShopPanel/Margins/Content/ItemList/RepairShopRow/Margins/Row/Badge" unique_id=1790883293]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.82, 0.06, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = -2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 3
+theme_override_font_sizes/font_size = 20
+text = "+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Sprite2D" type="Sprite2D" parent="ShopRoot/ShopPanel/Margins/Content/ItemList/RepairShopRow/Margins/Row/Badge" unique_id=658338074]
+position = Vector2(29, 29)
+scale = Vector2(1.1999987, 1.2)
+texture = ExtResource("2_uk74v")
+
+[node name="TextStack" type="VBoxContainer" parent="ShopRoot/ShopPanel/Margins/Content/ItemList/RepairShopRow/Margins/Row" unique_id=26423640]
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+theme_override_constants/separation = 3
+
+[node name="RepairTitle" type="Label" parent="ShopRoot/ShopPanel/Margins/Content/ItemList/RepairShopRow/Margins/Row/TextStack" unique_id=1138401270]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.047058824, 0.32941177, 0.05882353, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/shadow_offset_x = -2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 3
+theme_override_font_sizes/font_size = 24
+text = "repair kit"
+
+[node name="RepairDescription" type="Label" parent="ShopRoot/ShopPanel/Margins/Content/ItemList/RepairShopRow/Margins/Row/TextStack" unique_id=297992002]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.78, 0.9, 0.96, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = -2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 2
+theme_override_font_sizes/font_size = 14
+text = "plus 175 health"
+clip_text = true
+
+[node name="RepairPurchaseButton" type="Control" parent="ShopRoot/ShopPanel/Margins/Content/ItemList/RepairShopRow/Margins/Row" unique_id=1633698376]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(198, 74)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 4
+mouse_filter = 2
+
+[node name="RepairPurchaseTouch" type="TouchScreenButton" parent="ShopRoot/ShopPanel/Margins/Content/ItemList/RepairShopRow/Margins/Row/RepairPurchaseButton" unique_id=635873771]
+unique_name_in_owner = true
+position = Vector2(31.000004, 5.9999743)
+scale = Vector2(0.13220021, 0.23228359)
+texture_normal = ExtResource("2_purchase_normal")
+texture_pressed = ExtResource("3_purchase_pressed")
+shape = SubResource("RectangleShape2D_purchase")
+shape_visible = false
+passby_press = true
+
+[node name="RepairActionLabel" type="Label" parent="ShopRoot/ShopPanel/Margins/Content/ItemList/RepairShopRow/Margins/Row/RepairPurchaseButton" unique_id=146179162]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 16.0
+offset_top = 8.0
+offset_right = -16.0
+offset_bottom = -15.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.13333334, 0.32941177, 0.05882353, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/shadow_offset_x = -2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 3
+theme_override_font_sizes/font_size = 19
+text = "buy"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="OverclockShopRow" type="PanelContainer" parent="ShopRoot/ShopPanel/Margins/Content/ItemList" unique_id=439537123]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(704, 92)
+layout_mode = 2
+size_flags_horizontal = 4
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_item_row")
+
+[node name="Margins" type="MarginContainer" parent="ShopRoot/ShopPanel/Margins/Content/ItemList/OverclockShopRow" unique_id=1225187205]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 18
+theme_override_constants/margin_top = 9
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 9
+
+[node name="Row" type="HBoxContainer" parent="ShopRoot/ShopPanel/Margins/Content/ItemList/OverclockShopRow/Margins" unique_id=1682267027]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 14
+alignment = 1
+
+[node name="Badge" type="PanelContainer" parent="ShopRoot/ShopPanel/Margins/Content/ItemList/OverclockShopRow/Margins/Row" unique_id=1725200364]
+custom_minimum_size = Vector2(58, 58)
+layout_mode = 2
+size_flags_vertical = 4
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_badge")
+
+[node name="OverclockBadgeLabel" type="Label" parent="ShopRoot/ShopPanel/Margins/Content/ItemList/OverclockShopRow/Margins/Row/Badge" unique_id=476797205]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.82, 0.06, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = -2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 3
+theme_override_font_sizes/font_size = 20
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Sprite2D" type="Sprite2D" parent="ShopRoot/ShopPanel/Margins/Content/ItemList/OverclockShopRow/Margins/Row/Badge" unique_id=1902100816]
+position = Vector2(29, 29)
+scale = Vector2(1.36, 1.36)
+texture = ExtResource("5_y7ff1")
+
+[node name="TextStack" type="VBoxContainer" parent="ShopRoot/ShopPanel/Margins/Content/ItemList/OverclockShopRow/Margins/Row" unique_id=146477797]
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+theme_override_constants/separation = 3
+
+[node name="OverclockTitle" type="Label" parent="ShopRoot/ShopPanel/Margins/Content/ItemList/OverclockShopRow/Margins/Row/TextStack" unique_id=1157411636]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 1, 0.49411765)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0.70980394, 0.70980394, 0.07058824, 1)
+theme_override_constants/shadow_offset_x = -2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 3
+theme_override_font_sizes/font_size = 24
+text = "overclock boots"
+
+[node name="OverclockDescription" type="Label" parent="ShopRoot/ShopPanel/Margins/Content/ItemList/OverclockShopRow/Margins/Row/TextStack" unique_id=43657728]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.78, 0.9, 0.96, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = -2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 2
+theme_override_font_sizes/font_size = 14
+text = "plus 35 move speed"
+clip_text = true
+
+[node name="OverclockPurchaseButton" type="Control" parent="ShopRoot/ShopPanel/Margins/Content/ItemList/OverclockShopRow/Margins/Row" unique_id=1633970523]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(198, 74)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 4
+mouse_filter = 2
+
+[node name="OverclockPurchaseTouch" type="TouchScreenButton" parent="ShopRoot/ShopPanel/Margins/Content/ItemList/OverclockShopRow/Margins/Row/OverclockPurchaseButton" unique_id=143278316]
+unique_name_in_owner = true
+position = Vector2(31.000004, 5.9999743)
+scale = Vector2(0.13220021, 0.23228359)
+texture_normal = ExtResource("2_purchase_normal")
+texture_pressed = ExtResource("3_purchase_pressed")
+shape = SubResource("RectangleShape2D_purchase")
+shape_visible = false
+passby_press = true
+
+[node name="OverclockActionLabel" type="Label" parent="ShopRoot/ShopPanel/Margins/Content/ItemList/OverclockShopRow/Margins/Row/OverclockPurchaseButton" unique_id=1260200659]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 16.0
+offset_top = 8.0
+offset_right = -16.0
+offset_bottom = -16.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.13333334, 0.32941177, 0.05882353, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/shadow_offset_x = -2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 3
+theme_override_font_sizes/font_size = 19
+text = "buy"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SecondGunShopRow" type="PanelContainer" parent="ShopRoot/ShopPanel/Margins/Content/ItemList" unique_id=1527780136]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(704, 92)
+layout_mode = 2
+size_flags_horizontal = 4
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_item_row")
+
+[node name="Margins" type="MarginContainer" parent="ShopRoot/ShopPanel/Margins/Content/ItemList/SecondGunShopRow" unique_id=779057399]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 18
+theme_override_constants/margin_top = 9
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 9
+
+[node name="Row" type="HBoxContainer" parent="ShopRoot/ShopPanel/Margins/Content/ItemList/SecondGunShopRow/Margins" unique_id=681334149]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 14
+alignment = 1
+
+[node name="Badge" type="PanelContainer" parent="ShopRoot/ShopPanel/Margins/Content/ItemList/SecondGunShopRow/Margins/Row" unique_id=1795770323]
+custom_minimum_size = Vector2(58, 58)
+layout_mode = 2
+size_flags_vertical = 4
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_badge")
+
+[node name="SecondGunBadgeLabel" type="Label" parent="ShopRoot/ShopPanel/Margins/Content/ItemList/SecondGunShopRow/Margins/Row/Badge" unique_id=171737994]
+unique_name_in_owner = true
+z_index = 1
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.82, 0.06, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = -2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 3
+theme_override_font_sizes/font_size = 17
+text = "2x"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Sprite2D" type="Sprite2D" parent="ShopRoot/ShopPanel/Margins/Content/ItemList/SecondGunShopRow/Margins/Row/Badge" unique_id=1052710851]
+position = Vector2(39, 35)
+rotation = -0.8584938
+scale = Vector2(1.52, 1.4400024)
+texture = ExtResource("6_00wco")
+
+[node name="Sprite2D2" type="Sprite2D" parent="ShopRoot/ShopPanel/Margins/Content/ItemList/SecondGunShopRow/Margins/Row/Badge" unique_id=1249467595]
+position = Vector2(23, 26)
+rotation = -0.8584938
+scale = Vector2(1.52, 1.4400024)
+texture = ExtResource("6_00wco")
+
+[node name="TextStack" type="VBoxContainer" parent="ShopRoot/ShopPanel/Margins/Content/ItemList/SecondGunShopRow/Margins/Row" unique_id=1370499815]
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+theme_override_constants/separation = 3
+
+[node name="SecondGunTitle" type="Label" parent="ShopRoot/ShopPanel/Margins/Content/ItemList/SecondGunShopRow/Margins/Row/TextStack" unique_id=1355331741]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.98039216, 0.8039216, 0.05882353, 0.7058824)
+theme_override_colors/font_shadow_color = Color(0, 0.58431375, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/shadow_offset_x = -2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 3
+theme_override_font_sizes/font_size = 24
+text = "second gun"
+
+[node name="SecondGunDescription" type="Label" parent="ShopRoot/ShopPanel/Margins/Content/ItemList/SecondGunShopRow/Margins/Row/TextStack" unique_id=2011904714]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.78, 0.9, 0.96, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = -2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 2
+theme_override_font_sizes/font_size = 14
+text = "equip an extra rifle"
+clip_text = true
+
+[node name="SecondGunPurchaseButton" type="Control" parent="ShopRoot/ShopPanel/Margins/Content/ItemList/SecondGunShopRow/Margins/Row" unique_id=447030704]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(198, 74)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 4
+mouse_filter = 2
+
+[node name="SecondGunPurchaseTouch" type="TouchScreenButton" parent="ShopRoot/ShopPanel/Margins/Content/ItemList/SecondGunShopRow/Margins/Row/SecondGunPurchaseButton" unique_id=347671132]
+unique_name_in_owner = true
+position = Vector2(31.000004, 5.9999743)
+scale = Vector2(0.13220021, 0.23228359)
+texture_normal = ExtResource("2_purchase_normal")
+texture_pressed = ExtResource("3_purchase_pressed")
+shape = SubResource("RectangleShape2D_purchase")
+shape_visible = false
+passby_press = true
+
+[node name="SecondGunActionLabel" type="Label" parent="ShopRoot/ShopPanel/Margins/Content/ItemList/SecondGunShopRow/Margins/Row/SecondGunPurchaseButton" unique_id=87809410]
+unique_name_in_owner = true
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 16.0
+offset_top = 8.0
+offset_right = -16.0
+offset_bottom = -16.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.13333334, 0.32941177, 0.05882353, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/shadow_offset_x = -2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 3
+theme_override_font_sizes/font_size = 19
+text = "buy"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ShotgunShopRow" type="PanelContainer" parent="ShopRoot/ShopPanel/Margins/Content/ItemList" unique_id=369756167]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(704, 92)
+layout_mode = 2
+size_flags_horizontal = 4
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_item_row")
+
+[node name="Margins" type="MarginContainer" parent="ShopRoot/ShopPanel/Margins/Content/ItemList/ShotgunShopRow" unique_id=927454172]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 18
+theme_override_constants/margin_top = 9
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 9
+
+[node name="Row" type="HBoxContainer" parent="ShopRoot/ShopPanel/Margins/Content/ItemList/ShotgunShopRow/Margins" unique_id=1921277011]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 14
+alignment = 1
+
+[node name="Badge" type="PanelContainer" parent="ShopRoot/ShopPanel/Margins/Content/ItemList/ShotgunShopRow/Margins/Row" unique_id=190199200]
+custom_minimum_size = Vector2(58, 58)
+layout_mode = 2
+size_flags_vertical = 4
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_badge")
+
+[node name="ShotgunBadgeLabel" type="Label" parent="ShopRoot/ShopPanel/Margins/Content/ItemList/ShotgunShopRow/Margins/Row/Badge" unique_id=2129803702]
+unique_name_in_owner = true
+z_index = 1
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.82, 0.06, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = -2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 3
+theme_override_font_sizes/font_size = 16
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Sprite2D" type="Sprite2D" parent="ShopRoot/ShopPanel/Margins/Content/ItemList/ShotgunShopRow/Margins/Row/Badge" unique_id=297725724]
+position = Vector2(30, 32)
+rotation = 0.7734947
+scale = Vector2(1.45, 1.45)
+texture = ExtResource("8_shotgun")
+
+[node name="TextStack" type="VBoxContainer" parent="ShopRoot/ShopPanel/Margins/Content/ItemList/ShotgunShopRow/Margins/Row" unique_id=1520863680]
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+theme_override_constants/separation = 3
+
+[node name="ShotgunTitle" type="Label" parent="ShopRoot/ShopPanel/Margins/Content/ItemList/ShotgunShopRow/Margins/Row/TextStack" unique_id=1761070989]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.98039216, 0.8039216, 0.05882353, 0.7058824)
+theme_override_colors/font_shadow_color = Color(0, 0.58431375, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/shadow_offset_x = -2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 3
+theme_override_font_sizes/font_size = 24
+text = "shotgun"
+
+[node name="ShotgunDescription" type="Label" parent="ShopRoot/ShopPanel/Margins/Content/ItemList/ShotgunShopRow/Margins/Row/TextStack" unique_id=1019000934]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.78, 0.9, 0.96, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = -2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 2
+theme_override_font_sizes/font_size = 14
+text = "equip a close-range spread weapon"
+clip_text = true
+
+[node name="ShotgunPurchaseButton" type="Control" parent="ShopRoot/ShopPanel/Margins/Content/ItemList/ShotgunShopRow/Margins/Row" unique_id=1748026461]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(198, 74)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 4
+mouse_filter = 2
+
+[node name="ShotgunPurchaseTouch" type="TouchScreenButton" parent="ShopRoot/ShopPanel/Margins/Content/ItemList/ShotgunShopRow/Margins/Row/ShotgunPurchaseButton" unique_id=452438484]
+unique_name_in_owner = true
+position = Vector2(31.000004, 5.9999743)
+scale = Vector2(0.13220021, 0.23228359)
+texture_normal = ExtResource("2_purchase_normal")
+texture_pressed = ExtResource("3_purchase_pressed")
+shape = SubResource("RectangleShape2D_purchase")
+shape_visible = false
+passby_press = true
+
+[node name="ShotgunActionLabel" type="Label" parent="ShopRoot/ShopPanel/Margins/Content/ItemList/ShotgunShopRow/Margins/Row/ShotgunPurchaseButton" unique_id=1385184835]
+unique_name_in_owner = true
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 16.0
+offset_top = 8.0
+offset_right = -16.0
+offset_bottom = -16.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.13333334, 0.32941177, 0.05882353, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/shadow_offset_x = -2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 3
+theme_override_font_sizes/font_size = 19
+text = "buy"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="LaserSniperShopRow" type="PanelContainer" parent="ShopRoot/ShopPanel/Margins/Content/ItemList" unique_id=200995504]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(704, 92)
+layout_mode = 2
+size_flags_horizontal = 4
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_item_row")
+
+[node name="Margins" type="MarginContainer" parent="ShopRoot/ShopPanel/Margins/Content/ItemList/LaserSniperShopRow" unique_id=1890903491]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 18
+theme_override_constants/margin_top = 9
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 9
+
+[node name="Row" type="HBoxContainer" parent="ShopRoot/ShopPanel/Margins/Content/ItemList/LaserSniperShopRow/Margins" unique_id=1256384739]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 14
+alignment = 1
+
+[node name="Badge" type="PanelContainer" parent="ShopRoot/ShopPanel/Margins/Content/ItemList/LaserSniperShopRow/Margins/Row" unique_id=1992277900]
+custom_minimum_size = Vector2(58, 58)
+layout_mode = 2
+size_flags_vertical = 4
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_badge")
+
+[node name="LaserSniperBadgeLabel" type="Label" parent="ShopRoot/ShopPanel/Margins/Content/ItemList/LaserSniperShopRow/Margins/Row/Badge" unique_id=474805339]
+unique_name_in_owner = true
+z_index = 1
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.82, 0.06, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = -2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 3
+theme_override_font_sizes/font_size = 16
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Sprite2D" type="Sprite2D" parent="ShopRoot/ShopPanel/Margins/Content/ItemList/LaserSniperShopRow/Margins/Row/Badge" unique_id=640536191]
+position = Vector2(30, 32)
+rotation = 0.77831995
+scale = Vector2(1.5287697, 1.5333871)
+texture = ExtResource("9_laser_sniper")
+
+[node name="TextStack" type="VBoxContainer" parent="ShopRoot/ShopPanel/Margins/Content/ItemList/LaserSniperShopRow/Margins/Row" unique_id=380051323]
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+theme_override_constants/separation = 3
+
+[node name="LaserSniperTitle" type="Label" parent="ShopRoot/ShopPanel/Margins/Content/ItemList/LaserSniperShopRow/Margins/Row/TextStack" unique_id=1992875829]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.98039216, 0.8039216, 0.05882353, 0.7058824)
+theme_override_colors/font_shadow_color = Color(0, 0.58431375, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/shadow_offset_x = -2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 3
+theme_override_font_sizes/font_size = 24
+text = "laser sniper"
+
+[node name="LaserSniperDescription" type="Label" parent="ShopRoot/ShopPanel/Margins/Content/ItemList/LaserSniperShopRow/Margins/Row/TextStack" unique_id=1448921790]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.78, 0.9, 0.96, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = -2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 2
+theme_override_font_sizes/font_size = 14
+text = "long-range piercing laser blast"
+clip_text = true
+
+[node name="LaserSniperPurchaseButton" type="Control" parent="ShopRoot/ShopPanel/Margins/Content/ItemList/LaserSniperShopRow/Margins/Row" unique_id=3615249]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(198, 74)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 4
+mouse_filter = 2
+
+[node name="LaserSniperPurchaseTouch" type="TouchScreenButton" parent="ShopRoot/ShopPanel/Margins/Content/ItemList/LaserSniperShopRow/Margins/Row/LaserSniperPurchaseButton" unique_id=2002603450]
+unique_name_in_owner = true
+position = Vector2(31.000004, 5.9999743)
+scale = Vector2(0.13220021, 0.23228359)
+texture_normal = ExtResource("2_purchase_normal")
+texture_pressed = ExtResource("3_purchase_pressed")
+shape = SubResource("RectangleShape2D_purchase")
+shape_visible = false
+passby_press = true
+
+[node name="LaserSniperActionLabel" type="Label" parent="ShopRoot/ShopPanel/Margins/Content/ItemList/LaserSniperShopRow/Margins/Row/LaserSniperPurchaseButton" unique_id=28654146]
+unique_name_in_owner = true
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 16.0
+offset_top = 8.0
+offset_right = -16.0
+offset_bottom = -16.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.13333334, 0.32941177, 0.05882353, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/shadow_offset_x = -2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 3
+theme_override_font_sizes/font_size = 19
+text = "buy"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="LifeShopRow" type="PanelContainer" parent="ShopRoot/ShopPanel/Margins/Content/ItemList" unique_id=913327782]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(704, 92)
+layout_mode = 2
+size_flags_horizontal = 4
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_item_row")
+
+[node name="Margins" type="MarginContainer" parent="ShopRoot/ShopPanel/Margins/Content/ItemList/LifeShopRow" unique_id=522583946]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 18
+theme_override_constants/margin_top = 9
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 9
+
+[node name="Row" type="HBoxContainer" parent="ShopRoot/ShopPanel/Margins/Content/ItemList/LifeShopRow/Margins" unique_id=760794933]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 14
+alignment = 1
+
+[node name="Badge" type="PanelContainer" parent="ShopRoot/ShopPanel/Margins/Content/ItemList/LifeShopRow/Margins/Row" unique_id=311535669]
+custom_minimum_size = Vector2(58, 58)
+layout_mode = 2
+size_flags_vertical = 4
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_badge")
+
+[node name="LifeBadgeLabel" type="Label" parent="ShopRoot/ShopPanel/Margins/Content/ItemList/LifeShopRow/Margins/Row/Badge" unique_id=1886749326]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.82, 0.06, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = -2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 3
+theme_override_font_sizes/font_size = 20
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Sprite2D" type="Sprite2D" parent="ShopRoot/ShopPanel/Margins/Content/ItemList/LifeShopRow/Margins/Row/Badge/LifeBadgeLabel" unique_id=110445082]
+position = Vector2(27, 16)
+scale = Vector2(0.115309976, 0.080427624)
+texture = ExtResource("7_ag5kn")
+region_enabled = true
+region_rect = Rect2(0, 744.0464, 399.84778, 667.41846)
+
+[node name="TextStack" type="VBoxContainer" parent="ShopRoot/ShopPanel/Margins/Content/ItemList/LifeShopRow/Margins/Row" unique_id=885358706]
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+theme_override_constants/separation = 3
+
+[node name="LifeTitle" type="Label" parent="ShopRoot/ShopPanel/Margins/Content/ItemList/LifeShopRow/Margins/Row/TextStack" unique_id=831387472]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.98, 0.33, 0.06, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/shadow_offset_x = -2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 3
+theme_override_font_sizes/font_size = 24
+text = "plasma ball"
+
+[node name="LifeDescription" type="Label" parent="ShopRoot/ShopPanel/Margins/Content/ItemList/LifeShopRow/Margins/Row/TextStack" unique_id=1458992400]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.78, 0.9, 0.96, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = -2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 2
+theme_override_font_sizes/font_size = 14
+text = "orbiting ball that damages enemies"
+clip_text = true
+
+[node name="LifePurchaseButton" type="Control" parent="ShopRoot/ShopPanel/Margins/Content/ItemList/LifeShopRow/Margins/Row" unique_id=828552002]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(198, 74)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 4
+mouse_filter = 2
+
+[node name="LifePurchaseTouch" type="TouchScreenButton" parent="ShopRoot/ShopPanel/Margins/Content/ItemList/LifeShopRow/Margins/Row/LifePurchaseButton" unique_id=181513740]
+unique_name_in_owner = true
+position = Vector2(31.000004, 5.9999743)
+scale = Vector2(0.13220021, 0.23228359)
+texture_normal = ExtResource("2_purchase_normal")
+texture_pressed = ExtResource("3_purchase_pressed")
+shape = SubResource("RectangleShape2D_purchase")
+shape_visible = false
+passby_press = true
+
+[node name="LifeActionLabel" type="Label" parent="ShopRoot/ShopPanel/Margins/Content/ItemList/LifeShopRow/Margins/Row/LifePurchaseButton" unique_id=663264889]
+unique_name_in_owner = true
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 16.0
+offset_top = 8.0
+offset_right = -16.0
+offset_bottom = -16.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.13333334, 0.32941177, 0.05882353, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/shadow_offset_x = -2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 3
+theme_override_font_sizes/font_size = 19
+text = "buy"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AutoGrenadeShopRow" type="PanelContainer" parent="ShopRoot/ShopPanel/Margins/Content/ItemList" unique_id=1896810094]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(704, 92)
+layout_mode = 2
+size_flags_horizontal = 4
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_item_row")
+
+[node name="Margins" type="MarginContainer" parent="ShopRoot/ShopPanel/Margins/Content/ItemList/AutoGrenadeShopRow" unique_id=1693540695]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 18
+theme_override_constants/margin_top = 9
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 9
+
+[node name="Row" type="HBoxContainer" parent="ShopRoot/ShopPanel/Margins/Content/ItemList/AutoGrenadeShopRow/Margins" unique_id=2128273048]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 14
+alignment = 1
+
+[node name="Badge" type="PanelContainer" parent="ShopRoot/ShopPanel/Margins/Content/ItemList/AutoGrenadeShopRow/Margins/Row" unique_id=565822306]
+custom_minimum_size = Vector2(58, 58)
+layout_mode = 2
+size_flags_vertical = 4
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_badge")
+
+[node name="AutoGrenadeBadgeLabel" type="Label" parent="ShopRoot/ShopPanel/Margins/Content/ItemList/AutoGrenadeShopRow/Margins/Row/Badge" unique_id=922057412]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.82, 0.06, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = -2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 3
+theme_override_font_sizes/font_size = 20
+text = "G"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Sprite2D" type="Sprite2D" parent="ShopRoot/ShopPanel/Margins/Content/ItemList/AutoGrenadeShopRow/Margins/Row/Badge/AutoGrenadeBadgeLabel" unique_id=954339392]
+position = Vector2(27, 15)
+rotation = -0.30846876
+scale = Vector2(0.31843978, 0.28150362)
+texture = ExtResource("7_hod5s")
+region_enabled = true
+region_rect = Rect2(60.91385, 405.76617, 268.80618, 249.94257)
+
+[node name="TextStack" type="VBoxContainer" parent="ShopRoot/ShopPanel/Margins/Content/ItemList/AutoGrenadeShopRow/Margins/Row" unique_id=1140345183]
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+theme_override_constants/separation = 3
+
+[node name="AutoGrenadeTitle" type="Label" parent="ShopRoot/ShopPanel/Margins/Content/ItemList/AutoGrenadeShopRow/Margins/Row/TextStack" unique_id=999889001]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.5921569, 0.08627451, 0.003921569, 1)
+theme_override_colors/font_shadow_color = Color(0.8117647, 0.14117648, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/shadow_offset_x = -2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 3
+theme_override_font_sizes/font_size = 24
+text = "grenade rig"
+
+[node name="AutoGrenadeDescription" type="Label" parent="ShopRoot/ShopPanel/Margins/Content/ItemList/AutoGrenadeShopRow/Margins/Row/TextStack" unique_id=706764374]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.78, 0.9, 0.96, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = -2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 2
+theme_override_font_sizes/font_size = 14
+text = "nearest enemy every 9 sec"
+clip_text = true
+
+[node name="AutoGrenadePurchaseButton" type="Control" parent="ShopRoot/ShopPanel/Margins/Content/ItemList/AutoGrenadeShopRow/Margins/Row" unique_id=1990027923]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(198, 74)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 4
+mouse_filter = 2
+
+[node name="AutoGrenadePurchaseTouch" type="TouchScreenButton" parent="ShopRoot/ShopPanel/Margins/Content/ItemList/AutoGrenadeShopRow/Margins/Row/AutoGrenadePurchaseButton" unique_id=651082161]
+unique_name_in_owner = true
+position = Vector2(31.000004, 5.9999743)
+scale = Vector2(0.13220021, 0.23228359)
+texture_normal = ExtResource("2_purchase_normal")
+texture_pressed = ExtResource("3_purchase_pressed")
+shape = SubResource("RectangleShape2D_purchase")
+shape_visible = false
+passby_press = true
+
+[node name="AutoGrenadeActionLabel" type="Label" parent="ShopRoot/ShopPanel/Margins/Content/ItemList/AutoGrenadeShopRow/Margins/Row/AutoGrenadePurchaseButton" unique_id=2120364970]
+unique_name_in_owner = true
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 16.0
+offset_top = 8.0
+offset_right = -16.0
+offset_bottom = -16.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.13333334, 0.32941177, 0.05882353, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/shadow_offset_x = -2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 3
+theme_override_font_sizes/font_size = 19
+text = "buy"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="FeedbackLabel" type="Label" parent="ShopRoot/ShopPanel/Margins/Content" unique_id=276653616]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 26)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.78, 0.9, 0.96, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = -2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 3
+theme_override_font_sizes/font_size = 16
+horizontal_alignment = 1
+
+[node name="ResumeCenter" type="CenterContainer" parent="ShopRoot/ShopPanel/Margins/Content" unique_id=1854836140]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="ResumeButton" type="Control" parent="ShopRoot/ShopPanel/Margins/Content/ResumeCenter" unique_id=2077912664]
+custom_minimum_size = Vector2(360, 86)
+layout_mode = 2
+mouse_filter = 2
+
+[node name="ResumeTouch" type="TouchScreenButton" parent="ShopRoot/ShopPanel/Margins/Content/ResumeCenter/ResumeButton" unique_id=306659284]
+unique_name_in_owner = true
+position = Vector2(38, 10.999999)
+scale = Vector2(0.27701607, 0.2322836)
+texture_normal = ExtResource("2_purchase_normal")
+texture_pressed = ExtResource("3_purchase_pressed")
+shape = SubResource("RectangleShape2D_00wco")
+passby_press = true
+
+[node name="ResumeLabel" type="Label" parent="ShopRoot/ShopPanel/Margins/Content/ResumeCenter/ResumeButton" unique_id=2089440388]
+unique_name_in_owner = true
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 28.0
+offset_top = 11.0
+offset_right = -28.0
+offset_bottom = -22.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.13333334, 0.32941177, 0.05882353, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/shadow_offset_x = -2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 3
+theme_override_font_sizes/font_size = 25
+text = "resume wave 2"
+horizontal_alignment = 1
+vertical_alignment = 1

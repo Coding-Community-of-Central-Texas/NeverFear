@@ -1,0 +1,46 @@
+[gd_scene format=3 uid="uid://in7hy5se4c4r"]
+
+[ext_resource type="Texture2D" uid="uid://iwcx0xwoe57s" path="res://assets/Guns&Bullets/Stylish 2D Digital Plasma Ball.png" id="1_3wmkm"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ciaam"]
+atlas = ExtResource("1_3wmkm")
+region = Rect2(0, 748, 396, 748)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iwnqx"]
+atlas = ExtResource("1_3wmkm")
+region = Rect2(396, 748, 396, 748)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ixshp"]
+atlas = ExtResource("1_3wmkm")
+region = Rect2(792, 748, 396, 748)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xt7kd"]
+atlas = ExtResource("1_3wmkm")
+region = Rect2(1188, 748, 396, 748)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_dk1if"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ciaam")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iwnqx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ixshp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xt7kd")
+}],
+"loop": true,
+"name": &"default",
+"speed": 15.0
+}]
+
+[node name="Plasmaball" type="Node2D" unique_id=177537502]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1879861731]
+scale = Vector2(0.015054318, 0.01395538)
+sprite_frames = SubResource("SpriteFrames_dk1if")
+frame_progress = 0.8297293

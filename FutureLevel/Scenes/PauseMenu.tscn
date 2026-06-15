@@ -215,7 +215,7 @@ theme_override_constants/check_v_offset = 0
 button_pressed = true
 action_mode = 0
 shortcut = SubResource("Shortcut_b0fgo")
-text = "SFX
+text = "sfx
 "
 expand_icon = true
 metadata/_edit_use_anchors_ = true
@@ -243,7 +243,7 @@ theme_override_constants/check_v_offset = 0
 button_pressed = true
 action_mode = 0
 shortcut = SubResource("Shortcut_b0fgo")
-text = "Music
+text = "music
 "
 expand_icon = true
 metadata/_edit_use_anchors_ = true

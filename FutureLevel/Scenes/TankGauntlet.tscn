@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://cwmvvt10vc37t"]
+[gd_scene format=3 uid="uid://cwmvvt10vc37t"]
 
 [ext_resource type="Script" uid="uid://cj40i03tcg74b" path="res://Scripts/TankGauntlet.gd" id="1_f62gq"]
 [ext_resource type="PackedScene" uid="uid://7rfkwwydbnmb" path="res://Scenes/Tank.tscn" id="2_hbva3"]
@@ -6,40 +6,40 @@
 [ext_resource type="Texture2D" uid="uid://dkp57y2x4axvt" path="res://assets/etc/shadow.png" id="4_iwgws"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_aqnnt"]
-size = Vector2(38, 53.5)
+size = Vector2(128, 92)
 
-[node name="TankGauntlet" type="CharacterBody2D" groups=["enemy"]]
+[node name="TankGauntlet" type="CharacterBody2D" unique_id=1572579521 groups=["enemy"]]
 collision_layer = 4
-collision_mask = 5
+collision_mask = 1
 motion_mode = 1
 script = ExtResource("1_f62gq")
 
-[node name="Tank" parent="." instance=ExtResource("2_hbva3")]
+[node name="Tank" parent="." unique_id=872374218 instance=ExtResource("2_hbva3")]
 unique_name_in_owner = true
 position = Vector2(24, -30)
 scale = Vector2(0.42, 0.42)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-2, -3.25)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1921933488]
+position = Vector2(11, -4)
 shape = SubResource("RectangleShape2D_aqnnt")
 
-[node name="BasicGun" parent="." instance=ExtResource("3_747a0")]
+[node name="BasicGun" parent="." unique_id=59399193 instance=ExtResource("3_747a0")]
 unique_name_in_owner = true
-position = Vector2(-3, -10)
+position = Vector2(-5, -45)
 
-[node name="Shadow" type="Sprite2D" parent="."]
+[node name="Shadow" type="Sprite2D" parent="." unique_id=1224045425]
 modulate = Color(0, 0, 0, 1)
 show_behind_parent = true
-position = Vector2(-9, 48)
+position = Vector2(-2, 43)
 scale = Vector2(0.398437, 0.640432)
 texture = ExtResource("4_iwgws")
 
-[node name="QueueTimer" type="Timer" parent="."]
+[node name="QueueTimer" type="Timer" parent="." unique_id=1280878799]
 process_callback = 0
 wait_time = 12.235
 autostart = true
 
-[node name="DamageNumberOrigin" type="Node2D" parent="."]
+[node name="DamageNumberOrigin" type="Node2D" parent="." unique_id=154171738]
 position = Vector2(-5, -54)
 
 [connection signal="kill" from="." to="." method="_on_kill"]

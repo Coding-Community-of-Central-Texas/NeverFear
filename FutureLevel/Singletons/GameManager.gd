@@ -1,14 +1,13 @@
 extends Node
 
 signal cash
+signal game_cash_changed(current_cash: int)
 signal kill
 signal scene_kill_updated(kills: int)
 signal player_jumped()
 signal player_double_jumped()
 signal life_collected()
 
-
-var http_request = "res://Scenes/HTTPRequest.tscn"
 
 const ACHIEVEMENT_SHARP_SHOOTER = "CgkI_v7o0NMNEAIQAg"
 const ACHIEVEMENT_JUMP = "CgkI_v7o0NMNEAIQAw"
@@ -25,8 +24,17 @@ const ACHIEVEMENT_HYPERCORE_UNDERTAKER = "CgkI_v7o0NMNEAIQDQ"
 const ACHIEVEMENT_MY_STRENGTH_IS_GROWING = "CgkI_v7o0NMNEAIQDg"
 const ACHIEVEMENT_FURTHER_BEYOND = "CgkI_v7o0NMNEAIQDw"
 const LEADERBOARD_LEGACY_PROTOCOL_BEST_TIME = "CgkI_v7o0NMNEAIQFA"
+const LEVEL_HYPERCORE_GAUNTLET := "HypercoreGauntlet"
+const LEVEL_LEGACY_PROTOCOL := "LegacyProtocol"
 const LEGACY_PROTOCOL_3_MIN_MS := 180000
 const LEGACY_PROTOCOL_2_5_MIN_MS := 150000
+const LEGACY_PROTOCOL_2_MIN_MS := 120000
+const CASH_DENOMINATIONS := [
+	{"value": 1000000000000, "suffix": "T"},
+	{"value": 1000000000, "suffix": "B"},
+	{"value": 1000000, "suffix": "M"},
+	{"value": 1000, "suffix": "K"}
+]
 
 # Stats
 var total_kills: int = 0
@@ -36,8 +44,6 @@ var total_cash: int = 0
 var current_level_time: String = "" 
 var current_kills: int = 0
 var game_cash: int = 0 
-var api_key: String 
-var player_name: String
 # File path for save data
 const SAVE_PATH = "user://stat_data.json"
 var deaths_in_legacy_protocol: int = 0
@@ -56,11 +62,8 @@ var cat_lover_unlocked := false
 var pretty_quick_fella_unlocked := false
 var rank_3_achievement_sent := false
 var whoa_fast_guy_unlocked := false
+var zzoommm_unlocked := false
 
-
-# API Endpoint URL
-const API_URL: String = "https://neverfearendpoint-469126233982.us-south1.run.app"
-var API_KEY: String
 
 func _init():
 	# Connect signals to handlers
@@ -81,13 +84,15 @@ func _on_kill(amount: int) -> void:
 		if playgames.is_available() and playgames.is_signed_in():
 			playgames.unlock_achievement(ACHIEVEMENT_SHARP_SHOOTER)
 
-	if total_kills >= 25 and not eliminations_25_unlocked:
+	if current_level != LEVEL_HYPERCORE_GAUNTLET:
+		return
+
+	if current_kills >= 25 and not eliminations_25_unlocked:
 		eliminations_25_unlocked = true
 		if playgames.is_available() and playgames.is_signed_in():
 			playgames.unlock_achievement(ACHIEVEMENT_25_ELIMINATIONS)
 
-
-	if total_kills >= 300 and not hypercore_undertaker_unlocked:
+	if current_kills >= 300 and not hypercore_undertaker_unlocked:
 		hypercore_undertaker_unlocked = true
 		if playgames.is_available() and playgames.is_signed_in():
 			playgames.unlock_achievement(ACHIEVEMENT_HYPERCORE_UNDERTAKER)
@@ -117,11 +122,16 @@ func check_lives_achievement() -> void:
 		save_data()
 
 func start_legacy_protocol_run() -> void:
-	current_level = "LegacyProtocol"
+	current_level = LEVEL_LEGACY_PROTOCOL
 	deaths_in_legacy_protocol = 0
 
+func start_hypercore_gauntlet_run() -> void:
+	current_level = LEVEL_HYPERCORE_GAUNTLET
+	current_kills = 0
+	emit_signal("scene_kill_updated", current_kills)
+
 func register_player_death() -> void:
-	if current_level == "LegacyProtocol":
+	if current_level == LEVEL_LEGACY_PROTOCOL:
 		deaths_in_legacy_protocol += 1
 
 func check_legacy_protocol_speed_achievements(final_time: String) -> void:
@@ -146,6 +156,12 @@ func check_legacy_protocol_speed_achievements(final_time: String) -> void:
 			playgames.unlock_achievement(ACHIEVEMENT_WHOA_FAST_GUY)
 			print("Legacy Protocol under 2.5 minutes achievement unlock request sent")
 
+	if run_ms <= LEGACY_PROTOCOL_2_MIN_MS and not zzoommm_unlocked:
+		zzoommm_unlocked = true
+		if playgames.is_available() and playgames.is_signed_in():
+			playgames.unlock_achievement(ACHIEVEMENT_ZZOOOMM)
+			print("Legacy Protocol under 2 minutes achievement unlock request sent")
+
 func _on_rank_changed(rank_index: int) -> void:
 	if rank_index >= 2 and not rank_3_achievement_sent:
 		rank_3_achievement_sent = true
@@ -158,13 +174,55 @@ func reset_scene_kills() -> void:
 	# Reset scene-specific kill counter
 	current_kills = 0
 	game_cash = 0
+	emit_signal("game_cash_changed", game_cash)
 
 func add_cash(amount: int):
 	game_cash += amount
 	total_cash += amount
+	emit_signal("game_cash_changed", game_cash)
 	if total_cash >= 696969 and not stacks_on_stacks_unlocked:
-		playgames.unlock_achievement(ACHIEVEMENT_STACKS_ON_STACKS)
+		if playgames.is_available() and playgames.is_signed_in():
+			playgames.unlock_achievement(ACHIEVEMENT_STACKS_ON_STACKS)
 		stacks_on_stacks_unlocked = true
+
+func spend_game_cash(amount: int) -> bool:
+	if amount <= 0:
+		return true
+	if game_cash < amount:
+		return false
+	game_cash -= amount
+	emit_signal("game_cash_changed", game_cash)
+	return true
+
+func format_cash(amount: int) -> String:
+	var sign := ""
+	var value: int = abs(amount)
+	if amount < 0:
+		sign = "-"
+
+	for denomination in CASH_DENOMINATIONS:
+		var denomination_value := int(denomination["value"])
+		if value < denomination_value:
+			continue
+
+		var scaled_value := float(value) / float(denomination_value)
+		var formatted_value := ""
+		if scaled_value >= 100.0:
+			formatted_value = "%d" % int(round(scaled_value))
+		elif scaled_value >= 10.0:
+			formatted_value = "%.1f" % scaled_value
+		else:
+			formatted_value = "%.2f" % scaled_value
+
+		if formatted_value.contains("."):
+			while formatted_value.ends_with("0"):
+				formatted_value = formatted_value.substr(0, formatted_value.length() - 1)
+			if formatted_value.ends_with("."):
+				formatted_value = formatted_value.substr(0, formatted_value.length() - 1)
+
+		return "%s%s%s" % [sign, formatted_value, String(denomination["suffix"])]
+
+	return "%s%d" % [sign, value]
 
 # Update the quickest time
 func update_quickest_time(time: String):
@@ -198,7 +256,8 @@ func save_data():
 		"total_cash": total_cash,
 		"complete_legacy_stage_1_unlocked": complete_legacy_stage_1_unlocked,
 		"cat_lover_unlocked": cat_lover_unlocked,
-		"whoa_fast_guy_unlocked": whoa_fast_guy_unlocked
+		"whoa_fast_guy_unlocked": whoa_fast_guy_unlocked,
+		"zzoommm_unlocked": zzoommm_unlocked
 	}
 	var save_file = FileAccess.open(SAVE_PATH, FileAccess.WRITE)
 	if save_file:
@@ -221,6 +280,7 @@ func load_data():
 				complete_legacy_stage_1_unlocked = data.get("complete_legacy_stage_1_unlocked", false)
 				cat_lover_unlocked = data.get("cat_lover_unlocked", false)
 				whoa_fast_guy_unlocked = data.get("whoa_fast_guy_unlocked", false)
+				zzoommm_unlocked = data.get("zzoommm_unlocked", false)
 				print("Game data loaded successfully")
 			else:
 				print("Error: Failed to parse save data")

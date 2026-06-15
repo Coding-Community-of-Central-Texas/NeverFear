@@ -1,6 +1,6 @@
-[gd_scene load_steps=28 format=3 uid="uid://g2dbqkk4jqww"]
+[gd_scene format=3 uid="uid://g2dbqkk4jqww"]
 
-[ext_resource type="Script" uid="uid://da23vja7u1sr4" path="res://Scripts/granade.gd" id="1_c8hxr"]
+[ext_resource type="Script" path="res://Scripts/granade.gd" id="1_c8hxr"]
 [ext_resource type="Texture2D" uid="uid://c200lfuro2fg8" path="res://assets/Guns&Bullets/Explosion.png" id="1_hy050"]
 [ext_resource type="Texture2D" uid="uid://b6rvpg4t65ofh" path="res://assets/Guns&Bullets/bomb.png" id="1_pdghp"]
 [ext_resource type="AudioStream" uid="uid://dxfrttasqhqia" path="res://assets/FutrueSFX/Explosion Long 02.wav" id="4_bcnq7"]
@@ -316,7 +316,7 @@ _data = {
 [sub_resource type="CircleShape2D" id="CircleShape2D_c8hxr"]
 radius = 9.0
 
-[node name="Granade" type="RigidBody2D"]
+[node name="Granade" type="RigidBody2D" unique_id=216759486]
 collision_layer = 9
 collision_mask = 9
 mass = 6.958
@@ -324,37 +324,35 @@ lock_rotation = true
 script = ExtResource("1_c8hxr")
 affect_only_group = &"enemy"
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="Area2D" type="Area2D" parent="." unique_id=1309706376]
 collision_layer = 0
 collision_mask = 5
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Area2D"]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Area2D" unique_id=1662024744]
 position = Vector2(-9.53674e-07, 0)
-scale = Vector2(0.0980571, 0.0975044)
+scale = Vector2(0.14861724, 0.12745416)
 sprite_frames = SubResource("SpriteFrames_4sr31")
 animation = &"thrown"
 autoplay = "thrown"
 frame_progress = 0.531568
 
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="Area2D"]
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="Area2D" unique_id=844733757]
 stream = ExtResource("4_bcnq7")
 pitch_scale = 2.02
 
-[node name="explosion" type="AnimatedSprite2D" parent="Area2D"]
+[node name="explosion" type="AnimatedSprite2D" parent="Area2D" unique_id=1129883808]
 position = Vector2(7.62939e-06, -2.00002)
 scale = Vector2(3.625, 3.48438)
 sprite_frames = SubResource("SpriteFrames_klfe0")
 frame = 13
 
-[node name="Explosion" type="CollisionShape2D" parent="Area2D"]
+[node name="Explosion" type="CollisionShape2D" parent="Area2D" unique_id=449730213]
 shape = SubResource("CircleShape2D_bcnq7")
 debug_color = Color(0.821561, 0, 0.0308942, 0.42)
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Area2D/Explosion"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Area2D/Explosion" unique_id=2007791384]
 root_node = NodePath("../..")
-libraries = {
-&"": SubResource("AnimationLibrary_4sr31")
-}
+libraries/ = SubResource("AnimationLibrary_4sr31")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=221463942]
 shape = SubResource("CircleShape2D_c8hxr")

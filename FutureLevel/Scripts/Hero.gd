@@ -14,16 +14,6 @@ var direction : Vector2 = Vector2.ZERO
 @export var acceleration: float = 4000.0
 @export var deceleration: float = 7000.0
 
-# AdMob interstitial test ad unit
-#const TEST_INTERSTITIAL_ANDROID := "ca-app-pub-3940256099942544/1033173712"
-# Replace later with your real interstitial unit:
-const REAL_INTERSTITIAL_ANDROID := "ca-app-pub-9308215462399709/5241273291"
-
-var interstitial_ad: InterstitialAd = null
-var interstitial_ad_load_callback := InterstitialAdLoadCallback.new()
-var full_screen_callback := FullScreenContentCallback.new()
-var game_over_ad_pending := false
-
 @onready var audio_stream_player_2d_2: AudioStreamPlayer2D = $AudioStreamPlayer2D2
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 @onready var collision_shape_2d: CollisionShape2D = $CollisionShape2D
@@ -32,11 +22,9 @@ var game_over_ad_pending := false
 @onready var gun: Area2D = $Gun
 @onready var health_bar: ProgressBar = $HealthBar
 @export var rate_of_fire: float = 0.15
-@onready var jump_effect: CPUParticles2D = %JumpEffect
 @onready var walkn_jump_r: Marker2D = $AnimatedSprite2D/WalknJumpR
 @onready var walkn_jump_l: Marker2D = $AnimatedSprite2D/WalknJumpL
 @onready var super_sayain: AnimatedSprite2D = $AnimatedSprite2D/SuperSayain
-@onready var jump_effect_2: CPUParticles2D = %JumpEffect2
 @onready var marker_2d: Marker2D = $Gun/Marker2D
 @onready var grenade_ability: Node = $GrenadeAbility
 @onready var toss_hand: Marker2D = $TossHand
@@ -68,61 +56,10 @@ func _ready() -> void:
 		if grenade_ability.has_signal("cooldown_ready"):
 			grenade_ability.connect("cooldown_ready", Callable(self, "_on_grenade_cd_ready"))
 
-	MobileAds.initialize()
-	_setup_interstitial_callbacks()
-
-	interstitial_ad_load_callback.on_ad_failed_to_load = _on_interstitial_ad_failed_to_load
-	interstitial_ad_load_callback.on_ad_loaded = _on_interstitial_ad_loaded
-
-	_load_interstitial()
-
-func _setup_interstitial_callbacks() -> void:
-	full_screen_callback.on_ad_dismissed_full_screen_content = func() -> void:
-		print("Interstitial dismissed")
-		_cleanup_interstitial()
-		_show_game_over_screen()
-		_load_interstitial()
-
-	full_screen_callback.on_ad_failed_to_show_full_screen_content = func(ad_error: AdError) -> void:
-		print("Failed to show interstitial: ", ad_error.message)
-		_cleanup_interstitial()
-		_show_game_over_screen()
-		_load_interstitial()
-
-	full_screen_callback.on_ad_showed_full_screen_content = func() -> void:
-		print("Interstitial showed")
-
-func _load_interstitial() -> void:
-	if interstitial_ad:
-		interstitial_ad.destroy()
-		interstitial_ad = null
-
-	InterstitialAdLoader.new().load(
-		REAL_INTERSTITIAL_ANDROID,
-		AdRequest.new(),
-		interstitial_ad_load_callback
-	)
-
-func _on_interstitial_ad_failed_to_load(ad_error: LoadAdError) -> void:
-	print("Interstitial failed to load: ", ad_error.message)
-
-func _on_interstitial_ad_loaded(ad: InterstitialAd) -> void:
-	print("Interstitial loaded")
-	interstitial_ad = ad
-	interstitial_ad.full_screen_content_callback = full_screen_callback
+	Ads.prepare_game_over_ad()
 
 func _show_game_over_ad() -> void:
-	if interstitial_ad != null:
-		game_over_ad_pending = true
-		interstitial_ad.show()
-	else:
-		print("No interstitial ready, opening game over normally")
-		_show_game_over_screen()
-
-func _cleanup_interstitial() -> void:
-	if interstitial_ad:
-		interstitial_ad.destroy()
-		interstitial_ad = null
+	Ads.show_game_over_interstitial(Callable(self, "_show_game_over_screen"))
 
 func take_damage(amount: int):
 	if is_dead:
@@ -207,14 +144,12 @@ func handle_jumping(delta: float) -> void:
 			velocity.y = JUMP_VELOCITY
 			can_double_jump = true
 			animated_sprite_2d.play("gunjump")
-			_trigger_jump_effect()
 			audio_stream_player_2d.play()
 		elif can_double_jump:
 			velocity.y = DOUBLE_JUMP_VELOCITY
 			can_double_jump = false
 			is_double_jumping = true
 			animated_sprite_2d.play("doublejump")
-			_trigger_doublejump_effect()
 			audio_stream_player_2d.play()
 			
 			if not double_jump_achievement_sent:
@@ -240,14 +175,6 @@ func handle_movement(delta: float) -> void:
 	elif velocity.x > target_velocity_x:
 		velocity.x -= deceleration * delta
 		velocity.x = max(velocity.x, target_velocity_x)
-
-func _trigger_jump_effect() -> void:
-	%JumpEffect.visible = true
-	%JumpEffect.emitting = true
-	%JumpEffect2.emitting = true
-	
-func _trigger_doublejump_effect() -> void:
-	%JumpEffect2.emitting = true 
 
 func handle_animation() -> void:
 	if health <= 0:
@@ -289,7 +216,6 @@ func _on_timer_timeout() -> void:
 		_respawn()
 
 func _show_game_over_screen() -> void:
-	game_over_ad_pending = false
 	Engine.time_scale = 1.0
 
 	const GAMEOVER = preload("res://Scenes/GameOver.tscn") 
@@ -324,9 +250,17 @@ func _get_aim_dir() -> Vector2:
 
 func _on_special_pressed() -> void:
 	if Input.is_action_pressed("special"):
+		var dir := _get_aim_dir()
+		var pool_manager := get_tree().get_first_node_in_group("survival_pool_manager")
+		if pool_manager != null and pool_manager.has_method("spawn_grenade"):
+			pool_manager.call("spawn_grenade", %TossHand.global_position, dir, throw_force)
+			return
+
 		var grenade_scene: PackedScene = preload("res://Scenes/granade.tscn")
 		var g: RigidBody2D = grenade_scene.instantiate()
+		if g == null:
+			return
+
 		g.global_position = %TossHand.global_position
 		get_tree().current_scene.add_child(g)
-		var dir := _get_aim_dir()
 		g.throw(dir, throw_force)

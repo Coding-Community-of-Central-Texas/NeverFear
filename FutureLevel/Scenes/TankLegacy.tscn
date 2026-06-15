@@ -1,45 +1,46 @@
-[gd_scene load_steps=5 format=3 uid="uid://d0sfba78inyln"]
+[gd_scene format=3 uid="uid://d0sfba78inyln"]
 
 [ext_resource type="Script" uid="uid://1sg8lkddgji8" path="res://Scripts/TankLegacy.gd" id="1_qq3r5"]
 [ext_resource type="PackedScene" uid="uid://7rfkwwydbnmb" path="res://Scenes/Tank.tscn" id="2_8kpeu"]
 [ext_resource type="PackedScene" uid="uid://c2txtdlp7v66l" path="res://Scenes/BasicGun.tscn" id="3_axuio"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_aqnnt"]
-size = Vector2(38, 53.5)
+size = Vector2(131, 95)
 
-[node name="TankLegacy" type="CharacterBody2D" groups=["enemy"]]
+[node name="TankLegacy" type="CharacterBody2D" unique_id=967596605 groups=["enemy"]]
 collision_layer = 4
 collision_mask = 5
 script = ExtResource("1_qq3r5")
 
-[node name="Tank" parent="." instance=ExtResource("2_8kpeu")]
+[node name="Tank" parent="." unique_id=334960863 instance=ExtResource("2_8kpeu")]
 unique_name_in_owner = true
 position = Vector2(24, -30)
 scale = Vector2(0.43, 0.43)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-2, -3.25)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=951608291]
+position = Vector2(10.5, -3.5)
 shape = SubResource("RectangleShape2D_aqnnt")
 
-[node name="GroundRayRight" type="RayCast2D" parent="."]
-position = Vector2(2, 7)
+[node name="GroundRayRight" type="RayCast2D" parent="." unique_id=1138749844]
+position = Vector2(54, 22)
 target_position = Vector2(37, 21)
 
-[node name="GroundRayLeft" type="RayCast2D" parent="."]
-position = Vector2(-14, 8)
+[node name="GroundRayLeft" type="RayCast2D" parent="." unique_id=1176106010]
+position = Vector2(-41, 27)
 target_position = Vector2(-38, 19)
 
-[node name="RightWallRay" type="RayCast2D" parent="."]
+[node name="RightWallRay" type="RayCast2D" parent="." unique_id=797328679]
+position = Vector2(45, 0)
 target_position = Vector2(47, 0)
 
-[node name="LeftWallRay" type="RayCast2D" parent="."]
-position = Vector2(-13, 1)
+[node name="LeftWallRay" type="RayCast2D" parent="." unique_id=1832962244]
+position = Vector2(-30, 0)
 target_position = Vector2(-47, -1)
 
-[node name="BasicGun" parent="." instance=ExtResource("3_axuio")]
+[node name="BasicGun" parent="." unique_id=1579158342 instance=ExtResource("3_axuio")]
 position = Vector2(-3, -10)
 
-[node name="DamageNumbersOrigin" type="Node2D" parent="."]
+[node name="DamageNumbersOrigin" type="Node2D" parent="." unique_id=232657903]
 position = Vector2(-5, -52)
 
 [connection signal="kill" from="." to="." method="_on_kill"]

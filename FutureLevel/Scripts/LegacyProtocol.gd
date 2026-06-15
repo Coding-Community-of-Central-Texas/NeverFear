@@ -19,3 +19,9 @@ func level_time() -> String:
 	%TimePanel.stop()
 	var formatted_time = %TimePanel.get_time_formated()
 	return formatted_time
+
+func allows_speed_power_up_drops() -> bool:
+	return true
+
+func allows_lives_power_up_drops() -> bool:
+	return true

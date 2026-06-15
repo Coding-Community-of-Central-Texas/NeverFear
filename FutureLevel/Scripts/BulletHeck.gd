@@ -49,8 +49,18 @@ func stream_pattern():
 	stream_direction *= -1  # Reverse direction for the next wave
 
 func spawn_bullet(position: Vector2, velocity: Vector2):
+	var pool_manager := _get_pool_manager()
+	if pool_manager != null and pool_manager.has_method("spawn_boss_bullet"):
+		var pooled_bullet: Node = pool_manager.call("spawn_boss_bullet", position, velocity)
+		if pooled_bullet != null:
+			return
+		return
+
 	# Spawn and configure a bullet
 	var bullet = bullet_scene.instantiate()
 	bullet.position = position
 	bullet.velocity = velocity
 	get_tree().current_scene.add_child(bullet)
+
+func _get_pool_manager() -> Node:
+	return get_tree().get_first_node_in_group("survival_pool_manager")

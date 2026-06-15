@@ -26,13 +26,28 @@ func try_throw(from_global_pos: Vector2, direction: Vector2) -> bool:
 		return false
 	if direction == Vector2.ZERO:
 		return false
+
+	var pool_manager := _get_pool_manager()
+	if pool_manager != null and pool_manager.has_method("spawn_grenade"):
+		var grenade: Node = pool_manager.call("spawn_grenade", from_global_pos, direction, throw_force)
+		if grenade == null:
+			return false
+		_start_cooldown()
+		return true
+
 	var grenade: Node2D = grenade_scene.instantiate() as Node2D
+	if grenade == null:
+		return false
+
 	grenade.global_position = from_global_pos
 	get_tree().current_scene.add_child(grenade)
 	if grenade.has_method("throw"):
 		grenade.call("throw", direction, throw_force)
 	_start_cooldown()
 	return true
+
+func _get_pool_manager() -> Node:
+	return get_tree().get_first_node_in_group("survival_pool_manager")
 
 func _start_cooldown() -> void:
 	_cooling_down = true

@@ -10,6 +10,7 @@ const VELOCITY = 1000
 @export var SPEED: float = 500.0
 @export var acceleration: float = 2200
 @export var deceleration: float = 4000
+@export var enemy_contact_damage_rate: float = 10.0
 const DEADZONE: float = 0.15  # small pad for sticks/float rounding
 
 # If joystick scaling makes left/right weaker, bump X gain (ex: 1.25). Keep Y at 1.0.
@@ -24,45 +25,53 @@ const DEADZONE: float = 0.15  # small pad for sticks/float rounding
 @onready var rank_5: Sprite2D = $Rank5
 @onready var gun: Area2D = $Gun
 
+const SECOND_GUN_SCENE := preload("res://Scenes/Gun.tscn")
+const LASER_SNIPER_SCENE := preload("res://Scenes/LaserSniper.tscn")
+const ORBITING_PLASMA_BALL_SCENE := preload("res://Scenes/OrbitingPlasmaBall.tscn")
+const PRIMARY_GUN_LEFT_POSITION := Vector2(4, 3)
+const PRIMARY_GUN_RIGHT_POSITION := Vector2(-4, 3)
+const SECOND_GUN_LEFT_POSITION := Vector2(4, 5)
+const SECOND_GUN_RIGHT_POSITION := Vector2(-4, 5)
+const LASER_SNIPER_LEFT_POSITION := Vector2(4, 7)
+const LASER_SNIPER_RIGHT_POSITION := Vector2(-4, 7)
+const PLASMA_BALL_START_ANGLES := [-PI * 0.5, PI * 0.5, PI, 0.0]
 const ACHIEVEMENT_MY_STRENGTH_IS_GROWING = "CgkI_v7o0NMNEAIQDg"
 const ACHIEVEMENT_FURTHER_BEYOND = "CgkI_v7o0NMNEAIQDw"
 
 var rank_3_achievement_sent := false
 var rank_4_achievement_sent = false
+var second_gun: Area2D = null
+var laser_sniper: Area2D = null
+var orbiting_plasma_balls: Array[Area2D] = []
 
 # Animation setup
-@onready var animation_player: AnimationPlayer = %AnimationPlayer
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
+@onready var animation_player: AnimationPlayer = $AnimatedSprite2D/AnimationPlayer
 @onready var health_bar: ProgressBar = %HealthBar
 @onready var timer_2: Timer = $Timer2
 @onready var audio_stream_player: AudioStreamPlayer = $AudioStreamPlayer
 
+const SHOTGUN_SCENE := preload("res://Scenes/Shotgun.tscn")
 var is_dead: bool = false
 var current_kills: int = 0
 @export var rank_thresholds: Array = [50, 300, 400, 500, 600]
 @export var fire_rates: Array = [0.20, 0.15, 0.10, 0.08, 0.05]
-
-# Interstitial ad test unit
-#const TEST_INTERSTITIAL_ANDROID := "ca-app-pub-3940256099942544/1033173712"
-# Replace later with your real interstitial ad unit:
-const REAL_INTERSTITIAL_ANDROID := "ca-app-pub-9308215462399709/5241273291"
-
-var interstitial_ad: InterstitialAd = null
-var interstitial_ad_load_callback := InterstitialAdLoadCallback.new()
-var interstitial_full_screen_callback := FullScreenContentCallback.new()
+@export var shotgun_fire_rates: Array = [1.8, 1.65, 1.5, 1.35, 1.2]
+@export var laser_sniper_fire_rates: Array = [4.8, 4.45, 4.1, 3.75, 3.4]
+var shotgun: Area2D = null
+var shotgun_equipped := false
+var laser_sniper_equipped := false
+var enemy_damage_scale: float = 1.0
+var current_rank_index := 0
 
 func _ready() -> void:
 	Global.player = self
+	shotgun = get_node_or_null("Shotgun") as Area2D
+	_set_shotgun_enabled(false)
 	GameManager.connect("scene_kill_updated", Callable(self, "_on_game_manager_scene_kill_updated"))
 	rank_changed.connect(Callable(self, "_on_rank_changed"))
 
-	MobileAds.initialize()
-	_setup_interstitial_callbacks()
-
-	interstitial_ad_load_callback.on_ad_failed_to_load = _on_interstitial_ad_failed_to_load
-	interstitial_ad_load_callback.on_ad_loaded = _on_interstitial_ad_loaded
-
-	_load_interstitial_game_over_ad()
+	Ads.prepare_game_over_ad()
 
 func take_damage(amount: int):
 	if is_dead:
@@ -82,6 +91,9 @@ func take_damage(amount: int):
 	if health <= 0:
 		_die()
 
+func set_enemy_damage_scale(scale: float) -> void:
+	enemy_damage_scale = maxf(scale, 0.1)
+
 func _die():
 	if is_dead:
 		return
@@ -93,10 +105,157 @@ func _die():
 	timer_2.start()
 
 func update_shooting_rate():
-	if gun.has_method("stop_shooting"):
-		gun.call("stop_shooting")
-	if gun.has_method("_physics_process(_delta: float)"):
-		gun.call("_physics_process(_delta: float)")
+	for equipped_gun in _get_equipped_guns():
+		if equipped_gun.has_method("stop_shooting"):
+			equipped_gun.call("stop_shooting")
+	if has_shotgun() and shotgun.has_method("stop_shooting"):
+		shotgun.call("stop_shooting")
+	if has_laser_sniper() and laser_sniper.has_method("stop_shooting"):
+		laser_sniper.call("stop_shooting")
+
+func equip_second_gun() -> bool:
+	if has_second_gun():
+		return false
+
+	var new_gun := SECOND_GUN_SCENE.instantiate() as Area2D
+	if new_gun == null:
+		return false
+
+	new_gun.name = "Gun2"
+	new_gun.visible = true
+	new_gun.show_behind_parent = gun.show_behind_parent
+	new_gun.z_index = 1
+	new_gun.collision_mask = gun.collision_mask
+	new_gun.set("rate_of_fire", gun.get("rate_of_fire"))
+	add_child(new_gun)
+
+	second_gun = new_gun
+	_position_equipped_guns()
+	update_shooting_rate()
+	return true
+
+func has_second_gun() -> bool:
+	return second_gun != null and is_instance_valid(second_gun)
+
+func equip_shotgun() -> bool:
+	if has_shotgun():
+		return false
+
+	if shotgun == null or not is_instance_valid(shotgun):
+		shotgun = SHOTGUN_SCENE.instantiate() as Area2D
+		if shotgun == null:
+			return false
+
+		shotgun.name = "Shotgun"
+		shotgun.z_index = 0
+		add_child(shotgun)
+
+	shotgun_equipped = true
+	_set_shotgun_enabled(true)
+	_apply_special_weapon_fire_rates(current_rank_index)
+	_position_equipped_guns()
+	return true
+
+func has_shotgun() -> bool:
+	return shotgun_equipped and shotgun != null and is_instance_valid(shotgun)
+
+func _set_shotgun_enabled(is_enabled: bool) -> void:
+	if shotgun == null or not is_instance_valid(shotgun):
+		return
+
+	if not is_enabled and shotgun.has_method("stop_shooting"):
+		shotgun.call("stop_shooting")
+
+	shotgun.visible = is_enabled
+	shotgun.monitoring = is_enabled
+	shotgun.monitorable = is_enabled
+	shotgun.process_mode = Node.PROCESS_MODE_INHERIT if is_enabled else Node.PROCESS_MODE_DISABLED
+
+func equip_laser_sniper() -> bool:
+	if has_laser_sniper():
+		return false
+
+	if laser_sniper == null or not is_instance_valid(laser_sniper):
+		laser_sniper = LASER_SNIPER_SCENE.instantiate() as Area2D
+		if laser_sniper == null:
+			return false
+
+		laser_sniper.name = "LaserSniper"
+		laser_sniper.z_index = 2
+		add_child(laser_sniper)
+
+	laser_sniper_equipped = true
+	_set_laser_sniper_enabled(true)
+	_apply_special_weapon_fire_rates(current_rank_index)
+	_position_equipped_guns()
+	return true
+
+func has_laser_sniper() -> bool:
+	return laser_sniper_equipped and laser_sniper != null and is_instance_valid(laser_sniper)
+
+func _set_laser_sniper_enabled(is_enabled: bool) -> void:
+	if laser_sniper == null or not is_instance_valid(laser_sniper):
+		return
+
+	if not is_enabled and laser_sniper.has_method("stop_shooting"):
+		laser_sniper.call("stop_shooting")
+
+	laser_sniper.visible = is_enabled
+	laser_sniper.monitoring = is_enabled
+	laser_sniper.monitorable = is_enabled
+	laser_sniper.process_mode = Node.PROCESS_MODE_INHERIT if is_enabled else Node.PROCESS_MODE_DISABLED
+
+func equip_orbiting_plasma_ball() -> bool:
+	var current_tier := get_orbiting_plasma_ball_count()
+	if current_tier >= PLASMA_BALL_START_ANGLES.size():
+		return false
+
+	var new_plasma_ball := ORBITING_PLASMA_BALL_SCENE.instantiate() as Area2D
+	if new_plasma_ball == null:
+		return false
+
+	new_plasma_ball.name = "OrbitingPlasmaBall%d" % (current_tier + 1)
+	new_plasma_ball.z_index = 3
+	if new_plasma_ball.has_method("set_orbit_angle"):
+		new_plasma_ball.call("set_orbit_angle", float(PLASMA_BALL_START_ANGLES[current_tier]))
+	add_child(new_plasma_ball)
+
+	orbiting_plasma_balls.append(new_plasma_ball)
+	_sync_orbiting_plasma_balls()
+	return true
+
+func has_orbiting_plasma_ball() -> bool:
+	return get_orbiting_plasma_ball_count() > 0
+
+func can_equip_orbiting_plasma_ball() -> bool:
+	return get_orbiting_plasma_ball_count() < PLASMA_BALL_START_ANGLES.size()
+
+func get_orbiting_plasma_ball_count() -> int:
+	return _get_valid_orbiting_plasma_balls().size()
+
+func _get_valid_orbiting_plasma_balls() -> Array[Area2D]:
+	var valid_plasma_balls: Array[Area2D] = []
+	for plasma_ball in orbiting_plasma_balls:
+		if plasma_ball != null and is_instance_valid(plasma_ball):
+			valid_plasma_balls.append(plasma_ball)
+
+	orbiting_plasma_balls = valid_plasma_balls
+	return orbiting_plasma_balls
+
+func _sync_orbiting_plasma_balls() -> void:
+	var valid_plasma_balls := _get_valid_orbiting_plasma_balls()
+	for index in range(valid_plasma_balls.size()):
+		var plasma_ball := valid_plasma_balls[index]
+		if plasma_ball.has_method("set_orbit_angle"):
+			plasma_ball.call("set_orbit_angle", float(PLASMA_BALL_START_ANGLES[index]))
+
+func _get_equipped_guns() -> Array[Area2D]:
+	var equipped_guns: Array[Area2D] = []
+	if gun != null and is_instance_valid(gun):
+		equipped_guns.append(gun)
+	if has_second_gun():
+		equipped_guns.append(second_gun)
+	return equipped_guns
 
 func rank_up():
 	for i in range(rank_thresholds.size()):
@@ -107,13 +266,13 @@ func rank_up():
 				rank_3_achievement_sent = true
 				if playgames.is_available() and playgames.is_signed_in():
 					playgames.unlock_achievement(ACHIEVEMENT_MY_STRENGTH_IS_GROWING)
-					print("Rank 3 achievement unlock request sent")
+
 
 			if i >= 3 and not rank_4_achievement_sent:
 				rank_4_achievement_sent = true
 				if playgames.is_available() and playgames.is_signed_in():
 					playgames.unlock_achievement(ACHIEVEMENT_FURTHER_BEYOND)
-					print("Rank 4 achievement unlock request sent")
+
 
 			emit_signal("rank_changed", i)
 			return
@@ -125,28 +284,69 @@ func rank_up():
 		rank_3_achievement_sent = true
 		if playgames.is_available() and playgames.is_signed_in():
 			playgames.unlock_achievement(ACHIEVEMENT_MY_STRENGTH_IS_GROWING)
-			print("Rank 3 achievement unlock request sent")
+
 
 	if max_rank_index >= 3 and not rank_4_achievement_sent:
 		rank_4_achievement_sent = true
 		if playgames.is_available() and playgames.is_signed_in():
 			playgames.unlock_achievement(ACHIEVEMENT_FURTHER_BEYOND)
-			print("Rank 4 achievement unlock request sent")
+
 
 	emit_signal("rank_changed", max_rank_index)
 
 func _update_rank_display(rank_index: int) -> void:
-	if rank_index >= fire_rates.size():
-		rank_index = fire_rates.size() - 1
+	current_rank_index = _clamp_rank_index(rank_index)
 
-	gun.rate_of_fire = fire_rates[rank_index]
+	for equipped_gun in _get_equipped_guns():
+		var fallback_rate := float(equipped_gun.get("rate_of_fire"))
+		_set_weapon_rate_of_fire(equipped_gun, _get_rate_for_rank(fire_rates, current_rank_index, fallback_rate))
+	_apply_special_weapon_fire_rates(current_rank_index)
 	update_shooting_rate()
 
-	rank_1.visible = rank_index == 0
-	rank_2.visible = rank_index == 1
-	rank_3.visible = rank_index == 2
-	rank_4.visible = rank_index == 3
-	rank_5.visible = rank_index == 4
+	rank_1.visible = current_rank_index == 0
+	rank_2.visible = current_rank_index == 1
+	rank_3.visible = current_rank_index == 2
+	rank_4.visible = current_rank_index == 3
+	rank_5.visible = current_rank_index == 4
+
+func _apply_special_weapon_fire_rates(rank_index: int) -> void:
+	if has_shotgun():
+		var shotgun_fallback := float(shotgun.get("rate_of_fire"))
+		_set_weapon_rate_of_fire(shotgun, _get_rate_for_rank(shotgun_fire_rates, rank_index, shotgun_fallback))
+	if has_laser_sniper():
+		var laser_fallback := float(laser_sniper.get("rate_of_fire"))
+		_set_weapon_rate_of_fire(laser_sniper, _get_rate_for_rank(laser_sniper_fire_rates, rank_index, laser_fallback))
+
+func _set_weapon_rate_of_fire(weapon: Area2D, new_rate: float) -> void:
+	if weapon == null or not is_instance_valid(weapon):
+		return
+	if weapon.has_method("set_rate_of_fire"):
+		weapon.call("set_rate_of_fire", new_rate)
+	else:
+		weapon.set("rate_of_fire", new_rate)
+
+func _get_rate_for_rank(rate_table: Array, rank_index: int, fallback_rate: float) -> float:
+	if rate_table.is_empty():
+		return fallback_rate
+
+	var rate_index := rank_index
+	if rate_index < 0:
+		rate_index = 0
+	if rate_index >= rate_table.size():
+		rate_index = rate_table.size() - 1
+
+	return float(rate_table[rate_index])
+
+func _clamp_rank_index(rank_index: int) -> int:
+	var highest_rank_index := rank_thresholds.size() - 1
+	if highest_rank_index < 0:
+		highest_rank_index = 0
+
+	if rank_index < 0:
+		return 0
+	if rank_index > highest_rank_index:
+		return highest_rank_index
+	return rank_index
 
 func _physics_process(delta: float) -> void:
 	if is_dead:
@@ -180,12 +380,11 @@ func _physics_process(delta: float) -> void:
 	handle_player_animation()
 
 func handle_collisions(delta: float):
-	const DAMAGE_RATE = 10.0
 	var overlapping_mobs = %HurtBox.get_overlapping_bodies()
 	health_bar.value = health
 
 	if overlapping_mobs.size() > 0:
-		health -= DAMAGE_RATE * overlapping_mobs.size() * delta
+		health -= enemy_contact_damage_rate * enemy_damage_scale * overlapping_mobs.size() * delta
 		health_bar.value = health
 
 	if health <= 0:
@@ -193,25 +392,45 @@ func handle_collisions(delta: float):
 
 func handle_player_animation() -> void:
 	if velocity.length() > 0:
-		if animation_player.current_animation != "walk":
-			animation_player.play("walk")
+		_play_player_animation("walk")
 	else:
-		if animation_player.current_animation != "idle":
-			animation_player.play("idle")
+		_play_player_animation("idle")
+
+func _play_player_animation(animation_name: StringName) -> void:
+	if animation_player == null or not animation_player.has_animation(animation_name):
+		return
+	if animation_player.current_animation != animation_name:
+		animation_player.play(animation_name)
 
 func flip_sprite() -> void:
 	if velocity.x < -3:
 		animated_sprite_2d.flip_h = true
-		gun.position = Vector2(4, 3)
+		_position_equipped_guns()
 		shadow.position = Vector2(5, 34)
-		%SuperSayain.position = Vector2(19.6, 36.8)
 		%SuperSayain4.position = Vector2(19.2, 33.7)
 	elif velocity.x > 3:
-		gun.position = Vector2(-4, 3)
 		animated_sprite_2d.flip_h = false
+		_position_equipped_guns()
 		shadow.position = Vector2(-9.5, 34)
-		%SuperSayain.position = Vector2(-5.0, 32.6)
 		%SuperSayain4.position = Vector2(-3.8, 28.8)
+
+func _position_equipped_guns() -> void:
+	if animated_sprite_2d.flip_h:
+		gun.position = PRIMARY_GUN_LEFT_POSITION
+		if has_second_gun():
+			second_gun.position = SECOND_GUN_LEFT_POSITION
+		if has_shotgun():
+			shotgun.position = PRIMARY_GUN_LEFT_POSITION
+		if has_laser_sniper():
+			laser_sniper.position = LASER_SNIPER_LEFT_POSITION
+	else:
+		gun.position = PRIMARY_GUN_RIGHT_POSITION
+		if has_second_gun():
+			second_gun.position = SECOND_GUN_RIGHT_POSITION
+		if has_shotgun():
+			shotgun.position = PRIMARY_GUN_RIGHT_POSITION
+		if has_laser_sniper():
+			laser_sniper.position = LASER_SNIPER_RIGHT_POSITION
 
 func _on_timer_2_timeout() -> void:
 	_show_game_over_ad()
@@ -224,54 +443,15 @@ func _game_over():
 	add_child(new_gameover)
 
 func _show_game_over_ad() -> void:
-	if interstitial_ad != null:
-		interstitial_ad.show()
-	else:
-		print("No interstitial ad ready, opening game over")
-		_game_over()
-		_load_interstitial_game_over_ad()
-
-func _setup_interstitial_callbacks() -> void:
-	interstitial_full_screen_callback.on_ad_dismissed_full_screen_content = func() -> void:
-		print("Interstitial dismissed")
-		_cleanup_interstitial_ad()
-		_game_over()
-		_load_interstitial_game_over_ad()
-
-	interstitial_full_screen_callback.on_ad_failed_to_show_full_screen_content = func(ad_error: AdError) -> void:
-		print("Interstitial failed to show: ", ad_error.message)
-		_cleanup_interstitial_ad()
-		_game_over()
-		_load_interstitial_game_over_ad()
-
-	interstitial_full_screen_callback.on_ad_showed_full_screen_content = func() -> void:
-		print("Interstitial showed")
-
-func _load_interstitial_game_over_ad() -> void:
-	if interstitial_ad:
-		interstitial_ad.destroy()
-		interstitial_ad = null
-
-	InterstitialAdLoader.new().load(
-		REAL_INTERSTITIAL_ANDROID,
-		AdRequest.new(),
-		interstitial_ad_load_callback
-	)
-
-func _on_interstitial_ad_failed_to_load(ad_error: LoadAdError) -> void:
-	print("Interstitial ad failed to load: ", ad_error.message)
-
-func _on_interstitial_ad_loaded(ad: InterstitialAd) -> void:
-	print("Interstitial ad loaded")
-	interstitial_ad = ad
-	interstitial_ad.full_screen_content_callback = interstitial_full_screen_callback
-
-func _cleanup_interstitial_ad() -> void:
-	if interstitial_ad:
-		interstitial_ad.destroy()
-		interstitial_ad = null
+	Ads.show_game_over_interstitial(Callable(self, "_game_over"))
 
 func _on_spawn_timer_timeout() -> void:
+	if _get_pool_manager() != null:
+		for spawner in get_tree().get_nodes_in_group("gauntlet_spawner"):
+			if spawner.has_method("spawn_wave"):
+				spawner.call("spawn_wave")
+		return
+
 	const SPAWN = preload("res://Scenes/SpawnCircle.tscn")
 	const BIGSPAWN = preload("res://Scenes/BigSpawnCircle.tscn")
 
@@ -283,6 +463,9 @@ func _on_spawn_timer_timeout() -> void:
 
 	add_child(new_big)
 	add_child(new_spawn)
+
+func _get_pool_manager() -> Node:
+	return get_tree().get_first_node_in_group("survival_pool_manager")
 
 func _on_game_manager_scene_kill_updated(kills: int) -> void:
 	current_kills = kills
