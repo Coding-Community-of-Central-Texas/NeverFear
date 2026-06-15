@@ -5,11 +5,11 @@
 [ext_resource type="PackedScene" uid="uid://mgnw4coxg0q4" path="res://Scenes/buff_byte.tscn" id="3_u55pg"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_cnpoq"]
-radius = 18.0
+radius = 29.068884
 
 [node name="OneHit" type="CharacterBody2D" unique_id=273374850 groups=["enemy"]]
 collision_layer = 132
-collision_mask = 132
+collision_mask = 128
 motion_mode = 1
 script = ExtResource("1_hf14j")
 

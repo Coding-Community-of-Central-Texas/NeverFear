@@ -16,6 +16,7 @@ var velocity = Vector2.ZERO
 @export var damage = 25
 @export var max_range = 678.0
 
+var base_damage := -1
 var homing_timer = 0.0
 var is_homing = true
 var is_exploding = false
@@ -24,6 +25,7 @@ var pooled := false
 var _lifecycle_id := 0
 
 func _ready():
+	_ensure_base_damage()
 	%AnimatedSprite2D.play("shoot")
 	%AnimatedSprite2D.flip_h
 	%Explosion.visible = false
@@ -40,6 +42,7 @@ func activate(spawn_position: Vector2, data: Dictionary = {}) -> void:
 	is_homing = true
 	is_exploding = false
 	homing_timer = homing_duration
+	configure_damage_scale(float(data.get("damage_scale", 1.0)))
 	visible = true
 	process_mode = Node.PROCESS_MODE_INHERIT
 	set_physics_process(true)
@@ -152,6 +155,14 @@ func missile_impact():
 
 func set_direction(direction: Vector2):
 	velocity = direction.normalized() * missile_speed
+
+func configure_damage_scale(scale: float) -> void:
+	_ensure_base_damage()
+	damage = maxi(1, int(round(float(base_damage) * maxf(scale, 0.1))))
+
+func _ensure_base_damage() -> void:
+	if base_damage < 0:
+		base_damage = damage
 
 func _steer_toward(target_direction: Vector2, delta: float) -> void:
 	if target_direction == Vector2.ZERO:

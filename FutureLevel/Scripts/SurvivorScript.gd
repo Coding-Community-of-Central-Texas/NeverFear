@@ -10,6 +10,7 @@ const VELOCITY = 1000
 @export var SPEED: float = 500.0
 @export var acceleration: float = 2200
 @export var deceleration: float = 4000
+@export var enemy_contact_damage_rate: float = 10.0
 const DEADZONE: float = 0.15  # small pad for sticks/float rounding
 
 # If joystick scaling makes left/right weaker, bump X gain (ex: 1.25). Keep Y at 1.0.
@@ -55,9 +56,13 @@ var is_dead: bool = false
 var current_kills: int = 0
 @export var rank_thresholds: Array = [50, 300, 400, 500, 600]
 @export var fire_rates: Array = [0.20, 0.15, 0.10, 0.08, 0.05]
+@export var shotgun_fire_rates: Array = [1.8, 1.65, 1.5, 1.35, 1.2]
+@export var laser_sniper_fire_rates: Array = [4.8, 4.45, 4.1, 3.75, 3.4]
 var shotgun: Area2D = null
 var shotgun_equipped := false
 var laser_sniper_equipped := false
+var enemy_damage_scale: float = 1.0
+var current_rank_index := 0
 
 func _ready() -> void:
 	Global.player = self
@@ -85,6 +90,9 @@ func take_damage(amount: int):
 
 	if health <= 0:
 		_die()
+
+func set_enemy_damage_scale(scale: float) -> void:
+	enemy_damage_scale = maxf(scale, 0.1)
 
 func _die():
 	if is_dead:
@@ -144,6 +152,7 @@ func equip_shotgun() -> bool:
 
 	shotgun_equipped = true
 	_set_shotgun_enabled(true)
+	_apply_special_weapon_fire_rates(current_rank_index)
 	_position_equipped_guns()
 	return true
 
@@ -177,6 +186,7 @@ func equip_laser_sniper() -> bool:
 
 	laser_sniper_equipped = true
 	_set_laser_sniper_enabled(true)
+	_apply_special_weapon_fire_rates(current_rank_index)
 	_position_equipped_guns()
 	return true
 
@@ -285,18 +295,58 @@ func rank_up():
 	emit_signal("rank_changed", max_rank_index)
 
 func _update_rank_display(rank_index: int) -> void:
-	if rank_index >= fire_rates.size():
-		rank_index = fire_rates.size() - 1
+	current_rank_index = _clamp_rank_index(rank_index)
 
 	for equipped_gun in _get_equipped_guns():
-		equipped_gun.set("rate_of_fire", fire_rates[rank_index])
+		var fallback_rate := float(equipped_gun.get("rate_of_fire"))
+		_set_weapon_rate_of_fire(equipped_gun, _get_rate_for_rank(fire_rates, current_rank_index, fallback_rate))
+	_apply_special_weapon_fire_rates(current_rank_index)
 	update_shooting_rate()
 
-	rank_1.visible = rank_index == 0
-	rank_2.visible = rank_index == 1
-	rank_3.visible = rank_index == 2
-	rank_4.visible = rank_index == 3
-	rank_5.visible = rank_index == 4
+	rank_1.visible = current_rank_index == 0
+	rank_2.visible = current_rank_index == 1
+	rank_3.visible = current_rank_index == 2
+	rank_4.visible = current_rank_index == 3
+	rank_5.visible = current_rank_index == 4
+
+func _apply_special_weapon_fire_rates(rank_index: int) -> void:
+	if has_shotgun():
+		var shotgun_fallback := float(shotgun.get("rate_of_fire"))
+		_set_weapon_rate_of_fire(shotgun, _get_rate_for_rank(shotgun_fire_rates, rank_index, shotgun_fallback))
+	if has_laser_sniper():
+		var laser_fallback := float(laser_sniper.get("rate_of_fire"))
+		_set_weapon_rate_of_fire(laser_sniper, _get_rate_for_rank(laser_sniper_fire_rates, rank_index, laser_fallback))
+
+func _set_weapon_rate_of_fire(weapon: Area2D, new_rate: float) -> void:
+	if weapon == null or not is_instance_valid(weapon):
+		return
+	if weapon.has_method("set_rate_of_fire"):
+		weapon.call("set_rate_of_fire", new_rate)
+	else:
+		weapon.set("rate_of_fire", new_rate)
+
+func _get_rate_for_rank(rate_table: Array, rank_index: int, fallback_rate: float) -> float:
+	if rate_table.is_empty():
+		return fallback_rate
+
+	var rate_index := rank_index
+	if rate_index < 0:
+		rate_index = 0
+	if rate_index >= rate_table.size():
+		rate_index = rate_table.size() - 1
+
+	return float(rate_table[rate_index])
+
+func _clamp_rank_index(rank_index: int) -> int:
+	var highest_rank_index := rank_thresholds.size() - 1
+	if highest_rank_index < 0:
+		highest_rank_index = 0
+
+	if rank_index < 0:
+		return 0
+	if rank_index > highest_rank_index:
+		return highest_rank_index
+	return rank_index
 
 func _physics_process(delta: float) -> void:
 	if is_dead:
@@ -330,12 +380,11 @@ func _physics_process(delta: float) -> void:
 	handle_player_animation()
 
 func handle_collisions(delta: float):
-	const DAMAGE_RATE = 10.0
 	var overlapping_mobs = %HurtBox.get_overlapping_bodies()
 	health_bar.value = health
 
 	if overlapping_mobs.size() > 0:
-		health -= DAMAGE_RATE * overlapping_mobs.size() * delta
+		health -= enemy_contact_damage_rate * enemy_damage_scale * overlapping_mobs.size() * delta
 		health_bar.value = health
 
 	if health <= 0:

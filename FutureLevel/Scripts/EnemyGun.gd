@@ -2,6 +2,7 @@ extends Area2D
 
 @export var rate_of_fire: float = 1.5
 @export var aim_update_interval: float = 0.08
+@export var damage_scale: float = 1.0
 @onready var timer: Timer = $Timer
 @onready var shootingpoint: Marker2D = %shootingpoint
 @onready var audio_stream_player_2d: AudioStreamPlayer2D = $AudioStreamPlayer2D
@@ -42,7 +43,14 @@ func shoot():
 
 	var pool_manager := _get_pool_manager()
 	if pool_manager != null and pool_manager.has_method("spawn_enemy_bullet"):
-		var pooled_bullet: Node = pool_manager.call("spawn_enemy_bullet", shootingpoint.global_position, direction, direction.angle())
+		var pooled_bullet: Node = pool_manager.call(
+			"spawn_enemy_bullet",
+			shootingpoint.global_position,
+			direction,
+			direction.angle(),
+			null,
+			{"damage_scale": damage_scale}
+		)
 		if pooled_bullet != null:
 			audio_stream_player_2d.play()
 			return
@@ -53,6 +61,8 @@ func shoot():
 	if direction != Vector2.ZERO:
 		new_bullet.rotation = direction.angle()
 		new_bullet.set_direction(direction)
+	if new_bullet.has_method("configure_damage_scale"):
+		new_bullet.call("configure_damage_scale", damage_scale)
 	get_tree().current_scene.add_child(new_bullet)
 	audio_stream_player_2d.play()
 

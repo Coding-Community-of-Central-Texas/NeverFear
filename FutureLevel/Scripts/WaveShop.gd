@@ -21,6 +21,7 @@ const PANEL_EDGE_PADDING_MIN := 4.0
 const PANEL_EDGE_PADDING_MAX := 18.0
 const SHOP_ROW_MAX_HEIGHT := 132.0
 const SHOP_ROW_MIN_HEIGHT := 42.0
+const SHOP_ICON_SCALE_MULTIPLIER := 1.08
 const PURCHASE_BUTTON_BASE_SIZE := Vector2(280.0, 104.0)
 const PURCHASE_BUTTON_TEXTURE_POSITION := Vector2(35.0, 4.0)
 const PURCHASE_BUTTON_TEXTURE_SCALE := Vector2(0.21, 0.32)
@@ -322,10 +323,11 @@ func _apply_offer_layout(content_width: float, row_height: float, layout_scale: 
 		_set_margin_constants(row_margins, row_margin_x, row_margin_y, row_margin_x, row_margin_y)
 		var badge_size: float = clamp(
 			row_height - float(row_margin_y * 2),
-			28.0,
-			_scaled_float(58.0, layout_scale, 58.0, 34.0)
+			30.0,
+			_scaled_float(62.0, layout_scale, 62.0, 36.0)
 		)
 		badge_panel.custom_minimum_size = Vector2(badge_size, badge_size)
+		_scale_badge_icons(badge_panel, SHOP_ICON_SCALE_MULTIPLIER)
 
 		var purchase_size := Vector2(
 			clamp(content_width * 0.31, 74.0, PURCHASE_BUTTON_BASE_SIZE.x),
@@ -345,7 +347,7 @@ func _apply_offer_layout(content_width: float, row_height: float, layout_scale: 
 		title_label.clip_text = true
 		description_label.clip_text = true
 		badge_label.clip_text = true
-		title_label.add_theme_font_size_override("font_size", _scaled_font(24, layout_scale, 12))
+		title_label.add_theme_font_size_override("font_size", _scaled_font(26, layout_scale, 13))
 		description_label.add_theme_font_size_override("font_size", _scaled_font(14, layout_scale, 8))
 		badge_label.add_theme_font_size_override("font_size", _scaled_font(20, layout_scale, 9))
 
@@ -386,6 +388,18 @@ func _configure_button(
 	label.offset_top = max(1.0, minimum_size.y * 0.07)
 	label.offset_bottom = -max(2.0, minimum_size.y * 0.13)
 	label.add_theme_font_size_override("font_size", font_size)
+
+func _scale_badge_icons(root: Node, scale_multiplier: float) -> void:
+	for child in root.get_children():
+		var sprite := child as Sprite2D
+		if sprite:
+			if not sprite.has_meta("shop_base_scale"):
+				sprite.set_meta("shop_base_scale", sprite.scale)
+			var base_scale = sprite.get_meta("shop_base_scale")
+			if base_scale is Vector2:
+				sprite.scale = base_scale * scale_multiplier
+
+		_scale_badge_icons(child, scale_multiplier)
 
 func _get_safe_area_in_viewport(viewport_size: Vector2) -> Rect2:
 	var fallback := Rect2(Vector2.ZERO, viewport_size)

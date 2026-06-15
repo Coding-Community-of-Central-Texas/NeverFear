@@ -50,12 +50,13 @@ func spawn_wave():
 		spawn_list.append(get_random_character(CharacterType.ROBBIE, CharacterType.TANK))
 
 	# Iterate through the spawn list and spawn characters
+	var spawn_data := _get_wave_spawn_data()
 	for character in spawn_list:  
 		var spawn_pos: Vector2 = marker_1.global_position + Vector2(
 			randf_range(-spawn_spread, spawn_spread),
 			randf_range(-spawn_spread, spawn_spread)
 		)
-		_spawn_enemy(character, spawn_pos)
+		_spawn_enemy(character, spawn_pos, spawn_data)
 		# Optional: Adjust spacing if needed
 
 func get_random_character(_type1: int, _type2: int) -> PackedScene:
@@ -84,10 +85,10 @@ func _get_enemy_count() -> int:
 func _on_survivor_rank_changed(_rank_index: int) -> void:
 	pass
 
-func _spawn_enemy(enemy_scene: PackedScene, spawn_pos: Vector2) -> Node2D:
+func _spawn_enemy(enemy_scene: PackedScene, spawn_pos: Vector2, data: Dictionary = {}) -> Node2D:
 	var pool_manager := _get_pool_manager()
 	if pool_manager != null and pool_manager.has_method("spawn_enemy"):
-		return pool_manager.call("spawn_enemy", enemy_scene, spawn_pos) as Node2D
+		return pool_manager.call("spawn_enemy", enemy_scene, spawn_pos, data) as Node2D
 
 	var instance := enemy_scene.instantiate() as Node2D
 	if instance == null:
@@ -99,9 +100,22 @@ func _spawn_enemy(enemy_scene: PackedScene, spawn_pos: Vector2) -> Node2D:
 	if instance is CharacterBody2D:
 		var body := instance as CharacterBody2D
 		body.velocity = Vector2.ZERO
+	if instance.has_method("apply_wave_scaling"):
+		instance.call("apply_wave_scaling", data)
 	instance.process_mode = Node.PROCESS_MODE_INHERIT
-	instance.visible = true
+	if instance.has_method("start_spawn_timer"):
+		instance.call("start_spawn_timer")
+	else:
+		instance.visible = true
 	return instance
 
 func _get_pool_manager() -> Node:
 	return get_tree().get_first_node_in_group("survival_pool_manager")
+
+func _get_wave_spawn_data() -> Dictionary:
+	var gauntlet_node = Global.gauntlet
+	if gauntlet_node is Node and is_instance_valid(gauntlet_node) and gauntlet_node.has_method("get_enemy_wave_scaling"):
+		var scaling = gauntlet_node.call("get_enemy_wave_scaling", current_wave)
+		if scaling is Dictionary:
+			return scaling
+	return {}

@@ -8,8 +8,12 @@ const BOOM_SCENE := preload("res://Scenes/RobbieBoom.tscn")
 const CASH_SCENE := preload("res://Scenes/Cash.tscn")
 
 @export var ai_update_interval: float = 0.10
+@export var max_spawn_lifetime: float = 45.0
+@export var spawn_grace_time: float = 0.2
 
 var health = MAX_HEALTH
+var wave_health_scale: float = 1.0
+var wave_damage_scale: float = 1.0
 var knockback_strength = 100.0
 var knockback_duration = 0.1
 var knockback_timer = 0.01  # Keeps track of the knockback time
@@ -33,21 +37,26 @@ var ai_timer := 0.0
 var cached_target: Node2D = null
 var cached_direction := Vector2.ZERO
 var cached_target_distance_sq := INF
+var spawn_grace_active := false
+var spawn_timer_id := 0
+var spawn_position_anchor := Vector2.ZERO
 
 func _ready():
 	_configure_ai_interval()
 	reset_ai_state()
+	_start_lifetime_timer()
+	start_spawn_timer()
 	%Tank.play_move()
 	rotation = 0
 
 func set_pooled(value: bool) -> void:
 	pooled = value
 
-func activate(spawn_position: Vector2, _data: Dictionary = {}) -> void:
+func activate(spawn_position: Vector2, data: Dictionary = {}) -> void:
 	_lifecycle_id += 1
 	active = true
 	is_dying = false
-	health = MAX_HEALTH
+	apply_wave_scaling(data)
 	knockback_timer = 0.0
 	knockback_velocity = Vector2.ZERO
 	velocity = Vector2.ZERO
@@ -58,15 +67,13 @@ func activate(spawn_position: Vector2, _data: Dictionary = {}) -> void:
 	if collision_shape_2d:
 		collision_shape_2d.disabled = false
 		collision_shape_2d.set_deferred("disabled", false)
-	if queue_timer:
-		queue_timer.start()
+	_start_lifetime_timer()
 	reset_ai_state(true)
 	if not active:
 		return
-	visible = true
 	process_mode = Node.PROCESS_MODE_INHERIT
-	set_physics_process(true)
 	%Tank.play_move()
+	start_spawn_timer()
 
 func deactivate(return_to_pool: bool = true) -> void:
 	if not active and return_to_pool:
@@ -74,8 +81,13 @@ func deactivate(return_to_pool: bool = true) -> void:
 
 	_lifecycle_id += 1
 	active = false
+	spawn_timer_id += 1
+	spawn_grace_active = false
 	is_dying = false
+	wave_health_scale = 1.0
+	wave_damage_scale = 1.0
 	health = MAX_HEALTH
+	_set_child_damage_scale(1.0)
 	velocity = Vector2.ZERO
 	knockback_timer = 0.0
 	knockback_velocity = Vector2.ZERO
@@ -97,11 +109,13 @@ func deactivate(return_to_pool: bool = true) -> void:
 		queue_free()
 
 func _physics_process(delta):
-	if not active or is_dying:
+	if not active or is_dying or spawn_grace_active:
+		velocity = Vector2.ZERO
 		return
 
 	_update_ai_timer(delta)
-	if not active or is_dying:
+	if not active or is_dying or spawn_grace_active:
+		velocity = Vector2.ZERO
 		return
 
 	if knockback_timer > 0:
@@ -111,8 +125,17 @@ func _physics_process(delta):
 		pursue_player()
 	move_and_slide()
 
+func apply_wave_scaling(data: Dictionary = {}) -> void:
+	wave_health_scale = maxf(float(data.get("health_scale", 1.0)), 0.1)
+	wave_damage_scale = maxf(float(data.get("damage_scale", 1.0)), 0.1)
+	health = _get_scaled_max_health()
+	_set_child_damage_scale(wave_damage_scale)
+
+func _get_scaled_max_health() -> float:
+	return MAX_HEALTH * wave_health_scale
+
 func take_damage(damage):
-	if not active or is_dying:
+	if not active or is_dying or spawn_grace_active:
 		return
 
 	health -= damage + 15
@@ -217,10 +240,67 @@ func _on_kill() -> void:
 func _on_queue_timer_timeout() -> void:
 	deactivate()
 
+func _start_lifetime_timer() -> void:
+	if queue_timer == null:
+		return
+	if max_spawn_lifetime <= 0.0:
+		queue_timer.stop()
+		return
+	queue_timer.start(max_spawn_lifetime)
+
+func start_spawn_timer() -> void:
+	spawn_timer_id += 1
+	var timer_id := spawn_timer_id
+	spawn_grace_active = true
+	spawn_position_anchor = global_position
+	visible = false
+	velocity = Vector2.ZERO
+	remove_from_group("enemy")
+	_stop_child_guns()
+	_set_child_guns_enabled(false)
+	if collision_shape_2d:
+		collision_shape_2d.disabled = true
+		collision_shape_2d.set_deferred("disabled", true)
+	set_physics_process(false)
+
+	if spawn_grace_time > 0.0:
+		await get_tree().create_timer(spawn_grace_time).timeout
+
+	if timer_id != spawn_timer_id or not active or is_dying:
+		return
+
+	global_position = spawn_position_anchor
+	velocity = Vector2.ZERO
+	spawn_grace_active = false
+	if not is_in_group("enemy"):
+		add_to_group("enemy")
+	if collision_shape_2d:
+		collision_shape_2d.disabled = false
+		collision_shape_2d.set_deferred("disabled", false)
+	_set_child_guns_enabled(true)
+	visible = true
+	set_physics_process(true)
+
 func _stop_child_guns() -> void:
 	var basic_gun := get_node_or_null("%BasicGun")
 	if basic_gun != null and basic_gun.has_method("stop_shooting"):
 		basic_gun.call("stop_shooting")
+
+func _set_child_guns_enabled(enabled: bool) -> void:
+	var basic_gun := get_node_or_null("%BasicGun")
+	if basic_gun == null:
+		return
+
+	basic_gun.process_mode = Node.PROCESS_MODE_INHERIT if enabled else Node.PROCESS_MODE_DISABLED
+	if basic_gun is Area2D:
+		var gun_area := basic_gun as Area2D
+		gun_area.monitoring = enabled
+		gun_area.monitorable = enabled
+
+func _set_child_damage_scale(scale: float) -> void:
+	var basic_gun := get_node_or_null("%BasicGun")
+	if basic_gun != null:
+		basic_gun.set("damage_scale", scale)
 
 func _spawn_effect(scene: PackedScene, spawn_position: Vector2) -> void:
 	var pool_manager := _get_pool_manager()

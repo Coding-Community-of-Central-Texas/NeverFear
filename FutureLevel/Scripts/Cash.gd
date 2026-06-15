@@ -113,6 +113,8 @@ func randomize_power_up() -> void:
 	}
 	if not _allows_speed_power_up_drops():
 		weights.erase(PowerUpType.SPEED)
+	if not _allows_lives_power_up_drops():
+		weights.erase(PowerUpType.LIVES)
 	# Generate a random number between 0 and the total weight
 	var total_weight = 0
 	for weight in weights.values():
@@ -215,24 +217,31 @@ func _collect(body: Node) -> void:
 	if power_up_type == PowerUpType.CASH:
 		emit_signal("add_cash")
 	else:
-		apply_power_up()
+		apply_power_up(body)
 
 	if audio_stream_player_2d.stream == null:
 		deactivate()
 
-func apply_power_up():
-	var original_speed = Global.player.SPEED
-	var original_health = Global.player.health
-	var original_lives = Global.lives
-	
+func apply_power_up(player: Node = null):
+	var target_player := _get_power_up_player(player)
+
 	match power_up_type:
 		PowerUpType.SPEED:
-			Global.player.SPEED += power_up_value
+			if target_player != null:
+				target_player.SPEED += power_up_value
 		PowerUpType.HEALTH:
-			Global.player.health = min(Global.player.MAX_HEALTH, Global.player.health + power_up_value)
+			if target_player != null:
+				target_player.health = min(target_player.MAX_HEALTH, target_player.health + power_up_value)
 		PowerUpType.LIVES:
 			Global.lives += power_up_value
 			GameManager.check_lives_achievement()
+
+func _get_power_up_player(player: Node = null) -> Node:
+	if player != null and is_instance_valid(player) and player.is_in_group("player"):
+		return player
+	if Global.player is Node and is_instance_valid(Global.player):
+		return Global.player
+	return null
 
 func _on_audio_stream_player_2d_finished() -> void:
 	deactivate()
@@ -241,18 +250,37 @@ func _on_add_cash() -> void:
 	GameManager.add_cash(_get_cash_pickup_amount())
 
 func _get_cash_pickup_amount() -> int:
-	var current_scene := get_tree().current_scene
+	var current_scene := _get_current_scene()
 	if current_scene != null and current_scene.has_method("get_cash_pickup_amount"):
 		return int(current_scene.call("get_cash_pickup_amount"))
 
 	return randi_range(DEFAULT_CASH_PICKUP_MIN, DEFAULT_CASH_PICKUP_MAX)
 
 func _allows_speed_power_up_drops() -> bool:
-	var current_scene := get_tree().current_scene
+	var current_scene := _get_current_scene()
 	if current_scene != null and current_scene.has_method("allows_speed_power_up_drops"):
 		return bool(current_scene.call("allows_speed_power_up_drops"))
 
 	return true
+
+func _allows_lives_power_up_drops() -> bool:
+	var current_scene := _get_current_scene()
+	if current_scene != null and current_scene.has_method("allows_lives_power_up_drops"):
+		return bool(current_scene.call("allows_lives_power_up_drops"))
+
+	return true
+
+func _get_current_scene() -> Node:
+	var tree: SceneTree = null
+	if is_inside_tree():
+		tree = get_tree()
+	else:
+		tree = Engine.get_main_loop() as SceneTree
+
+	if tree == null:
+		return null
+
+	return tree.current_scene
 
 func _on_queue_timer_timeout() -> void:
 	deactivate()

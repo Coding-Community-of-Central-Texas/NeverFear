@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://8o5ihpf0h8ej"]
+[gd_scene format=3 uid="uid://8o5ihpf0h8ej"]
 
 [ext_resource type="Script" uid="uid://cyon84jya7dr8" path="res://Scripts/GameOver.gd" id="1_r0wvx"]
 [ext_resource type="AudioStream" uid="uid://bpcayivn7waop" path="res://assets/FutrueSFX/DavidKBD - Eternity Pack - 05 - Evil soul inside - loop.ogg" id="2_ypdy7"]
@@ -576,13 +576,13 @@ animations = [{
 "speed": 11.0
 }]
 
-[node name="GameOver" type="Node2D"]
+[node name="GameOver" type="Node2D" unique_id=124054734]
 process_mode = 3
 position = Vector2(221.996, -197.005)
 scale = Vector2(2, 2)
 script = ExtResource("1_r0wvx")
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=2104022070]
 stream = ExtResource("2_ypdy7")
 volume_db = 7.89
 pitch_scale = 1.05
@@ -590,10 +590,10 @@ autoplay = true
 bus = &"Music"
 playback_type = 1
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=982583637]
 layer = 2
 
-[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer" unique_id=73764331]
 modulate = Color(1, 1, 1, 0)
 self_modulate = Color(0.366595, 0.366595, 0.366595, 1)
 anchors_preset = 15
@@ -606,7 +606,7 @@ grow_vertical = 2
 scale = Vector2(1.78797, 0.741051)
 color = Color(0, 0, 0, 1)
 
-[node name="MissionFail" type="Label" parent="CanvasLayer/ColorRect"]
+[node name="MissionFail" type="Label" parent="CanvasLayer/ColorRect" unique_id=1533003040]
 self_modulate = Color(7.567, 100, 100, 1)
 layout_mode = 1
 anchors_preset = -1
@@ -630,10 +630,10 @@ theme_override_constants/shadow_offset_x = -3
 theme_override_constants/shadow_offset_y = 3
 theme_override_constants/outline_size = 7
 theme_override_font_sizes/font_size = 50
-text = "mission failed!"
+text = "MISSION FAILED!"
 metadata/_edit_use_anchors_ = true
 
-[node name="Fail" type="Label" parent="CanvasLayer/ColorRect"]
+[node name="Fail" type="Label" parent="CanvasLayer/ColorRect" unique_id=70962710]
 visible = false
 z_index = 2
 layout_mode = 1
@@ -657,9 +657,9 @@ theme_override_constants/shadow_offset_x = -3
 theme_override_constants/shadow_offset_y = 3
 theme_override_constants/outline_size = 7
 theme_override_font_sizes/font_size = 50
-text = "                      failed!"
+text = "                      FAILED!"
 
-[node name="Restart" type="TouchScreenButton" parent="CanvasLayer/ColorRect"]
+[node name="Restart" type="TouchScreenButton" parent="CanvasLayer/ColorRect" unique_id=2134156846]
 modulate = Color(1, 1, 1, 0)
 position = Vector2(64.8781, 464.206)
 scale = Vector2(0.378082, 0.966195)
@@ -667,7 +667,7 @@ texture_normal = ExtResource("3_w0gmt")
 texture_pressed = ExtResource("4_6wu1n")
 shape = SubResource("RectangleShape2D_5ywbh")
 
-[node name="MainMenu" type="TouchScreenButton" parent="CanvasLayer/ColorRect"]
+[node name="MainMenu" type="TouchScreenButton" parent="CanvasLayer/ColorRect" unique_id=1814482328]
 modulate = Color(1, 1, 1, 0)
 z_index = 3
 position = Vector2(369.134, 457.458)
@@ -676,13 +676,11 @@ texture_normal = ExtResource("5_aa261")
 texture_pressed = ExtResource("6_bdvmp")
 shape = SubResource("RectangleShape2D_u1hko")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer/ColorRect"]
-libraries = {
-&"": SubResource("AnimationLibrary_frrq6")
-}
-autoplay = "gameover"
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer/ColorRect" unique_id=1988889488]
+libraries/ = SubResource("AnimationLibrary_frrq6")
+autoplay = &"gameover"
 
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="CanvasLayer/ColorRect"]
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="CanvasLayer/ColorRect" unique_id=330177550]
 unique_name_in_owner = true
 process_mode = 3
 physics_interpolation_mode = 2
@@ -690,7 +688,7 @@ stream = ExtResource("5_r0rrm")
 volume_db = 0.755
 pitch_scale = 1.6
 
-[node name="CyborgDeath" type="Sprite2D" parent="CanvasLayer/ColorRect"]
+[node name="CyborgDeath" type="Sprite2D" parent="CanvasLayer/ColorRect" unique_id=1639603460]
 visible = false
 modulate = Color(1, 1, 1, 0.027)
 z_index = 3
@@ -700,14 +698,14 @@ texture = ExtResource("6_q5oov")
 region_enabled = true
 region_rect = Rect2(231, 0, 57, 48)
 
-[node name="Shadow" type="Sprite2D" parent="CanvasLayer/ColorRect/CyborgDeath"]
+[node name="Shadow" type="Sprite2D" parent="CanvasLayer/ColorRect/CyborgDeath" unique_id=1228731166]
 modulate = Color(0, 0, 0, 0.936)
 show_behind_parent = true
 position = Vector2(-5.60202, 39.9692)
 scale = Vector2(0.113024, 0.382811)
 texture = ExtResource("8_g2vhn")
 
-[node name="Shadow2" type="Sprite2D" parent="CanvasLayer/ColorRect/CyborgDeath"]
+[node name="Shadow2" type="Sprite2D" parent="CanvasLayer/ColorRect/CyborgDeath" unique_id=571753824]
 visible = false
 show_behind_parent = true
 z_index = -1
@@ -718,13 +716,13 @@ texture = ExtResource("8_g2vhn")
 region_enabled = true
 region_rect = Rect2(451.44, 235.9, 281.56, 101.2)
 
-[node name="Lightrays8" type="Sprite2D" parent="CanvasLayer/ColorRect"]
+[node name="Lightrays8" type="Sprite2D" parent="CanvasLayer/ColorRect" unique_id=1580786830]
 self_modulate = Color(0.643, 0.643, 0.643, 0.232)
 position = Vector2(311.526, 709.803)
 scale = Vector2(0.425, 0.964635)
 texture = ExtResource("7_78ycr")
 
-[node name="CPUParticles2D" type="CPUParticles2D" parent="CanvasLayer/ColorRect/Lightrays8"]
+[node name="CPUParticles2D" type="CPUParticles2D" parent="CanvasLayer/ColorRect/Lightrays8" unique_id=732837825]
 z_index = 4
 position = Vector2(2.63196, -311.453)
 scale = Vector2(2.35294, 1.08141)
@@ -747,7 +745,7 @@ scale_curve_x = SubResource("Curve_163tk")
 scale_curve_y = SubResource("Curve_erosc")
 color = Color(0.0879139, 0.237604, 0.62394, 1)
 
-[node name="Fire" type="AnimatedSprite2D" parent="CanvasLayer"]
+[node name="Fire" type="AnimatedSprite2D" parent="CanvasLayer" unique_id=1752435091]
 z_index = 3
 position = Vector2(147, 1023)
 scale = Vector2(10.28, 3.4)
@@ -756,21 +754,21 @@ animation = &"burn"
 autoplay = "burn"
 frame_progress = 0.399281
 
-[node name="Fire4" type="AnimatedSprite2D" parent="CanvasLayer/Fire"]
+[node name="Fire4" type="AnimatedSprite2D" parent="CanvasLayer/Fire" unique_id=843229729]
 position = Vector2(83.3658, 0.588242)
 sprite_frames = SubResource("SpriteFrames_ghm2x")
 animation = &"burn"
 autoplay = "burn"
 frame_progress = 0.870152
 
-[node name="Fire3" type="AnimatedSprite2D" parent="CanvasLayer/Fire"]
+[node name="Fire3" type="AnimatedSprite2D" parent="CanvasLayer/Fire" unique_id=1831966094]
 position = Vector2(61.965, 0)
 sprite_frames = SubResource("SpriteFrames_ghm2x")
 animation = &"burn"
 autoplay = "burn"
 frame_progress = 0.861047
 
-[node name="Fire2" type="AnimatedSprite2D" parent="CanvasLayer/Fire"]
+[node name="Fire2" type="AnimatedSprite2D" parent="CanvasLayer/Fire" unique_id=1096346319]
 position = Vector2(31.2257, -0.294113)
 sprite_frames = SubResource("SpriteFrames_ghm2x")
 animation = &"burn"

@@ -49,7 +49,8 @@ default_color = Color(0.92, 0.98, 1, 0.96)
 
 [node name="Timer" type="Timer" parent="." unique_id=598359157]
 process_callback = 0
-wait_time = 1.25
+wait_time = 4.8
+one_shot = true
 
 [node name="BeamTimer" type="Timer" parent="." unique_id=1712246783]
 process_callback = 0

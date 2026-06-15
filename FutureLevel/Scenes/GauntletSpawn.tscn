@@ -1,54 +1,54 @@
-[gd_scene load_steps=2 format=3 uid="uid://cule8xvwt1ral"]
+[gd_scene format=3 uid="uid://cule8xvwt1ral"]
 
 [ext_resource type="Script" uid="uid://byfnjeoda7ugk" path="res://Scripts/GauntletSpawner.gd" id="1_lofiq"]
 
-[node name="GauntletSpawn" type="Marker2D"]
+[node name="GauntletSpawn" type="Marker2D" unique_id=1274764971]
 script = ExtResource("1_lofiq")
 
-[node name="Timer" type="Timer" parent="."]
+[node name="Timer" type="Timer" parent="." unique_id=888898100]
 process_callback = 0
 wait_time = 2.0
 
-[node name="Marker1" type="Marker2D" parent="."]
-position = Vector2(345, 6)
+[node name="Marker1" type="Marker2D" parent="." unique_id=219736302]
+position = Vector2(416, 4)
 
-[node name="Marker2" type="Marker2D" parent="."]
-position = Vector2(250, -240)
+[node name="Marker2" type="Marker2D" parent="." unique_id=928806085]
+position = Vector2(316, -301)
 
-[node name="Marker3" type="Marker2D" parent="."]
-position = Vector2(309, 152)
+[node name="Marker3" type="Marker2D" parent="." unique_id=487931916]
+position = Vector2(375, 218)
 
-[node name="Marker4" type="Marker2D" parent="."]
-position = Vector2(184, 299)
+[node name="Marker4" type="Marker2D" parent="." unique_id=1469257568]
+position = Vector2(243, 349)
 
-[node name="Marker5" type="Marker2D" parent="."]
-position = Vector2(-170, 339)
+[node name="Marker5" type="Marker2D" parent="." unique_id=827580674]
+position = Vector2(-227, 412)
 
-[node name="Marker6" type="Marker2D" parent="."]
-position = Vector2(138, -335)
+[node name="Marker6" type="Marker2D" parent="." unique_id=923053911]
+position = Vector2(169, -399)
 
-[node name="Marker7" type="Marker2D" parent="."]
-position = Vector2(-135, -326)
+[node name="Marker7" type="Marker2D" parent="." unique_id=903162263]
+position = Vector2(-246, -392)
 
-[node name="Marker8" type="Marker2D" parent="."]
-position = Vector2(-337, 134)
+[node name="Marker8" type="Marker2D" parent="." unique_id=1966854672]
+position = Vector2(-448, 184)
 
-[node name="Marker12" type="Marker2D" parent="."]
-position = Vector2(-286, 254)
+[node name="Marker12" type="Marker2D" parent="." unique_id=336977311]
+position = Vector2(-380, 315)
 
-[node name="Marker9" type="Marker2D" parent="."]
-position = Vector2(-367, 4)
+[node name="Marker9" type="Marker2D" parent="." unique_id=1707041602]
+position = Vector2(-478, -24)
 
-[node name="Marker10" type="Marker2D" parent="."]
-position = Vector2(-316, -172)
+[node name="Marker10" type="Marker2D" parent="." unique_id=616901661]
+position = Vector2(-413, -243)
 
-[node name="Marker11" type="Marker2D" parent="."]
-position = Vector2(329, -96)
+[node name="Marker11" type="Marker2D" parent="." unique_id=1793457904]
+position = Vector2(428, -176)
 
-[node name="Marker13" type="Marker2D" parent="."]
-position = Vector2(7, -378)
+[node name="Marker13" type="Marker2D" parent="." unique_id=1616837394]
+position = Vector2(-2, -479)
 
-[node name="Marker14" type="Marker2D" parent="."]
-position = Vector2(3, 355)
+[node name="Marker14" type="Marker2D" parent="." unique_id=513586859]
+position = Vector2(3, 438)
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

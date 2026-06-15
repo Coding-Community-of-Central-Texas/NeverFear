@@ -1,6 +1,11 @@
 extends Node2D
 
-@export var wave_duration_seconds: float = 90.0
+@export var wave_duration_seconds: float = 60.0
+@export_category("Wave Scaling")
+@export var enemy_health_scale_per_wave: float = 0.08
+@export var enemy_damage_scale_per_wave: float = 0.06
+@export var max_enemy_health_scale: float = 2.75
+@export var max_enemy_damage_scale: float = 2.35
 
 const COUNTDOWN_VISIBLE_SECONDS: float = 10.0
 const AUTO_GRENADE_THROW_FORCE: float = 760.0
@@ -11,6 +16,8 @@ const CASH_PICKUP_MAX := 90000
 const AUTO_GRENADE_SCENE := preload("res://Scenes/granade.tscn")
 const WAVE_SHOP_SCENE := preload("res://Scenes/WaveShop.tscn")
 const SHOP_OFFER_COUNT := 4
+const OVERCLOCK_SPEED_BONUS := 35.0
+const OVERCLOCK_MAX_PURCHASES := 3
 const AUTO_GRENADE_TIERS := [
 	{
 		"description": "nearest enemy every 9 sec",
@@ -61,7 +68,7 @@ const SHOP_ITEMS := [
 		"id": "overclock",
 		"title": "overclock boots",
 		"description": "+35 move speed",
-		"cost": 800000,
+		"cost": 2000000,
 		"badge": ">>"
 	},
 	{
@@ -76,21 +83,21 @@ const SHOP_ITEMS := [
 		"title": "shotgun",
 		"description": "equip a close-range spread weapon",
 		"cost": 2800000,
-		"badge": "SG"
+		"badge": ""
 	},
 	{
 		"id": "laser_sniper",
 		"title": "laser sniper",
 		"description": "long-range piercing laser blast",
 		"cost": 3600000,
-		"badge": "LS"
+		"badge": ""
 	},
 	{
 		"id": "plasma_ball",
 		"title": "plasma orbit",
 		"description": "add synced orbiting plasma balls",
 		"cost": 2200000,
-		"badge": "P"
+		"badge": ""
 	},
 	{
 		"id": "auto_grenade",
@@ -113,6 +120,7 @@ var wave_label: Label
 var wave_countdown_label: Label
 var auto_grenade_active: bool = false
 var auto_grenade_tier: int = 0
+var overclock_purchase_count: int = 0
 var auto_grenade_timer: Timer
 var shop_offer_item_ids: Array[String] = []
 
@@ -215,6 +223,7 @@ func _setup_wave_hud() -> void:
 	_update_wave_hud()
 
 func _start_current_wave() -> void:
+	_apply_enemy_wave_scaling()
 	_start_gauntlet_spawners()
 	wave_timer.start(wave_duration_seconds)
 	_update_wave_hud()
@@ -391,7 +400,10 @@ func _apply_shop_item(item_id: String) -> void:
 			Global.player.health = min(Global.player.MAX_HEALTH, Global.player.health + 175.0)
 			Global.player.health_bar.value = Global.player.health
 		"overclock":
-			Global.player.SPEED += 35.0
+			if overclock_purchase_count >= OVERCLOCK_MAX_PURCHASES:
+				return
+			Global.player.SPEED += OVERCLOCK_SPEED_BONUS
+			overclock_purchase_count += 1
 		"second_gun":
 			_buy_second_gun()
 		"shotgun":
@@ -411,7 +423,7 @@ func _shop_item_has_effect(item_id: String) -> bool:
 		"repair":
 			return Global.player.health < Global.player.MAX_HEALTH
 		"overclock":
-			return true
+			return overclock_purchase_count < OVERCLOCK_MAX_PURCHASES
 		"second_gun":
 			return Global.player.has_method("has_second_gun") and not Global.player.call("has_second_gun")
 		"shotgun":
@@ -440,6 +452,16 @@ func _get_shop_item_cost(item: Dictionary) -> int:
 	return int(item["cost"])
 
 func _get_shop_item_description(item: Dictionary) -> String:
+	if String(item["id"]) == "overclock":
+		if overclock_purchase_count >= OVERCLOCK_MAX_PURCHASES:
+			return "maxed: +%d move speed" % int(OVERCLOCK_SPEED_BONUS * OVERCLOCK_MAX_PURCHASES)
+
+		return "purchase %d/%d: +%d move speed" % [
+			overclock_purchase_count + 1,
+			OVERCLOCK_MAX_PURCHASES,
+			int(OVERCLOCK_SPEED_BONUS)
+		]
+
 	if String(item["id"]) == "plasma_ball":
 		var plasma_ball_tier := _get_plasma_ball_tier()
 		if plasma_ball_tier >= PLASMA_BALL_TIERS.size():
@@ -482,6 +504,32 @@ func get_cash_pickup_amount() -> int:
 
 func allows_speed_power_up_drops() -> bool:
 	return false
+
+func allows_lives_power_up_drops() -> bool:
+	return false
+
+func get_enemy_wave_scaling(wave_number: int = -1) -> Dictionary:
+	var scaled_wave := current_wave if wave_number <= 0 else wave_number
+	return {
+		"health_scale": _get_wave_scale(scaled_wave, enemy_health_scale_per_wave, max_enemy_health_scale),
+		"damage_scale": _get_wave_scale(scaled_wave, enemy_damage_scale_per_wave, max_enemy_damage_scale)
+	}
+
+func _apply_enemy_wave_scaling() -> void:
+	if survivor == null or not is_instance_valid(survivor):
+		return
+	if not survivor.has_method("set_enemy_damage_scale"):
+		return
+
+	var scaling := get_enemy_wave_scaling(current_wave)
+	survivor.call("set_enemy_damage_scale", float(scaling.get("damage_scale", 1.0)))
+
+func _get_wave_scale(wave_number: int, scale_per_wave: float, max_scale: float) -> float:
+	var wave_bonus := maxi(wave_number - 1, 0)
+	var scale := 1.0 + float(wave_bonus) * maxf(scale_per_wave, 0.0)
+	if max_scale > 0.0:
+		scale = minf(scale, max_scale)
+	return maxf(scale, 0.1)
 
 func _upgrade_auto_grenade() -> void:
 	if auto_grenade_tier >= AUTO_GRENADE_TIERS.size():

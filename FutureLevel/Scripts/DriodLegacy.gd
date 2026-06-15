@@ -3,9 +3,9 @@ extends CharacterBody2D
 signal kill
 
 var health = 15.0
-var knockback_strength = 320.0
+var knockback_strength = 100.0
 var knockback_duration = 0.1
-var knockback_timer = 0.0  # Keeps track of the knockback time
+var knockback_timer = 0.01  # Keeps track of the knockback time
 var knockback_velocity = Vector2.ZERO  # Stores knockback velocity
 
 @onready var driod: Node2D = %Driod
@@ -37,7 +37,7 @@ func take_damage(damage):
 	
 	knockback_timer = knockback_duration
 	
-	if health <= 0.0:
+	if health <= 0:
 		_die()
 
 func _die():

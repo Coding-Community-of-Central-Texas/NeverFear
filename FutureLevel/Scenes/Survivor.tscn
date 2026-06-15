@@ -510,19 +510,19 @@ autostart = true
 position = Vector2(4, 6)
 
 [node name="GauntletBigSpawn" parent="." unique_id=297335833 instance=ExtResource("12_kcvup")]
-position = Vector2(0.500015, -391.5)
+position = Vector2(319, -423)
 rotation = -1.63224
 
 [node name="GauntletBigSpawn3" parent="." unique_id=2109498095 instance=ExtResource("12_kcvup")]
-position = Vector2(61, 354)
+position = Vector2(211.99998, 524)
 rotation = 1.28784
 
 [node name="GauntletBigSpawn4" parent="." unique_id=1244445519 instance=ExtResource("12_kcvup")]
-position = Vector2(-405, -198)
+position = Vector2(-406.00003, -432.00003)
 rotation = -0.0085988
 
 [node name="GauntletBigSpawn5" parent="." unique_id=1197242003 instance=ExtResource("12_kcvup")]
-position = Vector2(403, -39)
+position = Vector2(507, -47)
 rotation = -0.0085988
 
 [node name="Rank1" type="Sprite2D" parent="." unique_id=1709174807]

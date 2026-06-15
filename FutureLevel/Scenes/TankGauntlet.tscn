@@ -10,7 +10,7 @@ size = Vector2(128, 92)
 
 [node name="TankGauntlet" type="CharacterBody2D" unique_id=1572579521 groups=["enemy"]]
 collision_layer = 4
-collision_mask = 5
+collision_mask = 1
 motion_mode = 1
 script = ExtResource("1_f62gq")
 

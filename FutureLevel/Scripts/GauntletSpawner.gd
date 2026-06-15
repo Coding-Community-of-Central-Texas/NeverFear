@@ -67,6 +67,7 @@ func spawn_wave() -> void:
 		return
 
 	var enemy_count: int = _get_enemy_count()
+	var spawn_data := _get_wave_spawn_data()
 
 	# Use a shuffled copy so markers are spread out first before reusing any.
 	var available_markers: Array[Marker2D] = spawn_markers.duplicate()
@@ -89,14 +90,14 @@ func spawn_wave() -> void:
 
 		var spawn_pos: Vector2 = spawn_marker.global_position + spawn_offset
 
-		var enemy := _spawn_enemy(enemy_scene, spawn_pos)
+		var enemy := _spawn_enemy(enemy_scene, spawn_pos, spawn_data)
 		if enemy == null:
 			continue
 
-func _spawn_enemy(enemy_scene: PackedScene, spawn_pos: Vector2) -> Node2D:
+func _spawn_enemy(enemy_scene: PackedScene, spawn_pos: Vector2, data: Dictionary = {}) -> Node2D:
 	var pool_manager := _get_pool_manager()
 	if pool_manager != null and pool_manager.has_method("spawn_enemy"):
-		return pool_manager.call("spawn_enemy", enemy_scene, spawn_pos) as Node2D
+		return pool_manager.call("spawn_enemy", enemy_scene, spawn_pos, data) as Node2D
 
 	var enemy: Node2D = enemy_scene.instantiate() as Node2D
 	if enemy == null:
@@ -111,12 +112,26 @@ func _spawn_enemy(enemy_scene: PackedScene, spawn_pos: Vector2) -> Node2D:
 		var body := enemy as CharacterBody2D
 		body.velocity = Vector2.ZERO
 
+	if enemy.has_method("apply_wave_scaling"):
+		enemy.call("apply_wave_scaling", data)
+
 	enemy.process_mode = Node.PROCESS_MODE_INHERIT
-	enemy.visible = true
+	if enemy.has_method("start_spawn_timer"):
+		enemy.call("start_spawn_timer")
+	else:
+		enemy.visible = true
 	return enemy
 
 func _get_pool_manager() -> Node:
 	return get_tree().get_first_node_in_group("survival_pool_manager")
+
+func _get_wave_spawn_data() -> Dictionary:
+	var gauntlet_node = Global.gauntlet
+	if gauntlet_node is Node and is_instance_valid(gauntlet_node) and gauntlet_node.has_method("get_enemy_wave_scaling"):
+		var scaling = gauntlet_node.call("get_enemy_wave_scaling", current_wave)
+		if scaling is Dictionary:
+			return scaling
+	return {}
 
 func _apply_wave_settings() -> void:
 	if spawn_intervals.is_empty():

@@ -1,6 +1,6 @@
 extends Area2D
 
-@export var rate_of_fire: float = 1.25
+@export var rate_of_fire: float = 4.8
 @export var blast_range: float = 1200.0
 @export var blast_damage: int = 35
 @export var beam_width: float = 18.0
@@ -19,28 +19,40 @@ extends Area2D
 @onready var laser_impact: CPUParticles2D = %LaserImpact
 
 var shooting := false
+var shot_cooldown := 0.0
 
 func _ready() -> void:
 	collision_shape.scale = default_range_scale
-	timer.wait_time = rate_of_fire
+	set_rate_of_fire(rate_of_fire)
+	timer.one_shot = true
+	timer.stop()
 	beam_timer.wait_time = beam_visible_time
 	_hide_laser_beam()
+
+func set_rate_of_fire(new_rate: float) -> void:
+	rate_of_fire = maxf(new_rate, 0.0)
+	if timer != null:
+		timer.wait_time = rate_of_fire
+	if shot_cooldown > rate_of_fire:
+		shot_cooldown = rate_of_fire
 
 func set_range(new_scale: Vector2) -> void:
 	collision_shape.scale = new_scale
 
 func _on_timer_timeout() -> void:
-	if shooting:
-		shoot()
+	pass
 
-func _physics_process(_delta: float) -> void:
+func _physics_process(delta: float) -> void:
+	if shot_cooldown > 0.0:
+		shot_cooldown = maxf(shot_cooldown - delta, 0.0)
+		return
+
 	var target_enemy := _get_target_enemy()
 	if target_enemy != null:
 		look_at(target_enemy.global_position)
-		if not shooting:
-			shooting = true
-			shoot()
-			timer.start(rate_of_fire)
+		shooting = true
+		shoot()
+		shot_cooldown = maxf(rate_of_fire, 0.0)
 	else:
 		stop_shooting()
 

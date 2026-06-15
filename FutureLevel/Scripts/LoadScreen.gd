@@ -3,7 +3,7 @@ extends Control
 @export_file("*.tscn") var target_scene_path := "res://Scenes/HubWorld.tscn"
 @export var minimum_display_time := 2.5
 @export var progress_ease := 8.0
-@export var use_threaded_loading := false
+@export var use_threaded_loading := true
 
 @onready var progress_bar: ProgressBar = %ProgressBar
 @onready var percent_label: Label = %PercentLabel
