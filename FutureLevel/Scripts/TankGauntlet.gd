@@ -19,7 +19,7 @@ var knockback_duration = 0.1
 var knockback_timer = 0.01  # Keeps track of the knockback time
 var knockback_velocity = Vector2.ZERO  # Stores knockback velocity
 var is_dying = false
-var death_explosion_delay = 0.18
+var death_explosion_delay = 0.10
 
 @onready var robbie: Node2D = %Tank
 @onready var damage_numbers_origin: Node2D = $DamageNumberOrigin

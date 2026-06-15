@@ -134,14 +134,16 @@ autoplay = "shoot"
 frame_progress = 0.394824
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="Missile" unique_id=1573345913]
+visible = false
 show_behind_parent = true
 position = Vector2(101.035, 10.8337)
 rotation = 0.0236997
 scale = Vector2(11.3202, 8.43124)
 skew = 0.0273103
+emitting = false
 amount = 21
 texture = ExtResource("3_srlk6")
-lifetime = 1.63
+lifetime = 1.23
 speed_scale = 1.03
 lifetime_randomness = 0.04
 local_coords = true
